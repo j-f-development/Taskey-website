@@ -73,9 +73,22 @@ Zeitstempel: ${new Date().toLocaleString('de-DE')}
     );
 
   } catch (error: any) {
-    console.error('Error sending email:', error);
+    console.error('❌ Error sending email:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      command: error.command,
+    });
+    console.error('SMTP Config:', {
+      user: process.env.SMTP_USER ? '✅ Set' : '❌ Missing',
+      password: process.env.SMTP_PASSWORD ? '✅ Set' : '❌ Missing',
+    });
+    
     return NextResponse.json(
-      { error: 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es später erneut.' },
+      { 
+        error: 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es später erneut.',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      },
       { status: 500 }
     );
   }
