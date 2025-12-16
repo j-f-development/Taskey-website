@@ -449,64 +449,48 @@ export default function FeaturesPage() {
           </div>
         </div>
 
-        {/* Demo Request Section - BANGER */}
+        {/* Demo Request Section - Clean Blue */}
         <div className="relative mt-32 mb-20 overflow-hidden">
-          {/* Background with gradient and pattern */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900">
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-                backgroundSize: '40px 40px'
-              }}></div>
-            </div>
-          </div>
-
-          {/* Animated floating elements */}
-          <div className="absolute top-10 left-10 w-20 h-20 bg-yellow-400 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-32 h-32 bg-blue-400 rounded-full blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-purple-400 rounded-full blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+          {/* Simple clean blue background */}
+          <div className="absolute inset-0 bg-blue-900"></div>
 
           <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div className="text-center">
               {/* Big Logo */}
               <div className="mb-10">
                 <img 
-                  src="/logoblue.png" 
+                  src="/843B6B8E-CED8-4FF8-8C63-B354140A7BC5e5e1f940b1a8d4df34c43ec444a293f3116e09c2a98dcecd8e8882d3099b7c2d.png" 
                   alt="Taskey Logo" 
                   className="h-48 w-auto mx-auto opacity-90"
                 />
               </div>
               
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-yellow-400 text-gray-900 px-4 py-2 rounded-full font-bold text-sm mb-6 shadow-lg animate-bounce">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
+              <div className="inline-flex items-center gap-2 text-white px-4 py-2 font-bold text-sm mb-6">
                 4 WOCHEN KOSTENLOS TESTEN
               </div>
 
               {/* Main Headline */}
               <h2 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
                 Bereit für die
-                <span className="block bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 bg-clip-text text-transparent animate-pulse">
+                <span className="block text-cyan-400">
                   Zukunft?
                 </span>
               </h2>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
                 Erleben Sie Taskey live in Aktion! Unsere Experten zeigen Ihnen persönlich, 
-                wie Sie <span className="text-yellow-400 font-bold">70% Zeit sparen</span> und Ihren Betrieb auf das nächste Level bringen.
+                wie Sie <span className="text-cyan-400 font-bold">30-40% Zeit sparen</span> und Ihren Betrieb auf das nächste Level bringen.
               </p>
 
               {/* Features Grid */}
               <div className="grid md:grid-cols-3 gap-6 mb-10 max-w-4xl mx-auto">
                 {[
-                  { icon: "⚡", text: "15-Min Demo", subtext: "Schnell & kompakt" },
-                  { icon: "🎯", text: "Maßgeschneidert", subtext: "Für Ihren Betrieb" },
-                  { icon: "🚀", text: "Sofort starten", subtext: "Ohne Verpflichtung" }
+                  { text: "15-Min Demo", subtext: "Schnell & kompakt" },
+                  { text: "Maßgeschneidert", subtext: "Für Ihren Betrieb" },
+                  { text: "Sofort starten", subtext: "Ohne Verpflichtung" }
                 ].map((feature, index) => (
                   <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all hover:scale-105">
-                    <div className="text-4xl mb-2">{feature.icon}</div>
                     <div className="text-white font-bold text-lg">{feature.text}</div>
                     <div className="text-blue-200 text-sm">{feature.subtext}</div>
                   </div>
@@ -517,13 +501,12 @@ export default function FeaturesPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <button 
                   onClick={() => setDemoModalOpen(true)}
-                  className="group relative inline-flex items-center gap-3 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-black text-lg px-10 py-5 rounded-full transition-all hover:scale-110 hover:shadow-2xl shadow-xl"
+                  className="group relative inline-flex items-center gap-3 bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-black text-lg px-10 py-5 rounded-full transition-all hover:scale-110 hover:shadow-2xl shadow-xl"
                 >
                   <span className="relative z-10">Jetzt Demo buchen</span>
                   <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
-                  <div className="absolute inset-0 bg-yellow-300 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
                 </button>
 
                 <a 

@@ -46,11 +46,11 @@ export default function FeaturePreview() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="relative group"
+              className="relative group h-full"
             >
               {/* Rectangular feature card */}
-              <div className="relative">
-                <div className="relative bg-white rounded-lg p-8 shadow-xl group-hover:shadow-2xl transition-all group-hover:scale-105 border-4 border-gray-100">
+              <div className="relative h-full">
+                <div className="relative bg-white rounded-lg p-8 shadow-xl group-hover:shadow-2xl transition-all group-hover:scale-105 border-4 border-gray-100 h-full flex flex-col">
                   <img 
                     src={feature.image} 
                     alt={feature.title}
@@ -59,7 +59,7 @@ export default function FeaturePreview() {
                   <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 text-center text-sm leading-relaxed">{feature.description}</p>
+                  <p className="text-gray-600 text-center text-sm leading-relaxed flex-grow">{feature.description}</p>
                 </div>
               </div>
               

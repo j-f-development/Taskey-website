@@ -4,100 +4,103 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 export default function PricingPage() {
-  const [billingCycle, setBillingCycle] = useState<
-    "monthly" | "quarterly" | "yearly"
-  >("monthly");
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("yearly");
 
   const packages = [
     {
       name: "Taskey Easy",
-      description: "Basisfunktionen",
+      description: "Für kleine Betriebe & Einstieg",
+      employees: "1–19 MA",
       prices: {
-        monthly: "29€",
-        quarterly: "79€",
-        yearly: "299€",
+        monthly: "18€",
+        yearly: "16€",
       },
-      features: [
-        "Bis zu 2 Benutzer",
-        "Zeiterfassung",
-        "Auftragsplanung",
-        "Mobile App",
-        "Kundenverwaltung",
-        "E-Mail Support",
+      limits: [
+        "Max. 15 aktive Aufträge",
+        "Max. 5 Projekte",
+        "1 Standort",
+        "Basis-Analytics",
+        "Standard-Support",
+      ],
+      includedRoles: [
+        "1 Leader inklusive",
+        "2 Fachkräfte inklusive",
       ],
     },
     {
       name: "Taskey Professional",
-      description: "Mehr Funktionen für wachsende Betriebe",
+      description: "Für wachsende & professionelle Teams",
+      employees: "1–49 MA",
       prices: {
-        monthly: "79€",
-        quarterly: "219€",
-        yearly: "849€",
+        monthly: "24€",
+        yearly: "20€",
       },
       popular: true,
-      features: [
-        "Bis zu 10 Benutzer",
-        "Alle Easy Features",
-        "Rechnungsstellung",
-        "Dokumentenverwaltung",
-        "Reporting & Analytics",
-        "Zahlungsabwicklung",
-        "Telefon Support",
-        "Team-Chat",
+      limits: [
+        "Max. 100 aktive Aufträge",
+        "Max. 50 Projekte",
+        "Mehrere Standorte",
+        "Erweiterte Analytics & Reports",
+        "Priorisierter Support",
+      ],
+      includedRoles: [
+        "3 Leader inklusive",
+        "5 Fachkräfte inklusive",
       ],
     },
     {
       name: "Taskey Expert",
-      description: "Voller Funktionsumfang für große Unternehmen",
+      description: "Für große Organisationen",
+      employees: "1–149 MA",
       prices: {
-        monthly: "149€",
-        quarterly: "419€",
-        yearly: "1.599€",
+        monthly: "59€",
+        yearly: "50€",
       },
-      features: [
-        "Unbegrenzte Benutzer",
-        "Alle Professional Features",
-        "Multi-Standort-Verwaltung",
-        "Erweiterte Berichte",
-        "API-Zugang",
-        "Dedizierter Account Manager",
-        "Priority Support",
-        "Individuelle Anpassungen",
+      limits: [
+        "Unbegrenzte Aufträge & Projekte",
+        "Unbegrenzte Standorte",
+        "Vollständige Analytics & KPIs",
+        "API & Custom-Prozesse",
+        "Persönlicher Support & SLA",
+        "Onboarding & Schulung",
+      ],
+      includedRoles: [
+        "Bis zu 10 Leader inklusive",
+        "Bis zu 20 Fachkräfte inklusive",
       ],
     },
   ];
 
-  const allFeatures = [
+  const limitComparison = [
     {
-      category: "Basis",
-      features: [
-        { name: "Zeiterfassung", easy: true, pro: true, expert: true },
-        { name: "Auftragsplanung", easy: true, pro: true, expert: true },
-        { name: "Mobile App (iOS & Android)", easy: true, pro: true, expert: true },
-        { name: "Kundenverwaltung", easy: true, pro: true, expert: true },
-        { name: "Kalenderintegration", easy: true, pro: true, expert: true },
+      category: "Kapazität & Volumen",
+      items: [
+        { name: "Mitarbeiteranzahl", easy: "1–19 MA", pro: "1–49 MA", expert: "1–149 MA" },
+        { name: "Aktive Aufträge", easy: "Max. 15", pro: "Max. 100", expert: "Unbegrenzt" },
+        { name: "Projekte", easy: "Max. 5", pro: "Max. 50", expert: "Unbegrenzt" },
+        { name: "Standorte", easy: "1 Standort", pro: "Mehrere", expert: "Unbegrenzt" },
       ],
     },
     {
-      category: "Erweitert",
-      features: [
-        { name: "Rechnungsstellung", easy: false, pro: true, expert: true },
-        { name: "Dokumentenverwaltung", easy: false, pro: true, expert: true },
-        { name: "Reporting & Analytics", easy: false, pro: true, expert: true },
-        { name: "Zahlungsabwicklung", easy: false, pro: true, expert: true },
-        { name: "Team-Chat", easy: false, pro: true, expert: true },
-        { name: "Automatische Erinnerungen", easy: false, pro: true, expert: true },
+      category: "Inklusive Rollen",
+      items: [
+        { name: "Leader inklusive", easy: "1", pro: "3", expert: "Bis zu 10" },
+        { name: "Fachkräfte inklusive", easy: "2", pro: "5", expert: "Bis zu 20" },
       ],
     },
     {
-      category: "Premium",
-      features: [
-        { name: "Multi-Standort-Verwaltung", easy: false, pro: false, expert: true },
-        { name: "API-Zugang", easy: false, pro: false, expert: true },
-        { name: "Erweiterte Berichte", easy: false, pro: false, expert: true },
-        { name: "Individuelle Anpassungen", easy: false, pro: false, expert: true },
-        { name: "Priority Support", easy: false, pro: false, expert: true },
-        { name: "Dedizierter Account Manager", easy: false, pro: false, expert: true },
+      category: "Analytics & Support",
+      items: [
+        { name: "Analytics", easy: "Basis", pro: "Erweitert", expert: "Vollständig + KPIs" },
+        { name: "Support", easy: "Standard", pro: "Priorisiert", expert: "Persönlich + SLA" },
+        { name: "Onboarding", easy: "Self-Service", pro: "Self-Service", expert: "Persönlich + Schulung" },
+      ],
+    },
+    {
+      category: "Erweiterte Features",
+      items: [
+        { name: "API-Zugang", easy: "—", pro: "—", expert: "✓" },
+        { name: "Custom-Prozesse", easy: "—", pro: "—", expert: "✓" },
       ],
     },
   ];
@@ -109,49 +112,54 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-              Faire Preise, die du bestimmst
+              Klare Preise pro Mitarbeiter
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Wählen Sie den Abrechnungszeitraum, der zu Ihnen passt
+            <p className="text-xl text-gray-600 mb-4">
+              Voller Funktionsumfang in allen Paketen – Sie zahlen nur für Skalierung
+            </p>
+            <p className="text-lg text-blue-900 font-semibold mb-8">
+              Alle Preise zzgl. MwSt. | Unbegrenzte Historie in allen Paketen
             </p>
 
             {/* Billing Cycle Toggle */}
-            <div className="inline-flex bg-gray-200 rounded-lg p-1">
-              <button
-                onClick={() => setBillingCycle("monthly")}
-                className={`px-6 py-2 rounded-lg font-semibold transition ${
-                  billingCycle === "monthly"
-                    ? "bg-blue-900 text-white"
-                    : "text-gray-700 hover:text-gray-900"
-                }`}
-              >
-                Monatlich
-              </button>
-              <button
-                onClick={() => setBillingCycle("quarterly")}
-                className={`px-6 py-2 rounded-lg font-semibold transition ${
-                  billingCycle === "quarterly"
-                    ? "bg-blue-900 text-white"
-                    : "text-gray-700 hover:text-gray-900"
-                }`}
-              >
-                Quartal
-              </button>
-              <button
-                onClick={() => setBillingCycle("yearly")}
-                className={`px-6 py-2 rounded-lg font-semibold transition ${
-                  billingCycle === "yearly"
-                    ? "bg-blue-900 text-white"
-                    : "text-gray-700 hover:text-gray-900"
-                }`}
-              >
-                Jährlich
-              </button>
+            <div className="flex justify-center items-center gap-4">
+              <div className="inline-flex bg-gray-200 rounded-lg p-1">
+                <button
+                  onClick={() => setBillingCycle("monthly")}
+                  className={`px-6 py-2 rounded-lg font-semibold transition ${
+                    billingCycle === "monthly"
+                      ? "bg-blue-900 text-white"
+                      : "text-gray-700 hover:text-gray-900"
+                  }`}
+                >
+                  Monatlich kündbar
+                </button>
+                <button
+                  onClick={() => setBillingCycle("yearly")}
+                  className={`px-6 py-2 rounded-lg font-semibold transition ${
+                    billingCycle === "yearly"
+                      ? "bg-blue-900 text-white"
+                      : "text-gray-700 hover:text-gray-900"
+                  }`}
+                >
+                  Jährlich
+                </button>
+              </div>
+              <span className={`inline-flex items-center gap-2 text-sm font-bold px-4 py-2 rounded-full shadow-lg transition-all ${
+                billingCycle === "yearly" 
+                  ? "bg-gradient-to-r from-green-500 to-emerald-500 text-white" 
+                  : "bg-gray-400 text-gray-700"
+              }`}>
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                Bis zu 20% sparen
+              </span>
             </div>
           </div>
 
           {/* Pricing Cards */}
-          <div className="grid md:grid-cols-3 gap-8 mb-20">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             {packages.map((pkg, index) => (
               <div
                 key={index}
@@ -163,7 +171,7 @@ export default function PricingPage() {
               >
                 {pkg.popular && (
                   <div className="text-center mb-4">
-                    <span className="bg-yellow-400 text-blue-900 text-sm font-bold px-4 py-1 rounded-full">
+                    <span className="bg-blue-900 text-white text-sm font-bold px-4 py-1 rounded-full">
                       BELIEBT
                     </span>
                   </div>
@@ -176,51 +184,111 @@ export default function PricingPage() {
                   {pkg.name}
                 </h3>
                 <p
-                  className={`mb-6 ${
+                  className={`mb-4 ${
                     pkg.popular ? "text-blue-100" : "text-gray-600"
                   }`}
                 >
                   {pkg.description}
                 </p>
+                <p
+                  className={`mb-6 text-sm font-semibold ${
+                    pkg.popular ? "text-blue-100" : "text-blue-900"
+                  }`}
+                >
+                  {pkg.employees}
+                </p>
                 <div className="mb-6">
-                  <span className="text-5xl font-bold">
-                    {pkg.prices[billingCycle].replace("€", "")}
-                  </span>
-                  <span className="text-xl">€</span>
+                  {billingCycle === "yearly" && (
+                    <div className="mb-2">
+                      <span className="text-2xl line-through text-gray-400">
+                        {pkg.prices.monthly.replace("€", "")}€
+                      </span>
+                    </div>
+                  )}
+                  <div className="flex items-end justify-center gap-2">
+                    <span className="text-5xl font-bold">
+                      {pkg.prices[billingCycle].replace("€", "")}
+                    </span>
+                    <span className="text-xl">€</span>
+                  </div>
                   <span
-                    className={`text-sm ${
+                    className={`text-sm block mt-1 ${
                       pkg.popular ? "text-blue-100" : "text-gray-600"
                     }`}
                   >
-                    {billingCycle === "monthly"
-                      ? " / Monat"
-                      : billingCycle === "quarterly"
-                      ? " / Quartal"
-                      : " / Jahr"}
+                    {" / MA / Monat"}
                   </span>
+                  {billingCycle === "yearly" && (
+                    <div className="mt-3 inline-block bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      {pkg.name === "Taskey Easy" && "11% SPAREN"}
+                      {pkg.name === "Taskey Professional" && "17% SPAREN"}
+                      {pkg.name === "Taskey Expert" && "15% SPAREN"}
+                    </div>
+                  )}
                 </div>
-                <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-start">
-                      <svg
-                        className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${
-                          pkg.popular ? "text-yellow-400" : "text-blue-900"
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                
+                {/* Limits */}
+                <div className="mb-6">
+                  <h4 className={`font-bold mb-3 text-sm uppercase ${
+                    pkg.popular ? "text-blue-100" : "text-gray-700"
+                  }`}>
+                    Limits & Volumen
+                  </h4>
+                  <ul className="space-y-2">
+                    {pkg.limits.map((limit, lIndex) => (
+                      <li key={lIndex} className="flex items-start text-sm">
+                        <svg
+                          className={`w-4 h-4 mr-2 mt-0.5 flex-shrink-0 ${
+                            pkg.popular ? "text-white" : "text-blue-900"
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span>{limit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Included Roles */}
+                <div className="mb-8">
+                  <h4 className={`font-bold mb-3 text-sm uppercase ${
+                    pkg.popular ? "text-blue-100" : "text-gray-700"
+                  }`}>
+                    Inklusive Rollen
+                  </h4>
+                  <ul className="space-y-2">
+                    {pkg.includedRoles.map((role, rIndex) => (
+                      <li key={rIndex} className="flex items-start text-sm">
+                        <svg
+                          className={`w-4 h-4 mr-2 mt-0.5 flex-shrink-0 ${
+                            pkg.popular ? "text-white" : "text-blue-900"
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span>{role}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
                 <Link
                   href="#contact"
                   className={`block text-center py-3 px-6 rounded-lg font-semibold transition ${
@@ -234,6 +302,84 @@ export default function PricingPage() {
               </div>
             ))}
           </div>
+
+          {/* Enterprise CTA Button */}
+          <div className="text-center mb-20">
+            <p className="text-lg text-gray-700 mb-4 font-semibold">
+              Das reicht Ihnen nicht?
+            </p>
+            <a
+              href="#enterprise"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-cyan-400 text-gray-900 font-bold rounded-lg hover:bg-cyan-300 transition-all hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <span>Enterprise-Lösung entdecken</span>
+            </a>
+          </div>
+
+          {/* Role Pricing Info */}
+          <div className="bg-blue-50 rounded-xl p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+              Zusätzliche Rollen (optional)
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <Link href="/rollen#mitarbeiter" className="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-xl transition-all hover:scale-105 cursor-pointer">
+                <div className="text-4xl mb-2">👤</div>
+                <h4 className="font-bold text-gray-900 mb-2">Mitarbeiter</h4>
+                <p className="text-3xl font-bold text-blue-900 mb-1">Basis</p>
+                <p className="text-sm text-gray-600 mb-3">Standard-Rolle im Paket enthalten</p>
+                <p className="text-xs text-blue-900 font-semibold">Mehr erfahren →</p>
+              </Link>
+              <Link href="/rollen#fachkraft" className="bg-white rounded-lg p-6 text-center shadow-md border-2 border-blue-900 hover:shadow-xl transition-all hover:scale-105 cursor-pointer">
+                <div className="text-4xl mb-2">⭐</div>
+                <h4 className="font-bold text-gray-900 mb-2">Fachkraft</h4>
+                <p className="text-3xl font-bold text-blue-900 mb-1">+5€</p>
+                <p className="text-sm text-gray-600 mb-3">Pro zusätzlicher Fachkraft / Monat</p>
+                <p className="text-xs text-blue-900 font-semibold">Mehr erfahren →</p>
+              </Link>
+              <Link href="/rollen#leader" className="bg-white rounded-lg p-6 text-center shadow-md border-2 border-blue-900 hover:shadow-xl transition-all hover:scale-105 cursor-pointer">
+                <div className="text-4xl mb-2">👑</div>
+                <h4 className="font-bold text-gray-900 mb-2">Leader</h4>
+                <p className="text-3xl font-bold text-blue-900 mb-1">+9€</p>
+                <p className="text-sm text-gray-600 mb-3">Pro zusätzlichem Leader / Monat</p>
+                <p className="text-xs text-blue-900 font-semibold">Mehr erfahren →</p>
+              </Link>
+            </div>
+            <p className="text-center text-sm text-gray-600 mt-6">
+              Rollen-Aufpreise gelten nur für zusätzliche Personen über das inkludierte Kontingent hinaus
+            </p>
+          </div>
+
+          {/* Example Calculation */}
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-8 text-white">
+            <h3 className="text-2xl font-bold mb-6 text-center">Beispielrechnung</h3>
+            <div className="max-w-2xl mx-auto">
+              <div className="bg-white/10 rounded-lg p-6 mb-4">
+                <h4 className="font-bold mb-4 text-white">Taskey Professional (jährlich)</h4>
+                <ul className="space-y-2 mb-4">
+                  <li>• 12 Mitarbeiter</li>
+                  <li>• 4 Leader (1 mehr als inklusive)</li>
+                  <li>• 5 Fachkräfte (inklusive)</li>
+                </ul>
+                <div className="border-t border-white/20 pt-4 space-y-2">
+                  <div className="flex justify-between">
+                    <span>12 Mitarbeiter × 20€</span>
+                    <span className="font-bold">240€</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>1 zusätzlicher Leader × 9€</span>
+                    <span className="font-bold">+9€</span>
+                  </div>
+                  <div className="flex justify-between text-xl font-bold text-white border-t border-white/20 pt-2 mt-2">
+                    <span>Gesamt pro Monat</span>
+                    <span>249€</span>
+                  </div>
+                </div>
+              </div>
+              <p className="text-center text-sm text-blue-200">
+                Alle Preise zzgl. MwSt. | Laufzeit optional
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -242,20 +388,66 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Detaillierter Feature-Vergleich
+              Voller Funktionsumfang in allen Paketen
             </h2>
-            <p className="text-xl text-gray-600">
-              Finden Sie das perfekte Paket für Ihre Anforderungen
+            <p className="text-xl text-gray-600 mb-6">
+              Taskey limitiert keine Funktionen – Sie zahlen nur für Skalierung, Volumen und Verantwortung
             </p>
           </div>
 
+          {/* All Features Included */}
+          <div className="bg-white rounded-xl shadow-md p-8 mb-12">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              ✓ In ALLEN Paketen enthalten
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                "GPS- & Live-Tracking",
+                "Start/Stop, QR & NFC",
+                "Zeit-, Pausen- & Fahrterfassung",
+                "Live-Map & Mitarbeiter-Roadmap",
+                "Aufträge, Projekte, Fotos & Dokumente",
+                "Abschlussberichte (PDF + Signatur)",
+                "Abwesenheiten & Planung",
+                "Dashboards & Auswertungen",
+                "Buchhaltungs-Export (z.B. LexOffice)",
+                "Rollen- & Rechteverwaltung",
+                "Unbegrenzte Historie",
+                "Mobile App (iOS & Android)",
+              ].map((feature, index) => (
+                <div key={index} className="flex items-start">
+                  <svg
+                    className="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span className="text-gray-700">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Limits & Differences Comparison */}
           <div className="bg-white rounded-xl shadow-md overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white px-6 py-4">
+              <h3 className="text-xl font-bold text-center">
+                Unterschiede: Limits, Rollen & Support
+              </h3>
+            </div>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-100">
                   <tr>
                     <th className="px-6 py-4 text-left font-bold text-gray-900">
-                      Features
+                      Kategorie / Feature
                     </th>
                     <th className="px-6 py-4 text-center font-bold text-gray-900">
                       Easy
@@ -269,116 +461,32 @@ export default function PricingPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {allFeatures.map((category, catIndex) => (
+                  {limitComparison.map((category, catIndex) => (
                     <React.Fragment key={`cat-${catIndex}`}>
                       <tr className="bg-gray-50">
                         <td
                           colSpan={4}
-                          className="px-6 py-3 font-bold text-gray-900"
+                          className="px-6 py-3 font-bold text-gray-900 text-sm uppercase"
                         >
                           {category.category}
                         </td>
                       </tr>
-                      {category.features.map((feature, fIndex) => (
+                      {category.items.map((item, iIndex) => (
                         <tr
-                          key={`feature-${catIndex}-${fIndex}`}
+                          key={`item-${catIndex}-${iIndex}`}
                           className="border-t border-gray-200"
                         >
                           <td className="px-6 py-4 text-gray-700">
-                            {feature.name}
+                            {item.name}
                           </td>
-                          <td className="px-6 py-4 text-center">
-                            {feature.easy ? (
-                              <svg
-                                className="w-6 h-6 text-green-600 mx-auto"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M5 13l4 4L19 7"
-                                />
-                              </svg>
-                            ) : (
-                              <svg
-                                className="w-6 h-6 text-gray-300 mx-auto"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M6 18L18 6M6 6l12 12"
-                                />
-                              </svg>
-                            )}
+                          <td className="px-6 py-4 text-center text-gray-700 font-medium">
+                            {item.easy}
                           </td>
-                          <td className="px-6 py-4 text-center bg-blue-50">
-                            {feature.pro ? (
-                              <svg
-                                className="w-6 h-6 text-green-600 mx-auto"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M5 13l4 4L19 7"
-                                />
-                              </svg>
-                            ) : (
-                              <svg
-                                className="w-6 h-6 text-gray-300 mx-auto"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M6 18L18 6M6 6l12 12"
-                                />
-                              </svg>
-                            )}
+                          <td className="px-6 py-4 text-center bg-blue-50 text-gray-700 font-medium">
+                            {item.pro}
                           </td>
-                          <td className="px-6 py-4 text-center">
-                            {feature.expert ? (
-                              <svg
-                                className="w-6 h-6 text-green-600 mx-auto"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M5 13l4 4L19 7"
-                                />
-                              </svg>
-                            ) : (
-                              <svg
-                                className="w-6 h-6 text-gray-300 mx-auto"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M6 18L18 6M6 6l12 12"
-                                />
-                              </svg>
-                            )}
+                          <td className="px-6 py-4 text-center text-gray-700 font-medium">
+                            {item.expert}
                           </td>
                         </tr>
                       ))}
@@ -386,6 +494,55 @@ export default function PricingPage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+
+          {/* Enterprise Package */}
+          <div id="enterprise" className="mt-12 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-8 md:p-12 text-white text-center scroll-mt-24">
+            <h3 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6">
+              Taskey <span className="text-cyan-400">Enterprise</span>
+            </h3>
+            <p className="text-3xl md:text-4xl text-cyan-400 font-semibold mb-8">Preis auf Anfrage</p>
+            <div className="max-w-3xl mx-auto mb-8">
+              <p className="text-xl text-gray-300 mb-6">
+                Ein Enterprise-Paket wird angeboten bei:
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                  <div className="text-4xl mb-3">👥</div>
+                  <p className="font-semibold text-lg">Mehr als 149 Mitarbeitern</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                  <div className="text-4xl mb-3">⭐</div>
+                  <p className="font-semibold text-lg">Deutlicher Überschreitung der Rollen-Kontingente</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                  <div className="text-4xl mb-3">🔧</div>
+                  <p className="font-semibold text-lg">Individuellen Anforderungen (SLA, Custom-Features, Sonderprozesse)</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/enterprise"
+                className="inline-flex items-center gap-2 bg-cyan-400 text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-cyan-300 transition-all hover:scale-105 shadow-lg group"
+              >
+                <span>Mehr zum Enterprise-Paket</span>
+                <svg 
+                  className="w-5 h-5 group-hover:translate-x-1 transition-transform" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-block bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
+              >
+                Kontakt aufnehmen
+              </Link>
             </div>
           </div>
         </div>

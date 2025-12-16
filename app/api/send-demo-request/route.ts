@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, phone } = await request.json();
+    const { name, email, phone, answers } = await request.json();
 
     // Validate input
     if (!name || !email || !phone) {
@@ -22,6 +22,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Format answers for email
+    const answersHtml = answers ? `
+      <div style="background-color: #eff6ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h3 style="color: #1e3a8a; margin-top: 0;">📋 Antworten aus dem Fragebogen:</h3>
+        ${answers.company_size ? `<p style="margin: 8px 0;"><strong>Betriebsgröße:</strong> ${answers.company_size}</p>` : ''}
+        ${answers.industry ? `<p style="margin: 8px 0;"><strong>Branche:</strong> ${answers.industry}</p>` : ''}
+        ${answers.current_solution ? `<p style="margin: 8px 0;"><strong>Aktuelle Lösung:</strong> ${answers.current_solution}</p>` : ''}
+        ${answers.biggest_challenge ? `<p style="margin: 8px 0;"><strong>Größte Herausforderung:</strong> ${answers.biggest_challenge}</p>` : ''}
+        ${answers.timeline ? `<p style="margin: 8px 0;"><strong>Zeitplan:</strong> ${answers.timeline}</p>` : ''}
+      </div>
+    ` : '';
+
+    const answersText = answers ? `
+📋 Antworten aus dem Fragebogen:
+
+${answers.company_size ? `Betriebsgröße: ${answers.company_size}` : ''}
+${answers.industry ? `Branche: ${answers.industry}` : ''}
+${answers.current_solution ? `Aktuelle Lösung: ${answers.current_solution}` : ''}
+${answers.biggest_challenge ? `Größte Herausforderung: ${answers.biggest_challenge}` : ''}
+${answers.timeline ? `Zeitplan: ${answers.timeline}` : ''}
+    ` : '';
+
     // Create email content
     const emailSubject = '🎯 DEMO BUCHEN - Neue Anfrage';
     const emailHtml = `
@@ -32,6 +54,7 @@ export async function POST(request: NextRequest) {
           <p style="margin: 10px 0;"><strong>📧 Email:</strong> ${email}</p>
           <p style="margin: 10px 0;"><strong>📱 Telefon:</strong> ${phone}</p>
         </div>
+        ${answersHtml}
         <p style="color: #6b7280; font-size: 14px;">
           Über: Taskey Website - Demo Buchung<br>
           Zeitstempel: ${new Date().toLocaleString('de-DE')}
@@ -44,6 +67,8 @@ export async function POST(request: NextRequest) {
 👤 Name: ${name}
 📧 Email: ${email}
 📱 Telefon: ${phone}
+
+${answersText}
 
 Über: Taskey Website - Demo Buchung
 Zeitstempel: ${new Date().toLocaleString('de-DE')}
