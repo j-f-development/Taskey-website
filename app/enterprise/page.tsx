@@ -230,11 +230,6 @@ export default function EnterprisePage() {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <div className="inline-block mb-4">
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-gray-900 text-sm font-bold px-6 py-2 rounded-full">
-                  EXKLUSIV FÜR ENTERPRISE
-                </span>
-              </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
                 Die Taskey <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-500 bg-clip-text text-transparent">Titan Karte</span>
               </h2>
