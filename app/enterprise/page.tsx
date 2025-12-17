@@ -152,6 +152,16 @@ export default function EnterprisePage() {
                 </div>
               ))}
             </div>
+
+            {/* Button to Pricing */}
+            <div className="flex justify-center mt-12">
+              <Link
+                href="/pricing"
+                className="px-8 py-4 bg-white text-blue-900 font-bold rounded-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-xl text-lg"
+              >
+                Zu den Angeboten
+              </Link>
+            </div>
           </div>
         </section>
 

@@ -3,7 +3,7 @@ export default function BusinessSize() {
     {
       title: "Klein",
       subtitle: "Solo-Selbstständige",
-      people: "1 Person",
+      people: "1–19 Mitarbeiter",
       savings: "8–10h",
       color: "from-blue-400 to-blue-600",
       size: "md:col-span-1",
@@ -19,7 +19,7 @@ export default function BusinessSize() {
     {
       title: "Mittel",
       subtitle: "Betriebe",
-      people: "5–10 Mitarbeiter",
+      people: "1–49 Mitarbeiter",
       savings: "25–35h",
       color: "from-blue-700 to-blue-900",
       size: "md:col-span-1",
@@ -27,7 +27,7 @@ export default function BusinessSize() {
     {
       title: "Groß",
       subtitle: "Betriebe",
-      people: "10+ Mitarbeiter",
+      people: "1–149 Mitarbeiter",
       savings: "40+h",
       color: "from-gray-700 to-gray-900",
       size: "md:col-span-1",
@@ -73,7 +73,7 @@ export default function BusinessSize() {
                   <div className={`w-20 h-20 bg-gradient-to-br ${size.color} rounded-full flex items-center justify-center shadow-lg mb-2 mx-auto`}>
                     <span className="text-white font-bold text-lg">{size.savings}</span>
                   </div>
-                  <p className="text-xs text-gray-600 text-center">pro Woche</p>
+                  <p className="text-xs text-gray-600 text-center">pro Monat</p>
                 </div>
                 
                 {/* Number badge */}
@@ -91,7 +91,7 @@ export default function BusinessSize() {
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
-            <span className="font-bold">Durchschnittlich 9 Stunden Zeitersparnis pro Woche</span>
+            <span className="font-bold">Durchschnittlich 9 Stunden Zeitersparnis pro Monat</span>
           </div>
         </div>
       </div>
