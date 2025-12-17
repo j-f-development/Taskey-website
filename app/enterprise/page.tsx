@@ -3,16 +3,20 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import DemoBookingModal from "@/components/DemoBookingModal";
+import Head from "next/head";
 
 export default function EnterprisePage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
 
   return (
     <>
+      <Head>
+        <link rel="preload" href="/91A1A855-C7A4-4904-9E46-43FCEC6C5AC5.png" as="image" />
+      </Head>
       <DemoBookingModal isOpen={demoModalOpen} onClose={() => setDemoModalOpen(false)} />
       
       {/* Fixed Background */}
-      <div className="fixed inset-0 overflow-hidden">
+      <div className="fixed inset-0 overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
