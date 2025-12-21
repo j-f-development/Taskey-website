@@ -1,12 +1,14 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import DemoBookingModal from '../DemoBookingModal';
 
 export default function Branchen() {
-  const [showAll, setShowAll] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [selectedBranche, setSelectedBranche] = useState<string | null>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
 
   // Categorized branches with umbrella terms (Überbegriffe)
   const branchenCategories: { [key: string]: string[] } = {
@@ -1691,28 +1693,155 @@ export default function Branchen() {
 
   // Filter and sort branchen based on search term with intelligent matching
   const filteredBranchen = useMemo(() => {
-    if (!searchTerm.trim()) {
-      return branchen;
+    if (!searchTerm.trim() || searchTerm.trim().length < 2) {
+      return [];
     }
     
-    const term = searchTerm.toLowerCase();
+    const term = searchTerm.toLowerCase().trim();
     
-    // Score all branches
-    const scoredBranches = branchen.map(branche => ({
-      branche,
-      score: getSimilarityScore(term, branche)
-    }));
+    // Intelligente Branchenvorschläge basierend auf Eingabe
+    const smartSuggestions: string[] = [];
     
-    // Filter out low scores and sort by score
-    return scoredBranches
-      .filter(item => item.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .map(item => item.branche);
-  }, [searchTerm, branchen]);
+    // Gemeinsame Wortteile zu Branchen-Mappings
+    const brancheMappings: { [key: string]: string[] } = {
+      // Dachdecker & Dächer
+      'dach': ['Dachdecker', 'Dachdeckerei', 'Dachreinigung', 'Dachsanierung'],
+      'deck': ['Dachdecker', 'Bodenleger', 'Terrassenbau'],
+      
+      // Elektro
+      'ele': ['Elektriker', 'Elektroinstallation', 'Elektrotechnik', 'Elektronik'],
+      'elekt': ['Elektriker', 'Elektroinstallation', 'Elektrotechnik'],
+      'strom': ['Elektriker', 'Elektroinstallation', 'Stromversorger'],
+      
+      // Handwerk allgemein
+      'hand': ['Handwerker', 'Handwerksbetrieb', 'Allgemeines Handwerk'],
+      
+      // Sanitär
+      'sani': ['Sanitär', 'Sanitärinstallation', 'Sanitärtechnik'],
+      'klempn': ['Klempner', 'Sanitär', 'Installateur'],
+      'instal': ['Installateur', 'Installation', 'Montagebetrieb'],
+      'rohr': ['Sanitär', 'Rohrleitungsbau', 'Heizungsbau'],
+      
+      // Heizung
+      'heiz': ['Heizungsbau', 'Heizungsinstallation', 'Heizungstechnik'],
+      'wärm': ['Wärmetechnik', 'Heizungsbau', 'Dämmung'],
+      
+      // Maler
+      'mal': ['Maler', 'Malerbetrieb', 'Lackierer'],
+      'farb': ['Maler', 'Lackierer', 'Farbgestaltung'],
+      'lack': ['Lackierer', 'Autolackierer', 'Maler'],
+      'anstrich': ['Maler', 'Lackierer', 'Beschichtung'],
+      
+      // Garten & Landschaft
+      'gart': ['Gartenbau', 'Garten- und Landschaftsbau', 'Gärtnerei'],
+      'land': ['Landschaftsbau', 'Garten- und Landschaftsbau', 'Grünflächenpflege'],
+      'grün': ['Grünflächenpflege', 'Gartenbau', 'Landschaftsbau'],
+      'baum': ['Baumpflege', 'Gartenbau', 'Forstwirtschaft'],
+      
+      // Reinigung
+      'rein': ['Reinigungsdienst', 'Gebäudereinigung', 'Hausmeisterservice'],
+      'putz': ['Reinigung', 'Gebäudereinigung', 'Putzservice'],
+      'sauber': ['Reinigungsdienst', 'Gebäudereinigung'],
+      
+      // Bau
+      'bau': ['Bauunternehmen', 'Hochbau', 'Tiefbau', 'Trockenbau'],
+      'maur': ['Maurer', 'Maurerbetrieb', 'Hochbau'],
+      'flies': ['Fliesenleger', 'Fliesenbetrieb', 'Bodenleger'],
+      
+      // Auto
+      'auto': ['Autowerkstatt', 'Kfz-Werkstatt', 'Autolackierer', 'Autoservice'],
+      'kfz': ['Kfz-Werkstatt', 'Kfz-Mechaniker', 'Autoservice'],
+      'werk': ['Werkstatt', 'Kfz-Werkstatt', 'Metallwerkstatt'],
+      'reparatur': ['Reparaturservice', 'Werkstatt', 'Instandsetzung'],
+      
+      // Tischler/Schreiner
+      'tisch': ['Tischlerei', 'Tischler', 'Schreinerei'],
+      'schre': ['Schreinerei', 'Schreiner', 'Tischlerei'],
+      'holz': ['Tischlerei', 'Schreinerei', 'Holzbau'],
+      'möbel': ['Möbelbau', 'Tischlerei', 'Schreinerei'],
+      
+      // Metall
+      'metall': ['Metallbau', 'Metallverarbeitung', 'Schlosserei'],
+      'schlo': ['Schlosserei', 'Metallbau', 'Schlosser'],
+      'schwei': ['Schweißerei', 'Metallbau', 'Schweißtechnik'],
+      
+      // Fenster & Türen
+      'fenst': ['Fensterbau', 'Fenster und Türen', 'Glaserei'],
+      'tür': ['Türenbau', 'Fenster und Türen', 'Montage'],
+      'glas': ['Glaserei', 'Fensterbau', 'Glasverarbeitung'],
+      
+      // Transport & Logistik
+      'trans': ['Transport', 'Transportunternehmen', 'Spedition'],
+      'fahr': ['Fahrdienst', 'Transport', 'Lieferservice'],
+      'lief': ['Lieferservice', 'Kurierdienst', 'Transport'],
+      'log': ['Logistik', 'Spedition', 'Lagerei'],
+      
+      // IT & Technik
+      'comput': ['IT-Service', 'Computertechnik', 'EDV-Dienstleister'],
+      'tech': ['Technischer Service', 'IT-Technik', 'Haustechnik'],
+      'it': ['IT-Service', 'EDV-Dienstleister', 'Systemhaus'],
+      
+      // Pflege & Gesundheit
+      'pfleg': ['Pflegedienst', 'Ambulante Pflege', 'Betreuungsdienst'],
+      'gesund': ['Gesundheitsdienst', 'Pflegedienst', 'Therapie'],
+      
+      // Sicherheit
+      'sicher': ['Sicherheitsdienst', 'Wachdienst', 'Alarmanlagen'],
+      'wach': ['Wachdienst', 'Sicherheitsdienst', 'Objektschutz'],
+      
+      // Catering & Gastronomie
+      'cater': ['Catering', 'Partyservice', 'Eventgastronomie'],
+      'koch': ['Catering', 'Gastronomie', 'Küchendienst'],
+      'gastr': ['Gastronomie', 'Restaurant', 'Catering'],
+      
+      // Versorgung
+      'vers': ['Versorgungsdienst', 'Entsorgung', 'Facility Management'],
+      'ents': ['Entsorgung', 'Abfallwirtschaft', 'Recycling'],
+      
+      // Planung
+      'plan': ['Planungsbüro', 'Architekturbüro', 'Ingenieurbüro'],
+      'arch': ['Architekturbüro', 'Architektur', 'Bauplanung'],
+    };
+    
+    // Durchsuche Mappings
+    for (const [key, suggestions] of Object.entries(brancheMappings)) {
+      if (term.includes(key) || key.includes(term)) {
+        smartSuggestions.push(...suggestions);
+      }
+    }
+    
+    // Durchsuche auch die vordefinierten Branchen
+    const matchedFromList = branchen.filter(branche => {
+      const brancheLower = branche.toLowerCase();
+      return brancheLower.includes(term) || term.includes(brancheLower.slice(0, 3));
+    });
+    
+    smartSuggestions.push(...matchedFromList);
+    
+    // Entferne Duplikate und limitiere auf 10
+    return [...new Set(smartSuggestions)].slice(0, 10);
+  }, [searchTerm]);
 
-  const displayedBranchen = showAll ? filteredBranchen : filteredBranchen.slice(0, 48);
   const hasSearchResults = searchTerm.trim() && filteredBranchen.length > 0;
   const noResults = searchTerm.trim() && filteredBranchen.length === 0;
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsSearchFocused(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleSearchClick = (branche: string) => {
+    setSearchTerm(branche);
+    setSelectedBranche(branche);
+    setIsSearchFocused(false);
+  };
 
   // Random reasons why Taskey fits the branch
   const reasons = [
@@ -1752,34 +1881,121 @@ export default function Branchen() {
           </p>
         </div>
 
-        {/* Search Bar */}
-        <div className="max-w-2xl mx-auto mb-8 sm:mb-10 md:mb-12">
+        {/* Search Bar with Live Autocomplete */}
+        <div className="max-w-2xl mx-auto mb-12" ref={searchRef}>
           <div className="relative">
             <input
               type="text"
-              placeholder="Branche suchen..."
+              placeholder="Suchen Sie Ihre Branche... (z.B. 'Auto', 'Elektro', 'Bau')"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg rounded-full border-2 border-gray-200 focus:border-blue-900 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all"
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                if (!e.target.value) setSelectedBranche(null);
+              }}
+              onFocus={() => setIsSearchFocused(true)}
+              className="w-full px-6 py-4 text-lg rounded-2xl border-2 border-gray-200 focus:border-blue-900 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all shadow-sm"
             />
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-2xl"
-              >
-                ×
-              </button>
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+              {searchTerm && (
+                <button
+                  onClick={() => {
+                    setSearchTerm('');
+                    setSelectedBranche(null);
+                    setIsSearchFocused(false);
+                  }}
+                  className="text-gray-400 hover:text-gray-600 text-2xl transition-colors"
+                  aria-label="Suche löschen"
+                >
+                  ×
+                </button>
+              )}
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+
+            {/* Live Autocomplete Dropdown */}
+            {isSearchFocused && searchTerm && !selectedBranche && (
+              <div className="absolute w-full mt-2 bg-white rounded-2xl shadow-2xl border-2 border-gray-200 z-50 max-h-96 overflow-y-auto">
+                {hasSearchResults ? (
+                  <div className="py-2">
+                    <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100">
+                      {filteredBranchen.length} {filteredBranchen.length === 1 ? 'Vorschlag' : 'Vorschläge'}
+                    </div>
+                    {filteredBranchen.map((branche, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleSearchClick(branche)}
+                        className="w-full text-left px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-50 last:border-b-0 group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`w-2 h-2 rounded-full flex-shrink-0 ${
+                            index === 0 ? 'bg-blue-600' : 'bg-blue-400'
+                          }`}></div>
+                          <span className={`font-medium ${
+                            index === 0 ? 'text-blue-900 text-lg' : 'text-gray-700'
+                          } group-hover:text-blue-900`}>
+                            {branche}
+                          </span>
+                          {index === 0 && (
+                            <span className="ml-auto text-xs font-semibold text-blue-600 bg-blue-100 px-2 py-1 rounded-full">
+                              Beste Übereinstimmung
+                            </span>
+                          )}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="px-4 py-8 text-center">
+                    <div className="text-4xl mb-2">🤔</div>
+                    <p className="text-gray-700 font-semibold mb-2">Keine passende Branche gefunden</p>
+                    <p className="text-sm text-gray-500 mb-4">Aber keine Sorge – Taskey passt sich vielen Branchen an!</p>
+                    <button
+                      onClick={() => setDemoModalOpen(true)}
+                      className="text-sm text-blue-600 hover:text-blue-700 font-semibold underline"
+                    >
+                      Jetzt Beratung anfordern
+                    </button>
+                  </div>
+                )}
+              </div>
             )}
           </div>
-          {hasSearchResults && (
-            <p className="text-center mt-4 text-gray-600">
-              <span className="font-semibold text-blue-900">{filteredBranchen.length}</span> Branche{filteredBranchen.length !== 1 ? 'n' : ''} gefunden
-            </p>
+
+          {/* Info Text */}
+          <p className="text-center mt-4 text-gray-600 text-sm">
+            Über <span className="font-semibold text-blue-900">600 Branchen</span> vertrauen auf Taskey
+          </p>
+
+          {/* Selected Branche Info Card */}
+          {selectedBranche && (
+            <div className="mt-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-6 border-2 border-blue-200 shadow-lg animate-fadeIn">
+              <div className="flex items-start gap-4">
+                <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0">
+                  ✓
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-blue-900 mb-2">
+                    {selectedBranche}
+                  </h3>
+                  <div className="bg-white/80 rounded-lg p-4 mb-4">
+                    <p className="text-gray-700 flex items-start gap-2">
+                      <span className="text-xl">💡</span>
+                      <span className="font-medium">{getReasonForBranch(selectedBranche)}</span>
+                    </p>
+                  </div>
+                  <p className="text-blue-800 text-sm font-semibold">
+                    Perfekt für Ihre Branche – Taskey passt sich Ihren Anforderungen an!
+                  </p>
+                </div>
+              </div>
+            </div>
           )}
         </div>
 
-        {/* No Results Message */}
-        {noResults && (
+        {/* No Results Message - nur wenn nicht fokussiert */}
+        {!isSearchFocused && noResults && !selectedBranche && (
           <div className="text-center py-12 mb-12">
             <div className="bg-white rounded-2xl p-8 max-w-2xl mx-auto shadow-lg border border-gray-200">
               <div className="text-6xl mb-4">🔍</div>
@@ -1792,71 +2008,13 @@ export default function Branchen() {
               <p className="text-gray-700 mb-4">
                 Aber keine Sorge – Taskey ist flexibel und passt sich vielen Dienstleistungsbetrieben an!
               </p>
-              <a
-                href="#contact"
+              <button
+                onClick={() => setDemoModalOpen(true)}
                 className="inline-block px-8 py-3 bg-blue-900 text-white font-semibold rounded-full hover:bg-blue-800 transition-all hover:scale-105"
               >
                 Kontaktieren Sie uns
-              </a>
+              </button>
             </div>
-          </div>
-        )}
-
-        {/* Branchen Grid */}
-        {!noResults && (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-            {displayedBranchen.map((branche, index) => {
-              const isTopResult = hasSearchResults && index === 0;
-              const showReason = hasSearchResults;
-              const reason = getReasonForBranch(branche);
-              
-              return (
-                <div
-                  key={index}
-                  className={`bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-105 border ${
-                    isTopResult 
-                      ? 'border-blue-500 ring-4 ring-blue-200 animate-pulse shadow-lg' 
-                      : 'border-gray-100 hover:border-blue-200'
-                  }`}
-                >
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-2 h-2 rounded-full flex-shrink-0 ${
-                      isTopResult ? 'bg-blue-500' : 'bg-blue-900'
-                    }`}></div>
-                    <p className={`text-sm font-medium ${
-                      isTopResult ? 'text-blue-900 font-bold' : 'text-gray-700'
-                    }`}>{branche}</p>
-                  </div>
-                  {showReason && (
-                    <div className="mt-2 pt-2 border-t border-gray-100">
-                      <p className="text-xs text-gray-600 italic">
-                        💡 {reason}
-                      </p>
-                    </div>
-                  )}
-                  {isTopResult && (
-                    <div className="mt-2 text-xs text-blue-600 font-semibold">
-                      ✓ Perfekte Übereinstimmung
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {/* Show More/Less Button */}
-        {!noResults && filteredBranchen.length > 48 && (
-          <div className="text-center">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="px-8 py-4 bg-blue-900 text-white text-lg font-semibold rounded-full hover:bg-blue-800 transition-all hover:scale-105 hover:shadow-xl"
-            >
-              {showAll 
-                ? 'Weniger anzeigen' 
-                : `Alle ${filteredBranchen.length} ${searchTerm ? 'gefundenen ' : ''}Branchen anzeigen`
-              }
-            </button>
           </div>
         )}
 
