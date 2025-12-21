@@ -9,14 +9,6 @@ export default function BusinessSize() {
       size: "md:col-span-1",
     },
     {
-      title: "Neugründer",
-      subtitle: "Starter",
-      people: "1–2 Personen",
-      savings: "10–15h",
-      color: "from-blue-500 to-blue-700",
-      size: "md:col-span-1",
-    },
-    {
       title: "Mittel",
       subtitle: "Betriebe",
       people: "1–49 Mitarbeiter",
@@ -54,7 +46,7 @@ export default function BusinessSize() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {sizes.map((size, index) => (
             <div
               key={index}
