@@ -35,10 +35,10 @@ export default function Testimonials() {
             ))}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Handwerker vertrauen auf Taskey
+            Dienstleister vertrauen auf Taskey
           </h2>
           <p className="text-xl text-gray-600">
-            Über <span className="font-bold text-blue-900">10.000</span> zufriedene Betriebe in ganz Deutschland
+            Über <span className="font-bold text-blue-900">100</span> zufriedene Betriebe in ganz Deutschland
           </p>
         </div>
 
