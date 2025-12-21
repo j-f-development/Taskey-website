@@ -35,6 +35,12 @@ export default function Header() {
               Home
             </Link>
             <Link
+              href="/was-ist-taskey"
+              className="text-gray-700 hover:text-blue-900 transition"
+            >
+              Was ist Taskey?
+            </Link>
+            <Link
               href="/features"
               className="text-gray-700 hover:text-blue-900 transition"
             >
@@ -111,6 +117,13 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
+              </Link>
+              <Link
+                href="/was-ist-taskey"
+                className="text-gray-700 hover:text-blue-900 transition"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Was ist Taskey?
               </Link>
               <Link
                 href="/features"
