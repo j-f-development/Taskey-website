@@ -205,19 +205,21 @@ export default function PricingPage() {
                       </span>
                     </div>
                   )}
-                  <div className="flex items-end justify-center gap-2">
-                    <span className="text-5xl font-bold">
-                      {pkg.prices[billingCycle].replace("€", "")}
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-end gap-2">
+                      <span className="text-5xl font-bold">
+                        {pkg.prices[billingCycle].replace("€", "")}
+                      </span>
+                      <span className="text-xl">€</span>
+                    </div>
+                    <span
+                      className={`text-lg font-semibold mt-2 ${
+                        pkg.popular ? "text-blue-100" : "text-gray-700"
+                      }`}
+                    >
+                      pro Mitarbeiter pro Monat
                     </span>
-                    <span className="text-xl">€</span>
                   </div>
-                  <span
-                    className={`text-sm block mt-1 ${
-                      pkg.popular ? "text-blue-100" : "text-gray-600"
-                    }`}
-                  >
-                    {" / MA / Monat"}
-                  </span>
                   {billingCycle === "yearly" && (
                     <div className="mt-3 inline-block bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
                       {pkg.name === "Taskey Easy" && "11% SPAREN"}
