@@ -46,6 +46,12 @@ export default function EnterprisePage() {
               <div className="text-2xl md:text-3xl font-semibold text-cyan-400">
                 Preis auf Anfrage
               </div>
+              <p className="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
+                Individuelle, auf Ihr Unternehmen zugeschnittene Preise werden auf Anfrage erstellt. Kontaktieren Sie unser Enterprise‑Team für ein persönliches Angebot und eine maßgeschneiderte Kalkulation.
+              </p>
+              <p className="mt-2 text-sm text-gray-300 max-w-3xl mx-auto">
+                Hinweis: Die Preise werden pro Mitarbeiter berechnet und individuell auf Ihre Teamgröße sowie Anforderungen abgestimmt. Die faktische Abrechnung erfolgt monatlich, unabhängig von der vereinbarten Vertragslaufzeit.
+              </p>
             </div>
           </div>
         </section>
@@ -138,7 +144,7 @@ export default function EnterprisePage() {
                 {
                   icon: "/flexibel.png",
                   title: "Flexible Vertragsgestaltung",
-                  description: "Individuelle Laufzeiten, Zahlungsmodelle und Rahmenverträge"
+                  description: "Individuelle Laufzeiten und Vertragsmodelle; die Abrechnung erfolgt stets monatlich"
                 },
               ].map((benefit, index) => (
                 <div key={index} className="p-6 flex gap-4 hover:scale-105 transition-all">
@@ -348,6 +354,7 @@ export default function EnterprisePage() {
                 E-Mail an Enterprise-Team
               </a>
             </div>
+            <p className="text-sm text-gray-300 mb-8">Hinweis: Auch bei Enterprise-Angeboten erfolgt die Rechnungsstellung monatlich, sofern nicht anders schriftlich vereinbart.</p>
 
             <div className="grid md:grid-cols-3 gap-6 text-sm text-gray-300 mt-12">
               <div className="flex flex-col items-center gap-2">
