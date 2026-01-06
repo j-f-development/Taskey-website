@@ -467,7 +467,7 @@ export default function FeaturesPage() {
               
               {/* Badge */}
               <div className="inline-flex items-center gap-2 text-white px-4 py-2 font-bold text-sm mb-6">
-                4 WOCHEN KOSTENLOS TESTEN
+                14 TAGE KOSTENLOS TESTEN
               </div>
 
               {/* Main Headline */}

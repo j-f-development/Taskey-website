@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: "Taskey - Dienstleistungssoftware für über 600 Branchen | Made in Germany",
     template: "%s | Taskey"
   },
-  description: "Taskey ist die führende Dienstleistungssoftware aus Deutschland für über 600 Branchen. Automatische Zeiterfassung, intelligente Auftragsplanung & digitale Rechnungsstellung. DSGVO-konform. Jetzt 4 Wochen kostenlos testen!",
+  description: "Taskey ist die führende Dienstleistungssoftware aus Deutschland für über 600 Branchen. Automatische Zeiterfassung, intelligente Auftragsplanung & digitale Rechnungsstellung. DSGVO-konform. Jetzt 14 Tage kostenlos testen!",
   keywords: ["Dienstleistungssoftware", "Handwerkersoftware", "Zeiterfassung", "Auftragsplanung", "Rechnungssoftware", "Facility Management Software", "Mobile Einsatzplanung", "DSGVO-konforme Software", "Software für Handwerker", "Betriebssoftware Deutschland"],
   authors: [{ name: "Taskey" }],
   creator: "Taskey",

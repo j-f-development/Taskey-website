@@ -3,10 +3,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import DemoBookingModal from "@/components/DemoBookingModal";
+import EnterpriseApplicationModal from "@/components/EnterpriseApplicationModal";
 import Head from "next/head";
 
 export default function EnterprisePage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const [enterpriseModalOpen, setEnterpriseModalOpen] = useState(false);
 
   return (
     <>
@@ -14,6 +16,7 @@ export default function EnterprisePage() {
         <link rel="preload" href="/91A1A855-C7A4-4904-9E46-43FCEC6C5AC5.png" as="image" />
       </Head>
       <DemoBookingModal isOpen={demoModalOpen} onClose={() => setDemoModalOpen(false)} />
+      <EnterpriseApplicationModal isOpen={enterpriseModalOpen} onClose={() => setEnterpriseModalOpen(false)} />
       
       {/* Fixed Background */}
       <div className="fixed inset-0 overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
@@ -350,14 +353,14 @@ export default function EnterprisePage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a
-                href="mailto:enterprise@taskey.de?subject=Bewerbung%20für%20Taskey%20Enterprise"
+              <button
+                onClick={() => setEnterpriseModalOpen(true)}
                 className="px-8 py-4 bg-cyan-400 text-gray-900 font-bold rounded-lg hover:bg-cyan-300 transition-all hover:scale-105 shadow-lg text-lg"
               >
                 Für Enterprise bewerben
-              </a>
+              </button>
               <a
-                href="mailto:enterprise@taskey.de"
+                href="mailto:fynn@vars-development.com?subject=Enterprise-Anfrage%20Taskey"
                 className="px-8 py-4 text-white border-2 border-white/50 font-bold rounded-lg hover:bg-white/10 hover:border-white transition-all hover:scale-105 text-lg backdrop-blur-sm"
               >
                 E-Mail an Enterprise-Team

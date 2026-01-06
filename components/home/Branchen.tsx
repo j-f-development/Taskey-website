@@ -2039,7 +2039,7 @@ export default function Branchen() {
               rel="noopener noreferrer"
               className="px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-all hover:scale-105"
             >
-              4 Wochen kostenlos testen
+              14 Tage kostenlos testen
             </a>
           </div>
         </div>

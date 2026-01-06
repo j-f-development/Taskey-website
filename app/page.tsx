@@ -28,7 +28,7 @@ export default function Home() {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "EUR",
-      "description": "4 Wochen kostenlos testen"
+      "description": "14 Tage kostenlos testen"
     },
     "aggregateRating": {
       "@type": "AggregateRating",

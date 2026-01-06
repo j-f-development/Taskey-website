@@ -212,7 +212,7 @@ export default function IOSAppSection() {
                     href="#"
                     className="sm:col-span-2 flex items-center justify-center px-3 md:px-4 py-2.5 md:py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition-all duration-300 text-xs md:text-sm font-bold shadow-lg"
                   >
-                    4 Wochen kostenlos testen
+                    14 Tage kostenlos testen
                   </a>
                 </div>
                 

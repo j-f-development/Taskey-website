@@ -86,7 +86,7 @@ export default function Contact() {
               </h3>
               <p className="text-blue-100 mb-6 text-center text-sm leading-relaxed">
                 Starten Sie jetzt kostenlos und sparen Sie durchschnittlich{" "}
-                <span className="font-bold text-white">9 Stunden pro Woche</span>.
+                <span className="font-bold text-white">25-30h pro Monat</span>.
               </p>
               <div className="space-y-3">
                 <button
@@ -101,7 +101,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="block px-5 py-3 bg-transparent border-2 border-white text-white text-center font-bold rounded-full hover:bg-white/10 transition-colors text-sm"
                 >
-                  4 Wochen kostenlos testen
+                  14 Tage kostenlos testen
                 </Link>
               </div>
               

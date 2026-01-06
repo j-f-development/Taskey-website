@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-type DemoBookingModalProps = {
+type EnterpriseApplicationModalProps = {
   isOpen: boolean;
   onClose: () => void;
 };
@@ -13,66 +13,69 @@ type Question = {
   options: string[];
 };
 
-export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalProps) {
+export default function EnterpriseApplicationModal({ isOpen, onClose }: EnterpriseApplicationModalProps) {
   const [currentStep, setCurrentStep] = useState(0); // 0 = contact form, 1-5 = questions
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    company: '',
   });
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const questions: Question[] = [
     {
-      id: 'business_age',
-      question: 'Seit welchem Jahr ist Ihr Betrieb aktiv?',
-      options: [
-        'Weniger als 1 Jahr',
-        '1-3 Jahre',
-        '3-10 Jahre',
-        'Mehr als 10 Jahre',
-      ],
-    },
-    {
       id: 'company_size',
-      question: 'Wie groß ist Ihr Betrieb?',
+      question: 'Wie viele Mitarbeiter hat Ihr Unternehmen?',
       options: [
-        'Solo-Selbstständig (1 Person)',
-        'Kleines Team (2-5 Mitarbeiter)',
-        'Mittleres Team (6-20 Mitarbeiter)',
-        'Großes Unternehmen (20+ Mitarbeiter)',
+        '50-150 Mitarbeiter',
+        '150-500 Mitarbeiter',
+        '500-1.000 Mitarbeiter',
+        'Über 1.000 Mitarbeiter',
       ],
     },
     {
-      id: 'main_goal',
-      question: 'Was möchten Sie mit Taskey erreichen?',
+      id: 'industry_type',
+      question: 'In welchem Sektor ist Ihr Unternehmen tätig?',
       options: [
-        'Zeit sparen bei Verwaltungsaufgaben',
-        'Bessere Übersicht über Aufträge & Projekte',
-        'Professionellere Kundenkommunikation',
-        'Effizientere Mitarbeiterkoordination',
-        'Digitale Zeiterfassung & Abrechnung',
+        'Industrie & Fertigung',
+        'Facility Management & Infrastruktur',
+        'Technische Dienstleistungen',
+        'Öffentlicher Sektor / Behörden',
+        'Andere strategische Branchen',
       ],
     },
     {
-      id: 'current_solution',
-      question: 'Haben Sie bereits Betriebssoftware im Einsatz?',
+      id: 'compliance_needs',
+      question: 'Welche Compliance- und Sicherheitsanforderungen haben Sie?',
       options: [
-        'Nein, wir arbeiten noch analog (Papier/Excel)',
-        'Ja, aber wir sind unzufrieden',
-        'Ja, suchen aber nach besseren Alternativen',
-        'Mehrere Tools, die nicht gut zusammenarbeiten',
+        'ISO 27001 oder vergleichbare Zertifizierung erforderlich',
+        'Branchenspezifische Compliance (z.B. KRITIS)',
+        'Erweiterte Datenschutzanforderungen',
+        'On-Premise oder Private Cloud erforderlich',
+        'Standard DSGVO-Konformität ausreichend',
       ],
     },
     {
-      id: 'timeline',
-      question: 'Wann möchten Sie starten?',
+      id: 'integration_requirements',
+      question: 'Welche Integrationsanforderungen haben Sie?',
       options: [
-        'So schnell wie möglich',
-        'In den nächsten 2-4 Wochen',
-        'In 1-3 Monaten',
-        'Nur informieren, kein konkreter Plan',
+        'ERP-System (SAP, Oracle, Microsoft Dynamics)',
+        'CRM-System (Salesforce, HubSpot, etc.)',
+        'HR-System (Workday, SAP SuccessFactors)',
+        'Custom API-Integrationen',
+        'Keine spezifischen Integrationen',
+      ],
+    },
+    {
+      id: 'decision_timeline',
+      question: 'Wann planen Sie eine Implementierung?',
+      options: [
+        'In den nächsten 1-3 Monaten',
+        'In 3-6 Monaten',
+        'In 6-12 Monaten',
+        'Langfristige Planung (12+ Monate)',
       ],
     },
   ];
@@ -116,6 +119,7 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
         body: JSON.stringify({
           ...formData,
           answers,
+          type: 'enterprise', // Mark this as enterprise application
         }),
       });
 
@@ -123,15 +127,15 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
 
       if (response.ok) {
         // Success - show confirmation and close modal
-        alert('✅ Vielen Dank! Ihre Demo-Anfrage wurde erfolgreich versendet. Wir melden uns in Kürze bei Ihnen.');
+        alert('✅ Vielen Dank für Ihre Enterprise-Bewerbung! Unser Enterprise-Team wird Ihre Anfrage prüfen und sich in Kürze bei Ihnen melden.');
         // Reset form
-        setFormData({ name: '', email: '', phone: '' });
+        setFormData({ name: '', email: '', phone: '', company: '' });
         setAnswers({});
         setCurrentStep(0);
         onClose();
       } else {
         // Error from server
-        alert('❌ ' + (data.error || 'Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.'));
+        alert('❌ ' + (data.error || 'Es gab ein Problem beim Senden Ihrer Bewerbung. Bitte versuchen Sie es erneut.'));
       }
     } catch (error) {
       // Network or other error
@@ -158,21 +162,21 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen p-3 sm:p-4">
-        {/* Backdrop with elegant blur */}
+        {/* Backdrop with cyan theme */}
         <div 
-          className="fixed inset-0 bg-blue-900/30 backdrop-blur-md transition-opacity"
+          className="fixed inset-0 bg-cyan-900/40 backdrop-blur-md transition-opacity"
           onClick={onClose}
         ></div>
 
-        {/* Modal with marine blue and white theme */}
-        <div className="relative bg-gradient-to-br from-white via-blue-50/50 to-white rounded-2xl shadow-2xl max-w-md w-full p-5 sm:p-6 md:p-8 border-4 border-blue-900/20 animate-[fadeIn_0.3s_ease-out]">
+        {/* Modal with cyan/enterprise theme */}
+        <div className="relative bg-gradient-to-br from-white via-cyan-50/50 to-white rounded-2xl shadow-2xl max-w-md w-full p-5 sm:p-6 md:p-8 border-4 border-cyan-900/20 animate-[fadeIn_0.3s_ease-out]">
           
           <div className="relative z-10">
             {/* Header with close button and percentage */}
             <div className="flex justify-end items-center gap-2 mb-6">
               {/* Percentage badge */}
               {currentStep > 0 && (
-                <span className="text-xs sm:text-sm font-bold text-blue-800 animate-[bounceIn_0.5s_ease-out] bg-blue-100 px-3 py-1.5 rounded-full">
+                <span className="text-xs sm:text-sm font-bold text-cyan-800 animate-[bounceIn_0.5s_ease-out] bg-cyan-100 px-3 py-1.5 rounded-full">
                   {Math.round((currentStep / questions.length) * 100)}%
                 </span>
               )}
@@ -180,7 +184,7 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
               {/* Close button */}
               <button
                 onClick={onClose}
-                className="text-blue-900 hover:text-blue-700 transition-all duration-300 hover:rotate-90 transform group p-2 rounded-full hover:bg-blue-100"
+                className="text-cyan-900 hover:text-cyan-700 transition-all duration-300 hover:rotate-90 transform group p-2 rounded-full hover:bg-cyan-100"
                 aria-label="Schließen"
               >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -189,19 +193,19 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
               </button>
             </div>
 
-            {/* Progress indicator with elegant marine design */}
+            {/* Progress indicator with cyan design */}
             {currentStep > 0 && (
               <div className="mb-6 animate-[slideDown_0.3s_ease-out]">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-xs sm:text-sm text-blue-900 font-medium animate-[fadeIn_0.5s_ease-out]">
+                  <span className="text-xs sm:text-sm text-cyan-900 font-medium animate-[fadeIn_0.5s_ease-out]">
                     Frage {currentStep} von {questions.length}
                   </span>
                 </div>
-                <div className="w-full bg-blue-100/50 rounded-full h-3 overflow-hidden border-2 border-blue-200 relative shadow-inner">
+                <div className="w-full bg-cyan-100/50 rounded-full h-3 overflow-hidden border-2 border-cyan-200 relative shadow-inner">
                   {/* Animated shimmer */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-[shimmer_3s_ease-in-out_infinite]"></div>
                   <div 
-                    className="bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 h-full transition-all duration-700 ease-out relative overflow-hidden shadow-lg"
+                    className="bg-gradient-to-r from-cyan-600 via-cyan-500 to-cyan-400 h-full transition-all duration-700 ease-out relative overflow-hidden shadow-lg"
                     style={{ width: `${(currentStep / questions.length) * 100}%` }}
                   >
                     {/* Sliding highlight */}
@@ -215,19 +219,19 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
           {currentStep === 0 && (
             <>
               <div className="mb-5 sm:mb-6 animate-[fadeIn_0.5s_ease-out]">
-                <h2 className="text-xl sm:text-2xl font-bold text-blue-900 mb-2 pr-8">
-                  Demo buchen
+                <h2 className="text-xl sm:text-2xl font-bold text-cyan-900 mb-2 pr-8">
+                  Enterprise-Bewerbung
                 </h2>
                 <p className="text-gray-600 text-xs sm:text-sm">
-                  Füllen Sie das Formular aus und wir kontaktieren Sie für eine persönliche Demo.
+                  Bewerben Sie sich für Taskey Enterprise. Unser Team prüft Ihre Anfrage individuell.
                 </p>
               </div>
 
               <form onSubmit={handleContactSubmit} className="space-y-3 sm:space-y-4">
                 {/* Name */}
                 <div className="animate-[slideUp_0.4s_ease-out]">
-                  <label htmlFor="name" className="block text-xs sm:text-sm font-semibold text-blue-900 mb-1 sm:mb-2">
-                    Name *
+                  <label htmlFor="name" className="block text-xs sm:text-sm font-semibold text-cyan-900 mb-1 sm:mb-2">
+                    Vollständiger Name *
                   </label>
                   <input
                     type="text"
@@ -236,15 +240,32 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white border-2 border-blue-200 text-gray-900 rounded-lg focus:border-blue-600 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all placeholder-gray-400 hover:border-blue-300 shadow-sm"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white border-2 border-cyan-200 text-gray-900 rounded-lg focus:border-cyan-600 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all placeholder-gray-400 hover:border-cyan-300 shadow-sm"
                     placeholder="Ihr vollständiger Name"
+                  />
+                </div>
+
+                {/* Company */}
+                <div className="animate-[slideUp_0.45s_ease-out]">
+                  <label htmlFor="company" className="block text-xs sm:text-sm font-semibold text-cyan-900 mb-1 sm:mb-2">
+                    Unternehmen *
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    required
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white border-2 border-cyan-200 text-gray-900 rounded-lg focus:border-cyan-600 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all placeholder-gray-400 hover:border-cyan-300 shadow-sm"
+                    placeholder="Ihr Unternehmensname"
                   />
                 </div>
 
                 {/* Email */}
                 <div className="animate-[slideUp_0.5s_ease-out]">
-                  <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-blue-900 mb-1 sm:mb-2">
-                    E-Mail *
+                  <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-cyan-900 mb-1 sm:mb-2">
+                    Geschäftliche E-Mail *
                   </label>
                   <input
                     type="email"
@@ -253,14 +274,14 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white border-2 border-blue-200 text-gray-900 rounded-lg focus:border-blue-600 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all placeholder-gray-400 hover:border-blue-300 shadow-sm"
-                    placeholder="ihre.email@beispiel.de"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white border-2 border-cyan-200 text-gray-900 rounded-lg focus:border-cyan-600 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all placeholder-gray-400 hover:border-cyan-300 shadow-sm"
+                    placeholder="ihre.email@unternehmen.de"
                   />
                 </div>
 
                 {/* Phone */}
                 <div className="animate-[slideUp_0.6s_ease-out]">
-                  <label htmlFor="phone" className="block text-xs sm:text-sm font-semibold text-blue-900 mb-1 sm:mb-2">
+                  <label htmlFor="phone" className="block text-xs sm:text-sm font-semibold text-cyan-900 mb-1 sm:mb-2">
                     Telefonnummer *
                   </label>
                   <input
@@ -270,20 +291,20 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white border-2 border-blue-200 text-gray-900 rounded-lg focus:border-blue-600 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all placeholder-gray-400 hover:border-blue-300 shadow-sm"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white border-2 border-cyan-200 text-gray-900 rounded-lg focus:border-cyan-600 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all placeholder-gray-400 hover:border-cyan-300 shadow-sm"
                     placeholder="+49 123 456789"
                   />
                 </div>
 
                 {/* Info text */}
                 <p className="text-xs text-gray-600 animate-[fadeIn_0.7s_ease-out]">
-                  Ihre Anfrage wird direkt an unser Team gesendet. Wir melden uns in Kürze bei Ihnen.
+                  Ihre Bewerbung wird vom Enterprise-Team geprüft. Wir melden uns bei passender Eignung.
                 </p>
 
-                {/* Submit button with elegant marine blue */}
+                {/* Submit button with cyan theme */}
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 transform hover:shadow-xl animate-[slideUp_0.7s_ease-out] group relative overflow-hidden shadow-lg"
+                  className="w-full bg-gradient-to-r from-cyan-600 via-cyan-500 to-cyan-400 text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 transform hover:shadow-xl animate-[slideUp_0.7s_ease-out] group relative overflow-hidden shadow-lg"
                 >
                   {/* Animated shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -293,30 +314,6 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
                   </svg>
                 </button>
               </form>
-
-              {/* Trust badges with elegant icons */}
-              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-blue-200 animate-[fadeIn_0.8s_ease-out]">
-                <div className="flex items-center justify-center gap-3 sm:gap-4 text-xs text-gray-600">
-                  <div className="flex items-center gap-1 animate-[float_3s_ease-in-out_infinite] bg-blue-50 px-3 py-1.5 rounded-full">
-                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="font-medium text-blue-900">Kostenlos</span>
-                  </div>
-                  <div className="flex items-center gap-1 animate-[float_3s_ease-in-out_infinite_0.3s] bg-blue-50 px-3 py-1.5 rounded-full">
-                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="font-medium text-blue-900">Unverbindlich</span>
-                  </div>
-                  <div className="flex items-center gap-1 animate-[float_3s_ease-in-out_infinite_0.6s] bg-blue-50 px-3 py-1.5 rounded-full">
-                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="font-medium text-blue-900">15 Min</span>
-                  </div>
-                </div>
-              </div>
             </>
           )}
 
@@ -324,7 +321,7 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
           {currentStep > 0 && currentQuestion && (
             <>
               <div className="mb-6 animate-[fadeIn_0.5s_ease-out]">
-                <h2 className="text-lg sm:text-xl font-bold text-blue-900 mb-6">
+                <h2 className="text-lg sm:text-xl font-bold text-cyan-900 mb-6">
                   {currentQuestion.question}
                 </h2>
 
@@ -337,8 +334,8 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
                       style={{ animationDelay: `${index * 0.1}s` }}
                       className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-all duration-300 transform hover:scale-[1.02] animate-[slideUp_0.5s_ease-out] relative group overflow-hidden shadow-sm ${
                         currentAnswer === option
-                          ? 'border-blue-700 bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 text-white font-bold shadow-lg'
-                          : 'border-blue-200 bg-white text-gray-900 hover:border-blue-400 hover:bg-blue-50'
+                          ? 'border-cyan-600 bg-gradient-to-r from-cyan-600 via-cyan-500 to-cyan-400 text-white font-bold shadow-lg'
+                          : 'border-cyan-200 bg-white text-gray-900 hover:border-cyan-400 hover:bg-cyan-50'
                       }`}
                     >
                       {/* Elegant shine effect */}
@@ -350,10 +347,10 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
                         <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
                           currentAnswer === option
                             ? 'border-white bg-white animate-[bounceIn_0.5s_ease-out]'
-                            : 'border-blue-300 bg-white'
+                            : 'border-cyan-300 bg-white'
                         }`}>
                           {currentAnswer === option && (
-                            <svg className="w-3 h-3 text-blue-900" fill="currentColor" viewBox="0 0 20 20">
+                            <svg className="w-3 h-3 text-cyan-700" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
                           )}
@@ -370,7 +367,7 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
                 <button
                   type="button"
                   onClick={handleBack}
-                  className="px-6 py-2.5 text-sm sm:text-base rounded-lg font-semibold border-2 border-blue-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-800 transition-all duration-300 flex items-center justify-center gap-2 group shadow-sm"
+                  className="px-6 py-2.5 text-sm sm:text-base rounded-lg font-semibold border-2 border-cyan-200 text-gray-700 hover:bg-cyan-50 hover:border-cyan-400 hover:text-cyan-800 transition-all duration-300 flex items-center justify-center gap-2 group shadow-sm"
                 >
                   <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -383,7 +380,7 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
                     type="button"
                     onClick={handleFinalSubmit}
                     disabled={!currentAnswer || isSubmitting}
-                    className="flex-1 bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 transform disabled:hover:scale-100 relative overflow-hidden group shadow-lg hover:shadow-xl"
+                    className="flex-1 bg-gradient-to-r from-cyan-600 via-cyan-500 to-cyan-400 text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 transform disabled:hover:scale-100 relative overflow-hidden group shadow-lg hover:shadow-xl"
                   >
                     {/* Elegant shine effect */}
                     {!isSubmitting && (
@@ -400,7 +397,7 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
                       </span>
                     ) : (
                       <span className="relative flex items-center justify-center gap-2">
-                        Demo buchen
+                        Bewerbung absenden
                         <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
@@ -412,7 +409,7 @@ export default function DemoBookingModal({ isOpen, onClose }: DemoBookingModalPr
                     type="button"
                     onClick={handleNext}
                     disabled={!currentAnswer}
-                    className="flex-1 bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:scale-105 transform disabled:hover:scale-100 relative overflow-hidden group shadow-lg hover:shadow-xl"
+                    className="flex-1 bg-gradient-to-r from-cyan-600 via-cyan-500 to-cyan-400 text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:scale-105 transform disabled:hover:scale-100 relative overflow-hidden group shadow-lg hover:shadow-xl"
                   >
                     {/* Elegant shine effect */}
                     {currentAnswer && (

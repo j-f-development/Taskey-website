@@ -24,7 +24,7 @@ export default function Hero() {
               Betriebe
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
-              Zeitersparnis von durchschnittlich <span className="font-bold text-blue-900">9 Stunden pro Woche</span>. Automatische Zeiterfassung, intelligente Auftragsplanung und digitale Rechnungsstellung für über 600 Branchen. Made in Germany, DSGVO-konform.
+              Zeitersparnis von durchschnittlich <span className="font-bold text-blue-900">25-30h pro Monat</span>. Automatische Zeiterfassung, intelligente Auftragsplanung und digitale Rechnungsstellung für über 600 Branchen. Made in Germany, DSGVO-konform.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
@@ -39,9 +39,9 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 sm:px-8 py-3 sm:py-4 text-blue-900 border-2 border-blue-900 text-base sm:text-lg font-semibold rounded-full hover:bg-blue-50 transition-colors text-center"
-                aria-label="4 Wochen kostenlos testen"
+                aria-label="14 Tage kostenlos testen"
               >
-                4 Wochen kostenlos testen
+                14 Tage kostenlos testen
               </Link>
             </div>
           </div>

@@ -72,7 +72,7 @@ export default function AboutPage() {
                 Mit Taskey haben wir eine All-in-One-Lösung geschaffen, die
                 wirklich einfach zu bedienen ist. Automatische Zeiterfassung,
                 intelligente Planung und digitale Abläufe sparen durchschnittlich
-                9 Stunden pro Woche – Zeit, die Ihnen für Ihr Geschäft bleibt.
+                25-30h pro Monat – Zeit, die Ihnen für Ihr Geschäft bleibt.
               </p>
             </div>
           </div>

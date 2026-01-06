@@ -73,7 +73,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
             >
-              4 Wochen kostenlos testen
+              14 Tage kostenlos testen
             </Link>
           </div>
 
@@ -162,7 +162,7 @@ export default function Header() {
                 className="px-4 py-2 text-center bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                4 Wochen kostenlos testen
+                14 Tage kostenlos testen
               </Link>
             </div>
           </div>
