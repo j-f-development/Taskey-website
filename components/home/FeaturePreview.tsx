@@ -50,7 +50,7 @@ export default function FeaturePreview() {
             >
               {/* Rectangular feature card */}
               <div className="relative h-full">
-                <div className="relative bg-white rounded-lg p-8 shadow-xl group-hover:shadow-2xl transition-all group-hover:scale-105 border-4 border-gray-100 h-full flex flex-col">
+                <div className="relative bg-white rounded-lg p-8 shadow-xl border-4 border-gray-100 h-full flex flex-col">
                   <img 
                     src={feature.image} 
                     alt={feature.title}

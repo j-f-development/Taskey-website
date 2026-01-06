@@ -81,7 +81,7 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <div key={index} className="border border-gray-200 rounded-lg">
               <button
-                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition"
+                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
                 <span className="font-semibold text-gray-900">

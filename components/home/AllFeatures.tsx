@@ -55,7 +55,7 @@ export default function AllFeatures() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition">
+            <div key={index} className="bg-white rounded-lg p-6 shadow-sm">
               <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-white"

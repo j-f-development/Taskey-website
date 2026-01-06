@@ -1,6 +1,7 @@
 import Hero from "@/components/home/Hero";
 import FeaturePreview from "@/components/home/FeaturePreview";
 import Testimonials from "@/components/home/Testimonials";
+import IOSAppSection from "@/components/home/iOSAppSection";
 import BusinessSize from "@/components/home/BusinessSize";
 import Branchen from "@/components/home/Branchen";
 import FAQ from "@/components/home/FAQ";
@@ -76,6 +77,7 @@ export default function Home() {
         <Hero />
         <FeaturePreview />
         <Testimonials />
+        <IOSAppSection />
         <BusinessSize />
         <Branchen />
         <FAQ />

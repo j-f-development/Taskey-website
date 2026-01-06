@@ -1903,7 +1903,7 @@ export default function Branchen() {
                     setSelectedBranche(null);
                     setIsSearchFocused(false);
                   }}
-                  className="text-gray-400 hover:text-gray-600 text-2xl transition-colors"
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
                   aria-label="Suche löschen"
                 >
                   ×
@@ -1926,7 +1926,7 @@ export default function Branchen() {
                       <button
                         key={index}
                         onClick={() => handleSearchClick(branche)}
-                        className="w-full text-left px-4 py-3 hover:bg-blue-50 transition-colors border-b border-gray-50 last:border-b-0 group"
+                        className="w-full text-left px-4 py-3 border-b border-gray-50 last:border-b-0 group"
                       >
                         <div className="flex items-center gap-3">
                           <div className={`w-2 h-2 rounded-full flex-shrink-0 ${

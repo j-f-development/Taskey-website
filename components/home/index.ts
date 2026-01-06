@@ -6,3 +6,4 @@ export { default as AllFeatures } from './AllFeatures';
 export { default as Branchen } from './Branchen';
 export { default as FAQ } from './FAQ';
 export { default as Contact } from './Contact';
+export { default as IOSAppSection } from './iOSAppSection';

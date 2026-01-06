@@ -29,17 +29,16 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 onClick={() => setDemoModalOpen(true)}
-                className="group px-6 sm:px-8 py-3 sm:py-4 bg-blue-900 text-white text-base sm:text-lg font-semibold rounded-full hover:bg-blue-800 transition-all hover:scale-105 hover:shadow-2xl text-center relative overflow-hidden"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-blue-900 text-white text-base sm:text-lg font-semibold rounded-full hover:bg-blue-800 transition-colors text-center"
                 aria-label="Kostenlose Demo buchen"
               >
-                <span className="relative z-10">Demo buchen</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-800 to-blue-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span>Demo buchen</span>
               </button>
               <Link
                 href="https://signup.vars-development.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 sm:px-8 py-3 sm:py-4 text-blue-900 border-2 border-blue-900 text-base sm:text-lg font-semibold rounded-full hover:bg-blue-50 transition-all hover:scale-105 hover:shadow-lg text-center"
+                className="px-6 sm:px-8 py-3 sm:py-4 text-blue-900 border-2 border-blue-900 text-base sm:text-lg font-semibold rounded-full hover:bg-blue-50 transition-colors text-center"
                 aria-label="4 Wochen kostenlos testen"
               >
                 4 Wochen kostenlos testen

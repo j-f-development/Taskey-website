@@ -59,7 +59,7 @@ export default function Contact() {
               },
             ].map((item, index) => (
               <div key={index} className="flex items-center gap-3 group">
-                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-md border-2 border-white/30">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-md border-2 border-white/30">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     {item.icon}
                   </svg>
@@ -67,7 +67,7 @@ export default function Contact() {
                 <div>
                   <p className="text-xs text-blue-200 mb-1">{item.label}</p>
                   {item.href ? (
-                    <a href={item.href} className="text-base font-semibold hover:text-blue-200 transition">
+                    <a href={item.href} className="text-base font-semibold">
                       {item.value}
                     </a>
                   ) : (
@@ -91,7 +91,7 @@ export default function Contact() {
               <div className="space-y-3">
                 <button
                   onClick={() => setDemoModalOpen(true)}
-                  className="block w-full px-5 py-3 bg-white text-blue-900 text-center font-bold rounded-full hover:bg-blue-50 transition-all hover:scale-105 shadow-lg text-sm"
+                  className="block w-full px-5 py-3 bg-white text-blue-900 text-center font-bold rounded-full hover:bg-blue-50 transition-colors shadow-lg text-sm"
                 >
                   Demo buchen
                 </button>
@@ -99,7 +99,7 @@ export default function Contact() {
                   href="https://signup.vars-development.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block px-5 py-3 bg-transparent border-2 border-white text-white text-center font-bold rounded-full hover:bg-white/10 transition-all hover:scale-105 text-sm"
+                  className="block px-5 py-3 bg-transparent border-2 border-white text-white text-center font-bold rounded-full hover:bg-white/10 transition-colors text-sm"
                 >
                   4 Wochen kostenlos testen
                 </Link>

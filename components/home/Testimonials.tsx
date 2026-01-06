@@ -5,21 +5,21 @@ export default function Testimonials() {
       business: "Weber Elektrotechnik GmbH",
       text: "Mit Taskey haben wir unsere Verwaltungszeit um 70% reduziert. Mehr Zeit für unsere Kunden!",
       rating: 5,
-      image: "/michaelweber.png",
+      image: "/ceo.png",
     },
     {
       name: "Sandra Müller",
       business: "Müller Sanitär & Heizung",
       text: "Die automatische Zeiterfassung ist genial. Keine vergessenen Stunden mehr bei der Abrechnung.",
       rating: 5,
-      image: "/sanana.png",
+      image: "/frau.png",
     },
     {
       name: "Thomas Schneider",
       business: "Schneider Malerbetrieb",
       text: "Endlich eine Software, die wirklich einfach zu bedienen ist. Mein Team war sofort produktiv.",
       rating: 5,
-      image: "/thomasayri.png",
+      image: "/handwerker.png",
     },
   ];
 
@@ -47,7 +47,7 @@ export default function Testimonials() {
             <div key={index} className="relative group">
               {/* Rectangular testimonial card */}
               <div className="relative">
-                <div className="relative bg-gradient-to-br from-blue-800 to-blue-950 rounded-lg p-8 shadow-xl group-hover:shadow-2xl transition-all group-hover:scale-105">
+                <div className="relative bg-gradient-to-br from-blue-800 to-blue-950 rounded-lg p-8 shadow-xl">
                   {/* Avatar Circle - psychological focal point */}
                   <div className="flex justify-center mb-6 -mt-16">
                     <div className="relative">

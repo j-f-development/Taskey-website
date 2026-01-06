@@ -54,7 +54,7 @@ export default function BusinessSize() {
             >
               <div className="relative h-full">
                 {/* Rectangular card */}
-                <div className="relative bg-white rounded-lg p-8 shadow-xl group-hover:shadow-2xl transition-all group-hover:scale-105 border-4 border-gray-100">
+                <div className="relative bg-white rounded-lg p-8 shadow-xl border-4 border-gray-100">
                   <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center">
                     {size.title}
                   </h3>

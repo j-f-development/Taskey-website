@@ -212,7 +212,7 @@ export default function AboutPage() {
               <div className="text-center">
                 <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden">
                   <img
-                    src="/yukio.jpeg"
+                    src="/yukiobess.jpeg"
                     alt="Yukio Jonas Sato"
                     className="w-full h-full object-cover"
                   />
