@@ -107,14 +107,8 @@ export default function Contact() {
               
               {/* Trust badges in circles */}
               <div className="flex justify-center gap-3 mt-6">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center" title="DSGVO-konform">
-                  <span className="text-xl">🔒</span>
-                </div>
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center" title="Made in Germany">
                   <span className="text-xl">🇩🇪</span>
-                </div>
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center" title="10.000+ Kunden">
-                  <span className="text-xl">⭐</span>
                 </div>
               </div>
             </div>
