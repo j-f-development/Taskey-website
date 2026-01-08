@@ -31,6 +31,19 @@ export default function PricingPage() {
 
   return (
     <main>
+      {/* Rabatt-Banner */}
+      <div className="bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 text-white py-3 px-4 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[shimmer_3s_ease-in-out_infinite]"></div>
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <p className="text-sm md:text-base font-bold mb-1">
+            🎉 Exklusives Angebot: 20% Rabatt auf alle Pakete! 🎉
+          </p>
+          <p className="text-xs md:text-sm">
+            ⏰ Nur noch <strong>2 Monate</strong> gültig – Sichern Sie sich jetzt Ihre Ersparnis!
+          </p>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,8 +76,20 @@ export default function PricingPage() {
                 <p className={`mb-4 ${opt.badge ? "text-blue-100" : "text-gray-600"}`}>{opt.subtitle}</p>
 
                 <div className="mb-6 flex flex-col items-center">
+                  {/* Rabatt-Badge */}
+                  <div className="mb-2">
+                    <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">20% RABATT</span>
+                  </div>
+                  
+                  {/* Durchgestrichener Original-Preis */}
+                  <div className="flex items-end gap-2 opacity-60">
+                    <span className="text-2xl font-semibold line-through">{Number(opt.pricePerMonth).toLocaleString('de-DE', {minimumFractionDigits: (opt.pricePerMonth % 1 === 0 ? 0 : 2) })}</span>
+                    <span className="text-sm">€</span>
+                  </div>
+                  
+                  {/* Neuer rabattierter Preis */}
                   <div className="flex items-end gap-2">
-                    <span className="text-5xl font-bold">{Number(opt.pricePerMonth).toLocaleString('de-DE', {minimumFractionDigits: (opt.pricePerMonth % 1 === 0 ? 0 : 2) })}</span>
+                    <span className="text-5xl font-bold">{Number(opt.pricePerMonth * 0.8).toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
                     <span className="text-xl">€</span>
                   </div>
                   <span className={`text-lg font-semibold mt-2 ${opt.badge ? "text-blue-100" : "text-gray-700"}`}>pro Mitarbeiter pro Monat</span>
