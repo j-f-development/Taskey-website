@@ -76,7 +76,7 @@ export default function Home() {
       <main>
         <Hero />
         <FeaturePreview />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <IOSAppSection />
         <BusinessSize />
         <Branchen />
