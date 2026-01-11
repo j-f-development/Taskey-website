@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import DemoBookingModal from "../DemoBookingModal";
 
@@ -53,15 +54,18 @@ export default function Hero() {
             </div>
             
             {/* Large image above circle */}
-            <div className="relative z-10 scale-125 sm:scale-150">
-              <img 
+            <div className="relative z-10 scale-125 sm:scale-150 w-full h-[400px] sm:h-[500px]">
+              <Image 
                 src="/B0D9F1DC-D59E-4A75-BC04-0C323F942754.png" 
                 alt="Taskey Software" 
-                className="w-full h-auto drop-shadow-2xl"
+                fill
+                className="object-contain drop-shadow-2xl"
                 style={{
                   maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
                   WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
                 }}
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>

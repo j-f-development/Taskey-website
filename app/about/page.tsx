@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Über Taskey - Made in Germany Dienstleistungssoftware",
@@ -42,10 +43,13 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="mb-8">
-              <img 
+              <Image 
                 src="/logoblue.png" 
                 alt="Taskey Logo" 
-                className="h-32 w-auto mx-auto"
+                width={128}
+                height={128}
+                className="mx-auto"
+                priority
               />
             </div>
             <h2 className="text-4xl font-bold text-gray-900">
@@ -169,10 +173,12 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="mb-8">
-              <img 
+              <Image 
                 src="/logoblue.png" 
                 alt="Taskey Logo" 
-                className="h-32 w-auto mx-auto"
+                width={128}
+                height={128}
+                className="mx-auto"
               />
             </div>
             <h2 className="text-4xl font-bold text-gray-900">
@@ -188,11 +194,13 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-2 gap-12 max-w-3xl mx-auto">
               {[1, 2].map((i) => (
                 <div key={i} className="text-center">
-                  <div className="w-48 h-48 rounded-full mx-auto mb-4 overflow-hidden">
-                    <img
+                  <div className="w-48 h-48 rounded-full mx-auto mb-4 overflow-hidden relative">
+                    <Image
                       src={i === 1 ? "/koko.jpeg" : "/julian.JPG"}
                       alt={i === 1 ? "Fynn-Luca Schulz" : "Julian Stosse"}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="192px"
                     />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 text-xl">
@@ -210,11 +218,13 @@ export default function AboutPage() {
             </h3>
             <div className="flex justify-center">
               <div className="text-center">
-                <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden">
-                  <img
+                <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden relative">
+                  <Image
                     src="/yukiobild.jpeg"
                     alt="Yukio Jonas Sato"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="160px"
                   />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-1">

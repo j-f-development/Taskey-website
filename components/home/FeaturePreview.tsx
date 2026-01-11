@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function FeaturePreview() {
   const features = [
     {
@@ -28,10 +30,12 @@ export default function FeaturePreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
-            <img 
+            <Image 
               src="/D69772A5-9DCA-4D89-8EA3-9009CB69634A_1_105_c.jpeg" 
               alt="Taskey Logo" 
-              className="h-16 w-auto mx-auto mb-4"
+              width={64}
+              height={64}
+              className="mx-auto mb-4"
             />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -51,11 +55,15 @@ export default function FeaturePreview() {
               {/* Rectangular feature card */}
               <div className="relative h-full">
                 <div className="relative bg-white rounded-lg p-8 shadow-xl border-4 border-gray-100 h-full flex flex-col">
-                  <img 
-                    src={feature.image} 
-                    alt={feature.title}
-                    className="w-32 h-32 object-contain mb-4 mx-auto"
-                  />
+                  <div className="relative w-32 h-32 mb-4 mx-auto">
+                    <Image 
+                      src={feature.image} 
+                      alt={feature.title}
+                      fill
+                      className="object-contain"
+                      sizes="128px"
+                    />
+                  </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
                     {feature.title}
                   </h3>
