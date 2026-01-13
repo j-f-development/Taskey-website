@@ -24,7 +24,7 @@ export default function FAQDiagonal() {
     {
       question: "Kann ich Taskey testen?",
       answer:
-        "Ja! Sie können Taskey 4 Wochen komplett kostenlos und unverbindlich testen. Keine Kreditkarte erforderlich.",
+        "Ja! Sie können Taskey 14 Tage komplett kostenlos und unverbindlich testen. Keine Kreditkarte erforderlich.",
     },
     {
       question: "Für welche Branchen ist Taskey geeignet?",
