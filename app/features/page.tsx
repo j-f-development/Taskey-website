@@ -405,42 +405,44 @@ export default function FeaturesPage() {
                     </p>
                   </div>
                   
-                  {/* Feature Image */}
-                  <div className="bg-gray-100 rounded-lg p-8 flex items-center justify-center min-h-[200px]">
-                    <img
-                      src={currentFeature.image}
-                      alt={currentFeature.name}
-                      className="max-w-xs h-auto rounded-lg shadow-2xl"
-                    />
-                  </div>
-
-                  {/* Expandable Details Button and Content */}
-                  {'detailedInfo' in currentFeature && currentFeature.detailedInfo && (
-                    <div className="pt-4">
-                      <button
-                        onClick={() => setExpandedDetails(expandedDetails === currentFeature.id ? null : currentFeature.id)}
-                        className="w-full bg-blue-900 hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all flex items-center justify-center gap-2"
-                      >
-                        {expandedDetails === currentFeature.id ? 'Details ausblenden' : 'Mehr erfahren'}
-                        <svg 
-                          className={`w-5 h-5 transition-transform ${expandedDetails === currentFeature.id ? 'rotate-180' : ''}`} 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                      
-                      {/* Expandable Content */}
-                      {expandedDetails === currentFeature.id && (
-                        <div className="mt-4 p-6 bg-gray-50 rounded-lg border-l-4 border-blue-900 animate-fadeIn">
-                          <h4 className="font-bold text-gray-900 mb-3 text-lg">Detaillierte Informationen</h4>
+                  {/* Feature Description Box */}
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-8 border-2 border-blue-200">
+                    <div className="max-w-2xl">
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="flex-shrink-0 w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center">
+                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-2">
+                            So funktioniert's
+                          </h3>
                           <p className="text-gray-700 leading-relaxed">
-                            {currentFeature.detailedInfo}
+                            {currentFeature.detailedInfo || currentFeature.description}
                           </p>
                         </div>
-                      )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Additional Tips Section - Only show if detailedInfo exists */}
+                  {'detailedInfo' in currentFeature && currentFeature.detailedInfo && (
+                    <div className="bg-white rounded-lg border border-gray-200 p-6">
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0">
+                          <svg className="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900 mb-2">Gut zu wissen</h4>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            Diese Funktion arbeitet automatisch im Hintergrund und erfordert keine zusätzliche Einrichtung. 
+                            Alle Daten werden DSGVO-konform auf deutschen Servern gespeichert.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
