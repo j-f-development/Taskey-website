@@ -115,14 +115,14 @@ Zeitstempel: ${new Date().toLocaleString('de-DE')}
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.SMTP_USER,
+        user: 'finolino9@gmail.com',
         pass: process.env.SMTP_PASSWORD,
       },
     });
 
     // Send email
     await transporter.sendMail({
-      from: process.env.SMTP_USER,
+      from: 'finolino9@gmail.com',
       to: 'fynnschulzonline@gmail.com',
       subject: emailSubject,
       text: emailText,
@@ -142,7 +142,7 @@ Zeitstempel: ${new Date().toLocaleString('de-DE')}
       command: error.command,
     });
     console.error('SMTP Config:', {
-      user: process.env.SMTP_USER ? '✅ Set' : '❌ Missing',
+      user: 'finolino9@gmail.com',
       password: process.env.SMTP_PASSWORD ? '✅ Set' : '❌ Missing',
     });
     
