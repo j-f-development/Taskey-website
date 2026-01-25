@@ -105,9 +105,6 @@ export default function Footer() {
             <Link href="/agb" className="hover:text-white transition">
               AGB
             </Link>
-            <Link href="/sitemap-html" className="hover:text-white transition">
-              Sitemap
-            </Link>
             <Link href="/sitemap.xml" className="hover:text-white transition text-xs">
               Sitemap XML
             </Link>
