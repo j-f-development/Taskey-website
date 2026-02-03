@@ -86,7 +86,7 @@ export default function DemoPage() {
             <div className={`absolute -inset-4 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 rounded-2xl blur-2xl transition-opacity duration-500 ${isHovered ? 'opacity-75 animate-pulse' : 'opacity-0'}`}></div>
             
             <a
-              href="https://demo.vars-development.de/dashboard"
+              href="https://demo.vars-development.com/dashboard"
               target="_blank"
               rel="noopener noreferrer"
               className="relative group inline-flex items-center gap-4 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-950 text-white px-12 py-6 rounded-2xl font-bold text-xl md:text-2xl shadow-2xl hover:shadow-blue-900/50 transition-all duration-300 transform hover:scale-105"
@@ -173,7 +173,7 @@ export default function DemoPage() {
           {/* Secondary CTA */}
           <div className="mt-10 text-center">
             <a
-              href="https://demo.vars-development.de/dashboard"
+              href="https://demo.vars-development.com/dashboard"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-900 to-blue-950 hover:from-blue-800 hover:to-blue-900 text-white px-10 py-5 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
