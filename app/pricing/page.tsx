@@ -3,12 +3,44 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import DemoBookingModal from "@/components/DemoBookingModal";
-import ManagerRequestModal from "@/components/ManagerRequestModal";
+import dynamic from "next/dynamic";
+
+// Lazy load modals for better initial load performance
+const DemoBookingModal = dynamic(() => import("@/components/DemoBookingModal"), {
+  ssr: false,
+});
+const ManagerRequestModal = dynamic(() => import("@/components/ManagerRequestModal"), {
+  ssr: false,
+});
 
 export default function PricingPage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [managerModalOpen, setManagerModalOpen] = useState(false);
+  
+  // Kündigungsfristen für jedes Paket
+  const [startCancellation, setStartCancellation] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
+  const [growCancellation, setGrowCancellation] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
+  const [scaleCancellation, setScaleCancellation] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
+  
+  // Basispreise
+  const basePrice = {
+    start: 14.73,
+    grow: 23.67,
+    scale: 34.42
+  };
+  
+  // Preisberechnung basierend auf Kündigungsfrist
+  const calculatePrice = (base: number, cancellation: 'monthly' | 'quarterly' | 'yearly') => {
+    if (cancellation === 'quarterly') return (base * 0.93).toFixed(2); // -7%
+    if (cancellation === 'yearly') return (base * 0.87).toFixed(2); // -13%
+    return base.toFixed(2);
+  };
+  
+  const prices = {
+    start: calculatePrice(basePrice.start, startCancellation),
+    grow: calculatePrice(basePrice.grow, growCancellation),
+    scale: calculatePrice(basePrice.scale, scaleCancellation)
+  };
 
   return (
     <main className="min-h-screen bg-white">
@@ -63,8 +95,48 @@ export default function PricingPage() {
                 </div>
 
                 <div className="mb-8 pb-8 border-b border-gray-100">
+                  {/* Kündigungsfrist-Auswahl */}
+                  <div className="mb-6 space-y-3">
+                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wide">Kündigungsfrist</label>
+                    <div className="grid grid-cols-3 gap-2">
+                      <button
+                        onClick={() => setStartCancellation('monthly')}
+                        className={`relative px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                          startCancellation === 'monthly'
+                            ? 'bg-blue-600 text-white shadow-md'
+                            : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        <div>Monatlich</div>
+                        <div className="text-[10px] opacity-80 font-normal">flexibel</div>
+                      </button>
+                      <button
+                        onClick={() => setStartCancellation('quarterly')}
+                        className={`relative px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                          startCancellation === 'quarterly'
+                            ? 'bg-blue-600 text-white shadow-md'
+                            : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        <div>Quartalsweise</div>
+                        <div className="text-[10px] opacity-80 font-normal">-7%</div>
+                      </button>
+                      <button
+                        onClick={() => setStartCancellation('yearly')}
+                        className={`relative px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                          startCancellation === 'yearly'
+                            ? 'bg-blue-600 text-white shadow-md'
+                            : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        <div>Jährlich</div>
+                        <div className="text-[10px] opacity-80 font-normal">-13%</div>
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="flex items-end gap-1 mb-2">
-                    <span className="text-5xl font-black text-gray-900">14,73</span>
+                    <span className="text-5xl font-black text-gray-900">{prices.start}</span>
                     <span className="text-2xl font-bold text-gray-400 mb-1">€</span>
                   </div>
                   <p className="text-sm text-gray-600">pro Mitarbeiter / Monat</p>
@@ -135,8 +207,48 @@ export default function PricingPage() {
                 </div>
 
                 <div className="mb-8 pb-8 border-b border-white/20">
+                  {/* Kündigungsfrist-Auswahl */}
+                  <div className="mb-6 space-y-3">
+                    <label className="text-xs font-bold text-blue-100 uppercase tracking-wide">Kündigungsfrist</label>
+                    <div className="grid grid-cols-3 gap-2">
+                      <button
+                        onClick={() => setGrowCancellation('monthly')}
+                        className={`relative px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                          growCancellation === 'monthly'
+                            ? 'bg-white text-blue-900 shadow-lg'
+                            : 'bg-white/10 text-blue-100 hover:bg-white/20 border border-white/20'
+                        }`}
+                      >
+                        <div>Monatlich</div>
+                        <div className="text-[10px] opacity-80 font-normal">flexibel</div>
+                      </button>
+                      <button
+                        onClick={() => setGrowCancellation('quarterly')}
+                        className={`relative px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                          growCancellation === 'quarterly'
+                            ? 'bg-white text-blue-900 shadow-lg'
+                            : 'bg-white/10 text-blue-100 hover:bg-white/20 border border-white/20'
+                        }`}
+                      >
+                        <div>Quartalsweise</div>
+                        <div className="text-[10px] opacity-80 font-normal">-7%</div>
+                      </button>
+                      <button
+                        onClick={() => setGrowCancellation('yearly')}
+                        className={`relative px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                          growCancellation === 'yearly'
+                            ? 'bg-white text-blue-900 shadow-lg'
+                            : 'bg-white/10 text-blue-100 hover:bg-white/20 border border-white/20'
+                        }`}
+                      >
+                        <div>Jährlich</div>
+                        <div className="text-[10px] opacity-80 font-normal">-13%</div>
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="flex items-end gap-1 mb-2">
-                    <span className="text-5xl font-black text-white">23,67</span>
+                    <span className="text-5xl font-black text-white">{prices.grow}</span>
                     <span className="text-2xl font-bold text-blue-200 mb-1">€</span>
                   </div>
                   <p className="text-sm text-blue-100">pro Mitarbeiter / Monat</p>
@@ -197,8 +309,48 @@ export default function PricingPage() {
                 </div>
 
                 <div className="mb-8 pb-8 border-b border-gray-100">
+                  {/* Kündigungsfrist-Auswahl */}
+                  <div className="mb-6 space-y-3">
+                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wide">Kündigungsfrist</label>
+                    <div className="grid grid-cols-3 gap-2">
+                      <button
+                        onClick={() => setScaleCancellation('monthly')}
+                        className={`relative px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                          scaleCancellation === 'monthly'
+                            ? 'bg-purple-600 text-white shadow-md'
+                            : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        <div>Monatlich</div>
+                        <div className="text-[10px] opacity-80 font-normal">flexibel</div>
+                      </button>
+                      <button
+                        onClick={() => setScaleCancellation('quarterly')}
+                        className={`relative px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                          scaleCancellation === 'quarterly'
+                            ? 'bg-purple-600 text-white shadow-md'
+                            : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        <div>Quartalsweise</div>
+                        <div className="text-[10px] opacity-80 font-normal">-7%</div>
+                      </button>
+                      <button
+                        onClick={() => setScaleCancellation('yearly')}
+                        className={`relative px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${
+                          scaleCancellation === 'yearly'
+                            ? 'bg-purple-600 text-white shadow-md'
+                            : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        <div>Jährlich</div>
+                        <div className="text-[10px] opacity-80 font-normal">-13%</div>
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="flex items-end gap-1 mb-2">
-                    <span className="text-5xl font-black text-gray-900">34,42</span>
+                    <span className="text-5xl font-black text-gray-900">{prices.scale}</span>
                     <span className="text-2xl font-bold text-gray-400 mb-1">€</span>
                   </div>
                   <p className="text-sm text-gray-600">pro Mitarbeiter / Monat</p>
@@ -247,10 +399,13 @@ export default function PricingPage() {
             {/* Background Image */}
             <div className="absolute inset-0 opacity-30">
               <Image 
-                src="/AAD83654-0D2A-4539-A640-4D8D7E2065E2.PNG" 
+                src="/enterprise-bg-opt.jpg" 
                 alt="Enterprise Background" 
                 fill
                 className="object-cover"
+                loading="lazy"
+                quality={75}
+                sizes="(max-width: 768px) 100vw, 1200px"
               />
             </div>
             
@@ -416,10 +571,13 @@ export default function PricingPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0 opacity-30">
                   <Image 
-                    src="/2FD11192-20F9-4069-81C0-F1F4E6F66202.png" 
+                    src="/manager-bg-opt.jpg" 
                     alt="Manager Background" 
                     fill
                     className="object-cover"
+                    loading="lazy"
+                    quality={75}
+                    sizes="(max-width: 768px) 100vw, 600px"
                   />
                 </div>
                 

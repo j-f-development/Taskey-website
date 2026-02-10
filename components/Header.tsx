@@ -55,6 +55,12 @@ export default function Header() {
             >
               Preise
             </Link>
+            <Link
+              href="/about"
+              className="text-gray-600 hover:text-gray-900 transition font-medium"
+            >
+              Über uns
+            </Link>
             <a
               href="https://taskey.vars-development.com/support"
               target="_blank"
@@ -144,6 +150,13 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Preise
+              </Link>
+              <Link
+                href="/about"
+                className="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Über uns
               </Link>
               <a
                 href="https://taskey.vars-development.com/support"
