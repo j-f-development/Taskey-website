@@ -53,7 +53,7 @@ export default function EnterprisePage() {
                 Wir bieten ein streng limitiertes Enterprise‑Programm an. Bewerbungen werden individuell geprüft und nur Unternehmen akzeptiert, die unsere hohen Anforderungen an Größe, Sicherheitsstandards und geschäftliche Relevanz erfüllen.
               </p>
               <p className="mt-2 text-sm text-gray-300 max-w-3xl mx-auto">
-                Voraussetzungen können beispielsweise sein: Mindestgröße (150+ Angestellte), nachweisbare Marktführerschaft oder strategische Bedeutung sowie erweiterte Integrationsanforderungen.
+                Voraussetzungen können beispielsweise sein: Mindestgröße (100+ Angestellte), nachweisbare Marktführerschaft oder strategische Bedeutung sowie erweiterte Integrationsanforderungen.
               </p>
               <p className="mt-4 text-sm text-cyan-300 font-medium max-w-3xl mx-auto">
                 Hinweis: Die Aufnahme erfolgt nach individueller Prüfung.
@@ -77,9 +77,9 @@ export default function EnterprisePage() {
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div className="p-8 text-center">
                 <div className="flex justify-center mb-4">
-                  <img src="/1502.png" alt="150+ Angestellte" className="w-24 h-24 opacity-100" />
+                  <img src="/1502.png" alt="100+ Angestellte" className="w-24 h-24 opacity-100" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">150+ Angestellte</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">100+ Angestellte</h3>
                 <p className="text-gray-300 leading-relaxed">
                   Skalierung auf Konzernebene: Wenn Ihre Organisation groß genug ist, dass Standard‑Pakete an ihre Grenzen stoßen.
                 </p>
@@ -129,7 +129,7 @@ export default function EnterprisePage() {
                 },
                 {
                   icon: "/priorität.png",
-                  title: "Priority Support & SLA",
+                  title: "Priority Support",
                   description: "Garantierte Reaktionszeiten und vorrangige Bearbeitung Ihrer Anfragen"
                 },
                 {
@@ -193,7 +193,7 @@ export default function EnterprisePage() {
                     { feature: "Chefs-Rollen", enterprise: "Unbegrenzt" },
                     { feature: "Fachkraft-Rollen", enterprise: "Unbegrenzt" },
                     { feature: "Benutzerdefinierte Rollen", enterprise: "✓" },
-                    { feature: "Support", enterprise: "Dediziert + SLA" },
+                    { feature: "Support", enterprise: "Dediziert" },
                     { feature: "Onboarding", enterprise: "Persönlich + Workshops" },
                     { feature: "Custom-Features", enterprise: "✓" },
                     { feature: "Custom-Integrationen", enterprise: "✓" },

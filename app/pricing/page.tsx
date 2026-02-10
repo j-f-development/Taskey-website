@@ -2,482 +2,659 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import DemoBookingModal from "@/components/DemoBookingModal";
 import ManagerRequestModal from "@/components/ManagerRequestModal";
 
 export default function PricingPage() {
-  const [isManagerModalOpen, setIsManagerModalOpen] = useState(false);
-
-  // Neuer Pricing‑Ansatz: Preise pro Mitarbeiter abhängig von gewählter Laufzeit
-  const pricingOptions = [
-    {
-      id: 'monthly',
-      title: 'Monatlich kündbar',
-      subtitle: 'Flexibel, keine Bindung',
-      pricePerMonth: 28.0,
-      badge: ''
-    },
-    {
-      id: 'quarterly',
-      title: 'Quartalsweise',
-      subtitle: 'Quartalsabrechnung mit Rabatt',
-      pricePerMonth: 26.0,
-      badge: ''
-    },
-    {
-      id: 'yearly',
-      title: 'Jährlich (beste Wahl)',
-      subtitle: 'Jährliche Laufzeit mit höchster Ersparnis',
-      pricePerMonth: 23.5,
-      badge: 'EMPFOHLEN'
-    }
-  ];
+  const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const [managerModalOpen, setManagerModalOpen] = useState(false);
 
   return (
-    <main>
-      {/* Rabatt-Banner */}
-      <div className="bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 text-white py-3 px-4 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[shimmer_3s_ease-in-out_infinite]"></div>
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <p className="text-sm md:text-base font-bold">
-            20% Rabatt auf alle Pakete – Nur noch 2 Monate gültig
-          </p>
-        </div>
-      </div>
+    <main className="min-h-screen bg-white">
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-              Klare Preise pro Mitarbeiter
-            </h1>
-            <p className="text-xl text-gray-600 mb-4">
-              Voller Funktionsumfang in allen Laufzeit‑Stufen – Sie zahlen nur für die gewünschte Vertragsbindung
-            </p>
-            <p className="text-lg text-blue-900 font-semibold mb-8">
-              Alle Preise zzgl. MwSt. | Unbegrenzte Historie in allen Stufen
-            </p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-24 md:py-32">
+        {/* Background effects */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-10 left-1/4 w-80 h-80 bg-blue-600 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
+        </div>
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
 
-            {/* Hinweis zur Auswahl der Laufzeit (kein Toggle mehr) */}
-            <p className="text-sm text-gray-600">Wähle eine Laufzeit‑Stufe. Die Preise sind pro Mitarbeiter pro Monat ausgewiesen. Die Abrechnung erfolgt dennoch monatlich, nur die Vertragsbindung ändert sich je nach Wahl.</p>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-cyan-300 px-5 py-2 rounded-full text-sm font-semibold mb-8">
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+            14 Tage kostenlos testen
+          </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
+            Das richtige Paket<br />
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">für Ihren Betrieb</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-4">
+            Transparent, fair, ohne versteckte Kosten — zahlen Sie nur pro Mitarbeiter.
+          </p>
+          <p className="text-sm text-gray-500">Alle Preise zzgl. MwSt.</p>
+        </div>
+      </section>
+
+      {/* Pricing Cards */}
+      <section className="relative -mt-16 z-20 pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* 3 Main Plans */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+
+            {/* START */}
+            <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 hover:border-blue-200 transition-all duration-300 group">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-blue-400"></div>
+              
+              <div className="p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-2xl font-black text-gray-900 mb-1">START</h3>
+                    <p className="text-sm text-gray-600">Perfekt zum Loslegen</p>
+                  </div>
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
+                    <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="mb-8 pb-8 border-b border-gray-100">
+                  <div className="flex items-end gap-1 mb-2">
+                    <span className="text-5xl font-black text-gray-900">14,73</span>
+                    <span className="text-2xl font-bold text-gray-400 mb-1">€</span>
+                  </div>
+                  <p className="text-sm text-gray-600">pro Mitarbeiter / Monat</p>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {[
+                    { text: 'Alle Kernfunktionen', highlight: false, tooltip: 'Zeiterfassung, GPS-Tracking, Aufträge, Projekte, Berichte & mehr' },
+                    { text: '50 GB Gesamtspeicher', highlight: false, tooltip: 'Für Fotos, Dokumente, Unterschriften & Berichte' },
+                    { text: '12 Monate Historie', highlight: false, tooltip: 'Zugriff auf alle Daten der letzten 12 Monate' },
+                    { text: 'Standard‑Support', highlight: false, tooltip: 'E-Mail Support innerhalb von 24h' },
+                    { text: 'Buchhaltungs‑Export', highlight: false, tooltip: 'Direkt zu LexOffice, DATEV & Co.' }
+                  ].map((item, i) => (
+                    <li key={i} className="group/item relative">
+                      <div className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-sm text-gray-700 font-medium">{item.text}</span>
+                        <svg className="w-4 h-4 text-gray-400 ml-auto" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div className="hidden group-hover/item:block absolute left-0 top-full mt-2 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 z-50 w-64 shadow-xl">
+                        {item.tooltip}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={() => setDemoModalOpen(true)}
+                  className="w-full py-4 rounded-xl font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 transition-all text-sm border border-blue-100"
+                >
+                  Jetzt starten
+                </button>
+              </div>
+            </div>
+
+            {/* GROW — Empfohlen */}
+            <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-2xl overflow-hidden shadow-2xl transform scale-105 z-10">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-400 opacity-10 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-400 opacity-10 rounded-full blur-3xl"></div>
+              
+              {/* Badge */}
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20">
+                <div className="bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 text-xs font-black px-6 py-2 rounded-full shadow-xl flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  Beliebteste Wahl
+                </div>
+              </div>
+
+              <div className="relative z-10 p-8 pt-16">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-2xl font-black text-white mb-1">GROW</h3>
+                    <p className="text-sm text-blue-100">Für Betriebe, die wachsen</p>
+                  </div>
+                  <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="mb-8 pb-8 border-b border-white/20">
+                  <div className="flex items-end gap-1 mb-2">
+                    <span className="text-5xl font-black text-white">23,67</span>
+                    <span className="text-2xl font-bold text-blue-200 mb-1">€</span>
+                  </div>
+                  <p className="text-sm text-blue-100">pro Mitarbeiter / Monat</p>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {[
+                    { text: 'Alle Funktionen', highlight: true, tooltip: 'Kompletter Zugriff ohne Einschränkungen' },
+                    { text: '250 GB Gesamtspeicher', highlight: true, tooltip: 'Mehr Platz für Dokumentation & Medien' },
+                    { text: '24 Monate Historie', highlight: false, tooltip: '2 Jahre Datenzugriff für Nachweise & Analysen' },
+                    { text: 'Erweiterte Auswertungen', highlight: false, tooltip: 'Custom Reports, Trends & KPI-Dashboards' }
+                  ].map((item, i) => (
+                    <li key={i} className="group/item relative">
+                      <div className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-900" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className={`text-sm font-medium ${item.highlight ? 'text-white font-bold' : 'text-blue-50'}`}>
+                          {item.text}
+                        </span>
+                        <svg className="w-4 h-4 text-blue-200 ml-auto" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div className="hidden group-hover/item:block absolute left-0 top-full mt-2 bg-white text-gray-900 text-xs rounded-lg px-3 py-2 z-50 w-64 shadow-xl border border-gray-200">
+                        {item.tooltip}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={() => setDemoModalOpen(true)}
+                  className="w-full py-4 rounded-xl font-bold text-blue-900 bg-white hover:bg-gray-50 transition-all text-sm shadow-lg hover:shadow-xl hover:scale-105"
+                >
+                  Jetzt GROW buchen
+                </button>
+              </div>
+            </div>
+
+            {/* SCALE */}
+            <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 hover:border-purple-200 transition-all duration-300 group">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-purple-400"></div>
+              
+              <div className="p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-2xl font-black text-gray-900 mb-1">SCALE</h3>
+                    <p className="text-sm text-gray-600">Maximale Power</p>
+                  </div>
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+                    <svg className="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="mb-8 pb-8 border-b border-gray-100">
+                  <div className="flex items-end gap-1 mb-2">
+                    <span className="text-5xl font-black text-gray-900">34,42</span>
+                    <span className="text-2xl font-bold text-gray-400 mb-1">€</span>
+                  </div>
+                  <p className="text-sm text-gray-600">pro Mitarbeiter / Monat</p>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {[
+                    { text: 'Voller Funktionsumfang', highlight: false, tooltip: 'Alle Features ohne Limits' },
+                    { text: '1 TB Speicher', highlight: true, tooltip: 'Maximale Kapazität für große Teams' },
+                    { text: 'Unbegrenzte Historie', highlight: true, tooltip: 'Permanenter Zugriff auf alle jemals erfassten Daten' },
+                    { text: 'Priorisierter Support', highlight: false, tooltip: 'Schnellere Reaktionszeiten & direkter Kontakt' }
+                  ].map((item, i) => (
+                    <li key={i} className="group/item relative">
+                      <div className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className={`text-sm font-medium ${item.highlight ? 'text-gray-900 font-bold' : 'text-gray-700'}`}>
+                          {item.text}
+                        </span>
+                        <svg className="w-4 h-4 text-gray-400 ml-auto" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div className="hidden group-hover/item:block absolute left-0 top-full mt-2 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 z-50 w-64 shadow-xl">
+                        {item.tooltip}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={() => setDemoModalOpen(true)}
+                  className="w-full py-4 rounded-xl font-bold text-purple-600 bg-purple-50 hover:bg-purple-100 transition-all text-sm border border-purple-100"
+                >
+                  SCALE wählen
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* Pricing Cards */}
-          <div className="grid md:grid-cols-3 gap-8 mb-6">
-            {pricingOptions.map((opt) => (
-              <div key={opt.id} className={`rounded-xl p-8 ${opt.badge ? "bg-blue-900 text-white shadow-2xl scale-105" : "bg-white shadow-md"}`}>
-                {opt.badge && (
-                  <div className="text-center mb-4">
-                    <span className="bg-blue-900 text-white text-sm font-bold px-4 py-1 rounded-full">{opt.badge}</span>
-                  </div>
-                )}
+          {/* ENTERPRISE Banner */}
+          <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl overflow-hidden shadow-2xl">
+            {/* Background Image */}
+            <div className="absolute inset-0 opacity-30">
+              <Image 
+                src="/AAD83654-0D2A-4539-A640-4D8D7E2065E2.PNG" 
+                alt="Enterprise Background" 
+                fill
+                className="object-cover"
+              />
+            </div>
+            
+            {/* Overlay Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70"></div>
+            
+            {/* Decorative Elements */}
+            <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl"></div>
 
-                <h3 className={`text-2xl font-bold mb-2 ${opt.badge ? "text-white" : "text-gray-900"}`}>{opt.title}</h3>
-                <p className={`mb-4 ${opt.badge ? "text-blue-100" : "text-gray-600"}`}>{opt.subtitle}</p>
-
-                <div className="mb-6 flex flex-col items-center">
-                  {/* Rabatt-Badge */}
-                  <div className="mb-2">
-                    <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">20% RABATT</span>
-                  </div>
-                  
-                  {/* Durchgestrichener Original-Preis */}
-                  <div className="flex items-end gap-2 opacity-60">
-                    <span className="text-2xl font-semibold line-through">{Number(opt.pricePerMonth).toLocaleString('de-DE', {minimumFractionDigits: (opt.pricePerMonth % 1 === 0 ? 0 : 2) })}</span>
-                    <span className="text-sm">€</span>
-                  </div>
-                  
-                  {/* Neuer rabattierter Preis */}
-                  <div className="flex items-end gap-2">
-                    <span className="text-5xl font-bold">{Number(opt.pricePerMonth * 0.8).toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
-                    <span className="text-xl">€</span>
-                  </div>
-                  <span className={`text-lg font-semibold mt-2 ${opt.badge ? "text-blue-100" : "text-gray-700"}`}>pro Mitarbeiter pro Monat</span>
-                  <span className="text-sm text-gray-500 mt-1">Abrechnung: monatlich</span>
-                  {opt.badge && <div className="mt-3 inline-block bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">BESTER WERT</div>}
+            <div className="relative z-10 grid md:grid-cols-2 gap-12 p-12 md:p-16 items-center">
+              {/* Left Content */}
+              <div>
+                <div className="inline-flex items-center gap-2 bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 px-4 py-2 rounded-full text-xs font-bold mb-6 backdrop-blur-sm">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z" />
+                  </svg>
+                  FÜR GROSSBETRIEBE
                 </div>
+
+                <h3 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+                  ENTERPRISE
+                </h3>
+                <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+                  Maßgeschneiderte Lösungen für Betriebe ab 100 Mitarbeitern mit individuellen Anforderungen
+                </p>
+
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                    <div className="text-cyan-400 text-2xl font-black mb-1">{'>'} 100</div>
+                    <div className="text-gray-400 text-xs">Mitarbeiter</div>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                    <div className="text-cyan-400 text-2xl font-black mb-1">{'>'} 2 TB</div>
+                    <div className="text-gray-400 text-xs">Speicher</div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/enterprise"
+                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all shadow-lg"
+                  >
+                    Mehr erfahren
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                  <button
+                    onClick={() => setDemoModalOpen(true)}
+                    className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all"
+                  >
+                    Demo buchen
+                  </button>
+                </div>
+              </div>
+
+              {/* Right Features */}
+              <div className="space-y-4">
+                {[
+                  { 
+                    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+                    title: 'Voller Funktionsumfang', 
+                    desc: 'Alle Features ohne Limits' 
+                  },
+                  { 
+                    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>,
+                    title: 'Individuelle Speicherlösungen', 
+                    desc: 'Skalierbar nach Bedarf' 
+                  },
+                  { 
+                    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>,
+                    title: 'Dedizierter Account‑Manager', 
+                    desc: 'Persönlicher Ansprechpartner' 
+                  },
+                  { 
+                    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>,
+                    title: 'Security & Custom‑Features', 
+                    desc: 'Maßgeschneiderte Lösungen' 
+                  }
+                ].map((feature, i) => (
+                  <div key={i} className="flex items-start gap-4 bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:bg-white/10 transition-all group">
+                    <div className="text-cyan-400 flex-shrink-0">{feature.icon}</div>
+                    <div>
+                      <div className="text-white font-bold text-sm mb-1">{feature.title}</div>
+                      <div className="text-gray-400 text-xs">{feature.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Premium Manager Section */}
+      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+            <div className="grid md:grid-cols-2 gap-0">
+              {/* Left Side */}
+              <div className="bg-gradient-to-br from-blue-900 to-blue-800 p-10 md:p-12 flex flex-col justify-center">
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-cyan-300 px-4 py-2 rounded-full text-xs font-bold mb-6 w-fit">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                  </svg>
+                  PREMIUM SERVICE
+                </div>
+
+                <h3 className="text-3xl md:text-4xl font-black text-white mb-4">
+                  Taskey Premium Manager
+                </h3>
+                <p className="text-blue-100 text-lg mb-6 leading-relaxed">
+                  Ein dedizierter Experte, der sich zu 100% um Ihr Unternehmen kümmert
+                </p>
+
+                <ul className="space-y-3 mb-8">
+                  {[
+                    'Exklusiver Direktkontakt',
+                    '24/7 Priority Support',
+                    'Proaktive Optimierung',
+                    'Persönliche Schulungen',
+                    'Vor-Ort Service'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-blue-50">
+                      <svg className="w-5 h-5 text-cyan-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
 
                 <div className="mb-6">
-                  <h4 className={`font-bold mb-3 text-sm uppercase ${opt.badge ? "text-blue-100" : "text-gray-700"}`}>Inklusive</h4>
-                  <ul className="space-y-2 text-sm">
-                    <li>• Voller Funktionsumfang aller Module</li>
-                    <li>• Unbegrenzte Benutzerkonten</li>
-                    <li>• Unbegrenzte Projekte & Aufträge</li>
-                    <li>• Standard - Support</li>
-                  </ul>
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <span className="text-5xl font-black text-white">239€</span>
+                    <span className="text-blue-200 text-xl">/ Woche</span>
+                  </div>
+                  <p className="text-blue-200 text-sm">zzgl. MwSt. • Jederzeit kündbar • Zubuchbar zu jedem Paket</p>
                 </div>
 
-                <Link href="#contact" className={`block text-center py-3 px-6 rounded-lg font-semibold transition ${opt.badge ? "bg-white text-blue-900 hover:bg-gray-100" : "bg-blue-900 text-white hover:bg-blue-800"}`}>Jetzt buchen</Link>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mb-8">
-            <p className="text-sm text-gray-600">Anmerkung: Die faktische Abrechnung erfolgt monatlich. Die gewählte Laufzeit ändert die Vertragsbindung und den Preis pro Mitarbeiter, nicht die Art der Rechnungslegung.</p>
-          </div>
-
-          {/* Enterprise CTA Button */}
-          <div className="text-center mb-20">
-            <p className="text-lg text-gray-700 mb-4 font-semibold">Sind Sie ein Großkonzern und möchten Taskeys vollen Umfang kennenlernen?</p>
-            <a
-              href="#enterprise"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-cyan-400 text-gray-900 font-bold rounded-lg hover:bg-cyan-300 transition shadow-lg"
-            >
-              <span>Jetzt Enterprise kennenlernen</span>
-            </a>
-          </div>
-
-          {/* Hinweis: keine zusätzlichen Rollenpreise mehr */}
-          <div className="bg-blue-50 rounded-xl p-8 mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Einheitliche Pauschale</h3>
-            <p className="text-center text-gray-700">Alle angebotenen Funktionen sind in den Preisen enthalten. Es gibt keine nutzer‑ oder featurebasierten Aufpreise mehr. Preise richten sich ausschließlich nach der gewählten Laufzeit.</p>
-          </div>
-
-          {/* Beispielrechnung – angepasst an das neuen Laufzeitmodell */}
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-6 text-center">Beispielrechnung</h3>
-            <div className="max-w-2xl mx-auto">
-              <div className="bg-white/10 rounded-lg p-6 mb-4">
-                <h4 className="font-bold mb-4 text-white">Beispiel: Jahresbuchung (jährliche Laufzeit)</h4>
-                <ul className="space-y-2 mb-4 text-sm">
-                  <li>• Vertrag mit jährlicher Laufzeit</li>
-                  <li>• Beispiel: 12 Mitarbeiter</li>
-                  <li>• Preis: 23,50€ pro Mitarbeiter pro Monat (jährliche Laufzeit)</li>
-                </ul>
-                <div className="border-t border-white/20 pt-4 space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>12 Mitarbeiter × 23,50€</span>
-                    <span className="font-bold">282€ / Monat</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Monatsbetrag × 12</span>
-                    <span className="font-bold">3.384€ / Jahr</span>
-                  </div>
-                  <div className="flex justify-between text-xl font-bold text-white border-t border-white/20 pt-2 mt-2">
-                    <span>Gesamt (jährlich)</span>
-                    <span>3.384€</span>
-                  </div>
-                </div>
-              </div>
-              <p className="text-center text-sm text-blue-200">Alle Preise zzgl. MwSt. | Abrechnung erfolgt monatlich, Laufzeit bestimmt Preisstaffel</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Feature Comparison Table */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Voller Funktionsumfang in allen Paketen
-            </h2>
-            <p className="text-xl text-gray-600 mb-6">
-              Taskey limitiert keine Funktionen – Sie zahlen nur für Skalierung, Volumen und Verantwortung
-            </p>
-          </div>
-
-          {/* All Features Included */}
-          <div className="bg-white rounded-xl shadow-md p-8 mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-              ✓ In ALLEN Paketen enthalten
-            </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                "GPS- & Live-Tracking",
-                "Start/Stop, QR & NFC",
-                "Zeit-, Pausen- & Fahrterfassung",
-                "Live-Map & Mitarbeiter-Roadmap",
-                "Aufträge, Projekte, Fotos & Dokumente",
-                "Abschlussberichte (PDF + Signatur)",
-                "Abwesenheiten & Planung",
-                "Dashboards & Auswertungen",
-                "Buchhaltungs-Export (z.B. LexOffice)",
-                "Rollen- & Rechteverwaltung",
-                "Unbegrenzte Historie",
-                "Mobile App (iOS & Android)",
-              ].map((feature, index) => (
-                <div key={index} className="flex items-start">
-                  <svg
-                    className="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/premium-manager"
+                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all shadow-lg"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span className="text-gray-700">{feature}</span>
+                    Mehr erfahren
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                  <button
+                    onClick={() => setManagerModalOpen(true)}
+                    className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all"
+                  >
+                    Jetzt anfragen
+                  </button>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
 
-          {/* Laufzeit‑Vergleichstabelle (Ersatz für limitComparison) */}
-          <div className="bg-white rounded-xl shadow-md overflow-hidden">
-            <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white px-6 py-4">
-              <h3 className="text-xl font-bold text-center">Vergleich nach Laufzeit</h3>
-            </div>
-            <div className="overflow-x-auto p-6">
-              <table className="w-full">
-                <thead>
-                  <tr className="text-left text-sm text-gray-700">
-                    <th className="px-4 py-2">Laufzeit</th>
-                    <th className="px-4 py-2">Preis / Mitarbeiter / Monat</th>
-                    <th className="px-4 py-2">Abrechnung</th>
-                    <th className="px-4 py-2">Jahreskosten (Beispiel)</th>
-                    <th className="px-4 py-2">Ersparnis vs. monatlich</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {pricingOptions.map((opt) => {
-                    const yearlyTotal = opt.pricePerMonth * 12;
-                    const baseline = pricingOptions.find(p => p.id === 'monthly')?.pricePerMonth ?? pricingOptions[0].pricePerMonth;
-                    const savings = Math.round(((baseline - opt.pricePerMonth) / baseline) * 100);
-                    return (
-                      <tr key={opt.id} className="border-t border-gray-100">
-                        <td className="px-4 py-3 font-semibold text-gray-900">{opt.title}</td>
-                        <td className="px-4 py-3 text-gray-700">{opt.pricePerMonth}€</td>
-                        <td className="px-4 py-3 text-gray-700">monatlich</td>
-                        <td className="px-4 py-3 text-gray-700">{yearlyTotal.toLocaleString('de-DE')}€</td>
-                        <td className="px-4 py-3 text-gray-700">{opt.id === 'monthly' ? '–' : `${savings}%`}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* Enterprise Package */}
-          <div id="enterprise" className="mt-12 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-8 md:p-12 text-white text-center scroll-mt-24">
-            <h3 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6">
-              Taskey <span className="text-cyan-400">Enterprise</span>
-            </h3>
-            <p className="text-3xl md:text-4xl text-cyan-400 font-semibold mb-8">Preis auf Anfrage</p>
-            <div className="max-w-3xl mx-auto mb-8">
-              <p className="text-xl text-gray-300 mb-6">
-                Ein Enterprise-Paket wird angeboten bei:
-              </p>
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                  <div className="flex justify-center mb-3">
-                    <img src="/1502.png" alt="150+ Angestellte" className="w-16 h-16 opacity-100" />
+              <div className="relative p-10 md:p-12 bg-gray-50 flex flex-col justify-center overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 opacity-30">
+                  <Image 
+                    src="/2FD11192-20F9-4069-81C0-F1F4E6F66202.png" 
+                    alt="Manager Background" 
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                
+                <div className="relative z-10 space-y-6">
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Ihr persönlicher Experte</h4>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Ein Taskey Manager ist Ihre persönliche Kontaktperson – ein Experte, der sich ausschließlich um Ihr Unternehmen kümmert und als verlängerter Arm Ihrer Organisation agiert.
+                    </p>
                   </div>
-                  <p className="font-semibold text-lg">150+ Angestellte</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                  <div className="flex justify-center mb-3">
-                    <img src="/plus2.png" alt="Signifikanter Anstieg des Nutzerbedarfs" className="w-16 h-16 opacity-100" />
+
+                  <div className="space-y-3">
+                    {[
+                      { 
+                        icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>,
+                        title: 'Exklusiv für Sie', 
+                        desc: 'Betreut nur Ihr Unternehmen' 
+                      },
+                      { 
+                        icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+                        title: 'Sofortige Reaktion', 
+                        desc: 'Direkter Draht ohne Warteschlangen' 
+                      },
+                      { 
+                        icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>,
+                        title: 'Proaktive Optimierung', 
+                        desc: 'Kontinuierliche Verbesserungen' 
+                      },
+                      { 
+                        icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
+                        title: 'Vor-Ort Service', 
+                        desc: 'Persönliche Besuche bei Bedarf' 
+                      }
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-3 bg-white rounded-lg p-3 border border-gray-100">
+                        <div className="text-blue-600">{item.icon}</div>
+                        <div>
+                          <div className="text-sm font-bold text-gray-900">{item.title}</div>
+                          <div className="text-xs text-gray-600">{item.desc}</div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <p className="font-semibold text-lg">Signifikanter Anstieg des Nutzerbedarfs</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                  <div className="flex justify-center mb-3">
-                    <img src="/indi2.png" alt="Individuelle Anforderungen" className="w-16 h-16 opacity-100" />
-                  </div>
-                  <p className="font-semibold text-lg">Individuellen Anforderungen (SLA, Custom-Features, Sonderprozesse)</p>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/enterprise"
-                className="inline-flex items-center gap-2 bg-cyan-400 text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-cyan-300 transition shadow-lg"
-              >
-                <span>Mehr zum Enterprise-Paket</span>
-                <svg 
-                  className="w-5 h-5" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-              <Link
-                href="#contact"
-                className="inline-block bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition shadow-lg"
-              >
-                Kontakt aufnehmen
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Premium Dedicated Contact Section */}
-      <section className="relative py-24 bg-gradient-to-br from-gray-950 via-slate-900 to-gray-950 overflow-hidden">
-        {/* Elegant background patterns */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-600 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          {/* Main Content - Centered */}
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-block bg-gradient-to-r from-amber-500 to-amber-400 text-gray-900 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider mb-6">
-              Ihr persönlicher Manager
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-              Ein Manager <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">nur für Sie</span>
-            </h2>
-
-            <p className="text-xl md:text-2xl text-gray-400 mb-4 max-w-2xl mx-auto">
-              Ihr dedizierter Taskey Manager ist ausschließlich für Ihr Unternehmen zuständig
-            </p>
-            
-            <p className="text-lg text-gray-500 mb-12 max-w-xl mx-auto">
-              Eine Person bei Taskey, die sich zu 100% Ihnen widmet und durchschnittlich 50 Stunden pro Monat einspart
-            </p>
-
-            {/* Stats Cards */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-6">
-                <div className="text-cyan-400 text-4xl font-black mb-2">50h</div>
-                <div className="text-gray-400 text-sm">Durchschnittliche Zeitersparnis</div>
-              </div>
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-6">
-                <div className="text-cyan-400 text-4xl font-black mb-2">1:1</div>
-                <div className="text-gray-400 text-sm">Persönlicher Manager</div>
-              </div>
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-6">
-                <div className="text-cyan-400 text-4xl font-black mb-2">24/7</div>
-                <div className="text-gray-400 text-sm">Erreichbarkeit</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Features Grid */}
-          <div className="max-w-5xl mx-auto mb-12">
-            <div className="grid md:grid-cols-2 gap-4">
-              {[
-                {
-                  title: "Ihr Manager kennt Sie",
-                  desc: "Versteht Ihre Prozesse, Ziele und Herausforderungen"
-                },
-                {
-                  title: "Manager-Direktleitung",
-                  desc: "Sofortiger Kontakt zu Ihrem persönlichen Manager"
-                },
-                {
-                  title: "Proaktiver Manager",
-                  desc: "Optimiert kontinuierlich Ihre Abläufe"
-                },
-                {
-                  title: "Manager vor Ort",
-                  desc: "Ihr Manager kommt persönlich zu Ihnen"
-                }
-              ].map((feature, index) => (
-                <div key={index} className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-5 hover:border-cyan-400/50 transition-all duration-300 group">
-                  <div className="flex items-start gap-4">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0 group-hover:scale-150 transition-transform"></div>
-                    <div>
-                      <h4 className="font-bold text-white mb-1">{feature.title}</h4>
-                      <p className="text-gray-500 text-sm">{feature.desc}</p>
+                  <div className="bg-blue-50 rounded-xl p-5 border border-blue-100">
+                    <div className="flex items-start gap-3">
+                      <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                      </svg>
+                      <div>
+                        <p className="text-sm text-gray-700 font-medium mb-1">Durchschnittliche Zeitersparnis: 50 Stunden/Monat</p>
+                        <p className="text-xs text-gray-600">Ideal für wachstumsorientierte Betriebe</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Pricing Card - Centered */}
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-gray-700 rounded-3xl p-8 md:p-10">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-                <div>
-                  <div className="text-gray-500 text-sm uppercase tracking-wide mb-2">Zubuchbar zu jedem Paket</div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-6xl font-black text-white">239€</span>
-                    <span className="text-gray-500 text-xl">/ Woche</span>
-                  </div>
-                  <p className="text-cyan-400 font-semibold mt-2 text-sm">zzgl. MwSt. | Jederzeit kündbar</p>
-                </div>
-                <div className="text-center md:text-right">
-                  <div className="inline-block bg-amber-500 text-gray-900 text-xs font-black px-3 py-1.5 rounded-full">
-                    BEGRENZTES ANGEBOT
-                  </div>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <button
-                  onClick={() => setIsManagerModalOpen(true)}
-                  className="flex-1 group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-lg rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-2xl hover:shadow-cyan-500/50 text-center overflow-hidden"
-                >
-                  <span className="relative z-10">Manager sichern</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                </button>
-                
-                <a
-                  href="tel:+4915168488999"
-                  className="flex-1 px-8 py-4 bg-gray-800 border-2 border-gray-700 text-white font-bold text-lg rounded-xl hover:border-gray-600 hover:bg-gray-750 transition-all duration-300 text-center"
-                >
-                  Beratung
-                </a>
-              </div>
-
-              {/* Mehr erfahren Link */}
-              <div className="text-center">
-                <Link 
-                  href="/premium-manager" 
-                  className="text-cyan-400 hover:text-cyan-300 font-semibold text-sm transition-colors duration-200 inline-flex items-center gap-2 group"
-                >
-                  <span>Mehr über Ihren persönlichen Manager erfahren</span>
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
+      {/* Trust Bar */}
+      <section className="py-12 bg-gray-50 border-y border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { value: '14 Tage', label: 'Kostenlos testen' },
+              { value: '0 €', label: 'Einrichtungsgebühr' },
+              { value: '100%', label: 'DSGVO‑konform' },
+              { value: 'Server', label: 'Deutsche Server' },
+            ].map((item, i) => (
+              <div key={i}>
+                <div className="text-2xl md:text-3xl font-black text-gray-900">{item.value}</div>
+                <div className="text-sm text-gray-500 mt-1">{item.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Storage Add-ons */}
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">Brauchen Sie mehr Speicher?</h2>
+            <p className="text-gray-600 mb-4">Flexibel zubuchbar — jederzeit kündbar</p>
+            <div className="max-w-2xl mx-auto bg-blue-50 rounded-xl p-4 border border-blue-100">
+              <div className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                <p className="text-sm text-gray-700 text-left">
+                  <strong className="font-bold">Wofür wird Speicher genutzt?</strong><br />
+                  Fotos von Baustellen, hochgeladene Dokumente, unterschriebene Berichte (PDFs), Rechnungen und andere Dateien, die Ihre Mitarbeiter in Taskey hochladen, werden im Cloud-Speicher abgelegt.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { amount: '+100 GB', price: '8,37', desc: 'Ideal für kleine Teams' },
+              { amount: '+500 GB', price: '38,11', desc: 'Für wachsende Betriebe' },
+              { amount: '+1 TB', price: '68,27', desc: 'Maximale Kapazität' },
+            ].map((addon, i) => (
+              <div key={i} className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center group">
+                <div className="text-3xl font-black text-gray-900 mb-1">{addon.amount}</div>
+                <div className="flex items-baseline justify-center gap-1 mb-2">
+                  <span className="text-2xl font-bold text-blue-900">{addon.price}€</span>
+                  <span className="text-sm text-gray-500">/ Monat</span>
+                </div>
+                <p className="text-sm text-gray-500">{addon.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* All Features Included */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">In jedem Paket enthalten</h2>
+            <p className="text-gray-600 text-lg mb-4">Keine Feature‑Grenzen — nur Speicher & Historie unterscheiden sich</p>
+            <div className="max-w-3xl mx-auto bg-gray-100 rounded-xl p-4 border border-gray-200">
+              <div className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-gray-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                <p className="text-sm text-gray-700 text-left">
+                  <strong className="font-bold">Was bedeutet Historie?</strong><br />
+                  Die Historie bestimmt, wie lange Sie auf alte Zeiterfassungen, Aufträge, Berichte und Dokumente zugreifen können. Bei "12 Monate Historie" sehen Sie alle Daten der letzten 12 Monate. "Unbegrenzte Historie" bedeutet: Alle Daten bleiben für immer abrufbar.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              'GPS- & Live-Tracking',
+              'Start/Stop, QR & NFC',
+              'Zeit‑, Pausen‑ & Fahrterfassung',
+              'Live‑Map & Mitarbeiter‑Roadmap',
+              'Aufträge, Projekte, Fotos & Dokumente',
+              'Abschlussberichte (PDF + Signatur)',
+              'Abwesenheiten & Planung',
+              'Dashboards & Auswertungen',
+              'Buchhaltungs‑Export (z. B. LexOffice)',
+              'Rollen‑ & Rechteverwaltung',
+              'Mobile App (iOS & Android)',
+              'Kundenverwaltung',
+            ].map((feature, i) => (
+              <div key={i} className="flex items-center gap-3 bg-white rounded-xl px-5 py-4 border border-gray-100 shadow-sm">
+                <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                <span className="text-gray-800 font-medium text-sm">{feature}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">Häufige Fragen zu unseren Preisen</h2>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              { q: 'Gibt es eine kostenlose Testphase?', a: 'Ja! Testen Sie Taskey 14 Tage lang kostenlos und unverbindlich. Keine Kreditkarte nötig.' },
+              { q: 'Was passiert nach der Testphase?', a: 'Nach 14 Tagen wählen Sie einfach das passende Paket. Ihre Daten bleiben erhalten.' },
+              { q: 'Kann ich jederzeit das Paket wechseln?', a: 'Ja, ein Upgrade oder Downgrade ist jederzeit möglich. Die Abrechnung passt sich automatisch an.' },
+              { q: 'Wie funktioniert die Abrechnung?', a: 'Die Abrechnung erfolgt monatlich pro Mitarbeiter. Sie zahlen nur für aktive Nutzer.' },
+              { q: 'Was unterscheidet die Pakete?', a: 'Alle Pakete enthalten den vollen Funktionsumfang. Die Unterschiede liegen bei Speicherplatz, Historie‑Dauer und Support‑Level.' },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl shadow-sm border border-gray-100 group">
+                <summary className="flex justify-between items-center p-6 cursor-pointer hover:bg-gray-50 rounded-xl transition font-bold text-gray-900">
+                  {faq.q}
+                  <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </summary>
+                <div className="px-6 pb-6 text-gray-600 text-sm leading-relaxed">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Fragen zu Gebrauch oder Preispaketen?
+          <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+            Bereit, Ihren Betrieb zu digitalisieren?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Unser Team hilft Ihnen gerne weiter
+            Starten Sie jetzt kostenlos — in unter 5 Minuten einsatzbereit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+4915168488999"
-              className="px-8 py-4 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-800 transition"
+            <button
+              onClick={() => setDemoModalOpen(true)}
+              className="inline-flex items-center justify-center gap-3 bg-blue-900 hover:bg-blue-800 text-white font-bold text-lg px-10 py-5 rounded-xl transition-all hover:scale-105 shadow-lg"
             >
-              +49 151 684 88999
-            </a>
+              Kostenlos testen
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </button>
             <a
-              href="mailto:fynn@vars-development.com"
-              className="px-8 py-4 text-blue-900 border-2 border-blue-900 font-semibold rounded-lg hover:bg-blue-50 transition"
+              href="mailto:info@taskey.de"
+              className="inline-flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-900 font-bold text-lg px-10 py-5 rounded-xl border-2 border-gray-200 transition-all"
             >
-              fynn@vars-development.com
+              Fragen? Schreiben Sie uns
             </a>
           </div>
-          <p className="mt-8 text-gray-600">
-            In der Acht 44, 66333 Völklingen, Deutschland
-          </p>
+          <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-gray-500">
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+              Keine Kreditkarte nötig
+            </span>
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+              14 Tage kostenlos
+            </span>
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+              Jederzeit kündbar
+            </span>
+          </div>
         </div>
       </section>
 
-      {/* Manager Request Modal */}
-      <ManagerRequestModal 
-        isOpen={isManagerModalOpen} 
-        onClose={() => setIsManagerModalOpen(false)} 
-      />
+      {/* Demo Modal */}
+      <DemoBookingModal isOpen={demoModalOpen} onClose={() => setDemoModalOpen(false)} />
+      
+      {/* Manager Modal */}
+      <ManagerRequestModal isOpen={managerModalOpen} onClose={() => setManagerModalOpen(false)} />
     </main>
   );
 }
