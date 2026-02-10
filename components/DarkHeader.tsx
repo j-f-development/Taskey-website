@@ -18,7 +18,7 @@ export default function DarkHeader() {
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center gap-2.5" aria-label="Taskey Startseite">
             <Image 
-              src="/logoblue.png" 
+              src="/logoblue-opt.jpg" 
               alt="Taskey Logo - Dienstleistungssoftware" 
               width={40}
               height={40}

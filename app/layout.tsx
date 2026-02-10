@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: "Automatische Zeiterfassung, intelligente Auftragsplanung & digitale Rechnungsstellung für Dienstleistungsbetriebe. Made in Germany, DSGVO-konform.",
     images: [
       {
-        url: "/logobittt.png",
+        url: "/logobittt-opt.jpg",
         width: 1200,
         height: 630,
         alt: "Taskey Logo",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Taskey - Dienstleistungssoftware für über 600 Branchen",
     description: "Automatische Zeiterfassung, intelligente Auftragsplanung & digitale Rechnungsstellung. Made in Germany, DSGVO-konform.",
-    images: ["/logobittt.png"],
+    images: ["/logobittt-opt.jpg"],
   },
   alternates: {
     canonical: "https://www.taskey.de",

@@ -44,7 +44,7 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <div className="mb-8">
               <Image 
-                src="/logoblue.png" 
+                src="/logoblue-opt.jpg" 
                 alt="Taskey Logo" 
                 width={128}
                 height={128}
@@ -175,7 +175,7 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <div className="mb-8">
               <Image 
-                src="/logoblue.png" 
+                src="/logoblue-opt.jpg" 
                 alt="Taskey Logo" 
                 width={128}
                 height={128}
@@ -249,19 +249,19 @@ export default function AboutPage() {
               <div>
                 <h4 className="font-bold text-gray-900 mb-2">Telefon</h4>
                 <a
-                  href="tel:+498001234567"
+                  href="tel:+4915168488999"
                   className="text-blue-900 hover:underline"
                 >
-                  +49 (0) 800 123 4567
+                  +49 151 684 88999
                 </a>
               </div>
               <div>
                 <h4 className="font-bold text-gray-900 mb-2">E-Mail</h4>
                 <a
-                  href="mailto:kontakt@taskey.de"
+                  href="mailto:fynn@vars-development.de"
                   className="text-blue-900 hover:underline"
                 >
-                  kontakt@taskey.de
+                  fynn@vars-development.de
                 </a>
               </div>
               <div>

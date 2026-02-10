@@ -77,7 +77,7 @@ export default function EnterprisePage() {
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div className="p-8 text-center">
                 <div className="flex justify-center mb-4">
-                  <img src="/1502.png" alt="100+ Angestellte" className="w-24 h-24 opacity-100" />
+                  <img src="/1502-opt.jpg" alt="100+ Angestellte" className="w-24 h-24 opacity-100" loading="lazy" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">100+ Angestellte</h3>
                 <p className="text-gray-300 leading-relaxed">
@@ -258,10 +258,11 @@ export default function EnterprisePage() {
               {/* Card Image */}
               <div className="relative group perspective-1000">
                 <img 
-                  src="/taskeycard.png" 
+                  src="/taskeycard-opt.jpg" 
                   alt="Taskey Titan Karte" 
                   className="w-full h-auto transition-all duration-500 ease-out group-hover:scale-110 group-hover:rotate-3"
                   style={{ transformStyle: 'preserve-3d' }}
+                  loading="lazy"
                 />
               </div>
 
@@ -332,9 +333,10 @@ export default function EnterprisePage() {
               <div className="relative backdrop-blur-xl bg-gray-500/20 rounded-3xl p-8 shadow-2xl border border-white/10">
                 <div className="relative">
                   <img 
-                    src="/353E4782-1D75-4428-945C-6C7B500A53D0.png" 
+                    src="/353E4782-1D75-4428-945C-6C7B500A53D0-opt.jpg" 
                     alt="Taskey Enterprise Team" 
                     className="w-full h-auto rounded-2xl shadow-xl"
+                    loading="lazy"
                   />
                 </div>
               </div>

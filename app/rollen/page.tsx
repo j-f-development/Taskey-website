@@ -13,7 +13,7 @@ export default function RollenPage() {
           <div className="text-center mb-12">
             <div className="mb-8">
               <Image 
-                src="/logoblue.png" 
+                src="/logoblue-opt.jpg" 
                 alt="Taskey Logo" 
                 width={96}
                 height={96}

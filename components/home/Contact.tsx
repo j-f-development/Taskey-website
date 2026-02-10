@@ -17,7 +17,7 @@ export default function Contact() {
         <div className="text-center mb-6 sm:mb-8">
           <div className="inline-block mb-6 sm:mb-8">
             <Image 
-              src="/logoblue.png" 
+              src="/logoblue-opt.jpg" 
               alt="Taskey Logo" 
               width={128}
               height={128}

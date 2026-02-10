@@ -18,7 +18,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center gap-2.5" aria-label="Taskey Startseite">
             <Image 
-              src="/logobittt.png" 
+              src="/logobittt-opt.jpg" 
               alt="Taskey Logo - Dienstleistungssoftware" 
               width={40}
               height={40}
