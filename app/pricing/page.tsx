@@ -397,18 +397,16 @@ export default function PricingPage() {
           {/* ENTERPRISE Banner */}
           <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl overflow-hidden shadow-2xl">
             {/* Background Image */}
-            <div className="absolute inset-0 opacity-30">
+            <div className="absolute inset-0 opacity-50">
               <Image 
-                src="/B0D9F1DC-D59E-4A75-BC04-0C323F942754.png" 
+                src="/59103717-2D93-441D-8B27-92FF9986A8B8.png" 
                 alt="Enterprise Background" 
                 fill
                 className="object-cover"
                 loading="lazy"
-                quality={75}
-                sizes="(max-width: 768px) 100vw, 1200px"
               />
             </div>
-            
+
             {/* Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70"></div>
             
@@ -496,18 +494,6 @@ export default function PricingPage() {
                   </div>
                 ))}
               </div>
-
-              {/* Enterprise Image */}
-              <div className="md:col-span-2 mt-8">
-                <Image 
-                  src="/38B7B38E-86C1-4FFB-957B-4C717B51C6B5_4_5005_c.jpeg" 
-                  alt="Enterprise Team" 
-                  width={1200}
-                  height={600}
-                  className="w-full h-auto rounded-xl shadow-2xl"
-                  loading="lazy"
-                />
-              </div>
             </div>
           </div>
 
@@ -580,19 +566,18 @@ export default function PricingPage() {
               </div>
 
               <div className="relative p-10 md:p-12 bg-gray-50 flex flex-col justify-center overflow-hidden">
-                {/* Background Image */}
+                {/* PNG Background - fills entire right side */}
                 <div className="absolute inset-0 opacity-30">
                   <Image 
-                    src="/manager.png" 
+                    src="/2FD11192-20F9-4069-81C0-F1F4E6F66202.png" 
                     alt="Manager Background" 
                     fill
                     className="object-cover"
                     loading="lazy"
-                    quality={75}
-                    sizes="(max-width: 768px) 100vw, 600px"
                   />
                 </div>
-                
+
+                {/* Text Content Layer on top */}
                 <div className="relative z-10 space-y-6">
                   <div>
                     <h4 className="text-xl font-bold text-gray-900 mb-2">Ihr persönlicher Experte</h4>
@@ -644,18 +629,6 @@ export default function PricingPage() {
                         <p className="text-xs text-gray-600">Ideal für wachstumsorientierte Betriebe</p>
                       </div>
                     </div>
-                  </div>
-
-                  {/* Manager Image */}
-                  <div className="mt-6">
-                    <Image 
-                      src="/2FD11192-20F9-4069-81C0-F1F4E6F66202.png" 
-                      alt="Premium Manager" 
-                      width={600}
-                      height={400}
-                      className="w-full h-auto rounded-xl shadow-lg"
-                      loading="lazy"
-                    />
                   </div>
                 </div>
               </div>
