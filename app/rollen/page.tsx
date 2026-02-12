@@ -47,7 +47,7 @@ export default function RollenPage() {
               </div>
               <div className="p-6 bg-gray-50 rounded-lg border-2 border-blue-900 hover:shadow-xl hover:scale-105 transition-all cursor-pointer">
                 <div className="flex justify-center mb-3">
-                  <img src="/fachkraft2.png" alt="Fachkraft" className="w-24 h-24 opacity-100" />
+                  <img src="/custom.png" alt="Fachkraft" className="w-24 h-24 opacity-100" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">Fachkraft</h3>
                 <p className="text-sm text-gray-600">
@@ -56,7 +56,7 @@ export default function RollenPage() {
               </div>
               <div className="p-6 bg-gray-50 rounded-lg border-2 border-blue-900 hover:shadow-xl hover:scale-105 transition-all cursor-pointer">
                 <div className="flex justify-center mb-3">
-                  <img src="/leader2.png" alt="Leader" className="w-24 h-24 opacity-100" />
+                  <img src="/truck.png" alt="Leader" className="w-24 h-24 opacity-100" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">Leader</h3>
                 <p className="text-sm text-gray-600">
@@ -154,7 +154,7 @@ export default function RollenPage() {
           <div id="fachkraft" className="scroll-mt-24 bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-xl p-8 md:p-12 border-l-8 border-blue-900">
             <div className="flex items-center gap-4 mb-6">
               <div>
-                <img src="/fachkraft2.png" alt="Fachkraft" className="w-24 h-24 opacity-100" />
+                <img src="/custom.png" alt="Fachkraft" className="w-24 h-24 opacity-100" />
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-gray-900">Fachkraft</h2>
@@ -233,7 +233,7 @@ export default function RollenPage() {
           <div id="leader" className="scroll-mt-24 bg-gradient-to-br from-yellow-50 to-white rounded-xl shadow-xl p-8 md:p-12 border-l-8 border-yellow-500">
             <div className="flex items-center gap-4 mb-6">
               <div>
-                <img src="/leader2.png" alt="Leader" className="w-16 h-16 opacity-100" />
+                <img src="/truck.png" alt="Leader" className="w-16 h-16 opacity-100" />
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-gray-900">Leader</h2>

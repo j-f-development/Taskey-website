@@ -399,7 +399,7 @@ export default function PricingPage() {
             {/* Background Image */}
             <div className="absolute inset-0 opacity-30">
               <Image 
-                src="/enterprise-bg-opt.jpg" 
+                src="/B0D9F1DC-D59E-4A75-BC04-0C323F942754.png" 
                 alt="Enterprise Background" 
                 fill
                 className="object-cover"
@@ -571,7 +571,7 @@ export default function PricingPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0 opacity-30">
                   <Image 
-                    src="/manager-bg-opt.jpg" 
+                    src="/manager.png" 
                     alt="Manager Background" 
                     fill
                     className="object-cover"
