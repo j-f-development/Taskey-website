@@ -56,7 +56,7 @@ export default function Hero() {
             {/* Large image above circle */}
             <div className="relative z-10 scale-125 sm:scale-150 w-full h-[400px] sm:h-[500px]">
               <Image 
-                src="/B0D9F1DC-D59E-4A75-BC04-0C323F942754-opt.jpg" 
+                src="/B0D9F1DC-D59E-4A75-BC04-0C323F942754.png" 
                 alt="Taskey Software" 
                 fill
                 className="object-contain drop-shadow-2xl"
