@@ -29,21 +29,21 @@ export default function NFCSection() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid md:grid-cols-2 gap-0 items-center mb-16 -mx-4 sm:-mx-6 lg:-mx-8">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-0 items-center mb-16">
           {/* Left: Visual */}
-          <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden px-4 sm:px-0">
             <Image 
               src="/D51DAA1C-8E91-4647-BAFA-FFC71E88FA2B.png"
               alt="Taskey NFC Tag"
               width={600}
               height={600}
-              className="object-contain rounded-[36px]"
+              className="object-contain rounded-[36px] w-full h-auto"
               loading="lazy"
             />
           </div>
 
           {/* Right: Benefits */}
-          <div className="space-y-6 pl-8 px-4 sm:px-6 lg:px-8">
+          <div className="space-y-4 md:space-y-6 px-4 sm:px-6 md:pl-8 lg:px-8">
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-cyan-400/20 flex items-center justify-center flex-shrink-0">
@@ -112,35 +112,35 @@ export default function NFCSection() {
         </div>
 
         {/* Bottom Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-12 border-t border-white/10">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 pt-12 border-t border-white/10 px-4">
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-cyan-400 mb-2">IP67</div>
-            <div className="text-sm text-gray-400">Wasserdicht & robust</div>
+            <div className="text-2xl md:text-3xl lg:text-4xl font-black text-cyan-400 mb-2">∞</div>
+            <div className="text-xs md:text-sm text-gray-400">Unbegrenzt wiederverwendbar</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-cyan-400 mb-2">5+ Jahre</div>
-            <div className="text-sm text-gray-400">Lebensdauer</div>
+            <div className="text-2xl md:text-3xl lg:text-4xl font-black text-cyan-400 mb-2">5+ Jahre</div>
+            <div className="text-xs md:text-sm text-gray-400">Lebensdauer</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-cyan-400 mb-2">2-3 Tage</div>
-            <div className="text-sm text-gray-400">Kostenloser Ersatz</div>
+          <div className="text-center col-span-2 md:col-span-1">
+            <div className="text-2xl md:text-3xl lg:text-4xl font-black text-cyan-400 mb-2">2-3 Tage</div>
+            <div className="text-xs md:text-sm text-gray-400">Kostenloser Ersatz</div>
           </div>
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <div className="inline-flex flex-col sm:flex-row gap-4">
+        <div className="text-center mt-12 px-4">
+          <div className="inline-flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <a
               href="/features#nfc-tags"
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all shadow-xl"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 font-bold px-6 md:px-8 py-3 md:py-4 rounded-xl hover:scale-105 transition-all shadow-xl text-sm md:text-base"
             >
               Mehr über NFC-Tags erfahren
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
           </div>
-          <p className="text-gray-400 text-sm mt-4">
+          <p className="text-gray-400 text-xs md:text-sm mt-4">
             ✓ Kostenlose Starter-Tags für Neukunden  •  ✓ Ersatz bei Beschädigung garantiert
           </p>
         </div>

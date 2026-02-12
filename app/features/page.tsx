@@ -364,69 +364,99 @@ export default function FeaturesPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Banner */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000,transparent)]"></div>
+        
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-600 rounded-full blur-[100px]"></div>
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-cyan-500 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-cyan-300 px-5 py-2 rounded-full text-sm font-semibold mb-6">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+              </svg>
+              Vollständiger Funktionsüberblick
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+              Was kann <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Taskey?</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+              Alle Funktionen für Ihren effizienten Betrieb – von NFC-Tags bis Zeiterfassung
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex items-center gap-2 text-gray-300">
+                <svg className="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-sm font-medium">40+ Features</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300">
+                <svg className="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-sm font-medium">11 Kategorien</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300">
+                <svg className="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-sm font-medium">Für alle Gewerke</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="mb-8">
-              <Image 
-                src="/logoblue.png" 
-                alt="Taskey Logo" 
-                width={144}
-                height={144}
-                className="h-36 w-auto mx-auto"
-                sizes="144px"
-                quality={75}
-                loading="lazy"
-              />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Was kann Taskey?
-            </h1>
-            <p className="text-xl text-gray-600">
-              Alle Funktionen für Ihren effizienten Betrieb
-            </p>
-          </div>
 
-          {/* Quick Navigation Buttons */}
+          {/* Quick Navigation Buttons - Silber-Blau-Spektrum */}
           <div className="max-w-4xl mx-auto mb-12">
             <div className="grid md:grid-cols-3 gap-4">
               <a
                 href="/pricing"
-                className="group bg-gradient-to-br from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                className="group bg-gradient-to-br from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 border border-slate-600/40"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-bold">Alle Preise</h3>
-                  <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <h3 className="text-lg font-bold text-slate-50">Alle Preise</h3>
+                  <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>
-                <p className="text-blue-100 text-sm">Entdecken Sie alle Taskey-Pakete</p>
+                <p className="text-slate-200 text-sm">Entdecken Sie alle Taskey-Pakete</p>
               </a>
 
               <a
                 href="/pricing#nfc-tags"
-                className="group bg-gradient-to-br from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                className="group bg-gradient-to-br from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 border border-sky-400/40"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-bold">NFC-Tags Preise</h3>
-                  <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <h3 className="text-lg font-bold text-white">NFC-Tags Preise</h3>
+                  <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform text-sky-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>
-                <p className="text-cyan-50 text-sm">Starter Kit ab 9€</p>
+                <p className="text-sky-50 text-sm">Starter Kit ab 9€</p>
               </a>
 
               <a
                 href="/premium-manager"
-                className="group bg-gradient-to-br from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                className="group bg-gradient-to-br from-slate-600 to-blue-700 hover:from-slate-500 hover:to-blue-600 text-white rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 border border-slate-500/40"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-bold">Manager Preise</h3>
-                  <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <h3 className="text-lg font-bold text-slate-50">Manager Preise</h3>
+                  <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform text-sky-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>
-                <p className="text-amber-50 text-sm">Persönlicher Premium-Service</p>
+                <p className="text-slate-100 text-sm">Persönlicher Premium-Service</p>
               </a>
             </div>
           </div>
@@ -480,8 +510,8 @@ export default function FeaturesPage() {
             </div>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12 border-b border-gray-200 pb-4">
+          {/* Category Tabs - Silber-Blau-Spektrum */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12 border-b border-slate-200 pb-4">
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -489,12 +519,12 @@ export default function FeaturesPage() {
                   setActiveCategory(category.id);
                   setActiveFeature(category.features[0].id);
                 }}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                className={`px-6 py-3 rounded-xl font-semibold transition-all ${
                   activeCategory === category.id
                     ? category.id === 'nfc' 
-                      ? 'bg-cyan-500 text-white shadow-lg'
-                      : 'bg-gray-900 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                      ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xl'
+                      : 'bg-gradient-to-r from-slate-700 to-slate-800 text-white shadow-xl'
+                    : 'bg-gradient-to-br from-slate-50 to-gray-100 text-slate-700 hover:from-slate-100 hover:to-gray-200 border border-slate-200 shadow-md'
                 }`}
               >
                 {category.name}
@@ -504,69 +534,146 @@ export default function FeaturesPage() {
 
           {/* Feature Content */}
           <div className="grid md:grid-cols-12 gap-8">
-            {/* Feature List */}
-            <div className="md:col-span-4 space-y-4">
-              {currentCategory?.features.map((feature) => (
-                <button
-                  key={feature.id}
-                  onClick={() => setActiveFeature(feature.id)}
-                  className={`w-full text-left p-4 rounded-lg transition-all ${
-                    activeFeature === feature.id
-                      ? 'bg-white shadow-md border-2 border-blue-900'
-                      : 'bg-white hover:bg-gray-50 border-2 border-gray-200'
-                  }`}
-                >
-                  <h3 className="font-bold text-gray-900 text-lg">{feature.name}</h3>
-                </button>
-              ))}
+            {/* Feature List - Redesigned Sidebar */}
+            <div className="md:col-span-4">
+              <div className="sticky top-24 space-y-3">
+                {/* Sidebar Header - Dunkelste Grautöne (slate-800/900) */}
+                <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 mb-4 shadow-xl border border-slate-700/50">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-slate-700/60 backdrop-blur-xl rounded-xl flex items-center justify-center border border-slate-600/40 shadow-lg">
+                      <svg className="w-5 h-5 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-50 text-lg">Alle Features</h3>
+                      <p className="text-slate-300 text-sm">{currentCategory?.features.length} Funktionen</p>
+                    </div>
+                  </div>
+                  <div className="h-px bg-gradient-to-r from-transparent via-slate-500 to-transparent"></div>
+                </div>
+
+                {/* Feature Items */}
+                {currentCategory?.features.map((feature, index) => (
+                  <button
+                    key={feature.id}
+                    onClick={() => setActiveFeature(feature.id)}
+                    className={`group w-full text-left rounded-2xl transition-all duration-300 transform hover:scale-[1.02] ${
+                      activeFeature === feature.id
+                        ? 'bg-gradient-to-br from-slate-700 to-slate-800 shadow-2xl border border-slate-600/50'
+                        : 'bg-gradient-to-br from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 shadow-md hover:shadow-xl border border-gray-200/80'
+                    }`}
+                  >
+                    <div className="p-5">
+                      <div className="flex items-start gap-4">
+                        {/* Number Badge - Mittlere Grautöne */}
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold transition-all ${
+                          activeFeature === feature.id
+                            ? 'bg-slate-600/60 text-slate-100 border border-slate-500/40 shadow-md'
+                            : 'bg-gray-200 text-gray-700 group-hover:bg-gray-300 border border-gray-300'
+                        }`}>
+                          {(index + 1).toString().padStart(2, '0')}
+                        </div>
+                        
+                        {/* Feature Name */}
+                        <div className="flex-1 min-w-0">
+                          <h3 className={`font-bold text-lg mb-1 transition-colors ${
+                            activeFeature === feature.id
+                              ? 'text-slate-50'
+                              : 'text-gray-900 group-hover:text-gray-950'
+                          }`}>
+                            {feature.name}
+                          </h3>
+                          
+                          {/* Active Indicator - Hellere slate Töne */}
+                          {activeFeature === feature.id && (
+                            <div className="flex items-center gap-2 mt-2">
+                              <div className="h-1 flex-1 bg-gradient-to-r from-slate-500 via-slate-400 to-transparent rounded-full"></div>
+                              <span className="text-xs text-slate-300 font-semibold">Aktiv</span>
+                            </div>
+                          )}
+                          
+                          {/* Hover Arrow - Dunkle gray Töne */}
+                          {activeFeature !== feature.id && (
+                            <div className="opacity-0 group-hover:opacity-100 transition-opacity mt-2">
+                              <span className="text-xs text-gray-600 font-semibold flex items-center gap-1">
+                                Mehr erfahren
+                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Feature Details */}
-            <div className="md:col-span-8 bg-white rounded-xl shadow-xl p-8">
+            <div className="md:col-span-8">
               {currentFeature && (
                 <div className="space-y-6">
-                  <div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                      {currentFeature.name}
-                    </h2>
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                      {currentFeature.description}
-                    </p>
+                  {/* Main Feature Card */}
+                  <div className="bg-gradient-to-br from-slate-50 to-gray-100 rounded-3xl shadow-2xl p-8 md:p-12 border border-slate-200/60">
+                    <div className="mb-8">
+                      <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 leading-tight">
+                        {currentFeature.name}
+                      </h2>
+                      <p className="text-xl text-slate-600 leading-relaxed">
+                        {currentFeature.description}
+                      </p>
+                    </div>
                   </div>
                   
-                  {/* Feature Description Box */}
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-8 border-2 border-blue-200">
-                    <div className="max-w-2xl">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="flex-shrink-0 w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center">
-                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                          </svg>
+                  {/* Feature Description Box - Elegant Gray Design */}
+                  <div className="relative overflow-hidden bg-gradient-to-br from-slate-800 via-slate-900 to-gray-900 rounded-3xl shadow-2xl">
+                    {/* Subtle Glow Effects */}
+                    <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-slate-600/10 rounded-full blur-[120px]"></div>
+                    <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-slate-500/10 rounded-full blur-[120px]"></div>
+                    
+                    <div className="relative p-8 md:p-12">
+                      <div className="flex items-start gap-6">
+                        <div className="flex-shrink-0">
+                          <div className="w-14 h-14 bg-slate-700/40 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-slate-600/30 shadow-lg">
+                            <svg className="w-7 h-7 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        <div className="flex-1">
+                          <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center gap-3">
                             So funktioniert's
+                            <span className="inline-flex items-center px-4 py-1.5 bg-slate-700/40 backdrop-blur-xl border border-slate-600/40 rounded-full text-sm font-semibold text-slate-300 shadow-lg">
+                              Details
+                            </span>
                           </h3>
-                          <p className="text-gray-700 leading-relaxed">
-                            {currentFeature.detailedInfo || currentFeature.description}
-                          </p>
+                          <div className="prose prose-invert prose-lg max-w-none">
+                            <p className="text-slate-200 leading-relaxed text-lg whitespace-pre-line">
+                              {currentFeature.detailedInfo || currentFeature.description}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Additional Tips Section - Only show if detailedInfo exists */}
+                  {/* Additional Tips Section - Elegant Gray */}
                   {'detailedInfo' in currentFeature && currentFeature.detailedInfo && (
-                    <div className="bg-white rounded-lg border border-gray-200 p-6">
-                      <div className="flex items-start gap-3">
+                    <div className="bg-gradient-to-br from-slate-100 to-gray-100 rounded-3xl border border-slate-300/50 p-8 shadow-xl">
+                      <div className="flex items-start gap-5">
                         <div className="flex-shrink-0">
-                          <svg className="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
+                          <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-slate-700 rounded-2xl flex items-center justify-center shadow-lg">
+                            <svg className="w-6 h-6 text-slate-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="font-bold text-gray-900 mb-2">Gut zu wissen</h4>
-                          <p className="text-gray-600 text-sm leading-relaxed">
+                        <div className="flex-1">
+                          <h4 className="font-bold text-slate-900 mb-3 text-xl">Gut zu wissen</h4>
+                          <p className="text-slate-700 leading-relaxed text-lg">
                             Diese Funktion arbeitet automatisch im Hintergrund und erfordert keine zusätzliche Einrichtung. 
                             Alle Daten werden DSGVO-konform auf deutschen Servern gespeichert.
                           </p>
@@ -580,74 +687,102 @@ export default function FeaturesPage() {
           </div>
         </div>
 
-        {/* Demo Request Section - Clean Blue */}
+        {/* Demo Request Section - Modern Redesign */}
         <div className="relative mt-32 mb-20 overflow-hidden">
-          {/* Simple clean blue background */}
-          <div className="absolute inset-0 bg-blue-900"></div>
+          {/* Gradient Background with Mesh Pattern */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:44px_44px]"></div>
+          
+          {/* Subtle Blur Effects */}
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-[120px]"></div>
+            <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-600 rounded-full blur-[120px]"></div>
+          </div>
 
-          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
             <div className="text-center">
-              {/* Big Logo */}
-              <div className="mb-10">
+              {/* Logo with Glow Effect */}
+              <div className="mb-12 relative">
+                <div className="absolute inset-0 bg-cyan-400/20 blur-3xl rounded-full"></div>
                 <Image 
                   src="/843B6B8E-CED8-4FF8-8C63-B354140A7BC5e5e1f940b1a8d4df34c43ec444a293f3116e09c2a98dcecd8e8882d3099b7c2d.png" 
                   alt="Taskey Logo" 
-                  width={192}
-                  height={192}
-                  className="h-48 w-auto mx-auto opacity-90"
-                  sizes="192px"
-                  quality={75}
+                  width={160}
+                  height={160}
+                  className="h-40 w-auto mx-auto relative z-10"
+                  sizes="160px"
+                  quality={90}
                   loading="lazy"
                 />
               </div>
               
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 text-white px-4 py-2 font-bold text-sm mb-6">
+              {/* Premium Badge */}
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-sm border border-cyan-400/30 text-cyan-300 px-6 py-2.5 rounded-full text-sm font-bold mb-8 shadow-lg">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
                 14 TAGE KOSTENLOS TESTEN
               </div>
 
               {/* Main Headline */}
               <h2 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
                 Bereit für die
-                <span className="block text-cyan-400">
+                <span className="block bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                   Zukunft?
                 </span>
               </h2>
 
-              <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
                 Erleben Sie Taskey live in Aktion! Unsere Experten zeigen Ihnen persönlich, 
-                wie Sie <span className="text-cyan-400 font-bold">30-40% Zeit sparen</span> und Ihren Betrieb auf das nächste Level bringen.
+                wie Sie <span className="text-cyan-400 font-bold">30-40% Zeit sparen</span> und Ihren Betrieb digitalisieren.
               </p>
 
-              {/* Features Grid */}
-              <div className="grid md:grid-cols-3 gap-6 mb-10 max-w-4xl mx-auto">
+              {/* Features Grid - New Design */}
+              <div className="grid md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
                 {[
-                  { text: "15-Min Demo", subtext: "Schnell & kompakt" },
-                  { text: "Maßgeschneidert", subtext: "Für Ihren Betrieb" },
-                  { text: "Sofort starten", subtext: "Ohne Verpflichtung" }
+                  { 
+                    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+                    text: "15-Min Demo", 
+                    subtext: "Schnell & kompakt" 
+                  },
+                  { 
+                    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>,
+                    text: "Maßgeschneidert", 
+                    subtext: "Für Ihren Betrieb" 
+                  },
+                  { 
+                    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+                    text: "Sofort starten", 
+                    subtext: "Ohne Verpflichtung" 
+                  }
                 ].map((feature, index) => (
-                  <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all hover:scale-105">
-                    <div className="text-white font-bold text-lg">{feature.text}</div>
-                    <div className="text-blue-200 text-sm">{feature.subtext}</div>
+                  <div key={index} className="group relative bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 hover:border-cyan-400/30 transition-all hover:scale-105">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="relative z-10">
+                      <div className="text-cyan-400 mb-3 flex justify-center">{feature.icon}</div>
+                      <div className="text-white font-bold text-lg mb-1">{feature.text}</div>
+                      <div className="text-gray-400 text-sm">{feature.subtext}</div>
+                    </div>
                   </div>
                 ))}
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+              {/* CTA Buttons - Improved */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
                 <button 
                   onClick={() => setDemoModalOpen(true)}
-                  className="group relative inline-flex items-center gap-3 bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-black text-lg px-10 py-5 rounded-full transition-all hover:scale-110 hover:shadow-2xl shadow-xl"
+                  className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-black text-lg px-10 py-5 rounded-2xl transition-all hover:scale-105 hover:shadow-2xl shadow-xl overflow-hidden"
                 >
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                   <span className="relative z-10">Jetzt Demo buchen</span>
-                  <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </button>
 
                 <a 
                   href="tel:+4915168488999" 
-                  className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-bold text-lg px-10 py-5 rounded-full border-2 border-white/30 transition-all hover:scale-105"
+                  className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-bold text-lg px-10 py-5 rounded-2xl border border-white/20 hover:border-white/40 transition-all hover:scale-105"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -656,25 +791,25 @@ export default function FeaturesPage() {
                 </a>
               </div>
 
-              {/* Trust indicators */}
-              <div className="flex flex-wrap justify-center items-center gap-6 text-blue-200 text-sm">
-                <div className="flex items-center gap-2">
+              {/* Trust indicators - New Style */}
+              <div className="flex flex-wrap justify-center items-center gap-8 text-gray-300 text-sm">
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
                   <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  Keine Kreditkarte nötig
+                  <span>Keine Kreditkarte nötig</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
                   <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  14 Tage kostenlos
+                  <span>14 Tage kostenlos</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
                   <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  Jederzeit kündbar
+                  <span>Jederzeit kündbar</span>
                 </div>
               </div>
             </div>
