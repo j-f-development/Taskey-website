@@ -25,12 +25,60 @@ interface Category {
 }
 
 export default function FeaturesPage() {
-  const [activeCategory, setActiveCategory] = useState('kalender');
-  const [activeFeature, setActiveFeature] = useState('terminplanung');
+  const [activeCategory, setActiveCategory] = useState('nfc');
+  const [activeFeature, setActiveFeature] = useState('digitale-anlagenakte');
   const [expandedDetails, setExpandedDetails] = useState<string | null>(null);
   const [demoModalOpen, setDemoModalOpen] = useState(false);
 
   const categories: Category[] = [
+    {
+      id: 'nfc',
+      name: '🔥 NFC-Tags',
+      features: [
+        {
+          id: 'digitale-anlagenakte',
+          name: 'Digitale Anlagenakte',
+          description: 'Kleben. Scannen. Wissen. Jede Maschine, jede Anlage wird smart mit ihrem eigenen digitalen Gedächtnis.',
+          image: '/Unbenanntes_Projekt 3.png',
+          detailedInfo: 'Mit Taskey NFC-Tags wird jede Maschine, jeder Schaltschrank und jede Anlage zum digitalen Informationszentrum. Einfach den wetterfesten Tag aufkleben und mit dem Smartphone scannen – schon hast du Zugriff auf Schaltpläne, Wartungsprotokolle, Fotos, Reparaturhistorie und alle wichtigen Dokumente. Das Wissen bleibt am Objekt, nicht im Kopf deines besten Gesellen. Perfekt für Elektro, SHK, Facility Management und alle Gewerke, die komplexe Anlagen betreuen.',
+        },
+        {
+          id: 'werkzeug-tracking',
+          name: 'Werkzeug & Maschinen-Tracking',
+          description: 'Nie wieder Werkzeug auf der Großbaustelle vergessen. Jeder Scan wird mit GPS-Standort protokolliert.',
+          image: '/Unbenanntes_Projekt 5.png',
+          detailedInfo: 'Wo ist die Rüttelplatte? Wer hat zuletzt die Hilti benutzt? Mit NFC-Tags an deinem Werkzeug und Equipment siehst du auf einen Blick: Welcher Mitarbeiter hat das Gerät gescannt, wann und an welchem Standort. Die Karte zeigt dir den letzten bekannten Aufenthaltsort. Ende der Diskussionen, Ende der Suchaktionen. Besonders wertvoll für Bau, Gala-Bau und alle Betriebe mit verteilten Baustellen.',
+        },
+        {
+          id: 'rechtssicher',
+          name: 'Rechtssicherer Nachweis',
+          description: 'Scan-Zeitstempel belegen: Dein Team war vor Ort und hat geprüft. Perfekt für Versicherung & Haftung.',
+          image: '/Unbenanntes_Projekt 6.png',
+          detailedInfo: 'Jeder NFC-Scan wird mit exaktem Zeitstempel, GPS-Standort und Mitarbeiter-ID protokolliert. Das bedeutet: Du hast einen wasserdichten, rechtssicheren Nachweis, dass dein Team die Anlage geprüft, gewartet oder instand gesetzt hat. Bei Versicherungsfällen, Gewährleistungsansprüchen oder Haftungsfragen kannst du lückenlos belegen: Wir waren da, wir haben unsere Arbeit gemacht. Zusätzlich können Mitarbeiter direkt nach dem Scan Fotos und Notizen hinterlegen – alles wird automatisch mit dem Objekt verknüpft.',
+        },
+        {
+          id: 'wissens-sicherung',
+          name: 'Wissens-Sicherung',
+          description: 'Dein bester Geselle geht in Rente? Das Wissen bleibt am Objekt – nicht in seinem Kopf.',
+          image: '/Unbenanntes_Projekt 3.png',
+          detailedInfo: 'Das größte Risiko im Handwerk ist Wissensverlust. Wenn ein erfahrener Mitarbeiter den Betrieb verlässt, geht oft jahrelanges Know-how mit. Mit Taskey NFC-Tags bleibt das Wissen dort, wo es hingehört: Direkt am Objekt. Schaltpläne, Besonderheiten der Anlage, Notizen zu Herstellerkontakten, Fotos vom Einbau – alles ist per Scan sofort verfügbar. Neue Mitarbeiter oder Subunternehmer können sich in Sekunden einarbeiten. Das macht dich unabhängig von Einzelpersonen und sichert die Qualität deiner Arbeit langfristig.',
+        },
+        {
+          id: 'check-in-system',
+          name: 'Check-In System für Rundgänge',
+          description: 'Perfekt für Facility Management: Protokolliere Kontrollgänge automatisch per NFC-Scan.',
+          image: '/Unbenanntes_Projekt 5.png',
+          detailedInfo: 'Für Facility Manager, Hausmeister und Security-Teams: Platziere NFC-Tags an allen wichtigen Kontrollpunkten (Heizungsraum, Notausgänge, Lüftungsanlagen, etc.). Bei jedem Rundgang scannen die Mitarbeiter die Tags – Taskey protokolliert automatisch: Wer war wann wo? Wurden alle Punkte kontrolliert? Das Resultat: Lückenloser, rechtssicherer Nachweis für Versicherungen und Auftraggeber. Keine vergessenen Checks mehr, keine Papier-Listen, keine Diskussionen.',
+        },
+        {
+          id: 'kundenbindung',
+          name: 'Service-Sticker für Kundenbindung',
+          description: 'Klebe deinen Service-Tag beim Kunden. Er scannt ihn bei Problemen – und kontaktiert direkt dich.',
+          image: '/Unbenanntes_Projekt 6.png',
+          detailedInfo: 'Stell dir vor: Du baust eine Heizung ein und klebst deinen Taskey Service-Tag direkt an die Anlage. Wenn der Kunde Monate später ein Problem hat, scannt er den Tag mit seinem Handy – und landet direkt auf deiner Service-Seite mit Kontaktformular, Notfallnummer und Wartungsinfos. Das Geniale: Der Kunde ruft dich an, nicht den Wettbewerber. Du bindest ihn langfristig an deinen Betrieb, baust Vertrauen auf und sicherst dir Folgeaufträge. Das funktioniert perfekt für SHK, Elektro, Alarmanlagen, Klima-Technik und alle Branchen mit Wartungs- und Service-Geschäft.',
+        },
+      ],
+    },
     {
       id: 'kalender',
       name: 'Kalender',

@@ -640,6 +640,188 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* NFC-Tags Section */}
+      <section className="py-20 bg-gradient-to-br from-cyan-50 via-blue-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 text-cyan-700 px-5 py-2 rounded-full text-sm font-bold mb-6">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+              NEU: TASKEY NFC-TAGS
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+              Das digitale Gedächtnis für deinen Betrieb
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              Kleben. Scannen. Wissen. Gib jeder Maschine, jeder Anlage ihr eigenes digitales Gedächtnis.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Left: Image/Visual */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl p-12 text-center shadow-2xl">
+                <div className="w-40 h-40 mx-auto mb-6 bg-white rounded-3xl flex items-center justify-center shadow-2xl transform hover:scale-105 transition-transform">
+                  <svg className="w-24 h-24 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                  </svg>
+                </div>
+                <div className="text-white text-2xl font-black mb-2">Taskey NFC-Tag</div>
+                <div className="text-cyan-100 text-sm mb-6">Wetterfest • IP67 • 5+ Jahre Lebensdauer</div>
+                
+                <div className="grid grid-cols-2 gap-4 mt-8">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                    <div className="text-3xl font-black text-white mb-1">0,5s</div>
+                    <div className="text-xs text-cyan-100">Scan-Zeit</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                    <div className="text-3xl font-black text-white mb-1">100%</div>
+                    <div className="text-xs text-cyan-100">Made in DE</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Packages */}
+            <div className="space-y-4">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-cyan-200">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <div className="inline-flex items-center gap-2 bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full text-xs font-bold mb-2">
+                      STARTER
+                    </div>
+                    <h3 className="text-2xl font-black text-gray-900">Starter-Pack</h3>
+                    <p className="text-sm text-gray-600">Perfekt zum Ausprobieren</p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-3xl font-black text-gray-900">GRATIS</div>
+                    <div className="text-xs text-gray-500">für Neukunden</div>
+                  </div>
+                </div>
+                <ul className="space-y-2 mb-4">
+                  {['2-3 NFC-Tags', 'Im Willkommensbrief', 'Perfekter Start'].map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                      <svg className="w-4 h-4 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-6 shadow-xl text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-400/20 rounded-full blur-2xl"></div>
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <div className="inline-flex items-center gap-2 bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold mb-2">
+                        EMPFOHLEN
+                      </div>
+                      <h3 className="text-2xl font-black">Pro-Pack</h3>
+                      <p className="text-sm text-blue-100">Für den vollen Betrieb</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-3xl font-black">47€</div>
+                      <div className="text-xs text-blue-200">einmalig</div>
+                    </div>
+                  </div>
+                  <ul className="space-y-2 mb-4">
+                    {['50 NFC-Tags', 'Kostenloser Versand', 'Ersatz-Garantie', 'Video-Onboarding'].map((item, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm">
+                        <svg className="w-4 h-4 text-cyan-300" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="bg-white/10 rounded-xl p-3 text-xs text-blue-100">
+                    💡 <strong>Bonus:</strong> Gemeinsames Setup der ersten 5 Objekte per Video-Call
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <div className="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-bold mb-2">
+                      ENTERPRISE
+                    </div>
+                    <h3 className="text-2xl font-black text-gray-900">Custom</h3>
+                    <p className="text-sm text-gray-600">Individuelle Mengen</p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-3xl font-black text-gray-900">Auf Anfrage</div>
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  {['100+ Tags', 'Volume-Pricing', 'White-Label möglich'].map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                      <svg className="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Use Cases */}
+          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100">
+            <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-8 text-center">
+              Perfekt für diese Anwendungen
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+                  title: 'Elektro & SHK',
+                  desc: 'Digitale Anlagenakte direkt am Kessel/Verteiler'
+                },
+                {
+                  icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
+                  title: 'Facility Management',
+                  desc: 'Rechtssicherer Nachweis der Kontrollgänge'
+                },
+                {
+                  icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
+                  title: 'Bau & Gala-Bau',
+                  desc: 'Werkzeug-Tracking auf Großbaustellen'
+                },
+              ].map((useCase, i) => (
+                <div key={i} className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-100">
+                  <div className="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center text-cyan-600 mb-4">
+                    {useCase.icon}
+                  </div>
+                  <h4 className="text-lg font-bold text-gray-900 mb-2">{useCase.title}</h4>
+                  <p className="text-sm text-gray-600">{useCase.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-12">
+            <a
+              href="/features#nfc-tags"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold px-10 py-5 rounded-xl hover:scale-105 transition-all shadow-xl text-lg"
+            >
+              Alle Details zu NFC-Tags
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <p className="text-gray-500 text-sm mt-4">
+              ✓ Kostenlose Starter-Tags  •  ✓ Ersatz-Garantie  •  ✓ Made in Germany
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Trust Bar */}
       <section className="py-12 bg-gray-50 border-y border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -718,11 +900,13 @@ export default function PricingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
+              '🔥 NFC-Tag Support',
               'GPS- & Live-Tracking',
               'Start/Stop, QR & NFC',
               'Zeit‑, Pausen‑ & Fahrterfassung',
               'Live‑Map & Mitarbeiter‑Roadmap',
               'Aufträge, Projekte, Fotos & Dokumente',
+              'Digitale Anlagenakten',
               'Abschlussberichte (PDF + Signatur)',
               'Abwesenheiten & Planung',
               'Dashboards & Auswertungen',

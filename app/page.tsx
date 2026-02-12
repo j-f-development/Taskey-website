@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import NFCSection from "@/components/home/NFCSection";
 import FeaturePreview from "@/components/home/FeaturePreview";
 import Testimonials from "@/components/home/Testimonials";
 import IOSAppSection from "@/components/home/iOSAppSection";
@@ -75,6 +76,7 @@ export default function Home() {
       />
       <main>
         <Hero />
+        <NFCSection />
         <FeaturePreview />
         {/* <Testimonials /> */}
         <IOSAppSection />
