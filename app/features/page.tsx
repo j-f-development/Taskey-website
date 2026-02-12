@@ -341,7 +341,7 @@ export default function FeaturesPage() {
           <div className="text-center mb-12">
             <div className="mb-8">
               <Image 
-                src="/logoblue-opt.jpg" 
+                src="/logoblue.png" 
                 alt="Taskey Logo" 
                 width={144}
                 height={144}
@@ -516,7 +516,7 @@ export default function FeaturesPage() {
               {/* Big Logo */}
               <div className="mb-10">
                 <Image 
-                  src="/843B6B8E-CED8-4FF8-8C63-B354140A7BC5e5e1f940b1a8d4df34c43ec444a293f3116e09c2a98dcecd8e8882d3099b7c2d-opt.jpg" 
+                  src="/843B6B8E-CED8-4FF8-8C63-B354140A7BC5e5e1f940b1a8d4df34c43ec444a293f3116e09c2a98dcecd8e8882d3099b7c2d.png" 
                   alt="Taskey Logo" 
                   width={192}
                   height={192}
