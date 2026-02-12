@@ -658,120 +658,129 @@ export default function PricingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {/* Left: Image/Visual */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl p-12 text-center shadow-2xl">
-                <div className="w-40 h-40 mx-auto mb-6 bg-white rounded-3xl flex items-center justify-center shadow-2xl transform hover:scale-105 transition-transform">
-                  <svg className="w-24 h-24 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                  </svg>
-                </div>
-                <div className="text-white text-2xl font-black mb-2">Taskey NFC-Tag</div>
-                <div className="text-cyan-100 text-sm mb-6">Wetterfest • IP67 • 5+ Jahre Lebensdauer</div>
-                
-                <div className="grid grid-cols-2 gap-4 mt-8">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                    <div className="text-3xl font-black text-white mb-1">0,5s</div>
-                    <div className="text-xs text-cyan-100">Scan-Zeit</div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                    <div className="text-3xl font-black text-white mb-1">100%</div>
-                    <div className="text-xs text-cyan-100">Made in DE</div>
-                  </div>
-                </div>
-              </div>
+          {/* Grid: PNG left, Pricing Cards right */}
+          <div className="grid md:grid-cols-[400px_1fr] gap-12 items-center mb-12">
+            {/* Left: Visual */}
+            <div className="flex items-center justify-center">
+              <Image 
+                src="/D51DAA1C-8E91-4647-BAFA-FFC71E88FA2B.png"
+                alt="Taskey NFC Tag"
+                width={400}
+                height={400}
+                className="object-contain rounded-3xl shadow-2xl"
+                loading="lazy"
+              />
             </div>
 
-            {/* Right: Packages */}
-            <div className="space-y-4">
-              <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-cyan-200">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <div className="inline-flex items-center gap-2 bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full text-xs font-bold mb-2">
-                      STARTER
-                    </div>
-                    <h3 className="text-2xl font-black text-gray-900">Starter-Pack</h3>
-                    <p className="text-sm text-gray-600">Perfekt zum Ausprobieren</p>
+            {/* Right: Pricing Cards */}
+            <div className="grid md:grid-cols-3 gap-6">
+              {/* Starter Kit */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-200 hover:border-cyan-300 transition-all">
+                <div className="text-center mb-4">
+                  <div className="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-bold mb-3">
+                    STARTER KIT
                   </div>
-                  <div className="text-right">
-                    <div className="text-3xl font-black text-gray-900">GRATIS</div>
-                    <div className="text-xs text-gray-500">für Neukunden</div>
-                  </div>
+                  <div className="text-4xl font-black text-gray-900 mb-1">10</div>
+                  <div className="text-sm text-gray-600 mb-4">NFC-Tags</div>
                 </div>
-                <ul className="space-y-2 mb-4">
-                  {['2-3 NFC-Tags', 'Im Willkommensbrief', 'Perfekter Start'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
-                      <svg className="w-4 h-4 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex justify-between items-baseline py-4">
+                    <span className="text-lg font-bold text-gray-900">Ihr Preis</span>
+                    <span className="text-4xl font-black text-blue-900">9.00€</span>
+                  </div>
+                  <p className="text-sm text-gray-600">Inkl. Versand • Lieferung in 2-3 Tagen</p>
+                </div>
+                
+                <button
+                  onClick={() => setDemoModalOpen(true)}
+                  className="w-full py-3 rounded-xl font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 transition-all text-sm"
+                >
+                  Jetzt bestellen
+                </button>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-6 shadow-xl text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-400/20 rounded-full blur-2xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <div className="inline-flex items-center gap-2 bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold mb-2">
-                        EMPFOHLEN
-                      </div>
-                      <h3 className="text-2xl font-black">Pro-Pack</h3>
-                      <p className="text-sm text-blue-100">Für den vollen Betrieb</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-black">47€</div>
-                      <div className="text-xs text-blue-200">einmalig</div>
-                    </div>
+              {/* Pro - EMPFOHLEN */}
+              <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-6 shadow-xl text-white transform scale-105 relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <div className="bg-cyan-400 text-gray-900 px-4 py-1 rounded-full text-xs font-black">
+                    EMPFOHLEN
                   </div>
-                  <ul className="space-y-2 mb-4">
-                    {['50 NFC-Tags', 'Kostenloser Versand', 'Ersatz-Garantie', 'Video-Onboarding'].map((item, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm">
-                        <svg className="w-4 h-4 text-cyan-300" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="bg-white/10 rounded-xl p-3 text-xs text-blue-100">
-                    💡 <strong>Bonus:</strong> Gemeinsames Setup der ersten 5 Objekte per Video-Call
+                </div>
+                
+                <div className="text-center mb-4 mt-2">
+                  <div className="inline-flex items-center gap-2 bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold mb-3">
+                    PRO
                   </div>
+                  <div className="text-4xl font-black mb-1">50</div>
+                  <div className="text-sm text-blue-100 mb-4">NFC-Tags</div>
+                </div>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex justify-between items-baseline py-4">
+                    <span className="text-lg font-bold">Ihr Preis</span>
+                    <span className="text-4xl font-black text-cyan-300">23.00€</span>
+                  </div>
+                  <p className="text-sm text-blue-100">Inkl. Versand • Lieferung in 2-3 Tagen</p>
+                </div>
+                
+                <button
+                  onClick={() => setDemoModalOpen(true)}
+                  className="w-full py-3 rounded-xl font-bold text-blue-900 bg-white hover:bg-gray-50 transition-all text-sm shadow-lg"
+                >
+                  Jetzt bestellen
+                </button>
+                
+                <div className="mt-4 bg-white/10 rounded-xl p-3 text-xs text-center">
+                  💡 Inkl. Video-Onboarding für die ersten 5 Tags
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <div className="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-bold mb-2">
-                      ENTERPRISE
-                    </div>
-                    <h3 className="text-2xl font-black text-gray-900">Custom</h3>
-                    <p className="text-sm text-gray-600">Individuelle Mengen</p>
+              {/* Business */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-200 hover:border-blue-300 transition-all">
+                <div className="text-center mb-4">
+                  <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold mb-3">
+                    BUSINESS
                   </div>
-                  <div className="text-right">
-                    <div className="text-3xl font-black text-gray-900">Auf Anfrage</div>
-                  </div>
+                  <div className="text-4xl font-black text-gray-900 mb-1">150</div>
+                  <div className="text-sm text-gray-600 mb-4">NFC-Tags</div>
                 </div>
-                <ul className="space-y-2">
-                  {['100+ Tags', 'Volume-Pricing', 'White-Label möglich'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
-                      <svg className="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex justify-between items-baseline py-4">
+                    <span className="text-lg font-bold text-gray-900">Ihr Preis</span>
+                    <span className="text-4xl font-black text-blue-900">44.00€</span>
+                  </div>
+                  <p className="text-sm text-gray-600">Inkl. Versand • Lieferung in 2-3 Tagen</p>
+                </div>
+                
+                <button
+                  onClick={() => setDemoModalOpen(true)}
+                  className="w-full py-3 rounded-xl font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 transition-all text-sm"
+                >
+                  Jetzt bestellen
+                </button>
               </div>
             </div>
           </div>
 
+          {/* Info Box */}
+          <div className="mt-8 bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+              <div className="flex items-start gap-4">
+                <svg className="w-6 h-6 text-cyan-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-2">Kostenloser Ersatz bei Beschädigung</h4>
+                  <p className="text-sm text-gray-600">
+                    Wenn ein NFC-Tag abfällt oder kaputtgeht, ersetzen wir ihn kostenlos. Einfach melden und innerhalb von 2-3 Tagen erhältst du einen neuen Tag per Post.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           {/* Use Cases */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100">
+          <div className="mt-16 bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100">
             <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-8 text-center">
               Perfekt für diese Anwendungen
             </h3>
@@ -816,7 +825,7 @@ export default function PricingPage() {
               </svg>
             </a>
             <p className="text-gray-500 text-sm mt-4">
-              ✓ Kostenlose Starter-Tags  •  ✓ Ersatz-Garantie  •  ✓ Made in Germany
+              ✓ Kostenloser Ersatz bei Beschädigung  •  ✓ Lieferung in 2-3 Tagen  •  ✓ Keine Abo-Kosten
             </p>
           </div>
         </div>

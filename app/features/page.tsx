@@ -33,49 +33,56 @@ export default function FeaturesPage() {
   const categories: Category[] = [
     {
       id: 'nfc',
-      name: '🔥 NFC-Tags',
+      name: 'NFC-Tags',
       features: [
         {
           id: 'digitale-anlagenakte',
           name: 'Digitale Anlagenakte',
           description: 'Kleben. Scannen. Wissen. Jede Maschine, jede Anlage wird smart mit ihrem eigenen digitalen Gedächtnis.',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Mit Taskey NFC-Tags wird jede Maschine, jeder Schaltschrank und jede Anlage zum digitalen Informationszentrum. Einfach den wetterfesten Tag aufkleben und mit dem Smartphone scannen – schon hast du Zugriff auf Schaltpläne, Wartungsprotokolle, Fotos, Reparaturhistorie und alle wichtigen Dokumente. Das Wissen bleibt am Objekt, nicht im Kopf deines besten Gesellen. Perfekt für Elektro, SHK, Facility Management und alle Gewerke, die komplexe Anlagen betreuen.',
+          detailedInfo: '• Wetterfesten Tag aufkleben und scannen\n• Zugriff auf Schaltpläne, Wartungsprotokolle, Fotos\n• Komplette Reparaturhistorie am Objekt\n• Wissen bleibt am Objekt, nicht im Kopf\n• Perfekt für Elektro, SHK, Facility Management',
         },
         {
           id: 'werkzeug-tracking',
           name: 'Werkzeug & Maschinen-Tracking',
           description: 'Nie wieder Werkzeug auf der Großbaustelle vergessen. Jeder Scan wird mit GPS-Standort protokolliert.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Wo ist die Rüttelplatte? Wer hat zuletzt die Hilti benutzt? Mit NFC-Tags an deinem Werkzeug und Equipment siehst du auf einen Blick: Welcher Mitarbeiter hat das Gerät gescannt, wann und an welchem Standort. Die Karte zeigt dir den letzten bekannten Aufenthaltsort. Ende der Diskussionen, Ende der Suchaktionen. Besonders wertvoll für Bau, Gala-Bau und alle Betriebe mit verteilten Baustellen.',
+          detailedInfo: '• NFC-Tags an Werkzeug und Equipment\n• Wer hat das Gerät gescannt? Wann? Wo?\n• Karte zeigt letzten bekannten Aufenthaltsort\n• Ende der Diskussionen und Suchaktionen\n• Wertvoll für Bau und verteilte Baustellen',
         },
         {
           id: 'rechtssicher',
           name: 'Rechtssicherer Nachweis',
           description: 'Scan-Zeitstempel belegen: Dein Team war vor Ort und hat geprüft. Perfekt für Versicherung & Haftung.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Jeder NFC-Scan wird mit exaktem Zeitstempel, GPS-Standort und Mitarbeiter-ID protokolliert. Das bedeutet: Du hast einen wasserdichten, rechtssicheren Nachweis, dass dein Team die Anlage geprüft, gewartet oder instand gesetzt hat. Bei Versicherungsfällen, Gewährleistungsansprüchen oder Haftungsfragen kannst du lückenlos belegen: Wir waren da, wir haben unsere Arbeit gemacht. Zusätzlich können Mitarbeiter direkt nach dem Scan Fotos und Notizen hinterlegen – alles wird automatisch mit dem Objekt verknüpft.',
+          detailedInfo: '• Exakter Zeitstempel + GPS-Standort + Mitarbeiter-ID\n• Wasserdichter, rechtssicherer Nachweis\n• Perfekt für Versicherungsfälle\n• Gewährleistungsansprüche dokumentieren\n• Lückenlose Haftungsdokumentation',
         },
         {
-          id: 'wissens-sicherung',
-          name: 'Wissens-Sicherung',
-          description: 'Dein bester Geselle geht in Rente? Das Wissen bleibt am Objekt – nicht in seinem Kopf.',
+          id: 'materialverwaltung',
+          name: 'Intelligente Materialverwaltung',
+          description: 'Automatische Bestandsüberwachung für Materialien. Bekomme eine Benachrichtigung, wenn Nachschub nötig ist.',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Das größte Risiko im Handwerk ist Wissensverlust. Wenn ein erfahrener Mitarbeiter den Betrieb verlässt, geht oft jahrelanges Know-how mit. Mit Taskey NFC-Tags bleibt das Wissen dort, wo es hingehört: Direkt am Objekt. Schaltpläne, Besonderheiten der Anlage, Notizen zu Herstellerkontakten, Fotos vom Einbau – alles ist per Scan sofort verfügbar. Neue Mitarbeiter oder Subunternehmer können sich in Sekunden einarbeiten. Das macht dich unabhängig von Einzelpersonen und sichert die Qualität deiner Arbeit langfristig.',
+          detailedInfo: '• NFC-Tags an Materiallager (Profile, Kabel, Rohre)\n• Material scannen und Menge eingeben\n• Automatische Bestandsüberwachung\n• Benachrichtigung bei knappem Bestand\n• Keine Notfall-Bestellungen zu überteuerten Preisen',
+        },
+        {
+          id: 'wartungsmanagement',
+          name: 'Automatisches Wartungsmanagement',
+          description: 'Jede Maschinenbenutzung wird erfasst. Bei intensiver Nutzung erhältst du automatisch Service-Hinweise.',
+          image: '/Unbenanntes_Projekt 5.png',
+          detailedInfo: '• Bei Benutzung NFC-Tag scannen\n• Automatische Zählung der Einsätze\n• Benachrichtigung bei häufiger Nutzung\n• Vermeidung teurer Ausfälle\n• Verlängerte Lebensdauer der Geräte',
         },
         {
           id: 'check-in-system',
           name: 'Check-In System für Rundgänge',
           description: 'Perfekt für Facility Management: Protokolliere Kontrollgänge automatisch per NFC-Scan.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Für Facility Manager, Hausmeister und Security-Teams: Platziere NFC-Tags an allen wichtigen Kontrollpunkten (Heizungsraum, Notausgänge, Lüftungsanlagen, etc.). Bei jedem Rundgang scannen die Mitarbeiter die Tags – Taskey protokolliert automatisch: Wer war wann wo? Wurden alle Punkte kontrolliert? Das Resultat: Lückenloser, rechtssicherer Nachweis für Versicherungen und Auftraggeber. Keine vergessenen Checks mehr, keine Papier-Listen, keine Diskussionen.',
+          detailedInfo: '• NFC-Tags an wichtigen Kontrollpunkten\n• Automatisches Protokoll: Wer, wann, wo?\n• Lückenloser, rechtssicherer Nachweis\n• Keine vergessenen Checks mehr\n• Keine Papier-Listen, keine Diskussionen',
         },
         {
           id: 'kundenbindung',
           name: 'Service-Sticker für Kundenbindung',
           description: 'Klebe deinen Service-Tag beim Kunden. Er scannt ihn bei Problemen – und kontaktiert direkt dich.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Stell dir vor: Du baust eine Heizung ein und klebst deinen Taskey Service-Tag direkt an die Anlage. Wenn der Kunde Monate später ein Problem hat, scannt er den Tag mit seinem Handy – und landet direkt auf deiner Service-Seite mit Kontaktformular, Notfallnummer und Wartungsinfos. Das Geniale: Der Kunde ruft dich an, nicht den Wettbewerber. Du bindest ihn langfristig an deinen Betrieb, baust Vertrauen auf und sicherst dir Folgeaufträge. Das funktioniert perfekt für SHK, Elektro, Alarmanlagen, Klima-Technik und alle Branchen mit Wartungs- und Service-Geschäft.',
+          detailedInfo: '• Service-Tag direkt an der Anlage platzieren\n• Kunde scannt bei Problemen den Tag\n• Direkt zur Service-Seite mit Kontaktformular\n• Kunde ruft dich an, nicht den Wettbewerber\n• Langfristige Kundenbindung und Folgeaufträge',
         },
       ],
     },
@@ -88,21 +95,21 @@ export default function FeaturesPage() {
           name: 'Projektplanung',
           description: 'Planen Sie Ihre Projekte effizient im Kalender. Übersicht über alle Projektphasen und Meilensteine.',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Mit Taskey behalten Teams jederzeit den Überblick über laufende Projekte. Der Chef legt Projekte mit Start- und Enddatum an, und Mitarbeiter sehen sofort, wann welche Aufgaben anstehen. Ein Klick auf ein Projekt öffnet die detaillierte Projektseite mit allen Informationen, Bildern, Aufgaben und Zeitplänen – klar strukturiert und jederzeit abrufbar.',
+          detailedInfo: '• Projekte mit Start- und Enddatum anlegen\n• Mitarbeiter sehen sofort anstehende Aufgaben\n• Detaillierte Projektseite mit allen Infos\n• Bilder, Aufgaben und Zeitpläne\n• Klar strukturiert und jederzeit abrufbar',
         },
         {
           id: 'terminplanung',
           name: 'Terminplanung',
           description: 'Verwalten Sie alle Termine zentral. Automatische Synchronisation mit allen Geräten.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Alle wichtigen Termine sind zentral an einem Ort: Urlaube, Krankmeldungen, Abwesenheiten und interne Ereignisse werden übersichtlich dargestellt. Chefs sehen sofort, wer verfügbar ist, und Mitarbeiter wissen genau, welche Tage frei oder belegt sind – ohne Telefonkette oder Missverständnisse.',
+          detailedInfo: '• Zentrale Übersicht aller Termine\n• Urlaube, Krankmeldungen, Abwesenheiten\n• Chef sieht sofort, wer verfügbar ist\n• Mitarbeiter wissen genau, welche Tage belegt sind\n• Keine Telefonkette oder Missverständnisse',
         },
         {
           id: 'erinnerungen',
           name: 'Automatische Erinnerungen',
           description: 'Erhalten Sie rechtzeitig Benachrichtigungen zu anstehenden Terminen. Immer pünktlich beim Kunden.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Taskey erinnert Mitarbeiter und Chefs automatisch an wichtige Termine, Aufgaben oder Fristen. Keine verpassten Deadlines mehr – alles läuft zuverlässig im Hintergrund, damit das Team sich auf die Arbeit konzentrieren kann.',
+          detailedInfo: '• Automatische Erinnerung an Termine und Aufgaben\n• Benachrichtigung für Mitarbeiter und Chefs\n• Keine verpassten Deadlines mehr\n• Läuft zuverlässig im Hintergrund\n• Team konzentriert sich auf die Arbeit',
         },
       ],
     },
@@ -115,28 +122,28 @@ export default function FeaturesPage() {
           name: 'Gesamtkarte',
           description: 'Überblick über alle Standorte und Baustellen auf einer Karte. Behalten Sie den Überblick.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Die Live-Map zeigt dem Chef alle aktiven Mitarbeiter und ihre aktuellen Aufträge auf einen Blick. So erkennt man sofort, welche Projekte gerade laufen und wo Unterstützung gebraucht wird. Mit einem Klick öffnet sich die Detailansicht eines Mitarbeiters inklusive Auftragsinformationen – klar, transparent und ideal für die tägliche Einsatzplanung.',
+          detailedInfo: '• Live-Map zeigt alle aktiven Mitarbeiter\n• Aktuelle Aufträge auf einen Blick\n• Sofort sehen, wo Unterstützung gebraucht wird\n• Detailansicht mit Auftragsinformationen\n• Ideal für tägliche Einsatzplanung',
         },
         {
           id: 'mitarbeiter-roadmap',
           name: 'Mitarbeiter-Roadmap',
           description: 'Sehen Sie die Routen Ihrer Mitarbeiter in Echtzeit. Optimale Koordination.',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Am Ende eines Arbeitstages erstellt Taskey automatisch eine übersichtliche Roadmap des Tagesverlaufs: Welche Einsatzorte wurden besucht? In welcher Reihenfolge? Wann wurde Feierabend gemacht? Diese Darstellung hilft, Arbeitsabläufe nachzuvollziehen – ohne zusätzlichen Aufwand und ohne Eingreifen des Mitarbeiters.',
+          detailedInfo: '• Automatische Roadmap am Ende des Tages\n• Welche Einsatzorte wurden besucht?\n• Reihenfolge und Zeiten dokumentiert\n• Arbeitsabläufe nachvollziehen\n• Ohne manuellen Aufwand',
         },
         {
           id: 'routenplanung',
           name: 'Routenplanung',
           description: 'Planen Sie effiziente Routen für Ihre Mitarbeiter. Sparen Sie Zeit und Kosten.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Sobald ein Mitarbeiter einen Auftrag annimmt, erhält er automatisch eine empfohlene Route dorthin. Damit finden alle schnell, einfach und ohne Umwege zum Einsatzort. Das spart Zeit, senkt Stress und sorgt für reibungslose Abläufe im Team.',
+          detailedInfo: '• Automatische empfohlene Route zum Einsatzort\n• Schnell und ohne Umwege\n• Zeit- und Kostenersparnis\n• Weniger Stress für Mitarbeiter\n• Reibungslose Abläufe im Team',
         },
         {
           id: 'standortdokumentation',
           name: 'Automatische Live-Standortdokumentation',
           description: 'Automatische Dokumentation aller Standorte. Lückenlose Nachverfolgung für Ihre Buchhaltung.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Taskey aktualisiert den Einsatzstandort während der Arbeitszeit automatisch alle 30 Sekunden, um Aufträge sauber und zuverlässig nachvollziehbar zu machen. Wichtig: Sobald ein Mitarbeiter auf „Pause" klickt, stoppt die Standortaktualisierung gemeinsam mit der Arbeitszeit. So bleibt die Dokumentation fair, transparent und im Einklang mit den Bedürfnissen des Teams.',
+          detailedInfo: '• Aktualisierung alle 30 Sekunden während Arbeitszeit\n• Saubere und zuverlässige Nachverfolgung\n• Bei Pause stoppt die Standortaktualisierung\n• Faire und transparente Dokumentation\n• Im Einklang mit Team-Bedürfnissen',
         },
       ],
     },
@@ -149,21 +156,21 @@ export default function FeaturesPage() {
           name: 'Informationen',
           description: 'Alle Mitarbeiterdaten zentral verwaltet. Qualifikationen, Kontakte und Verfügbarkeiten.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Taskey bündelt alle wichtigen Mitarbeiterdaten an einem zentralen Ort: Startdatum, Kontaktdaten, Position, Verantwortlichkeiten und vieles mehr. Der Chef erhält zudem eine transparente Effizienz-Auswertung – basierend auf Arbeitszeiten, erledigten Aufgaben und dem wirtschaftlichen Beitrag im Verhältnis zum Lohn. So entsteht ein faires, objektives Bild der Teamleistung.',
+          detailedInfo: '• Zentrale Verwaltung aller Mitarbeiterdaten\n• Startdatum, Kontakte, Position, Verantwortlichkeiten\n• Transparente Effizienz-Auswertung\n• Arbeitszeiten und wirtschaftlicher Beitrag\n• Faires, objektives Bild der Teamleistung',
         },
         {
           id: 'aufgabenmanagement',
           name: 'Aufgabenmanagement',
           description: 'Weisen Sie Aufgaben zu und verfolgen Sie den Fortschritt. Klare Kommunikation im Team.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Aufgaben lassen sich mit wenigen Klicks bestimmten Mitarbeitern oder ganzen Teams zuordnen. Für Kolonnen kann der Chef oder die Bürofachkraft eine Führungsrolle festlegen, damit nicht jeder Mitarbeiter alle Details einzeln eingeben muss. Das sorgt für klare Strukturen, weniger Aufwand und bessere Organisation im Alltag.',
+          detailedInfo: '• Aufgaben Mitarbeitern oder Teams zuordnen\n• Führungsrolle für Kolonnen festlegen\n• Nicht jeder muss alle Details eingeben\n• Klare Strukturen und weniger Aufwand\n• Bessere Organisation im Alltag',
         },
         {
           id: 'verwaltung',
           name: 'Einfach Anlegen / Löschen',
           description: 'Mitarbeiter schnell hinzufügen oder entfernen. Intuitive Verwaltung in wenigen Klicks.',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Neue Mitarbeiter können in Sekunden angelegt werden – ebenso schnell lassen sich Daten bearbeiten oder Accounts entfernen. Alles bleibt übersichtlich, flexibel und jederzeit aktuell, damit das Team ohne Verwaltungschaos arbeiten kann.',
+          detailedInfo: '• Neue Mitarbeiter in Sekunden anlegen\n• Daten bearbeiten oder Accounts entfernen\n• Übersichtlich und flexibel\n• Jederzeit aktuell\n• Kein Verwaltungschaos',
         },
       ],
     },
@@ -176,42 +183,42 @@ export default function FeaturesPage() {
           name: 'Zeitspanne',
           description: 'Definieren Sie Start und Ende Ihrer Projekte. Behalten Sie Deadlines im Blick.',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Taskey ermöglicht es, jedem Projekt eine geplante Zeitspanne zuzuweisen – zum Beispiel 100 Stunden für eine komplette Sanierung. Während das Projekt läuft, zeigt das System automatisch an, ob der Zeitrahmen realistisch eingehalten wird oder ob das Team nachjustieren muss. Das sorgt für transparente Planung und optimale Ressourcenverteilung.',
+          detailedInfo: '• Geplante Zeitspanne zuweisen (z.B. 100 Stunden)\n• System zeigt automatisch Zeitrahmen-Status\n• Erkennen ob Nachjustierung nötig ist\n• Transparente Planung\n• Optimale Ressourcenverteilung',
         },
         {
           id: 'fortschritt',
           name: 'Fortschritt',
           description: 'Verfolgen Sie den Projektfortschritt in Echtzeit. Visuelle Darstellung des Status.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Alle geleisteten Stunden werden automatisch gesammelt und übersichtlich dargestellt. Chefs sehen jederzeit, wie viel bereits geschafft wurde und wie nah das Projekt am Abschluss ist. So bleibt der Fortschritt messbar, nachvollziehbar und einfach steuerbar.',
+          detailedInfo: '• Automatische Sammlung geleisteter Stunden\n• Übersichtliche Darstellung\n• Jederzeit sehen, wie viel geschafft wurde\n• Nähe zum Projektabschluss erkennen\n• Messbar, nachvollziehbar, steuerbar',
         },
         {
           id: 'buchhaltungsmanager',
           name: 'Buchhaltungsmanager',
           description: 'Alle projektbezogenen Kosten und Einnahmen im Überblick. Perfekt für die Abrechnung.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Umsatz, Budget, Kosten nach Kategorien und der aktuelle Gewinn werden visuell und in Echtzeit gezeigt. Sobald Mitarbeiter Belege einscannen, erscheinen sie im Projekt — und können optional automatisch an Systeme wie LexOffice, Sage oder andere Buchhaltungsprogramme übertragen werden. Das spart enorm Zeit und sorgt für eine fehlerfreie Buchhaltung.',
+          detailedInfo: '• Umsatz, Budget, Kosten in Echtzeit\n• Aktueller Gewinn visuell dargestellt\n• Belege erscheinen automatisch im Projekt\n• Optional: Auto-Transfer zu LexOffice, Sage\n• Fehlerfreie Buchhaltung, enorme Zeitersparnis',
         },
         {
           id: 'galerie',
           name: 'Galerie',
           description: 'Dokumentieren Sie Ihr Projekt mit Fotos. Automatische Zuordnung und Archivierung.',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Alle Projektbilder werden in einer eigenen Galerie gespeichert. Mitarbeiter können Bilder bearbeiten, Markierungen setzen oder Bereiche hervorheben, um exakt zu zeigen, was erledigt wurde und was noch offen ist. Ideal für Dokumentation, Nachweise und Kundenkommunikation.',
+          detailedInfo: '• Eigene Galerie für alle Projektbilder\n• Bilder bearbeiten und Markierungen setzen\n• Bereiche hervorheben (erledigt/offen)\n• Ideal für Dokumentation und Nachweise\n• Perfekt für Kundenkommunikation',
         },
         {
           id: 'belege',
           name: 'Belege & Ausgaben',
           description: 'Erfassen Sie alle Belege digital. Keine verlorenen Quittungen mehr.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Gescannte Belege erscheinen sofort im entsprechenden Projekt. Chefs oder Bürokräfte sehen alle Ausgaben klar strukturiert an einem Ort – inklusive Kategorien, Beträgen und Upload-Zeitpunkten. Auf Wunsch werden die Daten direkt in die verknüpfte Buchhaltungssoftware übertragen.',
+          detailedInfo: '• Gescannte Belege sofort im Projekt\n• Alle Ausgaben klar strukturiert\n• Kategorien, Beträge, Upload-Zeitpunkte\n• Optional: Direktübertragung zur Buchhaltung\n• Keine verlorenen Quittungen mehr',
         },
         {
           id: 'auftraege',
           name: 'Aufträge',
           description: 'Verwalten Sie alle Aufträge innerhalb eines Projekts. Strukturiert und übersichtlich.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Jedes Projekt kann mehrere Aufträge enthalten. Ein großes Projekt – wie z. B. die Sanierung eines gesamten Hauses – kann in einzelne Aufgaben aufgeteilt werden, etwa „Steckdosen verlegen". Alle Aufträge sind in einem eigenen Tab sichtbar und lassen sich einzeln planen, bearbeiten und auswerten. Das macht komplexe Projekte übersichtlich und leicht kontrollierbar.',
+          detailedInfo: '• Projekte in mehrere Aufträge aufteilen\n• Z.B. Haussanierung → "Steckdosen verlegen"\n• Alle Aufträge in eigenem Tab sichtbar\n• Einzeln planbar, bearbeitbar, auswertbar\n• Komplexe Projekte leicht kontrollierbar',
         },
       ],
     },
@@ -224,63 +231,63 @@ export default function FeaturesPage() {
           name: 'Informationen',
           description: 'Alle wichtigen Auftragsinformationen auf einen Blick. Kunde, Adresse, Beschreibung.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Jeder Auftrag enthält alle wichtigen Details wie Beschreibung, Materialien, Anforderungen und besondere Hinweise. Alles ist übersichtlich dargestellt, damit Mitarbeiter genau wissen, was zu tun ist – ohne Rückfragen oder Missverständnisse.',
+          detailedInfo: '• Alle wichtigen Details (Beschreibung, Materialien)\n• Anforderungen und besondere Hinweise\n• Übersichtlich dargestellt\n• Mitarbeiter wissen genau, was zu tun ist\n• Keine Rückfragen oder Missverständnisse',
         },
         {
           id: 'mitarbeiter',
           name: 'Mitarbeiter',
           description: 'Weisen Sie Mitarbeiter zu Aufträgen zu. Optimale Ressourcenplanung.',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Im Auftrag sieht der Chef alle beteiligten Mitarbeiter, ihre Arbeitszeiten und die automatisch berechneten Lohnkosten basierend auf der geleisteten Zeit. Das schafft volle Transparenz und hilft, Kosten realistisch einzuschätzen.',
+          detailedInfo: '• Alle beteiligten Mitarbeiter sichtbar\n• Arbeitszeiten pro Mitarbeiter\n• Automatisch berechnete Lohnkosten\n• Volle Transparenz\n• Realistische Kostenschätzung',
         },
         {
           id: 'zeiterfassung',
           name: 'Zeiterfassung',
           description: 'Erfassen Sie Arbeitszeiten direkt am Auftrag. Automatische Zuordnung.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Sobald ein Mitarbeiter den Auftrag startet, beginnt Taskey automatisch mit der Arbeitszeiterfassung – parallel zur Einsatzstandort-Dokumentation. Wichtig: Bei „Pause" wird sowohl die Zeit als auch der Standort sofort gestoppt, damit die Erfassung fair und eindeutig bleibt.',
+          detailedInfo: '• Automatische Arbeitszeiterfassung beim Start\n• Parallel zur Einsatzstandort-Dokumentation\n• Bei "Pause" wird alles gestoppt\n• Faire und eindeutige Erfassung\n• Keine manuelle Nachbearbeitung',
         },
         {
           id: 'besorgungsfahrten',
           name: 'Besorgungsfahrten',
           description: 'Dokumentieren Sie Materialfahrten. Kilometerabrechnung inklusive.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Mitarbeiter können mit einem Klick eine Besorgungsfahrt starten. Der Standort wird weiterhin dokumentiert, aber klar vom eigentlichen Kundeneinsatz getrennt. Der Chef entscheidet später, ob diese Zeit vergütet wird oder nicht – flexibel und transparent.',
+          detailedInfo: '• Besorgungsfahrt mit einem Klick starten\n• Standort wird weiterhin dokumentiert\n• Klar vom Kundeneinsatz getrennt\n• Chef entscheidet über Vergütung\n• Flexibel und transparent',
         },
         {
           id: 'pause',
           name: 'Pause',
           description: 'Erfassen Sie Pausen gesetzeskonform. Automatische Berechnung.',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Mit einem Klick auf „Pause" wird die Arbeitszeit angehalten und die Standortaktualisierung gestoppt. So bleiben Ruhezeiten korrekt erfasst und eindeutig getrennt vom aktiven Auftrag.',
+          detailedInfo: '• Klick auf "Pause" stoppt Arbeitszeit\n• Standortaktualisierung wird gestoppt\n• Ruhezeiten korrekt erfasst\n• Eindeutig vom aktiven Auftrag getrennt\n• Gesetzeskonform dokumentiert',
         },
         {
           id: 'abschluss',
           name: 'Auftrag Beenden + Abschlussbericht',
           description: 'Schließen Sie Aufträge mit einem detaillierten Bericht ab. Professionelle Dokumentation.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Ist der Auftrag erledigt, können Mitarbeiter ihn beenden und einen Abschlussbericht erstellen – schriftlich oder per Sprachfunktion. Der Bericht enthält: Beschreibung der ausgeführten Arbeiten, Zeitaufwand, Einsatzorte, Fotos und digitale Kundensignatur. Alles wird automatisch als PDF erzeugt und steht dem Chef sofort im Dashboard zur Verfügung – inklusive Exportfunktion.',
+          detailedInfo: '• Schriftlich oder per Sprachfunktion erstellen\n• Beschreibung, Zeitaufwand, Einsatzorte\n• Fotos und digitale Kundensignatur\n• Automatisch als PDF erzeugt\n• Sofort im Dashboard mit Exportfunktion',
         },
         {
           id: 'galerie',
           name: 'Galerie',
           description: 'Fotodokumentation des Auftrags. Vorher-Nachher-Bilder für den Kunden.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'In jedem Auftrag gibt es eine eigene Galerie für Bilder. Chefs können Bilder hochladen, markieren und Bereiche hervorheben ("hier fehlen noch Steckdosen"). Mitarbeiter können Fotos hinzufügen und diese direkt in ihren Abschlussbericht einbauen. Das sorgt für saubere Dokumentation und klare Kommunikation.',
+          detailedInfo: '• Eigene Galerie für jeden Auftrag\n• Bilder hochladen und markieren\n• Bereiche hervorheben ("hier fehlt noch...")\n• Direkt in Abschlussbericht einbauen\n• Saubere Dokumentation und Kommunikation',
         },
         {
           id: 'buchhaltungsmanager',
           name: 'Buchhaltungsmanager',
           description: 'Alle Kosten und Belege zum Auftrag. Direkt abrechnungsfertig.',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Wie bei Projekten zeigt Taskey auch für einzelne Aufträge alle finanziellen Daten übersichtlich an: Kosten, Kategorien, Budget, Gewinn und gescannte Belege. Auf Wunsch lassen sich Belege direkt in Buchhaltungsprogramme wie LexOffice, Sage und andere übertragen.',
+          detailedInfo: '• Kosten, Kategorien, Budget, Gewinn\n• Gescannte Belege übersichtlich\n• Optional: Direct-Transfer zu LexOffice, Sage\n• Alle finanziellen Daten auf einen Blick\n• Abrechnungsfertig',
         },
         {
           id: 'roadmap',
           name: 'Mitarbeiter-Roadmap',
           description: 'Sehen Sie die Route zum Auftragsort. GPS-Navigation integriert.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Am Ende des Tages zeigt Taskey eine Roadmap, die den Ablauf des Auftrags dokumentiert: Startpunkt, Zwischenschritte, Einsatzorte und Arbeitsende. Alles klar visualisiert, ohne dass Mitarbeiter irgendetwas manuell eingeben müssen.',
+          detailedInfo: '• Automatische Roadmap am Tagesende\n• Startpunkt, Zwischenschritte, Einsatzorte\n• Arbeitsende dokumentiert\n• Klar visualisiert\n• Keine manuelle Eingabe nötig',
         },
       ],
     },
@@ -293,34 +300,7 @@ export default function FeaturesPage() {
           name: 'Informationen',
           description: 'Alle Kundendaten zentral gespeichert. Kontakte, Adressen und Auftragshistorie.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Taskey speichert alle wichtigen Kundendaten übersichtlich an einem zentralen Ort: Namen, Adressen, Kontaktinformationen sowie individuelle Hinweise zu jedem Kunden. So haben Chefs und Bürokräfte jederzeit schnellen Zugriff auf alle relevanten Informationen – perfekt für klare Kommunikation, saubere Dokumentation und eine reibungslose Projektplanung.',
-        },
-      ],
-    },
-    {
-      id: 'qr-nfc',
-      name: 'QR-Codes/NFC Chips',
-      features: [
-        {
-          id: 'standorte',
-          name: 'Standorte',
-          description: 'Verwalten Sie QR-Codes für verschiedene Standorte. Einfache Zuordnung.',
-          image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'An wichtigen oder häufig genutzten Orten wie der Firmenzentrale, dem Lager oder festen Einsatzpunkten können QR-Codes und NFC-Tags angebracht werden. Mitarbeiter scannen sie beim Start oder Ende ihrer Arbeitszeit, sodass der Check-in und Check-out schnell, zuverlässig und ohne manuelle Eingaben funktioniert.',
-        },
-        {
-          id: 'details',
-          name: 'Details',
-          description: 'Detaillierte Informationen zu jedem QR-Code. Wer hat wann gescannt?',
-          image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Taskey speichert automatisch, wer sich wann an einem Standort ein- oder ausgecheckt hat. Die gesamte Historie bleibt übersichtlich dokumentiert, damit Chefs jederzeit nachvollziehen können, welche Mitarbeiter vor Ort waren und zu welchen Zeiten. Das sorgt für klare Nachweise und eine saubere Einsatzübersicht.',
-        },
-        {
-          id: 'historie',
-          name: 'Historie',
-          description: 'Vollständige Scan-Historie. Lückenlose Dokumentation für Ihre Zeiterfassung.',
-          image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Taskey speichert automatisch, wer sich wann an einem Standort ein- oder ausgecheckt hat. Die gesamte Historie bleibt übersichtlich dokumentiert, damit Chefs jederzeit nachvollziehen können, welche Mitarbeiter vor Ort waren und zu welchen Zeiten. Das sorgt für klare Nachweise und eine saubere Einsatzübersicht.',
+          detailedInfo: '• Zentrale Speicherung aller Kundendaten\n• Namen, Adressen, Kontaktinformationen\n• Individuelle Hinweise zu jedem Kunden\n• Schneller Zugriff für Chefs und Bürokräfte\n• Perfekt für klare Kommunikation',
         },
       ],
     },
@@ -333,7 +313,7 @@ export default function FeaturesPage() {
           name: 'Zeitmanager',
           description: 'Vollständige Verwaltung aller Arbeitszeiten. Erfassung, Auswertung und Abrechnung in einem Tool.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Taskey zeigt alle Arbeitsstunden der Mitarbeiter übersichtlich an einem zentralen Ort. Chefs und Bürokräfte sehen sofort, wer wie lange gearbeitet hat – inklusive Pausen, Besorgungsfahrten und Einsatzzeiten. Die Daten werden automatisch erfasst und aktualisiert, sodass keine manuelle Nachbearbeitung nötig ist und die Planung immer auf verlässlichen Informationen basiert.',
+          detailedInfo: '• Alle Arbeitsstunden an einem Ort\n• Wer hat wie lange gearbeitet?\n• Inklusive Pausen, Besorgungsfahrten, Einsätze\n• Automatische Erfassung und Aktualisierung\n• Keine manuelle Nachbearbeitung nötig',
         },
       ],
     },
@@ -346,7 +326,7 @@ export default function FeaturesPage() {
           name: 'Rentabilität',
           description: 'Ihr digitaler Buchhalter. Automatische Auswertungen und Berichte für Ihre Buchhaltung.',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Taskey zeigt auf einen Blick, wie wirtschaftlich Projekte, Aufträge und das gesamte Unternehmen laufen. Alle relevanten Buchhaltungsdaten – Umsätze, Kosten, Budgets und Ausgaben – werden automatisch gesammelt und übersichtlich dargestellt. Zusätzlich analysiert Taskey die Rentabilität jedes einzelnen Mitarbeiters: Wie viel Wert bringt ein Mitarbeiter ein? Wie viel arbeitet er? Und wie steht das im Verhältnis zu seinem Lohn? Aus diesen Daten entsteht eine klare, objektive Bewertung, die Chefs dabei unterstützt, bessere Entscheidungen zu treffen und ihr Unternehmen effizienter zu steuern.',
+          detailedInfo: '• Wirtschaftlichkeit von Projekten und Aufträgen\n• Automatische Sammlung: Umsätze, Kosten, Budgets\n• Rentabilität jedes Mitarbeiters analysiert\n• Klare, objektive Bewertung\n• Bessere Entscheidungen für effizientere Steuerung',
         },
       ],
     },
@@ -359,21 +339,21 @@ export default function FeaturesPage() {
           name: 'Mitarbeiter',
           description: 'Übersicht über alle Mitarbeiter und deren Abwesenheiten. Wer ist wann verfügbar?',
           image: '/Unbenanntes_Projekt 3.png',
-          detailedInfo: 'Alle Mitarbeiter lassen sich direkt auswählen und verwalten. Für jede Person sieht man auf einen Blick alle relevanten Abwesenheiten – ob Urlaub, Krankheit oder sonstige Ausfälle.',
+          detailedInfo: '• Direkte Auswahl und Verwaltung\n• Alle Abwesenheiten auf einen Blick\n• Urlaub, Krankheit, sonstige Ausfälle\n• Schnelle Übersicht pro Person\n• Jederzeit wissen, wer verfügbar ist',
         },
         {
           id: 'status',
           name: 'Status',
           description: 'Aktueller Status aller Urlaubs- und Krankmeldungen. Genehmigt oder in Bearbeitung?',
           image: '/Unbenanntes_Projekt 5.png',
-          detailedInfo: 'Der Status eines Mitarbeiters kann einfach gesetzt werden: krank, arbeitsfähig, im Urlaub oder andere interne Kategorien. Dadurch bleibt jederzeit klar, wer verfügbar ist und wer nicht.',
+          detailedInfo: '• Status einfach setzen\n• Krank, arbeitsfähig, im Urlaub\n• Andere interne Kategorien möglich\n• Jederzeit klar: Wer ist verfügbar?\n• Transparente Übersicht',
         },
         {
           id: 'planung',
           name: 'Planung + Kalender',
           description: 'Planen Sie Abwesenheiten im Voraus. Kalenderansicht für bessere Übersicht.',
           image: '/Unbenanntes_Projekt 6.png',
-          detailedInfo: 'Urlaube und Krankmeldungen sind automatisch mit dem Kalender verknüpft. Chefs und Bürokräfte erkennen sofort Überschneidungen, freie Tage und verfügbare Kapazitäten. Die gesamte Abwesenheitsplanung ist übersichtlich, zentral und transparent organisiert.',
+          detailedInfo: '• Automatische Verknüpfung mit Kalender\n• Überschneidungen sofort erkennen\n• Freie Tage und verfügbare Kapazitäten\n• Zentrale und transparente Organisation\n• Bessere Planung für alle',
         },
       ],
     },
@@ -405,6 +385,50 @@ export default function FeaturesPage() {
             <p className="text-xl text-gray-600">
               Alle Funktionen für Ihren effizienten Betrieb
             </p>
+          </div>
+
+          {/* Quick Navigation Buttons */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="grid md:grid-cols-3 gap-4">
+              <a
+                href="/pricing"
+                className="group bg-gradient-to-br from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-lg font-bold">Alle Preise</h3>
+                  <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+                <p className="text-blue-100 text-sm">Entdecken Sie alle Taskey-Pakete</p>
+              </a>
+
+              <a
+                href="/pricing#nfc-tags"
+                className="group bg-gradient-to-br from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-lg font-bold">NFC-Tags Preise</h3>
+                  <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+                <p className="text-cyan-50 text-sm">Starter Kit ab 9€</p>
+              </a>
+
+              <a
+                href="/premium-manager"
+                className="group bg-gradient-to-br from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-lg font-bold">Manager Preise</h3>
+                  <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+                <p className="text-amber-50 text-sm">Persönlicher Premium-Service</p>
+              </a>
+            </div>
           </div>
 
           {/* Important Note Box */}
@@ -467,7 +491,9 @@ export default function FeaturesPage() {
                 }}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all ${
                   activeCategory === category.id
-                    ? 'bg-gray-900 text-white shadow-lg'
+                    ? category.id === 'nfc' 
+                      ? 'bg-cyan-500 text-white shadow-lg'
+                      : 'bg-gray-900 text-white shadow-lg'
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
                 }`}
               >
