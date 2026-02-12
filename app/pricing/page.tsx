@@ -496,6 +496,18 @@ export default function PricingPage() {
                   </div>
                 ))}
               </div>
+
+              {/* Enterprise Image */}
+              <div className="md:col-span-2 mt-8">
+                <Image 
+                  src="/38B7B38E-86C1-4FFB-957B-4C717B51C6B5_4_5005_c.jpeg" 
+                  alt="Enterprise Team" 
+                  width={1200}
+                  height={600}
+                  className="w-full h-auto rounded-xl shadow-2xl"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
 
@@ -632,6 +644,18 @@ export default function PricingPage() {
                         <p className="text-xs text-gray-600">Ideal für wachstumsorientierte Betriebe</p>
                       </div>
                     </div>
+                  </div>
+
+                  {/* Manager Image */}
+                  <div className="mt-6">
+                    <Image 
+                      src="/2FD11192-20F9-4069-81C0-F1F4E6F66202.png" 
+                      alt="Premium Manager" 
+                      width={600}
+                      height={400}
+                      className="w-full h-auto rounded-xl shadow-lg"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </div>
