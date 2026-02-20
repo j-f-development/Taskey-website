@@ -319,7 +319,7 @@ export default function FeaturesPage() {
     },
     {
       id: 'rentabilitaet',
-      name: 'Mr Buchhaltung',
+      name: 'Buchhaltung',
       features: [
         {
           id: 'buchhaltung',
