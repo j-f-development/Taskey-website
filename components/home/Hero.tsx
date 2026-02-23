@@ -31,7 +31,7 @@ export default function Hero() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-6 gap-8 sm:gap-12 items-center">
-          <div className="relative order-2 md:order-1 md:col-span-4 bg-gradient-to-b from-white/60 to-transparent backdrop-blur-sm rounded-2xl rounded-b-none p-6 sm:p-8 pb-16 sm:pb-20">
+          <div className="relative order-2 md:order-1 md:col-span-4 bg-white/70 md:bg-gradient-to-b md:from-white/60 md:to-transparent backdrop-blur-sm rounded-2xl md:rounded-b-none p-5 sm:p-8 pb-8 sm:pb-20">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
               Die <span className="text-blue-800">Nr. 1</span> Dienstleistungssoftware für effiziente
               Betriebe

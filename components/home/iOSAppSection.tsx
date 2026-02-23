@@ -43,11 +43,11 @@ export default function IOSAppSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left – Phone Video */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-1">
-            <div className="relative w-[280px] md:w-[320px]">
-              {/* Decorative echo frames */}
-              <div className="absolute -inset-4 rounded-[3rem] border border-gray-200/60"></div>
-              <div className="absolute -inset-9 rounded-[3.5rem] border border-gray-100/50"></div>
-              <div className="absolute -inset-14 rounded-[4rem] border border-gray-100/30"></div>
+            <div className="relative w-[240px] sm:w-[280px] md:w-[320px]">
+              {/* Decorative echo frames — hidden on small mobile */}
+              <div className="absolute -inset-4 rounded-[3rem] border border-gray-200/60 hidden sm:block"></div>
+              <div className="absolute -inset-9 rounded-[3.5rem] border border-gray-100/50 hidden sm:block"></div>
+              <div className="absolute -inset-14 rounded-[4rem] border border-gray-100/30 hidden md:block"></div>
 
               {/* Phone Frame */}
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-900/10 border border-gray-200">

@@ -5,8 +5,8 @@ import Image from "next/image";
 export default function NFCSection() {
   return (
     <section className="pt-16 pb-20 bg-gray-50 relative overflow-hidden">
-      {/* Grid Pattern Background — perspektivisch nach hinten geneigt */}
-      <div className="absolute inset-0" style={{ perspective: '1000px' }}>
+      {/* Grid Pattern Background — perspektivisch nach hinten geneigt (nur Desktop) */}
+      <div className="absolute inset-0 hidden md:block" style={{ perspective: '1000px' }}>
         <div style={{ transform: 'rotateX(45deg)', transformOrigin: 'center 60%', width: '100%', height: '160%', position: 'absolute', top: '-30%' }}>
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>

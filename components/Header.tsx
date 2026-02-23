@@ -15,7 +15,7 @@ export default function Header() {
       
       <header className="bg-white/70 backdrop-blur-xl border-b border-gray-200/50 sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Hauptnavigation">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           <Link href="/" className="flex items-center gap-2.5" aria-label="Taskey Startseite">
             <Image 
               src="/logobittt.png" 
@@ -121,7 +121,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-100 py-4">
+          <div className="lg:hidden border-t border-gray-200/50 py-4 bg-white/90 backdrop-blur-xl">
             <div className="flex flex-col space-y-1">
               <Link
                 href="/was-ist-taskey"
