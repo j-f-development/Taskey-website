@@ -45,14 +45,20 @@ export default function PricingPage() {
   return (
     <main className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-24 md:py-32">
-        {/* Background effects */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 left-1/4 w-80 h-80 bg-blue-600 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
-        </div>
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+      {/* Hero Banner */}
+      <section className="relative overflow-hidden bg-gray-900 py-24 md:py-32">
+        {/* Banner Image */}
+        <Image
+          src="/F6119812-857F-4E11-9765-3452FA7D9859.png"
+          alt="Taskey Pricing Banner"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-gray-900/60"></div>
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-[1]"></div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-cyan-300 px-5 py-2 rounded-full text-sm font-semibold mb-8">
@@ -66,7 +72,7 @@ export default function PricingPage() {
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-4">
             Transparent, fair, ohne versteckte Kosten — zahlen Sie nur pro Mitarbeiter.
           </p>
-          <p className="text-sm text-gray-500">Alle Preise zzgl. MwSt.</p>
+          <p className="text-sm text-gray-400">Alle Preise zzgl. MwSt.</p>
         </div>
       </section>
 
