@@ -130,3 +130,33 @@ body {
 .animate-scaleIn {
   animation: scaleIn 0.5s ease-out;
 }
+
+@keyframes nfc-border-travel {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -2360;
+  }
+}
+
+.animate-nfc-border {
+  animation: nfc-border-travel 5s linear infinite;
+}
+
+@keyframes footer-flicker {
+  0%, 100% { opacity: 0.08; }
+  4% { opacity: 0.15; }
+  6% { opacity: 0.06; }
+  8% { opacity: 0.18; }
+  10% { opacity: 0.08; }
+  50% { opacity: 0.1; }
+  52% { opacity: 0.2; }
+  54% { opacity: 0.07; }
+  56% { opacity: 0.14; }
+  58% { opacity: 0.1; }
+}
+
+.animate-footer-flicker {
+  animation: footer-flicker 6s ease-in-out infinite;
+}

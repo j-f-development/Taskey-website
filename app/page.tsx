@@ -7,6 +7,8 @@ import BusinessSize from "@/components/home/BusinessSize";
 import Branchen from "@/components/home/Branchen";
 import FAQ from "@/components/home/FAQ";
 import Contact from "@/components/home/Contact";
+import SectionDivider from "@/components/home/SectionDivider";
+import ScrollLine from "@/components/home/ScrollLine";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -76,13 +78,21 @@ export default function Home() {
       />
       <main>
         <Hero />
+        <SectionDivider from="white" to="#f9fafb" variant="curve" />
         <NFCSection />
+        <SectionDivider from="#f9fafb" to="white" variant="wave" />
         <FeaturePreview />
         {/* <Testimonials /> */}
-        <IOSAppSection />
-        <BusinessSize />
-        <Branchen />
-        <FAQ />
+        <SectionDivider from="white" to="#f9fafb" variant="curve" />
+        <div className="relative">
+          <ScrollLine />
+          <IOSAppSection />
+          <SectionDivider from="#f9fafb" to="white" variant="slant" />
+          <BusinessSize />
+          <Branchen />
+          <FAQ />
+        </div>
+        <SectionDivider from="white" to="#f9fafb" variant="dot-fade" />
         <Contact />
       </main>
     </>

@@ -1869,20 +1869,22 @@ export default function Branchen() {
     <>
       <DemoBookingModal isOpen={demoModalOpen} onClose={() => setDemoModalOpen(false)} />
       
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-blue-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-32 sm:pt-40 md:pt-48 pb-20 sm:pb-24 md:pb-28 bg-white">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pr-[160px]">
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
-            Über <span className="text-blue-900">600 Branchen</span> vertrauen auf Taskey
+        <div className="text-left mb-12 sm:mb-14 md:mb-20">
+          <p className="text-blue-600 text-xs font-semibold uppercase tracking-[0.3em] mb-4">Branchenabdeckung</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-5">
+            Über <span className="text-blue-600">600 Branchen</span> vertrauen auf Taskey
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+          <p className="text-lg sm:text-xl text-gray-500 max-w-3xl">
             Passt Taskey zu Ihnen? Finden Sie es raus!
           </p>
         </div>
 
         {/* Search Bar with Live Autocomplete */}
-        <div className="max-w-2xl mx-auto mb-12" ref={searchRef}>
+        <div className="max-w-2xl mb-12" ref={searchRef}>
           <div className="relative">
             <input
               type="text"
@@ -1893,7 +1895,7 @@ export default function Branchen() {
                 if (!e.target.value) setSelectedBranche(null);
               }}
               onFocus={() => setIsSearchFocused(true)}
-              className="w-full px-6 py-4 text-lg rounded-2xl border-2 border-gray-200 focus:border-blue-900 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all shadow-sm"
+              className="w-full px-6 py-4 text-lg rounded-2xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10 transition-all"
             />
             <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
               {searchTerm && (
@@ -1916,29 +1918,29 @@ export default function Branchen() {
 
             {/* Live Autocomplete Dropdown */}
             {isSearchFocused && searchTerm && !selectedBranche && (
-              <div className="absolute w-full mt-2 bg-white rounded-2xl shadow-2xl border-2 border-gray-200 z-50 max-h-96 overflow-y-auto">
+              <div className="absolute w-full mt-2 bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 max-h-96 overflow-y-auto">
                 {hasSearchResults ? (
                   <div className="py-2">
-                    <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100">
+                    <div className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100">
                       {filteredBranchen.length} {filteredBranchen.length === 1 ? 'Vorschlag' : 'Vorschläge'}
                     </div>
                     {filteredBranchen.map((branche, index) => (
                       <button
                         key={index}
                         onClick={() => handleSearchClick(branche)}
-                        className="w-full text-left px-4 py-3 border-b border-gray-50 last:border-b-0 group"
+                        className="w-full text-left px-4 py-3 border-b border-gray-50 last:border-b-0 group hover:bg-gray-50"
                       >
                         <div className="flex items-center gap-3">
                           <div className={`w-2 h-2 rounded-full flex-shrink-0 ${
-                            index === 0 ? 'bg-blue-600' : 'bg-blue-400'
+                            index === 0 ? 'bg-blue-600' : 'bg-blue-300'
                           }`}></div>
                           <span className={`font-medium ${
-                            index === 0 ? 'text-blue-900 text-lg' : 'text-gray-700'
-                          } group-hover:text-blue-900`}>
+                            index === 0 ? 'text-gray-900 text-lg' : 'text-gray-600'
+                          } group-hover:text-gray-900`}>
                             {branche}
                           </span>
                           {index === 0 && (
-                            <span className="ml-auto text-xs font-semibold text-blue-600 bg-blue-100 px-2 py-1 rounded-full">
+                            <span className="ml-auto text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
                               Beste Übereinstimmung
                             </span>
                           )}
@@ -1949,7 +1951,7 @@ export default function Branchen() {
                 ) : (
                   <div className="px-4 py-8 text-center">
                     <div className="text-4xl mb-2">🤔</div>
-                    <p className="text-gray-700 font-semibold mb-2">Keine passende Branche gefunden</p>
+                    <p className="text-gray-900 font-semibold mb-2">Keine passende Branche gefunden</p>
                     <p className="text-sm text-gray-500 mb-4">Aber keine Sorge – Taskey passt sich vielen Branchen an!</p>
                     <button
                       onClick={() => setDemoModalOpen(true)}
@@ -1964,28 +1966,28 @@ export default function Branchen() {
           </div>
 
           {/* Info Text */}
-          <p className="text-center mt-4 text-gray-600 text-sm">
-            Über <span className="font-semibold text-blue-900">600 Branchen</span> vertrauen auf Taskey
+          <p className="text-left mt-4 text-gray-400 text-sm">
+            Über <span className="font-semibold text-blue-600">600 Branchen</span> vertrauen auf Taskey
           </p>
 
           {/* Selected Branche Info Card */}
           {selectedBranche && (
-            <div className="mt-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-6 border-2 border-blue-200 shadow-lg animate-fadeIn">
+            <div className="mt-6 bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm animate-fadeIn">
               <div className="flex items-start gap-4">
                 <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0">
                   ✓
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-blue-900 mb-2">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     {selectedBranche}
                   </h3>
-                  <div className="bg-white/80 rounded-lg p-4 mb-4">
+                  <div className="bg-blue-50 rounded-lg p-4 mb-4">
                     <p className="text-gray-700 flex items-start gap-2">
                       <span className="text-xl">💡</span>
                       <span className="font-medium">{getReasonForBranch(selectedBranche)}</span>
                     </p>
                   </div>
-                  <p className="text-blue-800 text-sm font-semibold">
+                  <p className="text-blue-600 text-sm font-semibold">
                     Perfekt für Ihre Branche – Taskey passt sich Ihren Anforderungen an!
                   </p>
                 </div>
@@ -1996,21 +1998,21 @@ export default function Branchen() {
 
         {/* No Results Message - nur wenn nicht fokussiert */}
         {!isSearchFocused && noResults && !selectedBranche && (
-          <div className="text-center py-12 mb-12">
-            <div className="bg-white rounded-2xl p-8 max-w-2xl mx-auto shadow-lg border border-gray-200">
+          <div className="text-left py-12 mb-12">
+            <div className="bg-gray-50 rounded-2xl p-8 max-w-2xl border border-gray-200">
               <div className="text-6xl mb-4">🔍</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 Keine Branche gefunden
               </h3>
-              <p className="text-gray-600 mb-6">
-                Wir konnten keine passende Branche für "{searchTerm}" finden.
+              <p className="text-gray-500 mb-6">
+                Wir konnten keine passende Branche für &quot;{searchTerm}&quot; finden.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-500 mb-4">
                 Aber keine Sorge – Taskey ist flexibel und passt sich vielen Dienstleistungsbetrieben an!
               </p>
               <button
                 onClick={() => setDemoModalOpen(true)}
-                className="inline-block px-8 py-3 bg-blue-900 text-white font-semibold rounded-full hover:bg-blue-800 transition-all hover:scale-105"
+                className="inline-block px-8 py-3 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-all"
               >
                 Kontaktieren Sie uns
               </button>
@@ -2019,17 +2021,17 @@ export default function Branchen() {
         )}
 
         {/* CTA Section */}
-        <div className="mt-20 bg-gradient-to-r from-blue-900 to-blue-800 rounded-3xl p-12 text-center text-white shadow-2xl">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
+        <div data-scrollline-cta className="mt-20 bg-gray-50 border border-gray-200 rounded-3xl p-12 text-left">
+          <h3 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
             Ist Ihre Branche dabei?
           </h3>
-          <p className="text-xl mb-8 text-blue-100">
+          <p className="text-xl mb-8 text-gray-500">
             Entdecken Sie, wie Taskey Ihren Betrieb effizienter macht
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => setDemoModalOpen(true)}
-              className="px-8 py-4 bg-white text-blue-900 text-lg font-semibold rounded-full hover:bg-blue-50 transition-all hover:scale-105 hover:shadow-xl"
+              className="px-8 py-4 bg-gray-900 text-white text-lg font-semibold rounded-xl hover:bg-gray-800 transition-colors"
             >
               Kostenlose Demo buchen
             </button>
@@ -2037,7 +2039,7 @@ export default function Branchen() {
               href="https://signup.vars-development.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-all hover:scale-105"
+              className="px-8 py-4 border border-gray-300 text-gray-700 text-lg font-semibold rounded-xl hover:border-gray-400 transition-colors"
             >
               14 Tage kostenlos testen
             </a>

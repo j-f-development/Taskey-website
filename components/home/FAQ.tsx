@@ -59,8 +59,8 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="pt-16 pb-20 bg-white">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-40">
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
             <img 
@@ -69,10 +69,10 @@ export default function FAQ() {
               className="h-16 w-auto mx-auto"
             />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 data-scrollline-faq className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Häufig gestellte Fragen
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-500">
             Alles, was Sie über Taskey wissen müssen
           </p>
         </div>
@@ -104,7 +104,7 @@ export default function FAQ() {
                 </svg>
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-4 text-gray-600">{faq.answer}</div>
+                <div className="px-6 pb-4 text-gray-500">{faq.answer}</div>
               )}
             </div>
           ))}

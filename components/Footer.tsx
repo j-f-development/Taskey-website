@@ -5,32 +5,66 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="relative z-20 bg-gray-800 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Image 
-                src="/843B6B8E-CED8-4FF8-8C63-B354140A7BC5e5e1f940b1a8d4df34c43ec444a293f3116e09c2a98dcecd8e8882d3099b7c2d.png" 
-                alt="Taskey Logo" 
-                width={32}
-                height={32}
-                className="h-8 w-8"
-                sizes="32px"
-                loading="lazy"
-                quality={75}
-              />
-              <h3 className="text-xl font-bold">Taskey</h3>
-            </div>
-            <p className="text-gray-300 text-sm">
-              Dienstleistungssoftware Nr. 1 aus Deutschland für effiziente
-              Betriebe.
-            </p>
-          </div>
+    <footer className="relative z-20 bg-gray-900 text-white overflow-hidden">
+      {/* Background PNG */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Image
+          src="/7F026185-998A-42EF-845A-EAC748373476.png"
+          alt=""
+          fill
+          className="object-cover"
+          style={{ opacity: 0.1 }}
+          loading="lazy"
+          quality={75}
+        />
+      </div>
 
+      {/* Dot Grid Pattern */}
+      <div className="absolute inset-0 pointer-events-none">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="footer-dots" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="12" cy="12" r="1" fill="white" opacity="0.07" />
+            </pattern>
+            <linearGradient id="footer-dot-fade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="white" stopOpacity="1" />
+              <stop offset="60%" stopColor="white" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="white" stopOpacity="0" />
+            </linearGradient>
+            <mask id="footer-dot-mask">
+              <rect width="100%" height="100%" fill="url(#footer-dot-fade)" />
+            </mask>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#footer-dots)" mask="url(#footer-dot-mask)" />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Top section — big branding */}
+        <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 border-b border-white/10">
+          <div className="flex items-center gap-4 mb-8">
+            <Image 
+              src="/843B6B8E-CED8-4FF8-8C63-B354140A7BC5e5e1f940b1a8d4df34c43ec444a293f3116e09c2a98dcecd8e8882d3099b7c2d.png" 
+              alt="Taskey Logo" 
+              width={48}
+              height={48}
+              className="h-12 w-12"
+              sizes="48px"
+              loading="lazy"
+              quality={75}
+            />
+            <h2 className="text-3xl sm:text-4xl font-bold">Taskey</h2>
+          </div>
+          <p className="text-gray-400 text-lg sm:text-xl max-w-2xl leading-relaxed">
+            Die Nr. 1 Dienstleistungssoftware aus Deutschland. Automatische Zeiterfassung, intelligente Auftragsplanung und digitale Rechnungsstellung für über 600 Branchen.
+          </p>
+        </div>
+
+        {/* Links grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 py-16 sm:py-20">
           <div>
-            <h4 className="font-semibold mb-4">Produkt</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">Produkt</h4>
+            <ul className="space-y-4 text-sm">
               <li>
                 <Link href="/features" className="text-gray-300 hover:text-white transition">
                   Features
@@ -50,8 +84,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Unternehmen</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">Unternehmen</h4>
+            <ul className="space-y-4 text-sm">
               <li>
                 <Link href="/about" className="text-gray-300 hover:text-white transition">
                   Über uns
@@ -76,8 +110,29 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Kontakt</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">Rechtliches</h4>
+            <ul className="space-y-4 text-sm">
+              <li>
+                <Link href="/impressum" className="text-gray-300 hover:text-white transition">
+                  Impressum
+                </Link>
+              </li>
+              <li>
+                <Link href="/datenschutz" className="text-gray-300 hover:text-white transition">
+                  Datenschutz
+                </Link>
+              </li>
+              <li>
+                <Link href="/agb" className="text-gray-300 hover:text-white transition">
+                  AGB
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">Kontakt</h4>
+            <ul className="space-y-4 text-sm text-gray-300">
               <li>
                 <a 
                   href="https://taskey.vars-development.com/support" 
@@ -89,26 +144,19 @@ export default function Footer() {
                 </a>
               </li>
               <li>fynn@vars-development.com</li>
+              <li>+49 151 68488999</li>
               <li>In der Acht 44</li>
-              <li>66333 Völklingen, Deutschland</li>
+              <li>66333 Völklingen</li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 py-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           <p>&copy; {new Date().getFullYear()} Taskey. Alle Rechte vorbehalten.</p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4 md:mt-0">
-            <Link href="/impressum" className="hover:text-white transition">
-              Impressum
-            </Link>
-            <Link href="/datenschutz" className="hover:text-white transition">
-              Datenschutz
-            </Link>
-            <Link href="/agb" className="hover:text-white transition">
-              AGB
-            </Link>
             <Link href="/sitemap.xml" className="hover:text-white transition text-xs">
-              Sitemap XML
+              Sitemap
             </Link>
             <button
               onClick={() => {
@@ -119,6 +167,7 @@ export default function Footer() {
             >
               Cookie-Einstellungen
             </button>
+            <span className="text-gray-600">🇩🇪 Made in Germany</span>
           </div>
         </div>
       </div>

@@ -410,6 +410,7 @@ export default function FeaturesPage() {
                 <span className="text-sm font-medium">Für alle Gewerke</span>
               </div>
             </div>
+
           </div>
         </div>
       </section>

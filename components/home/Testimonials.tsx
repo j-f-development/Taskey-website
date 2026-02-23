@@ -24,7 +24,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section className="py-20 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-1 mb-4">
@@ -37,8 +37,8 @@ export default function Testimonials() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Dienstleister vertrauen auf Taskey
           </h2>
-          <p className="text-xl text-gray-600">
-            Über <span className="font-bold text-blue-900">100</span> zufriedene Betriebe in ganz Deutschland
+          <p className="text-xl text-gray-500">
+            Über <span className="font-bold text-blue-600">100</span> zufriedene Betriebe in ganz Deutschland
           </p>
         </div>
 
@@ -47,11 +47,11 @@ export default function Testimonials() {
             <div key={index} className="relative group">
               {/* Rectangular testimonial card */}
               <div className="relative">
-                <div className="relative bg-gradient-to-br from-blue-800 to-blue-950 rounded-lg p-8 shadow-xl">
-                  {/* Avatar Circle - psychological focal point */}
+                <div className="relative bg-gray-50 border border-gray-200 rounded-2xl p-8">
+                  {/* Avatar Circle */}
                   <div className="flex justify-center mb-6 -mt-16">
                     <div className="relative">
-                      <div className="relative w-32 h-32 rounded-full shadow-2xl border-4 border-white overflow-hidden">
+                      <div className="relative w-32 h-32 rounded-full shadow-lg border-4 border-white overflow-hidden">
                         <img 
                           src={testimonial.image} 
                           alt={testimonial.name}
@@ -70,13 +70,13 @@ export default function Testimonials() {
                     ))}
                   </div>
                   
-                  <p className="text-white italic text-center mb-6 leading-relaxed">
+                  <p className="text-gray-700 italic text-center mb-6 leading-relaxed">
                     &ldquo;{testimonial.text}&rdquo;
                   </p>
                   
                   <div className="text-center">
-                    <h4 className="font-bold text-white text-lg">{testimonial.name}</h4>
-                    <p className="text-sm text-blue-100">{testimonial.business}</p>
+                    <h4 className="font-bold text-gray-900 text-lg">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-500">{testimonial.business}</p>
                   </div>
                 </div>
               </div>
