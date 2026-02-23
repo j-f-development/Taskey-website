@@ -58,7 +58,7 @@ export default function DemoPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Banner — fixed behind content, cut off by sections layered on top */}
-      <div className="relative w-full pt-20 h-[50vh] sm:h-[60vh] md:h-[70vh] overflow-hidden">
+      <div className="relative w-full -mt-20 h-[70vh] sm:h-[80vh] md:h-[90vh] overflow-hidden">
         <Image
           src="/8F414FF7-7D3A-4F1D-9217-85194DC77E0A.png"
           alt="Taskey Demo Banner"
