@@ -12,10 +12,14 @@ const DemoBookingModal = dynamic(() => import("@/components/DemoBookingModal"), 
 const ManagerRequestModal = dynamic(() => import("@/components/ManagerRequestModal"), {
   ssr: false,
 });
+const EnterpriseApplicationModal = dynamic(() => import("@/components/EnterpriseApplicationModal"), {
+  ssr: false,
+});
 
 export default function PricingPage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [managerModalOpen, setManagerModalOpen] = useState(false);
+  const [enterpriseModalOpen, setEnterpriseModalOpen] = useState(false);
   
   // Kündigungsfristen für jedes Paket
   const [startCancellation, setStartCancellation] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
@@ -483,10 +487,10 @@ export default function PricingPage() {
                     </svg>
                   </Link>
                   <button
-                    onClick={() => setDemoModalOpen(true)}
+                    onClick={() => setEnterpriseModalOpen(true)}
                     className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all"
                   >
-                    Demo buchen
+                    Enterprise anfragen
                   </button>
                 </div>
               </div>
@@ -1033,6 +1037,9 @@ export default function PricingPage() {
       
       {/* Manager Modal */}
       <ManagerRequestModal isOpen={managerModalOpen} onClose={() => setManagerModalOpen(false)} />
+
+      {/* Enterprise Modal */}
+      <EnterpriseApplicationModal isOpen={enterpriseModalOpen} onClose={() => setEnterpriseModalOpen(false)} />
     </main>
   );
 }

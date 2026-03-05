@@ -26,16 +26,6 @@ export default function EnterpriseApplicationModal({ isOpen, onClose }: Enterpri
 
   const questions: Question[] = [
     {
-      id: 'company_size',
-      question: 'Wie viele Mitarbeiter hat Ihr Unternehmen?',
-      options: [
-        '50-150 Mitarbeiter',
-        '150-500 Mitarbeiter',
-        '500-1.000 Mitarbeiter',
-        'Über 1.000 Mitarbeiter',
-      ],
-    },
-    {
       id: 'industry_type',
       question: 'In welchem Sektor ist Ihr Unternehmen tätig?',
       options: [

@@ -21,8 +21,8 @@ export default function FeaturePreview() {
   ];
 
   return (
-    <section className="pt-16 pb-0 md:pt-20 md:pb-0 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 md:pb-32">
+    <section className="pt-16 pb-24 md:pt-20 md:pb-32 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
           <p className="text-sm font-semibold tracking-widest uppercase text-blue-600 mb-4">
