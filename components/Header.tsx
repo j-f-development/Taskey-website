@@ -4,10 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import DemoBookingModal from "./DemoBookingModal";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <>
@@ -35,31 +38,31 @@ export default function Header() {
               href="/was-ist-taskey"
               className="text-gray-600 hover:text-gray-900 transition font-medium"
             >
-              Was ist Taskey?
+              {t("nav.whatIsTaskey")}
             </Link>
             <Link
               href="/features"
               className="text-gray-600 hover:text-gray-900 transition font-medium"
             >
-              Features
+              {t("nav.features")}
             </Link>
             <Link
               href="/demo"
               className="text-gray-600 hover:text-gray-900 transition font-medium"
             >
-              Live Demo
+              {t("nav.liveDemo")}
             </Link>
             <Link
               href="/pricing"
               className="text-gray-600 hover:text-gray-900 transition font-medium"
             >
-              Preise
+              {t("nav.pricing")}
             </Link>
             <Link
               href="/about"
               className="text-gray-600 hover:text-gray-900 transition font-medium"
             >
-              Über uns
+              {t("nav.about")}
             </Link>
             <a
               href="https://taskey.vars-development.com/support"
@@ -67,16 +70,17 @@ export default function Header() {
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-gray-900 transition font-medium"
             >
-              Support
+              {t("nav.support")}
             </a>
           </div>
 
           <div className="hidden lg:flex items-center space-x-3">
+            <LanguageSwitcher />
             <button
               onClick={() => setDemoModalOpen(true)}
               className="px-5 py-2.5 text-gray-700 hover:text-gray-900 transition font-medium"
             >
-              Demo buchen
+              {t("nav.bookDemo")}
             </button>
             <Link
               href="https://signup.vars-development.com"
@@ -84,7 +88,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="px-5 py-2.5 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition font-medium shadow-sm"
             >
-              Kostenlos testen
+              {t("nav.tryFree")}
             </Link>
           </div>
 
@@ -128,35 +132,35 @@ export default function Header() {
                 className="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Was ist Taskey?
+                {t("nav.whatIsTaskey")}
               </Link>
               <Link
                 href="/features"
                 className="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Features
+                {t("nav.features")}
               </Link>
               <Link
                 href="/demo"
                 className="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Live Demo
+                {t("nav.liveDemo")}
               </Link>
               <Link
                 href="/pricing"
                 className="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Preise
+                {t("nav.pricing")}
               </Link>
               <Link
                 href="/about"
                 className="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Über uns
+                {t("nav.about")}
               </Link>
               <a
                 href="https://taskey.vars-development.com/support"
@@ -165,9 +169,12 @@ export default function Header() {
                 className="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Support
+                {t("nav.support")}
               </a>
               <div className="pt-4 px-4 space-y-2">
+                <div className="flex justify-start pb-1">
+                  <LanguageSwitcher />
+                </div>
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
@@ -175,7 +182,7 @@ export default function Header() {
                   }}
                   className="w-full px-4 py-3 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition font-medium"
                 >
-                  Demo buchen
+                  {t("nav.bookDemo")}
                 </button>
                 <Link
                   href="https://signup.vars-development.com"
@@ -184,7 +191,7 @@ export default function Header() {
                   className="block w-full px-4 py-3 text-center bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Kostenlos testen
+                  {t("nav.tryFree")}
                 </Link>
               </div>
             </div>

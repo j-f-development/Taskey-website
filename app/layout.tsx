@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import { WebVitals } from "./web-vitals";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.taskey.de'),
@@ -77,10 +78,12 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <WebVitals />
-        <Header />
-        {children}
-        <Footer />
-        <CookieConsent />
+        <LanguageProvider>
+          <Header />
+          {children}
+          <Footer />
+          <CookieConsent />
+        </LanguageProvider>
       </body>
     </html>
   );
