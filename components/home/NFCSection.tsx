@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function NFCSection() {
+  const { t } = useLanguage();
   return (
     <section className="pt-16 pb-20 bg-gray-50 relative overflow-hidden">
       {/* Grid Pattern Background — perspektivisch nach hinten geneigt (nur Desktop) */}
@@ -34,13 +36,13 @@ export default function NFCSection() {
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
             </svg>
-            INNOVATION: NFC-TAGS
+            {t("nfc.badge")}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Kleben. Scannen. Wissen.
+            {t("nfc.title")}
           </h2>
           <p className="text-xl text-gray-500 max-w-3xl mx-auto">
-            Gib deinem Betrieb ein digitales Gedächtnis. Jede Maschine, jede Anlage wird smart.
+            {t("nfc.subtitle")}
           </p>
         </div>
 
@@ -91,9 +93,9 @@ export default function NFCSection() {
                 </svg>
               </div>
               <span className="text-sm font-semibold text-gray-300 mb-2">01</span>
-              <h3 className="text-gray-900 font-bold text-lg leading-snug mb-3">Werkzeug & Maschinen-Tracking</h3>
+              <h3 className="text-gray-900 font-bold text-lg leading-snug mb-3">{t("nfc.1.title")}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Nie wieder Werkzeug auf der Großbaustelle vergessen. Jeder Scan wird mit GPS-Standort protokolliert.
+                {t("nfc.1.desc")}
               </p>
             </div>
 
@@ -105,9 +107,9 @@ export default function NFCSection() {
                 </svg>
               </div>
               <span className="text-sm font-semibold text-gray-300 mb-2">02</span>
-              <h3 className="text-gray-900 font-bold text-lg leading-snug mb-3">GPS-Tracking für Werkzeug</h3>
+              <h3 className="text-gray-900 font-bold text-lg leading-snug mb-3">{t("nfc.2.title")}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Nie wieder Werkzeug auf der Großbaustelle vergessen. Der letzte Scan-Standort wird auf der Karte angezeigt.
+                {t("nfc.2.desc")}
               </p>
             </div>
 
@@ -118,9 +120,9 @@ export default function NFCSection() {
                 </svg>
               </div>
               <span className="text-sm font-semibold text-gray-300 mb-2">03</span>
-              <h3 className="text-gray-900 font-bold text-lg leading-snug mb-3">Rechtssicherer Nachweis</h3>
+              <h3 className="text-gray-900 font-bold text-lg leading-snug mb-3">{t("nfc.3.title")}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Scan-Zeitstempel belegen: Dein Team war vor Ort und hat geprüft. Perfekt für Versicherung & Haftungsfragen.
+                {t("nfc.3.desc")}
               </p>
             </div>
 
@@ -131,9 +133,9 @@ export default function NFCSection() {
                 </svg>
               </div>
               <span className="text-sm font-semibold text-gray-300 mb-2">04</span>
-              <h3 className="text-gray-900 font-bold text-lg leading-snug mb-3">Wissens-Sicherung</h3>
+              <h3 className="text-gray-900 font-bold text-lg leading-snug mb-3">{t("nfc.4.title")}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Dein bester Geselle geht in Rente? Das Wissen bleibt am Objekt — nicht in seinem Kopf.
+                {t("nfc.4.desc")}
               </p>
             </div>
           </div>
@@ -143,11 +145,11 @@ export default function NFCSection() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 pt-12 border-t border-gray-200/60 px-4">
           <div className="text-center">
             <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-600 mb-2">∞</div>
-            <div className="text-xs md:text-sm text-gray-500">Unbegrenzt wiederverwendbar</div>
+            <div className="text-xs md:text-sm text-gray-500">{t("nfc.stat1")}</div>
           </div>
           <div className="text-center">
             <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-600 mb-2">5+ Jahre</div>
-            <div className="text-xs md:text-sm text-gray-500">Lebensdauer</div>
+            <div className="text-xs md:text-sm text-gray-500">{t("nfc.stat2")}</div>
           </div>
           <div className="text-center col-span-2 md:col-span-1">
             <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-600 mb-2">2-3 Tage</div>

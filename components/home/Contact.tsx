@@ -4,9 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import DemoBookingModal from "../DemoBookingModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const { t } = useLanguage();
   
   return (
     <>
@@ -27,10 +29,10 @@ export default function Contact() {
             />
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-3 px-4">
-            Fragen zu Gebrauch oder Preispaketen?
+            {t("contact.title")}
           </h2>
           <p className="text-base sm:text-lg text-gray-500 px-4">
-            Wir sind für Sie da – persönlich und kompetent
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -42,7 +44,7 @@ export default function Contact() {
                 icon: (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 ),
-                label: "Telefon",
+                label: t("contact.phone"),
                 value: "+49 151 68488999",
                 href: "tel:+4915168488999",
               },
@@ -50,7 +52,7 @@ export default function Contact() {
                 icon: (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 ),
-                label: "E-Mail",
+                label: t("contact.email"),
                 value: "fynn@vars-development.com",
                 href: "mailto:fynn@vars-development.com",
               },
@@ -58,7 +60,7 @@ export default function Contact() {
                 icon: (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 ),
-                label: "Adresse",
+                label: t("contact.address"),
                 value: "In der Acht 44, 66333 Völklingen",
                 href: null,
               },
@@ -87,18 +89,17 @@ export default function Contact() {
           <div className="relative">
             <div className="relative bg-white rounded-2xl p-6 sm:p-8 border border-gray-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-3 text-center">
-                Überzeugt?
+                {t("contact.cta.title")}
               </h3>
               <p className="text-gray-500 mb-6 text-center text-sm leading-relaxed">
-                Starten Sie jetzt kostenlos und sparen Sie durchschnittlich{" "}
-                <span className="font-bold text-gray-900">25-30h pro Monat</span>.
+                {t("contact.cta.subtitle")}
               </p>
               <div className="space-y-3">
                 <button
                   onClick={() => setDemoModalOpen(true)}
                   className="block w-full px-5 py-3 bg-gray-900 text-white text-center font-bold rounded-xl hover:bg-gray-800 transition-colors text-sm"
                 >
-                  Demo buchen
+                  {t("contact.cta.demo")}
                 </button>
                 <Link
                   href="https://signup.vars-development.com"
@@ -106,7 +107,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="block px-5 py-3 bg-transparent border border-gray-300 text-gray-700 text-center font-bold rounded-xl hover:bg-gray-100 transition-colors text-sm"
                 >
-                  14 Tage kostenlos testen
+                  {t("contact.cta.trial")}
                 </Link>
               </div>
               

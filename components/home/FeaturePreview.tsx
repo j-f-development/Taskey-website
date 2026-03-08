@@ -1,21 +1,24 @@
+"use client";
+
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function FeaturePreview() {
+  const { t } = useLanguage();
+
   const features = [
     {
-      title: "Automatische Zeiterfassung",
-      description:
-        "Arbeitszeiten werden digital und ohne manuelle Eingaben erfasst. Weniger Papierkram, fehlerfreie Abrechnung und volle Transparenz für Ihr gesamtes Team.",
+      title: t("features.1.title"),
+      description: t("features.1.desc"),
       image: "/BA2B10E7-7DE2-41AD-B48D-EE39BC2E52E6.png",
     },
     {
-      title: "Intuitive Auftragsplanung",
-      description:
-        "Projekte, Termine und Einsatzpläne zentral steuern. Routenoptimierung und automatische Terminvergabe sorgen dafür, dass Ihr Team immer zur richtigen Zeit am richtigen Ort ist.",
+      title: t("features.2.title"),
+      description: t("features.2.desc"),
       image: "/B899021B-1AAA-40FD-9668-5DBB4E23D5D2.png",
     },
     {
-      title: "Finanz- & Buchhaltungsübersicht",
-      description:
-        "Rechnungen direkt aus der App erstellen und versenden. Umsatz, Budget und Kosten in Echtzeit – inklusive automatischer Rentabilitätsanalyse für jedes Projekt.",
+      title: t("features.3.title"),
+      description: t("features.3.desc"),
       image: "/54F369FF-6D74-4695-B8D3-44E54D16098B.png",
     },
   ];
@@ -26,13 +29,13 @@ export default function FeaturePreview() {
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
           <p className="text-sm font-semibold tracking-widest uppercase text-blue-600 mb-4">
-            Kernfunktionen
+            {t("features.badge")}
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-            Die Grundpfeiler <em className="font-serif font-normal italic">von</em> Taskey
+            {t("features.title")}
           </h2>
           <p className="mt-5 text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            Drei Säulen, die Ihren Betrieb effizienter, transparenter und profitabler machen.
+            {t("features.subtitle")}
           </p>
         </div>
 

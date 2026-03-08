@@ -1,23 +1,29 @@
+"use client";
+
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function Testimonials() {
+  const { t } = useLanguage();
+
   const testimonials = [
     {
       name: "Michael Weber",
       business: "Weber Elektrotechnik GmbH",
-      text: "Mit Taskey haben wir unsere Verwaltungszeit um 70% reduziert. Mehr Zeit für unsere Kunden!",
+      text: t("testimonials.1.text"),
       rating: 5,
       image: "/ceo.png",
     },
     {
       name: "Sandra Müller",
       business: "Müller Sanitär & Heizung",
-      text: "Die automatische Zeiterfassung ist genial. Keine vergessenen Stunden mehr bei der Abrechnung.",
+      text: t("testimonials.2.text"),
       rating: 5,
       image: "/frau.png",
     },
     {
       name: "Thomas Schneider",
       business: "Schneider Malerbetrieb",
-      text: "Endlich eine Software, die wirklich einfach zu bedienen ist. Mein Team war sofort produktiv.",
+      text: t("testimonials.3.text"),
       rating: 5,
       image: "/handwerker.png",
     },
@@ -35,10 +41,10 @@ export default function Testimonials() {
             ))}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Dienstleister vertrauen auf Taskey
+            {t("testimonials.title")}
           </h2>
           <p className="text-xl text-gray-500">
-            Über <span className="font-bold text-blue-600">100</span> zufriedene Betriebe in ganz Deutschland
+            {t("testimonials.subtitle").replace("{count}", "100")}
           </p>
         </div>
 

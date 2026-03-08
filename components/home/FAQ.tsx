@@ -1,61 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { t } = useLanguage();
 
   const faqs = [
-    {
-      question: "Wie viel kostet Taskey?",
-      answer:
-        "Taskey bietet flexible Preismodelle für jede Betriebsgröße. Schauen Sie sich unsere Preisseite für detaillierte Informationen an.",
-    },
-    {
-      question: "Ist Taskey DSGVO-konform?",
-      answer:
-        "Ja, Taskey ist vollständig DSGVO-konform. Ihre Daten werden auf deutschen Servern gespeichert und verschlüsselt übertragen.",
-    },
-    {
-      question: "Brauche ich eine Schulung?",
-      answer:
-        "Nein, Taskey ist so intuitiv gestaltet, dass Sie sofort loslegen können. Wir bieten aber optional kostenlose Onboarding-Sessions an.",
-    },
-    {
-      question: "Funktioniert Taskey offline?",
-      answer:
-        "Ja, die mobile App funktioniert auch offline. Alle Daten werden automatisch synchronisiert, sobald Sie wieder online sind.",
-    },
-    {
-      question: "Kann ich bestehende Daten importieren?",
-      answer:
-        "Ja, wir unterstützen den Import aus gängigen Formaten und helfen Ihnen beim Umzug von anderen Systemen.",
-    },
-    {
-      question: "Wie schnell kann ich starten?",
-      answer:
-        "Sie können sofort nach der Registrierung starten. Die Einrichtung dauert nur wenige Minuten.",
-    },
-    {
-      question: "Gibt es eine Vertragsbindung?",
-      answer:
-        "Nein, Sie können monatlich kündigen. Es gibt keine Mindestlaufzeit.",
-    },
-    {
-      question: "Welchen Support bietet Taskey?",
-      answer:
-        "Wir bieten deutschen E-Mail- und Telefon-Support während der Geschäftszeiten sowie eine umfangreiche Wissensdatenbank.",
-    },
-    {
-      question: "Kann ich Taskey für mehrere Standorte nutzen?",
-      answer:
-        "Ja, Taskey unterstützt Multi-Standort-Verwaltung mit zentraler Übersicht.",
-    },
-    {
-      question: "Welche Geräte werden unterstützt?",
-      answer:
-        "Taskey funktioniert auf allen modernen Geräten: iOS, Android, Windows, Mac und im Browser.",
-    },
+    { question: t("faq.1.q"), answer: t("faq.1.a") },
+    { question: t("faq.2.q"), answer: t("faq.2.a") },
+    { question: t("faq.3.q"), answer: t("faq.3.a") },
+    { question: t("faq.4.q"), answer: t("faq.4.a") },
+    { question: t("faq.5.q"), answer: t("faq.5.a") },
+    { question: t("faq.6.q"), answer: t("faq.6.a") },
+    { question: t("faq.7.q"), answer: t("faq.7.a") },
+    { question: t("faq.8.q"), answer: t("faq.8.a") },
+    { question: t("faq.9.q"), answer: t("faq.9.a") },
+    { question: t("faq.10.q"), answer: t("faq.10.a") },
   ];
 
   return (
@@ -70,10 +32,10 @@ export default function FAQ() {
             />
           </div>
           <h2 data-scrollline-faq className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Häufig gestellte Fragen
+            {t("faq.title")}
           </h2>
           <p className="text-xl text-gray-500">
-            Alles, was Sie über Taskey wissen müssen
+            {t("faq.subtitle")}
           </p>
         </div>
 

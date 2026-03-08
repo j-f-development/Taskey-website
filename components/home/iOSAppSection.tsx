@@ -1,24 +1,27 @@
 'use client';
 
 import { FaApple } from 'react-icons/fa';
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function IOSAppSection() {
+  const { t } = useLanguage();
+
   const features = [
     {
-      label: 'Intuitive Oberfläche',
-      desc: 'Klare Struktur, die sofort verständlich ist – ohne Schulung.',
+      label: t("ios.feature1.label"),
+      desc: t("ios.feature1.desc"),
     },
     {
-      label: 'Offline-fähig',
-      desc: 'Arbeiten Sie auch ohne Netz – Daten synchronisieren sich automatisch.',
+      label: t("ios.feature2.label"),
+      desc: t("ios.feature2.desc"),
     },
     {
-      label: 'Push-Benachrichtigungen',
-      desc: 'Echtzeit-Updates zu Aufträgen, Zeiten und Teamänderungen.',
+      label: t("ios.feature3.label"),
+      desc: t("ios.feature3.desc"),
     },
     {
-      label: 'Face ID & Touch ID',
-      desc: 'Sicherer Zugriff in Sekunden – ohne Passwort-Eingabe.',
+      label: t("ios.feature4.label"),
+      desc: t("ios.feature4.desc"),
     },
   ];
 
@@ -28,14 +31,14 @@ export default function IOSAppSection() {
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
           <p className="text-sm font-semibold tracking-widest uppercase text-blue-600 mb-4">
-            Mobile App
+            {t("ios.badge")}
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-            Taskey für{' '}
-            <span className="text-blue-600">iOS</span>
+            {t("ios.title")}{' '}
+            <span className="text-blue-600">{t("ios.title.highlight")}</span>
           </h2>
           <p className="mt-5 text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            Aufträge verwalten, Zeiten erfassen und Ihr Team koordinieren – alles direkt von Ihrem iPhone oder iPad.
+            {t("ios.subtitle")}
           </p>
         </div>
 
@@ -91,13 +94,13 @@ export default function IOSAppSection() {
                 className="inline-flex items-center justify-center gap-3 bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl font-semibold text-base transition-colors duration-200"
               >
                 <FaApple className="text-xl" />
-                <span>Im App Store laden</span>
+                <span>{t("ios.appstore")}</span>
               </a>
               <a
                 href="/features"
                 className="inline-flex items-center justify-center gap-2 border border-gray-300 hover:border-gray-400 text-gray-700 px-8 py-4 rounded-xl font-semibold text-base transition-colors duration-200"
               >
-                Alle Features entdecken
+                {t("ios.allFeatures")}
               </a>
             </div>
 
@@ -109,7 +112,7 @@ export default function IOSAppSection() {
                 <div className="w-8 h-8 rounded-full bg-gray-700 border-2 border-white"></div>
               </div>
               <p className="text-sm text-gray-400">
-                Genutzt von <strong className="text-gray-600">600+</strong> Betrieben in Deutschland
+                {t("ios.socialProof").replace("{count}", "600")}
               </p>
             </div>
           </div>

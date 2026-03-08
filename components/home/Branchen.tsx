@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useRef, useEffect } from 'react';
 import DemoBookingModal from '../DemoBookingModal';
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Branchen() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -9,6 +10,7 @@ export default function Branchen() {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [selectedBranche, setSelectedBranche] = useState<string | null>(null);
   const searchRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   // Categorized branches with umbrella terms (Überbegriffe)
   const branchenCategories: { [key: string]: string[] } = {
@@ -1888,7 +1890,7 @@ export default function Branchen() {
           <div className="relative">
             <input
               type="text"
-              placeholder="Suchen Sie Ihre Branche... (z.B. 'Auto', 'Elektro', 'Bau')"
+              placeholder={t("branchen.search")}
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
@@ -2014,7 +2016,7 @@ export default function Branchen() {
                 onClick={() => setDemoModalOpen(true)}
                 className="inline-block px-8 py-3 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-all"
               >
-                Kontaktieren Sie uns
+                {t("branchen.cta")}
               </button>
             </div>
           </div>
@@ -2033,7 +2035,7 @@ export default function Branchen() {
               onClick={() => setDemoModalOpen(true)}
               className="px-8 py-4 bg-gray-900 text-white text-lg font-semibold rounded-xl hover:bg-gray-800 transition-colors"
             >
-              Kostenlose Demo buchen
+              {t("branchen.cta")}
             </button>
             <a
               href="https://signup.vars-development.com"
@@ -2041,7 +2043,7 @@ export default function Branchen() {
               rel="noopener noreferrer"
               className="px-8 py-4 border border-gray-300 text-gray-700 text-lg font-semibold rounded-xl hover:border-gray-400 transition-colors"
             >
-              14 Tage kostenlos testen
+              {t("hero.cta.trial")}
             </a>
           </div>
         </div>

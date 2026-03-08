@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="relative z-20 bg-gray-900 text-white overflow-hidden">
       {/* Background PNG */}
@@ -56,44 +58,44 @@ export default function Footer() {
             <h2 className="text-3xl sm:text-4xl font-bold">Taskey</h2>
           </div>
           <p className="text-gray-400 text-lg sm:text-xl max-w-2xl leading-relaxed">
-            Die Nr. 1 Dienstleistungssoftware aus Deutschland. Automatische Zeiterfassung, intelligente Auftragsplanung und digitale Rechnungsstellung für über 600 Branchen.
+            {t("footer.tagline")}
           </p>
         </div>
 
         {/* Links grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 py-16 sm:py-20">
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">Produkt</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">{t("footer.col.product")}</h4>
             <ul className="space-y-4 text-sm">
               <li>
                 <Link href="/features" className="text-gray-300 hover:text-white transition">
-                  Features
+                  {t("footer.link.features")}
                 </Link>
               </li>
               <li>
                 <Link href="/pricing" className="text-gray-300 hover:text-white transition">
-                  Preise
+                  {t("footer.link.pricing")}
                 </Link>
               </li>
               <li>
                 <Link href="#contact" className="text-gray-300 hover:text-white transition">
-                  Demo buchen
+                  {t("footer.link.bookDemo")}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">Unternehmen</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">{t("footer.col.company")}</h4>
             <ul className="space-y-4 text-sm">
               <li>
                 <Link href="/about" className="text-gray-300 hover:text-white transition">
-                  Über uns
+                  {t("footer.link.about")}
                 </Link>
               </li>
               <li>
                 <Link href="#contact" className="text-gray-300 hover:text-white transition">
-                  Kontakt
+                  {t("footer.link.contact")}
                 </Link>
               </li>
               <li>
@@ -103,35 +105,35 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white transition"
                 >
-                  Support
+                  {t("footer.link.support")}
                 </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">Rechtliches</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">{t("footer.col.legal")}</h4>
             <ul className="space-y-4 text-sm">
               <li>
                 <Link href="/impressum" className="text-gray-300 hover:text-white transition">
-                  Impressum
+                  {t("footer.link.imprint")}
                 </Link>
               </li>
               <li>
                 <Link href="/datenschutz" className="text-gray-300 hover:text-white transition">
-                  Datenschutz
+                  {t("footer.link.privacy")}
                 </Link>
               </li>
               <li>
                 <Link href="/agb" className="text-gray-300 hover:text-white transition">
-                  AGB
+                  {t("footer.link.agb")}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">Kontakt</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-gray-400 mb-6">{t("footer.col.contact")}</h4>
             <ul className="space-y-4 text-sm text-gray-300">
               <li>
                 <a 
@@ -140,7 +142,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-white transition"
                 >
-                  Support & Kontakt
+                  {t("footer.link.supportContact")}
                 </a>
               </li>
               <li>fynn@vars-development.com</li>
@@ -153,7 +155,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 py-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Taskey. Alle Rechte vorbehalten.</p>
+          <p>&copy; {new Date().getFullYear()} Taskey. {t("footer.rights")}</p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4 md:mt-0">
             <Link href="/sitemap.xml" className="hover:text-white transition text-xs">
               Sitemap
@@ -165,9 +167,9 @@ export default function Footer() {
               }}
               className="hover:text-white transition cursor-pointer"
             >
-              Cookie-Einstellungen
+              {t("footer.cookie")}
             </button>
-            <span className="text-gray-600">🇩🇪 Made in Germany</span>
+            <span className="text-gray-600">{t("footer.madeIn")}</span>
           </div>
         </div>
       </div>

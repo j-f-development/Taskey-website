@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useScroll, motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 const POINTS: [number, number][] = [
   [0.85, 0.01],
@@ -57,8 +58,13 @@ const CARDS = [
 export default function BusinessSize() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeCard, setActiveCard] = useState<number | null>(null);
+  const { t } = useLanguage();
 
-  const { scrollYProgress } = useScroll({
+  const cards = [
+    { id: 1, label: t("biz.card1.label"), image: "/26473062-6363-4095-A9BD-AD2B2B404909.png", text: t("biz.card1.text") },
+    { id: 2, label: t("biz.card2.label"), image: "/629F1A67-7DB2-4895-B898-337BCB2EAE07.png", text: t("biz.card2.text") },
+    { id: 3, label: t("biz.card3.label"), image: "/A723E4B1-276B-4AC7-9BAB-63AEAF16EC1D.png", text: t("biz.card3.text") },
+  ];  const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
@@ -104,9 +110,9 @@ export default function BusinessSize() {
 
         {/* Überschrift oben */}
         <div className="absolute top-24 left-0 right-0 flex flex-col items-center gap-2 px-8">
-          <p className="text-gray-400 text-xs font-semibold uppercase tracking-[0.25em]">Für jeden Betrieb die richtige Lösung</p>
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-[0.25em]">{t("biz.badge")}</p>
           <h2 className="text-gray-900 text-4xl md:text-5xl font-bold text-center">
-            Taskey wächst <span className="text-blue-600">mit Ihnen</span>
+            {t("biz.title")} <span className="text-blue-600">{t("biz.title.highlight")}</span>
           </h2>
         </div>
 
@@ -125,22 +131,22 @@ export default function BusinessSize() {
                 {/* Card image */}
                 <div className="rounded-2xl overflow-hidden shadow-2xl">
                   <img
-                    src={CARDS[activeCard - 1].image}
+                    src={cards[activeCard - 1].image}
                     alt=""
                     className="w-full h-80 object-cover"
                   />
                 </div>
                 {/* Text + Button */}
                 <div className="flex flex-col gap-3">
-                  <p className="text-blue-600 text-xs font-semibold uppercase tracking-widest">{CARDS[activeCard - 1].label}</p>
+                  <p className="text-blue-600 text-xs font-semibold uppercase tracking-widest">{cards[activeCard - 1].label}</p>
                   <p className="text-gray-500 text-xl leading-relaxed">
-                    {CARDS[activeCard - 1].text}
+                    {cards[activeCard - 1].text}
                   </p>
                   <Link
                     href="/pricing"
                     className="mt-1 inline-block self-start px-6 py-3 bg-gray-900 text-white text-sm font-semibold rounded-xl hover:bg-gray-800 transition-colors pointer-events-auto"
                   >
-                    Zu den Angeboten →
+                    {t("biz.cta")}
                   </Link>
                 </div>
               </motion.div>
