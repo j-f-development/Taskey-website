@@ -21,17 +21,19 @@ export default function PricingPage() {
   const [managerModalOpen, setManagerModalOpen] = useState(false);
   const [enterpriseModalOpen, setEnterpriseModalOpen] = useState(false);
   
-  // Kündigungsfristen für START
+  // Kündigungsfristen
   const [startCancellation, setStartCancellation] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
+  const [growCancellation, setGrowCancellation] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
+  const [scaleCancellation, setScaleCancellation] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
   
   // Basispreise
   const basePrice = {
-    start: 14.73,
-    grow: 23.67,
-    scale: 34.42
+    start: 19.89,
+    grow: 23.92,
+    scale: 37.76
   };
   
-  // Preisberechnung basierend auf Kündigungsfrist (nur für START)
+  // Preisberechnung basierend auf Kündigungsfrist
   const calculatePrice = (base: number, cancellation: 'monthly' | 'quarterly' | 'yearly') => {
     if (cancellation === 'quarterly') return (base * 0.93).toFixed(2); // -7%
     if (cancellation === 'yearly') return (base * 0.87).toFixed(2); // -13%
@@ -40,8 +42,8 @@ export default function PricingPage() {
   
   const prices = {
     start: calculatePrice(basePrice.start, startCancellation),
-    grow: basePrice.grow.toFixed(2),
-    scale: basePrice.scale.toFixed(2)
+    grow: calculatePrice(basePrice.grow, growCancellation),
+    scale: calculatePrice(basePrice.scale, scaleCancellation)
   };
 
   return (
@@ -134,19 +136,23 @@ export default function PricingPage() {
 
                 <ul className="space-y-2.5 mb-8">
                   {[
-                    { text: 'GPS + Mobile App', icon: '✅', dim: false },
-                    { text: 'Routenoptimierung (automatisch)', icon: '🔥', dim: false },
-                    { text: 'NFC-Tag-Verwaltung', icon: '🔥', dim: false },
-                    { text: 'Standard Auftrags- & Projektplanung', icon: '✅', dim: false },
-                    { text: 'Mitarbeiter-Stammdaten', icon: '✅', dim: false },
-                    { text: '50 GB Speicher', icon: '📁', dim: false },
-                    { text: '12 Monate Historie (GoBD)', icon: '⏳', dim: false },
-                    { text: 'Nur PDF-Rechnungen (kein Export)', icon: '❌', dim: true },
-                    { text: 'Keine Rentabilitätsanalyse', icon: '❌', dim: true },
-                    { text: 'E-Mail Support (48h)', icon: '📧', dim: false },
+                    { text: 'GPS + Mobile App', dim: false },
+                    { text: 'Routenoptimierung (automatisch)', dim: false },
+                    { text: 'NFC-Tag-Verwaltung', dim: false },
+                    { text: 'Standard Auftrags- & Projektplanung', dim: false },
+                    { text: 'Mitarbeiter-Stammdaten', dim: false },
+                    { text: '50 GB Speicher', dim: false },
+                    { text: '12 Monate Historie (GoBD)', dim: false },
+                    { text: 'Nur PDF-Rechnungen (kein Export)', dim: true },
+                    { text: 'Keine Rentabilitätsanalyse', dim: true },
+                    { text: 'E-Mail Support (48h)', dim: false },
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3">
-                      <span className="text-sm flex-shrink-0 w-5 text-center">{item.icon}</span>
+                      {item.dim ? (
+                        <svg className="w-4 h-4 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                      ) : (
+                        <svg className="w-4 h-4 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+                      )}
                       <span className={`text-sm font-medium ${item.dim ? 'text-slate-400 line-through decoration-slate-500' : 'text-white'}`}>{item.text}</span>
                     </li>
                   ))}
@@ -199,32 +205,44 @@ export default function PricingPage() {
                 </div>
 
                 <div className="mb-8 pb-8 border-b border-white/20">
+                  <div className="mb-6 space-y-3">
+                    <label className="text-xs font-bold text-blue-200 uppercase tracking-wide">Kündigungsfrist</label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {(['monthly', 'quarterly', 'yearly'] as const).map((opt) => (
+                        <button key={opt} onClick={() => setGrowCancellation(opt)}
+                          className={`px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${growCancellation === opt ? 'bg-white text-blue-900 shadow-md' : 'bg-white/10 text-blue-200 hover:bg-white/20 border border-white/10'}`}>
+                          <div>{opt === 'monthly' ? 'Monatlich' : opt === 'quarterly' ? 'Quartal' : 'Jährlich'}</div>
+                          <div className="text-[10px] opacity-70 font-normal">{opt === 'monthly' ? 'flexibel' : opt === 'quarterly' ? '-7%' : '-13%'}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                   <div className="flex items-end gap-1 mb-2">
                     <span className="text-5xl font-black text-white">{prices.grow}</span>
                     <span className="text-2xl font-bold text-blue-200 mb-1">€</span>
                   </div>
                   <p className="text-sm text-blue-100">pro Mitarbeiter / Monat</p>
-                  <p className="text-xs text-blue-200/70 mt-2 flex items-center gap-1">
-                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" /></svg>
-                    Nur als Jahrestarif erhältlich
-                  </p>
                 </div>
 
                 <ul className="space-y-2.5 mb-6">
                   {[
-                    { text: 'Alles aus START', icon: '✅', dim: false },
-                    { text: 'Erweiterte Planung + Qualifikationen', icon: '✅', dim: false },
-                    { text: 'Routenoptimierung (automatisch)', icon: '🔥', dim: false },
-                    { text: 'NFC-Tag-Verwaltung', icon: '🔥', dim: false },
-                    { text: '250 GB Speicher', icon: '📁', dim: false },
-                    { text: '24 Monate Historie (GoBD)', icon: '⏳', dim: false },
-                    { text: 'Lexoffice-Export', icon: '💰', dim: false },
-                    { text: 'Kein DATEV-Export', icon: '❌', dim: true },
-                    { text: 'Keine Echtzeit-Rentabilität', icon: '❌', dim: true },
-                    { text: 'Chat & E-Mail Support (24h)', icon: '💬', dim: false },
+                    { text: 'Alles aus START', dim: false },
+                    { text: 'Erweiterte Planung + Qualifikationen', dim: false },
+                    { text: 'Routenoptimierung (automatisch)', dim: false },
+                    { text: 'NFC-Tag-Verwaltung', dim: false },
+                    { text: '250 GB Speicher', dim: false },
+                    { text: '24 Monate Historie (GoBD)', dim: false },
+                    { text: 'Lexoffice-Export', dim: false },
+                    { text: 'Kein DATEV-Export', dim: true },
+                    { text: 'Keine Echtzeit-Rentabilität', dim: true },
+                    { text: 'Chat & E-Mail Support (24h)', dim: false },
                   ].map((item, i) => (
                     <li key={i} className="group/item relative flex items-center gap-3">
-                      <span className="text-sm flex-shrink-0 w-5 text-center">{item.icon}</span>
+                      {item.dim ? (
+                        <svg className="w-4 h-4 text-blue-400/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                      ) : (
+                        <svg className="w-4 h-4 text-blue-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+                      )}
                       <span className={`text-sm font-medium ${item.dim ? 'text-blue-300/50 line-through decoration-blue-400/50' : 'text-white'}`}>{item.text}</span>
                     </li>
                   ))}
@@ -277,30 +295,38 @@ export default function PricingPage() {
                 </div>
 
                 <div className="mb-8 pb-8 border-b border-white/20">
+                  <div className="mb-6 space-y-3">
+                    <label className="text-xs font-bold text-purple-200 uppercase tracking-wide">Kündigungsfrist</label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {(['monthly', 'quarterly', 'yearly'] as const).map((opt) => (
+                        <button key={opt} onClick={() => setScaleCancellation(opt)}
+                          className={`px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${scaleCancellation === opt ? 'bg-white text-purple-900 shadow-md' : 'bg-white/10 text-purple-200 hover:bg-white/20 border border-white/10'}`}>
+                          <div>{opt === 'monthly' ? 'Monatlich' : opt === 'quarterly' ? 'Quartal' : 'Jährlich'}</div>
+                          <div className="text-[10px] opacity-70 font-normal">{opt === 'monthly' ? 'flexibel' : opt === 'quarterly' ? '-7%' : '-13%'}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                   <div className="flex items-end gap-1 mb-2">
                     <span className="text-5xl font-black text-white">{prices.scale}</span>
                     <span className="text-2xl font-bold text-purple-200 mb-1">€</span>
                   </div>
                   <p className="text-sm text-purple-100">pro Mitarbeiter / Monat</p>
-                  <p className="text-xs text-purple-200/70 mt-2 flex items-center gap-1">
-                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" /></svg>
-                    Nur als Jahrestarif erhältlich
-                  </p>
                 </div>
 
                 <ul className="space-y-2.5 mb-6">
                   {[
-                    { text: 'Alles aus GROW', icon: '✅', dim: false },
-                    { text: 'Live-Tracking (Echtzeit)', icon: '🔥', dim: false },
-                    { text: 'Routenoptimierung + Live-Tracking', icon: '🔥', dim: false },
-                    { text: '1 TB Speicher', icon: '📁', dim: false },
-                    { text: 'Unbegrenzte Historie (GoBD)', icon: '⏳', dim: false },
-                    { text: 'DATEV-Export + Lexoffice', icon: '💰', dim: false },
-                    { text: 'Echtzeit-Rentabilität pro Projekt', icon: '📈', dim: false },
-                    { text: 'Priority Support', icon: '⚡', dim: false },
+                    { text: 'Alles aus GROW', dim: false },
+                    { text: 'Live-Tracking (Echtzeit)', dim: false },
+                    { text: 'Routenoptimierung + Live-Tracking', dim: false },
+                    { text: '1 TB Speicher', dim: false },
+                    { text: 'Unbegrenzte Historie (GoBD)', dim: false },
+                    { text: 'DATEV-Export + Lexoffice', dim: false },
+                    { text: 'Echtzeit-Rentabilität pro Projekt', dim: false },
+                    { text: 'Priority Support', dim: false },
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3">
-                      <span className="text-sm flex-shrink-0 w-5 text-center">{item.icon}</span>
+                      <svg className="w-4 h-4 text-purple-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
                       <span className="text-sm text-white font-medium">{item.text}</span>
                     </li>
                   ))}
@@ -339,22 +365,22 @@ export default function PricingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {[
-              { icon: '🔥', text: 'Routenoptimierung (automatisch)' },
-              { icon: '🔥', text: 'NFC-Tag-Verwaltung' },
-              { icon: '📍', text: 'GPS & Mobile App (iOS & Android)' },
-              { icon: '⏱️', text: 'Zeit-, Pausen- & Fahrterfassung' },
-              { icon: '📋', text: 'Aufträge, Projekte, Fotos & Dokumente' },
-              { icon: '🗂️', text: 'Digitale Anlagenakten' },
-              { icon: '📄', text: 'Abschlussberichte (PDF + Signatur)' },
-              { icon: '📆', text: 'Abwesenheiten & Urlaubsplanung' },
-              { icon: '📊', text: 'Dashboards & Auswertungen' },
-              { icon: '🔐', text: 'Rollen- & Rechteverwaltung' },
-              { icon: '👥', text: 'Kundenverwaltung' },
-              { icon: '🗺️', text: 'Live-Map & Mitarbeiter-Roadmap' },
-            ].map((feature, i) => (
+              'Routenoptimierung (automatisch)',
+              'NFC-Tag-Verwaltung',
+              'GPS & Mobile App (iOS & Android)',
+              'Zeit-, Pausen- & Fahrterfassung',
+              'Aufträge, Projekte, Fotos & Dokumente',
+              'Digitale Anlagenakten',
+              'Abschlussberichte (PDF + Signatur)',
+              'Abwesenheiten & Urlaubsplanung',
+              'Dashboards & Auswertungen',
+              'Rollen- & Rechteverwaltung',
+              'Kundenverwaltung',
+              'Live-Map & Mitarbeiter-Roadmap',
+            ].map((text, i) => (
               <div key={i} className="flex items-center gap-3 bg-white rounded-xl px-5 py-4 border border-gray-100 shadow-sm">
-                <span className="text-lg flex-shrink-0">{feature.icon}</span>
-                <span className="text-gray-800 font-medium text-sm">{feature.text}</span>
+                <svg className="w-4 h-4 text-blue-700 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+                <span className="text-gray-800 font-medium text-sm">{text}</span>
               </div>
             ))}
           </div>
@@ -377,13 +403,13 @@ export default function PricingPage() {
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                   {[
-                    { label: '📁 Speicher', start: '50 GB', grow: '250 GB', scale: '1 TB' },
-                    { label: '⏳ Daten-Historie (GoBD)', start: '12 Monate', grow: '24 Monate', scale: 'Unbegrenzt' },
-                    { label: '📋 Auftrags-/Projektplanung', start: 'Standard', grow: 'Erweitert', scale: 'Erweitert' },
-                    { label: '👷 Mitarbeitermanagement', start: 'Stammdaten', grow: '+ Qualifikationen', scale: '+ Qualifikationen' },
-                    { label: '💰 Buchhaltungsexport', start: 'Nur PDF', grow: 'Lexoffice ✅', scale: 'DATEV + Lexoffice ✅' },
-                    { label: '📈 Echtzeit-Rentabilität', start: '—', grow: '—', scale: 'Live-Margen pro Projekt ✅' },
-                    { label: '🤝 Support', start: 'E-Mail (48h)', grow: 'Chat & E-Mail (24h)', scale: 'Priority Support ⚡' },
+                    { label: 'Speicher', start: '50 GB', grow: '250 GB', scale: '1 TB' },
+                    { label: 'Daten-Historie (GoBD)', start: '12 Monate', grow: '24 Monate', scale: 'Unbegrenzt' },
+                    { label: 'Auftrags-/Projektplanung', start: 'Standard', grow: 'Erweitert', scale: 'Erweitert' },
+                    { label: 'Mitarbeitermanagement', start: 'Stammdaten', grow: '+ Qualifikationen', scale: '+ Qualifikationen' },
+                    { label: 'Buchhaltungsexport', start: 'Nur PDF', grow: 'Lexoffice', scale: 'DATEV + Lexoffice' },
+                    { label: 'Echtzeit-Rentabilität', start: '—', grow: '—', scale: 'Live-Margen pro Projekt' },
+                    { label: 'Support', start: 'E-Mail (48h)', grow: 'Chat & E-Mail (24h)', scale: 'Priority Support' },
                   ].map((row, i) => (
                     <tr key={i} className="hover:bg-gray-50/50">
                       <td className="px-6 py-3 font-medium text-gray-700">{row.label}</td>
@@ -580,7 +606,7 @@ export default function PricingPage() {
                 </button>
                 
                 <div className="mt-4 bg-white/10 rounded-xl p-3 text-xs text-center">
-                  💡 Inkl. Video-Onboarding für die ersten 5 Tags
+                  Inkl. Video-Onboarding für die ersten 5 Tags
                 </div>
               </div>
 
@@ -664,13 +690,15 @@ export default function PricingPage() {
                 <div className="space-y-4">
                   <h3 className="text-sm font-black text-gray-400 uppercase tracking-widest mb-4">Was wir für Sie erledigen</h3>
                   {[
-                    { icon: '📋', title: 'Import Ihrer Mitarbeiterdaten', desc: 'Wir übernehmen Ihre Excel-Listen, importieren alle Mitarbeiter und richten Rollen & Rechte ein.' },
-                    { icon: '⚙️', title: 'Konfiguration nach Ihren Prozessen', desc: 'Maschinen, Fahrzeuge, Kostenstellen, Projekte — alles wird genau nach Ihren Abläufen eingerichtet.' },
-                    { icon: '🏷️', title: 'NFC-Tags einrichten & testen', desc: 'Auf Wunsch beschriften und konfigurieren wir einige Ihrer NFC-Tags als Demonstration — damit Sie sofort sehen, wie der Workflow in Ihrem Betrieb funktioniert.' },
-                    { icon: '🎓', title: 'Live-Einführung für Ihr Team', desc: 'Eine Einführungssession (Video oder vor Ort) — Ihre Mitarbeiter wissen vom ersten Tag, was sie tun.' },
+                    { title: 'Import Ihrer Mitarbeiterdaten', desc: 'Wir übernehmen Ihre Excel-Listen, importieren alle Mitarbeiter und richten Rollen & Rechte ein.' },
+                    { title: 'Konfiguration nach Ihren Prozessen', desc: 'Maschinen, Fahrzeuge, Kostenstellen, Projekte — alles wird genau nach Ihren Abläufen eingerichtet.' },
+                    { title: 'NFC-Tags einrichten & testen', desc: 'Auf Wunsch beschriften und konfigurieren wir einige Ihrer NFC-Tags als Demonstration — damit Sie sofort sehen, wie der Workflow in Ihrem Betrieb funktioniert.' },
+                    { title: 'Live-Einführung für Ihr Team', desc: 'Eine Video-Einführungssession für Ihr Team — Ihre Mitarbeiter wissen vom ersten Tag, was sie tun.' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-4 bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10 hover:bg-white/10 transition-all">
-                      <div className="text-2xl flex-shrink-0">{item.icon}</div>
+                      <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+                      </div>
                       <div>
                         <div className="text-white font-bold text-sm mb-1">{item.title}</div>
                         <div className="text-gray-400 text-xs leading-relaxed">{item.desc}</div>
@@ -742,13 +770,12 @@ export default function PricingPage() {
               {/* Bottom trust bar */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {[
-                  { icon: '⚡', label: 'Betrieb läuft in 48h', sub: 'Keine wochenlangen Einrichtungen' },
-                  { icon: '📁', label: 'Ihre Daten bleiben Ihre Daten', sub: 'Sicher, verschlüsselt, DSGVO-konform' },
-                  { icon: '🔄', label: 'Optionale Erweiterung jederzeit', sub: 'Wir sind immer erreichbar' },
-                  { icon: '✅', label: 'Keine Verpflichtung', sub: 'Völlig optional zubuchbar' },
+                  { label: 'Betrieb läuft in 48h', sub: 'Keine wochenlangen Einrichtungen' },
+                  { label: 'Ihre Daten bleiben Ihre Daten', sub: 'Sicher, verschlüsselt, DSGVO-konform' },
+                  { label: 'Optionale Erweiterung jederzeit', sub: 'Wir sind immer erreichbar' },
+                  { label: 'Keine Verpflichtung', sub: 'Völlig optional zubuchbar' },
                 ].map((item, i) => (
                   <div key={i} className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 text-center">
-                    <div className="text-2xl mb-2">{item.icon}</div>
                     <div className="text-white text-xs font-bold mb-1">{item.label}</div>
                     <div className="text-gray-500 text-xs">{item.sub}</div>
                   </div>
