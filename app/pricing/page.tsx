@@ -94,7 +94,7 @@ export default function PricingPage() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="text-2xl font-black text-white mb-1">START</h3>
-                    <p className="text-sm text-slate-300">Perfekt zum Loslegen</p>
+                    <p className="text-sm text-slate-300">Für den Start in die Digitalisierung</p>
                   </div>
                   <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,7 +106,10 @@ export default function PricingPage() {
                 {/* MA Zahl prominent */}
                 <div className="mb-5 flex items-center gap-2 bg-white/15 border border-white/25 rounded-xl px-4 py-3">
                   <svg className="w-5 h-5 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                  <span className="text-base font-black text-white">1–5 Mitarbeiter</span>
+                  <div>
+                    <span className="text-base font-black text-white">Für den Einstieg</span>
+                    <span className="block text-xs text-slate-400 font-normal mt-0.5">Empfohlen bis ~5 Mitarbeiter</span>
+                  </div>
                 </div>
 
                 <div className="mb-8 pb-8 border-b border-white/20">
@@ -129,18 +132,22 @@ export default function PricingPage() {
                   <p className="text-sm text-slate-300">pro Mitarbeiter / Monat</p>
                 </div>
 
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-2.5 mb-8">
                   {[
-                    { text: 'Alle Kernfunktionen' },
-                    { text: '50 GB Gesamtspeicher' },
-                    { text: '12 Monate Historie' },
-                    { text: 'Standard‑Support' },
+                    { text: 'GPS + Mobile App', icon: '✅', dim: false },
+                    { text: 'Routenoptimierung (automatisch)', icon: '🔥', dim: false },
+                    { text: 'NFC-Tag-Verwaltung', icon: '🔥', dim: false },
+                    { text: 'Standard Auftrags- & Projektplanung', icon: '✅', dim: false },
+                    { text: 'Mitarbeiter-Stammdaten', icon: '✅', dim: false },
+                    { text: '50 GB Speicher', icon: '📁', dim: false },
+                    { text: '12 Monate Historie (GoBD)', icon: '⏳', dim: false },
+                    { text: 'Nur PDF-Rechnungen (kein Export)', icon: '❌', dim: true },
+                    { text: 'Keine Rentabilitätsanalyse', icon: '❌', dim: true },
+                    { text: 'E-Mail Support (48h)', icon: '📧', dim: false },
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-slate-500 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                      </div>
-                      <span className="text-sm text-white font-medium">{item.text}</span>
+                      <span className="text-sm flex-shrink-0 w-5 text-center">{item.icon}</span>
+                      <span className={`text-sm font-medium ${item.dim ? 'text-slate-400 line-through decoration-slate-500' : 'text-white'}`}>{item.text}</span>
                     </li>
                   ))}
                 </ul>
@@ -173,7 +180,7 @@ export default function PricingPage() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="text-2xl font-black text-white mb-1">GROW</h3>
-                    <p className="text-sm text-blue-100">Für Betriebe, die wachsen</p>
+                    <p className="text-sm text-blue-100">Für etablierte Betriebe</p>
                   </div>
                   <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -185,7 +192,10 @@ export default function PricingPage() {
                 {/* MA Zahl prominent */}
                 <div className="mb-5 flex items-center gap-2 bg-white/15 border border-white/25 rounded-xl px-4 py-3">
                   <svg className="w-5 h-5 text-cyan-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                  <span className="text-base font-black text-white">6–20 Mitarbeiter</span>
+                  <div>
+                    <span className="text-base font-black text-white">Beliebteste Wahl</span>
+                    <span className="block text-xs text-blue-200 font-normal mt-0.5">Empfohlen für 6–20 Mitarbeiter</span>
+                  </div>
                 </div>
 
                 <div className="mb-8 pb-8 border-b border-white/20">
@@ -200,18 +210,22 @@ export default function PricingPage() {
                   </p>
                 </div>
 
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-2.5 mb-6">
                   {[
-                    { text: 'Alle Funktionen', tooltip: 'Kompletter Zugriff ohne Einschränkungen' },
-                    { text: '250 GB Gesamtspeicher', tooltip: 'Mehr Platz für Dokumentation & Medien' },
-                    { text: '24 Monate Historie', tooltip: '2 Jahre Datenzugriff für Nachweise & Analysen' },
-                    { text: 'Erweiterte Auswertungen', tooltip: 'Custom Reports, Trends & KPI-Dashboards' },
+                    { text: 'Alles aus START', icon: '✅', dim: false },
+                    { text: 'Erweiterte Planung + Qualifikationen', icon: '✅', dim: false },
+                    { text: 'Routenoptimierung (automatisch)', icon: '🔥', dim: false },
+                    { text: 'NFC-Tag-Verwaltung', icon: '🔥', dim: false },
+                    { text: '250 GB Speicher', icon: '📁', dim: false },
+                    { text: '24 Monate Historie (GoBD)', icon: '⏳', dim: false },
+                    { text: 'Lexoffice-Export', icon: '💰', dim: false },
+                    { text: 'Kein DATEV-Export', icon: '❌', dim: true },
+                    { text: 'Keine Echtzeit-Rentabilität', icon: '❌', dim: true },
+                    { text: 'Chat & E-Mail Support (24h)', icon: '💬', dim: false },
                   ].map((item, i) => (
                     <li key={i} className="group/item relative flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-cyan-400 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-3 h-3 text-blue-900" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                      </div>
-                      <span className="text-sm text-white font-medium">{item.text}</span>
+                      <span className="text-sm flex-shrink-0 w-5 text-center">{item.icon}</span>
+                      <span className={`text-sm font-medium ${item.dim ? 'text-blue-300/50 line-through decoration-blue-400/50' : 'text-white'}`}>{item.text}</span>
                     </li>
                   ))}
                 </ul>
@@ -244,7 +258,7 @@ export default function PricingPage() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="text-2xl font-black text-white mb-1">SCALE</h3>
-                    <p className="text-sm text-purple-100">Maximale Power</p>
+                    <p className="text-sm text-purple-100">Für datengetriebene Profis & Skalierer</p>
                   </div>
                   <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -256,7 +270,10 @@ export default function PricingPage() {
                 {/* MA Zahl prominent */}
                 <div className="mb-5 flex items-center gap-2 bg-white/15 border border-white/25 rounded-xl px-4 py-3">
                   <svg className="w-5 h-5 text-purple-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                  <span className="text-base font-black text-white">21–50 Mitarbeiter</span>
+                  <div>
+                    <span className="text-base font-black text-white">Für Skalierung</span>
+                    <span className="block text-xs text-purple-200 font-normal mt-0.5">Empfohlen ab 21+ Mitarbeiter</span>
+                  </div>
                 </div>
 
                 <div className="mb-8 pb-8 border-b border-white/20">
@@ -271,17 +288,19 @@ export default function PricingPage() {
                   </p>
                 </div>
 
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-2.5 mb-6">
                   {[
-                    { text: 'Voller Funktionsumfang', tooltip: 'Alle Features ohne Limits' },
-                    { text: '1 TB Speicher', tooltip: 'Maximale Kapazität für große Teams' },
-                    { text: 'Unbegrenzte Historie', tooltip: 'Permanenter Zugriff auf alle jemals erfassten Daten' },
-                    { text: 'Priorisierter Support', tooltip: 'Schnellere Reaktionszeiten & direkter Kontakt' },
+                    { text: 'Alles aus GROW', icon: '✅', dim: false },
+                    { text: 'Live-Tracking (Echtzeit)', icon: '🔥', dim: false },
+                    { text: 'Routenoptimierung + Live-Tracking', icon: '🔥', dim: false },
+                    { text: '1 TB Speicher', icon: '📁', dim: false },
+                    { text: 'Unbegrenzte Historie (GoBD)', icon: '⏳', dim: false },
+                    { text: 'DATEV-Export + Lexoffice', icon: '💰', dim: false },
+                    { text: 'Echtzeit-Rentabilität pro Projekt', icon: '📈', dim: false },
+                    { text: 'Priority Support', icon: '⚡', dim: false },
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-purple-300 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-3 h-3 text-purple-900" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                      </div>
+                      <span className="text-sm flex-shrink-0 w-5 text-center">{item.icon}</span>
                       <span className="text-sm text-white font-medium">{item.text}</span>
                     </li>
                   ))}
@@ -313,52 +332,82 @@ export default function PricingPage() {
       {/* All Features Included */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">In jedem Paket enthalten</h2>
-            <p className="text-gray-600 text-lg mb-4">Keine Feature‑Grenzen — nur Speicher & Historie unterscheiden sich</p>
-            <div className="max-w-3xl mx-auto bg-gray-100 rounded-xl p-4 border border-gray-200">
-              <div className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-gray-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                </svg>
-                <p className="text-sm text-gray-700 text-left">
-                  <strong className="font-bold">Was bedeutet Historie?</strong><br />
-                  Die Historie bestimmt, wie lange Sie auf alte Zeiterfassungen, Aufträge, Berichte und Dokumente zugreifen können. Bei "12 Monate Historie" sehen Sie alle Daten der letzten 12 Monate. "Unbegrenzte Historie" bedeutet: Alle Daten bleiben für immer abrufbar.
-                </p>
-              </div>
-            </div>
+            <p className="text-gray-600 text-lg">Diese Kernfunktionen sind in START, GROW und SCALE inklusive</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {[
-              '🔥 NFC-Tag Support',
-              'GPS- & Live-Tracking',
-              'Start/Stop, QR & NFC',
-              'Zeit‑, Pausen‑ & Fahrterfassung',
-              'Live‑Map & Mitarbeiter‑Roadmap',
-              'Aufträge, Projekte, Fotos & Dokumente',
-              'Digitale Anlagenakten',
-              'Abschlussberichte (PDF + Signatur)',
-              'Abwesenheiten & Planung',
-              'Dashboards & Auswertungen',
-              'Rollen‑ & Rechteverwaltung',
-              'Mobile App (iOS & Android)',
-              'Kundenverwaltung',
+              { icon: '🔥', text: 'Routenoptimierung (automatisch)' },
+              { icon: '🔥', text: 'NFC-Tag-Verwaltung' },
+              { icon: '📍', text: 'GPS & Mobile App (iOS & Android)' },
+              { icon: '⏱️', text: 'Zeit-, Pausen- & Fahrterfassung' },
+              { icon: '📋', text: 'Aufträge, Projekte, Fotos & Dokumente' },
+              { icon: '🗂️', text: 'Digitale Anlagenakten' },
+              { icon: '📄', text: 'Abschlussberichte (PDF + Signatur)' },
+              { icon: '📆', text: 'Abwesenheiten & Urlaubsplanung' },
+              { icon: '📊', text: 'Dashboards & Auswertungen' },
+              { icon: '🔐', text: 'Rollen- & Rechteverwaltung' },
+              { icon: '👥', text: 'Kundenverwaltung' },
+              { icon: '🗺️', text: 'Live-Map & Mitarbeiter-Roadmap' },
             ].map((feature, i) => (
               <div key={i} className="flex items-center gap-3 bg-white rounded-xl px-5 py-4 border border-gray-100 shadow-sm">
-                <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                <span className="text-gray-800 font-medium text-sm">{feature}</span>
+                <span className="text-lg flex-shrink-0">{feature.icon}</span>
+                <span className="text-gray-800 font-medium text-sm">{feature.text}</span>
               </div>
             ))}
           </div>
 
-          {/* DATEV / Lexware Note */}
-          <div className="mt-6 flex items-center gap-4 bg-blue-50 border border-blue-200 rounded-2xl px-6 py-4">
-            <svg className="w-6 h-6 text-blue-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" /></svg>
-            <p className="text-sm text-blue-800">
-              <strong>DATEV- & Lexware-Schnittstelle</strong> als optionales Add-on für alle Pakete zubuchbar — nur <strong>11,89 € / Monat</strong>, unabhängig vom gewählten Tarif.{' '}
-              <a href="#datev-addon" className="font-bold underline hover:text-blue-900">Mehr erfahren ↓</a>
-            </p>
+          {/* Differentiator comparison */}
+          <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+            <div className="px-6 py-4 bg-gray-900 text-white">
+              <h3 className="text-lg font-black">Was unterscheidet die Pakete?</h3>
+              <p className="text-sm text-gray-400 mt-0.5">Diese Features variieren je nach gewähltem Tarif</p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gray-100">
+                    <th className="text-left px-6 py-3 text-gray-500 font-semibold w-1/3">Feature</th>
+                    <th className="text-center px-4 py-3 text-gray-700 font-black">START</th>
+                    <th className="text-center px-4 py-3 text-blue-700 font-black">GROW</th>
+                    <th className="text-center px-4 py-3 text-purple-700 font-black">SCALE</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-50">
+                  {[
+                    { label: '📁 Speicher', start: '50 GB', grow: '250 GB', scale: '1 TB' },
+                    { label: '⏳ Daten-Historie (GoBD)', start: '12 Monate', grow: '24 Monate', scale: 'Unbegrenzt' },
+                    { label: '📋 Auftrags-/Projektplanung', start: 'Standard', grow: 'Erweitert', scale: 'Erweitert' },
+                    { label: '👷 Mitarbeitermanagement', start: 'Stammdaten', grow: '+ Qualifikationen', scale: '+ Qualifikationen' },
+                    { label: '💰 Buchhaltungsexport', start: 'Nur PDF', grow: 'Lexoffice ✅', scale: 'DATEV + Lexoffice ✅' },
+                    { label: '📈 Echtzeit-Rentabilität', start: '—', grow: '—', scale: 'Live-Margen pro Projekt ✅' },
+                    { label: '🤝 Support', start: 'E-Mail (48h)', grow: 'Chat & E-Mail (24h)', scale: 'Priority Support ⚡' },
+                  ].map((row, i) => (
+                    <tr key={i} className="hover:bg-gray-50/50">
+                      <td className="px-6 py-3 font-medium text-gray-700">{row.label}</td>
+                      <td className="px-4 py-3 text-center text-gray-600">{row.start}</td>
+                      <td className="px-4 py-3 text-center text-blue-700 font-medium">{row.grow}</td>
+                      <td className="px-4 py-3 text-center text-purple-700 font-medium">{row.scale}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Historie explanation */}
+          <div className="mt-6 bg-gray-100 rounded-xl p-4 border border-gray-200">
+            <div className="flex items-start gap-3">
+              <svg className="w-5 h-5 text-gray-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+              <p className="text-sm text-gray-700">
+                <strong className="font-bold">Was bedeutet Historie?</strong><br />
+                Die Historie bestimmt, wie lange Sie auf alte Zeiterfassungen, Aufträge, Berichte und Dokumente zugreifen können. Bei "12 Monate Historie" sehen Sie alle Daten der letzten 12 Monate. "Unbegrenzte Historie" bedeutet: Alle Daten bleiben für immer abrufbar.
+              </p>
+            </div>
           </div>
         </div>
       </section>
