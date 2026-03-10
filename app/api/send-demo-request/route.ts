@@ -3,51 +3,93 @@ import nodemailer from 'nodemailer';
 
 const FORM_SERVICE_URL = process.env.FORM_SERVICE_URL || 'https://mission-control.vars-development.com/api/forms';
 
+// Fire-and-forget persistence to form-service (never blocks the email send)
+function persistDemoForm(payload: object) {
+  try {
+    fetch(`${FORM_SERVICE_URL}/demo`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(5000),
+    }).catch(() => { }); // intentionally swallowed
+  } catch (_) { }
+}
+
+function persistEnterpriseForm(payload: object) {
+  try {
+    fetch(`${FORM_SERVICE_URL}/enterprise`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(5000),
+    }).catch(() => { }); // intentionally swallowed
+  } catch (_) { }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { name, email, phone, company, answers, type } = await request.json();
 
+    // Check if it's an enterprise application
     const isEnterprise = type === 'enterprise';
 
+    // Validate input
     if (!name || !email || !phone) {
-      return NextResponse.json({ error: 'Alle Felder sind erforderlich' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Alle Felder sind erforderlich' },
+        { status: 400 }
+      );
     }
 
-    // Persist to form-service (fire and forget, don't fail the request if it errors)
-    try {
-      if (isEnterprise) {
-        await fetch(`${FORM_SERVICE_URL}/enterprise`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, company, phone, answers }),
-        });
-      } else {
-        await fetch(`${FORM_SERVICE_URL}/demo`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, company, message: answers ? JSON.stringify(answers) : null }),
-        });
-      }
-    } catch (persistError) {
-      console.error('Failed to persist form to form-service:', persistError);
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Ungültige E-Mail-Adresse' },
+        { status: 400 }
+      );
     }
 
-    // Format answers for email
+    // Persist to form-service (fully non-blocking, does not affect email send)
+    if (isEnterprise) {
+      persistEnterpriseForm({ name, email, company, phone, answers });
+    } else {
+      persistDemoForm({
+        name,
+        email,
+        company: company || null,
+        message: answers ? JSON.stringify(answers) : null,
+      });
+    }
+
+    // Format answers for email - different structure for enterprise
     let answersHtml = '';
     let answersText = '';
 
     if (answers && isEnterprise) {
+      // Enterprise-specific formatting
       answersHtml = `
       <div style="background-color: #ecfdf5; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #06b6d4;">
         <h3 style="color: #0e7490; margin-top: 0;">🏢 Enterprise-Anforderungen:</h3>
+        ${answers.company_size ? `<p style="margin: 8px 0;"><strong>Unternehmensgröße:</strong> ${answers.company_size}</p>` : ''}
         ${answers.industry_type ? `<p style="margin: 8px 0;"><strong>Sektor:</strong> ${answers.industry_type}</p>` : ''}
         ${answers.compliance_needs ? `<p style="margin: 8px 0;"><strong>Compliance & Sicherheit:</strong> ${answers.compliance_needs}</p>` : ''}
         ${answers.integration_requirements ? `<p style="margin: 8px 0;"><strong>Integrationsanforderungen:</strong> ${answers.integration_requirements}</p>` : ''}
         ${answers.decision_timeline ? `<p style="margin: 8px 0;"><strong>Implementierungszeitplan:</strong> ${answers.decision_timeline}</p>` : ''}
       </div>
       `;
-      answersText = Object.entries(answers).map(([k, v]) => `${k}: ${v}`).join('\n');
+
+      answersText = `
+🏢 Enterprise-Anforderungen:
+
+${answers.company_size ? `Unternehmensgröße: ${answers.company_size}` : ''}
+${answers.industry_type ? `Sektor: ${answers.industry_type}` : ''}
+${answers.compliance_needs ? `Compliance & Sicherheit: ${answers.compliance_needs}` : ''}
+${answers.integration_requirements ? `Integrationsanforderungen: ${answers.integration_requirements}` : ''}
+${answers.decision_timeline ? `Implementierungszeitplan: ${answers.decision_timeline}` : ''}
+      `;
     } else if (answers) {
+      // Standard demo request formatting
       answersHtml = `
       <div style="background-color: #eff6ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
         <h3 style="color: #1e3a8a; margin-top: 0;">📋 Antworten aus dem Fragebogen:</h3>
@@ -58,10 +100,23 @@ export async function POST(request: NextRequest) {
         ${answers.timeline ? `<p style="margin: 8px 0;"><strong>Zeitplan:</strong> ${answers.timeline}</p>` : ''}
       </div>
       `;
-      answersText = Object.entries(answers).map(([k, v]) => `${k}: ${v}`).join('\n');
+
+      answersText = `
+📋 Antworten aus dem Fragebogen:
+
+${answers.business_age ? `Betrieb aktiv seit: ${answers.business_age}` : ''}
+${answers.company_size ? `Betriebsgröße: ${answers.company_size}` : ''}
+${answers.main_goal ? `Hauptziel: ${answers.main_goal}` : ''}
+${answers.current_solution ? `Aktuelle Software: ${answers.current_solution}` : ''}
+${answers.timeline ? `Zeitplan: ${answers.timeline}` : ''}
+      `;
     }
 
-    const emailSubject = isEnterprise ? '🏢 ENTERPRISE BEWERBUNG - Neue Anfrage' : '🎯 DEMO BUCHEN - Neue Anfrage';
+    // Create email content
+    const emailSubject = isEnterprise
+      ? '🏢 ENTERPRISE BEWERBUNG - Neue Anfrage'
+      : '🎯 DEMO BUCHEN - Neue Anfrage';
+
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: ${isEnterprise ? '#0e7490' : '#1e3a8a'};">${isEnterprise ? '🏢 Neue Enterprise-Bewerbung' : '🎯 Neue Demo-Anfrage'}</h2>
@@ -72,20 +127,42 @@ export async function POST(request: NextRequest) {
           <p style="margin: 10px 0;"><strong>📱 Telefon:</strong> ${phone}</p>
         </div>
         ${answersHtml}
-        <p style="color: #6b7280; font-size: 14px;">Zeitstempel: ${new Date().toLocaleString('de-DE')}</p>
+        <p style="color: #6b7280; font-size: 14px;">
+          Über: Taskey Website - ${isEnterprise ? 'Enterprise Bewerbung' : 'Demo Buchung'}<br>
+          Zeitstempel: ${new Date().toLocaleString('de-DE')}
+        </p>
       </div>
     `;
 
+    const emailText = `
+${isEnterprise ? '🏢 ENTERPRISE BEWERBUNG' : '🎯 DEMO BUCHEN'} - Neue Anfrage
+
+👤 Name: ${name}
+${company ? `🏢 Unternehmen: ${company}` : ''}
+📧 Email: ${email}
+📱 Telefon: ${phone}
+
+${answersText}
+
+Über: Taskey Website - ${isEnterprise ? 'Enterprise Bewerbung' : 'Demo Buchung'}
+Zeitstempel: ${new Date().toLocaleString('de-DE')}
+    `;
+
+    // Configure nodemailer transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail',
-      auth: { user: 'finolino9@gmail.com', pass: process.env.SMTP_PASSWORD },
+      auth: {
+        user: 'finolino9@gmail.com',
+        pass: process.env.SMTP_PASSWORD,
+      },
     });
 
+    // Send email
     await transporter.sendMail({
       from: 'finolino9@gmail.com',
       to: 'fynnschulzonline@gmail.com',
       subject: emailSubject,
-      text: `${name}\n${email}\n${phone}\n\n${answersText}`,
+      text: emailText,
       html: emailHtml,
     });
 
@@ -95,7 +172,23 @@ export async function POST(request: NextRequest) {
     );
 
   } catch (error: any) {
-    console.error('Error sending email:', error);
-    return NextResponse.json({ error: 'Fehler beim Senden der Anfrage.' }, { status: 500 });
+    console.error('❌ Error sending email:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      command: error.command,
+    });
+    console.error('SMTP Config:', {
+      user: 'finolino9@gmail.com',
+      password: process.env.SMTP_PASSWORD ? '✅ Set' : '❌ Missing',
+    });
+
+    return NextResponse.json(
+      {
+        error: 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es später erneut.',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      },
+      { status: 500 }
+    );
   }
 }

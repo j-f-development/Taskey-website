@@ -27,7 +27,7 @@ export default function ManagerRequestModal({ isOpen, onClose }: ManagerRequestM
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('/api/send-manager-request', {
+      const response = await fetch('https://mission-control.vars-development.com/api/forms/manager-request', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,13 +35,9 @@ export default function ManagerRequestModal({ isOpen, onClose }: ManagerRequestM
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
         setSubmitStatus('success');
-        // Erfolgs-Alert mit Details
         alert('✅ Vielen Dank! Ihre Manager-Anfrage wurde erfolgreich versendet. Ein Taskey Manager wird sich innerhalb von 24 Stunden bei Ihnen melden.');
-        // Formular zurücksetzen
         setFormData({
           name: '',
           email: '',
@@ -56,13 +52,12 @@ export default function ManagerRequestModal({ isOpen, onClose }: ManagerRequestM
         }, 1000);
       } else {
         setSubmitStatus('error');
-        // Fehler-Alert mit Serverantwort
-        alert('❌ ' + (data.error || 'Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.'));
+        const data = await response.json().catch(() => ({}));
+        alert('❌ ' + (data.detail || 'Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.'));
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
-      // Netzwerk-Fehler-Alert
       alert('❌ Verbindungsfehler. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.');
     } finally {
       setIsSubmitting(false);
