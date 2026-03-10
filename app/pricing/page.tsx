@@ -262,7 +262,7 @@ export default function PricingPage() {
                   </div>
                   <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 2.63a14.98 14.98 0 00-2.56 6.16m8.52 5.58a6 6 0 01-7.38 5.84H3.37m5-5.84A6 6 0 013 8.41V3.37m5.58 8.52A14.98 14.98 0 012.63 9.63" />
                     </svg>
                   </div>
                 </div>
@@ -757,94 +757,6 @@ export default function PricingPage() {
             </div>
           </div>
 
-        </div>
-      </section>
-
-      {/* DATEV / Lexware Add-on */}
-      <section id="datev-addon" className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-900 to-gray-900"></div>
-            <div className="absolute inset-0 opacity-20" style={{backgroundImage: 'radial-gradient(circle at 15% 60%, #10b981 0%, transparent 45%), radial-gradient(circle at 85% 20%, #06b6d4 0%, transparent 40%)'}}></div>
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400"></div>
-
-            <div className="relative z-10 p-8 md:p-14">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                {/* Left */}
-                <div>
-                  <div className="inline-flex items-center gap-2 bg-emerald-400/15 border border-emerald-400/30 text-emerald-300 px-5 py-2 rounded-full text-xs font-black mb-6 uppercase tracking-widest">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
-                    Optionales Add-on · Für alle Pakete
-                  </div>
-                  <h2 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
-                    DATEV &amp; Lexware<br />
-                    <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">direkt verbunden.</span>
-                  </h2>
-                  <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-                    Schluss mit manuellem Export. Taskey überträgt Ihre Zeiterfassungen, Belege und Abrechnungsdaten automatisch und fehlerfrei direkt in Ihr Buchhaltungssystem.
-                  </p>
-                  <div className="space-y-3">
-                    {[
-                      { icon: '🔁', text: 'Automatischer Datenabgleich — täglich oder in Echtzeit' },
-                      { icon: '📂', text: 'Zeiterfassungen, Belege & Lohnvorbereitung auf Knopfdruck' },
-                      { icon: '✅', text: 'Zertifizierte DATEV-Schnittstelle — steuerberatertauglich' },
-                      { icon: '🧩', text: 'Kompatibel mit DATEV, Lexware & LexOffice' },
-                      { icon: '🔒', text: 'DSGVO-konform, verschlüsselt, Made in Germany' },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10">
-                        <span className="text-xl flex-shrink-0">{item.icon}</span>
-                        <span className="text-gray-200 text-sm">{item.text}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right: Pricing box */}
-                <div className="flex flex-col gap-6">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                    <p className="text-emerald-300 text-xs font-black uppercase tracking-widest mb-4">Monatliche Pauschale · Für alle Pakete</p>
-                    <div className="flex items-baseline gap-2 mb-1">
-                      <span className="text-6xl font-black text-white">11,89</span>
-                      <span className="text-2xl font-bold text-gray-300">€</span>
-                    </div>
-                    <p className="text-gray-400 text-sm mb-6">zzgl. MwSt. · Jederzeit kündbar · Zu jedem Paket zubuchbar</p>
-                    <div className="border-t border-white/10 pt-6 mb-6 grid grid-cols-2 gap-4">
-                      {[
-                        { label: 'Paket-Bindung', value: 'Keine' },
-                        { label: 'Einrichtung', value: 'Kostenlos' },
-                        { label: 'Kündigung', value: 'Monatlich' },
-                        { label: 'Support', value: 'Inklusive' },
-                      ].map((item, i) => (
-                        <div key={i} className="text-center bg-white/5 rounded-xl p-3">
-                          <div className="text-white font-black text-sm">{item.value}</div>
-                          <div className="text-gray-500 text-xs mt-0.5">{item.label}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <button
-                      onClick={() => setDemoModalOpen(true)}
-                      className="w-full py-4 rounded-xl font-black text-gray-900 bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 transition-all text-sm shadow-lg hover:scale-105"
-                    >
-                      DATEV/Lexware Add-on anfragen
-                    </button>
-                    <p className="text-center text-xs text-gray-500 mt-3">Aktivierung innerhalb von 24 Stunden</p>
-                  </div>
-
-                  {/* Compatible logos bar */}
-                  <div className="bg-white/5 rounded-2xl p-5 border border-white/10 text-center">
-                    <p className="text-gray-500 text-xs uppercase tracking-widest mb-3">Kompatibel mit</p>
-                    <div className="flex justify-center gap-6 items-center">
-                      <span className="text-white font-black text-lg">DATEV</span>
-                      <span className="text-gray-600">·</span>
-                      <span className="text-white font-black text-lg">Lexware</span>
-                      <span className="text-gray-600">·</span>
-                      <span className="text-gray-300 font-bold text-base">LexOffice</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
