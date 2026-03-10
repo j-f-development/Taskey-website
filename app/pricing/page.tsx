@@ -282,7 +282,9 @@ export default function PricingPage() {
                   </div>
                   <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 2.63a14.98 14.98 0 00-2.56 6.16m8.52 5.58a6 6 0 01-7.38 5.84H3.37m5-5.84A6 6 0 013 8.41V3.37m5.58 8.52A14.98 14.98 0 012.63 9.63" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 2C12 2 8 6 8 12c0 2.5 1 4.5 1 4.5L12 22l3-5.5S16 14.5 16 12c0-6-4-10-4-10z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M8 16.5S5 15 4 13c1.5 0 3 .5 4 1.5M16 16.5s3-1.5 4-3.5c-1.5 0-3 .5-4 1.5" />
+                      <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
                     </svg>
                   </div>
                 </div>
