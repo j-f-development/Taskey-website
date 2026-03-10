@@ -78,7 +78,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <WebVitals />
-        <script defer src="https://analytics.vars-development.com/script.js" data-website-id="bb3bb3bb-22bb-33bb-44bb-55bb55bb55bb"></script>
+        <script defer src="https://mission-control.vars-development.com/umami/script.js" data-website-id="15a75075-86a0-4e36-8cd2-7cd83d860d5c"></script>
         <LanguageProvider>
           <Header />
           {children}
