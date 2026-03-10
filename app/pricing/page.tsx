@@ -138,11 +138,13 @@ export default function PricingPage() {
                   {[
                     { text: 'GPS + Mobile App', dim: false },
                     { text: 'Routenoptimierung (automatisch)', dim: false },
-                    { text: 'NFC-Tag-Verwaltung', dim: false },
+                    { text: '3 NFC-Tags inklusive', dim: false },
                     { text: 'Standard Auftrags- & Projektplanung', dim: false },
                     { text: 'Mitarbeiter-Stammdaten', dim: false },
                     { text: '50 GB Speicher', dim: false },
                     { text: '12 Monate Historie (GoBD)', dim: false },
+                    { text: 'Keine Besorgungsfahrten', dim: true },
+                    { text: 'Keine Fotogalerie', dim: true },
                     { text: 'Nur PDF-Rechnungen (kein Export)', dim: true },
                     { text: 'Keine Rentabilitätsanalyse', dim: true },
                     { text: 'E-Mail Support (48h)', dim: false },
@@ -227,13 +229,13 @@ export default function PricingPage() {
                 <ul className="space-y-2.5 mb-6">
                   {[
                     { text: 'Alles aus START', dim: false },
+                    { text: 'Besorgungsfahrten', dim: false },
+                    { text: '15 NFC-Tags inklusive', dim: false },
+                    { text: 'Fotogalerie für Projekte & Aufträge', dim: false },
                     { text: 'Erweiterte Planung + Qualifikationen', dim: false },
                     { text: 'Routenoptimierung (automatisch)', dim: false },
-                    { text: 'NFC-Tag-Verwaltung', dim: false },
                     { text: '250 GB Speicher', dim: false },
                     { text: '24 Monate Historie (GoBD)', dim: false },
-                    { text: 'Lexoffice-Export', dim: false },
-                    { text: 'Kein DATEV-Export', dim: true },
                     { text: 'Keine Echtzeit-Rentabilität', dim: true },
                     { text: 'Chat & E-Mail Support (24h)', dim: false },
                   ].map((item, i) => (
@@ -317,11 +319,13 @@ export default function PricingPage() {
                 <ul className="space-y-2.5 mb-6">
                   {[
                     { text: 'Alles aus GROW', dim: false },
+                    { text: 'Besorgungsfahrten', dim: false },
+                    { text: '45 NFC-Tags inklusive', dim: false },
+                    { text: 'Fotogalerie für Projekte & Aufträge', dim: false },
                     { text: 'Live-Tracking (Echtzeit)', dim: false },
                     { text: 'Routenoptimierung + Live-Tracking', dim: false },
                     { text: '1 TB Speicher', dim: false },
                     { text: 'Unbegrenzte Historie (GoBD)', dim: false },
-                    { text: 'DATEV-Export + Lexoffice', dim: false },
                     { text: 'Echtzeit-Rentabilität pro Projekt', dim: false },
                     { text: 'Priority Support', dim: false },
                   ].map((item, i) => (
@@ -403,11 +407,13 @@ export default function PricingPage() {
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                   {[
+                    { label: 'NFC-Tags inklusive', start: '3 Tags', grow: '15 Tags', scale: '45 Tags' },
                     { label: 'Speicher', start: '50 GB', grow: '250 GB', scale: '1 TB' },
                     { label: 'Daten-Historie (GoBD)', start: '12 Monate', grow: '24 Monate', scale: 'Unbegrenzt' },
                     { label: 'Auftrags-/Projektplanung', start: 'Standard', grow: 'Erweitert', scale: 'Erweitert' },
+                    { label: 'Besorgungsfahrten', start: '—', grow: 'Inklusive', scale: 'Inklusive' },
+                    { label: 'Fotogalerie', start: '—', grow: 'Inklusive', scale: 'Inklusive' },
                     { label: 'Mitarbeitermanagement', start: 'Stammdaten', grow: '+ Qualifikationen', scale: '+ Qualifikationen' },
-                    { label: 'Buchhaltungsexport', start: 'Nur PDF', grow: 'Lexoffice', scale: 'DATEV + Lexoffice' },
                     { label: 'Echtzeit-Rentabilität', start: '—', grow: '—', scale: 'Live-Margen pro Projekt' },
                     { label: 'Support', start: 'E-Mail (48h)', grow: 'Chat & E-Mail (24h)', scale: 'Priority Support' },
                   ].map((row, i) => (
