@@ -319,8 +319,8 @@ export default function EnterpriseApplicationModal({ isOpen, onClose }: Enterpri
                         onClick={() => handleAnswerSelect(option)}
                         style={{ animationDelay: `${index * 0.1}s` }}
                         className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-all duration-300 transform hover:scale-[1.02] animate-[slideUp_0.5s_ease-out] relative group overflow-hidden shadow-sm ${currentAnswer === option
-                            ? 'border-cyan-600 bg-gradient-to-r from-cyan-600 via-cyan-500 to-cyan-400 text-white font-bold shadow-lg'
-                            : 'border-cyan-200 bg-white text-gray-900 hover:border-cyan-400 hover:bg-cyan-50'
+                          ? 'border-cyan-600 bg-gradient-to-r from-cyan-600 via-cyan-500 to-cyan-400 text-white font-bold shadow-lg'
+                          : 'border-cyan-200 bg-white text-gray-900 hover:border-cyan-400 hover:bg-cyan-50'
                           }`}
                       >
                         {/* Elegant shine effect */}
@@ -329,8 +329,8 @@ export default function EnterpriseApplicationModal({ isOpen, onClose }: Enterpri
 
                         <div className="flex items-center gap-3 relative z-10">
                           <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${currentAnswer === option
-                              ? 'border-white bg-white animate-[bounceIn_0.5s_ease-out]'
-                              : 'border-cyan-300 bg-white'
+                            ? 'border-white bg-white animate-[bounceIn_0.5s_ease-out]'
+                            : 'border-cyan-300 bg-white'
                             }`}>
                             {currentAnswer === option && (
                               <svg className="w-3 h-3 text-cyan-700" fill="currentColor" viewBox="0 0 20 20">
