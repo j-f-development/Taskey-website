@@ -172,10 +172,10 @@ export default function ManagerRequestModal({ isOpen, onClose }: ManagerRequestM
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-cyan-400 transition-colors"
             >
               <option value="">Bitte wählen</option>
-              <option value="1-10">1-10 Mitarbeiter</option>
-              <option value="11-50">11-50 Mitarbeiter</option>
-              <option value="51-150">51-150 Mitarbeiter</option>
-              <option value="150+">150+ Mitarbeiter</option>
+              <option value="1-5">1–5 Mitarbeiter</option>
+              <option value="6-20">6–20 Mitarbeiter</option>
+              <option value="21-50">21–50 Mitarbeiter</option>
+              <option value="50+">50+ Mitarbeiter</option>
             </select>
           </div>
 

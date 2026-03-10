@@ -34,27 +34,6 @@ function getTotalLength(segLens: number[]) {
   return segLens.reduce((a, b) => a + b, 0);
 }
 
-const CARDS = [
-  {
-    id: 1,
-    label: "1–10 Mitarbeiter",
-    image: "/26473062-6363-4095-A9BD-AD2B2B404909.png",
-    text: "Sind Sie ein kleiner oder neu gegründeter Betrieb und möchten Arbeitszeiten, Abläufe und Arbeitstage effizienter organisieren?",
-  },
-  {
-    id: 2,
-    label: "11–55 Mitarbeiter",
-    image: "/629F1A67-7DB2-4895-B898-337BCB2EAE07.png",
-    text: "Wächst Ihr Betrieb und möchten Sie Teams, Projekte und Einsatzpläne zentral steuern – ohne den Überblick zu verlieren?",
-  },
-  {
-    id: 3,
-    label: "56–100 Mitarbeiter",
-    image: "/A723E4B1-276B-4AC7-9BAB-63AEAF16EC1D.png",
-    text: "Leiten Sie ein großes Unternehmen und benötigen Sie eine skalierbare Lösung für komplexe Strukturen, mehrere Teams und anspruchsvolle Einsatzplanung?",
-  },
-];
-
 export default function BusinessSize() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeCard, setActiveCard] = useState<number | null>(null);
