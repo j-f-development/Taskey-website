@@ -18,7 +18,7 @@ export default function Hero() {
           src="/83CC6636-2805-434F-9DD7-E54950B72DF5.png"
           alt="Taskey Hero Background"
           fill
-          className="object-cover"
+          className="object-cover opacity-50"
           priority
         />
         {/* Bottom fade */}
