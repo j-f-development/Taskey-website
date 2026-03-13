@@ -17,7 +17,7 @@ export default function Hero() {
           {/* Headline */}
           <h1 className="text-[clamp(4rem,12vw,9rem)] font-black text-gray-900 leading-[0.9] tracking-tight mb-10">
             Dein Betrieb.<br />
-            <span className="text-blue-900">Endlich<br className="sm:hidden" /> im Griff.</span>
+            <span className="text-blue-900">Endlich<br className="sm:hidden" /> im Griff<span>.</span></span>
           </h1>
 
           <p className="text-2xl sm:text-3xl text-gray-500 font-medium mb-4">
