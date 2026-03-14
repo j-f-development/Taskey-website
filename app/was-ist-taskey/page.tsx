@@ -1,4 +1,9 @@
+"use client";
+
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function WasIstTaskeyPage() {
+  const { t } = useLanguage();
   return (
     <>
       {/* Hero Section with Background - Only 70% height */}
@@ -21,10 +26,10 @@ export default function WasIstTaskeyPage() {
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-8 leading-tight animate-fadeIn">
-              Was ist <span className="text-blue-900 drop-shadow-2xl bg-white/90 px-4 py-2 rounded-2xl">Taskey</span>?
+              {t("was.hero.title.prefix")} <span className="text-blue-900 drop-shadow-2xl bg-white/90 px-4 py-2 rounded-2xl">{t("was.hero.title.main")}</span>?
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto animate-fadeIn delay-200">
-              Mehr als Software – ein System zur Objektivierung von Arbeit
+              {t("was.hero.subtitle")}
             </p>
           </div>
         </div>
@@ -587,10 +592,10 @@ export default function WasIstTaskeyPage() {
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-[3rem] p-12 md:p-16 shadow-2xl border border-gray-100">
               <div className="text-center">
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                  Bereit, Taskey kennenzulernen?
+                  {t("was.cta.title")}
                 </h2>
                 <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-                  Entdecken Sie, wie Taskey Ihren Betrieb effizienter macht
+                  {t("was.cta.subtitle")}
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">

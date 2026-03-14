@@ -5,10 +5,12 @@ import Link from "next/link";
 import DemoBookingModal from "@/components/DemoBookingModal";
 import EnterpriseApplicationModal from "@/components/EnterpriseApplicationModal";
 import Head from "next/head";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function EnterprisePage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [enterpriseModalOpen, setEnterpriseModalOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <>
@@ -41,22 +43,22 @@ export default function EnterprisePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-12">
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 leading-tight">
-                Taskey <span className="text-cyan-400">Enterprise</span>
+                {t("enterprise.hero.title.prefix")} <span className="text-cyan-400">{t("enterprise.hero.title.highlight")}</span>
               </h1>
               <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-4xl mx-auto mb-10 leading-relaxed">
-                Maßgeschneiderte, exklusive Lösungen für führende Organisationen — verfügbar nur für ausgewählte Partner
+                {t("enterprise.hero.subtitle")}
               </p>
               <div className="text-2xl md:text-3xl font-semibold text-cyan-400">
-                Aufnahme nur auf Anfrage & Prüfung
+                {t("enterprise.hero.admission")}
               </div>
               <p className="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
-                Wir bieten ein streng limitiertes Enterprise‑Programm an. Bewerbungen werden individuell geprüft und nur Unternehmen akzeptiert, die unsere hohen Anforderungen an Größe, Sicherheitsstandards und geschäftliche Relevanz erfüllen.
+                {t("enterprise.hero.desc1")}
               </p>
               <p className="mt-2 text-sm text-gray-300 max-w-3xl mx-auto">
-                Voraussetzungen können beispielsweise sein: Mindestgröße (100+ Angestellte), nachweisbare Marktführerschaft oder strategische Bedeutung sowie erweiterte Integrationsanforderungen.
+                {t("enterprise.hero.desc2")}
               </p>
               <p className="mt-4 text-sm text-cyan-300 font-medium max-w-3xl mx-auto">
-                Hinweis: Die Aufnahme erfolgt nach individueller Prüfung.
+                {t("enterprise.hero.note")}
               </p>
             </div>
           </div>
@@ -67,10 +69,10 @@ export default function EnterprisePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Wann ist Enterprise das Richtige für Sie?
+                {t("enterprise.when.title")}
               </h2>
               <p className="text-xl text-gray-300">
-                Wir empfehlen Enterprise für Unternehmen mit einzigartigen Anforderungen und strategischer Relevanz
+                {t("enterprise.when.subtitle")}
               </p>
             </div>
 
@@ -359,13 +361,13 @@ export default function EnterprisePage() {
                 onClick={() => setEnterpriseModalOpen(true)}
                 className="px-8 py-4 bg-cyan-400 text-gray-900 font-bold rounded-lg hover:bg-cyan-300 transition-all hover:scale-105 shadow-lg text-lg"
               >
-                Für Enterprise bewerben
+                {t("enterprise.cta.apply")}
               </button>
               <a
                 href="mailto:fynn@vars-development.com?subject=Enterprise-Anfrage%20Taskey"
                 className="px-8 py-4 text-white border-2 border-white/50 font-bold rounded-lg hover:bg-white/10 hover:border-white transition-all hover:scale-105 text-lg backdrop-blur-sm"
               >
-                E-Mail an Enterprise-Team
+                {t("enterprise.cta.demo")}
               </a>
             </div>
             <p className="text-sm text-gray-300 mb-8">Hinweis: Aufnahme ist selektiv und erfolgt nach Prüfung.</p>

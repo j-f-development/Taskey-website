@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 import ManagerRequestModal from "@/components/ManagerRequestModal";
 import DarkHeader from "@/components/DarkHeader";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function PremiumManagerPage() {
   const [isManagerModalOpen, setIsManagerModalOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const { t } = useLanguage();
   const containerRef = React.useRef<HTMLDivElement>(null);
   const headingRef = React.useRef<HTMLHeadingElement>(null);
 
@@ -96,19 +98,19 @@ export default function PremiumManagerPage() {
                     transform: 'translateZ(0)'
                   }}
                 >
-                  Ihr persönlicher Taskey Manager
+                  {t("manager.hero.title")}
                 </h1>
 
                 {/* Beschreibung und Button im gleichen Container */}
                 <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-400 mb-8 sm:mb-10 max-w-2xl">
-                  Eine dedizierte Person, die sich zu 100% um Ihr Unternehmen kümmert
+                  {t("manager.hero.subtitle")}
                 </p>
 
                 <button
                   onClick={() => setIsManagerModalOpen(true)}
                   className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-3 sm:py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-base sm:text-xl rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-2xl hover:shadow-cyan-500/50"
                 >
-                  <span>Jetzt Manager anfragen</span>
+                  <span>{t("manager.cta.request")}</span>
                   <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

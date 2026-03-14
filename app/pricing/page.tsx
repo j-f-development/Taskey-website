@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Lazy load modals for better initial load performance
 const DemoBookingModal = dynamic(() => import("@/components/DemoBookingModal"), {
@@ -20,6 +21,7 @@ export default function PricingPage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [managerModalOpen, setManagerModalOpen] = useState(false);
   const [enterpriseModalOpen, setEnterpriseModalOpen] = useState(false);
+  const { t } = useLanguage();
   
   // Kündigungsfristen
   const [startCancellation, setStartCancellation] = useState<'monthly' | 'quarterly' | 'yearly'>('monthly');
@@ -67,14 +69,13 @@ export default function PricingPage() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-cyan-300 px-5 py-2 rounded-full text-sm font-semibold mb-8">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-            14 Tage kostenlos testen
+            {t("pricing.hero.cta.trial")}
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Das richtige Paket<br />
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">für Ihren Betrieb</span>
+            {t("pricing.hero.title")}
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-4">
-            Transparent, fair, ohne versteckte Kosten — zahlen Sie nur pro Mitarbeiter.
+            {t("pricing.hero.subtitle")}
           </p>
           <p className="text-sm text-gray-400">Alle Preise zzgl. MwSt.</p>
         </div>
@@ -95,8 +96,8 @@ export default function PricingPage() {
               <div className="relative z-10 p-8">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-2xl font-black text-white mb-1">START</h3>
-                    <p className="text-sm text-slate-300">Für den Start in die Digitalisierung</p>
+                    <h3 className="text-2xl font-black text-white mb-1">{t("pricing.card.start.name")}</h3>
+                    <p className="text-sm text-slate-300">{t("pricing.card.start.tagline")}</p>
                   </div>
                   <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -187,8 +188,8 @@ export default function PricingPage() {
               <div className="relative z-10 p-8">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-2xl font-black text-white mb-1">GROW</h3>
-                    <p className="text-sm text-blue-100">Für etablierte Betriebe</p>
+                    <h3 className="text-2xl font-black text-white mb-1">{t("pricing.card.grow.name")}</h3>
+                    <p className="text-sm text-blue-100">{t("pricing.card.grow.tagline")}</p>
                   </div>
                   <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -277,8 +278,8 @@ export default function PricingPage() {
               <div className="relative z-10 p-8">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-2xl font-black text-white mb-1">SCALE</h3>
-                    <p className="text-sm text-purple-100">Für datengetriebene Profis & Skalierer</p>
+                    <h3 className="text-2xl font-black text-white mb-1">{t("pricing.card.scale.name")}</h3>
+                    <p className="text-sm text-purple-100">{t("pricing.card.scale.tagline")}</p>
                   </div>
                   <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

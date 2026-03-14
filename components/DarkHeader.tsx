@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import DemoBookingModal from "./DemoBookingModal";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function DarkHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -66,6 +67,7 @@ export default function DarkHeader() {
           </div>
 
           <div className="hidden lg:flex items-center space-x-3">
+            <LanguageSwitcher />
             <button
               onClick={() => setDemoModalOpen(true)}
               className="px-5 py-2.5 text-gray-300 hover:text-white transition font-medium"

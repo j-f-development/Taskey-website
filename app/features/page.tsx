@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Image from 'next/image';
 import DemoBookingModal from '@/components/DemoBookingModal';
+import { useLanguage } from '@/context/LanguageContext';
 
 // Metadata will be set via head tags
 if (typeof window !== 'undefined') {
@@ -29,6 +30,7 @@ export default function FeaturesPage() {
   const [activeFeature, setActiveFeature] = useState('digitale-anlagenakte');
   const [expandedDetails, setExpandedDetails] = useState<string | null>(null);
   const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const { t } = useLanguage();
 
   const categories: Category[] = [
     {
