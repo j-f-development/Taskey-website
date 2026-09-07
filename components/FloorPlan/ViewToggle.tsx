@@ -1,6 +1,6 @@
 "use client";
 
-export type ViewMode = "grundriss" | "karten";
+export type ViewMode = "modell" | "grundriss";
 
 export function ViewToggle({
   mode,
@@ -17,27 +17,48 @@ export function ViewToggle({
       aria-label="Ansicht wechseln"
     >
       <Segment
+        active={mode === "modell"}
+        onClick={() => onChange("modell")}
+        label="3D-Modell"
+        icon={<span aria-hidden>◇</span>}
+      />
+      <Segment
         active={mode === "grundriss"}
         onClick={() => onChange("grundriss")}
         label="Grundriss"
         icon={
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-            <rect x="1.5" y="1.5" width="11" height="11" rx="1" stroke="currentColor" strokeWidth="1.2" />
-            <line x1="1.5" y1="7" x2="12.5" y2="7" stroke="currentColor" strokeWidth="1.2" />
-            <line x1="7" y1="1.5" x2="7" y2="12.5" stroke="currentColor" strokeWidth="1.2" />
-          </svg>
-        }
-      />
-      <Segment
-        active={mode === "karten"}
-        onClick={() => onChange("karten")}
-        label="Karten"
-        icon={
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-            <path d="M1.5 3.5L5 2v9l-3.5 1.5V3.5z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
-            <path d="M5 2l4 1.5" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
-            <path d="M5 11l4 1.5" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
-            <path d="M9 3.5L12.5 2v9L9 12.5V3.5z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            aria-hidden
+          >
+            <rect
+              x="1.5"
+              y="1.5"
+              width="11"
+              height="11"
+              rx="1"
+              stroke="currentColor"
+              strokeWidth="1.2"
+            />
+            <line
+              x1="1.5"
+              y1="7"
+              x2="12.5"
+              y2="7"
+              stroke="currentColor"
+              strokeWidth="1.2"
+            />
+            <line
+              x1="7"
+              y1="1.5"
+              x2="7"
+              y2="12.5"
+              stroke="currentColor"
+              strokeWidth="1.2"
+            />
           </svg>
         }
       />
@@ -68,7 +89,9 @@ function Segment({
           : "text-[#8A8F98] hover:text-[#202124]"
       }`}
     >
-      <span className={active ? "text-[#202124]" : "text-[#8A8F98]"}>{icon}</span>
+      <span className={active ? "text-[#202124]" : "text-[#8A8F98]"}>
+        {icon}
+      </span>
       {label}
     </button>
   );

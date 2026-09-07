@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import type { Room } from "@/lib/data/floorplan";
-import { STATUS_META } from "@/lib/data/floorplan";
+import { DEMO_STATUS } from "./status";
 
 export function RoomDetail({
   room,
@@ -28,19 +28,31 @@ export function RoomDetail({
   );
 }
 
-function RoomDetailCard({ room, onClose }: { room: Room; onClose: () => void }) {
-  const meta = STATUS_META[room.status];
+function RoomDetailCard({
+  room,
+  onClose,
+}: {
+  room: Room;
+  onClose: () => void;
+}) {
+  const meta = DEMO_STATUS[room.status];
 
   return (
     <div
-      className="rounded-2xl bg-white border border-[color:var(--fp-border)] p-5"
+      className="max-h-[360px] overflow-y-auto rounded-2xl bg-white border border-[color:var(--fp-border)] p-5"
       style={{ boxShadow: "0 20px 60px -20px rgba(15,23,42,0.35)" }}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full" style={{ background: meta.color }} />
-            <span className="text-[10.5px] font-semibold uppercase tracking-[0.12em]" style={{ color: meta.color }}>
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ background: meta.color }}
+            />
+            <span
+              className="text-[10.5px] font-semibold uppercase tracking-[0.12em]"
+              style={{ color: meta.color }}
+            >
               {meta.label}
             </span>
           </div>
@@ -55,15 +67,27 @@ function RoomDetailCard({ room, onClose }: { room: Room; onClose: () => void }) 
           aria-label="Schließen"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2.5 2.5l9 9M11.5 2.5l-9 9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            <path
+              d="M2.5 2.5l9 9M11.5 2.5l-9 9"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+            />
           </svg>
         </button>
       </div>
 
       {/* Kennzahlen */}
       <dl className="mt-4 grid grid-cols-2 gap-3">
-        <MetricCell label="Zuletzt gereinigt" value={room.lastClean ?? "—"} sub={room.lastCleanBy} />
-        <MetricCell label="Nächster Einsatz" value={room.nextScheduled ?? "—"} />
+        <MetricCell
+          label="Zuletzt gereinigt"
+          value={room.lastClean ?? "—"}
+          sub={room.lastCleanBy}
+        />
+        <MetricCell
+          label="Nächster Einsatz"
+          value={room.nextScheduled ?? "—"}
+        />
       </dl>
 
       {room.openTasks && room.openTasks > 0 ? (
@@ -106,7 +130,6 @@ function RoomDetailCard({ room, onClose }: { room: Room; onClose: () => void }) 
           ))}
         </ol>
       </div>
-
     </div>
   );
 }

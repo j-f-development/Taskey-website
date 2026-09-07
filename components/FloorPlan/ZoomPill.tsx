@@ -31,7 +31,7 @@ export function ZoomPill({
           <line x1="2" y1="6" x2="10" y2="6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
         </svg>
       </button>
-      <span className="font-mono text-[13px] font-medium text-[#202124] min-w-[46px] text-center">
+      <span className="ts-mono text-[13px] font-medium text-[#202124] min-w-[46px] text-center">
         {zoom}&nbsp;%
       </span>
       <button

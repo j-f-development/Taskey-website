@@ -351,4 +351,37 @@ html {
   --fp-red:           #F43F5E;
   --fp-red-soft:      rgba(244, 63, 94, 0.18);
   --fp-wall:          #111111;
+
+  /* Taskey Share tokens (needed by FloorPlanSection 3D-Modell) */
+  --ts-ink:            #0a0a0a;
+  --ts-ink-soft:       #1f1f1f;
+  --ts-ink-muted:      #6b7280;
+  --ts-canvas-elev:    #ffffff;
+  --ts-line:           rgba(0, 0, 0, 0.06);
+  --ts-line-strong:    rgba(0, 0, 0, 0.12);
+  --ts-r-shell:        22px;
+  --ts-shadow-lg:      0 20px 40px -12px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.05);
+  --ts-container-wide: 1360px;
+  --ts-container-x:    clamp(1.15rem, 4vw, 2.25rem);
+  --ts-font-serif:     "Source Serif 4", "Source Serif Pro", "New York", Georgia, serif;
+}
+
+.ts-container-wide {
+  width: 100%;
+  max-width: var(--ts-container-wide);
+  margin-inline: auto;
+  padding-inline: var(--ts-container-x);
+}
+
+.ts-display {
+  font-family: var(--ts-font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.ts-mono {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+  font-variant-numeric: tabular-nums;
 }
