@@ -16,6 +16,7 @@ const LiveMargen = dynamic(() => import("@/components/home/LiveMargen"));
 const TaskeyShare = dynamic(() => import("@/components/home/TaskeyShare"));
 const TargetAudiences = dynamic(() => import("@/components/TargetAudiences"));
 const SoloPackageMention = dynamic(() => import("@/components/home/SoloPackageMention"));
+const MigrationPromise = dynamic(() => import("@/components/home/MigrationPromise"));
 const Branchen = dynamic(() => import("@/components/home/Branchen"));
 const IOSAppSection = dynamic(() => import("@/components/home/iOSAppSection"));
 const AblaufSection = dynamic(() => import("@/components/home/AblaufSection"));
@@ -364,6 +365,9 @@ export default async function Home({
 
         {/* 3. Kern-USP #2: Alles in einem System statt 5 Abos */}
         <AllInOneUSP variant="dark" />
+
+        {/* 3aa. Migrations-Versprechen: Uploadlink, 48h Umzug, sofort produktiv */}
+        <MigrationPromise />
 
         {/* 3a. Kleine Erwähnung: neues Einzelunternehmer-Paket → /pricing */}
         <SoloPackageMention />
