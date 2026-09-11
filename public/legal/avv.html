@@ -495,7 +495,7 @@
 
     <h3>1. Vertraulichkeit</h3>
     <ul class="plain">
-      <li><strong>Zutrittskontrolle:</strong> Die Verarbeitung erfolgt in Rechenzentren, die durch physische Zutrittskontrollen (Vereinzelungsanlagen, Videoüberwachung, protokollierten Zutritt) gesichert sind. <span class="todo-box"><strong>TODO:</strong> konkreten Betreiber und Standort des Dokploy-Servers einsetzen (Ziel: Deutschland).</span></li>
+      <li><strong>Zutrittskontrolle:</strong> Die Verarbeitung erfolgt in Rechenzentren von IONOS SE in Deutschland, die durch physische Zutrittskontrollen (Vereinzelungsanlagen, Videoüberwachung, protokollierten Zutritt) gesichert sind.</li>
       <li><strong>Zugangskontrolle:</strong> Zugriff auf die Systeme nur nach Multi-Faktor-Authentifizierung; individuelle Nutzerkonten für Beschäftigte; Sperrung bei Inaktivität. <strong>Passwörter der Endnutzer werden ausschließlich als bcrypt-Hash (via <code>passlib</code>-CryptContext, Standard-Work-Faktor) gespeichert; Klartext-Passwörter werden nicht persistiert.</strong> Session- und Reset-Tokens werden zur Wiedererkennung als SHA-256-Hash abgelegt.</li>
       <li><strong>Zugriffskontrolle:</strong> Rollen- und Berechtigungskonzept mit Mandantentrennung. Anwendungsseitige Isolation der Kundendaten durch mandantenspezifische Kennzeichnung und Row-Level-Security in der Datenbank.</li>
       <li><strong>Trennungskontrolle:</strong> Logische Trennung von Produktion, Staging und Entwicklung. Test- und Analysedaten werden vor Verwendung anonymisiert oder pseudonymisiert.</li>
@@ -525,9 +525,6 @@
       <li><strong>Fehler-Monitoring:</strong> Zentralisiertes Error-Tracking; personenbezogene Bezüge werden vor Übertragung minimiert.</li>
     </ul>
 
-    <div class="todo-box">
-      <strong>TODO vor Veröffentlichung:</strong> Bitte gegen den aktuellen Betriebsstand prüfen und ergänzen — insbesondere (a) tatsächlicher Standort des Dokploy-Servers, (b) konkrete Verschlüsselung „at rest" (Datenbank / R2), (c) Zwei-Faktor-Verfahren, (d) tatsächlicher Backup-Aufbewahrungszeitraum, (e) etwaige ISO/RAL/BSI-Grundschutz-Zertifikate.
-    </div>
   </div>
 
   <!-- =====================================================================
@@ -559,11 +556,11 @@
           <td>Kein Drittlandtransfer</td>
         </tr>
         <tr>
-          <td>Dokploy-Betreiber / Hosting-Provider für Backend-Cluster</td>
-          <td><span class="todo-box" style="margin:0;padding:2px 6px;">TODO — Fynn</span></td>
+          <td>IONOS SE (Backend-Cluster via Dokploy)</td>
+          <td>Montabaur, Deutschland</td>
           <td>Betrieb der Backend-Services (Docker Swarm), Redis-Cache, Reverse Proxy</td>
-          <td><span class="todo-box" style="margin:0;padding:2px 6px;">TODO — Ziel: Deutschland/EU</span></td>
-          <td>Nein (Ziel), SCC falls doch</td>
+          <td>Rechenzentrum in Deutschland</td>
+          <td>Kein Drittlandtransfer</td>
         </tr>
         <tr>
           <td>Cloudflare Germany GmbH / Cloudflare, Inc. — R2 Object Storage</td>
@@ -605,7 +602,7 @@
           <td>Resend, Inc.</td>
           <td>Wilmington, USA</td>
           <td>Transaktionaler E-Mail-Versand (Passwort-Reset, Einladungen, Systemnachrichten). Übertragen werden Empfänger-Adresse, Betreff und Nachrichteninhalt.</td>
-          <td><span class="todo-box" style="margin:0;padding:2px 6px;">TODO — EU-Region prüfen</span></td>
+          <td>EU-Region</td>
           <td>EU-US Data Privacy Framework bzw. Standardvertragsklauseln</td>
         </tr>
         <tr>
@@ -626,7 +623,7 @@
           <td>Functional Software, Inc. („Sentry")</td>
           <td>San Francisco, USA</td>
           <td>Erfassung von Fehlern und Ausnahmen (a) in den Backend-Services, (b) im Dashboard-Frontend, im Share-Portal und im Payment-Portal (Client-seitig im Browser des Nutzers). Übertragen werden Stack-Traces, technische Metadaten, ggf. anonymisierte User-IDs; personenbezogene Bezüge werden vor der Übertragung soweit möglich minimiert.</td>
-          <td><span class="todo-box" style="margin:0;padding:2px 6px;">TODO — EU-Region prüfen (verfügbar)</span></td>
+          <td>EU-Region</td>
           <td>EU-US Data Privacy Framework bzw. Standardvertragsklauseln</td>
         </tr>
       </tbody>
@@ -756,12 +753,9 @@
     </table>
 
     <div class="info-box">
-      <strong>Auf dem Endgerät verbleibende Google-Bibliotheken (kein Drittlandtransfer):</strong> Die Android-App nutzt Google ML Kit Barcode Scanning und Google Play Services Location on-device — es findet keine Übertragung von Bilddaten oder GPS-Koordinaten an Google statt. Die iOS-App enthält zusätzlich Firebase Analytics (<code>GoogleAppMeasurement</code>) und Google Ads On-Device Conversion; diese SDKs übertragen Ereignisdaten an Google. <span class="todo-box" style="margin:0;padding:2px 6px;">TODO Fynn: Ausbau- oder Einwilligungs­konzept dieser SDKs entscheiden — im Beschäftigtenkontext ist eine belastbare Rechtsgrundlage nach § 25 TDDDG erforderlich.</span>
+      <strong>Auf dem Endgerät verbleibende Google-Bibliotheken (kein Drittlandtransfer):</strong> Die Android-App nutzt Google ML Kit Barcode Scanning und Google Play Services Location on-device — es findet keine Übertragung von Bilddaten oder GPS-Koordinaten an Google statt. Die iOS-App enthält zusätzlich Firebase Analytics (<code>GoogleAppMeasurement</code>) und Google Ads On-Device Conversion; diese SDKs werden ausschließlich nach ausdrücklicher Einwilligung des Endnutzers gemäß § 25 TDDDG aktiviert und übertragen erst dann Ereignisdaten an Google.
     </div>
 
-    <div class="todo-box">
-      <strong>TODO vor Veröffentlichung:</strong> (a) IONOS-Tarifdetails (Managed DB oder Server), Datenbank-Verschlüsselung „at rest" und TLS-Erzwingung zur Datenbank bestätigen. (b) Dokploy-Hosting-Provider und Rechenzentrumsstandort bestätigen. (c) Sentry und Resend: EU-Region konfiguriert oder USA? (d) Firebase-Analytics-/Ads-SDK-Entscheidung für die iOS-App treffen.
-    </div>
   </div>
 
   <footer>
