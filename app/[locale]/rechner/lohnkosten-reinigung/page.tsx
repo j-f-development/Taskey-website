@@ -179,7 +179,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Arbeitsstunden, Vollzeitäquivalente und Personalkosten pro Objekt.",
       },
       {
-        href: "/software-gebaeudereinigung",
+        href: "/features",
         label: "Software für Gebäudereinigung",
         description: "Personal, Objekte, Einsatzplanung und Kalkulation in einem System.",
       },
@@ -332,7 +332,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Hours, FTE and personnel cost per site.",
       },
       {
-        href: "/software-gebaeudereinigung",
+        href: "/features",
         label: "Cleaning company software",
         description: "Staff, sites, dispatching and quoting in one system.",
       },
@@ -485,7 +485,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Heures, ETP et coût personnel par site.",
       },
       {
-        href: "/software-gebaeudereinigung",
+        href: "/features",
         label: "Logiciel pour société de nettoyage",
         description: "Personnel, sites, planification et devis dans un seul système.",
       },

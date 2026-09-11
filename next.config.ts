@@ -93,12 +93,58 @@ const nextConfig: NextConfig = {
   // leitet sie auf die neuen /legal/*-Dokumente um. Die eigentliche 301 für
   // cdn.vars-development.com muss zusätzlich auf CDN-Seite (Cloudflare) gesetzt werden.
   async redirects() {
+    // 301-Redirects für entfernte SEO-Landingpages.
+    // Feature-nahe Landings → /features, Branchen/Vergleiche/Ratgeber → Root.
+    // Locale-Prefixe (en|fr) getrennt behandelt, damit englische/französische URLs
+    // in ihrer Sprache bleiben.
+    const featurePaths = [
+      '/reinigungsapp',
+      '/zeiterfassung-gebaeudereinigung',
+      '/nfc-zeiterfassung',
+      '/einsatzplanung-reinigung',
+      '/leistungsnachweis-gebaeudereinigung',
+      '/nfc',
+      '/ios',
+    ];
+    const rootPaths = [
+      '/software-gebaeudereinigung',
+      '/software-kleine-reinigungsfirma',
+      '/reinigungssoftware',
+      '/reinigersoftware',
+      '/oepnv',
+    ];
+
+    const featureRedirects = featurePaths.flatMap((path) => [
+      { source: path, destination: '/features', permanent: true },
+      { source: `/:locale(en|fr)${path}`, destination: '/:locale/features', permanent: true },
+    ]);
+    const rootRedirects = rootPaths.flatMap((path) => [
+      { source: path, destination: '/', permanent: true },
+      { source: `/:locale(en|fr)${path}`, destination: '/:locale', permanent: true },
+    ]);
+
     return [
       { source: '/compliance/client/germany/AGB.html',    destination: '/legal/agb-share.html',       permanent: true },
       { source: '/compliance/companies/germany/AGB.html', destination: '/legal/agb-b2b.html',         permanent: true },
       { source: '/compliance/companies/germany/SLA.html', destination: '/legal/sla.html',             permanent: true },
       { source: '/compliance/companies/germany/AVV.html', destination: '/legal/avv.html',             permanent: true },
       { source: '/compliance/employees/germany/AGB.html', destination: '/legal/agb-mitarbeiter.html', permanent: true },
+
+      // Entfernte Branchen-Hub und Detail-Seiten
+      { source: '/loesungen', destination: '/', permanent: true },
+      { source: '/loesungen/:slug*', destination: '/', permanent: true },
+      { source: '/:locale(en|fr)/loesungen', destination: '/:locale', permanent: true },
+      { source: '/:locale(en|fr)/loesungen/:slug*', destination: '/:locale', permanent: true },
+
+      // Entfernte Vergleichs-Seiten (waren DE-only)
+      { source: '/vergleich', destination: '/', permanent: true },
+      { source: '/vergleich/:slug*', destination: '/', permanent: true },
+
+      // Feature-nahe SEO-Landings
+      ...featureRedirects,
+
+      // Reinigungsarten/Betriebsgrößen/Ratgeber-Landings
+      ...rootRedirects,
     ];
   },
 };

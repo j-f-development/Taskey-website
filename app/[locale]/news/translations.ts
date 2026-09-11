@@ -16,10 +16,10 @@ const T: Record<string, Partial<Record<Locale, PostTranslation>>> = {
     en: {
       title: "Taskey Share now has its own website: taskey-share.de",
       summary:
-        "Taskey Share, the client portal from Taskey, now has its own dedicated website at taskey-share.de — with an interactive floor plan demo, six industry pages and a clear explanation of the proof-of-service model. No login, no app.",
+        "Taskey Share, the client portal from Taskey, now has its own dedicated website at taskey-share.de with an interactive floor plan demo, six industry pages and a clear explanation of the proof-of-service model. The demo is openly accessible; the production portal itself uses a dedicated login per client.",
       metaTitle: "Taskey Share website · taskey-share.de · Live demo for clients",
       metaDescription:
-        "Taskey Share, the client portal by Taskey, is now available on its own dedicated website at taskey-share.de — with an interactive floor plan demo, industry pages and proof-of-service explanations. No login, no app.",
+        "Taskey Share, the client portal by Taskey, is now available on its own dedicated website at taskey-share.de with an interactive floor plan demo, industry pages and proof-of-service explanations. The demo is openly accessible; the production portal itself uses a dedicated login per client.",
       body: `Taskey Share has been part of every Taskey plan for several months now. The client portal, where your customers see live what is happening at their sites, has proven itself in practice. What was missing: a dedicated place on the web where you could look at the whole thing in peace, without having to click through the Taskey pricing structure first.
 
 As of today that exists: **[taskey-share.de](https://taskey-share.de/en)**.
@@ -106,7 +106,7 @@ We built Taskey Share over several months with pilot customers from commercial c
 
 ## What Taskey Share is
 
-Taskey Share is the portal where your clients can see, at any time, what's happening on their site. Live status of running jobs, uploaded proof of service, open budgets, messages — everything in a lean browser view. No login hurdle, no app install, no training.
+Taskey Share is the portal where your clients can see, at any time, what's happening on their site. Live status of running jobs, uploaded proof of service, open budgets, messages — everything in a lean browser view, with a personal login per client, no app install, no training.
 
 It's not a new system your clients have to learn. It's not an extra tool you have to manage. It's simply there the moment you create a job in Taskey.
 
@@ -142,15 +142,15 @@ Third: sales gets a new argument. "You see live, at any time, what's happening o
 
 ## What Taskey Share deliberately is not
 
-Taskey Share is not a second backend for your client. It's a pure view layer on top of what's already happening in Taskey. The client can't change anything, can't reschedule, can't trigger jobs, can't see prices they shouldn't see. You stay in full control of what's visible and what isn't — per client, per site, per job.
+Taskey Share is not a second backend for your client. It shows your work transparently and opens clearly defined interaction paths: the client can review proof of service, pull up shared invoice information, open tickets, flag complaints and requests, and request special jobs. You stay in full control of what's visible and which actions are enabled — per client, per site, per job.
 
-We deliberately decided against a "self-service portal" where the client creates their own tickets. That would have shifted the relationship from a service relationship into a ticket mechanic. Neither our customers nor their clients want that.
+We deliberately decided against a full "self-service portal" where the client autonomously approves jobs. The client can submit requests and concerns in a structured way, while approval and prioritisation stay with your business. That keeps the service relationship intact and makes every interaction traceable.
 
 ## How to switch it on
 
-Taskey Share is included from today in every plan — START, GROW, SCALE and Enterprise. No module to add. No extra contract. No setup appointment.
+Taskey Share is included from today in every Taskey plan. No module to add. No extra contract. No setup appointment.
 
-You activate the portal per client directly in Taskey: one click in the customer record, the client gets an email with their personal link, done. No password, no forced account, no app. Open the browser, you're in.
+You activate the portal per client directly in Taskey: one click in the customer record, the client gets their credentials by email, signs in from the browser and is in. No app install, no extra software.
 
 You control what's visible per client. Whatever shouldn't be visible isn't.
 
@@ -216,15 +216,15 @@ Troisièmement : le commercial a un nouvel argument. « Vous voyez en direct, à
 
 ## Ce que Taskey Share n'est volontairement pas
 
-Taskey Share n'est pas un second backend pour votre client. C'est une simple couche de visualisation sur ce qui se passe déjà dans Taskey. Le client ne peut rien modifier, rien replanifier, rien déclencher, ne voit aucun prix qu'il ne doit pas voir. Vous gardez le contrôle complet de ce qui est visible et de ce qui ne l'est pas — par donneur d'ordre, par site, par mission.
+Taskey Share n'est pas un second backend pour votre client. Le portail montre votre prestation de manière transparente et ouvre des voies d'interaction clairement définies : le donneur d'ordre peut consulter les justificatifs, accéder aux informations de facturation partagées, ouvrir des tickets, signaler des réclamations et des demandes, et solliciter des prestations spéciales. Vous gardez le contrôle complet de ce qui est visible et des actions autorisées — par donneur d'ordre, par site, par mission.
 
-Nous avons délibérément renoncé à un « portail self-service » dans lequel le client crée lui-même des tickets. Cela aurait déplacé la relation prestation vers une mécanique de tickets. Ni nos clients ni leurs donneurs d'ordre ne le souhaitent.
+Nous avons délibérément renoncé à un « portail self-service » complet dans lequel le client valide seul les missions. Le client peut transmettre demandes et signalements de manière structurée ; la validation et la priorisation restent chez votre entreprise. Cela préserve la relation de prestation tout en rendant chaque interaction traçable.
 
 ## Comment l'activer
 
-Taskey Share est inclus dès aujourd'hui dans tous les plans — START, GROW, SCALE et Enterprise. Aucun module à ajouter. Aucun contrat supplémentaire. Aucun rendez-vous de mise en place.
+Taskey Share est inclus dès aujourd'hui dans chaque formule Taskey. Aucun module à ajouter. Aucun contrat supplémentaire. Aucun rendez-vous de mise en place.
 
-Vous activez le portail par donneur d'ordre directement dans Taskey : un clic dans la fiche client, le donneur d'ordre reçoit un e-mail avec son lien personnel, terminé. Pas de mot de passe, pas de compte forcé, pas d'application. On ouvre le navigateur, on est dedans.
+Vous activez le portail par donneur d'ordre directement dans Taskey : un clic dans la fiche client, le donneur d'ordre reçoit ses identifiants par e-mail, se connecte depuis le navigateur et y accède. Pas d'installation d'application, pas de logiciel supplémentaire.
 
 Ce qui est visible, vous le pilotez par donneur d'ordre. Ce qui ne doit pas être visible ne l'est pas.
 
@@ -851,7 +851,7 @@ Surtout pour les équipes qui travaillent en caves, tunnels ou grands chantiers,
         "Every Taskey plan now includes NFC tags by default. Tap tools, machines and vehicles to log who took what, when, and when it came back.",
       body: `We spent a long time thinking about how to make NFC as simple as possible. The answer was: just throw it in.
 
-From today, every START customer gets 3 NFC tags, every GROW customer 15 tags, and every SCALE customer 45 tags – included, no extra cost.
+From today, NFC tags are included in every Taskey plan at no extra cost. The number of tags depends on the plan.
 
 The tags arrive by post. You stick them on machines, tool boxes or vehicles. Your team taps them with their phone – and everything is logged automatically. Who took what, when. Who brought it back.
 
@@ -867,7 +867,7 @@ No more disappearing kit. No more arguments. No more paper trail.`,
         "Tous les plans Taskey incluent désormais des tags NFC. Scannez outils, machines et véhicules pour enregistrer qui a pris quoi, quand, et quand c'est revenu.",
       body: `On a longuement réfléchi à comment rendre le NFC le plus simple possible. La réponse : on inclut tout.
 
-Désormais, chaque client START reçoit 3 tags NFC, chaque client GROW 15 tags, et chaque client SCALE 45 tags – inclus, sans surcoût.
+Désormais, les tags NFC sont inclus dans chaque plan Taskey, sans surcoût. La quantité incluse dépend du plan choisi.
 
 Les tags arrivent par courrier. Vous les collez sur les machines, caisses à outils ou véhicules. Vos équipes approchent leur téléphone – et tout est journalisé automatiquement. Qui a pris quoi, quand. Qui a rapporté.
 

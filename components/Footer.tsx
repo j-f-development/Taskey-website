@@ -98,7 +98,7 @@ export default function Footer() {
         </div>
 
         {/* Links grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 sm:gap-8 md:gap-8 py-10 sm:py-16 md:py-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-8 py-10 sm:py-16 md:py-20">
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-widest text-slate-400 mb-6">{t("footer.col.product")}</h4>
             <ul className="space-y-4 text-sm">
@@ -118,17 +118,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/ios" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.iosApp")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/nfc" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.nfcProof")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing#enterprise" className="text-slate-300 hover:text-white transition break-words">
+                <Link href="/enterprise" className="text-slate-300 hover:text-white transition break-words">
                   {t("footer.link.enterprise")}
                 </Link>
               </li>
@@ -182,98 +172,6 @@ export default function Footer() {
               <li>
                 <Link href="/agb" className="text-slate-300 hover:text-white transition break-words">
                   {t("footer.link.agb")}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-slate-400 mb-6">{t("footer.col.solutions")}</h4>
-            <ul className="space-y-4 text-sm">
-              <li>
-                <Link href="/software-gebaeudereinigung" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.softwareGebaeude")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/zeiterfassung-gebaeudereinigung" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.zeiterfassung")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/nfc-zeiterfassung" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.nfcZeiterfassung")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/einsatzplanung-reinigung" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.einsatzplanung")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/leistungsnachweis-gebaeudereinigung" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.leistungsnachweis")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/software-kleine-reinigungsfirma" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.softwareKleineReinigung")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/reinigungssoftware" className="text-slate-300 hover:text-white transition break-words">
-                  Reinigungssoftware Ratgeber
-                </Link>
-              </li>
-              <li>
-                <Link href="/reinigersoftware" className="text-slate-300 hover:text-white transition break-words">
-                  Reinigersoftware im Vergleich
-                </Link>
-              </li>
-              <li>
-                <Link href="/reinigungsapp" className="text-slate-300 hover:text-white transition break-words">
-                  Taskey Reinigungsapp
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-slate-400 mb-6">{t("footer.col.branchen")}</h4>
-            <ul className="space-y-4 text-sm">
-              <li>
-                <Link href="/loesungen" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.alleBranchen")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/loesungen/unterhaltsreinigung" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.unterhalt")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/loesungen/glasreinigung" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.glas")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/loesungen/industriereinigung" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.industrie")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/loesungen/klinikreinigung" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.klinik")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/loesungen/hotel-housekeeping" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.hotel")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/oepnv" className="text-slate-300 hover:text-white transition break-words">
-                  {t("footer.link.oepnv")}
                 </Link>
               </li>
             </ul>

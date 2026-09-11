@@ -5,7 +5,7 @@ const COPY: PageCopy = {
   de: {
     title: "Preise Gebäudereinigungssoftware | Ab 69€/Monat | Taskey",
     description:
-      "Transparente Preise für Reinigungssoftware: Beginner ab 69€, Professional ab 179€, Business ab 249€/Monat. Unbegrenzte Mitarbeiter. Täglich kündbar.",
+      "Transparente Preise für Reinigungssoftware: Beginner ab 69€, Professional ab 179€, Business ab 249€/Monat. Unbegrenzte Mitarbeiter. Jahresvertrag oder monatlich kündbar.",
     ogTitle: "Preise Gebäudereinigungssoftware | Ab 69€/Monat | Taskey",
     ogDescription:
       "Transparente Preise für Reinigungssoftware: Beginner ab 69€, Professional ab 179€, Business ab 249€/Monat. Unbegrenzte Mitarbeiter.",
@@ -16,7 +16,7 @@ const COPY: PageCopy = {
   en: {
     title: "Cleaning software pricing | From €69/month | Taskey",
     description:
-      "Transparent pricing for cleaning software: Beginner from €69, Professional from €179, Business from €249/month. Unlimited employees. Cancel anytime.",
+      "Transparent pricing for cleaning software: Beginner from €69, Professional from €179, Business from €249/month. Unlimited employees. Annual contract or monthly rolling.",
     ogTitle: "Cleaning software pricing | From €69/month | Taskey",
     ogDescription:
       "Transparent pricing for cleaning software: Beginner from €69, Professional from €179, Business from €249/month. Unlimited employees.",
@@ -27,7 +27,7 @@ const COPY: PageCopy = {
   fr: {
     title: "Tarifs logiciel de nettoyage | À partir de 69 €/mois | Taskey",
     description:
-      "Tarifs transparents pour logiciel de nettoyage : Beginner dès 69 €, Professional dès 179 €, Business dès 249 €/mois. Employés illimités. Résiliable chaque jour.",
+      "Tarifs transparents pour logiciel de nettoyage : Beginner dès 69 €, Professional dès 179 €, Business dès 249 €/mois. Employés illimités. Contrat annuel ou résiliation mensuelle.",
     ogTitle: "Tarifs logiciel de nettoyage | À partir de 69 €/mois | Taskey",
     ogDescription:
       "Tarifs transparents pour logiciel de nettoyage : Beginner dès 69 €, Professional dès 179 €, Business dès 249 €/mois. Employés illimités.",

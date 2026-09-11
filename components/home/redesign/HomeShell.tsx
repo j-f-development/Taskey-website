@@ -1908,7 +1908,7 @@ const TASKEY_SHARE_HEADER: Record<Lang, { eyebrow: string; title: string; body: 
     eyebrow: "Taskey Share",
     title: "So sieht Ihr Auftraggeber Ihre Leistung.",
     body:
-      "Ihr Auftraggeber öffnet einen Link, ohne Login und ohne App. Er sieht den Live-Status jedes Raums, wer gerade vor Ort ist, offene Tickets und Rechnungen. Probieren Sie es selbst — klicken Sie sich durch den Beispiel-Grundriss.",
+      "Ihr Auftraggeber meldet sich mit seinem eigenen Login im Browser an, ohne App-Installation. Er sieht den Live-Status jedes Raums, wer gerade vor Ort ist, offene Tickets und Rechnungen. Probieren Sie es selbst und klicken Sie sich durch den Beispiel-Grundriss.",
     cta: "Zur Taskey Share Website",
     ctaHref: "https://taskey-share.de",
   },
@@ -1916,7 +1916,7 @@ const TASKEY_SHARE_HEADER: Record<Lang, { eyebrow: string; title: string; body: 
     eyebrow: "Taskey Share",
     title: "This is how your client sees your work.",
     body:
-      "Your client opens a link — no login, no app. They see the live status of every room, who is on site right now, open tickets and invoices. Try it yourself — click through the sample floor plan.",
+      "Your client signs in with their own login, right in the browser, no app install. They see the live status of every room, who is on site right now, open tickets and invoices. Try it yourself and click through the sample floor plan.",
     cta: "Go to the Taskey Share website",
     ctaHref: "https://taskey-share.de/en",
   },
@@ -1924,7 +1924,7 @@ const TASKEY_SHARE_HEADER: Record<Lang, { eyebrow: string; title: string; body: 
     eyebrow: "Taskey Share",
     title: "Voici comment votre client voit votre travail.",
     body:
-      "Votre client ouvre un lien, sans connexion et sans application. Il voit le statut en direct de chaque pièce, qui est sur place, les tickets ouverts et les factures. Essayez vous-même — cliquez à travers le plan d'exemple.",
+      "Votre client se connecte avec son propre identifiant dans le navigateur, sans installation d'app. Il voit le statut en direct de chaque pièce, qui est sur place, les tickets ouverts et les factures. Essayez vous-même en cliquant à travers le plan d'exemple.",
     cta: "Voir le site Taskey Share",
     ctaHref: "https://taskey-share.de/fr",
   },

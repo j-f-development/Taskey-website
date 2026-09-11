@@ -15,7 +15,7 @@ const COPY: Record<Locale, {
   de: {
     metaTitle: "Seite nicht gefunden | Taskey",
     metaDesc:
-      "Die gesuchte Seite wurde nicht gefunden. Hier geht es zur Startseite, zu den Funktionen, Preisen oder unseren Branchen-Lösungen.",
+      "Die gesuchte Seite wurde nicht gefunden. Hier geht es zur Startseite, zu den Funktionen, Preisen oder zum Support.",
     errorLabel: "Fehler 404",
     headline: "Diese Seite gibt's nicht.",
     subline:
@@ -24,8 +24,8 @@ const COPY: Record<Locale, {
     quickLinks: [
       { href: "/", label: "Startseite", desc: "Zurück zur Übersicht von Taskey" },
       { href: "/features", label: "Funktionen", desc: "NFC, Einsatzplanung, DATEV-Export" },
-      { href: "/pricing", label: "Preise", desc: "Ab 119 €/Monat – täglich kündbar" },
-      { href: "/loesungen", label: "Branchen-Lösungen", desc: "Unterhalts-, Glas-, Klinikreinigung u.a." },
+      { href: "/pricing", label: "Preise", desc: "Transparent, mit Jahresvertrag oder monatlich kündbar" },
+      { href: "/enterprise", label: "Enterprise", desc: "Individuelle Lösungen für größere Betriebe" },
       { href: "/news", label: "Blog & News", desc: "Tipps für Reinigungsbetriebe" },
       { href: "/support", label: "Support", desc: "Direkter Draht zum Taskey-Team" },
     ],
@@ -33,7 +33,7 @@ const COPY: Record<Locale, {
   en: {
     metaTitle: "Page not found | Taskey",
     metaDesc:
-      "The page you were looking for couldn't be found. Head back to the homepage, features, pricing or our industry solutions.",
+      "The page you were looking for couldn't be found. Head back to the homepage, features, pricing or support.",
     errorLabel: "Error 404",
     headline: "This page doesn't exist.",
     subline:
@@ -42,8 +42,8 @@ const COPY: Record<Locale, {
     quickLinks: [
       { href: "/", label: "Home", desc: "Back to the Taskey overview" },
       { href: "/features", label: "Features", desc: "NFC, scheduling, DATEV export" },
-      { href: "/pricing", label: "Pricing", desc: "From €119/month – cancel anytime" },
-      { href: "/loesungen", label: "Industry solutions", desc: "Maintenance, glass, clinical cleaning and more" },
+      { href: "/pricing", label: "Pricing", desc: "Transparent, annual contract or monthly rolling" },
+      { href: "/enterprise", label: "Enterprise", desc: "Custom solutions for larger operations" },
       { href: "/news", label: "Blog & news", desc: "Tips for cleaning businesses" },
       { href: "/support", label: "Support", desc: "Direct line to the Taskey team" },
     ],
@@ -51,7 +51,7 @@ const COPY: Record<Locale, {
   fr: {
     metaTitle: "Page introuvable | Taskey",
     metaDesc:
-      "La page demandée est introuvable. Revenez à l'accueil, aux fonctionnalités, aux tarifs ou à nos solutions par secteur.",
+      "La page demandée est introuvable. Revenez à l'accueil, aux fonctionnalités, aux tarifs ou au support.",
     errorLabel: "Erreur 404",
     headline: "Cette page n'existe pas.",
     subline:
@@ -60,8 +60,8 @@ const COPY: Record<Locale, {
     quickLinks: [
       { href: "/", label: "Accueil", desc: "Retour à la vue d'ensemble Taskey" },
       { href: "/features", label: "Fonctionnalités", desc: "NFC, planification, export DATEV" },
-      { href: "/pricing", label: "Tarifs", desc: "À partir de 119 €/mois – résiliable chaque jour" },
-      { href: "/loesungen", label: "Solutions par secteur", desc: "Entretien, vitres, cliniques et plus" },
+      { href: "/pricing", label: "Tarifs", desc: "Transparents, contrat annuel ou résiliation mensuelle" },
+      { href: "/enterprise", label: "Enterprise", desc: "Solutions sur mesure pour les grandes structures" },
       { href: "/news", label: "Blog & actualités", desc: "Conseils pour entreprises de nettoyage" },
       { href: "/support", label: "Support", desc: "Ligne directe avec l'équipe Taskey" },
     ],

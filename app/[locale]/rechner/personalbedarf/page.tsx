@@ -170,12 +170,12 @@ const CONTENT: Record<Locale, Content> = {
         description: "Vollkostenkalkulation für den Verrechnungssatz pro produktiver Stunde.",
       },
       {
-        href: "/einsatzplanung-reinigung",
+        href: "/features",
         label: "Einsatzplanung für Reinigungsfirmen",
         description: "Kolonnen, Objekte, Springer und Reserven im laufenden Betrieb.",
       },
       {
-        href: "/loesungen/kapazitaetsplanung-handwerk",
+        href: "/features",
         label: "Kapazitätsplanung",
         description: "So sehen Sie, ob die verfügbare Belegschaft die Objekte trägt.",
       },
@@ -324,12 +324,12 @@ const CONTENT: Record<Locale, Content> = {
         description: "Full-cost calculation of the billing rate per productive hour.",
       },
       {
-        href: "/einsatzplanung-reinigung",
+        href: "/features",
         label: "Dispatching for cleaning companies",
         description: "Crews, sites, floaters and reserves in daily operation.",
       },
       {
-        href: "/loesungen/kapazitaetsplanung-handwerk",
+        href: "/features",
         label: "Capacity planning",
         description: "See whether available headcount actually covers the sites.",
       },
@@ -478,12 +478,12 @@ const CONTENT: Record<Locale, Content> = {
         description: "Calcul en coût complet du taux horaire par heure productive.",
       },
       {
-        href: "/einsatzplanung-reinigung",
+        href: "/features",
         label: "Planification pour société de nettoyage",
         description: "Équipes, sites, volants et réserves au quotidien.",
       },
       {
-        href: "/loesungen/kapazitaetsplanung-handwerk",
+        href: "/features",
         label: "Planification de capacité",
         description: "Voir si l'effectif disponible couvre réellement les sites.",
       },

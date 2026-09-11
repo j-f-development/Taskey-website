@@ -159,7 +159,7 @@ const CONTENT = {
         description: "Wo Taskey Share der einheitliche Standard über hunderte Standorte wird.",
       },
       {
-        href: "/oepnv",
+        href: "/enterprise",
         label: "Reinigung im ÖPNV",
         description: "Manipulationssichere Nachweise für Verkehrsbetriebe.",
       },
@@ -255,7 +255,7 @@ const CONTENT = {
         description: "Where Taskey Share becomes a unified standard across hundreds of sites.",
       },
       {
-        href: "/oepnv",
+        href: "/enterprise",
         label: "Cleaning for public transport",
         description: "Tamper-proof proof of service for transit operators.",
       },
@@ -351,7 +351,7 @@ const CONTENT = {
         description: "Là où Taskey Share devient un standard commun à des centaines de sites.",
       },
       {
-        href: "/oepnv",
+        href: "/enterprise",
         label: "Nettoyage pour transports publics",
         description: "Preuves de service infalsifiables pour les exploitants de transport.",
       },

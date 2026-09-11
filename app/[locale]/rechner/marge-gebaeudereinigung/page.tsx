@@ -173,7 +173,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Was kostet eine Reinigungskraft pro Jahr in Vollkosten?",
       },
       {
-        href: "/loesungen/gewinn-pro-auftrag-berechnen",
+        href: "/features",
         label: "Gewinn pro Auftrag",
         description: "So sehen Sie je Objekt, ob die Marge wirklich steht.",
       },
@@ -314,7 +314,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "What does a cleaner cost per year in full cost?",
       },
       {
-        href: "/loesungen/gewinn-pro-auftrag-berechnen",
+        href: "/features",
         label: "Margin per contract",
         description: "See per site whether the margin actually holds.",
       },
@@ -455,7 +455,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Combien coûte un agent par an en coût complet?",
       },
       {
-        href: "/loesungen/gewinn-pro-auftrag-berechnen",
+        href: "/features",
         label: "Marge par contrat",
         description: "Voir par site si la marge tient vraiment.",
       },

@@ -227,7 +227,7 @@ const CONTENT: Record<"de" | "en" | "fr", TaskeyShareContent> = {
         description: "Der Überblick, was Ihre Reinigungsfirma mit Taskey abbildet.",
       },
       {
-        href: "/leistungsnachweis-gebaeudereinigung",
+        href: "/features",
         label: "Leistungsnachweis in der Gebäudereinigung",
         description: "Wie manipulationssichere Nachweise in Taskey entstehen.",
       },
@@ -373,7 +373,7 @@ const CONTENT: Record<"de" | "en" | "fr", TaskeyShareContent> = {
         description: "The overview of what your cleaning company runs with Taskey.",
       },
       {
-        href: "/leistungsnachweis-gebaeudereinigung",
+        href: "/features",
         label: "Proof of service in cleaning",
         description: "How tamper-proof records are produced in Taskey.",
       },
@@ -519,7 +519,7 @@ const CONTENT: Record<"de" | "en" | "fr", TaskeyShareContent> = {
         description: "L'ensemble de ce que votre prestataire pilote avec Taskey.",
       },
       {
-        href: "/leistungsnachweis-gebaeudereinigung",
+        href: "/features",
         label: "Preuve de service en nettoyage",
         description: "Comment les preuves infalsifiables sont produites dans Taskey.",
       },

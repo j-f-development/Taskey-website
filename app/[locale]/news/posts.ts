@@ -48,9 +48,9 @@ export const posts: Post[] = [
     title: "Taskey Share hat jetzt eine eigene Website: taskey-share.de",
     metaTitle: "Taskey Share Website · taskey-share.de · Live-Demo für Auftraggeber",
     metaDescription:
-      "Taskey Share, das Auftraggeber-Portal von Taskey, hat ab sofort eine eigene Website unter taskey-share.de — mit interaktiver Grundriss-Demo, Branchenseiten und Nachweis-Erklärung. Ohne Login, ohne App.",
+      "Taskey Share, das Auftraggeber-Portal von Taskey, hat ab sofort eine eigene Website unter taskey-share.de mit interaktiver Grundriss-Demo, Branchenseiten und Nachweis-Erklärung. Die Demo ist frei zugänglich; das produktive Portal nutzt einen eigenen Login pro Auftraggeber.",
     summary:
-      "Taskey Share bekommt eine eigene Website: taskey-share.de. Mit interaktiver Live-Demo eines Verwaltungsgebäudes, sechs ausgearbeiteten Branchen-Ansichten (Immobilien, Bahn, Luftfahrt, Klinik, Lebensmittel, Öffentliche Hand) und einer klaren Nachweis-Erklärung. Alles ohne Login, ohne App.",
+      "Taskey Share bekommt eine eigene Website: taskey-share.de. Mit interaktiver Live-Demo eines Verwaltungsgebäudes, sechs ausgearbeiteten Branchen-Ansichten (Immobilien, Bahn, Luftfahrt, Klinik, Lebensmittel, Öffentliche Hand) und einer klaren Nachweis-Erklärung. Die Demo ist frei zugänglich; das produktive Portal nutzt einen eigenen Login pro Auftraggeber.",
     body: `Taskey Share ist seit einigen Monaten Teil jedes Taskey-Tarifs. Der Auftraggeber-Zugang, in dem Ihre Kund:innen live sehen, was an ihren Objekten passiert, hat sich in der Praxis bewährt. Was gefehlt hat: ein eigener Ort im Netz, an dem man sich das Ganze in Ruhe anschauen kann, ohne erst durch die Taskey-Preisstruktur zu klicken.
 
 Ab heute gibt es genau das: **[taskey-share.de](https://taskey-share.de)**.
@@ -108,7 +108,7 @@ Ab heute schon. Wir haben ein eigenes **Einzelunternehmer-Paket** freigeschaltet
 
 ## Was kostet's
 
-**59 € pro Monat, all inklusive.** Kein Setup, keine Zusatzkosten pro Objekt, kein Kleingedrucktes. Täglich kündbar. Einfach kostenlos den Account anlegen und ausprobieren.
+**59 € pro Monat, all inklusive.** Kein Setup, keine Zusatzkosten pro Objekt, kein Kleingedrucktes. Jahresvertrag oder monatlich kündbar zum Aufpreis. Einfach kostenlos den Account anlegen und ausprobieren.
 
 ## Für wen das Paket ist
 
@@ -224,7 +224,7 @@ Wir haben Taskey Share über Monate hinweg mit Pilotkunden aus der Gebäudereini
 
 ## Was Taskey Share ist
 
-Taskey Share ist das Portal, in dem Ihre Auftraggeber jederzeit selbst sehen, was bei ihnen passiert. Live-Status der laufenden Einsätze, hochgeladene Nachweise, offene Budgets, Mitteilungen — alles in einer schlanken Browser-Ansicht, ohne Login-Hürde, ohne App-Installation, ohne Schulung.
+Taskey Share ist das Portal, in dem Ihre Auftraggeber jederzeit selbst sehen, was bei ihnen passiert. Live-Status der laufenden Einsätze, hochgeladene Nachweise, offene Budgets, Mitteilungen — alles in einer schlanken Browser-Ansicht, mit einem persönlichen Login pro Auftraggeber, ohne App-Installation und ohne Schulung.
 
 Kein neues System, das Ihre Kunden lernen müssen. Kein zusätzliches Tool, das Sie verwalten. Es ist einfach da, sobald Sie einen Auftrag in Taskey anlegen.
 
@@ -260,15 +260,15 @@ Drittens: Der Vertrieb hat ein neues Argument. „Sie sehen jederzeit live, was 
 
 ## Was Taskey Share bewusst nicht ist
 
-Taskey Share ist kein zweites Backend für Ihren Kunden. Es ist eine reine Sichtebene auf das, was ohnehin in Taskey passiert. Der Kunde kann nichts ändern, nichts umplanen, keine Aufträge auslösen, keine Preise sehen, die er nicht sehen soll. Sie behalten die volle Kontrolle darüber, was sichtbar ist und was nicht — pro Auftraggeber, pro Objekt, pro Auftrag.
+Taskey Share ist kein zweites Backend für Ihren Kunden. Es zeigt Ihre Leistung transparent und öffnet klar definierte Interaktionswege: Der Auftraggeber kann Nachweise ansehen, freigegebene Rechnungsinformationen aufrufen, Tickets eröffnen, Beanstandungen und Wünsche melden und Sonderaufträge anfragen. Sie behalten die volle Kontrolle darüber, was sichtbar ist und welche Vorgänge freigeschaltet sind — pro Auftraggeber, pro Objekt, pro Auftrag.
 
-Wir haben uns bewusst gegen ein „Self-Service-Portal" entschieden, in dem der Kunde selbst Aufträge anlegt. Das hätte das Verhältnis Betrieb ↔ Auftraggeber verschoben — weg von der Dienstleistungsbeziehung, hin zu einer Ticket-Mechanik. Das wollen weder unsere Kunden noch deren Auftraggeber.
+Wir haben uns bewusst gegen ein volles „Self-Service-Portal" entschieden, in dem der Kunde autonom Aufträge freigibt. Der Auftraggeber kann Anfragen und Anliegen strukturiert übermitteln, die Freigabe und Priorisierung bleibt bei Ihrem Betrieb. Das erhält die Dienstleistungsbeziehung, macht Interaktionen aber nachvollziehbar.
 
 ## Wie Sie es aktivieren
 
-Taskey Share ist ab sofort in allen Tarifen enthalten — START, GROW, SCALE und Enterprise. Kein Modul, das Sie zubuchen müssen. Kein zusätzlicher Vertrag. Kein Setup-Termin.
+Taskey Share ist ab sofort in jedem Taskey-Tarif enthalten. Kein Modul, das Sie zubuchen müssen. Kein zusätzlicher Vertrag. Kein Setup-Termin.
 
-Sie aktivieren das Portal pro Auftraggeber direkt in Taskey: ein Klick im Kundenstamm, der Auftraggeber bekommt eine E-Mail mit seinem persönlichen Link, fertig. Kein Passwort, kein Account-Zwang, keine App. Browser auf, drin.
+Sie aktivieren das Portal pro Auftraggeber direkt in Taskey: ein Klick im Kundenstamm, der Auftraggeber bekommt seine Zugangsdaten per E-Mail, meldet sich im Browser an und ist drin. Keine App-Installation, keine Extra-Software.
 
 Was sichtbar ist, steuern Sie pro Auftraggeber. Was nicht sichtbar sein soll, ist nicht sichtbar.
 
@@ -594,7 +594,7 @@ Besonders für Betriebe mit Arbeit in Kellern, Tunneln oder auf Großbaustellen 
       "Ab sofort sind NFC-Tags direkt in jeden Taskey-Tarif integriert – keine separaten Bestellungen mehr. Mitarbeiter checken Werkzeug, Maschinen und Fahrzeuge mit einem Tipp ein.",
     body: `Wir haben lange darüber nachgedacht wie wir NFC so einfach wie möglich machen können. Die Antwort war: einfach reinschmeißen.
 
-Ab sofort bekommt jeder START-Kunde 3 NFC-Tags, jeder GROW-Kunde 15 Tags und jeder SCALE-Kunde 45 Tags – direkt inklusive, ohne Aufpreis.
+Ab sofort sind NFC-Tags in jedem Taskey-Tarif direkt inklusive, ohne Aufpreis. Die enthaltene Menge richtet sich nach dem gewählten Paket.
 
 Die Tags kommen per Post. Du klebst sie auf Maschinen, Werkzeugkisten oder Fahrzeuge. Deine Mitarbeiter halten ihr Handy ran – und alles wird automatisch geloggt. Wer hat was wann genommen. Wer hat zurückgebracht.
 

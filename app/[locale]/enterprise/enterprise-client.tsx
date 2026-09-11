@@ -56,7 +56,7 @@ const CONTENT: Record<"de" | "en" | "fr", Copy> = {
           "Audit-Trail für nachträgliche Änderungen",
         ],
         ctaLabel: "Details zu ÖPNV",
-        href: "/oepnv",
+        href: "/enterprise",
       },
       {
         id: "grosskonzerne",
@@ -160,7 +160,7 @@ const CONTENT: Record<"de" | "en" | "fr", Copy> = {
           "Audit trail for after-the-fact changes",
         ],
         ctaLabel: "Details for Public Transport",
-        href: "/oepnv",
+        href: "/enterprise",
       },
       {
         id: "grosskonzerne",
@@ -264,7 +264,7 @@ const CONTENT: Record<"de" | "en" | "fr", Copy> = {
           "Piste d’audit pour modifications a posteriori",
         ],
         ctaLabel: "Détails Transports publics",
-        href: "/oepnv",
+        href: "/enterprise",
       },
       {
         id: "grosskonzerne",

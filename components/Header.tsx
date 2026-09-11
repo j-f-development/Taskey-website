@@ -9,7 +9,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const branchenItems: { href: string; labelKey: string }[] = [
   { href: "/enterprise", labelKey: "nav.branche.enterprise" },
-  { href: "/oepnv", labelKey: "nav.branche.oepnv" },
+  { href: "/enterprise", labelKey: "nav.branche.oepnv" },
   { href: "/enterprise#grosskonzerne", labelKey: "nav.branche.grosskonzerne" },
   { href: "/enterprise#kliniken", labelKey: "nav.branche.kliniken" },
   { href: "/enterprise#logistik", labelKey: "nav.branche.logistik" },

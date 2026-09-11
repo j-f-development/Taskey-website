@@ -90,11 +90,11 @@ type Content = {
 const content: Record<"de" | "en" | "fr", Content> = {
   de: {
     hero: {
-      badge: "Preise · Transparent · Täglich kündbar",
+      badge: "Preise · Jahresvertrag oder monatlich kündbar",
       title1: "Preise, die mit",
       title2: "Ihrem Betrieb wachsen.",
       subtitle:
-        "Keine Setup-Tricks. Keine Mindestlaufzeit. Kostenlos starten — täglich kündbar.",
+        "Keine Setup-Tricks. Kostenlos starten. Jahresvertrag zu vergünstigten Konditionen oder monatlich kündbar zum Aufpreis.",
     },
     welcome: {
       badge: "Neu",
@@ -102,7 +102,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
     },
     trustBar: {
       unlimited: "Unbegrenzte Mitarbeiter",
-      cancel: "Täglich kündbar",
+      cancel: "Jahresvertrag oder monatlich kündbar",
       noHidden: "Keine versteckten Kosten",
       vat: "Alle Preise zzgl. MwSt.",
     },
@@ -173,7 +173,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
       ],
       price: "59",
       unit: "€ / Monat",
-      allInclusive: "All inklusive · täglich kündbar",
+      allInclusive: "All inklusive · Jahresvertrag oder monatlich kündbar",
       ctaLabel: "Kostenlosen Account erstellen",
       ctaHref: "https://signup.taskeyapp.com",
     },
@@ -227,11 +227,11 @@ const content: Record<"de" | "en" | "fr", Content> = {
 
   en: {
     hero: {
-      badge: "Pricing · Transparent · Cancel daily",
+      badge: "Pricing · Annual contract or monthly rolling",
       title1: "Pricing that grows",
       title2: "with your business.",
       subtitle:
-        "No setup tricks. No minimum term. Start free — cancel daily.",
+        "No setup tricks. Start free. Annual contract at a preferred rate or a monthly rolling plan at a higher rate.",
     },
     welcome: {
       badge: "New",
@@ -239,7 +239,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
     },
     trustBar: {
       unlimited: "Unlimited employees",
-      cancel: "Cancel daily",
+      cancel: "Annual contract or monthly rolling",
       noHidden: "No hidden costs",
       vat: "All prices excl. VAT",
     },
@@ -310,7 +310,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
       ],
       price: "59",
       unit: "€ / month",
-      allInclusive: "All-inclusive · cancel daily",
+      allInclusive: "All-inclusive · annual contract or monthly rolling",
       ctaLabel: "Create free account",
       ctaHref: "https://signup.taskeyapp.com",
     },
@@ -364,11 +364,11 @@ const content: Record<"de" | "en" | "fr", Content> = {
 
   fr: {
     hero: {
-      badge: "Tarifs · Transparent · Résiliable au jour le jour",
+      badge: "Tarifs · Contrat annuel ou résiliation mensuelle",
       title1: "Des tarifs qui grandissent",
       title2: "avec votre entreprise.",
       subtitle:
-        "Pas d'astuces de mise en place. Pas de durée minimale. Démarrer gratuitement — résiliable au jour le jour.",
+        "Pas d'astuces de mise en place. Démarrer gratuitement. Contrat annuel à tarif préférentiel ou résiliation mensuelle à un tarif supérieur.",
     },
     welcome: {
       badge: "Nouveau",
@@ -376,7 +376,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
     },
     trustBar: {
       unlimited: "Employés illimités",
-      cancel: "Résiliable au jour le jour",
+      cancel: "Contrat annuel ou résiliation mensuelle",
       noHidden: "Pas de coûts cachés",
       vat: "Tous les prix HT",
     },
@@ -447,7 +447,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
       ],
       price: "59",
       unit: "€ / mois",
-      allInclusive: "Tout inclus · résiliable au jour le jour",
+      allInclusive: "Tout inclus · contrat annuel ou résiliation mensuelle",
       ctaLabel: "Créer un compte gratuit",
       ctaHref: "https://signup.taskeyapp.com",
     },

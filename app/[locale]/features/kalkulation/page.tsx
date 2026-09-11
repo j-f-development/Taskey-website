@@ -161,7 +161,7 @@ const CONTENT = {
         description: "Ausschreibungen, die zu Ihrem Betrieb passen, finden Sie zuerst.",
       },
       {
-        href: "/oepnv",
+        href: "/enterprise",
         label: "Reinigung im ÖPNV",
         description: "Manipulationssichere Nachweise für Verkehrsbetriebe.",
       },
@@ -259,7 +259,7 @@ const CONTENT = {
         description: "Tenders that actually fit your operation surface first.",
       },
       {
-        href: "/oepnv",
+        href: "/enterprise",
         label: "Cleaning for public transport",
         description: "Tamper-proof proof of service for transit operators.",
       },
@@ -357,7 +357,7 @@ const CONTENT = {
         description: "Les appels d'offres qui vous conviennent vraiment vous parviennent en priorité.",
       },
       {
-        href: "/oepnv",
+        href: "/enterprise",
         label: "Nettoyage pour transports publics",
         description: "Preuves de service infalsifiables pour les exploitants de transport.",
       },

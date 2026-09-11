@@ -22,7 +22,7 @@ const CONTENT = {
     FEAT4_TITLE: "Direkt im Portal",
     FEAT4_DESC: "Fragen, Freigaben und Reklamationen werden geklärt — mit einem Klick statt einem Anruf.",
     CTA: "Live-Demo öffnen",
-    FOOTER: "Direkt im Browser — kein Login, keine Anmeldung.",
+    FOOTER: "Eigener Login pro Auftraggeber. Direkt im Browser, ohne App.",
   },
   en: {
     EYEBROW: "Live demo · Taskey Share",
@@ -42,7 +42,7 @@ const CONTENT = {
     FEAT4_TITLE: "Right in the portal",
     FEAT4_DESC: "Questions, approvals and complaints are resolved — one click instead of one call.",
     CTA: "Open live demo",
-    FOOTER: "Right in your browser — no login, no sign-up.",
+    FOOTER: "Own login per client. Right in the browser, no app install.",
   },
   fr: {
     EYEBROW: "Démo en direct · Taskey Share",
@@ -62,7 +62,7 @@ const CONTENT = {
     FEAT4_TITLE: "Directement dans le portail",
     FEAT4_DESC: "Questions, validations et réclamations se règlent — d'un clic plutôt que d'un appel.",
     CTA: "Ouvrir la démo en direct",
-    FOOTER: "Directement dans le navigateur — sans connexion, sans inscription.",
+    FOOTER: "Un login dédié par client. Directement dans le navigateur, sans app.",
   },
 } as const;
 

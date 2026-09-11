@@ -1,3 +1,4 @@
+import { createElement } from "react";
 import type { CSSProperties, ElementType, ReactNode } from "react";
 
 type Material = "light" | "heavy" | "dark" | "nav";
@@ -42,9 +43,9 @@ export default function GlassSurface({
     ...style,
   };
 
-  return (
-    <Tag className={`${materialClass[material]} ${className}`.trim()} style={composedStyle}>
-      {children}
-    </Tag>
+  return createElement(
+    Tag,
+    { className: `${materialClass[material]} ${className}`.trim(), style: composedStyle },
+    children,
   );
 }

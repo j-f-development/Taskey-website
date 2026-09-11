@@ -173,7 +173,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Objektkalkulation mit Personal, Material, Fahrt und Zielmarge.",
       },
       {
-        href: "/software-gebaeudereinigung",
+        href: "/features",
         label: "Software für Gebäudereinigung",
         description: "Objekte, Personal, Einsatzplanung und Kalkulation in einem System.",
       },
@@ -183,7 +183,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Live-Marge, Personalbedarf und Nachunternehmer-Empfehlung je Objekt.",
       },
       {
-        href: "/loesungen/gewinn-pro-auftrag-berechnen",
+        href: "/features",
         label: "Gewinn pro Auftrag berechnen",
         description: "So sehen Sie je Objekt, ob die Marge wirklich steht.",
       },
@@ -332,7 +332,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Site quote with labour, materials, travel and target margin.",
       },
       {
-        href: "/software-gebaeudereinigung",
+        href: "/features",
         label: "Cleaning company software",
         description: "Sites, staff, dispatching and quoting in one system.",
       },
@@ -342,7 +342,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Live margin, headcount and subcontractor recommendation per site.",
       },
       {
-        href: "/loesungen/gewinn-pro-auftrag-berechnen",
+        href: "/features",
         label: "Margin per contract",
         description: "See per site whether the margin actually holds.",
       },
@@ -491,7 +491,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Devis par site avec personnel, matériel, déplacement et marge cible.",
       },
       {
-        href: "/software-gebaeudereinigung",
+        href: "/features",
         label: "Logiciel pour société de nettoyage",
         description: "Sites, personnel, planification et devis dans un seul système.",
       },
@@ -501,7 +501,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Marge en direct, effectif et recommandation de sous-traitant par site.",
       },
       {
-        href: "/loesungen/gewinn-pro-auftrag-berechnen",
+        href: "/features",
         label: "Marge par contrat",
         description: "Voir par site si la marge tient vraiment.",
       },

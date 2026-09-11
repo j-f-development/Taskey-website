@@ -184,7 +184,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
     cta: {
       badge: "Kostenloser Account",
       title: "Selbst ausprobieren — ohne Risiko.",
-      subtitle: "Keine Kreditkarte. Täglich kündbar. Setup in einem Tag.",
+      subtitle: "Keine Kreditkarte. Jahresvertrag oder monatlich kündbar. Setup in einem Tag.",
       pricing: "Preise ansehen",
       start: "Jetzt starten",
     },
@@ -357,7 +357,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
     cta: {
       badge: "Free account",
       title: "Try it yourself — no risk.",
-      subtitle: "No credit card. Cancel daily. Setup in one day.",
+      subtitle: "No credit card. Annual contract or monthly rolling. Setup in one day.",
       pricing: "View pricing",
       start: "Get started",
     },
@@ -530,7 +530,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
     cta: {
       badge: "Compte gratuit",
       title: "Essayez vous-même — sans risque.",
-      subtitle: "Pas de carte de crédit. Résiliable au jour le jour. Mise en place en un jour.",
+      subtitle: "Pas de carte de crédit. Contrat annuel ou résiliation mensuelle. Mise en place en un jour.",
       pricing: "Voir les tarifs",
       start: "Commencer",
     },
@@ -696,10 +696,10 @@ export default function FeaturesClient() {
                   </Link>
                   <p className="text-sm text-slate-500 mt-4">
                     {language === "en"
-                      ? "Right in the browser — no login, no signup."
+                      ? "Own login per client. Right in the browser, no app install."
                       : language === "fr"
-                      ? "Directement dans le navigateur — sans connexion, sans inscription."
-                      : "Direkt im Browser — kein Login, keine Anmeldung."}
+                      ? "Un login dédié par client. Directement dans le navigateur, sans app."
+                      : "Eigener Login pro Auftraggeber. Direkt im Browser, ohne App."}
                   </p>
                 </div>
               </div>
