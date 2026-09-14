@@ -217,6 +217,8 @@ const translations: Record<string, string> = {
     "footer.link.nfcZeiterfassung": "NFC time tracking",
     "footer.link.einsatzplanung": "Cleaning scheduling",
     "footer.link.leistungsnachweis": "Proof of service for cleaning",
+    "footer.link.liveMargen": "Live margins per site",
+    "footer.link.datevExport": "DATEV export",
     "footer.link.softwareKleineReinigung": "Software for small cleaning companies",
     "footer.col.branchen": "Industries",
     "footer.link.alleBranchen": "All industry solutions",

@@ -210,6 +210,8 @@ const translations: Record<string, string> = {
     "footer.link.nfcZeiterfassung": "Suivi du temps par NFC",
     "footer.link.einsatzplanung": "Planification du nettoyage",
     "footer.link.leistungsnachweis": "Preuve de prestation pour le nettoyage",
+    "footer.link.liveMargen": "Marges en direct par site",
+    "footer.link.datevExport": "Export DATEV",
     "footer.link.softwareKleineReinigung": "Logiciel pour petites entreprises de nettoyage",
     "footer.col.branchen": "Secteurs",
     "footer.link.alleBranchen": "Toutes les solutions sectorielles",

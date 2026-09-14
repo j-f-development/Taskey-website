@@ -210,6 +210,8 @@ const translations: Record<string, string> = {
     "footer.link.nfcZeiterfassung": "NFC Zeiterfassung",
     "footer.link.einsatzplanung": "Einsatzplanung Reinigung",
     "footer.link.leistungsnachweis": "Leistungsnachweis Gebäudereinigung",
+    "footer.link.liveMargen": "Live-Margen pro Objekt",
+    "footer.link.datevExport": "DATEV Export",
     "footer.link.softwareKleineReinigung": "Software für kleine Reinigungsfirmen",
     "footer.col.branchen": "Branchen",
     "footer.link.alleBranchen": "Alle Branchenlösungen",

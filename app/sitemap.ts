@@ -50,6 +50,13 @@ const STATIC_ENTRIES: Entry[] = [
   { path: "/google-kalender-sync", changeFrequency: "monthly", priority: 0.6 },
   { path: "/videos", changeFrequency: "monthly", priority: 0.6 },
 
+  // Feature-Landingpages (SEO-Cluster)
+  { path: "/features/nfc-zeiterfassung", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/features/einsatzplanung", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/features/live-margen", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/features/datev-export", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/features/leistungsnachweis", changeFrequency: "monthly", priority: 0.9 },
+
   // Rechner (Tools)
   { path: "/rechner", changeFrequency: "monthly", priority: 0.85 },
   { path: "/rechner/reinigungskosten", changeFrequency: "monthly", priority: 0.9 },
@@ -68,6 +75,13 @@ const STATIC_ENTRIES: Entry[] = [
   { path: "/news", changeFrequency: "weekly", priority: 0.8 },
 ];
 
+// Vergleichsseiten sind DE-only (kein hreflang-Split)
+const DE_ONLY_ENTRIES: Entry[] = [
+  { path: "/vergleich/blink", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/vergleich/fortytools", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/vergleich/hero-software", changeFrequency: "monthly", priority: 0.75 },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -84,6 +98,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticUrls = STATIC_ENTRIES.flatMap(expandMultilingual);
 
+  const deOnlyUrls = DE_ONLY_ENTRIES.map((entry) => ({
+    url: urlFor(entry.path, "de"),
+    lastModified: entry.lastModified ?? now,
+    changeFrequency: entry.changeFrequency,
+    priority: entry.priority,
+    alternates: {
+      languages: {
+        "de-DE": urlFor(entry.path, "de"),
+        "x-default": urlFor(entry.path, "de"),
+      },
+    },
+  }));
+
   const newsUrls = posts
     .filter((p) => !p.planned)
     .flatMap((post) => {
@@ -92,5 +119,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       return expandMultilingual({ path, changeFrequency: "monthly", priority: 0.7, lastModified });
     });
 
-  return [...staticUrls, ...newsUrls];
+  return [...staticUrls, ...deOnlyUrls, ...newsUrls];
 }

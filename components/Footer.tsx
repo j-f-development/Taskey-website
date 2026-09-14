@@ -108,6 +108,31 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/features/nfc-zeiterfassung" className="text-slate-300 hover:text-white transition break-words">
+                  {t("footer.link.nfcZeiterfassung")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/features/einsatzplanung" className="text-slate-300 hover:text-white transition break-words">
+                  {t("footer.link.einsatzplanung")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/features/live-margen" className="text-slate-300 hover:text-white transition break-words">
+                  {t("footer.link.liveMargen")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/features/datev-export" className="text-slate-300 hover:text-white transition break-words">
+                  {t("footer.link.datevExport")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/features/leistungsnachweis" className="text-slate-300 hover:text-white transition break-words">
+                  {t("footer.link.leistungsnachweis")}
+                </Link>
+              </li>
+              <li>
                 <Link href="/features/taskey-share" className="text-slate-300 hover:text-white transition break-words">
                   {t("footer.link.taskeyShare")}
                 </Link>
