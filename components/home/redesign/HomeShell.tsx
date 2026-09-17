@@ -789,116 +789,6 @@ function AufEinenBlickSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
- * Section 5 — IntroVideo
- * ────────────────────────────────────────────────────────────────────────── */
-
-const INTRO_VIDEO_CONTENT: Record<Lang, { eyebrow: string; h3: string; body: string }> = {
-  de: {
-    eyebrow: "Kunden-Interview",
-    h3: "Wie ein Reinigungsbetrieb mit Taskey arbeitet.",
-    body: "Ein Gespräch aus der Praxis: was sich im Alltag verändert hat, seit der Betrieb seine Einsätze, Zeiten und Nachweise in Taskey bündelt.",
-  },
-  en: {
-    eyebrow: "Client interview",
-    h3: "How a cleaning business runs with Taskey.",
-    body: "A conversation from the field: what changed in daily operations once the business brought its assignments, hours and proof of service into Taskey.",
-  },
-  fr: {
-    eyebrow: "Entretien client",
-    h3: "Comment une entreprise de nettoyage travaille avec Taskey.",
-    body: "Une conversation issue du terrain : ce qui a changé au quotidien depuis que l’entreprise regroupe interventions, heures et preuves dans Taskey.",
-  },
-};
-
-function IntroVideoSection() {
-  const { language } = useLanguage();
-  const c = INTRO_VIDEO_CONTENT[language];
-  return (
-    <SectionShell size="md" tone="canvas">
-      <motion.div {...fadeUp} className="text-center">
-        <Eyebrow>{c.eyebrow}</Eyebrow>
-        <h3
-          className="tk-headline mt-3"
-          style={{ fontSize: "clamp(1.5rem, 2.6vw, 2rem)", color: "var(--tk-ink)" }}
-        >
-          {c.h3}
-        </h3>
-        <p
-          className="mt-4 mx-auto"
-          style={{ color: "var(--tk-ink-muted)", fontSize: "1rem", maxWidth: "60ch", lineHeight: 1.6 }}
-        >
-          {c.body}
-        </p>
-      </motion.div>
-
-      <motion.a
-        href="https://www.youtube.com/watch?v=vUGSXbZomt4"
-        target="_blank"
-        rel="noopener"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        whileTap={{ scale: 0.99 }}
-        transition={springs.base}
-        style={{
-          display: "block",
-          position: "relative",
-          marginTop: "40px",
-          borderRadius: "var(--tk-radius-shell)",
-          overflow: "hidden",
-          aspectRatio: "16 / 9",
-          boxShadow: "0 40px 100px -30px rgba(15,23,42,0.35)",
-        }}
-      >
-        <Image
-          src="https://img.youtube.com/vi/vUGSXbZomt4/maxresdefault.jpg"
-          alt="Taskey Einstiegsvideo Vorschau"
-          fill
-          sizes="(max-width: 1024px) 100vw, 60vw"
-          style={{ objectFit: "cover" }}
-          unoptimized
-        />
-        <div
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(180deg, rgba(15,23,42,0.15) 0%, rgba(15,23,42,0.55) 100%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "clamp(64px, 8vw, 96px)",
-            height: "clamp(64px, 8vw, 96px)",
-            borderRadius: "999px",
-            background: "rgba(255,255,255,0.92)",
-            display: "grid",
-            placeItems: "center",
-            boxShadow: "0 20px 40px -20px rgba(0,0,0,0.4)",
-          }}
-        >
-          <span
-            aria-hidden
-            style={{
-              width: 0,
-              height: 0,
-              borderLeft: "18px solid var(--tk-ink)",
-              borderTop: "12px solid transparent",
-              borderBottom: "12px solid transparent",
-              marginLeft: "5px",
-            }}
-          />
-        </div>
-      </motion.a>
-    </SectionShell>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
  * Section 6 — CommunicationUSP ("Sie müssen nichts mehr abfragen")
  * ────────────────────────────────────────────────────────────────────────── */
 
@@ -2640,7 +2530,6 @@ export default function HomeShell() {
       <FeatureTrio />
       <BookMeetingSection />
       <AufEinenBlickSection />
-      <IntroVideoSection />
       <CommunicationUSPSection />
 
       <LocalizedBridgeParallax />
