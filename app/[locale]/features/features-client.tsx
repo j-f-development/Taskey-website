@@ -669,16 +669,16 @@ export default function FeaturesClient() {
                 </div>
                 <div className="flex flex-col items-center text-center">
                   <Link
-                    href="https://taskey-share.de"
+                    href="https://demo.kunden.taskeyapp.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white text-sm md:text-base font-bold rounded-full hover:bg-blue-500 transition-colors shadow-lg shadow-blue-600/20"
                   >
                     {language === "en"
-                      ? "Open the Taskey Share site"
+                      ? "Open live client demo"
                       : language === "fr"
-                      ? "Ouvrir le site Taskey Share"
-                      : "Zur Taskey Share Website"}
+                      ? "Ouvrir la démo client"
+                      : "Kundendashboard-Demo öffnen"}
                     <svg
                       className="w-4 h-4"
                       fill="none"
