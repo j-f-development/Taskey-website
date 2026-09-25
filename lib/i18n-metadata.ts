@@ -58,6 +58,7 @@ export function buildMetadata({
   type = "website",
   image = "/opengraph-image",
   deOnly = false,
+  indexable = true,
 }: {
   copyByLocale: PageCopy;
   locale: Locale;
@@ -65,12 +66,13 @@ export function buildMetadata({
   type?: "website" | "article";
   image?: string;
   deOnly?: boolean;
+  indexable?: boolean;
 }): Metadata {
   const copy = copyByLocale[locale];
   const url = deOnly ? canonical(path, "de") : canonical(path, locale);
   const ogLocale = locale === "de" ? "de_DE" : locale === "en" ? "en_US" : "fr_FR";
 
-  return {
+  const meta: Metadata = {
     title: copy.title,
     description: copy.description,
     alternates: deOnly ? alternatesDeOnly(path) : alternates(path),
@@ -97,6 +99,16 @@ export function buildMetadata({
       images: [image],
     },
   };
+
+  if (!indexable) {
+    meta.robots = {
+      index: false,
+      follow: true,
+      googleBot: { index: false, follow: true },
+    };
+  }
+
+  return meta;
 }
 
 export { SUPPORTED };

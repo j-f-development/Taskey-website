@@ -1,5 +1,19 @@
 import { MetadataRoute } from "next";
 import { posts } from "./[locale]/news/posts";
+import { branches } from "@/lib/seo/branches";
+import { regions } from "@/lib/seo/regions";
+import { guides } from "@/lib/seo/guides";
+import { problems } from "@/lib/seo/problems";
+import { cases } from "@/lib/seo/cases";
+import { comparisons } from "@/lib/seo/marktvergleich";
+import {
+  isIndexableBranch,
+  isIndexableCase,
+  isIndexableCity,
+  isIndexableComparison,
+  isIndexableGuide,
+  isIndexableProblem,
+} from "@/lib/seo/helpers";
 
 /* ============================================================================
  * Sitemap with hreflang alternates for /, /en/*, /fr/*
@@ -73,6 +87,15 @@ const STATIC_ENTRIES: Entry[] = [
 
   // News-Index
   { path: "/news", changeFrequency: "weekly", priority: 0.8 },
+
+  // Neue Silo-Indices
+  { path: "/loesungen", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/reinigungssoftware", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/ratgeber", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/probleme", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/kunden", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/geo", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/marktvergleich", changeFrequency: "monthly", priority: 0.75 },
 ];
 
 // Vergleichsseiten sind DE-only (kein hreflang-Split)
@@ -119,5 +142,79 @@ export default function sitemap(): MetadataRoute.Sitemap {
       return expandMultilingual({ path, changeFrequency: "monthly", priority: 0.7, lastModified });
     });
 
-  return [...staticUrls, ...deOnlyUrls, ...newsUrls];
+  // Silo-Loops mit Tier-/ICP-Filter: nur indexable Entitäten kommen in die Sitemap.
+  const branchUrls = branches
+    .filter((b) => isIndexableBranch(b.slug, b.indexable))
+    .flatMap((b) =>
+      expandMultilingual({
+        path: `/loesungen/${b.slug}`,
+        changeFrequency: "monthly",
+        priority: 0.85,
+      })
+    );
+
+  const cityUrls = regions
+    .filter((r) => isIndexableCity(r.tier, r.indexable))
+    .flatMap((r) =>
+      expandMultilingual({
+        path: `/reinigungssoftware/${r.slug}`,
+        changeFrequency: "monthly",
+        priority: 0.8,
+      })
+    );
+
+  const guideUrls = guides
+    .filter((g) => isIndexableGuide(g.indexable))
+    .flatMap((g) =>
+      expandMultilingual({
+        path: `/ratgeber/${g.slug}`,
+        changeFrequency: "monthly",
+        priority: 0.8,
+        lastModified: g.updatedAt ? new Date(g.updatedAt) : now,
+      })
+    );
+
+  const problemUrls = problems
+    .filter((p) => isIndexableProblem(p.indexable))
+    .flatMap((p) =>
+      expandMultilingual({
+        path: `/probleme/${p.slug}`,
+        changeFrequency: "monthly",
+        priority: 0.75,
+        lastModified: p.updatedAt ? new Date(p.updatedAt) : now,
+      })
+    );
+
+  const caseUrls = cases
+    .filter((c) => isIndexableCase(c.indexable))
+    .flatMap((c) =>
+      expandMultilingual({
+        path: `/kunden/${c.slug}`,
+        changeFrequency: "monthly",
+        priority: 0.7,
+        lastModified: c.updatedAt ? new Date(c.updatedAt) : now,
+      })
+    );
+
+  const comparisonUrls = comparisons
+    .filter((c) => isIndexableComparison(c.indexable))
+    .flatMap((c) =>
+      expandMultilingual({
+        path: `/marktvergleich/${c.slug}`,
+        changeFrequency: "monthly",
+        priority: 0.75,
+      })
+    );
+
+  return [
+    ...staticUrls,
+    ...deOnlyUrls,
+    ...newsUrls,
+    ...branchUrls,
+    ...cityUrls,
+    ...guideUrls,
+    ...problemUrls,
+    ...caseUrls,
+    ...comparisonUrls,
+  ];
 }
