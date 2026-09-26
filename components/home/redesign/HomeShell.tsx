@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useRef, type ReactNode } from "react";
 import SectionShell from "./SectionShell";
-import GlassSurface from "./GlassSurface";
 import Parallax from "./Parallax";
 import PhoneAtAGlance from "./PhoneAtAGlance";
 import DashboardMarge from "./DashboardMarge";
@@ -26,9 +25,8 @@ const HERO_CONTENT: Record<Lang, {
   ctaSecondary: string;
   ctaDemo: string;
   ctaNote: string;
-  fundingEyebrow: string;
-  fundingProgram: string;
-  fundingSubtitle: string;
+  trustLabel: string;
+  trustSignals: string[];
   scroll: string;
 }> = {
   de: {
@@ -40,9 +38,14 @@ const HERO_CONTENT: Record<Lang, {
     ctaSecondary: "Alle Funktionen",
     ctaDemo: "Kundendashboard-Demo anschauen",
     ctaNote: "Unverbindlich. Keine Kreditkarte. Sofort loslegen.",
-    fundingEyebrow: "Gefördert im",
-    fundingProgram: "Startup Launchpad 2026",
-    fundingSubtitle: "Universität des Saarlandes · Triathlon",
+    trustLabel: "Enterprise Ready",
+    trustSignals: [
+      "REST API und Webhooks",
+      "SSO, RBAC, Audit Log",
+      "DATEV Export",
+      "Native ERP Integration",
+      "DSGVO und Hosting in Deutschland",
+    ],
     scroll: "Scroll",
   },
   en: {
@@ -54,9 +57,14 @@ const HERO_CONTENT: Record<Lang, {
     ctaSecondary: "All features",
     ctaDemo: "See the client dashboard demo",
     ctaNote: "No commitment. No credit card. Start right away.",
-    fundingEyebrow: "Backed by",
-    fundingProgram: "Startup Launchpad 2026",
-    fundingSubtitle: "Saarland University · Triathlon",
+    trustLabel: "Enterprise Ready",
+    trustSignals: [
+      "REST API and webhooks",
+      "SSO, RBAC, audit log",
+      "DATEV export",
+      "Native ERP integration",
+      "GDPR and hosting in Germany",
+    ],
     scroll: "Scroll",
   },
   fr: {
@@ -68,9 +76,14 @@ const HERO_CONTENT: Record<Lang, {
     ctaSecondary: "Toutes les fonctionnalités",
     ctaDemo: "Voir la démo du tableau client",
     ctaNote: "Sans engagement. Sans carte bancaire. Démarrez tout de suite.",
-    fundingEyebrow: "Soutenu par",
-    fundingProgram: "Startup Launchpad 2026",
-    fundingSubtitle: "Université de la Sarre · Triathlon",
+    trustLabel: "Enterprise Ready",
+    trustSignals: [
+      "API REST et webhooks",
+      "SSO, RBAC, journal d’audit",
+      "Export DATEV",
+      "Intégration ERP native",
+      "RGPD et hébergement en Allemagne",
+    ],
     scroll: "Défiler",
   },
 };
@@ -209,6 +222,72 @@ function HeroScene() {
               "linear-gradient(180deg, rgba(15,23,42,0.35) 0%, rgba(15,23,42,0.55) 55%, rgba(15,23,42,0.85) 100%)",
           }}
         />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: 0.35,
+            backgroundImage:
+              "linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+            maskImage:
+              "radial-gradient(ellipse 65% 45% at 50% 40%, black 40%, transparent 80%)",
+          }}
+        />
+      </div>
+
+      {/* corporate corner marks */}
+      <div
+        aria-hidden
+        className="hidden lg:block"
+        style={{
+          position: "absolute",
+          top: "104px",
+          left: "24px",
+          zIndex: 2,
+          fontSize: "10px",
+          letterSpacing: "0.28em",
+          textTransform: "uppercase",
+          color: "rgba(148,163,184,0.7)",
+          fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+        }}
+      >
+        Taskey · Operations Platform
+      </div>
+      <div
+        aria-hidden
+        className="hidden lg:block"
+        style={{
+          position: "absolute",
+          top: "104px",
+          right: "24px",
+          zIndex: 2,
+          fontSize: "10px",
+          letterSpacing: "0.28em",
+          textTransform: "uppercase",
+          color: "rgba(148,163,184,0.7)",
+          fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+        }}
+      >
+        {new Date().getFullYear()} · Enterprise Edition
+      </div>
+      <div
+        aria-hidden
+        className="hidden lg:block"
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "24px",
+          zIndex: 2,
+          fontSize: "10px",
+          letterSpacing: "0.28em",
+          textTransform: "uppercase",
+          color: "rgba(148,163,184,0.55)",
+          fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+        }}
+      >
+        01 · Overview
       </div>
 
       {/* content */}
@@ -220,13 +299,13 @@ function HeroScene() {
           minHeight: "100vh",
           display: "flex",
           alignItems: "center",
-          paddingTop: "10vh",
+          paddingTop: "clamp(128px, 16vh, 200px)",
           paddingBottom: "12vh",
           willChange: "transform",
         }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center w-full">
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-12">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -239,6 +318,9 @@ function HeroScene() {
                   fontSize: "clamp(2.5rem, 7.5vw, 6rem)",
                   color: "#fff",
                   maxWidth: "18ch",
+                  letterSpacing: "-0.025em",
+                  fontWeight: 600,
+                  lineHeight: 1.02,
                 }}
               >
                 {c.h1Line1}
@@ -309,42 +391,49 @@ function HeroScene() {
               >
                 {c.ctaNote}
               </p>
+
+              <div
+                className="mt-10 pt-6"
+                style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
+              >
+                <div
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.22em",
+                    textTransform: "uppercase",
+                    color: "rgba(148,163,184,0.85)",
+                    fontWeight: 600,
+                    marginBottom: "12px",
+                  }}
+                >
+                  {c.trustLabel}
+                </div>
+                <ul
+                  className="flex flex-wrap items-center gap-x-5 gap-y-2"
+                  style={{ listStyle: "none", padding: 0, margin: 0 }}
+                >
+                  {c.trustSignals.map((signal, i) => (
+                    <li
+                      key={signal}
+                      className="flex items-center gap-2"
+                      style={{ color: "rgba(226,232,240,0.9)", fontSize: "13px", fontWeight: 500 }}
+                    >
+                      {i > 0 && (
+                        <span
+                          aria-hidden
+                          style={{ color: "rgba(148,163,184,0.4)", fontSize: "10px" }}
+                        >
+                          ●
+                        </span>
+                      )}
+                      <span>{signal}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           </div>
 
-          <div className="lg:col-span-4 flex lg:justify-end">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ...springs.soft, delay: 0.35 }}
-            >
-              <GlassSurface
-                material="dark"
-                radius="panel"
-                className="p-6"
-                style={{ maxWidth: "320px" }}
-              >
-                <Eyebrow tone="light">{c.fundingEyebrow}</Eyebrow>
-                <div style={{ marginTop: "10px", display: "flex", alignItems: "center", gap: "12px" }}>
-                  <Image
-                    src="/launchpad-saarland.png"
-                    alt="Startup Launchpad, Universität des Saarlandes"
-                    width={56}
-                    height={56}
-                    style={{ borderRadius: "12px", background: "#fff", padding: "6px" }}
-                  />
-                  <div>
-                    <div style={{ fontSize: "14px", fontWeight: 600, color: "#fff" }}>
-                      {c.fundingProgram}
-                    </div>
-                    <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.7)", marginTop: "2px" }}>
-                      {c.fundingSubtitle}
-                    </div>
-                  </div>
-                </div>
-              </GlassSurface>
-            </motion.div>
-          </div>
         </div>
       </div>
 
@@ -378,6 +467,272 @@ function HeroScene() {
         </motion.span>
       </motion.div>
     </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Section 1b — Systemlandschaft (Enterprise Integration Layer)
+ * ────────────────────────────────────────────────────────────────────────── */
+
+type SystemNode = { label: string; sub: string };
+
+const SYSTEM_LANDSCAPE_CONTENT: Record<Lang, {
+  eyebrow: string;
+  h2Line1: string;
+  h2Line2: string;
+  body: string;
+  centerLabel: string;
+  centerSub: string;
+  centerMeta: string;
+  nodes: SystemNode[];
+  capsLabel: string;
+  caps: string[];
+}> = {
+  de: {
+    eyebrow: "Systemlandschaft",
+    h2Line1: "Taskey fügt sich ein.",
+    h2Line2: "In Ihre bestehende Infrastruktur.",
+    body:
+      "Taskey ist die operative Schicht zwischen Ihren Mitarbeitern im Objekt und den zentralen Systemen im Unternehmen. Vor Ort entstehen strukturierte, nachvollziehbare Daten. Zentral werden sie kontrolliert, freigegeben und an ERP, HR, Payroll, Identity und BI weitergegeben.",
+    centerLabel: "Taskey",
+    centerSub: "Operations Layer",
+    centerMeta: "API · Webhooks · SSO",
+    nodes: [
+      { label: "ERP", sub: "SAP, Odoo, Dynamics" },
+      { label: "HR", sub: "Personio, SuccessFactors" },
+      { label: "Payroll", sub: "DATEV und Lohnsysteme" },
+      { label: "Identity", sub: "Entra ID, Okta" },
+      { label: "BI", sub: "Power BI, Data Warehouse" },
+      { label: "Kommunikation", sub: "Microsoft Teams, E-Mail" },
+    ],
+    capsLabel: "Verfügbare Capabilities",
+    caps: [
+      "REST API und Webhooks",
+      "SSO, RBAC und Audit Log",
+      "DATEV Export",
+      "Native ERP Integration",
+    ],
+  },
+  en: {
+    eyebrow: "System landscape",
+    h2Line1: "Taskey fits in.",
+    h2Line2: "Into your existing infrastructure.",
+    body:
+      "Taskey is the operational layer between your workforce on site and your central business systems. Structured, verifiable data is created in the field, then reviewed centrally and handed off to ERP, HR, payroll, identity and BI.",
+    centerLabel: "Taskey",
+    centerSub: "Operations Layer",
+    centerMeta: "API · Webhooks · SSO",
+    nodes: [
+      { label: "ERP", sub: "SAP, Odoo, Dynamics" },
+      { label: "HR", sub: "Personio, SuccessFactors" },
+      { label: "Payroll", sub: "DATEV and payroll systems" },
+      { label: "Identity", sub: "Entra ID, Okta" },
+      { label: "BI", sub: "Power BI, data warehouse" },
+      { label: "Communication", sub: "Microsoft Teams, e-mail" },
+    ],
+    capsLabel: "Available capabilities",
+    caps: [
+      "REST API and webhooks",
+      "SSO, RBAC and audit log",
+      "DATEV export",
+      "Native ERP integration",
+    ],
+  },
+  fr: {
+    eyebrow: "Cartographie système",
+    h2Line1: "Taskey s’intègre.",
+    h2Line2: "Dans votre infrastructure existante.",
+    body:
+      "Taskey est la couche opérationnelle entre vos équipes sur site et vos systèmes centraux. Les données structurées et vérifiables sont créées sur le terrain, puis contrôlées de manière centralisée et transmises à l’ERP, aux RH, à la paie, à l’identité et à la BI.",
+    centerLabel: "Taskey",
+    centerSub: "Operations Layer",
+    centerMeta: "API · Webhooks · SSO",
+    nodes: [
+      { label: "ERP", sub: "SAP, Odoo, Dynamics" },
+      { label: "RH", sub: "Personio, SuccessFactors" },
+      { label: "Paie", sub: "DATEV et systèmes de paie" },
+      { label: "Identité", sub: "Entra ID, Okta" },
+      { label: "BI", sub: "Power BI, data warehouse" },
+      { label: "Communication", sub: "Microsoft Teams, e-mail" },
+    ],
+    capsLabel: "Capacités disponibles",
+    caps: [
+      "API REST et webhooks",
+      "SSO, RBAC et journal d’audit",
+      "Export DATEV",
+      "Intégration ERP native",
+    ],
+  },
+};
+
+function SystemLandscapeSection() {
+  const { language } = useLanguage();
+  const c = SYSTEM_LANDSCAPE_CONTENT[language];
+  return (
+    <SectionShell size="lg" tone="ink">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="lg:col-span-5">
+          <Eyebrow tone="light">{c.eyebrow}</Eyebrow>
+          <h2
+            className="tk-headline mt-6"
+            style={{
+              fontSize: "clamp(2rem, 4.2vw, 3.25rem)",
+              color: "#fff",
+              lineHeight: 1.08,
+              letterSpacing: "-0.015em",
+            }}
+          >
+            {c.h2Line1}
+            <br />
+            <span style={{ color: "rgba(255,255,255,0.55)" }}>{c.h2Line2}</span>
+          </h2>
+          <p
+            className="mt-8"
+            style={{
+              color: "rgba(226,232,240,0.78)",
+              fontSize: "clamp(1rem, 1.15vw, 1.125rem)",
+              lineHeight: 1.65,
+              maxWidth: "50ch",
+            }}
+          >
+            {c.body}
+          </p>
+
+          <div
+            className="mt-10 pt-6"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
+          >
+            <div
+              style={{
+                fontSize: "11px",
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                color: "rgba(148,163,184,0.85)",
+                fontWeight: 600,
+                marginBottom: "14px",
+              }}
+            >
+              {c.capsLabel}
+            </div>
+            <ul
+              className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3"
+              style={{ listStyle: "none", padding: 0, margin: 0 }}
+            >
+              {c.caps.map((cap) => (
+                <li
+                  key={cap}
+                  className="flex items-center gap-3"
+                  style={{ color: "rgba(241,245,249,0.92)", fontSize: "14px", fontWeight: 500 }}
+                >
+                  <span
+                    aria-hidden
+                    style={{
+                      width: "6px",
+                      height: "6px",
+                      borderRadius: "50%",
+                      background: "#0369A1",
+                      boxShadow: "0 0 0 3px rgba(3,105,161,0.15)",
+                    }}
+                  />
+                  <span>{cap}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={springs.soft}
+          >
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+              {c.nodes.map((node) => (
+                <div
+                  key={node.label}
+                  className="rounded-2xl p-5"
+                  style={{
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    background: "rgba(255,255,255,0.03)",
+                    minHeight: "116px",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "11px",
+                      color: "rgba(148,163,184,0.85)",
+                      fontWeight: 700,
+                      letterSpacing: "0.16em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {node.label}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "14px",
+                      color: "#f1f5f9",
+                      marginTop: "10px",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {node.sub}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div
+              className="mt-4 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+              style={{
+                background:
+                  "linear-gradient(120deg, rgba(3,105,161,0.9) 0%, rgba(15,23,42,0.95) 100%)",
+                border: "1px solid rgba(3,105,161,0.35)",
+                boxShadow: "0 24px 60px -30px rgba(3,105,161,0.55)",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.24em",
+                    textTransform: "uppercase",
+                    color: "rgba(226,232,240,0.9)",
+                    fontWeight: 700,
+                  }}
+                >
+                  {c.centerLabel}
+                </div>
+                <div
+                  style={{
+                    fontSize: "18px",
+                    color: "#fff",
+                    fontWeight: 600,
+                    marginTop: "4px",
+                  }}
+                >
+                  {c.centerSub}
+                </div>
+              </div>
+              <span
+                aria-hidden
+                style={{
+                  color: "rgba(226,232,240,0.65)",
+                  fontSize: "11px",
+                  letterSpacing: "0.24em",
+                  textTransform: "uppercase",
+                  fontWeight: 600,
+                }}
+              >
+                {c.centerMeta}
+              </span>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </SectionShell>
   );
 }
 
@@ -2527,6 +2882,7 @@ export default function HomeShell() {
   return (
     <main style={{ background: "var(--tk-canvas)" }}>
       <HeroScene />
+      <SystemLandscapeSection />
       <FeatureTrio />
       <BookMeetingSection />
       <AufEinenBlickSection />
@@ -2534,7 +2890,6 @@ export default function HomeShell() {
 
       <LocalizedBridgeParallax />
 
-      <AllInOneSection />
       <SoloPackageStrip />
       <TestimonialsSection />
       <TaskeyShareDemoSection />

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "@/components/LocaleLink";
 import { useLanguage } from "@/context/LanguageContext";
 import { useEffect, useRef } from "react";
@@ -145,42 +144,6 @@ export default function Hero() {
         </div>
 
         <p className="text-center text-sm text-white/60">{t("homeHero.trust")}</p>
-
-        {/* Launchpad Trust-Streifen */}
-        <div className="mt-10 flex flex-col items-center">
-          <div className="flex items-center gap-3 mb-4 w-full max-w-md">
-            <span className="flex-1 h-px bg-white/15" aria-hidden="true" />
-            <span className="text-[10px] font-black tracking-[0.28em] uppercase text-white/50 whitespace-nowrap">
-              {t("homeHero.launchpad.label")}
-            </span>
-            <span className="flex-1 h-px bg-white/15" aria-hidden="true" />
-          </div>
-          <a
-            href="https://www.uds-triathlon.de/startup-launchpad/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-4 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors"
-          >
-            <span className="relative w-[120px] h-[42px] shrink-0 rounded-md bg-white p-1.5 flex items-center justify-center">
-              <Image
-                src="/launchpad-saarland.png"
-                alt={t("homeHero.launchpad.logoAlt")}
-                width={500}
-                height={196}
-                className="w-full h-auto object-contain"
-                sizes="120px"
-              />
-            </span>
-            <span className="flex flex-col text-left">
-              <span className="text-sm sm:text-base font-black text-white leading-tight">
-                {t("homeHero.launchpad.program")}
-              </span>
-              <span className="text-[11px] sm:text-xs text-white/60 tracking-wide">
-                {t("homeHero.launchpad.body")}
-              </span>
-            </span>
-          </a>
-        </div>
       </div>
 
       {/* === 3 Kern-Aussagen unter dem Hero =================================== */}

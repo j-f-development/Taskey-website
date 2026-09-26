@@ -232,43 +232,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Launchpad Trust-Streifen — global auf jeder Seite */}
-        <div className="border-t border-slate-800 py-8">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-6">
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] font-black tracking-[0.28em] uppercase text-slate-500 whitespace-nowrap">
-                {t("footer.launchpad.label")}
-              </span>
-            </div>
-            <a
-              href="https://www.uds-triathlon.de/startup-launchpad/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-4 px-5 py-3 rounded-2xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] hover:border-white/20 transition-colors"
-            >
-              <span className="relative w-[110px] h-[40px] shrink-0 rounded-md bg-white p-1.5 flex items-center justify-center">
-                <Image
-                  src="/launchpad-saarland.png"
-                  alt={t("footer.launchpad.logoAlt")}
-                  width={500}
-                  height={196}
-                  className="w-full h-auto object-contain"
-                  sizes="110px"
-                  loading="lazy"
-                />
-              </span>
-              <span className="flex flex-col text-left">
-                <span className="text-sm font-black text-white leading-tight">
-                  {t("footer.launchpad.program")}
-                </span>
-                <span className="text-[11px] text-slate-400 tracking-wide">
-                  {t("footer.launchpad.body")}
-                </span>
-              </span>
-            </a>
-          </div>
-        </div>
-
         {/* AI Act Hinweis — global auf jeder Seite */}
         <div className="border-t border-slate-800 py-5">
           <p className="text-[11px] text-slate-500 leading-relaxed text-center max-w-3xl mx-auto">

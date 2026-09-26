@@ -96,6 +96,20 @@ const STATIC_ENTRIES: Entry[] = [
   { path: "/kunden", changeFrequency: "monthly", priority: 0.6 },
   { path: "/geo", changeFrequency: "monthly", priority: 0.7 },
   { path: "/marktvergleich", changeFrequency: "monthly", priority: 0.75 },
+
+  // Enterprise-Referenzseiten
+  { path: "/integrationen", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/integrationen/datev", changeFrequency: "monthly", priority: 0.85 },
+  {
+    path: "/loesungen/gebaeudereinigung-mehrere-niederlassungen",
+    changeFrequency: "monthly",
+    priority: 0.85,
+  },
+  {
+    path: "/loesungen/lohnvorbereitung-gebaeudereinigung",
+    changeFrequency: "monthly",
+    priority: 0.85,
+  },
 ];
 
 // Vergleichsseiten sind DE-only (kein hreflang-Split)
