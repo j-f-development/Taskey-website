@@ -5,19 +5,19 @@ import { buildMetadata, pickLocale, canonical, type PageCopy } from "@/lib/i18n-
 
 const COPY: PageCopy = {
   de: {
-    title: "Funktionen | NFC Zeiterfassung, Einsatzplanung & DATEV-Export | Taskey",
+    title: "Funktionen · Reinigungssoftware, Zeiterfassung, Einsatzplanung & Rechnungsprogramm | Taskey",
     description:
-      "Alle Funktionen von Taskey: NFC-Objektnachweis, automatische Zeiterfassung, Schichtplanung, Auftraggeber-Portal und DATEV-Export. Kostenlosen Account erstellen.",
+      "Alle Funktionen von Taskey: Reinigungssoftware mit NFC Zeiterfassung, Einsatzplanung, Rechnungsprogramm, Kundenportal, digitalem Leistungsnachweis, Kalkulationssoftware, Ausschreibungen und DATEV Export. Für Gebäudereinigung und Facility Management.",
   },
   en: {
-    title: "Features | NFC time tracking, scheduling & DATEV export | Taskey",
+    title: "Features · cleaning management software, time tracking, scheduling & invoicing | Taskey",
     description:
-      "All Taskey features: NFC proof of service, automatic time tracking, shift scheduling, client portal and DATEV export. Create your free account.",
+      "All Taskey features: cleaning management software with NFC time tracking, staff scheduling, invoicing, client portal, proof of service, estimating and DATEV export. Cleaning business software for commercial and janitorial operations.",
   },
   fr: {
-    title: "Fonctionnalités | Pointage NFC, planification & export DATEV | Taskey",
+    title: "Fonctionnalités · logiciel de propreté, pointage, planning & facturation | Taskey",
     description:
-      "Toutes les fonctionnalités Taskey : preuve de service NFC, pointage automatique, planification, portail client et export DATEV. Créez votre compte gratuit.",
+      "Toutes les fonctionnalités Taskey : logiciel de propreté avec pointage NFC des agents de nettoyage, planning, facturation, portail client, contrôle qualité, devis et export DATEV. Pour entreprises de nettoyage et facility management.",
   },
 };
 

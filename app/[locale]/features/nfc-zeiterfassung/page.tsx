@@ -18,37 +18,37 @@ const BASE = "https://www.taskeyapp.com";
 
 const COPY: PageCopy = {
   de: {
-    title: "NFC Zeiterfassung für die Gebäudereinigung | Taskey",
+    title: "Mobile NFC Zeiterfassung für Reinigungskräfte & Gebäudereinigung | Taskey",
     description:
-      "NFC Zeiterfassung für Reinigungsbetriebe. Kontaktloser Check-in am Objekt, GPS-Nachweis, Mindestlohn konform nach §17 MiLoG. Offline fähig, DSGVO konform, Made in Germany.",
-    ogTitle: "NFC Zeiterfassung für die Gebäudereinigung | Taskey",
+      "NFC Zeiterfassung Gebäudereinigung: mobile und digitale Zeiterfassung für Reinigungskräfte und Mitarbeiter. Kontaktloser Check-in am Objekt, GPS-Nachweis, Mindestlohn konform nach §17 MiLoG. Zeiterfassung App und Zeiterfassung Software in einem. Offline fähig, DSGVO konform, Made in Germany.",
+    ogTitle: "Mobile NFC Zeiterfassung für Reinigungskräfte | Taskey",
     ogDescription:
-      "Kontaktloser Check-in per NFC am Objekt. GPS, Zeitstempel, Foto. Mindestlohn konform, offline fähig, DSGVO konform.",
-    twitterTitle: "NFC Zeiterfassung für die Gebäudereinigung",
+      "Mobile Zeiterfassung Reinigung per NFC am Objekt. GPS, Zeitstempel, Foto. Für Reinigungskräfte und Kleinbetriebe. Mindestlohn konform, offline fähig, DSGVO konform.",
+    twitterTitle: "Mobile NFC Zeiterfassung für die Gebäudereinigung",
     twitterDescription:
-      "NFC Check-in am Objekt. GPS, Zeit, Foto. Mindestlohn konform, offline, DSGVO konform.",
+      "Mobile Zeiterfassung Reinigung. NFC Check-in am Objekt. GPS, Zeit, Foto. Mindestlohn konform, offline, DSGVO konform.",
   },
   en: {
-    title: "NFC time tracking for commercial cleaning | Taskey",
+    title: "Time tracking app for cleaners · NFC time tracking for cleaning | Taskey",
     description:
-      "NFC time tracking for cleaning operations. Contactless check-in on site, GPS proof, compliant with the German Minimum Wage Act. Offline capable, GDPR compliant, made in Germany.",
-    ogTitle: "NFC time tracking for commercial cleaning | Taskey",
+      "Time tracking app for commercial cleaning. NFC time tracking for cleaners, cleaning staff time tracking with contactless check-in on site, GPS proof and photo. Time tracking software compliant with the German Minimum Wage Act. Offline capable, GDPR compliant, made in Germany.",
+    ogTitle: "Time tracking app · NFC time tracking for cleaners | Taskey",
     ogDescription:
-      "Contactless NFC check-in on site. GPS, timestamp, photo. Minimum-wage compliant, offline capable, GDPR compliant.",
-    twitterTitle: "NFC time tracking for commercial cleaning",
+      "Cleaning staff time tracking via NFC on site. GPS, timestamp, photo. Compliant, offline capable, GDPR compliant.",
+    twitterTitle: "Time tracking app for cleaners · NFC time tracking",
     twitterDescription:
-      "NFC check-in on site. GPS, time, photo. Compliant, offline, GDPR.",
+      "NFC time tracking for cleaners on site. GPS, time, photo. Compliant, offline, GDPR.",
   },
   fr: {
-    title: "Pointage NFC pour le nettoyage de bâtiments | Taskey",
+    title: "Pointage NFC des agents de nettoyage · logiciel de pointage | Taskey",
     description:
-      "Pointage NFC pour entreprises de nettoyage. Check-in sans contact sur site, preuve GPS, conforme au salaire minimum allemand. Fonctionne hors ligne, conforme RGPD, made in Germany.",
-    ogTitle: "Pointage NFC pour le nettoyage de bâtiments | Taskey",
+      "Pointage agents de nettoyage par NFC pour entreprises de nettoyage et de propreté. Check-in sans contact sur site, preuve GPS, horodatage et photo. Logiciel de pointage conforme au salaire minimum allemand. Fonctionne hors ligne, conforme RGPD, made in Germany.",
+    ogTitle: "Pointage NFC des agents de nettoyage | Taskey",
     ogDescription:
-      "Check-in NFC sans contact sur site. GPS, horodatage, photo. Conforme, hors ligne, RGPD.",
-    twitterTitle: "Pointage NFC pour le nettoyage",
+      "Pointage agents de nettoyage sans contact sur site. GPS, horodatage, photo. Conforme, hors ligne, RGPD.",
+    twitterTitle: "Pointage NFC des agents de nettoyage",
     twitterDescription:
-      "Check-in NFC sur site. GPS, heure, photo. Conforme, hors ligne, RGPD.",
+      "Pointage NFC agents sur site. GPS, heure, photo. Conforme, hors ligne, RGPD.",
   },
 };
 

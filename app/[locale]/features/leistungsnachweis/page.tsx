@@ -13,33 +13,33 @@ const path = "/features/leistungsnachweis";
 
 const COPY: PageCopy = {
   de: {
-    title: "Leistungsnachweis für die Gebäudereinigung | Taskey",
+    title: "Reinigungsprotokoll App · Digitaler Leistungsnachweis mit NFC | Taskey",
     description:
-      "Digitaler Leistungsnachweis für Reinigungsbetriebe. NFC-Scan, Zeit, Ort und Foto pro Objekt. Der Auftraggeber sieht die Leistung direkt im Portal. DSGVO konform, Made in Germany.",
-    ogTitle: "Leistungsnachweis für die Gebäudereinigung | Taskey",
+      "Reinigungsprotokoll App und Reinigungsnachweis App für Gebäudereinigung. Digitaler Leistungsnachweis Reinigung mit NFC Reinigungsnachweis, Zeit, Ort und Foto pro Objekt. Auftraggeber sieht die Leistung im Kundenportal. DSGVO konform, Made in Germany.",
+    ogTitle: "Reinigungsprotokoll App · digitaler Leistungsnachweis | Taskey",
     ogDescription:
-      "NFC, Zeit, Ort, Foto pro Objekt. Der Auftraggeber sieht die Leistung im Portal.",
-    twitterTitle: "Leistungsnachweis für die Gebäudereinigung",
+      "Reinigungsnachweis App mit NFC, Zeit, Ort und Foto pro Objekt. Digitaler Leistungsnachweis Reinigung, sichtbar im Kundenportal.",
+    twitterTitle: "Reinigungsprotokoll App · digitaler Leistungsnachweis",
     twitterDescription:
-      "NFC, Zeit, Ort, Foto. Der Auftraggeber sieht die Leistung direkt.",
+      "NFC Reinigungsnachweis, Zeit, Ort, Foto. Auftraggeber sieht die Leistung direkt.",
   },
   en: {
-    title: "Proof of service for commercial cleaning | Taskey",
+    title: "Cleaning checklist app · proof of service & NFC verification | Taskey",
     description:
-      "Digital proof of service for cleaning operations. NFC scan, time, place and photo per site. Clients see the service directly in the portal. GDPR compliant.",
-    ogTitle: "Proof of service for commercial cleaning | Taskey",
-    ogDescription: "NFC, time, place, photo per site. Clients see the service in the portal.",
-    twitterTitle: "Proof of service for commercial cleaning",
-    twitterDescription: "NFC, time, place, photo. Clients see the service directly.",
+      "Cleaning checklist app and cleaning inspection software for commercial cleaning. Cleaning proof of service with NFC cleaning verification, time, place and photo per site. Clients see the service in the portal. GDPR compliant, made in Germany.",
+    ogTitle: "Cleaning checklist app · proof of service | Taskey",
+    ogDescription: "Cleaning inspection software with NFC, time, place and photo per site. Cleaning proof of service in the client portal.",
+    twitterTitle: "Cleaning checklist app · proof of service",
+    twitterDescription: "NFC cleaning verification, time, place, photo. Proof of service ready.",
   },
   fr: {
-    title: "Preuve de prestation pour le nettoyage | Taskey",
+    title: "Contrôle qualité nettoyage · preuve de prestation NFC | Taskey",
     description:
-      "Preuve de prestation numérique pour les entreprises de nettoyage. Scan NFC, heure, lieu et photo par site. Le client voit la prestation dans le portail. Conforme RGPD.",
-    ogTitle: "Preuve de prestation pour le nettoyage | Taskey",
-    ogDescription: "NFC, heure, lieu, photo par site. Le client voit la prestation.",
-    twitterTitle: "Preuve de prestation pour le nettoyage",
-    twitterDescription: "NFC, heure, lieu, photo. Le client voit la prestation.",
+      "Contrôle qualité nettoyage et preuve de prestation numérique pour les entreprises de nettoyage. Scan NFC, heure, lieu et photo par site. Le client voit la prestation dans le portail. Conforme RGPD, made in Germany.",
+    ogTitle: "Contrôle qualité nettoyage · preuve de prestation | Taskey",
+    ogDescription: "Preuve de prestation NFC avec heure, lieu et photo par site. Visible dans le portail client.",
+    twitterTitle: "Contrôle qualité nettoyage · preuve de prestation",
+    twitterDescription: "Preuve NFC : heure, lieu, photo. Le client voit la prestation directement.",
   },
 };
 

@@ -7,35 +7,35 @@ const path = "/features/kalkulation";
 const COPY: PageCopy = {
   de: {
     title:
-      "Objektkalkulation, die mitrechnet | Taskey",
+      "Kalkulationssoftware Gebäudereinigung · Objektkalkulation mit Live-Marge | Taskey",
     description:
-      "Taskey berechnet Marge, Personalbedarf und Subunternehmer-Empfehlung pro Objekt aus Fläche, LV und Kapazität — statt nur nach Bauchgefühl. Live-Marge, Nachunternehmer-Anbindung, keine Zusatzsysteme.",
-    ogTitle: "Objektkalkulation, die mitrechnet | Taskey",
+      "Kalkulationssoftware Gebäudereinigung: Unterhaltsreinigung und Glasreinigung kalkulieren mit Marge, Personalbedarf und Subunternehmer-Empfehlung pro Objekt aus Fläche, Leistungsverzeichnis und Kapazität. Gebäudereinigung Kalkulation mit Live-Marge und Nachunternehmer-Anbindung, keine Excel-Vorlage nötig.",
+    ogTitle: "Kalkulationssoftware Gebäudereinigung · Live-Marge | Taskey",
     ogDescription:
-      "Marge, Personalbedarf und Subunternehmer-Empfehlung pro Objekt aus Fläche, LV und Kapazität.",
-    twitterTitle: "Objektkalkulation, die mitrechnet | Taskey",
+      "Unterhaltsreinigung kalkulieren mit Marge, Personalbedarf und Subunternehmer-Empfehlung pro Objekt. Gebäudereinigung Kalkulation ohne Excel.",
+    twitterTitle: "Kalkulationssoftware Gebäudereinigung · Live-Marge",
     twitterDescription:
-      "Marge, Personalbedarf und Subunternehmer-Empfehlung aus Fläche, LV und Kapazität.",
+      "Unterhaltsreinigung kalkulieren mit Live-Marge, Personalbedarf und Subunternehmer-Empfehlung pro Objekt.",
   },
   en: {
-    title: "Site calculation that does the maths | Taskey",
+    title: "Cleaning estimating software · commercial cleaning bidding software | Taskey",
     description:
-      "Taskey calculates margin, headcount and subcontractor recommendation per site from area, scope and capacity — not gut feel. Live margin, subcontractor integration, no extra tools.",
-    ogTitle: "Site calculation that does the maths | Taskey",
+      "Cleaning estimating software and commercial cleaning bidding software: Taskey calculates margin, headcount and subcontractor recommendation per site from area, scope and capacity. Live margin per site, subcontractor integration, no spreadsheet templates required.",
+    ogTitle: "Cleaning estimating software · bidding software | Taskey",
     ogDescription:
-      "Margin, headcount and subcontractor recommendation per site from area, scope and capacity.",
-    twitterTitle: "Site calculation that does the maths | Taskey",
+      "Commercial cleaning bidding software: margin, headcount and subcontractor recommendation per site from area, scope and capacity.",
+    twitterTitle: "Cleaning estimating software · bidding software",
     twitterDescription:
       "Live margin, headcount and subcontractor recommendation per site.",
   },
   fr: {
-    title: "Calcul de site qui compte pour vous | Taskey",
+    title: "Devis nettoyage · calcul de site avec marge en direct | Taskey",
     description:
-      "Taskey calcule marge, besoin en effectif et recommandation de sous-traitant par site à partir de la surface, du cahier des charges et de la capacité — plus au feeling. Marge en direct, intégration des sous-traitants, sans outils supplémentaires.",
-    ogTitle: "Calcul de site qui compte pour vous | Taskey",
+      "Logiciel de devis nettoyage et de calcul de site pour la propreté professionnelle. Taskey calcule marge, effectif et recommandation de sous-traitant par site à partir de la surface, du cahier des charges et de la capacité. Modèle de devis nettoyage intégré, marge en direct, sans outil supplémentaire.",
+    ogTitle: "Devis nettoyage · calcul de site avec marge en direct | Taskey",
     ogDescription:
-      "Marge, effectif et recommandation de sous-traitant par site à partir de la surface, du cahier des charges et de la capacité.",
-    twitterTitle: "Calcul de site qui compte pour vous | Taskey",
+      "Modèle de devis nettoyage avec marge, effectif et recommandation de sous-traitant par site.",
+    twitterTitle: "Devis nettoyage · calcul avec marge en direct",
     twitterDescription:
       "Marge en direct, effectif et recommandation de sous-traitant par site.",
   },

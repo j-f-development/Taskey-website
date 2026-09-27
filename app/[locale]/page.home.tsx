@@ -24,19 +24,19 @@ const FAQ = dynamic(() => import("@/components/home/FAQ"));
 
 const HOME_COPY: PageCopy = {
   de: {
-    title: "Gebäudereinigungssoftware | NFC Zeiterfassung & Live-Margen | Taskey",
+    title: "Software für Gebäudereinigung · Reinigungssoftware mit NFC Zeiterfassung | Taskey",
     description:
-      "Reinigungssoftware Made in Germany: NFC-Zeiterfassung, Einsatzplanung, Live-Margen & Auftraggeber-Portal. DSGVO-konform. Kostenlosen Account erstellen.",
+      "Software für Gebäudereinigung und Reinigungsfirmen. Reinigungssoftware mit NFC Zeiterfassung, digitaler Einsatzplanung, Rechnungsprogramm, Kundenportal und DATEV Export. Für Gebäudereiniger, Facility Management und Kleinbetriebe. Made in Germany, DSGVO konform.",
   },
   en: {
-    title: "Cleaning management software | NFC time tracking & live margins | Taskey",
+    title: "Cleaning business software · management, scheduling & NFC time tracking | Taskey",
     description:
-      "Cleaning software made in Germany: NFC time tracking, scheduling, live margins and a client portal. GDPR-compliant. Create your free account.",
+      "Cleaning business software for commercial cleaning and facility management. Cleaning management software with NFC time tracking, scheduling, invoicing, client portal and live margins. For janitorial and maid service operators. GDPR compliant, made in Germany.",
   },
   fr: {
-    title: "Logiciel de gestion de nettoyage | Pointage NFC & marges en direct | Taskey",
+    title: "Logiciel entreprise de nettoyage · propreté, planning & pointage NFC | Taskey",
     description:
-      "Logiciel de nettoyage made in Germany : pointage NFC, planification, marges en direct et portail client. Conforme RGPD. Créez votre compte gratuit.",
+      "Logiciel pour entreprise de nettoyage et société de propreté. Planning nettoyage, pointage NFC des agents, facturation, portail client et marges en direct. Pour la propreté professionnelle et le facility management. Conforme RGPD, made in Germany.",
   },
 };
 

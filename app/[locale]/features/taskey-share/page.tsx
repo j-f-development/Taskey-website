@@ -7,39 +7,39 @@ const path = "/features/taskey-share";
 const COPY: PageCopy = {
   de: {
     title:
-      "Taskey Share für Auftraggeber | Live-Zugang zur Reinigung Ihres Objekts",
+      "Kundenportal Gebäudereinigung · Taskey Share für Auftraggeber | Taskey",
     description:
-      "Taskey Share ist Ihre Demo-Ansicht von Taskey für Auftraggeber. Live-Status, Foto-Nachweise, Beanstandungen und Reports. Freischaltbar über Ihre Reinigungsfirma, Konditionen auf Anfrage.",
-    ogTitle: "Taskey Share für Auftraggeber | Taskey",
+      "Kundenportal Gebäudereinigung: Taskey Share ist das Reinigung Kundenportal Ihrer Auftraggeber. Live-Status, Foto-Nachweise, Beanstandungen und Reports pro Objekt. Freischaltbar über Ihre Reinigungsfirma, ohne Login für den Kunden.",
+    ogTitle: "Kundenportal Gebäudereinigung · Taskey Share | Taskey",
     ogDescription:
-      "Ihre Demo-Ansicht von Taskey für Auftraggeber. Live-Status, Foto-Nachweise, Beanstandungen, Reports. Freischaltbar über Ihre Reinigungsfirma.",
-    twitterTitle: "Taskey Share für Auftraggeber",
+      "Reinigung Kundenportal für Auftraggeber. Live-Status, Foto-Nachweise, Beanstandungen und Reports. Freischaltbar über Ihre Reinigungsfirma.",
+    twitterTitle: "Kundenportal Gebäudereinigung · Taskey Share",
     twitterDescription:
-      "Live-Status, Foto-Nachweise und Reports zu Ihrem Objekt. Freischaltung über Ihre Reinigungsfirma.",
+      "Reinigung Kundenportal: Live-Status, Foto-Nachweise und Reports zu jedem Objekt.",
   },
   en: {
     title:
-      "Taskey Share for clients | Live access to the cleaning of your site",
+      "Cleaning client portal · Taskey Share for cleaning customers | Taskey",
     description:
-      "Taskey Share is your demo view of Taskey for clients. Live status, photo proof, complaints and reports. Activated by your cleaning company, pricing on request.",
-    ogTitle: "Taskey Share for clients | Taskey",
+      "Cleaning client portal for commercial cleaning: Taskey Share is the cleaning customer portal your clients see. Live status, photo proof, complaints and reports per site. Activated by your cleaning company, no login required for the client.",
+    ogTitle: "Cleaning client portal · Taskey Share | Taskey",
     ogDescription:
-      "Your demo view of Taskey for clients. Live status, photo proof, complaints, reports. Activated by your cleaning company.",
-    twitterTitle: "Taskey Share for clients",
+      "Cleaning customer portal for clients. Live status, photo proof, complaints, reports. Activated by your cleaning company.",
+    twitterTitle: "Cleaning client portal · Taskey Share",
     twitterDescription:
-      "Live status, photo proof and reports on your site. Activated by your cleaning company.",
+      "Cleaning customer portal: live status, photo proof and reports per site.",
   },
   fr: {
     title:
-      "Taskey Share pour donneurs d'ordre | Accès en direct au nettoyage de votre site",
+      "Portail client nettoyage · Taskey Share pour donneurs d'ordre | Taskey",
     description:
-      "Taskey Share est votre vue démo de Taskey pour donneurs d'ordre. Statut en direct, preuves photo, réclamations et rapports. Activé par votre entreprise de nettoyage, tarifs sur demande.",
-    ogTitle: "Taskey Share pour donneurs d'ordre | Taskey",
+      "Portail client pour entreprises de nettoyage : Taskey Share est le portail que voient vos donneurs d'ordre. Statut en direct, preuves photo, réclamations et rapports par site. Activé par votre entreprise de nettoyage, sans inscription pour le client.",
+    ogTitle: "Portail client nettoyage · Taskey Share | Taskey",
     ogDescription:
-      "Votre vue démo de Taskey pour donneurs d'ordre. Statut en direct, preuves photo, réclamations, rapports. Activé par votre entreprise de nettoyage.",
-    twitterTitle: "Taskey Share pour donneurs d'ordre",
+      "Portail client pour donneurs d'ordre. Statut en direct, preuves photo, réclamations, rapports. Activé par votre entreprise de nettoyage.",
+    twitterTitle: "Portail client nettoyage · Taskey Share",
     twitterDescription:
-      "Statut en direct, preuves photo et rapports sur votre site. Activation par votre entreprise de nettoyage.",
+      "Statut en direct, preuves photo et rapports par site pour vos clients.",
   },
 };
 

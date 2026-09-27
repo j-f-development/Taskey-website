@@ -14,19 +14,19 @@ const path = "/reinigungssoftware";
 
 const COPY: PageCopy = {
   de: {
-    title: "Reinigungssoftware · Städte im DACH-Raum | Taskey",
+    title: "Reinigungssoftware · Software für Gebäudereinigung nach Stadt | Taskey",
     description:
-      "Reinigungssoftware für Betriebe im DACH-Raum. Standortlisten für die wichtigsten Städte in Deutschland, Österreich und der Schweiz. NFC, Live-Margen, DSGVO konform.",
+      "Reinigungssoftware für Gebäudereiniger und Reinigungsfirmen im DACH-Raum. Software für Gebäudereinigung mit NFC Zeiterfassung, Einsatzplanung, Rechnungsprogramm und Kundenportal, regional zugeschnitten für Städte in Deutschland, Österreich und der Schweiz.",
   },
   en: {
-    title: "Cleaning software · cities in the DACH region | Taskey",
+    title: "Cleaning software · cleaning company software by city (DACH) | Taskey",
     description:
-      "Cleaning software for operators across the DACH region. Location lists for the main cities in Germany, Austria and Switzerland. NFC, live margin, GDPR compliant.",
+      "Cleaning company software for commercial cleaning and janitorial operators across the DACH region. Cleaning management software with NFC time tracking, scheduling, invoicing and client portal, mapped to key cities in Germany, Austria and Switzerland.",
   },
   fr: {
-    title: "Logiciel de nettoyage · villes DACH | Taskey",
+    title: "Logiciel entreprise de nettoyage · logiciel de propreté par ville (DACH) | Taskey",
     description:
-      "Logiciel de nettoyage pour prestataires DACH. Villes principales en Allemagne, Autriche et Suisse. NFC, marge en direct, conforme RGPD.",
+      "Logiciel pour société de nettoyage et de propreté dans la région DACH. Pointage NFC, planning, facturation et portail client pour les principales villes d'Allemagne, d'Autriche et de Suisse.",
   },
 };
 

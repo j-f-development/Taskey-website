@@ -13,37 +13,37 @@ const path = "/features/einsatzplanung";
 
 const COPY: PageCopy = {
   de: {
-    title: "Einsatzplanung für Reinigungsfirmen | Taskey",
+    title: "Einsatzplanung Software · Dienstplan & Personalplanung Reinigung | Taskey",
     description:
-      "Einsatzplanung für die Gebäudereinigung. Kolonnen, Touren, Vertretungen per Drag and Drop. Krankheitsausfälle in Sekunden umbuchen. Mobile App für das Team. Made in Germany.",
-    ogTitle: "Einsatzplanung für Reinigungsfirmen | Taskey",
+      "Einsatzplanung Software für Gebäudereinigung: Dienstplan Reinigungsfirma, Personalplanung Reinigung, Kolonnen und Touren per Drag and Drop. Einsatzplanung Reinigung mit mobiler Team-App. Krankheitsausfälle in Sekunden umbuchen. Made in Germany, DSGVO konform.",
+    ogTitle: "Einsatzplanung Software für Reinigungsfirmen | Taskey",
     ogDescription:
-      "Kolonnen, Touren, Vertretungen per Drag and Drop. Krankheitsausfälle in Sekunden umbuchen. Mobile App für das Team.",
-    twitterTitle: "Einsatzplanung für Reinigungsfirmen",
+      "Software Einsatzplanung für Gebäudereinigung. Dienstplan und Personalplanung Reinigung per Drag and Drop. Krankheitsausfälle in Sekunden umbuchen.",
+    twitterTitle: "Einsatzplanung Software für Reinigungsfirmen",
     twitterDescription:
-      "Kolonnen, Touren, Vertretungen per Drag and Drop. Krankheitsausfälle in Sekunden umbuchen.",
+      "Dienstplan Reinigungsfirma, Personalplanung Reinigung, Touren per Drag and Drop.",
   },
   en: {
-    title: "Scheduling software for cleaning companies | Taskey",
+    title: "Cleaning scheduling software · staff scheduling for cleaners | Taskey",
     description:
-      "Cleaning scheduling: crews, routes, replacements by drag and drop. Reassign sick calls in seconds. Mobile app for the team. Made in Germany.",
-    ogTitle: "Scheduling software for cleaning companies | Taskey",
+      "Cleaning scheduling software for commercial cleaning: crews, routes, replacements by drag and drop. Cleaning staff scheduling and employee scheduling software with a mobile app for the team. Reassign sick calls in seconds. Made in Germany, GDPR compliant.",
+    ogTitle: "Cleaning scheduling software · staff scheduling | Taskey",
     ogDescription:
-      "Crews, routes, replacements by drag and drop. Reassign sick calls in seconds. Mobile app for the team.",
-    twitterTitle: "Scheduling software for cleaning companies",
+      "Employee scheduling software for cleaning operations. Crews, routes, replacements by drag and drop. Reassign sick calls in seconds.",
+    twitterTitle: "Cleaning scheduling software · staff scheduling",
     twitterDescription:
-      "Crews, routes, replacements by drag and drop. Reassign sick calls in seconds.",
+      "Cleaning staff scheduling and route planning. Replacements by drag and drop.",
   },
   fr: {
-    title: "Planification pour entreprises de nettoyage | Taskey",
+    title: "Logiciel planning nettoyage · planification agents de propreté | Taskey",
     description:
-      "Planification pour le nettoyage: équipes, tournées, remplacements en glisser-déposer. Réaffectation des absences en secondes. App mobile pour l’équipe. Made in Germany.",
-    ogTitle: "Planification pour entreprises de nettoyage | Taskey",
+      "Logiciel planning nettoyage pour entreprises de propreté : planning des agents, tournées, remplacements en glisser-déposer. Logiciel planning avec app mobile pour l'équipe. Réaffectation des absences en secondes. Made in Germany, conforme RGPD.",
+    ogTitle: "Logiciel planning nettoyage · planification agents | Taskey",
     ogDescription:
-      "Équipes, tournées, remplacements en glisser-déposer. Réaffectation des absences en secondes.",
-    twitterTitle: "Planification pour entreprises de nettoyage",
+      "Planning nettoyage et planification des agents. Tournées et remplacements en glisser-déposer.",
+    twitterTitle: "Logiciel planning nettoyage · planification agents",
     twitterDescription:
-      "Équipes, tournées, remplacements en glisser-déposer.",
+      "Planning nettoyage, tournées, remplacements en glisser-déposer.",
   },
 };
 

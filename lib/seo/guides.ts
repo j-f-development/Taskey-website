@@ -467,6 +467,635 @@ export const guides: Guide[] = [
       },
     },
   },
+  {
+    slug: "mobile-zeiterfassung-reinigung",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    serviceLinks: [
+      { href: "/features/nfc-zeiterfassung", label: "Mobile NFC Zeiterfassung" },
+      { href: "/loesungen/kleinbetriebe", label: "Für Kleinbetriebe" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/nfc-tags-in-der-reinigung", label: "NFC-Tags in der Reinigung" },
+      { href: "/ratgeber/digitaler-dienstplan-einfuehren", label: "Digitalen Dienstplan einführen" },
+    ],
+    relatedProblems: [
+      { href: "/probleme/zeiten-werden-nicht-ehrlich-gemeldet", label: "Zeiten werden nicht ehrlich gemeldet" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "Mobile Zeiterfassung Reinigung · Zeiterfassung App für Mitarbeiter | Taskey",
+        metaDescription:
+          "Mobile Zeiterfassung für Reinigung und Gebäudereiniger. Eine Zeiterfassung App, die Reinigungskräfte am Objekt bedienen können. NFC, GPS, offline, DSGVO. Der Praxis-Ratgeber.",
+        eyebrow: "Ratgeber",
+        h1: "Mobile Zeiterfassung in der Reinigung einführen",
+        shortAnswer:
+          "Mobile Zeiterfassung in der Reinigung ist eine Zeiterfassung App am Smartphone, die per NFC-Scan am Objekt startet und stoppt. Sie ist so gebaut, dass Reinigungskräfte ohne Schulung damit arbeiten und dass GPS und Zeitstempel manipulationssicher dokumentiert werden.",
+        intro:
+          "Papier-Stundenzettel kosten Zeit im Büro und Vertrauen beim Auftraggeber. Mobile Zeiterfassung Reinigung löst das Problem, wenn drei Bedingungen erfüllt sind: einfache Bedienung, offline-Fähigkeit und ein Nachweisformat, das der Kunde akzeptiert.",
+        sections: [
+          { title: "Warum mobile Zeiterfassung Reinigung anders funktioniert", body: "Reinigungskräfte sitzen nicht am Terminal. Sie brauchen eine App, die in Sekunden startet, auch in Kellern und Tiefgaragen ohne Netz. NFC-Zeiterfassung Reinigung liefert genau das." },
+          { title: "Was digitale Zeiterfassung technisch tut", body: "Bei jedem Scan setzt die App Zeitstempel, GPS-Koordinate und Mitarbeiter-Zuordnung. Die Daten liegen offline im Gerät und synchronisieren automatisch, sobald wieder Netz vorhanden ist." },
+          { title: "Was Sie im Betrieb ändert", body: "Der Dienstplan Reinigungsfirma wird lesbar, weil Soll und Ist im gleichen System liegen. Reklamationen sinken, weil der Nachweis pro Objekt vorhanden ist." },
+        ],
+        process: [
+          { title: "1. NFC-Tags an Objekten anbringen", body: "Wetterfeste Tags in der Nähe des Eingangs oder am Schlüsselkasten. Ein Tag pro Objekt reicht." },
+          { title: "2. Team-App verteilen", body: "App-Installation und Login. Die mehrsprachige Oberfläche macht Schulung überflüssig." },
+          { title: "3. Erste Woche beobachten", body: "Sehen Sie, wo Scans fehlen. Meist genügt eine kurze Ansprache im Team." },
+        ],
+        faqs: [
+          { q: "Funktioniert mobile Zeiterfassung Reinigung offline?", a: "Ja. Alle Scans laufen offline und synchronisieren automatisch. Kellergaragen und Tiefgaragen sind kein Problem." },
+          { q: "Ist die App auch für Reinigungskräfte ohne Deutsch geeignet?", a: "Ja. Die Oberfläche ist mehrsprachig, unter anderem Deutsch, Türkisch, Russisch und Polnisch. Der Prozess besteht aus einem Tap." },
+        ],
+        ctaH2: "Zeiterfassung, die im Objekt beginnt",
+        ctaBody: "Testen Sie die mobile Zeiterfassung von Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "Time tracking app for cleaners · mobile time tracking for cleaning | Taskey",
+        metaDescription:
+          "Mobile time tracking for cleaners. A time tracking app cleaning staff can use on site, with NFC, GPS and offline capability. Practice guide.",
+        eyebrow: "Guide",
+        h1: "Introducing mobile time tracking for cleaners",
+        shortAnswer:
+          "Mobile time tracking in cleaning is a time tracking app on the phone that starts and stops via an NFC tap on site. It works because cleaners can use it without training and because GPS and timestamp travel tamper-resistant with the record.",
+        intro:
+          "Paper timesheets cost office hours and client trust. Cleaning staff time tracking on mobile fixes this when three conditions are met: simple UX, offline capability, and a proof format the client accepts.",
+        sections: [
+          { title: "Why cleaning is different", body: "Cleaners do not sit at a terminal. They need an app that starts in seconds, even in basements without signal. NFC time tracking for cleaners delivers exactly that." },
+          { title: "What the tech does", body: "Each scan carries timestamp, GPS and person. Data stays offline and syncs when connectivity returns." },
+          { title: "What it changes in operations", body: "The schedule becomes readable because plan and actual live in the same system. Complaints drop because proof exists per site." },
+        ],
+        process: [
+          { title: "1. Place NFC tags on sites", body: "Weatherproof tag near entrance or key box. One per site is enough." },
+          { title: "2. Roll out the team app", body: "Install and log in. Multilingual UI makes training optional." },
+          { title: "3. Watch the first week", body: "Spot missing scans. A short team talk usually solves the rest." },
+        ],
+        faqs: [
+          { q: "Does mobile time tracking for cleaners work offline?", a: "Yes. All taps work offline and sync automatically. Basements and garages are fine." },
+          { q: "Is the app usable without English?", a: "Yes. The UI is multilingual. The workflow is one tap." },
+        ],
+        ctaH2: "Time tracking that starts on site",
+        ctaBody: "Try Taskey mobile time tracking free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Pointage mobile agents de nettoyage · logiciel de pointage mobile | Taskey",
+        metaDescription:
+          "Pointage mobile pour agents de nettoyage. Une app que les équipes utilisent sur site avec NFC, GPS et fonctionnement hors ligne. Guide pratique.",
+        eyebrow: "Guide",
+        h1: "Mettre en place le pointage mobile en nettoyage",
+        shortAnswer:
+          "Le pointage mobile en nettoyage est une app qui démarre et s'arrête par tap NFC sur site. Elle marche parce que les agents l'utilisent sans formation et parce que l'horodatage et la position accompagnent chaque enregistrement.",
+        intro:
+          "Les feuilles papier coûtent des heures de bureau et la confiance du client. Le pointage mobile résout cela si trois conditions sont réunies : simplicité, fonctionnement hors ligne, format de preuve accepté par le donneur d'ordre.",
+        sections: [
+          { title: "Pourquoi le nettoyage est différent", body: "Les agents ne sont pas au terminal. Il leur faut une app qui démarre en secondes, même en sous-sol sans réseau. Le pointage NFC répond à cela." },
+          { title: "Ce que la technique fait", body: "Chaque scan porte horodatage, GPS et personne. Les données restent hors ligne et se synchronisent quand le réseau revient." },
+          { title: "Ce que ça change à la production", body: "Le planning devient lisible parce que prévu et réel vivent dans le même système. Les réclamations baissent." },
+        ],
+        process: [
+          { title: "1. Poser les tags NFC", body: "Tag résistant intempéries près de l'entrée. Un tag par site suffit." },
+          { title: "2. Déployer l'app", body: "Installation et login. Interface multilingue, formation optionnelle." },
+          { title: "3. Observer la première semaine", body: "Repérez les scans manquants. Une brève réunion suffit souvent." },
+        ],
+        faqs: [
+          { q: "Le pointage mobile fonctionne-t-il hors ligne ?", a: "Oui. Tous les scans fonctionnent hors ligne et se synchronisent automatiquement." },
+          { q: "Utilisable par des agents non francophones ?", a: "Oui. L'interface est multilingue. Le geste est un tap." },
+        ],
+        ctaH2: "Un pointage qui commence sur site",
+        ctaBody: "Essayez le pointage mobile de Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
+  {
+    slug: "nfc-tags-in-der-reinigung",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    serviceLinks: [
+      { href: "/features/nfc-zeiterfassung", label: "NFC Zeiterfassung" },
+      { href: "/features/leistungsnachweis", label: "Reinigungsprotokoll App" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/mobile-zeiterfassung-reinigung", label: "Mobile Zeiterfassung Reinigung" },
+    ],
+    relatedProblems: [
+      { href: "/probleme/objekte-werden-vergessen", label: "Objekte werden vergessen" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "NFC-Tags in der Reinigung · NFC Reinigungsnachweis Ratgeber | Taskey",
+        metaDescription:
+          "NFC-Tags in der Reinigung: wie NFC Zeiterfassung Reinigung und NFC Reinigungsnachweis funktionieren, wo Tags sitzen und was das im Streitfall bringt.",
+        eyebrow: "Ratgeber",
+        h1: "NFC-Tags in der Reinigung richtig einsetzen",
+        shortAnswer:
+          "Ein NFC-Tag ist ein wetterfester Sticker mit einem Chip. Am Objekt gescannt, dokumentiert er Zeit, Ort und Person und macht Reinigungsleistung im Streitfall belegbar. Ohne Tag am Objekt fehlt die physische Referenz für den Nachweis.",
+        intro:
+          "NFC ist unspektakulär und deshalb wirksam. Kein Terminal, kein Netz nötig, kein zusätzliches Gerät. Der Ratgeber erklärt, warum Tags in Reinigungsbetrieben Standard werden und wie ein Rollout aussieht.",
+        sections: [
+          { title: "Was NFC Reinigungsnachweis leistet", body: "Der Tag bindet die Zeit an das Objekt. Ohne Anwesenheit vor Ort gibt es keinen Scan. Damit ist der NFC Reinigungsnachweis der stärkste digitale Nachweis, den ein Betrieb liefern kann." },
+          { title: "Wo Tags sitzen sollten", body: "Möglichst am Eingang, am Schlüsselkasten oder an einer eindeutigen Wandposition. Wetterfest, unauffällig, aber erreichbar. Ein Tag pro Objekt reicht in den meisten Fällen." },
+          { title: "Was passiert im Streitfall", body: "Der Nachweis ist zeitgestempelt, geolokalisiert und einer Person zugeordnet. Reklamationen von Auftraggebern werden mit Fakten beantwortet, nicht mit Vermutungen." },
+        ],
+        faqs: [
+          { q: "Sind NFC-Tags DSGVO-konform?", a: "Ja. Der Tag speichert selbst keine personenbezogenen Daten. Zuordnung passiert erst in der App, mit klar dokumentierten Zwecken und Zugriffsrechten." },
+          { q: "Wie viele Tags braucht ein Objekt?", a: "In der Regel einer. Größere Objekte mit mehreren Bereichen können mit mehreren Tags belegt werden, um Bereiche separat nachzuweisen." },
+        ],
+        ctaH2: "Nachweis, der im Objekt beginnt",
+        ctaBody: "Testen Sie NFC-Nachweis mit Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "NFC tags in cleaning · NFC cleaning verification guide | Taskey",
+        metaDescription:
+          "NFC tags in cleaning explained: how NFC time tracking for cleaners and NFC cleaning verification work, where tags sit and what they prove in a dispute.",
+        eyebrow: "Guide",
+        h1: "Using NFC tags correctly in cleaning",
+        shortAnswer:
+          "An NFC tag is a weatherproof sticker with a chip. Scanned on site it documents time, place and person and makes the clean provable in a dispute. Without a tag on site the physical reference for proof is missing.",
+        intro:
+          "NFC is unspectacular and precisely for that reason effective. No terminal, no signal needed, no extra device. This guide explains why tags are becoming standard in cleaning operations.",
+        sections: [
+          { title: "What NFC cleaning verification does", body: "The tag binds time to the site. Without physical presence there is no scan. That makes NFC cleaning verification the strongest digital proof an operator can deliver." },
+          { title: "Where tags belong", body: "Near the entrance, key box or a fixed wall position. Weatherproof, unobtrusive, reachable. One tag per site is usually enough." },
+          { title: "What happens in a dispute", body: "The record carries timestamp, geo and person. Client complaints get answered with facts, not guesses." },
+        ],
+        faqs: [
+          { q: "Are NFC tags GDPR compliant?", a: "Yes. The tag itself stores no personal data. Attribution happens in the app with documented purpose and access rights." },
+          { q: "How many tags per site?", a: "Usually one. Larger sites with several zones can carry more tags to document zones separately." },
+        ],
+        ctaH2: "Proof that starts on site",
+        ctaBody: "Try Taskey NFC proof free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Tags NFC en nettoyage · guide preuve NFC | Taskey",
+        metaDescription:
+          "Tags NFC en nettoyage : comment le pointage NFC et la preuve NFC fonctionnent, où poser les tags et ce que cela apporte en cas de litige.",
+        eyebrow: "Guide",
+        h1: "Utiliser les tags NFC correctement en nettoyage",
+        shortAnswer:
+          "Un tag NFC est un sticker résistant intempéries avec une puce. Scanné sur site, il documente heure, lieu et personne, et rend la prestation prouvable. Sans tag sur site, la référence physique manque.",
+        intro:
+          "Le NFC est banal et c'est pour cela qu'il fonctionne. Pas de terminal, pas de réseau, pas d'équipement supplémentaire. Ce guide explique pourquoi les tags deviennent standard.",
+        sections: [
+          { title: "Ce que la preuve NFC apporte", body: "Le tag lie l'heure au site. Sans présence physique, pas de scan. C'est la preuve numérique la plus forte." },
+          { title: "Où poser les tags", body: "Près de l'entrée ou de la boîte à clés. Résistant, discret, accessible. Un tag par site suffit dans la plupart des cas." },
+          { title: "En cas de litige", body: "L'enregistrement porte horodatage, position et personne. Les réclamations reçoivent des faits, pas des suppositions." },
+        ],
+        faqs: [
+          { q: "Les tags NFC sont-ils conformes RGPD ?", a: "Oui. Le tag ne stocke pas de données personnelles. L'attribution vit dans l'app avec finalité documentée." },
+          { q: "Combien de tags par site ?", a: "Un seul en général. Des sites étendus peuvent en porter plusieurs pour documenter des zones." },
+        ],
+        ctaH2: "Une preuve qui commence sur site",
+        ctaBody: "Essayez la preuve NFC de Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
+  {
+    slug: "rechnungsprogramm-fuer-gebaeudereinigung-waehlen",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    serviceLinks: [
+      { href: "/features/rechnungsprogramm", label: "Rechnungsprogramm für Gebäudereinigung" },
+      { href: "/features/datev-export", label: "DATEV-Export" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/reinigungssoftware-kosten", label: "Was kostet Reinigungssoftware?" },
+    ],
+    relatedProblems: [
+      { href: "/probleme/rechnungen-nicht-puenktlich", label: "Rechnungen kommen nicht pünktlich raus" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "Rechnungsprogramm für Gebäudereinigung wählen · Ratgeber | Taskey",
+        metaDescription:
+          "Rechnungsprogramm für Gebäudereinigung: worauf Reinigungsfirmen bei der Auswahl achten sollten. Wartungsverträge, Zusatzleistungen, GoBD und DATEV.",
+        eyebrow: "Ratgeber",
+        h1: "Das richtige Rechnungsprogramm für Gebäudereinigung wählen",
+        shortAnswer:
+          "Ein Rechnungsprogramm für Gebäudereinigung sollte Wartungsverträge automatisch abrechnen, Zusatzleistungen aus dem Objekt übernehmen, GoBD-konform archivieren und im DATEV-Standard exportieren. Trennung von Betrieb und Buchhaltung ist der häufigste Kostentreiber im Prozess.",
+        intro:
+          "Viele Reinigungsfirmen setzen ein allgemeines Rechnungsprogramm ein, das den Betriebsalltag nicht kennt. Der Ratgeber zeigt, welche Anforderungen ein Rechnungsprogramm Gebäudereinigung erfüllen muss, damit Zeit und Umsatz nicht verloren gehen.",
+        sections: [
+          { title: "Wartungsverträge automatisch abrechnen", body: "Die meisten Umsätze in der Gebäudereinigung stammen aus wiederkehrenden Verträgen. Ein taugliches Rechnungsprogramm für Reinigungsfirma erzeugt daraus monatlich Rechnungen ohne Handarbeit." },
+          { title: "Zusatzleistungen konsolidieren", body: "Fensterreinigung, Sonderaufträge, Reparaturen: aus Tickets entstehen abrechenbare Positionen. Ohne Anbindung an das operative System gehen sie verloren." },
+          { title: "GoBD und E-Rechnung", body: "Rechnungen müssen unveränderbar archiviert sein. XRechnung und ZUGFeRD werden für öffentliche Auftraggeber zunehmend Pflicht." },
+        ],
+        faqs: [
+          { q: "Reicht ein normales Rechnungsprogramm?", a: "Für sehr kleine Betriebe ja. Sobald Wartungsverträge, Sub-Kosten und Zusatzleistungen dazukommen, verlieren Sie zu viel Zeit im Übertrag zwischen den Systemen." },
+          { q: "Wie funktioniert die DATEV-Anbindung?", a: "Rechnungen und Buchungsdaten werden im DATEV-Standardformat exportiert. Der Steuerberater importiert die Datei direkt." },
+        ],
+        ctaH2: "Rechnungen aus dem Objekt statt aus Excel",
+        ctaBody: "Testen Sie Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "Choosing cleaning invoicing software · guide | Taskey",
+        metaDescription:
+          "Cleaning invoicing software: what commercial cleaners should look for. Maintenance contracts, add-ons, audit compliance and accounting export.",
+        eyebrow: "Guide",
+        h1: "Choosing the right cleaning invoicing software",
+        shortAnswer:
+          "Invoicing software for cleaning business must bill maintenance contracts automatically, pick up add-on work from the site, archive audit-safe and export in a standard accounting format. Separating operations from accounting is the most common hidden cost in the process.",
+        intro:
+          "Many cleaning companies run a general invoicing program that has no idea about operations. This guide shows what a cleaning invoicing software must do so that time and revenue do not disappear between tools.",
+        sections: [
+          { title: "Bill maintenance contracts automatically", body: "Most revenue in cleaning comes from recurring contracts. Real invoicing software for cleaning business generates monthly invoices from them without manual work." },
+          { title: "Consolidate add-on work", body: "Windows, specials, repairs: tickets turn into billable lines. Without a link to operations they get lost." },
+          { title: "Audit and e-invoicing", body: "Invoices must be archived immutable. Electronic formats matter for public and enterprise clients." },
+        ],
+        faqs: [
+          { q: "Is a general invoicing tool enough?", a: "For very small operators yes. Once contracts, sub costs and add-on work enter the picture, transfer effort between systems eats too much time." },
+          { q: "How does accounting export work?", a: "Invoices and booking data export in the standard DATEV format for direct import by the accountant." },
+        ],
+        ctaH2: "Invoices out of operations, not Excel",
+        ctaBody: "Try Taskey free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Choisir un logiciel de facturation pour le nettoyage · guide | Taskey",
+        metaDescription:
+          "Logiciel de facturation pour entreprise de nettoyage : ce que les sociétés de propreté doivent regarder. Contrats, prestations additionnelles, archivage, export comptable.",
+        eyebrow: "Guide",
+        h1: "Bien choisir un logiciel de facturation pour le nettoyage",
+        shortAnswer:
+          "Un logiciel de facturation pour entreprise de nettoyage doit facturer automatiquement les contrats de maintenance, récupérer les prestations additionnelles depuis le site, archiver de façon inaltérable et exporter dans un format comptable standard.",
+        intro:
+          "Beaucoup de sociétés de nettoyage utilisent un logiciel de facturation générique qui ignore la production. Ce guide montre ce qu'un logiciel de facturation nettoyage doit apporter.",
+        sections: [
+          { title: "Facturer les contrats automatiquement", body: "L'essentiel du chiffre en nettoyage vient de contrats récurrents. Un vrai logiciel les facture chaque mois sans manuel." },
+          { title: "Consolider les additionnels", body: "Vitres, spéciaux, réparations : les tickets deviennent des lignes facturables si le lien avec la production existe." },
+          { title: "Archivage et facturation électronique", body: "Les factures doivent être archivées de façon inaltérable. Les formats électroniques deviennent obligatoires pour les donneurs d'ordre publics." },
+        ],
+        faqs: [
+          { q: "Un logiciel de facturation générique suffit-il ?", a: "Pour les très petites structures, oui. Dès que contrats, sous-traitance et additionnels s'ajoutent, la transmission entre outils coûte trop." },
+          { q: "Comment se passe l'export comptable ?", a: "Factures et écritures s'exportent au format DATEV standard, importable directement." },
+        ],
+        ctaH2: "La facture sort de la production, pas d'Excel",
+        ctaBody: "Essayez Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
+  {
+    slug: "kundenportal-fuer-reinigungsfirma-einfuehren",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    serviceLinks: [
+      { href: "/features/taskey-share", label: "Kundenportal Gebäudereinigung" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/nfc-tags-in-der-reinigung", label: "NFC-Tags in der Reinigung" },
+    ],
+    relatedProblems: [
+      { href: "/probleme/rechnungen-nicht-puenktlich", label: "Rechnungen kommen nicht pünktlich raus" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "Kundenportal Gebäudereinigung einführen · Reinigung Kundenportal Ratgeber | Taskey",
+        metaDescription:
+          "Kundenportal Gebäudereinigung: warum ein Reinigung Kundenportal Reklamationen senkt und wie es sich in 30 Tagen einführen lässt. Der praktische Ratgeber.",
+        eyebrow: "Ratgeber",
+        h1: "Kundenportal für die Reinigungsfirma einführen",
+        shortAnswer:
+          "Ein Kundenportal Gebäudereinigung gibt dem Auftraggeber Live-Einblick in Nachweise, Tickets und Rechnungen pro Objekt. Reklamationen sinken, weil der Kunde die Antwort schon sieht, bevor er fragt. Einführung in einem Betrieb gelingt typischerweise in vier Wochen.",
+        intro:
+          "Auftraggeber im Facility-Bereich verlangen Transparenz. Wer sie liefert, gewinnt Verträge. Wer sie zurückhält, verliert an Wettbewerber, die schneller wirken. Dieser Ratgeber zeigt, wie ein Reinigung Kundenportal in vier Wochen produktiv wird.",
+        sections: [
+          { title: "Was ein Kundenportal Reinigung leistet", body: "Live-Status jedes Objekts, Foto-Nachweise, offene Tickets, Rechnungen, Reports. Der Kunde antwortet sich selbst, statt anzurufen." },
+          { title: "Warum es Reklamationen senkt", body: "Ein Großteil der Reklamationen entsteht aus Unwissenheit. Wer sehen kann, wann und wie gereinigt wurde, reklamiert seltener und mit besserer Datenbasis." },
+          { title: "Was der Aufwand ist", body: "Ein Objekt vorbereiten, den NFC-Prozess einrichten, den Live-Link an den Kunden geben. Der Rest passiert im laufenden Betrieb." },
+        ],
+        process: [
+          { title: "Woche 1: NFC und Nachweis aktivieren", body: "Tags an ausgewählten Objekten anbringen, App verteilen, ersten Nachweis erstellen." },
+          { title: "Woche 2: Rechte im Portal", body: "Auftraggeber-Zugänge einrichten, Sichtbarkeit auf Objekt-Ebene sauber trennen." },
+          { title: "Woche 3: Kommunikation mit Kunden", body: "Auftraggeber einladen, das Portal in einem 20-Minuten-Termin zeigen." },
+          { title: "Woche 4: Rollout", body: "Weitere Objekte aufschalten, Kunden-Portal als Standard etablieren." },
+        ],
+        faqs: [
+          { q: "Muss der Auftraggeber sich registrieren?", a: "Nein. Taskey Share liefert einen Live-Link ohne Login. Der Auftraggeber sieht das Kundenportal direkt." },
+          { q: "Ist das ein Wettbewerbsvorteil in Ausschreibungen?", a: "Ja. Große Auftraggeber fordern Nachweisqualität und Transparenz. Wer ein Reinigung Kundenportal liefert, hebt sich sichtbar ab." },
+        ],
+        ctaH2: "Reklamationen fallen, weil die Antwort schon da ist",
+        ctaBody: "Testen Sie das Kundenportal von Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "Introducing a cleaning client portal · guide | Taskey",
+        metaDescription:
+          "Cleaning client portal: how a cleaning customer portal cuts complaints and how to launch one in 30 days. Practical guide for cleaning operators.",
+        eyebrow: "Guide",
+        h1: "Introducing a cleaning client portal",
+        shortAnswer:
+          "A cleaning client portal gives the client live insight into proofs, tickets and invoices per site. Complaints drop because the client already sees the answer. Rollout in a mid-sized operation typically takes four weeks.",
+        intro:
+          "Facility clients ask for transparency. Providing it wins contracts. Withholding it loses to faster competitors. This guide shows how to make a cleaning customer portal productive in four weeks.",
+        sections: [
+          { title: "What a cleaning customer portal delivers", body: "Live status per site, photo proof, open tickets, invoices and reports. The client answers themselves instead of calling." },
+          { title: "Why complaints drop", body: "Most complaints come from missing information. When the client sees what happened, complaints become fewer and better." },
+          { title: "What the effort is", body: "Prepare a site, set up NFC, share the live link. The rest runs in day-to-day operations." },
+        ],
+        process: [
+          { title: "Week 1: activate NFC and proof", body: "Tags on selected sites, app rolled out, first proof recorded." },
+          { title: "Week 2: portal roles", body: "Client accounts set up, site-level visibility separated cleanly." },
+          { title: "Week 3: client communication", body: "Invite clients, show the portal in a 20-minute meeting." },
+          { title: "Week 4: rollout", body: "Onboard more sites, make the client portal the standard." },
+        ],
+        faqs: [
+          { q: "Does the client need to register?", a: "No. Taskey Share offers a live link without login. Clients see the portal directly." },
+          { q: "Is it a tender advantage?", a: "Yes. Large clients demand proof and transparency. Providing a cleaning client portal stands out visibly." },
+        ],
+        ctaH2: "Complaints drop because the answer is already there",
+        ctaBody: "Try the Taskey client portal free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Mettre en place un portail client nettoyage · guide | Taskey",
+        metaDescription:
+          "Portail client nettoyage : comment il réduit les réclamations et comment le déployer en 30 jours. Guide pratique.",
+        eyebrow: "Guide",
+        h1: "Mettre en place un portail client pour le nettoyage",
+        shortAnswer:
+          "Un portail client nettoyage donne au donneur d'ordre une vue en direct des preuves, tickets et factures par site. Les réclamations baissent car la réponse est déjà là. Déploiement typique en quatre semaines.",
+        intro:
+          "Les donneurs d'ordre du facility exigent de la transparence. La fournir fait gagner des contrats. La refuser fait perdre face à des concurrents plus rapides.",
+        sections: [
+          { title: "Ce qu'apporte un portail client", body: "Statut en direct par site, preuves photo, tickets, factures, rapports. Le client se répond à lui-même." },
+          { title: "Pourquoi les réclamations baissent", body: "La plupart viennent d'un manque d'information. Quand le client voit, il réclame moins et mieux." },
+          { title: "L'effort réel", body: "Préparer un site, activer le NFC, partager le lien. Le reste vit dans la production." },
+        ],
+        process: [
+          { title: "Semaine 1 : NFC et preuve", body: "Tags sur sites, app déployée, première preuve." },
+          { title: "Semaine 2 : accès portail", body: "Comptes clients, visibilité par site." },
+          { title: "Semaine 3 : communication client", body: "Inviter le client, montrer le portail en 20 minutes." },
+          { title: "Semaine 4 : déploiement", body: "Ajouter des sites, faire du portail la norme." },
+        ],
+        faqs: [
+          { q: "Le client doit-il s'inscrire ?", a: "Non. Taskey Share donne un lien direct sans login." },
+          { q: "Un avantage en appel d'offres ?", a: "Oui. Les grands donneurs d'ordre exigent transparence et preuve. Un portail les rassure visiblement." },
+        ],
+        ctaH2: "Les réclamations tombent parce que la réponse existe déjà",
+        ctaBody: "Essayez le portail client de Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
+  {
+    slug: "subunternehmer-in-der-gebaeudereinigung-managen",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    serviceLinks: [
+      { href: "/loesungen/subunternehmer-management", label: "Subunternehmer-Verwaltung" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/reinigungssoftware-kosten", label: "Was kostet Reinigungssoftware?" },
+    ],
+    relatedProblems: [
+      { href: "/probleme/objekte-werden-vergessen", label: "Objekte werden vergessen" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "Subunternehmer in der Gebäudereinigung managen · Ratgeber | Taskey",
+        metaDescription:
+          "Subunternehmer und Nachunternehmer im Reinigungsbetrieb managen: einheitlicher Nachweis, klare Rechte, transparente Marge. Praxis-Ratgeber.",
+        eyebrow: "Ratgeber",
+        h1: "Subunternehmer in der Gebäudereinigung managen",
+        shortAnswer:
+          "Wer Sub- oder Nachunternehmer einsetzt, braucht ein System, das Objekte, Nachweise und Rechnungen einheitlich verwaltet. Ohne gemeinsames Tool bricht die Marge weg, und der Auftraggeber merkt an der Nachweisqualität, wer gereinigt hat. Eine Software für Subunternehmer-Management schließt genau diese Lücke.",
+        intro:
+          "Subunternehmer sind Fluch und Segen zugleich. Sie verschaffen Kapazität, kosten aber Kontrolle. Dieser Ratgeber zeigt, wie Sie beide Seiten in Einklang bringen.",
+        sections: [
+          { title: "Warum Sub-Setups oft scheitern", body: "Verschiedene Tools, unterschiedliche Nachweisformate, WhatsApp-Kommunikation. Der Auftraggeber sieht ein zerbrochenes Bild." },
+          { title: "Was Nachunternehmer Software Reinigung ändert", body: "Ein Nachweisstandard für alle. Rollen und Rechte klar getrennt. Marge nach Eigenleistung und Sub-Anteil sichtbar." },
+          { title: "Was Sie beim Vertrag mit dem Sub festlegen sollten", body: "Digitale Dokumentation ist Vertragsbestandteil. Ohne NFC-Scan kein Nachweis. Ohne Nachweis keine Zahlung." },
+        ],
+        faqs: [
+          { q: "Sieht mein Sub, was andere Kunden zahlen?", a: "Nein. Rollen und Rechte sind streng getrennt. Der Sub sieht nur Objekte, für die Sie ihn freigegeben haben." },
+          { q: "Was tun, wenn Subs die digitale Dokumentation ablehnen?", a: "Vertraglich absichern und in der Praxis unterstützen. Die mehrsprachige App macht Onboarding einfach. Ein Sub, der auf Papier besteht, ist meist auch beim Ergebnis unzuverlässig." },
+        ],
+        ctaH2: "Ein Nachweis, egal wer reinigt",
+        ctaBody: "Testen Sie Subunternehmer-Verwaltung in Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "Managing cleaning subcontractors · practical guide | Taskey",
+        metaDescription:
+          "How to manage cleaning subcontractors: shared proof format, clear roles, transparent margin. Practical guide with cleaning subcontractor management software.",
+        eyebrow: "Guide",
+        h1: "Managing cleaning subcontractors",
+        shortAnswer:
+          "Any operator using subs needs a system that handles sites, proof and invoicing uniformly. Without a shared tool the margin erodes and clients notice who cleaned. Cleaning subcontractor management software closes exactly this gap.",
+        intro:
+          "Subs are both a curse and a blessing. They provide capacity but cost control. This guide shows how to balance both.",
+        sections: [
+          { title: "Why sub setups often fail", body: "Different tools, different proof formats, WhatsApp communication. The client sees a broken picture." },
+          { title: "What cleaning subcontractor management software changes", body: "One proof standard for all. Roles and rights separated cleanly. Margin split by own share and sub share." },
+          { title: "What the sub contract should require", body: "Digital documentation is part of the contract. No NFC scan, no proof. No proof, no payment." },
+        ],
+        faqs: [
+          { q: "Can my sub see what other clients pay?", a: "No. Roles and rights are separated strictly. The sub sees only sites you released." },
+          { q: "What if the sub refuses digital?", a: "Cover it in the contract and support with the multilingual app. A sub that insists on paper is usually unreliable on delivery too." },
+        ],
+        ctaH2: "One proof, no matter who cleans",
+        ctaBody: "Try Taskey subcontractor management free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Gérer les sous-traitants du nettoyage · guide pratique | Taskey",
+        metaDescription:
+          "Comment gérer les sous-traitants en nettoyage : preuve unifiée, rôles clairs, marge transparente. Guide avec logiciel dédié.",
+        eyebrow: "Guide",
+        h1: "Gérer les sous-traitants du nettoyage",
+        shortAnswer:
+          "Toute entreprise qui recourt à des sous-traitants a besoin d'un système unifié pour les sites, les preuves et la facturation. Sans outil partagé, la marge fond et le donneur d'ordre sent la différence. Un logiciel de gestion des sous-traitants nettoyage comble cet écart.",
+        intro:
+          "La sous-traitance apporte de la capacité mais coûte du contrôle. Ce guide montre comment concilier les deux.",
+        sections: [
+          { title: "Pourquoi les setups sous-traitance échouent", body: "Outils différents, formats de preuve différents, communication WhatsApp. Le client voit une image cassée." },
+          { title: "Ce que change un logiciel dédié", body: "Un standard de preuve pour tous. Rôles et droits clairement séparés. Marge par part propre et sous-traitée visible." },
+          { title: "Ce que le contrat sous-traitance doit poser", body: "Documentation numérique obligatoire. Sans scan NFC, pas de preuve. Sans preuve, pas de paiement." },
+        ],
+        faqs: [
+          { q: "Le sous-traitant voit-il les prix des autres clients ?", a: "Non. Rôles strictement séparés. Il ne voit que les sites ouverts pour lui." },
+          { q: "S'il refuse le numérique ?", a: "Cadrer par contrat et accompagner via l'app multilingue. Un sous-traitant qui insiste sur le papier est souvent peu fiable sur le rendu." },
+        ],
+        ctaH2: "Une preuve unique, quel que soit l'exécutant",
+        ctaBody: "Essayez la gestion sous-traitance de Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
+  {
+    slug: "kalkulationssoftware-vs-excel",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    serviceLinks: [
+      { href: "/features/kalkulation", label: "Kalkulationssoftware" },
+      { href: "/rechner/reinigungskosten", label: "Reinigungskosten-Rechner" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/kalkulation-glasreinigung", label: "Kalkulation Glasreinigung" },
+      { href: "/ratgeber/reinigungssoftware-kosten", label: "Was kostet Reinigungssoftware?" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "Kalkulationssoftware Gebäudereinigung vs. Excel · Ratgeber | Taskey",
+        metaDescription:
+          "Kalkulationssoftware Gebäudereinigung oder Excel? Was Unterhaltsreinigung kalkulieren wirklich braucht und wo Excel-Vorlagen die Marge kosten.",
+        eyebrow: "Ratgeber",
+        h1: "Kalkulationssoftware Gebäudereinigung vs. Excel-Vorlage",
+        shortAnswer:
+          "Excel funktioniert für die erste Kalkulation. Sobald Wartungsverträge, mehrere Objekte und wechselnde Kolonnen im Spiel sind, kostet Excel mehr Marge, als es spart. Kalkulationssoftware Gebäudereinigung sichert Marge, weil sie mit Live-Daten aus dem Betrieb rechnet, nicht mit statischen Zellen.",
+        intro:
+          "Wer Unterhaltsreinigung kalkulieren will, greift oft zu Excel-Vorlagen. Kurzfristig ist das pragmatisch. Langfristig fressen Formelfehler und veraltete Sätze die Marge. Dieser Ratgeber vergleicht beide Wege.",
+        sections: [
+          { title: "Was Excel wirklich leisten kann", body: "Einfache Erstkalkulationen, statische Sätze, ein Angebot pro Objekt. Für den Ein-Objekt-Start ist Excel legitim." },
+          { title: "Wo Excel bricht", body: "Wartungsverträge über 12 Monate, wechselnde Lohnkosten, unterschiedliche Sub-Anteile, Zusatzleistungen aus Tickets. Jede Zelle wird zum Fehlerkandidaten." },
+          { title: "Was Kalkulationssoftware ändert", body: "Live-Marge pro Objekt, weil Personalbedarf und Fläche im gleichen System sitzen wie Nachweise und Sub-Kosten. Kein Datensprung, keine veralteten Sätze." },
+        ],
+        faqs: [
+          { q: "Kann ich Excel weiter für Erstkalkulation nutzen?", a: "Ja. Für Erstschätzungen ist Excel legitim. Sobald der Vertrag steht, sollte die Kalkulation ins operative System wandern." },
+          { q: "Gibt es kostenlose Kalkulationssoftware für Gebäudereinigung?", a: "Vollständig kostenlose Kalkulationssoftware Gebäudereinigung deckt selten Wartungsverträge und Nachweise ab. Taskey bietet einen Rechner-Bereich als Einstieg." },
+        ],
+        ctaH2: "Kalkulation aus dem Objekt statt aus der Zelle",
+        ctaBody: "Testen Sie Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "Cleaning estimating software vs. Excel · guide | Taskey",
+        metaDescription:
+          "Cleaning estimating software or Excel spreadsheets? Where commercial cleaning bidding software wins the margin back.",
+        eyebrow: "Guide",
+        h1: "Cleaning estimating software vs. Excel",
+        shortAnswer:
+          "Excel works for a first estimate. Once maintenance contracts, multiple sites and rotating crews are in play, Excel costs more margin than it saves. Commercial cleaning bidding software protects the margin because it calculates with live operational data, not static cells.",
+        intro:
+          "Many operators reach for Excel templates. Short term this is pragmatic. Long term formula errors and outdated rates eat the margin. This guide compares both.",
+        sections: [
+          { title: "What Excel can do", body: "First estimates, static rates, one bid per site. For a single-site start Excel is fine." },
+          { title: "Where Excel breaks", body: "Contracts over 12 months, changing labour cost, different sub shares, add-ons from tickets. Every cell becomes an error candidate." },
+          { title: "What estimating software changes", body: "Live margin per site because headcount and area sit next to proof and sub cost. No data jump, no outdated rates." },
+        ],
+        faqs: [
+          { q: "Can I keep Excel for first estimates?", a: "Yes. For rough numbers it is fine. Once the contract is signed, the calculation should move into operations." },
+          { q: "Is there free cleaning estimating software?", a: "Fully free tools rarely cover maintenance contracts and proof. Taskey offers calculators as an entry point." },
+        ],
+        ctaH2: "Calculation out of the site, not out of a cell",
+        ctaBody: "Try Taskey free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Logiciel de chiffrage nettoyage vs. Excel · guide | Taskey",
+        metaDescription:
+          "Chiffrage nettoyage : logiciel dédié ou Excel ? Où le logiciel de devis nettoyage récupère la marge.",
+        eyebrow: "Guide",
+        h1: "Logiciel de chiffrage nettoyage vs. Excel",
+        shortAnswer:
+          "Excel fonctionne pour un premier chiffrage. Dès que contrats de maintenance, sites multiples et équipes tournantes entrent en jeu, Excel coûte plus de marge qu'il n'en économise. Un logiciel de devis nettoyage protège la marge parce qu'il calcule sur des données opérationnelles.",
+        intro:
+          "Beaucoup partent d'un tableur. À court terme c'est pragmatique. À long terme les erreurs de formules et les taux périmés mangent la marge.",
+        sections: [
+          { title: "Ce que Excel peut faire", body: "Premiers chiffrages, taux statiques, un devis par site." },
+          { title: "Où Excel casse", body: "Contrats sur 12 mois, coûts qui bougent, parts sous-traitées, additionnels des tickets. Chaque cellule devient candidate à l'erreur." },
+          { title: "Ce que change le logiciel", body: "Marge en direct par site car effectif et surface vivent au même endroit que preuves et coûts sous-traitance." },
+        ],
+        faqs: [
+          { q: "Puis-je garder Excel pour les premiers chiffrages ?", a: "Oui. Pour une estimation rapide, c'est légitime. Après signature, le calcul doit passer dans la production." },
+          { q: "Existe-t-il un logiciel de chiffrage gratuit ?", a: "Les outils totalement gratuits couvrent rarement contrats et preuves. Taskey propose des calculateurs en entrée." },
+        ],
+        ctaH2: "Un calcul qui vient du site, pas d'une cellule",
+        ctaBody: "Essayez Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
+  {
+    slug: "zeiterfassung-kleinbetrieb-reinigung",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    serviceLinks: [
+      { href: "/loesungen/kleinbetriebe", label: "Für Kleinbetriebe" },
+      { href: "/features/nfc-zeiterfassung", label: "NFC Zeiterfassung" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/mobile-zeiterfassung-reinigung", label: "Mobile Zeiterfassung Reinigung" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "Zeiterfassung für Kleinbetriebe in der Reinigung · Ratgeber | Taskey",
+        metaDescription:
+          "Zeiterfassung für Kleinbetriebe und Zeiterfassungssysteme für Kleinbetriebe in der Gebäudereinigung. Was funktioniert, was kostet nur Zeit.",
+        eyebrow: "Ratgeber",
+        h1: "Zeiterfassung für Kleinbetriebe in der Gebäudereinigung",
+        shortAnswer:
+          "Zeiterfassungssysteme für Kleinbetriebe müssen ohne IT-Rollout auskommen, mit Aushilfen zurechtkommen und Rechnungslauf und Nachweis mitliefern. Eine Zeiterfassung Software für Kleinbetriebe rechnet sich schon bei fünf Mitarbeitenden über gesparte Bürostunden.",
+        intro:
+          "Kleinbetriebe scheuen große Systeme. Zu Recht: Die meisten sind für Konzerne gebaut. Dieser Ratgeber zeigt, worauf es bei Zeiterfassung für Kleinbetriebe in der Reinigung wirklich ankommt.",
+        sections: [
+          { title: "Was Kleinbetriebe brauchen", body: "Einfache App, NFC-Nachweis, Dienstplan ohne Excel, Rechnung im gleichen Tool. Alles andere ist Overhead." },
+          { title: "Was Sie nicht brauchen", body: "Terminal-Systeme, Kartenleser, IT-Beratungsprojekte. Reinigungsbetriebe leben mobil, das System muss mit." },
+          { title: "Was das im Alltag ändert", body: "Der Dienstplan wird einmal getippt, Aushilfen werden per Drag and Drop eingesetzt, die Rechnung geht am Monatsende raus. Bürostunden sinken deutlich." },
+        ],
+        faqs: [
+          { q: "Ab welcher Betriebsgröße lohnt Zeiterfassung Software?", a: "Bereits bei drei bis fünf Mitarbeitenden. Der zeitliche Aufwand für Papier-Stundenzettel und Excel ist überproportional hoch." },
+          { q: "Wie schnell ist ein Kleinbetrieb einsatzbereit?", a: "Meist innerhalb weniger Stunden. NFC-Tags, App-Installation, erste Testreinigung. Kein IT-Rollout nötig." },
+        ],
+        ctaH2: "Kleinbetrieb, große Software-Wirkung",
+        ctaBody: "Testen Sie Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "Time tracking for small cleaning operators · guide | Taskey",
+        metaDescription:
+          "Time tracking for small cleaning businesses. What actually works for small operators and what only wastes time.",
+        eyebrow: "Guide",
+        h1: "Time tracking for small cleaning operators",
+        shortAnswer:
+          "Time tracking software for small cleaning operators must work without an IT rollout, cope with relief staff and cover invoicing and proof. It pays back from five people through saved office hours.",
+        intro:
+          "Small operators avoid large systems, and rightly so. Most are built for enterprises. This guide shows what actually matters.",
+        sections: [
+          { title: "What small operators need", body: "Simple app, NFC proof, schedule without Excel, invoicing in the same tool. The rest is overhead." },
+          { title: "What they do not need", body: "Terminals, card readers, IT projects. Cleaning is mobile, the system must be too." },
+          { title: "What changes day to day", body: "The schedule is written once, relief staff by drag and drop, invoices go out at month end. Office hours drop meaningfully." },
+        ],
+        faqs: [
+          { q: "From what size does it pay off?", a: "From three to five people. Manual timesheets and Excel eat disproportionately much time." },
+          { q: "How fast is a small operator productive?", a: "Usually in hours. NFC tags, app install, first test clean. No IT rollout needed." },
+        ],
+        ctaH2: "Small operator, big software effect",
+        ctaBody: "Try Taskey free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Pointage pour petites entreprises de nettoyage · guide | Taskey",
+        metaDescription:
+          "Pointage pour PME de nettoyage : ce qui fonctionne vraiment et ce qui ne fait que perdre du temps.",
+        eyebrow: "Guide",
+        h1: "Pointage pour petites entreprises de nettoyage",
+        shortAnswer:
+          "Un logiciel de pointage pour PME du nettoyage doit fonctionner sans informatique, gérer les extras et intégrer facturation et preuve. Il devient rentable à partir de cinq personnes.",
+        intro:
+          "Les PME évitent les grands systèmes. Ce guide montre ce qui compte vraiment pour les petites structures.",
+        sections: [
+          { title: "Ce dont les PME ont besoin", body: "App simple, preuve NFC, planning sans Excel, facturation dans le même outil." },
+          { title: "Ce qu'elles n'ont pas besoin", body: "Terminaux, lecteurs de badges, projets informatiques. Le nettoyage est mobile, l'outil aussi." },
+          { title: "Ce que ça change", body: "Planning écrit une fois, extras en glisser-déposer, factures en fin de mois. Les heures de bureau baissent." },
+        ],
+        faqs: [
+          { q: "À partir de quelle taille c'est rentable ?", a: "De trois à cinq personnes. Feuilles papier et Excel coûtent trop." },
+          { q: "En combien de temps une PME est-elle prête ?", a: "En heures. Tags NFC, app, premier test. Pas de projet informatique." },
+        ],
+        ctaH2: "Petit effectif, grand effet logiciel",
+        ctaBody: "Essayez Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
 ];
 
 export function getGuideBySlug(slug: string): Guide | undefined {

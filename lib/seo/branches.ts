@@ -890,6 +890,288 @@ export const branches: Branch[] = [
       }),
     },
   },
+  {
+    slug: "kleinbetriebe",
+    serviceType: "Software für kleine Reinigungsbetriebe",
+    relatedFeatures: [
+      { href: "/features/nfc-zeiterfassung", label: "Mobile NFC Zeiterfassung", description: "Zeiterfassung App und Software in einem." },
+      { href: "/features/einsatzplanung", label: "Einsatzplanung", description: "Dienstplan Reinigungsfirma auch für kleine Teams." },
+      { href: "/features/rechnungsprogramm", label: "Rechnungsprogramm", description: "Rechnungen aus dem Einsatzplan." },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/reinigungssoftware-kosten", label: "Was kostet Reinigungssoftware?" },
+    ],
+    relatedProblems: [
+      { href: "/probleme/rechnungen-nicht-puenktlich", label: "Rechnungen kommen nicht pünktlich raus" },
+    ],
+    copy: {
+      de: de({
+        metaTitle: "Zeiterfassung für Kleinbetriebe · Software für kleine Reinigungsbetriebe | Taskey",
+        metaDescription:
+          "Zeiterfassung für Kleinbetriebe und Software für kleine Reinigungsbetriebe. Zeiterfassungssysteme für Kleinbetriebe mit NFC, digitale Zeiterfassung für Mitarbeiter, Einsatzplanung und Rechnungsprogramm in einer App. Ohne IT-Abteilung, ohne Excel.",
+        eyebrow: "Segment: Kleinbetriebe",
+        h1: "Zeiterfassung für Kleinbetriebe in der Gebäudereinigung",
+        lead:
+          "Kleine Reinigungsbetriebe brauchen keine Enterprise-Suite. Sie brauchen eine Zeiterfassung, die auch der Aushilfssamstag versteht, einen Dienstplan ohne Excel und Rechnungen, die pünktlich rausgehen. Taskey ist genau dafür gebaut. Vom Ein-Objekt-Betrieb bis zum Team mit zwanzig Kolonnen.",
+        problemH2: "Warum Standard-Software für Kleinbetriebe zu groß ist",
+        problemBody:
+          "Klassische Zeiterfassungssysteme sind für Bürobetriebe entworfen, nicht für Reinigungsbetriebe mit wechselnden Objekten, Aushilfen und Wochenendtouren. Kleinbetriebe zahlen für Module, die sie nicht brauchen, und stolpern über Setup-Kosten, die nur Konzerne rechtfertigen. Am Ende bleibt es beim Stundenzettel im Kombi.",
+        solutionH2: "Was Taskey für Kleinbetriebe anders macht",
+        sections: [
+          {
+            title: "Digitale Zeiterfassung ohne Installation",
+            body: "Der Mitarbeiter installiert die App und scannt den NFC-Tag am Objekt. Fertig. Kein Terminal, kein Kartensystem, kein IT-Rollout.",
+          },
+          {
+            title: "Dienstplan Reinigungsfirma ohne Excel",
+            body: "Der Wochenplan entsteht per Drag and Drop. Aushilfen und Vertretungen sind in Sekunden umgebucht. Das Team sieht die Änderung in der App.",
+          },
+          {
+            title: "Rechnung im gleichen Tool",
+            body: "Aus dem erfassten Einsatz entsteht die Rechnung. Zusatzleistungen werden nicht vergessen. Der Cashflow kommt in die erste Monatswoche.",
+          },
+        ],
+        workflowH2: "So sieht die Woche mit Taskey aus",
+        workflow: [
+          { title: "Montag: Plan steht", body: "Der Dienstplan wird einmal getippt und läuft wöchentlich weiter." },
+          { title: "Woche: NFC-Scan", body: "Am Objekt hält der Mitarbeiter das Handy an den Tag. Zeit und Ort sind dokumentiert." },
+          { title: "Freitag: Kontrolle", body: "Sie sehen offene Objekte und Auffälligkeiten. Es gibt nichts nachzureichen." },
+          { title: "Monatsende: Rechnungslauf", body: "Ein Klick und alle Rechnungen des Monats gehen raus." },
+        ],
+        faqH2: "Häufige Fragen von Kleinbetrieben",
+        faqs: [
+          {
+            q: "Rechnet sich Software für einen Betrieb mit fünf Mitarbeitern?",
+            a: "Ja. Der Aufwand für Papier-Stundenzettel, Excel-Dienstpläne und manuelle Rechnungen liegt selbst bei kleinen Teams bei mehreren Bürostunden pro Woche. Taskey ist so einfach, dass sich die Zeitersparnis schneller rechnet als bei größeren Betrieben.",
+          },
+          {
+            q: "Brauchen wir eine IT-Abteilung?",
+            a: "Nein. Der Mitarbeiter installiert die App, der Betrieb aktiviert den Account, die NFC-Tags werden am Objekt festgeklebt. Das Setup geht in Stunden, nicht in Wochen.",
+          },
+          {
+            q: "Passt Taskey für Ein-Personen-Betriebe?",
+            a: "Ja. Für Soloselbstständige gibt es einen passenden Tarif. Zeiterfassung, Objektnachweis und Rechnung entstehen aus derselben App.",
+          },
+        ],
+        ctaH2: "Zeiterfassung, Dienstplan und Rechnung in einem Tool",
+        ctaBody:
+          "Testen Sie Taskey 14 Tage kostenlos. Kein Terminal, kein IT-Rollout, kein Excel.",
+        ctaPrimary: "Kostenlos testen",
+        ctaSecondary: "Alle Funktionen ansehen",
+      }),
+      en: de({
+        metaTitle: "Time tracking for small cleaning businesses · software for small operators | Taskey",
+        metaDescription:
+          "Time tracking for small cleaning businesses and software for small cleaning operators. NFC time tracking, scheduling and invoicing in one app. No IT department, no spreadsheets. From solo cleaners to twenty-person crews.",
+        eyebrow: "Segment: Small operators",
+        h1: "Time tracking for small cleaning businesses",
+        lead:
+          "Small cleaning operators do not need an enterprise suite. They need time tracking that handles Saturday relief staff, a schedule without Excel and invoices that go out on time. Taskey is built exactly for that. From single-site operators to twenty-person crews.",
+        problemH2: "Why standard software is too big for small operators",
+        problemBody:
+          "Traditional time tracking tools are designed for office companies, not for cleaners with changing sites, relief staff and weekend routes. Small operators end up paying for modules they never use and stumble on setup that only large companies can justify. The paper timesheet in the van survives.",
+        solutionH2: "What Taskey does differently for small operators",
+        sections: [
+          { title: "Digital time tracking without installation", body: "The team member installs the app and taps the NFC tag on site. Done. No terminal, no card system, no IT rollout." },
+          { title: "Schedule without Excel", body: "The weekly schedule is drag and drop. Relief staff and cover are reassigned in seconds. The team sees the change in the app." },
+          { title: "Invoicing in the same tool", body: "Invoices come from actual shifts. Add-ons no longer get lost. Cashflow returns to the first week of the month." },
+        ],
+        workflowH2: "The week with Taskey",
+        workflow: [
+          { title: "Monday: plan is set", body: "The weekly schedule is written once and rolls forward." },
+          { title: "Week: NFC scan", body: "The tap on site records time and place." },
+          { title: "Friday: control", body: "Open sites and anomalies are visible. Nothing to chase." },
+          { title: "Month end: invoice run", body: "One click and the month's invoices go out." },
+        ],
+        faqH2: "Frequent questions from small operators",
+        faqs: [
+          { q: "Does software pay off for a five-person team?", a: "Yes. Paper timesheets, Excel schedules and manual invoicing eat several office hours per week even in small teams. The time saved pays back faster than in larger operations." },
+          { q: "Do we need an IT department?", a: "No. The team installs the app, the operator activates the account, NFC tags are stuck to the sites. Setup takes hours, not weeks." },
+          { q: "Does Taskey fit sole operators?", a: "Yes. There is a matching plan for sole operators. Time, proof and invoice come from the same app." },
+        ],
+        ctaH2: "Time tracking, scheduling and invoicing in one tool",
+        ctaBody: "Try Taskey free for 14 days. No terminal, no IT rollout, no Excel.",
+        ctaPrimary: "Start free trial",
+        ctaSecondary: "See all features",
+      }),
+      fr: de({
+        metaTitle: "Pointage pour petites entreprises de nettoyage · logiciel PME propreté | Taskey",
+        metaDescription:
+          "Pointage pour petites entreprises de nettoyage et logiciel pour PME de la propreté. Pointage NFC, planning et facturation dans une app. Sans service informatique, sans tableur. Du travailleur seul aux équipes de vingt personnes.",
+        eyebrow: "Segment : PME",
+        h1: "Pointage pour petites entreprises de nettoyage",
+        lead:
+          "Les petites entreprises de nettoyage n'ont pas besoin d'une suite entreprise. Elles ont besoin d'un pointage qui gère les extras du samedi, d'un planning sans Excel et de factures qui partent à l'heure. Taskey est fait pour cela. Du solo aux équipes de vingt.",
+        problemH2: "Pourquoi les logiciels standards sont trop lourds pour les PME",
+        problemBody:
+          "Les logiciels de pointage classiques sont conçus pour les entreprises de bureau, pas pour des équipes qui changent de site chaque jour. Les PME paient pour des modules inutilisés et butent sur des mises en place que seules les grandes structures justifient. Le carnet reste dans la camionnette.",
+        solutionH2: "Ce que Taskey change pour les PME",
+        sections: [
+          { title: "Pointage numérique sans installation", body: "L'agent installe l'app et scanne le tag NFC sur site. Terminé. Pas de terminal, pas de badge." },
+          { title: "Planning sans Excel", body: "Le planning est en glisser-déposer. Les remplacements se font en secondes. L'équipe voit le changement dans l'app." },
+          { title: "Facturation dans le même outil", body: "La facture vient des interventions réelles. Les prestations additionnelles ne disparaissent plus. Trésorerie dans la première semaine du mois." },
+        ],
+        workflowH2: "Une semaine avec Taskey",
+        workflow: [
+          { title: "Lundi : planning posé", body: "Le planning s'écrit une fois et se reproduit chaque semaine." },
+          { title: "Semaine : scan NFC", body: "Le tap sur site enregistre heure et lieu." },
+          { title: "Vendredi : contrôle", body: "Sites ouverts et anomalies visibles. Rien à courir." },
+          { title: "Fin de mois : facturation", body: "Un clic et les factures du mois partent." },
+        ],
+        faqH2: "Questions fréquentes des PME",
+        faqs: [
+          { q: "Un logiciel est-il rentable pour cinq personnes ?", a: "Oui. Feuilles papier, plannings Excel et facturation manuelle consomment plusieurs heures de bureau par semaine, même en petite équipe. Le retour est plus rapide qu'en grand." },
+          { q: "Faut-il une équipe informatique ?", a: "Non. L'app s'installe seule, les tags NFC se collent sur les sites. Mise en place en heures, pas en semaines." },
+          { q: "Adapté aux travailleurs seuls ?", a: "Oui. Un plan dédié couvre les solos. Pointage, preuve et facture dans la même app." },
+        ],
+        ctaH2: "Pointage, planning et facturation dans un seul outil",
+        ctaBody: "Essayez Taskey 14 jours. Sans terminal, sans informatique, sans Excel.",
+        ctaPrimary: "Essai gratuit",
+        ctaSecondary: "Voir toutes les fonctionnalités",
+      }),
+    },
+  },
+  {
+    slug: "subunternehmer-management",
+    serviceType: "Subunternehmer-Verwaltung Reinigung",
+    relatedFeatures: [
+      { href: "/features/leistungsnachweis", label: "Digitaler Leistungsnachweis", description: "Nachweise auch aus Nachunternehmern konsolidiert." },
+      { href: "/features/kalkulation", label: "Kalkulation", description: "Marge nach Eigenleistung und Sub-Anteil." },
+      { href: "/features/taskey-share", label: "Kundenportal", description: "Ein Portal für den Auftraggeber, egal wer reinigt." },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/reinigungssoftware-kosten", label: "Was kostet Reinigungssoftware?" },
+    ],
+    relatedProblems: [
+      { href: "/probleme/objekte-werden-vergessen", label: "Objekte werden vergessen" },
+    ],
+    copy: {
+      de: de({
+        metaTitle: "Subunternehmer-Verwaltung Reinigung · Nachunternehmer Software | Taskey",
+        metaDescription:
+          "Subunternehmer-Verwaltung Reinigung mit Taskey. Nachunternehmer Software Reinigung: Objekte, Nachweise und Rechnungen aus Sub-Betrieben laufen im gleichen System wie die Eigenleistung. Der Auftraggeber sieht ein einheitliches Bild.",
+        eyebrow: "Segment: Subunternehmer-Management",
+        h1: "Subunternehmer-Verwaltung für die Gebäudereinigung",
+        lead:
+          "Wer Aufträge an Nachunternehmer vergibt, kämpft an zwei Fronten. Der Auftraggeber will einen einheitlichen Nachweis. Der Sub liefert per WhatsApp und Papier. Taskey bringt beide Seiten in ein System. Sie behalten die Marge, der Kunde behält das Vertrauen.",
+        problemH2: "Warum Subunternehmer im Reinigungsbetrieb selten mitspielen",
+        problemBody:
+          "Ohne einheitliches Tool schickt der Sub Fotos per WhatsApp und Stundenzettel per E-Mail. Sie tippen die Daten in Ihre Software um. Fehler und Verzögerungen fressen die Marge. Der Auftraggeber merkt an der Qualität der Nachweise, wann Sub und wann Eigenleistung reinigt. Genau das darf nicht passieren.",
+        solutionH2: "Was Taskey für Subunternehmer-Management anders macht",
+        sections: [
+          {
+            title: "Sub-Zugänge mit klaren Rechten",
+            body: "Nachunternehmer bekommen einen Login, sehen nur ihre Objekte, ihre Touren und ihre Tickets. Ihre Kalkulation und andere Kunden bleiben unsichtbar.",
+          },
+          {
+            title: "Ein Nachweisformat für alle",
+            body: "Der Sub scannt am Objekt, macht Fotos und dokumentiert im gleichen Standard wie Ihre Eigenleistung. Der Auftraggeber sieht nur einen Bericht.",
+          },
+          {
+            title: "Abrechnung getrennt, Marge sichtbar",
+            body: "Taskey trennt Umsatz und Sub-Kosten pro Objekt. Sie sehen die Live-Marge nach Eigenleistung und nach Sub-Anteil, ohne separate Excel-Tabelle.",
+          },
+        ],
+        workflowH2: "So läuft die Zusammenarbeit ab",
+        workflow: [
+          { title: "Onboarding", body: "Sub bekommt Zugang, wird auf ausgewählte Objekte aufgeschaltet und erhält den NFC-Prozess erklärt." },
+          { title: "Steuerung", body: "Sub plant seine Touren im System, Ihre Reinigungsleitung sieht die Auslastung ohne Nachfrage." },
+          { title: "Nachweis", body: "Fotos, NFC-Zeit und Tickets landen im gleichen Kundenportal. Der Auftraggeber merkt keinen Bruch." },
+          { title: "Abrechnung", body: "Sub-Rechnung geht an Sie, Ihre Rechnung an den Auftraggeber, Marge automatisch berechnet." },
+        ],
+        faqH2: "Häufige Fragen zur Subunternehmer-Verwaltung",
+        faqs: [
+          {
+            q: "Sieht mein Sub, was ich anderen Kunden berechne?",
+            a: "Nein. Rollen und Rechte sind streng getrennt. Der Sub sieht nur Objekte und Tickets, für die Sie ihn freigegeben haben.",
+          },
+          {
+            q: "Wie werden Sub-Rechnungen verarbeitet?",
+            a: "Der Sub kann seine Rechnung im System hochladen. Sie ordnen die Positionen den Objekten zu und haben die Marge sofort im Blick.",
+          },
+          {
+            q: "Was passiert, wenn der Sub nicht digital arbeitet?",
+            a: "Taskey ist so einfach, dass der Einstieg in Stunden gelingt. Mehrsprachige App und NFC ersetzen jede Excel-Vorlage. Wenn der Sub sich weigert, sehen Sie es an fehlenden Nachweisen und können nachverhandeln.",
+          },
+        ],
+        ctaH2: "Ein Nachweis, egal wer reinigt",
+        ctaBody:
+          "Testen Sie Taskey 14 Tage kostenlos. Laden Sie einen Sub ein und sehen Sie den Unterschied im ersten Bericht.",
+        ctaPrimary: "Kostenlos testen",
+        ctaSecondary: "Alle Funktionen ansehen",
+      }),
+      en: de({
+        metaTitle: "Cleaning subcontractor management software · subcontractor operations | Taskey",
+        metaDescription:
+          "Cleaning subcontractor management software with Taskey. Sites, proof of service and invoices from subcontractors flow through the same system as your own operations. The client sees one consistent picture.",
+        eyebrow: "Segment: Subcontractor management",
+        h1: "Cleaning subcontractor management software",
+        lead:
+          "Operators who use subcontractors fight on two fronts. The client wants a uniform proof. The sub delivers via WhatsApp and paper. Taskey brings both sides into one system. You keep the margin, the client keeps the trust.",
+        problemH2: "Why cleaning subcontractors rarely play along",
+        problemBody:
+          "Without a shared tool, the sub sends photos over WhatsApp and timesheets by email. You retype the data into your software. Errors and delays eat the margin. The client notices when the sub cleans versus when you do. That is exactly what must not happen.",
+        solutionH2: "What Taskey does differently for subcontractor management",
+        sections: [
+          { title: "Sub access with clear roles", body: "Subs get their own login and see only their sites, their routes and their tickets. Your calculations and other clients stay invisible." },
+          { title: "One proof format for all", body: "The sub scans on site, takes photos and documents in the same standard as your own crews. The client sees a single report." },
+          { title: "Separate billing, visible margin", body: "Taskey separates revenue and sub cost per site. Live margin by own share and by sub share, without a spreadsheet." },
+        ],
+        workflowH2: "How the cooperation runs",
+        workflow: [
+          { title: "Onboarding", body: "Sub gets access, is put on selected sites, receives the NFC process explanation." },
+          { title: "Steering", body: "Sub plans routes in the system. Your operations see the load without asking." },
+          { title: "Proof", body: "Photos, NFC time and tickets end up in the same client portal. No break for the client." },
+          { title: "Billing", body: "Sub invoice goes to you, your invoice to the client, margin computed automatically." },
+        ],
+        faqH2: "Frequent questions on subcontractor management",
+        faqs: [
+          { q: "Can my sub see what I charge other clients?", a: "No. Roles and rights are strictly separated. The sub sees only sites and tickets you have released." },
+          { q: "How are sub invoices processed?", a: "The sub uploads the invoice into the system. You map the lines to sites and see the margin instantly." },
+          { q: "What if the sub refuses to work digital?", a: "Onboarding takes hours thanks to the multilingual app and NFC. If the sub refuses, missing proofs make it visible, which supports renegotiation." },
+        ],
+        ctaH2: "One proof, no matter who cleans",
+        ctaBody: "Try Taskey free for 14 days. Invite a sub and see the difference in the first report.",
+        ctaPrimary: "Start free trial",
+        ctaSecondary: "See all features",
+      }),
+      fr: de({
+        metaTitle: "Gestion des sous-traitants nettoyage · logiciel sous-traitance propreté | Taskey",
+        metaDescription:
+          "Gestion des sous-traitants dans le nettoyage avec Taskey. Sites, preuves et factures des sous-traitants passent par le même système que votre production. Le client voit une image cohérente.",
+        eyebrow: "Segment : Sous-traitance",
+        h1: "Gestion des sous-traitants dans le nettoyage",
+        lead:
+          "Les entreprises qui recourent à la sous-traitance combattent sur deux fronts. Le donneur d'ordre veut une preuve homogène. Le sous-traitant livre par WhatsApp et papier. Taskey réunit les deux dans un même système. Vous gardez la marge, le client garde la confiance.",
+        problemH2: "Pourquoi les sous-traitants suivent rarement",
+        problemBody:
+          "Sans outil partagé, le sous-traitant envoie des photos par WhatsApp et des feuilles par mail. Vous ressaisissez. Erreurs et délais mangent la marge. Le client sent la différence entre production interne et sous-traitance, ce qu'il faut éviter.",
+        solutionH2: "Ce que Taskey change pour la sous-traitance",
+        sections: [
+          { title: "Accès sous-traitant avec droits clairs", body: "Chaque sous-traitant a son accès, ne voit que ses sites, ses tournées et ses tickets." },
+          { title: "Une preuve pour tous", body: "Le sous-traitant scanne, prend des photos et documente au même standard que votre production. Le client voit un seul rapport." },
+          { title: "Facturation séparée, marge visible", body: "Taskey sépare chiffre et coût sous-traitance par site. Marge en direct par part propre et part sous-traitée, sans tableur." },
+        ],
+        workflowH2: "Comment la coopération fonctionne",
+        workflow: [
+          { title: "Onboarding", body: "Le sous-traitant reçoit son accès, est branché sur les sites choisis, le process NFC est expliqué." },
+          { title: "Pilotage", body: "Le sous-traitant planifie ses tournées dans le système. Vos chefs voient la charge sans appel." },
+          { title: "Preuve", body: "Photos, NFC et tickets vivent dans le même portail client. Aucune rupture pour le client." },
+          { title: "Facturation", body: "La facture sous-traitant vient à vous, la vôtre au client, marge calculée automatiquement." },
+        ],
+        faqH2: "Questions fréquentes",
+        faqs: [
+          { q: "Mon sous-traitant voit-il ce que je facture ailleurs ?", a: "Non. Les rôles sont strictement séparés. Il ne voit que ce que vous avez ouvert." },
+          { q: "Comment sont traitées les factures du sous-traitant ?", a: "Le sous-traitant dépose sa facture. Vous rattachez les lignes aux sites, la marge est immédiate." },
+          { q: "Et s'il refuse le numérique ?", a: "L'app multilingue et le NFC rendent l'onboarding rapide. En cas de refus, les preuves manquantes deviennent visibles." },
+        ],
+        ctaH2: "Une preuve unique, quel que soit l'exécutant",
+        ctaBody: "Essayez Taskey 14 jours. Invitez un sous-traitant et voyez la différence au premier rapport.",
+        ctaPrimary: "Essai gratuit",
+        ctaSecondary: "Voir toutes les fonctionnalités",
+      }),
+    },
+  },
 ];
 
 export function getBranchBySlug(slug: string): Branch | undefined {

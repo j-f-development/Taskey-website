@@ -70,6 +70,9 @@ const STATIC_ENTRIES: Entry[] = [
   { path: "/features/live-margen", changeFrequency: "monthly", priority: 0.9 },
   { path: "/features/datev-export", changeFrequency: "monthly", priority: 0.85 },
   { path: "/features/leistungsnachweis", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/features/rechnungsprogramm", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/features/kalkulation", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/features/ausschreibungen", changeFrequency: "monthly", priority: 0.85 },
 
   // Rechner (Tools)
   { path: "/rechner", changeFrequency: "monthly", priority: 0.85 },

@@ -521,6 +521,458 @@ export const problems: Problem[] = [
       },
     },
   },
+  {
+    slug: "dienstplan-jede-woche-neu-tippen",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    toolLink: { href: "/features/einsatzplanung", label: "Einsatzplanung" },
+    serviceLinks: [
+      { href: "/loesungen/kleinbetriebe", label: "Für Kleinbetriebe" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/digitaler-dienstplan-einfuehren", label: "Digitalen Dienstplan einführen" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "Dienstplan Reinigungsfirma jede Woche neu tippen · Lösung | Taskey",
+        metaDescription:
+          "Der Dienstplan in der Reinigungsfirma wird jede Woche neu getippt und trotzdem falsch. Ursachen und Lösung mit digitaler Einsatzplanung.",
+        eyebrow: "Problem",
+        h1: "Dienstplan Reinigungsfirma jede Woche neu tippen",
+        keyFinding:
+          "Ein Dienstplan Reinigungsfirma, der jede Woche neu getippt wird, ist ein Symptom, kein Problem. Ursache ist meist fehlende Wiederholungslogik. Wer den Wochenrhythmus als Struktur ablegt, spart im Betrieb mehrere Bürostunden pro Woche.",
+        intro:
+          "Wenn der Dienstplan Reinigungsfirma jede Woche in Excel getippt wird und trotzdem am Freitag Chaos herrscht, ist der Prozess falsch. Der Ratgeber beschreibt Ursachen und den kürzesten Weg zur Personalplanung Reinigung.",
+        causes: [
+          { title: "Kein Wochenrhythmus im System", body: "Wenn der Plan jede Woche bei null anfängt, wiederholen sich Fehler." },
+          { title: "Vertretungen per WhatsApp", body: "Änderungen laufen an der Planung vorbei. Der Plan ist am Montag schon veraltet." },
+          { title: "Kein mobiler Zugriff für das Team", body: "Ohne App bleibt der Plan im Büro. Änderungen kommen nicht an." },
+        ],
+        diagnostics: [
+          { title: "1. Wochenrhythmus prüfen", body: "Wie viele Reinigungen sind wirklich einmalig, wie viele wiederholen sich?" },
+          { title: "2. Umbuchungen zählen", body: "Wie oft ändern sich Zuordnungen pro Woche und aus welchen Gründen?" },
+          { title: "3. Info-Kanäle prüfen", body: "Wie erfährt das Team Änderungen? Papier, WhatsApp, Anruf?" },
+        ],
+        solutions: [
+          { title: "1. Rhythmen einmal anlegen", body: "Touren mit Objekt, Zeit und Person werden einmal definiert und laufen wöchentlich weiter." },
+          { title: "2. Drag and Drop für Vertretungen", body: "Krankheitsausfälle werden in Sekunden umgebucht. Das Team sieht die Änderung in der App." },
+          { title: "3. Änderungen über Push", body: "Änderungen erreichen jeden Mitarbeiter direkt am Gerät. Kein WhatsApp mehr." },
+        ],
+        faqs: [
+          { q: "Wie lange dauert die Umstellung?", a: "Ein Wochenrhythmus für einen Betrieb ist typischerweise in einem Nachmittag angelegt." },
+          { q: "Was passiert bei kurzfristigen Ausfällen?", a: "Ein Klick auf den offenen Slot, das System schlägt verfügbare Mitarbeiter vor, die Umbuchung ist in Sekunden erledigt." },
+        ],
+        ctaH2: "Dienstplan einmal anlegen, wöchentlich profitieren",
+        ctaBody: "Testen Sie Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "Schedule rewritten every week · fix | Taskey",
+        metaDescription:
+          "Cleaning schedules retyped every week and still wrong. Root cause and fix with digital scheduling.",
+        eyebrow: "Problem",
+        h1: "Cleaning schedule rewritten every week",
+        keyFinding:
+          "A cleaning schedule retyped every week is a symptom, not a problem. The cause is usually missing recurrence logic. Storing the weekly rhythm as structure saves multiple office hours per week.",
+        intro:
+          "If the schedule is written from scratch in Excel every week and Friday still ends in chaos, the process is broken. This article shows the causes and the shortest path to real staff scheduling.",
+        causes: [
+          { title: "No weekly rhythm in the system", body: "Starting from zero every week means repeating mistakes." },
+          { title: "Substitutions over WhatsApp", body: "Changes bypass the plan. Monday is already outdated." },
+          { title: "No mobile access for the team", body: "Without an app the plan stays in the office." },
+        ],
+        diagnostics: [
+          { title: "1. Check the rhythm", body: "How many cleans are actually one-off, how many repeat?" },
+          { title: "2. Count reassignments", body: "How often do assignments change per week and why?" },
+          { title: "3. Check info channels", body: "How does the team learn about changes?" },
+        ],
+        solutions: [
+          { title: "1. Set rhythms once", body: "Routes with site, time and person are defined once and roll forward weekly." },
+          { title: "2. Drag and drop cover", body: "Sick calls reassigned in seconds. The team sees the change in the app." },
+          { title: "3. Push updates", body: "Changes reach every team member on device. No more WhatsApp." },
+        ],
+        faqs: [
+          { q: "How long is the switch?", a: "A weekly rhythm for one operator is usually set up in one afternoon." },
+          { q: "What about last-minute sick calls?", a: "One click on the open slot, the system suggests available staff, done in seconds." },
+        ],
+        ctaH2: "Set the schedule once, profit weekly",
+        ctaBody: "Try Taskey free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Planning nettoyage réécrit chaque semaine · solution | Taskey",
+        metaDescription:
+          "Planning de nettoyage retapé chaque semaine et toujours faux. Causes et solution avec un planning numérique.",
+        eyebrow: "Problème",
+        h1: "Planning nettoyage réécrit chaque semaine",
+        keyFinding:
+          "Un planning nettoyage retapé chaque semaine est un symptôme. La cause est presque toujours l'absence de logique de récurrence. Poser le rythme comme structure économise plusieurs heures de bureau par semaine.",
+        intro:
+          "Si le planning est refait chaque semaine dans Excel et que le vendredi finit en chaos, le process est cassé. Cet article montre causes et solution.",
+        causes: [
+          { title: "Pas de rythme hebdomadaire", body: "Partir de zéro chaque semaine, c'est répéter les erreurs." },
+          { title: "Remplacements par WhatsApp", body: "Les changements contournent le plan." },
+          { title: "Pas d'accès mobile pour l'équipe", body: "Sans app, le plan reste au bureau." },
+        ],
+        diagnostics: [
+          { title: "1. Rythme réel", body: "Combien de prestations uniques, combien récurrentes ?" },
+          { title: "2. Réaffectations", body: "Combien de fois par semaine, pour quelles raisons ?" },
+          { title: "3. Canaux d'info", body: "Papier, WhatsApp, appel ?" },
+        ],
+        solutions: [
+          { title: "1. Poser les rythmes une fois", body: "Tournées avec site, heure et personne définies une fois." },
+          { title: "2. Remplacements en glisser-déposer", body: "Réaffectations en secondes." },
+          { title: "3. Notifications push", body: "Les changements arrivent sur l'appareil." },
+        ],
+        faqs: [
+          { q: "Combien de temps pour basculer ?", a: "Un rythme hebdomadaire pour une structure se pose en un après-midi." },
+          { q: "Et les absences de dernière minute ?", a: "Un clic sur le créneau ouvert, le système propose les disponibles, terminé en secondes." },
+        ],
+        ctaH2: "Poser le planning une fois, gagner chaque semaine",
+        ctaBody: "Essayez Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
+  {
+    slug: "rechnungen-manuell-in-excel-tippen",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    toolLink: { href: "/features/rechnungsprogramm", label: "Rechnungsprogramm" },
+    serviceLinks: [
+      { href: "/features/datev-export", label: "DATEV-Export" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/rechnungsprogramm-fuer-gebaeudereinigung-waehlen", label: "Rechnungsprogramm wählen" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "Rechnungen manuell in Excel tippen · Lösung Rechnungsprogramm | Taskey",
+        metaDescription:
+          "Rechnungen für die Reinigungsfirma werden manuell in Excel getippt und kommen zu spät. Ursachen und Lösung mit einem Rechnungsprogramm für Gebäudereinigung.",
+        eyebrow: "Problem",
+        h1: "Rechnungen manuell in Excel tippen",
+        keyFinding:
+          "Manuelles Rechnungen-Tippen in Excel ist keine Fleißaufgabe, sondern ein Prozessfehler. Rechnungen sollten aus dem operativen System entstehen, nicht aus dem Gedächtnis der Sachbearbeitung.",
+        intro:
+          "Wenn Rechnungen mit Copy-Paste aus dem Einsatzplan in Excel entstehen, gehen Zusatzleistungen verloren und der Rechnungslauf zieht sich über Wochen. Der Ratgeber zeigt die Umstellung auf ein Rechnungsprogramm für Gebäudereinigung.",
+        causes: [
+          { title: "Zwei getrennte Systeme", body: "Operative Steuerung und Buchhaltung sprechen nicht miteinander." },
+          { title: "Zusatzleistungen laufen mündlich", body: "Tickets landen nirgends. Sie werden vergessen." },
+          { title: "Kein Wartungsvertrag als Datenstruktur", body: "Wenn der Vertrag nicht im System steht, muss jede Rechnung neu gebaut werden." },
+        ],
+        diagnostics: [
+          { title: "1. Rechnungsdurchlaufzeit messen", body: "Wie lange dauert der Rechnungslauf vom Monatsende bis zum Versand?" },
+          { title: "2. Anzahl der Korrekturen", body: "Wie viele Rechnungen wurden im letzten Quartal storniert und neu ausgestellt?" },
+          { title: "3. Zusatzleistungs-Quote", body: "Wie hoch ist der Anteil der Zusatzleistungen am Umsatz?" },
+        ],
+        solutions: [
+          { title: "1. Wartungsverträge im System", body: "Preis, Rhythmus und Leistungen liegen am Objekt. Rechnungen generieren sich daraus." },
+          { title: "2. Tickets als Rechnungsposition", body: "Jede abrechenbare Zusatzleistung landet automatisch im Rechnungslauf." },
+          { title: "3. Rechnungslauf mit einem Klick", body: "Am Monatsende gehen alle Rechnungen in wenigen Minuten raus." },
+        ],
+        faqs: [
+          { q: "Was, wenn wir sehr individuelle Rechnungen brauchen?", a: "Auch Sonderpositionen können pro Rechnung ergänzt werden. Der Vorteil bleibt: die Basis ist strukturiert, nur die Sonderposten sind manuell." },
+          { q: "Ist ein Rechnungsprogramm GoBD-konform?", a: "Ja. Rechnungen werden unveränderbar archiviert, Änderungen laufen über Storno und Neuausstellung, Zeitstempel sind revisionssicher." },
+        ],
+        ctaH2: "Rechnungen aus dem System statt aus Excel",
+        ctaBody: "Testen Sie das Rechnungsprogramm von Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "Invoicing done manually in Excel · fix with proper invoicing software | Taskey",
+        metaDescription:
+          "Cleaning invoices retyped manually in Excel and going out late. Root cause and fix with cleaning invoicing software.",
+        eyebrow: "Problem",
+        h1: "Invoicing done manually in Excel",
+        keyFinding:
+          "Retyping invoices in Excel is not diligence, it is a process error. Invoices should come out of the operational system, not out of memory.",
+        intro:
+          "When invoices are built by copy-paste from the schedule into Excel, add-on work gets lost and the invoice run drags on for weeks. This article shows the switch.",
+        causes: [
+          { title: "Two separate systems", body: "Operations and finance do not talk to each other." },
+          { title: "Add-ons live verbally", body: "Tickets end up nowhere and get forgotten." },
+          { title: "No maintenance contract as data", body: "If the contract is not in the system, every invoice must be rebuilt." },
+        ],
+        diagnostics: [
+          { title: "1. Measure invoice cycle", body: "How long from month end to sending?" },
+          { title: "2. Count corrections", body: "How many invoices were credited and reissued last quarter?" },
+          { title: "3. Add-on share", body: "How much of revenue is add-on work?" },
+        ],
+        solutions: [
+          { title: "1. Contracts in the system", body: "Price, cadence and scope live on the site." },
+          { title: "2. Tickets as billable lines", body: "Every add-on lands automatically in the invoice run." },
+          { title: "3. Invoice run in one click", body: "Month end takes minutes, not weeks." },
+        ],
+        faqs: [
+          { q: "What if invoices are very individual?", a: "Extra lines can still be added per invoice. The base stays structured, only exceptions are manual." },
+          { q: "Is proper invoicing software audit compliant?", a: "Yes. Immutable archive, credit-note reissue for changes, audit-safe timestamps." },
+        ],
+        ctaH2: "Invoices from the system, not Excel",
+        ctaBody: "Try Taskey invoicing free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Factures retapées manuellement dans Excel · solution | Taskey",
+        metaDescription:
+          "Factures nettoyage retapées à la main dans Excel et parties en retard. Causes et solution avec un logiciel de facturation dédié.",
+        eyebrow: "Problème",
+        h1: "Factures retapées manuellement dans Excel",
+        keyFinding:
+          "Retaper les factures dans Excel n'est pas de la rigueur, c'est une erreur de processus. La facture doit sortir du système opérationnel.",
+        intro:
+          "Quand les factures se construisent en copier-coller depuis le planning vers Excel, les additionnels se perdent et le mois s'étire sur des semaines.",
+        causes: [
+          { title: "Deux systèmes séparés", body: "Opérations et compta ne se parlent pas." },
+          { title: "Additionnels à l'oral", body: "Les tickets se perdent." },
+          { title: "Contrat non structuré", body: "Sans contrat dans le système, chaque facture se reconstruit." },
+        ],
+        diagnostics: [
+          { title: "1. Cycle de facturation", body: "Combien de temps de la clôture à l'envoi ?" },
+          { title: "2. Corrections", body: "Combien de factures avoirées le trimestre passé ?" },
+          { title: "3. Part additionnelle", body: "Quelle part du CA vient des additionnels ?" },
+        ],
+        solutions: [
+          { title: "1. Contrats dans le système", body: "Prix, fréquence, périmètre sur le site." },
+          { title: "2. Tickets facturables", body: "Chaque additionnel entre automatiquement." },
+          { title: "3. Facturation en un clic", body: "Le mois se boucle en minutes." },
+        ],
+        faqs: [
+          { q: "Si nos factures sont très individuelles ?", a: "Des lignes exceptionnelles restent ajoutables. La base reste structurée." },
+          { q: "Conforme sur le plan comptable ?", a: "Oui. Archivage inaltérable, avoirs et réémission, horodatage sécurisé." },
+        ],
+        ctaH2: "La facture sort du système, pas d'Excel",
+        ctaBody: "Essayez la facturation de Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
+  {
+    slug: "kunden-fragen-staendig-nach-fortschritt",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    toolLink: { href: "/features/taskey-share", label: "Kundenportal" },
+    serviceLinks: [
+      { href: "/features/leistungsnachweis", label: "Digitaler Leistungsnachweis" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/kundenportal-fuer-reinigungsfirma-einfuehren", label: "Kundenportal einführen" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "Kunden fragen ständig nach Fortschritt · Lösung Kundenportal | Taskey",
+        metaDescription:
+          "Auftraggeber rufen ständig an, ob und wie gereinigt wurde. Ursachen und Lösung mit einem Kundenportal Gebäudereinigung.",
+        eyebrow: "Problem",
+        h1: "Kunden fragen ständig nach dem Reinigungs-Fortschritt",
+        keyFinding:
+          "Wenn Auftraggeber ständig anrufen, um zu erfahren, ob und wie gereinigt wurde, fehlt Transparenz. Ein Kundenportal Gebäudereinigung löst das Problem, weil der Kunde die Antwort selbst sieht.",
+        intro:
+          "Rückfragen von Auftraggebern binden Führungszeit und schaffen Misstrauen. Ein Reinigung Kundenportal wandelt Fragen in Fakten um. Dieser Artikel zeigt Ursachen und Umsetzung.",
+        causes: [
+          { title: "Keine Live-Ansicht", body: "Der Kunde sieht nur die Rechnung, nicht die Leistung." },
+          { title: "Kein einheitlicher Nachweis", body: "Papier, Foto per E-Mail, mündlich, alles nebeneinander." },
+          { title: "Kommunikation läuft ad hoc", body: "Beanstandungen kommen per Telefon, bleiben unstrukturiert." },
+        ],
+        diagnostics: [
+          { title: "1. Rückfragen zählen", body: "Wie viele Anrufe pro Woche wegen offener Objekte?" },
+          { title: "2. Reklamations-Quote messen", body: "Wie viele Reklamationen im letzten Quartal?" },
+          { title: "3. Antwortzeit", body: "Wie lange dauert eine Auskunft aktuell?" },
+        ],
+        solutions: [
+          { title: "1. Live-Link für den Kunden", body: "Ein Portal-Link ohne Login zeigt Objekt-Status in Echtzeit." },
+          { title: "2. Foto-Nachweise pro Objekt", body: "Der Kunde sieht, was gereinigt wurde." },
+          { title: "3. Tickets für Beanstandungen", body: "Jede Beanstandung wird strukturiert erfasst und lässt sich messen." },
+        ],
+        faqs: [
+          { q: "Ist das ein Wettbewerbsvorteil?", a: "Ja. Große Auftraggeber verlangen Transparenz. Wer sie liefert, gewinnt Ausschreibungen." },
+          { q: "Was passiert bei negativer Beanstandung?", a: "Sie sehen das Ticket sofort, reagieren im System und dokumentieren die Nacharbeit. Der Vorgang bleibt strukturiert." },
+        ],
+        ctaH2: "Rückfragen fallen weg, weil die Antwort sichtbar ist",
+        ctaBody: "Testen Sie das Kundenportal von Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "Clients constantly ask about progress · client portal fix | Taskey",
+        metaDescription:
+          "Clients calling to check if and how the cleaning was done. Root cause and fix with a cleaning client portal.",
+        eyebrow: "Problem",
+        h1: "Clients constantly ask about cleaning progress",
+        keyFinding:
+          "When clients keep calling to check on cleaning, transparency is missing. A cleaning client portal solves it because the client sees the answer directly.",
+        intro:
+          "Client callbacks bind leadership time and grow distrust. A cleaning customer portal turns questions into facts.",
+        causes: [
+          { title: "No live view", body: "The client sees the invoice, not the service." },
+          { title: "No uniform proof", body: "Paper, photo by email, verbal, all mixed." },
+          { title: "Ad hoc communication", body: "Complaints come by phone, stay unstructured." },
+        ],
+        diagnostics: [
+          { title: "1. Count callbacks", body: "How many calls per week about open sites?" },
+          { title: "2. Complaint share", body: "How many complaints last quarter?" },
+          { title: "3. Response time", body: "How long does an answer take today?" },
+        ],
+        solutions: [
+          { title: "1. Live link for the client", body: "A portal link without login shows live site status." },
+          { title: "2. Photo proof per site", body: "The client sees what was cleaned." },
+          { title: "3. Structured tickets", body: "Complaints get logged and measured." },
+        ],
+        faqs: [
+          { q: "Is this a tender advantage?", a: "Yes. Large clients demand transparency. Providing it wins tenders." },
+          { q: "What about negative complaints?", a: "You see the ticket immediately, react in-system and document rework. The case stays structured." },
+        ],
+        ctaH2: "Callbacks drop because the answer is visible",
+        ctaBody: "Try the Taskey client portal free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Les clients demandent sans cesse l'avancement · solution portail | Taskey",
+        metaDescription:
+          "Les donneurs d'ordre appellent sans cesse pour savoir si le nettoyage a eu lieu. Causes et solution avec un portail client.",
+        eyebrow: "Problème",
+        h1: "Les clients demandent sans cesse l'avancement",
+        keyFinding:
+          "Quand les clients appellent sans cesse, il manque de la transparence. Un portail client nettoyage résout cela car le client voit la réponse.",
+        intro:
+          "Les appels des clients pèsent sur l'encadrement. Un portail client change les questions en faits.",
+        causes: [
+          { title: "Pas de vue en direct", body: "Le client voit la facture, pas la prestation." },
+          { title: "Preuves hétérogènes", body: "Papier, photo par mail, oral, mélangés." },
+          { title: "Communication à chaud", body: "Les réclamations arrivent au téléphone, non structurées." },
+        ],
+        diagnostics: [
+          { title: "1. Compter les appels", body: "Combien par semaine sur des sites ouverts ?" },
+          { title: "2. Taux de réclamation", body: "Combien le trimestre passé ?" },
+          { title: "3. Temps de réponse", body: "Combien pour donner une réponse ?" },
+        ],
+        solutions: [
+          { title: "1. Lien direct pour le client", body: "Un portail sans login montre le statut en direct." },
+          { title: "2. Preuve photo par site", body: "Le client voit ce qui a été fait." },
+          { title: "3. Tickets structurés", body: "Les réclamations sont tracées." },
+        ],
+        faqs: [
+          { q: "Avantage en appel d'offres ?", a: "Oui. Les grands donneurs d'ordre exigent transparence." },
+          { q: "Et les réclamations négatives ?", a: "Le ticket est visible tout de suite, la reprise est documentée." },
+        ],
+        ctaH2: "Les appels tombent car la réponse est visible",
+        ctaBody: "Essayez le portail client de Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
+  {
+    slug: "subunternehmer-liefern-keine-nachweise",
+    publishedAt: "2026-09-28",
+    updatedAt: "2026-09-28",
+    toolLink: { href: "/loesungen/subunternehmer-management", label: "Subunternehmer-Management" },
+    serviceLinks: [
+      { href: "/features/leistungsnachweis", label: "Digitaler Leistungsnachweis" },
+    ],
+    relatedGuides: [
+      { href: "/ratgeber/subunternehmer-in-der-gebaeudereinigung-managen", label: "Subunternehmer managen" },
+    ],
+    copy: {
+      de: {
+        metaTitle: "Subunternehmer liefern keine Nachweise · Lösung | Taskey",
+        metaDescription:
+          "Nachunternehmer in der Reinigung liefern keine belastbaren Nachweise. Ursachen und Lösung mit einheitlicher Subunternehmer-Verwaltung.",
+        eyebrow: "Problem",
+        h1: "Subunternehmer liefern keine belastbaren Nachweise",
+        keyFinding:
+          "Ohne vertragliche und technische Vorgabe liefern Subunternehmer selten die Nachweisqualität, die Ihre Auftraggeber erwarten. Eine gemeinsame Software für Subunternehmer-Verwaltung schließt die Lücke.",
+        intro:
+          "Wer Nachunternehmer einsetzt, kennt das Problem: Der Sub reinigt, der Nachweis fehlt. Der Auftraggeber merkt es an der Qualität des Reports. Dieser Ratgeber zeigt, wie Sie gegensteuern.",
+        causes: [
+          { title: "Keine vertragliche Vorgabe", body: "Digitale Dokumentation ist nicht Bestandteil des Vertrags." },
+          { title: "Kein gemeinsames System", body: "Der Sub arbeitet mit Papier oder eigener App." },
+          { title: "Keine Sichtbarkeit im Alltag", body: "Sie sehen erst am Monatsende, was fehlt." },
+        ],
+        diagnostics: [
+          { title: "1. Nachweisquote messen", body: "Wie viele Reinigungen der Subs sind lückenlos dokumentiert?" },
+          { title: "2. Kunden-Feedback vergleichen", body: "Wo tauchen Beanstandungen häufiger auf, bei Eigen- oder Sub-Objekten?" },
+          { title: "3. Vertrag prüfen", body: "Ist digitale Dokumentation eindeutig vereinbart?" },
+        ],
+        solutions: [
+          { title: "1. Digitalklausel im Sub-Vertrag", body: "NFC-Nachweis und Foto sind Zahlungsbedingung." },
+          { title: "2. Sub-Zugänge im System", body: "Der Sub arbeitet im gleichen Tool wie Ihre Eigenleistung, sieht aber nur seine Objekte." },
+          { title: "3. Live-Kontrolle für den Betrieb", body: "Sie sehen fehlende Scans im Tagesverlauf und können vor dem Monat gegensteuern." },
+        ],
+        faqs: [
+          { q: "Was, wenn der Sub sich weigert?", a: "Vertraglich absichern und in der Praxis mit der mehrsprachigen App unterstützen. Wenn der Sub trotzdem verweigert, ist der Nachweislücken-Preis Verhandlungsmasse." },
+          { q: "Wie schnell sieht der Auftraggeber die Verbesserung?", a: "Ab dem ersten Monat mit lückenlosen Nachweisen. Die Report-Qualität ist der sichtbarste Effekt." },
+        ],
+        ctaH2: "Nachweis wird zur Zahlungsbedingung",
+        ctaBody: "Testen Sie Subunternehmer-Verwaltung in Taskey 14 Tage kostenlos.",
+        ctaPrimary: "Kostenlos testen",
+      },
+      en: {
+        metaTitle: "Subcontractors deliver no proof · fix | Taskey",
+        metaDescription:
+          "Cleaning subcontractors deliver no reliable proof. Root cause and fix with unified subcontractor management.",
+        eyebrow: "Problem",
+        h1: "Subcontractors deliver no reliable proof",
+        keyFinding:
+          "Without contract and technical requirement, subcontractors rarely deliver the proof quality your clients expect. Shared subcontractor management software closes the gap.",
+        intro:
+          "Any operator using subs knows the pain: the sub cleans, the proof is missing. The client notices in the report.",
+        causes: [
+          { title: "No contract requirement", body: "Digital proof is not part of the deal." },
+          { title: "No shared system", body: "The sub works on paper or its own app." },
+          { title: "No daily visibility", body: "You see gaps only at month end." },
+        ],
+        diagnostics: [
+          { title: "1. Proof coverage rate", body: "How many sub cleans are fully documented?" },
+          { title: "2. Client feedback comparison", body: "Where do complaints cluster, own or sub sites?" },
+          { title: "3. Contract review", body: "Is digital documentation clearly agreed?" },
+        ],
+        solutions: [
+          { title: "1. Digital clause in sub contract", body: "NFC proof is a payment condition." },
+          { title: "2. Sub access in the system", body: "The sub works in your tool but sees only its sites." },
+          { title: "3. Live control", body: "You see missing scans during the day and can react before month end." },
+        ],
+        faqs: [
+          { q: "What if the sub refuses?", a: "Cover it in the contract and support with the multilingual app. If still refused, missing proof becomes negotiation weight." },
+          { q: "How fast does the client see the improvement?", a: "From the first month with complete proof. Report quality is the most visible effect." },
+        ],
+        ctaH2: "Proof becomes a payment condition",
+        ctaBody: "Try Taskey subcontractor management free for 14 days.",
+        ctaPrimary: "Start free trial",
+      },
+      fr: {
+        metaTitle: "Sous-traitants sans preuve fiable · solution | Taskey",
+        metaDescription:
+          "Sous-traitants nettoyage sans preuve fiable. Causes et solution avec une gestion unifiée.",
+        eyebrow: "Problème",
+        h1: "Les sous-traitants ne fournissent pas de preuve fiable",
+        keyFinding:
+          "Sans exigence contractuelle et technique, les sous-traitants rendent rarement le niveau de preuve attendu. Un logiciel partagé comble ce vide.",
+        intro:
+          "Les utilisateurs de sous-traitance connaissent la douleur : la prestation est faite, la preuve manque. Le client s'en rend compte dans le rapport.",
+        causes: [
+          { title: "Pas d'exigence contractuelle", body: "La preuve numérique n'est pas dans le contrat." },
+          { title: "Pas de système commun", body: "Le sous-traitant travaille sur papier ou avec sa propre app." },
+          { title: "Aucune visibilité au quotidien", body: "Les manques n'apparaissent qu'en fin de mois." },
+        ],
+        diagnostics: [
+          { title: "1. Taux de preuve", body: "Quel pourcentage des prestations sous-traitées est documenté ?" },
+          { title: "2. Retour client", body: "Où les réclamations se concentrent-elles ?" },
+          { title: "3. Revue du contrat", body: "La preuve numérique est-elle explicite ?" },
+        ],
+        solutions: [
+          { title: "1. Clause numérique", body: "La preuve NFC devient condition de paiement." },
+          { title: "2. Accès sous-traitant", body: "Le sous-traitant travaille dans votre outil, ne voit que ses sites." },
+          { title: "3. Contrôle en direct", body: "Les scans manquants deviennent visibles dans la journée." },
+        ],
+        faqs: [
+          { q: "S'il refuse ?", a: "Cadrer par contrat et accompagner avec l'app multilingue. En cas de refus, les manques deviennent levier de négociation." },
+          { q: "Combien de temps pour l'effet client ?", a: "Dès le premier mois avec preuves complètes." },
+        ],
+        ctaH2: "La preuve devient condition de paiement",
+        ctaBody: "Essayez la gestion sous-traitants de Taskey 14 jours.",
+        ctaPrimary: "Essai gratuit",
+      },
+    },
+  },
 ];
 
 export function getProblemBySlug(slug: string): Problem | undefined {

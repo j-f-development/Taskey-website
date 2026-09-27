@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | Taskey",
   },
   description:
-    "Taskey ist die Gebäudereinigungssoftware für Reinigungsbetriebe und Facility Management im DACH-Raum. NFC Zeiterfassung, Einsatzplanung, Live-Margen und DATEV Export in einer App. DSGVO konform, Made in Germany. Kostenlosen Account erstellen.",
+    "Taskey ist die Software für Gebäudereinigung und Reinigungsfirmen im DACH-Raum. Reinigungssoftware mit NFC Zeiterfassung, digitaler Einsatzplanung, Rechnungsprogramm, Kundenportal und DATEV Export in einer App. Für Gebäudereiniger, Facility Management und Kleinbetriebe. DSGVO konform, Made in Germany. Kostenlosen Account erstellen.",
   authors: [{ name: "Taskey" }],
   creator: "Taskey",
   publisher: "Taskey",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     locale: "de_DE",
     url: "https://www.taskeyapp.com",
     siteName: "Taskey",
-    title: "Taskey · Gebäudereinigungssoftware & NFC Zeiterfassung",
+    title: "Taskey · Software für Gebäudereinigung & NFC Zeiterfassung",
     description:
-      "Gebäudereinigungssoftware mit NFC Zeiterfassung, Einsatzplanung, Live-Margen und DATEV Export. Für Reinigungsbetriebe und Facility Management im DACH-Raum. Made in Germany, DSGVO konform.",
+      "Reinigungssoftware für Gebäudereinigung, Reinigungsfirmen und Facility Management. NFC Zeiterfassung, Einsatzplanung, Rechnungsprogramm, Kundenportal, Live-Margen und DATEV Export in einer App. Made in Germany, DSGVO konform.",
     images: [
       {
         url: "/opengraph-image",
@@ -53,9 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Taskey · Gebäudereinigungssoftware & NFC Zeiterfassung",
+    title: "Taskey · Software für Gebäudereinigung & NFC Zeiterfassung",
     description:
-      "Gebäudereinigungssoftware mit NFC Zeiterfassung, Einsatzplanung, Live-Margen und DATEV Export. Für Reinigungsbetriebe und Facility Management im DACH-Raum. Made in Germany, DSGVO konform.",
+      "Reinigungssoftware für Gebäudereinigung, Reinigungsfirmen und Facility Management. NFC Zeiterfassung, Einsatzplanung, Rechnungsprogramm, Kundenportal, Live-Margen und DATEV Export in einer App. Made in Germany, DSGVO konform.",
     images: ["/opengraph-image"],
   },
   alternates: {

@@ -877,6 +877,210 @@ export const regions: Region[] = [
       },
     },
   },
+  {
+    slug: "bonn",
+    city: "Bonn",
+    region: "Nordrhein-Westfalen",
+    country: "DE",
+    lat: 50.7374,
+    lng: 7.0982,
+    tier: "top",
+    nearbyCities: ["koeln", "duesseldorf"],
+    copy: {
+      de: {
+        intro:
+          "Reinigungs- und FM-Betriebe in Bonn steuern eine Mischung aus Bundesbehörden, UN-Sitzen, Konzernzentralen und Wohnungsbau. Taskey liefert Planung, Nachweis und Kundenportal in einer App, damit Sie den Anspruch an Dokumentation im Behördenumfeld erfüllen können.",
+        paragraphs: [
+          "In Bonn liegen Bundesministerien mit Zweitsitz, die UN, die Deutsche Post DHL Zentrale und ein wachsendes Cluster aus Technologieunternehmen. Reinigungsbetriebe stehen zwischen strengen Sicherheitsanforderungen und Objekten mit hoher Publikumsfrequenz.",
+          "Taskey macht Nachweisqualität planbar. NFC-Objektnachweis, Fotoprotokoll und rollenbasierte Zugriffe entsprechen dem, was Bundesbehörden und UN-Organisationen erwarten.",
+        ],
+        economy:
+          "Bonn ist ehemalige Bundeshauptstadt und weiterhin Zweitsitz mehrerer Ministerien. Der UN-Standort und Konzerne wie Deutsche Post DHL sowie Deutsche Telekom prägen die Objektlandschaft.",
+        topIndustries: ["Bundesbehörden", "UN-Organisationen", "Konzernzentralen", "Wissenschaft"],
+        localFact:
+          "Vergabeverfahren im Bonner Behördenumfeld verlangen ausnahmslos digitale Dokumentation der Reinigungsleistung.",
+      },
+      en: {
+        intro:
+          "Cleaning and FM operators in Bonn juggle federal offices, UN organisations, corporate headquarters and residential buildings. Taskey delivers scheduling, proof of service and a client portal in one app so that documentation meets government-grade expectations.",
+        paragraphs: [
+          "Bonn hosts federal ministries with second seats, UN offices, the Deutsche Post DHL headquarters and a growing technology cluster. Cleaning operators sit between strict security requirements and high-traffic environments.",
+          "Taskey makes proof quality planable. NFC site verification, photo evidence and role-based access match what federal authorities and UN organisations expect.",
+        ],
+        economy:
+          "Bonn is the former federal capital and remains second seat for several ministries. UN presence and headquarters of Deutsche Post DHL and Deutsche Telekom shape the site landscape.",
+        topIndustries: ["Federal authorities", "UN organisations", "Corporate headquarters", "Science"],
+        localFact:
+          "Public tenders in Bonn's government sphere consistently require digital documentation of cleaning work.",
+      },
+      fr: {
+        intro:
+          "Les entreprises de nettoyage et de FM à Bonn jonglent entre ministères fédéraux, organisations onusiennes, sièges de groupes et résidentiel. Taskey réunit planification, preuve et portail client dans une seule app pour tenir un standard de documentation compatible administration.",
+        paragraphs: [
+          "Bonn accueille des ministères en second siège, des organisations onusiennes, le siège de Deutsche Post DHL et un cluster technologique en croissance. Les entreprises de propreté opèrent entre exigences de sécurité strictes et forte fréquentation.",
+          "Taskey rend la qualité de preuve planifiable. Preuve NFC, photo et droits par rôle correspondent aux attentes du secteur fédéral et onusien.",
+        ],
+        economy:
+          "Bonn, ancienne capitale, reste second siège pour plusieurs ministères. La présence onusienne et les sièges de Deutsche Post DHL et Deutsche Telekom modèlent le marché.",
+        topIndustries: ["Autorités fédérales", "Organisations onusiennes", "Sièges de groupes", "Sciences"],
+        localFact:
+          "Les marchés publics du secteur fédéral bonnois exigent systématiquement la preuve numérique.",
+      },
+    },
+  },
+  {
+    slug: "aachen",
+    city: "Aachen",
+    region: "Nordrhein-Westfalen",
+    country: "DE",
+    lat: 50.7753,
+    lng: 6.0839,
+    tier: "top",
+    nearbyCities: ["koeln", "duesseldorf"],
+    copy: {
+      de: {
+        intro:
+          "Reinigungs- und FM-Betriebe in Aachen bedienen einen Standort im Dreiländereck mit dichter Hochschul- und Technologielandschaft. Taskey liefert die operative Struktur, um über Grenzen und Sprachen hinweg einheitliche Nachweise abzugeben.",
+        paragraphs: [
+          "In Aachen prägen die RWTH mit über 45.000 Studierenden, Forschungsinstitute wie Fraunhofer und ein wachsender Technologie-Campus die Objektlandschaft. Reinigungsbetriebe versorgen Hörsäle, Reinräume und Verwaltungsgebäude parallel.",
+          "Die mehrsprachige Team-App bildet die Realität im Dreiländereck ab: Reinigungskräfte aus Deutschland, den Niederlanden und Belgien arbeiten im selben Objekt und dokumentieren im gleichen Standard.",
+        ],
+        economy:
+          "Aachen ist Grenzstadt zu den Niederlanden und Belgien, geprägt von RWTH, Uniklinik und einem starken Technologiecluster.",
+        topIndustries: ["Hochschulen", "Uniklinik", "Forschungsinstitute", "Technologie"],
+        localFact:
+          "Reinräume und Laborreinigung fordern lückenlose Dokumentation und Fotoprotokoll pro Objekt.",
+      },
+      en: {
+        intro:
+          "Cleaning and FM operators in Aachen serve a tri-border location with a dense university and research landscape. Taskey delivers the operational structure to produce consistent proof across borders and languages.",
+        paragraphs: [
+          "Aachen hosts RWTH with over 45,000 students, research institutes like Fraunhofer and a growing technology campus. Cleaning operators serve lecture halls, clean rooms and administrative buildings in parallel.",
+          "The multilingual team app matches the tri-border reality: cleaners from Germany, the Netherlands and Belgium work at the same site and document to the same standard.",
+        ],
+        economy:
+          "Aachen borders the Netherlands and Belgium, shaped by RWTH, the university hospital and a strong technology cluster.",
+        topIndustries: ["Universities", "University hospital", "Research institutes", "Technology"],
+        localFact:
+          "Clean-room and laboratory cleaning demand gap-free documentation and photo protocol per site.",
+      },
+      fr: {
+        intro:
+          "Les entreprises de nettoyage et de FM à Aix-la-Chapelle opèrent dans un espace tri-frontalier riche en établissements universitaires et technologiques. Taskey structure l'opérationnel pour produire une preuve cohérente au-delà des frontières et langues.",
+        paragraphs: [
+          "Aix-la-Chapelle accueille la RWTH (plus de 45 000 étudiants), des instituts de recherche comme Fraunhofer et un campus technologique en croissance. Les entreprises de propreté couvrent amphithéâtres, salles blanches et bâtiments administratifs.",
+          "L'app multilingue reflète la réalité tri-frontalière : des agents d'Allemagne, des Pays-Bas et de Belgique travaillent sur le même site et documentent au même standard.",
+        ],
+        economy:
+          "Aix-la-Chapelle est frontalière des Pays-Bas et de la Belgique, structurée par la RWTH, l'hôpital universitaire et un cluster technologique.",
+        topIndustries: ["Universités", "Hôpital universitaire", "Instituts de recherche", "Technologie"],
+        localFact:
+          "Salles blanches et laboratoires exigent une documentation sans faille et une preuve photo par site.",
+      },
+    },
+  },
+  {
+    slug: "heidelberg",
+    city: "Heidelberg",
+    region: "Baden-Württemberg",
+    country: "DE",
+    lat: 49.3988,
+    lng: 8.6724,
+    tier: "top",
+    nearbyCities: ["mannheim", "karlsruhe"],
+    copy: {
+      de: {
+        intro:
+          "Reinigungs- und FM-Betriebe in Heidelberg arbeiten in einem Umfeld mit Universität, Uniklinik und einer stark wachsenden Life-Science-Industrie. Taskey liefert die Dokumentationstiefe, die Pharma- und Klinikkunden verlangen.",
+        paragraphs: [
+          "In Heidelberg konzentrieren sich die Uni-Klinik als einer der größten Klinikbetriebe Deutschlands, DKFZ, EMBL und ein aktiver Bahnstadt-Campus für Biotech und IT. Reinigungsbetriebe stehen unter Beobachtung durch Hygienekommissionen und interne Auditoren.",
+          "Taskey erfasst NFC-Nachweise pro Raum, dokumentiert Wischtechnik und Materialeinsatz und liefert Reports an interne Hygieneteams. Der Aufwand pro Objekt bleibt planbar.",
+        ],
+        economy:
+          "Heidelberg ist eine der wichtigsten Wissenschaftsstädte Deutschlands. Uniklinik, Forschungscluster und Biotech-Unternehmen prägen die Objektlandschaft.",
+        topIndustries: ["Uniklinik", "Life-Science-Forschung", "Biotech", "Hotel und Tourismus"],
+        localFact:
+          "Klinikbetriebe verlangen den Nachweis der eingesetzten Reinigungsverfahren, nicht nur der Anwesenheit.",
+      },
+      en: {
+        intro:
+          "Cleaning and FM operators in Heidelberg serve a university, a large university hospital and a rapidly growing life-science industry. Taskey delivers the documentation depth that pharma and clinical customers demand.",
+        paragraphs: [
+          "Heidelberg concentrates the university hospital, DKFZ, EMBL and an active Bahnstadt campus for biotech and IT. Cleaning operators are under scrutiny from hygiene committees and internal auditors.",
+          "Taskey captures NFC proof per room, documents cleaning method and material use and delivers reports to internal hygiene teams. Effort per site stays planable.",
+        ],
+        economy:
+          "Heidelberg is one of Germany's leading science cities. Hospital, research cluster and biotech companies dominate the site landscape.",
+        topIndustries: ["University hospital", "Life-science research", "Biotech", "Hotels and tourism"],
+        localFact:
+          "Clinical operators require proof of applied cleaning method, not just presence.",
+      },
+      fr: {
+        intro:
+          "Les entreprises de nettoyage et de FM à Heidelberg servent une université, un CHU d'ampleur et une industrie life-science en forte croissance. Taskey fournit la profondeur documentaire attendue par les clients pharmaceutiques et hospitaliers.",
+        paragraphs: [
+          "Heidelberg concentre le CHU, le DKFZ, l'EMBL et un campus Bahnstadt biotech/IT actif. Les entreprises de propreté sont surveillées par des commissions d'hygiène et des auditeurs internes.",
+          "Taskey capte la preuve NFC par pièce, documente méthode et matériel et livre des rapports aux équipes d'hygiène. L'effort par site reste planifiable.",
+        ],
+        economy:
+          "Heidelberg est l'une des principales villes scientifiques d'Allemagne. CHU, cluster de recherche et biotechs dominent.",
+        topIndustries: ["CHU", "Recherche life-science", "Biotech", "Hôtellerie tourisme"],
+        localFact:
+          "Le milieu hospitalier exige la preuve de la méthode appliquée, pas seulement de la présence.",
+      },
+    },
+  },
+  {
+    slug: "innsbruck",
+    city: "Innsbruck",
+    region: "Tirol",
+    country: "AT",
+    lat: 47.2692,
+    lng: 11.4041,
+    tier: "top",
+    nearbyCities: ["salzburg", "muenchen"],
+    copy: {
+      de: {
+        intro:
+          "Reinigungs- und FM-Betriebe in Innsbruck arbeiten in einer Region mit ausgeprägter Saisonalität. Taskey liefert Kolonnenplanung, Objektnachweis und Marge in einer App, damit Sommer- und Winterspitzen ohne Excel-Chaos laufen.",
+        paragraphs: [
+          "In Innsbruck bestimmen Wintertourismus, Universitätsbetrieb, Tirol Kliniken und Kongresswesen die Objektlandschaft. Reinigungsbetriebe müssen zwischen Hochsaison und Nebensaison flexible Teams steuern.",
+          "Taskey verwaltet saisonale Aushilfen, Vertretungen und wechselnde Kolonnen. Die mehrsprachige App bildet die Realität internationaler Reinigungsteams in Tirol ab.",
+        ],
+        economy:
+          "Innsbruck ist die Landeshauptstadt Tirols mit ausgeprägter Winter- und Sommertourismus-Industrie sowie starkem Universitätssektor.",
+        topIndustries: ["Hotel-Housekeeping", "Uniklinik Tirol Kliniken", "Kongresswesen", "Hochschulen"],
+        localFact:
+          "Hotellerie und Kongresswesen verlangen digitale Nachweise mit Reinigungszeitfenstern innerhalb der Belegungspläne.",
+      },
+      en: {
+        intro:
+          "Cleaning and FM operators in Innsbruck work in a highly seasonal region. Taskey combines crew planning, site proof and margin in one app so that summer and winter peaks run without spreadsheet chaos.",
+        paragraphs: [
+          "Innsbruck is shaped by winter tourism, university operations, Tirol Kliniken and congress business. Cleaning operators steer flexible teams between peak and shoulder seasons.",
+          "Taskey manages seasonal relief staff, cover and rotating crews. The multilingual app reflects the reality of international cleaning teams in Tyrol.",
+        ],
+        economy:
+          "Innsbruck is the capital of Tyrol with strong winter and summer tourism plus a large university sector.",
+        topIndustries: ["Hotel housekeeping", "University hospital Tirol Kliniken", "Congress business", "Universities"],
+        localFact:
+          "Hotels and congress venues demand digital proof aligned with occupancy schedules.",
+      },
+      fr: {
+        intro:
+          "Les entreprises de nettoyage et de FM à Innsbruck opèrent dans une région à forte saisonnalité. Taskey réunit planification, preuve et marge dans une app pour absorber les pics d'été et d'hiver sans Excel.",
+        paragraphs: [
+          "Innsbruck vit du tourisme d'hiver, de l'université, des Tirol Kliniken et de l'activité congressiste. Les entreprises de propreté pilotent des équipes flexibles entre haute et basse saison.",
+          "Taskey gère extras saisonniers, remplacements et équipes tournantes. L'app multilingue reflète la réalité des équipes internationales au Tyrol.",
+        ],
+        economy:
+          "Innsbruck est la capitale du Tyrol, à profil tourisme et universitaire.",
+        topIndustries: ["Hôtellerie", "CHU Tirol Kliniken", "Congrès", "Universités"],
+        localFact:
+          "Hôtellerie et congrès demandent une preuve numérique alignée sur les plannings d'occupation.",
+      },
+    },
+  },
 ];
 
 const extendedCities: Array<Pick<Region, "slug" | "city" | "region" | "country" | "lat" | "lng" | "nearbyCities">> = [
@@ -912,6 +1116,27 @@ const extendedCities: Array<Pick<Region, "slug" | "city" | "region" | "country" 
   { slug: "basel", city: "Basel", region: "Basel-Stadt", country: "CH", lat: 47.5596, lng: 7.5886, nearbyCities: ["zuerich", "freiburg"] },
   { slug: "bern", city: "Bern", region: "Bern", country: "CH", lat: 46.9481, lng: 7.4474, nearbyCities: ["zuerich", "basel"] },
   { slug: "genf", city: "Genf", region: "Genf", country: "CH", lat: 46.2044, lng: 6.1432, nearbyCities: ["zuerich", "bern"] },
+  { slug: "trier", city: "Trier", region: "Rheinland-Pfalz", country: "DE", lat: 49.7596, lng: 6.6439, nearbyCities: ["saarbruecken", "koblenz"] },
+  { slug: "koblenz", city: "Koblenz", region: "Rheinland-Pfalz", country: "DE", lat: 50.3569, lng: 7.5889, nearbyCities: ["mainz", "trier"] },
+  { slug: "krefeld", city: "Krefeld", region: "Nordrhein-Westfalen", country: "DE", lat: 51.3388, lng: 6.5853, nearbyCities: ["duesseldorf", "moenchengladbach"] },
+  { slug: "osnabrueck", city: "Osnabrück", region: "Niedersachsen", country: "DE", lat: 52.2799, lng: 8.0472, nearbyCities: ["hannover", "bielefeld"] },
+  { slug: "ludwigshafen", city: "Ludwigshafen am Rhein", region: "Rheinland-Pfalz", country: "DE", lat: 49.4774, lng: 8.4452, nearbyCities: ["mannheim", "karlsruhe"] },
+  { slug: "paderborn", city: "Paderborn", region: "Nordrhein-Westfalen", country: "DE", lat: 51.7189, lng: 8.7575, nearbyCities: ["bielefeld", "kassel"] },
+  { slug: "oldenburg", city: "Oldenburg", region: "Niedersachsen", country: "DE", lat: 53.1435, lng: 8.2146, nearbyCities: ["bremen", "hannover"] },
+  { slug: "hagen", city: "Hagen", region: "Nordrhein-Westfalen", country: "DE", lat: 51.3671, lng: 7.4633, nearbyCities: ["dortmund", "wuppertal"] },
+  { slug: "wolfsburg", city: "Wolfsburg", region: "Niedersachsen", country: "DE", lat: 52.4227, lng: 10.7865, nearbyCities: ["braunschweig", "hannover"] },
+  { slug: "bremerhaven", city: "Bremerhaven", region: "Bremen", country: "DE", lat: 53.5396, lng: 8.5809, nearbyCities: ["bremen", "hamburg"] },
+  { slug: "solingen", city: "Solingen", region: "Nordrhein-Westfalen", country: "DE", lat: 51.1717, lng: 7.0847, nearbyCities: ["wuppertal", "duesseldorf"] },
+  { slug: "leverkusen", city: "Leverkusen", region: "Nordrhein-Westfalen", country: "DE", lat: 51.0459, lng: 6.9873, nearbyCities: ["koeln", "duesseldorf"] },
+  { slug: "neuss", city: "Neuss", region: "Nordrhein-Westfalen", country: "DE", lat: 51.1978, lng: 6.6912, nearbyCities: ["duesseldorf", "koeln"] },
+  { slug: "bottrop", city: "Bottrop", region: "Nordrhein-Westfalen", country: "DE", lat: 51.5236, lng: 6.9231, nearbyCities: ["essen", "duisburg"] },
+  { slug: "recklinghausen", city: "Recklinghausen", region: "Nordrhein-Westfalen", country: "DE", lat: 51.6142, lng: 7.1975, nearbyCities: ["essen", "dortmund"] },
+  { slug: "klagenfurt", city: "Klagenfurt", region: "Kärnten", country: "AT", lat: 46.6247, lng: 14.3053, nearbyCities: ["graz", "salzburg"] },
+  { slug: "st-poelten", city: "St. Pölten", region: "Niederösterreich", country: "AT", lat: 48.2047, lng: 15.6256, nearbyCities: ["wien", "linz"] },
+  { slug: "lausanne", city: "Lausanne", region: "Waadt", country: "CH", lat: 46.5197, lng: 6.6323, nearbyCities: ["genf", "bern"] },
+  { slug: "winterthur", city: "Winterthur", region: "Zürich", country: "CH", lat: 47.5, lng: 8.75, nearbyCities: ["zuerich", "basel"] },
+  { slug: "luzern", city: "Luzern", region: "Luzern", country: "CH", lat: 47.0502, lng: 8.3093, nearbyCities: ["zuerich", "bern"] },
+  { slug: "st-gallen", city: "St. Gallen", region: "St. Gallen", country: "CH", lat: 47.4245, lng: 9.3767, nearbyCities: ["zuerich", "winterthur"] },
 ];
 
 for (const c of extendedCities) {

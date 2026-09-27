@@ -7,35 +7,35 @@ const path = "/features/ausschreibungen";
 const COPY: PageCopy = {
   de: {
     title:
-      "Ausschreibungen, die zu Ihnen passen | Taskey",
+      "Ausschreibungen Gebäudereinigung · Reinigungsaufträge finden | Taskey",
     description:
-      "Öffentliche und private Ausschreibungen für Reinigung, Facility und Gebäudeservice — vorgefiltert nach dem, was Ihr Betrieb realistisch gewinnen kann. Inklusive Einschätzung zur Erfolgsstrategie.",
-    ogTitle: "Ausschreibungen, die zu Ihnen passen | Taskey",
+      "Ausschreibungen Gebäudereinigung im Überblick. Öffentliche und private Reinigungsaufträge finden, vorgefiltert nach dem, was Ihr Betrieb realistisch gewinnen kann. Inklusive Einschätzung zur Erfolgsstrategie pro Ausschreibung. Für Facility und Gebäudeservice.",
+    ogTitle: "Ausschreibungen Gebäudereinigung · Reinigungsaufträge finden | Taskey",
     ogDescription:
-      "Ausschreibungen für Reinigung und FM, vorgefiltert nach Ihrem Betriebsprofil, inklusive Strategie-Einschätzung.",
-    twitterTitle: "Ausschreibungen, die zu Ihnen passen | Taskey",
+      "Reinigungsaufträge finden: Ausschreibungen für Reinigung und FM, vorgefiltert nach Betriebsprofil, inklusive Strategie-Einschätzung.",
+    twitterTitle: "Ausschreibungen Gebäudereinigung · Reinigungsaufträge finden",
     twitterDescription:
-      "Vorgefiltert nach Betriebsprofil, inklusive Strategie-Einschätzung.",
+      "Reinigungsaufträge finden, vorgefiltert nach Betriebsprofil, inklusive Strategie-Einschätzung.",
   },
   en: {
-    title: "Tenders that actually fit you | Taskey",
+    title: "Cleaning tenders · commercial cleaning contracts pre-filtered | Taskey",
     description:
-      "Public and private tenders for cleaning, facility and building services — pre-filtered by what your operation can realistically win. Includes a strategy assessment for each match.",
-    ogTitle: "Tenders that actually fit you | Taskey",
+      "Cleaning tenders and commercial cleaning contracts, curated. Public and private tenders for cleaning, facility and building services, pre-filtered by what your operation can realistically win. Includes a strategy assessment per match.",
+    ogTitle: "Cleaning tenders · commercial cleaning contracts | Taskey",
     ogDescription:
-      "Cleaning and FM tenders pre-filtered by your operation profile, including a strategy read.",
-    twitterTitle: "Tenders that actually fit you | Taskey",
+      "Commercial cleaning contracts and tenders pre-filtered by your operation profile, including a strategy read.",
+    twitterTitle: "Cleaning tenders · commercial cleaning contracts",
     twitterDescription:
-      "Pre-filtered by operation profile, including strategy read.",
+      "Pre-filtered cleaning tenders with a strategy read per match.",
   },
   fr: {
-    title: "Appels d'offres vraiment faits pour vous | Taskey",
+    title: "Appels d'offres nettoyage · marchés de propreté ciblés | Taskey",
     description:
-      "Appels d'offres publics et privés pour le nettoyage, le facility et les services au bâtiment — pré-filtrés selon ce que votre entreprise peut réellement gagner. Avec une lecture stratégique pour chaque match.",
-    ogTitle: "Appels d'offres vraiment faits pour vous | Taskey",
+      "Appels d'offres nettoyage et marchés de propreté sélectionnés. Appels publics et privés pour le nettoyage, le facility et les services au bâtiment, pré-filtrés selon ce que votre entreprise peut réellement gagner. Avec une lecture stratégique pour chaque match.",
+    ogTitle: "Appels d'offres nettoyage · marchés de propreté | Taskey",
     ogDescription:
       "Appels d'offres nettoyage et FM pré-filtrés selon votre profil, avec lecture stratégique.",
-    twitterTitle: "Appels d'offres vraiment faits pour vous | Taskey",
+    twitterTitle: "Appels d'offres nettoyage · marchés de propreté",
     twitterDescription:
       "Pré-filtrés selon votre profil, avec lecture stratégique.",
   },
