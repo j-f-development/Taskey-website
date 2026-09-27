@@ -19,6 +19,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    // Diese Direktiven werden im generischen <meta name="robots"> ausgegeben,
+    // damit Bingbot / msnbot die gleichen Snippet- und Preview-Rechte erhalten
+    // wie Googlebot. Ohne Top-Level-Direktiven landet Bing bei Default-Snippet-
+    // Laengen und blockiert grosse Image-Previews in den SERPs.
+    "max-video-preview": -1,
+    "max-image-preview": "large",
+    "max-snippet": -1,
     googleBot: {
       index: true,
       follow: true,
@@ -64,9 +71,22 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
     other: {
-      "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ?? "",
-      "facebook-domain-verification": process.env.NEXT_PUBLIC_FACEBOOK_DOMAIN_VERIFICATION ?? "",
+      // Bing WMT Token, gespiegelt aus public/BingSiteAuth.xml.
+      // Env-Var kann bei Bedarf uebersteuern; leerer Fallback wuerde sonst
+      // ein <meta content=""> emittieren und Bing verwirren.
+      "msvalidate.01":
+        process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ||
+        "19D02976D22C242365B929606C191E0A",
+      ...(process.env.NEXT_PUBLIC_FACEBOOK_DOMAIN_VERIFICATION
+        ? { "facebook-domain-verification": process.env.NEXT_PUBLIC_FACEBOOK_DOMAIN_VERIFICATION }
+        : {}),
     },
+  },
+  other: {
+    // IndexNow Key an public/k9f2m7q4p8j3n6t1r5w2y8b4c7e0a3s6.txt gebunden.
+    // Bing + Yandex nutzen den gleichen Key, um Real-Time-Indexing zu triggern.
+    "indexnow": "k9f2m7q4p8j3n6t1r5w2y8b4c7e0a3s6",
+    "content-language": "de-DE, en-US, fr-FR",
   },
 };
 
