@@ -8,22 +8,6 @@ export default function Footer() {
   const { t } = useLanguage();
   return (
     <footer className="relative z-20 bg-slate-900 text-white overflow-visible">
-      {/* Saubär sitzt oben auf der Kante des Footers – auf jeder Seite */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-4 sm:left-10 md:left-16 lg:left-24 z-30 w-[110px] sm:w-[140px] md:w-[170px] lg:w-[190px]"
-        style={{ bottom: "100%", transform: "translateY(24%)" }}
-      >
-        <Image
-          src="/Saub%C3%A4r/sitzend.png"
-          alt=""
-          width={340}
-          height={340}
-          className="w-full h-auto drop-shadow-[0_18px_28px_rgba(0,0,0,0.35)]"
-          loading="lazy"
-        />
-      </div>
-
       <div className="relative overflow-hidden">
       {/* Background PNG */}
       <div className="absolute inset-0 pointer-events-none">

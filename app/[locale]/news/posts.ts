@@ -127,26 +127,26 @@ Alle Details auf der [Pricing-Seite](/pricing).`,
     category: "Unternehmen",
     date: "6. Juli 2026",
     isoDate: "2026-07-06",
-    title: "Taskey ist Teil des Startup Launchpad 2026 der Universität des Saarlandes",
-    metaTitle: "Taskey im Startup Launchpad 2026 | Universität des Saarlandes · Triathlon",
+    title: "Taskey ist Teil des Startup Launchpad 2026 der Triathlon Saarland",
+    metaTitle: "Taskey im Startup Launchpad 2026 | Triathlon Saarland · Triathlon",
     metaDescription:
-      "Taskey ist eines der Teams im Startup Launchpad 2026 — dem dreimonatigen Intensivprogramm für technologiegetriebene Gründungen an der Universität des Saarlandes, getragen von Triathlon und SouthwestX.",
+      "Taskey ist eines der Teams im Startup Launchpad 2026 — dem dreimonatigen Intensivprogramm für technologiegetriebene Gründungen an der Triathlon Saarland, getragen von Triathlon und SouthwestX.",
     summary:
-      "Ab dem 7. Juli 2026 sind wir Teil des Startup Launchpad, dem Deep-Tech-Intensivprogramm der Universität des Saarlandes (Triathlon / SouthwestX). Drei Monate, wöchentliche Reviews, Coaching und Mentoring — und am Ende der Demo Day am 22. September 2026.",
+      "Ab dem 7. Juli 2026 sind wir Teil des Startup Launchpad, dem Deep-Tech-Intensivprogramm der Triathlon Saarland (Triathlon / SouthwestX). Drei Monate, wöchentliche Reviews, Coaching und Mentoring — und am Ende der Demo Day am 22. September 2026.",
     heroImage: "/launchpad-programm-preview.png",
     body: `Es gibt Meldungen, bei denen wir die Ankündigung eher zurückhaltend formulieren würden. Diese hier gehört nicht dazu.
 
-Taskey ist ab dem 7. Juli 2026 offiziell Teil des **Startup Launchpad** — dem dreimonatigen Intensivprogramm für technologiegetriebene Gründungen im Saarland, getragen von **Triathlon**, dem Gründungs- und Transfer-Ökosystem der **Universität des Saarlandes**, und operativ umgesetzt durch **SouthwestX**, die Startup-Factory für den Südwesten.
+Taskey ist ab dem 7. Juli 2026 offiziell Teil des **Startup Launchpad** — dem dreimonatigen Intensivprogramm für technologiegetriebene Gründungen im Saarland, getragen von **Triathlon**, dem Gründungs- und Transfer-Ökosystem der **Triathlon Saarland**, und operativ umgesetzt durch **SouthwestX**, die Startup-Factory für den Südwesten.
 
-![Startup Launchpad 2026 – Programm-Wordmark der Universität des Saarlandes / Triathlon](/launchpad-saarland.png "Startup Launchpad 2026 · Universität des Saarlandes · Triathlon")
+![Startup Launchpad 2026 – Programm-Wordmark der Triathlon Saarland / Triathlon](/launchpad-saarland.png "Startup Launchpad 2026 · Triathlon Saarland · Triathlon")
 
 ## Was das Startup Launchpad ist
 
 Das Launchpad ist kein Beschleuniger im klassischen Sinne, sondern ein hoch verdichtetes Intensivprogramm — drei Monate, drei Tage pro Woche vor Ort in Saarbrücken, wöchentliche 1:1-Reviews, monatliche Pitches, über 20 Workshops und ein Netzwerk aus erfahrenen Mentor:innen, Coaches und Investor:innen. Der Fokus liegt auf Deep-Tech-Teams, die den Sprung von der Idee in den Markt vorbereiten — und dafür strukturierte Reibung, harte Fragen und ehrliches Feedback brauchen.
 
-Das Programm ist eingebettet in das größere Ökosystem rund um die Universität des Saarlandes und wird gefördert durch das Bundesministerium für Wirtschaft und Klimaschutz, das saarländische Ministerium für Wirtschaft, Innovation, Digitales und Energie sowie das EXIST-Programm — kofinanziert durch die Europäische Union.
+Das Programm ist eingebettet in das größere Ökosystem rund um die Triathlon Saarland und wird gefördert durch das Bundesministerium für Wirtschaft und Klimaschutz, das saarländische Ministerium für Wirtschaft, Innovation, Digitales und Energie sowie das EXIST-Programm — kofinanziert durch die Europäische Union.
 
-{logos:/triathlon-logo.png|Triathlon – Gründungs- und Transfer-Ökosystem der Universität des Saarlandes||/uni-saarland-logo.png|Universität des Saarlandes}
+{logos:/triathlon-logo.png|Triathlon – Gründungs- und Transfer-Ökosystem der Triathlon Saarland||/launchpad-saarland.png|Triathlon Saarland}
 
 ## Warum wir uns beworben haben
 
@@ -160,7 +160,7 @@ Nichts, was sich negativ auf den laufenden Betrieb auswirkt — und einiges, was
 
 **Produktentwicklung.** Wir bekommen strukturierten Zugang zu erfahrenen Coaches, die vergleichbare B2B-SaaS-Themen kennen. Themen wie Preisstruktur, Onboarding-Reibung, Kundenbindung und Skalierung werden im Programm systematisch bearbeitet. Das schärft die Version von Taskey, die Sie in den kommenden Monaten sehen.
 
-**Verlässlichkeit.** Als Teil eines geförderten Deep-Tech-Programms mit Institutionen wie der Universität des Saarlandes, dem BMWK und dem Saarland-Wirtschaftsministerium im Rücken sind wir keine Blackbox — sondern ein Unternehmen mit institutioneller Einbindung. Das ist gerade im Mittelstand ein Signal, das zählt.
+**Verlässlichkeit.** Als Teil eines geförderten Deep-Tech-Programms mit Institutionen wie der Triathlon Saarland, dem BMWK und dem Saarland-Wirtschaftsministerium im Rücken sind wir keine Blackbox — sondern ein Unternehmen mit institutioneller Einbindung. Das ist gerade im Mittelstand ein Signal, das zählt.
 
 **Tempo mit Boden.** Das Programm kombiniert Geschwindigkeit mit Struktur. Wir bewegen uns weiter zügig — aber mit einem klaren Rahmen, der dafür sorgt, dass keine Baustelle aus dem Blick fällt.
 
@@ -203,7 +203,7 @@ Der Originalbeitrag mit weiteren Eindrücken vom Meetup ist auf [LinkedIn beim B
 
 ## Was jetzt kommt
 
-Der nächste größere Meilenstein für uns ist der Kickoff des **Startup Launchpad 2026** an der Universität des Saarlandes am 7. Juli 2026 — dem dreimonatigen Deep-Tech-Intensivprogramm, dessen Teil Taskey ab dem Sommer ist. Über das Zusammenspiel aus Angel-Feedback aus dem BANS-Meetup und der strukturierten Programmarbeit im Launchpad werden wir in den kommenden Wochen berichten, sobald konkrete Ergebnisse für unsere Kund:innen sichtbar sind.
+Der nächste größere Meilenstein für uns ist der Kickoff des **Startup Launchpad 2026** an der Triathlon Saarland am 7. Juli 2026 — dem dreimonatigen Deep-Tech-Intensivprogramm, dessen Teil Taskey ab dem Sommer ist. Über das Zusammenspiel aus Angel-Feedback aus dem BANS-Meetup und der strukturierten Programmarbeit im Launchpad werden wir in den kommenden Wochen berichten, sobald konkrete Ergebnisse für unsere Kund:innen sichtbar sind.
 
 Bis dahin: Danke fürs Zuhören, fürs Weitergeben, fürs ehrliche Nachhaken.`,
   },

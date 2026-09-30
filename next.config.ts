@@ -130,9 +130,9 @@ const nextConfig: NextConfig = {
       { source: '/compliance/companies/germany/AVV.html', destination: '/legal/avv.html',             permanent: true },
       { source: '/compliance/employees/germany/AGB.html', destination: '/legal/agb-mitarbeiter.html', permanent: true },
 
-      // Entfernte Branchen-Hub und Detail-Seiten
-      { source: '/loesungen', destination: '/', permanent: true },
-      { source: '/loesungen/:slug*', destination: '/', permanent: true },
+      // /loesungen wird ab 2026-09-26 wieder als Content-Bereich genutzt (Enterprise-IA);
+      // die alte pauschale Weiterleitung ist aufgehoben. Für Englisch/Französisch bleibt
+      // die Umleitung nach root, weil dort noch kein Ersatz existiert.
       { source: '/:locale(en|fr)/loesungen', destination: '/:locale', permanent: true },
       { source: '/:locale(en|fr)/loesungen/:slug*', destination: '/:locale', permanent: true },
 

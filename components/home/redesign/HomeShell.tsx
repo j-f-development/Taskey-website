@@ -433,7 +433,6 @@ function HeroScene() {
               </div>
             </motion.div>
           </div>
-
         </div>
       </div>
 
