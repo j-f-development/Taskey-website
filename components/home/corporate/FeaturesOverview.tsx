@@ -14,42 +14,49 @@ const FEATURES: Feature[] = [
     slug: "nfc-zeiterfassung",
     title: "NFC-Zeiterfassung",
     desc: "Scan am Objekt startet die Zeit. Standort, Aufgabe und Nachweis entstehen automatisch.",
-    image: "/feature-zeiterfassung.webp",
+    image: "/feature-zeiterfassung.png",
   },
   {
     slug: "einsatzplanung",
     title: "Einsatzplanung",
     desc: "Kolonnen, Touren und Vertretungen in einem Kalender. Konflikte werden vor der Freigabe sichtbar.",
+    image: "/feature-einsatzplanung.png",
   },
   {
     slug: "kalkulation",
     title: "Kalkulation",
     desc: "Fläche, Frequenz, Lohn und Marge in einer Kalkulation. Angebot lässt sich direkt daraus versenden.",
+    image: "/feature-kalkulation.png",
   },
   {
     slug: "live-margen",
     title: "Live-Margen",
     desc: "Objekt für Objekt sichtbar, ob die Rechnung aufgeht. Ohne Excel und ohne Wochen Verzug.",
+    image: "/feature-live-margen.png",
   },
   {
-    slug: "leistungsnachweis",
-    title: "Leistungsnachweis",
-    desc: "Jeder Einsatz protokolliert mit Zeitstempel, Standort und Fotos. Für Auftraggeber und Revision.",
+    slug: "subunternehmer-management",
+    title: "Subunternehmer-Management",
+    desc: "Nachunternehmer digital anbinden, Einsätze steuern und Nachweise sauber im System zusammenführen.",
+    image: "/feature-subunternehmer-management.png",
   },
   {
     slug: "rechnungsprogramm",
     title: "Rechnungsprogramm",
     desc: "Rechnungen direkt aus den erbrachten Leistungen. Konform, wiederholbar, DATEV-fähig.",
+    image: "/feature-rechnungsprogramm.png",
   },
   {
     slug: "datev-export",
     title: "DATEV-Export",
     desc: "Zeitdaten und Lohnbewegungen an die Steuerkanzlei. Ohne Zwischenexport in Excel.",
+    image: "/feature-datev.png",
   },
   {
     slug: "ausschreibungen",
     title: "Ausschreibungen",
     desc: "Passende öffentliche und private Ausschreibungen gefiltert, verfolgt und dokumentiert.",
+    image: "/feature-ausschreibungen.png",
   },
 ];
 
