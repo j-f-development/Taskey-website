@@ -46,8 +46,11 @@ export default function HeroCorporate() {
               >
                 Kostenlos starten
               </Link>
-              <Link href="#produkt" className="tkc-btn tkc-btn-ghost">
-                Produkt ansehen
+              <Link href="#features" className="tkc-btn tkc-btn-ghost">
+                Features ansehen
+              </Link>
+              <Link href="#termin" className="tkc-btn tkc-btn-ghost">
+                Termin buchen
               </Link>
             </div>
 

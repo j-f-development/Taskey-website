@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import SectionHeaderCorporate from "./SectionHeaderCorporate";
 
 const FAQ = [
@@ -58,6 +59,33 @@ export default function HomeFaqCorporate() {
           {FAQ.map((item, idx) => (
             <FaqRow key={idx} q={item.q} a={item.a} />
           ))}
+        </div>
+
+        <div
+          className="mt-10 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+          style={{ borderTop: "1px solid var(--tkc-line)" }}
+        >
+          <p
+            className="tkc-body"
+            style={{ maxWidth: "480px", color: "var(--tkc-ink-soft)" }}
+          >
+            Antwort auf Ihre Frage nicht dabei? Am schnellsten geht es im
+            Gespräch oder Sie starten direkt einen kostenlosen Account.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="https://signup.taskeyapp.com"
+              className="tkc-btn tkc-btn-primary"
+            >
+              Kostenlos starten
+            </Link>
+            <Link href="/enterprise" className="tkc-btn tkc-btn-ghost">
+              Enterprise ansehen
+            </Link>
+            <Link href="#termin" className="tkc-btn tkc-btn-ghost">
+              Termin buchen
+            </Link>
+          </div>
         </div>
       </div>
     </section>

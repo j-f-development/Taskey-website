@@ -46,7 +46,7 @@ export default function FloorplanBlock() {
               Anruf, ohne E-Mail, ohne Wartezeit für Ihre Kunden.
             </p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Link
               href="https://demo.kunden.taskeyapp.com"
               target="_blank"
@@ -54,6 +54,18 @@ export default function FloorplanBlock() {
               className="tkc-btn tkc-btn-primary tkc-btn-sm"
             >
               Live-Demo öffnen
+            </Link>
+            <Link
+              href="/features/taskey-share"
+              className="tkc-btn tkc-btn-ghost tkc-btn-sm"
+            >
+              Funktionen im Detail
+            </Link>
+            <Link
+              href="https://signup.taskeyapp.com"
+              className="tkc-btn tkc-btn-ghost tkc-btn-sm"
+            >
+              Kostenlos starten
             </Link>
           </div>
         </div>
