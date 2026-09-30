@@ -374,10 +374,14 @@ function HeroScene() {
                   transition={springs.snappy}
                   className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-medium"
                   style={{
-                    background: "#F97316",
-                    color: "#fff",
+                    background:
+                      "linear-gradient(180deg, #f6f7f8 0%, #e2e4e8 48%, #c6cad0 100%)",
+                    color: "#0b0d10",
                     fontSize: "16px",
-                    boxShadow: "0 20px 50px -20px rgba(249,115,22,0.55)",
+                    border: "1px solid rgba(11,13,16,0.14)",
+                    boxShadow:
+                      "inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -1px 0 rgba(11,13,16,0.06), 0 8px 24px rgba(11,13,16,0.35)",
+                    textShadow: "0 1px 0 rgba(255,255,255,0.55)",
                   }}
                 >
                   {c.ctaDemo}
