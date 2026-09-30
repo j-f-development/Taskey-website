@@ -340,6 +340,16 @@ export default function AboutClient() {
                           sizes="130px"
                         />
                       </div>
+                      <div className="h-10 md:h-11 flex items-center">
+                        <Image
+                          src="/uni-saarland-logo.png"
+                          alt={t("about.launchpad.uniSaarlandAlt")}
+                          width={640}
+                          height={381}
+                          className="h-full w-auto object-contain"
+                          sizes="150px"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

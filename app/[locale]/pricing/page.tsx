@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import PricingClient from "./pricing-client";
-import PricingCorporate from "@/components/pricing/PricingCorporate";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { buildMetadata, pickLocale, canonical, type PageCopy } from "@/lib/i18n-metadata";
 
@@ -175,7 +174,7 @@ export default async function PricingPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessProduct) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(enterpriseProduct) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingFaqSchema) }} />
-      {loc === "de" ? <PricingCorporate /> : <PricingClient />}
+      <PricingClient />
       <PricingFaqSection items={faqItems} kicker={labels.kicker} title={labels.title} />
     </>
   );

@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import HomeShell from "@/components/home/redesign/HomeShell";
-import HomeShellCorporate from "@/components/home/corporate/HomeShellCorporate";
 import { buildMetadata, pickLocale, type PageCopy } from "@/lib/i18n-metadata";
 
 const HOME_COPY: PageCopy = {
   de: {
-    title: "Taskey · Facility Operations Platform für professionelle Dienstleister",
+    title: "Gebäudereinigungssoftware · NFC Zeiterfassung & Live-Margen | Taskey",
     description:
-      "Taskey ist die operative Plattform für Facility-Service-Organisationen. Workforce, Einsätze, Objekte und Nachweise in einer kontrollierbaren Daten- und Prozessschicht. Integriert in ERP, HR, Payroll und BI. API, Webhooks, SSO, RBAC und Audit Log.",
+      "Gebäudereinigungssoftware Made in Germany. NFC Zeiterfassung, Einsatzplanung, Live-Margen, DATEV Export und Auftraggeber-Portal. DSGVO konform. Kostenlosen Account erstellen.",
   },
   en: {
     title: "Cleaning management software · NFC time tracking & live margins | Taskey",
@@ -34,14 +33,6 @@ export async function generateMetadata({
   });
 }
 
-export default async function HomePage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  if (locale === "de") {
-    return <HomeShellCorporate />;
-  }
+export default function HomePage() {
   return <HomeShell />;
 }
