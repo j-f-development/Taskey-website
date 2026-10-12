@@ -84,45 +84,6 @@ Die sechs „In Vorbereitung"-Branchenseiten werden Zug um Zug freigeschaltet, j
 Ein Blick lohnt sich: **[taskey-share.de](https://taskey-share.de)**.`,
   },
   {
-    slug: "einzelunternehmer-paket",
-    category: "Release",
-    date: "8. Juli 2026",
-    isoDate: "2026-07-08",
-    title: "Neu: Das Einzelunternehmer-Paket — 59 € all inklusive",
-    metaTitle: "Taskey Einzelunternehmer-Paket · 59 € all inklusive · CRM, Finanzen & Subunternehmer",
-    metaDescription:
-      "Ab sofort: das Taskey Einzelunternehmer-Paket für 59 € pro Monat all inklusive — CRM, Subunternehmer-Portal, Finanzen, Kalkulationen und Kundenverwaltung in einem schlanken Paket, zugeschnitten auf den Solobetrieb.",
-    summary:
-      "Ab sofort gibt es ein eigenes Taskey-Paket für Einzelunternehmer: 59 € pro Monat, all inklusive, mit CRM, Subunternehmer-Portal, Finanzen, Kalkulationen und Kundenverwaltung. Kein Ballast, kein Feature-Overkill — nur die Werkzeuge, die ein Solobetrieb im Alltag wirklich braucht.",
-    body: `Wir bekommen die gleiche Frage seit dem ersten Tag: „Ich bin allein, brauche ich wirklich das ganze Paket?" — und meistens war die Antwort: nein, aber eine kleinere Variante gab es bisher nicht offiziell.
-
-Ab heute schon. Wir haben ein eigenes **Einzelunternehmer-Paket** freigeschaltet.
-
-## Was drin ist
-
-- **CRM** — Kontakte, Notizen, Kommunikationsverlauf.
-- **Subunternehmer-Portal** — auch als Einzelbetrieb arbeitet man selten wirklich allein. Wer punktuell Subunternehmer einbindet, hat sie sauber im System.
-- **Finanzen** — Rechnungen, Zahlungseingänge, offene Posten. Ohne Excel-Bastelei.
-- **Kalkulationen** — Angebote, Objekt-Kalkulationen, Deckungsbeiträge.
-- **Kundenverwaltung** — alles was zu einem Kunden gehört, an einer Stelle.
-
-## Was kostet's
-
-**59 € pro Monat, all inklusive.** Kein Setup, keine Zusatzkosten pro Objekt, kein Kleingedrucktes. Jahresvertrag oder monatlich kündbar zum Aufpreis. Einfach kostenlos den Account anlegen und ausprobieren.
-
-## Für wen das Paket ist
-
-Für alle, die als Einzelunternehmer oder Kleinstbetrieb professionell arbeiten wollen, aber weder eine Enterprise-Lösung noch die volle Beginner/Professional/Business-Ausstattung brauchen. Typische Situation: eine Person, ein sauberer Kundenstamm, gelegentlich Subunternehmer für Spitzen, klare Zahlen im Blick.
-
-Wenn dein Betrieb wächst und du irgendwann NFC-Zeiterfassung, Team-Planung oder Taskey Share brauchst, wechselst du jederzeit tagesscharf in ein größeres Paket — deine Daten bleiben erhalten, du bezahlst ab dem Wechsel den neuen Preis.
-
-## Warum jetzt
-
-Das Feedback der letzten Monate war eindeutig: viele Selbstständige wollten Taskey nutzen, fanden aber nichts, das ihrer Größe entsprach. Statt sie in ein zu großes Paket zu drücken oder mit einer stark abgespeckten Version zu vertrösten, gibt es jetzt eine ehrliche Antwort — ein Paket, das den Solobetrieb ernst nimmt und die Werkzeuge liefert, die im Alltag zählen.
-
-Alle Details auf der [Pricing-Seite](/pricing).`,
-  },
-  {
     slug: "launchpad-saarland-2026",
     category: "Unternehmen",
     date: "6. Juli 2026",

@@ -40,18 +40,6 @@ const PRICE_VALID_UNTIL = "2026-12-31";
 const BRAND = { "@type": "Brand", "name": "Taskey" };
 const SELLER = { "@id": "https://www.taskeyapp.com#organization" };
 
-const einzelunternehmerProduct = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "@id": "https://www.taskeyapp.com/pricing#einzelunternehmer",
-  "name": "Taskey Einzelunternehmer",
-  "description": "Reinigungssoftware für Soloselbstständige: CRM, Subunternehmer-Portal, Finanzen, Kalkulationen und Kundenverwaltung. 59 € pro Monat.",
-  "brand": BRAND,
-  "category": "Cleaning Management Software",
-  "audience": { "@type": "Audience", "audienceType": "Solo operators, freelancers" },
-  "offers": { "@type": "Offer", "url": "https://www.taskeyapp.com/pricing", "price": "59", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "priceValidUntil": PRICE_VALID_UNTIL, "seller": SELLER, "priceSpecification": { "@type": "UnitPriceSpecification", "price": "59", "priceCurrency": "EUR", "unitText": "MONTH", "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitText": "MONTH" } } },
-};
-
 const beginnerProduct = {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -104,21 +92,21 @@ const FAQ_BY_LOCALE: Record<Locale, { q: string; a: string }[]> = {
   de: [
     { q: "Kann ich das Paket wechseln?", a: "Ja, Sie können jederzeit zwischen Beginner, Professional und Business upgraden oder downgraden – wirksam zum nächsten Monat." },
     { q: "Gibt es etwas Größeres als Business?", a: "Ja. Für größere Reinigungsunternehmen und Verkehrsbetriebe bieten wir Enterprise mit SSO, API- und PMS-Anbindungen, individueller SLA und priorisiertem Support. Sprechen Sie uns an, wir konfigurieren Enterprise passend zu Ihrer Objektstruktur." },
-    { q: "Gibt es bei euch Lohnabrechnung?", a: "Nein. Wir übernehmen keine Lohnabrechnung, können aber auf Wunsch eine Schnittstelle zu Ihrem bestehenden Anbieter einpflegen, damit Ihre Zeiterfassungs- und Einsatzdaten aus Taskey direkt in Ihre Lohnsoftware fließen." },
+    { q: "Gibt es bei euch Lohnabrechnung?", a: "Ja. Lohnabrechnung ist ab Professional in allen Paketen enthalten (nicht in Beginner). Zeiterfassung, Einsatzdaten und Lohnlauf laufen damit in einem System, ohne Umweg über eine externe Lohnsoftware." },
     { q: "Sind Updates und neue Funktionen inklusive?", a: "Ja. Alle Updates, Sicherheitsfixes und neuen Funktionen sind in jedem Tarif kostenlos enthalten und werden automatisch eingespielt." },
     { q: "Ist die Anzahl der Mitarbeitenden begrenzt?", a: "Nein. In jedem Tarif sind unbegrenzt viele Mitarbeitende enthalten." },
   ],
   en: [
     { q: "Can I switch plans?", a: "Yes, you can upgrade or downgrade between Beginner, Professional and Business at any time – effective the next month." },
     { q: "Is there anything bigger than Business?", a: "Yes. For larger cleaning companies and transit operators we offer Enterprise with SSO, API and PMS integrations, an individual SLA and priority support. Get in touch and we will configure Enterprise to fit your site structure." },
-    { q: "Do you handle payroll?", a: "No. We do not run payroll ourselves, but on request we can build an interface to your existing payroll provider so your time tracking and scheduling data from Taskey flows directly into your payroll software." },
+    { q: "Do you handle payroll?", a: "Yes. Payroll is included from Professional upwards in every plan (not in Beginner). Time tracking, scheduling and payroll run in one system, with no detour via an external payroll tool." },
     { q: "Are updates and new features included?", a: "Yes. All updates, security fixes and new features are included in every plan at no extra cost and are rolled out automatically." },
     { q: "Is the number of employees limited?", a: "No. Every plan includes unlimited employees." },
   ],
   fr: [
     { q: "Puis-je changer de forfait ?", a: "Oui, vous pouvez passer entre Beginner, Professional et Business à tout moment – avec effet le mois suivant." },
     { q: "Existe-t-il une offre supérieure à Business ?", a: "Oui. Pour les grandes entreprises de nettoyage et les exploitants de transport, nous proposons Enterprise avec SSO, intégrations API et PMS, un SLA individuel et un support prioritaire. Contactez-nous, nous configurons Enterprise selon votre structure de sites." },
-    { q: "Gérez-vous la paie ?", a: "Non. Nous ne réalisons pas la paie nous-mêmes, mais nous pouvons sur demande mettre en place une interface avec votre prestataire de paie existant, afin que vos données de pointage et de planification issues de Taskey soient directement transmises à votre logiciel de paie." },
+    { q: "Gérez-vous la paie ?", a: "Oui. La gestion de la paie est incluse à partir de Professional dans toutes les offres (pas dans Beginner). Pointage, planification et paie sont ainsi gérés dans un seul système, sans détour par un logiciel de paie externe." },
     { q: "Les mises à jour et nouvelles fonctionnalités sont-elles incluses ?", a: "Oui. Toutes les mises à jour, correctifs de sécurité et nouvelles fonctionnalités sont inclus gratuitement dans chaque forfait et déployés automatiquement." },
     { q: "Le nombre d'employés est-il limité ?", a: "Non. Chaque forfait inclut un nombre illimité d'employés." },
   ],
@@ -168,7 +156,6 @@ export default async function PricingPage({
         { name: crumbs.home, url: canonical("/", loc) },
         { name: crumbs.pricing, url: canonical("/pricing", loc) },
       ]} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(einzelunternehmerProduct) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(beginnerProduct) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalProduct) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessProduct) }} />

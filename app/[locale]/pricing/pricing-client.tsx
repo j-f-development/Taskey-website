@@ -45,18 +45,6 @@ type Content = {
   trustBar: { unlimited: string; cancel: string; noHidden: string; vat: string };
   popular: string;
   tiers: Tier[];
-  solo: {
-    badge: string;
-    name: string;
-    title: string;
-    desc: string;
-    features: string[];
-    price: string;
-    unit: string;
-    allInclusive: string;
-    ctaLabel: string;
-    ctaHref: string;
-  };
   nfc: {
     badge: string;
     title: string;
@@ -135,6 +123,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
           "Direkter Chat-Support",
           "CRM-Tool",
           "Subunternehmer-Portal",
+          "Lohnabrechnung",
         ],
         ctaLabel: "Kostenlosen Account erstellen",
         ctaHref: "https://signup.taskeyapp.com",
@@ -152,6 +141,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
           "Priority-Support per Telefon",
           "CRM-Tool mit E-Mail-Anbindung & Automatisierung",
           "Subunternehmer-Portal",
+          "Lohnabrechnung",
           "Taskey Share (animiertes Kundendashboard + Ticketsystem)",
           "Ausschreibungsportal + Empfehlungen",
         ],
@@ -159,24 +149,6 @@ const content: Record<"de" | "en" | "fr", Content> = {
         ctaHref: "https://signup.taskeyapp.com",
       },
     ],
-    solo: {
-      badge: "Für Einzelunternehmer",
-      name: "Einzelunternehmer-Paket",
-      title: "Einzelunternehmer-Paket",
-      desc: "Alles, was du als Solobetrieb wirklich brauchst — in einem schlanken Paket zum Festpreis.",
-      features: [
-        "CRM",
-        "Subunternehmer-Portal",
-        "Finanzen",
-        "Kalkulationen",
-        "Kunden",
-      ],
-      price: "59",
-      unit: "€ / Monat",
-      allInclusive: "All inklusive · Jahresvertrag oder monatlich kündbar",
-      ctaLabel: "Kostenlosen Account erstellen",
-      ctaHref: "https://signup.taskeyapp.com",
-    },
     nfc: {
       badge: "NFC-Tags",
       title: "Hardware nachbestellen.",
@@ -211,7 +183,6 @@ const content: Record<"de" | "en" | "fr", Content> = {
         "Individuelle Preise. Spezifisch entwickelte, innovative und unabhängige Funktionen — auf Ihren Betrieb zugeschnitten. Für Unternehmen, die mit Standard-Paketen nicht weiterkommen.",
       features: [
         "Alles aus Business",
-        "Custom-Features für Ihren Betrieb",
         "Dedizierter Account-Manager",
         "Persönliches Onboarding & Schulungen",
         "API-Anbindungen & Webhooks",
@@ -272,6 +243,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
           "Direct chat support",
           "CRM tool",
           "Subcontractor portal",
+          "Payroll",
         ],
         ctaLabel: "Create free account",
         ctaHref: "https://signup.taskeyapp.com",
@@ -289,6 +261,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
           "Priority phone support",
           "CRM tool with email integration & automation",
           "Subcontractor portal",
+          "Payroll",
           "Taskey Share (animated client dashboard + ticket system)",
           "Tender portal + referrals",
         ],
@@ -296,24 +269,6 @@ const content: Record<"de" | "en" | "fr", Content> = {
         ctaHref: "https://signup.taskeyapp.com",
       },
     ],
-    solo: {
-      badge: "For solo operators",
-      name: "Solo Operator Plan",
-      title: "Solo Operator Plan",
-      desc: "Everything a one-person business really needs — bundled into one lean plan at a fixed price.",
-      features: [
-        "CRM",
-        "Subcontractor portal",
-        "Financial management",
-        "Cost calculations",
-        "Customer management",
-      ],
-      price: "59",
-      unit: "€ / month",
-      allInclusive: "All-inclusive · annual contract or monthly rolling",
-      ctaLabel: "Create free account",
-      ctaHref: "https://signup.taskeyapp.com",
-    },
     nfc: {
       badge: "NFC tags",
       title: "Reorder hardware.",
@@ -348,7 +303,6 @@ const content: Record<"de" | "en" | "fr", Content> = {
         "Custom pricing. Specifically built, innovative and independent features — tailored to your business. For companies that hit the limits of standard plans.",
       features: [
         "Everything in Business",
-        "Custom features for your business",
         "Dedicated account manager",
         "Personal onboarding & training",
         "API integrations & webhooks",
@@ -409,6 +363,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
           "Support chat direct",
           "Outil CRM",
           "Portail sous-traitants",
+          "Gestion de la paie",
         ],
         ctaLabel: "Créer un compte gratuit",
         ctaHref: "https://signup.taskeyapp.com",
@@ -426,6 +381,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
           "Support prioritaire par téléphone",
           "Outil CRM avec intégration e-mail & automatisation",
           "Portail sous-traitants",
+          "Gestion de la paie",
           "Taskey Share (tableau de bord client animé + système de tickets)",
           "Portail d'appels d'offres + recommandations",
         ],
@@ -433,24 +389,6 @@ const content: Record<"de" | "en" | "fr", Content> = {
         ctaHref: "https://signup.taskeyapp.com",
       },
     ],
-    solo: {
-      badge: "Pour auto-entrepreneurs",
-      name: "Offre Auto-entrepreneur",
-      title: "Offre Auto-entrepreneur",
-      desc: "Tout ce dont une entreprise individuelle a vraiment besoin — dans une offre simple, à prix fixe.",
-      features: [
-        "CRM",
-        "Portail sous-traitants",
-        "Gestion financière",
-        "Calculs de coûts",
-        "Gestion clients",
-      ],
-      price: "59",
-      unit: "€ / mois",
-      allInclusive: "Tout inclus · contrat annuel ou résiliation mensuelle",
-      ctaLabel: "Créer un compte gratuit",
-      ctaHref: "https://signup.taskeyapp.com",
-    },
     nfc: {
       badge: "Étiquettes NFC",
       title: "Recommander du matériel.",
@@ -485,7 +423,6 @@ const content: Record<"de" | "en" | "fr", Content> = {
         "Prix sur mesure. Fonctionnalités spécifiquement développées, innovantes et indépendantes — adaptées à votre entreprise. Pour les sociétés qui dépassent les limites des offres standard.",
       features: [
         "Tout de Business",
-        "Fonctionnalités sur mesure pour votre entreprise",
         "Account manager dédié",
         "Onboarding personnel & formations",
         "Intégrations API & webhooks",
@@ -547,8 +484,6 @@ function PricingPage() {
       </section>
 
       <WelcomeDiscountBanner welcome={c.welcome} />
-
-      <SoloBanner solo={c.solo} />
 
       <section className="relative pt-4 pb-20 md:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -818,59 +753,6 @@ function WelcomeDiscountBanner({ welcome }: { welcome: Content["welcome"] }) {
               <p className="text-sm sm:text-base md:text-lg font-bold text-slate-900 leading-snug">
                 {welcome.title}
               </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SoloBanner({ solo }: { solo: Content["solo"] }) {
-  return (
-    <section className="relative pb-2 md:pb-4">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl p-[1.5px] bg-gradient-to-br from-cyan-400/60 via-blue-500/60 to-purple-500/60 shadow-xl shadow-cyan-500/10">
-          <div className="rounded-[calc(1.5rem-1.5px)] bg-white border border-blue-100 p-6 md:p-9">
-            <div className="grid md:grid-cols-[1.4fr_1fr] gap-6 md:gap-10 items-center">
-              <div>
-                <span className="inline-block px-3 py-1 mb-4 text-[10px] font-black tracking-[0.3em] uppercase text-blue-700 bg-cyan-50 border border-cyan-300 rounded-full">
-                  {solo.badge}
-                </span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tight text-slate-900 mb-3">
-                  {solo.title}
-                </h2>
-                <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-5 max-w-xl">
-                  {solo.desc}
-                </p>
-                <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-700">
-                  {solo.features.map((f) => (
-                    <li key={f} className="inline-flex items-center gap-1.5">
-                      <CheckIcon />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex flex-col items-start md:items-end gap-3">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl md:text-6xl font-black leading-none text-slate-900">
-                    {solo.price}
-                  </span>
-                  <span className="text-sm text-slate-500 font-medium">{solo.unit}</span>
-                </div>
-                <p className="text-xs text-slate-500">{solo.allInclusive}</p>
-                <a
-                  href={solo.ctaHref}
-                  className="mt-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-sm bg-blue-600 text-white hover:bg-blue-500 transition-colors"
-                >
-                  {solo.ctaLabel}
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </div>
             </div>
           </div>
         </div>

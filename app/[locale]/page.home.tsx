@@ -15,7 +15,6 @@ const FeaturePreview = dynamic(() => import("@/components/home/FeaturePreview"))
 const LiveMargen = dynamic(() => import("@/components/home/LiveMargen"));
 const TaskeyShare = dynamic(() => import("@/components/home/TaskeyShare"));
 const TargetAudiences = dynamic(() => import("@/components/TargetAudiences"));
-const SoloPackageMention = dynamic(() => import("@/components/home/SoloPackageMention"));
 const MigrationPromise = dynamic(() => import("@/components/home/MigrationPromise"));
 const Branchen = dynamic(() => import("@/components/home/Branchen"));
 const IOSAppSection = dynamic(() => import("@/components/home/iOSAppSection"));
@@ -368,9 +367,6 @@ export default async function Home({
 
         {/* 3aa. Migrations-Versprechen: Uploadlink, 48h Umzug, sofort produktiv */}
         <MigrationPromise />
-
-        {/* 3a. Kleine Erwähnung: neues Einzelunternehmer-Paket → /pricing */}
-        <SoloPackageMention />
 
         {/* 4. Soziale Validierung: Für wen ist Taskey? */}
         <TargetAudiences variant="dark" />

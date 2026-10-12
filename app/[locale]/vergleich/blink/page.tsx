@@ -60,7 +60,7 @@ const CONTENT: ComparisonContent = {
   overviewH2: "Beide Produkte auf einen Blick",
   overviewLeftTitle: "Taskey",
   overviewLeftBody:
-    "Gebäudereinigungssoftware Made in Germany, Fokus auf NFC-Zeiterfassung, Live-Margen pro Objekt, Einsatzplanung und Auftraggeber-Portal ohne Login. Betrieben von Schulz & Stosse GbR, Saarland. Hosting und Support in Deutschland. Preise ab 59 € pro Monat für Einzelunternehmer, 179 € für Professional, 249 € für Business, Enterprise auf Anfrage.",
+    "Gebäudereinigungssoftware Made in Germany, Fokus auf NFC-Zeiterfassung, Live-Margen pro Objekt, Einsatzplanung und Auftraggeber-Portal ohne Login. Betrieben von Schulz & Stosse GbR, Saarland. Hosting und Support in Deutschland. Preise ab 69 € pro Monat für Beginner, 179 € für Professional, 249 € für Business, Enterprise auf Anfrage.",
   overviewRightTitle: "Blink",
   overviewRightBody:
     "Blink ist eine der bekannteren Cleaning-Suites im DACH-Raum. Fokus auf Zeiterfassung, Objektmanagement und Kommunikation zwischen Reinigungsleitung und Team über eine Mitarbeiter-App. Angeboten wird eine breite Modul-Palette bis in den Enterprise-Bereich.",
@@ -75,7 +75,7 @@ const CONTENT: ComparisonContent = {
     { feature: "DATEV Export", taskey: "LODAS und Lohn und Gehalt", competitor: "Vorhanden" },
     { feature: "Offline-fähige App", taskey: "Ja, mit lokalem Zwischenspeicher", competitor: "Ja" },
     { feature: "Mehrsprachige Mitarbeiter-App", taskey: "DE, EN, FR, TR, RU, PL", competitor: "Mehrsprachig" },
-    { feature: "Preiseinstieg", taskey: "59 € pro Monat, Einzelunternehmer", competitor: "Auf Anfrage" },
+    { feature: "Preiseinstieg", taskey: "69 € pro Monat, Beginner", competitor: "Auf Anfrage" },
     { feature: "Hosting", taskey: "Deutschland", competitor: "Deutschland" },
     { feature: "Zielgruppe", taskey: "Small und Mid-Market Reinigungsbetriebe", competitor: "Small bis Enterprise" },
   ],
@@ -91,14 +91,14 @@ const CONTENT: ComparisonContent = {
     "Sie sind Reinigungsbetrieb mit 5 bis 500 Mitarbeitern und wollen ein modernes System ohne monatelange Einführung.",
     "Sie wollen Live-Margen pro Objekt sehen, nicht am Monatsende in der BWA.",
     "Sie wollen Ihrem Auftraggeber einen sofortigen Live-Link geben, ohne dass der Kunde sich registrieren muss.",
-    "Sie wollen einen transparenten Einstiegspreis ab 59 € pro Monat und keinen Enterprise-Vertrag als Voraussetzung.",
+    "Sie wollen einen transparenten Einstiegspreis ab 69 € pro Monat und keinen Enterprise-Vertrag als Voraussetzung.",
   ],
 
   faqH2: "Häufige Fragen zum Vergleich Taskey vs Blink",
   faqs: [
     {
       q: "Ist Taskey günstiger als Blink?",
-      a: "Der Einstieg liegt bei Taskey öffentlich ausgewiesen bei 59 € pro Monat. Blink kommuniziert seine Preise nicht öffentlich und erstellt Angebote individuell. Ein direkter Preisvergleich ist nur im konkreten Angebot möglich.",
+      a: "Der Einstieg liegt bei Taskey öffentlich ausgewiesen bei 69 € pro Monat. Blink kommuniziert seine Preise nicht öffentlich und erstellt Angebote individuell. Ein direkter Preisvergleich ist nur im konkreten Angebot möglich.",
     },
     {
       q: "Bietet Blink auch NFC-Zeiterfassung?",
@@ -110,7 +110,7 @@ const CONTENT: ComparisonContent = {
     },
     {
       q: "Ist Blink eher für Enterprise oder auch für kleine Betriebe?",
-      a: "Blink bedient beides, ist historisch aber stark im mittleren bis Enterprise-Bereich. Taskey ist explizit für den Bereich Solo bis 500 Mitarbeiter zugeschnitten.",
+      a: "Blink bedient beides, ist historisch aber stark im mittleren bis Enterprise-Bereich. Taskey ist explizit für kleine bis mittelgroße Reinigungsbetriebe bis 500 Mitarbeiter zugeschnitten.",
     },
   ],
 

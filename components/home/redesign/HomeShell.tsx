@@ -1500,87 +1500,6 @@ function AllInOneSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
- * Section 8 — SoloPackage strip
- * ────────────────────────────────────────────────────────────────────────── */
-
-const SOLO_STRIP_CONTENT: Record<Lang, { badge: string; body: string; cta: string }> = {
-  de: {
-    badge: "Neu",
-    body: "Einzelunternehmer-Paket, 59 € pro Monat all inklusive: CRM, Subunternehmer-Portal, Finanzen, Kalkulationen und Kundenverwaltung.",
-    cta: "Zum Paket →",
-  },
-  en: {
-    badge: "New",
-    body: "Solo plan, €59 per month all-in: CRM, subcontractor portal, finance, calculations and client management.",
-    cta: "See the plan →",
-  },
-  fr: {
-    badge: "Nouveau",
-    body: "Formule Solo, 59 € par mois tout compris : CRM, portail sous-traitants, finance, calculs et gestion clients.",
-    cta: "Voir la formule →",
-  },
-};
-
-function SoloPackageStrip() {
-  const { language } = useLanguage();
-  const c = SOLO_STRIP_CONTENT[language];
-  return (
-    <SectionShell size="sm" tone="canvas">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={springs.base}
-        className="tk-glass"
-        style={{
-          borderRadius: "999px",
-          padding: "12px 12px 12px 24px",
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          background: "rgba(255,255,255,0.85)",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
-          <span
-            style={{
-              padding: "4px 10px",
-              borderRadius: "999px",
-              background: "var(--tk-accent)",
-              color: "#fff",
-              fontSize: "11px",
-              fontWeight: 600,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-            }}
-          >
-            {c.badge}
-          </span>
-          <span style={{ color: "var(--tk-ink)", fontSize: "15px", maxWidth: "60ch" }}>
-            {c.body}
-          </span>
-        </div>
-        <Link
-          href="/pricing"
-          style={{
-            padding: "10px 18px",
-            borderRadius: "999px",
-            background: "var(--tk-ink)",
-            color: "#fff",
-            fontSize: "13px",
-            fontWeight: 500,
-          }}
-        >
-          {c.cta}
-        </Link>
-      </motion.div>
-    </SectionShell>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
  * Section 9 — TargetAudiences (Reinigungsarten)
  * ────────────────────────────────────────────────────────────────────────── */
 
@@ -2893,7 +2812,6 @@ export default function HomeShell() {
 
       <LocalizedBridgeParallax />
 
-      <SoloPackageStrip />
       <TestimonialsSection />
       <TaskeyShareDemoSection />
       <IOSAppRedesignSection />

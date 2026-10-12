@@ -113,19 +113,6 @@ export function OrganizationJsonLd() {
     makesOffer: [
       {
         "@type": "Offer",
-        name: "Taskey Einzelunternehmer",
-        url: `${SITE_URL}/pricing`,
-        price: "59",
-        priceCurrency: "EUR",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: "59",
-          priceCurrency: "EUR",
-          unitText: "MONTH",
-        },
-      },
-      {
-        "@type": "Offer",
         name: "Taskey Beginner",
         url: `${SITE_URL}/pricing`,
         price: "69",
@@ -179,12 +166,6 @@ export function OrganizationJsonLd() {
       name: "Taskey Tarife",
       url: `${SITE_URL}/pricing`,
       itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Taskey Einzelunternehmer" },
-          price: "59",
-          priceCurrency: "EUR",
-        },
         {
           "@type": "Offer",
           itemOffered: { "@type": "Service", name: "Taskey Beginner" },
