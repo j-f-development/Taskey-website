@@ -25,7 +25,7 @@ export default function HomeShellCorporate() {
       <CtaBand
         tone="tinted"
         eyebrow="Nächster Schritt"
-        headline="Jetzt starten oder 30 Minuten mit dem Gründerteam."
+        headline="Jetzt starten oder 30 Minuten im Erstgespräch."
         body="Account erstellen ist der schnellste Weg ins System. Für Rollout, SSO oder eine Migration lohnt sich ein Erstgespräch."
         utm="home_de_cta_before_calendly"
       />

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import SignupButton from "@/components/landing/SignupButton";
+import { CONTACT } from "@/lib/contact";
 
 export default function HeroCorporate() {
   return (
@@ -100,9 +101,14 @@ export default function HeroCorporate() {
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <SignupButton size="lg" utm="hero_de" />
-            <Link href="#termin" className="tk-cta-secondary tk-cta-secondary--onink">
+            <a
+              href={CONTACT.calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tk-cta-secondary tk-cta-secondary--onink"
+            >
               Erstgespräch buchen
-            </Link>
+            </a>
             <Link href="#features" className="tk-cta-secondary tk-cta-secondary--onink">
               Funktionen ansehen
             </Link>

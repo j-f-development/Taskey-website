@@ -375,7 +375,9 @@ function HeroScene() {
                   </svg>
                 </motion.a>
                 <motion.a
-                  href="#erstgespraech"
+                  href="https://calendly.com/fynn-taskeyapp/new-meeting"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileTap={{ scale: 0.97 }}
                   transition={springs.snappy}
                   className="tk-cta-secondary tk-cta-secondary--onink"
@@ -945,7 +947,7 @@ const BOOK_MEETING_CONTENT: Record<Lang, {
     h2Line1: "Sprich direkt mit uns.",
     h2Line2: "15 Minuten, unverbindlich.",
     body: "Zeig uns euren Betrieb, wir zeigen dir, wie Taskey deine Einsatzplanung, Zeiterfassung und Dokumentation in einem System bündelt. Kein Vertriebsdruck. Nur ein ehrlicher Blick auf euren Alltag.",
-    chips: ["Direkt mit Fynn (Gründer)", "Individuelle Live-Demo", "Keine Verkaufspräsentation"],
+    chips: ["Individuelle Live-Demo", "Technische Fragen zu NFC, SSO, DATEV", "Antwort werktags innerhalb 24h"],
     ctaLabel: "Termin bei Calendly öffnen",
   },
   en: {
@@ -953,7 +955,7 @@ const BOOK_MEETING_CONTENT: Record<Lang, {
     h2Line1: "Talk to us directly.",
     h2Line2: "15 minutes, no strings.",
     body: "Show us your operation, we’ll show you how Taskey bundles your scheduling, time tracking and documentation into one system. No sales pressure. Just an honest look at your day.",
-    chips: ["Straight with Fynn (founder)", "Live demo for your setup", "No sales pitch"],
+    chips: ["Live demo for your setup", "Technical questions on NFC, SSO, DATEV", "Reply within 24h on business days"],
     ctaLabel: "Open a slot on Calendly",
   },
   fr: {
@@ -961,7 +963,7 @@ const BOOK_MEETING_CONTENT: Record<Lang, {
     h2Line1: "Parlez-nous directement.",
     h2Line2: "15 minutes, sans engagement.",
     body: "Montrez-nous votre entreprise, on vous montre comment Taskey regroupe planification, pointage et documentation dans un seul système. Sans pression commerciale. Juste un regard honnête sur votre quotidien.",
-    chips: ["En direct avec Fynn (fondateur)", "Démo live pour votre cas", "Pas de discours commercial"],
+    chips: ["Démo live pour votre cas", "Questions techniques NFC, SSO, DATEV", "Réponse sous 24h les jours ouvrés"],
     ctaLabel: "Ouvrir un créneau sur Calendly",
   },
 };

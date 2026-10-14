@@ -1,5 +1,5 @@
-import Link from "next/link";
 import SignupButton from "@/components/landing/SignupButton";
+import { CONTACT } from "@/lib/contact";
 
 type Props = {
   eyebrow?: string;
@@ -46,11 +46,12 @@ export default function CtaBand({
   body,
   signupLabel = "Kostenlosen Account erstellen",
   callLabel = "Erstgespräch buchen",
-  callHref = "/erstgespraech",
+  callHref = CONTACT.calendlyUrl,
   utm = "cta_band",
   tone = "ink",
 }: Props) {
   const t = toneStyles(tone);
+  const external = /^https?:\/\//.test(callHref);
   return (
     <section
       className="tkc-section-sm"
@@ -100,9 +101,14 @@ export default function CtaBand({
           </div>
           <div className="flex flex-col items-start lg:items-end gap-3">
             <SignupButton size="lg" label={signupLabel} utm={utm} />
-            <Link href={callHref} className={t.secondary}>
+            <a
+              href={callHref}
+              className={t.secondary}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+            >
               {callLabel}
-            </Link>
+            </a>
           </div>
         </div>
       </div>

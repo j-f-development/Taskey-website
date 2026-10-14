@@ -14,19 +14,19 @@ const path = "/erstgespraech";
 
 const COPY: PageCopy = {
   de: {
-    title: "Erstgespräch mit Taskey · 30 Minuten mit dem Gründerteam | Taskey",
+    title: "Erstgespräch mit Taskey · 30 Minuten Live-Demo | Taskey",
     description:
-      "Erstgespräch mit Taskey: 30 Minuten Live-Demo der Gebäudereinigungs-Software, direkt mit dem Gründerteam. NFC-Zeiterfassung, Einsatzplanung, Angebote, DATEV-Export, Kundenportal. Alternativ sofort einen kostenlosen Account erstellen.",
+      "Erstgespräch mit Taskey: 30 Minuten Live-Demo der Gebäudereinigungs-Software mit NFC-Zeiterfassung, Einsatzplanung, Angeboten, DATEV-Export und Kundenportal. Alternativ sofort einen kostenlosen Account erstellen.",
   },
   en: {
-    title: "Taskey discovery call · 30 minutes with the founding team | Taskey",
+    title: "Taskey discovery call · 30-minute live demo | Taskey",
     description:
-      "Discovery call with Taskey: 30-minute live demo of the cleaning operations software, directly with the founding team. NFC time tracking, scheduling, quotes, DATEV export, client portal. Or create a free account right away.",
+      "Discovery call with Taskey: 30-minute live demo of the cleaning operations software covering NFC time tracking, scheduling, quotes, DATEV export and the client portal. Or create a free account right away.",
   },
   fr: {
-    title: "Échange avec Taskey · 30 minutes avec l’équipe fondatrice | Taskey",
+    title: "Échange avec Taskey · démo live de 30 minutes | Taskey",
     description:
-      "Échange Taskey : démo live de 30 minutes du logiciel de propreté, avec l’équipe fondatrice. Pointage NFC, planning, devis, export DATEV, portail client. Ou créez tout de suite un compte gratuit.",
+      "Échange Taskey : démo live de 30 minutes du logiciel de propreté avec pointage NFC, planning, devis, export DATEV et portail client. Ou créez tout de suite un compte gratuit.",
   },
 };
 
@@ -59,7 +59,7 @@ type Block = {
 const BODY: Record<Locale, Block> = {
   de: {
     eyebrow: "Erstgespräch",
-    h1: "30 Minuten mit dem Taskey-Gründerteam.",
+    h1: "30 Minuten Live-Demo von Taskey.",
     lead:
       "Live-Demo der Software, zugeschnitten auf Ihre Objekte, Ihr Team und Ihre Prozesse. Alternativ erstellen Sie direkt einen kostenlosen Account und arbeiten sofort im Workspace.",
     bookH2: "Termin direkt im Kalender buchen",
@@ -96,9 +96,9 @@ const BODY: Record<Locale, Block> = {
     faqH2: "Häufige Fragen zum Erstgespräch",
     faq: [
       {
-        q: "Mit wem spreche ich im Erstgespräch?",
+        q: "Was wird im Erstgespräch gezeigt?",
         a:
-          "Direkt mit dem Gründerteam von Taskey. Keine Vertriebsmitarbeiter, keine Agentur. Technische Fragen zu NFC, SSO, DATEV, API oder Hosting werden im Call beantwortet.",
+          "Live-Demo an Beispielobjekten in Ihrer Struktur: Einsatz anlegen, Mitarbeitende disponieren, NFC-Scan am Objekt, Nachweis und Rechnung. Technische Fragen zu NFC, SSO, DATEV, API oder Hosting werden direkt beantwortet.",
       },
       {
         q: "Muss ich mich für Taskey entscheiden, wenn ich einen Termin buche?",
@@ -130,7 +130,7 @@ const BODY: Record<Locale, Block> = {
   },
   en: {
     eyebrow: "Discovery call",
-    h1: "30 minutes with the Taskey founding team.",
+    h1: "A 30-minute Taskey live demo.",
     lead:
       "Live demo tailored to your sites, your team and your processes. Alternatively create a free account and work in the workspace right away.",
     bookH2: "Pick a slot in the calendar",
@@ -167,9 +167,9 @@ const BODY: Record<Locale, Block> = {
     faqH2: "Frequently asked about the discovery call",
     faq: [
       {
-        q: "Who will I talk to?",
+        q: "What is shown in the call?",
         a:
-          "Directly with the Taskey founding team. No sales reps, no agency. Technical questions on NFC, SSO, DATEV, API or hosting are answered in the call.",
+          "A live demo on example sites mapped to your structure: create an assignment, dispatch staff, NFC scan on site, generate proof of service and invoice. Technical questions on NFC, SSO, DATEV, API or hosting are answered directly.",
       },
       {
         q: "Do I have to commit if I book a call?",
@@ -201,7 +201,7 @@ const BODY: Record<Locale, Block> = {
   },
   fr: {
     eyebrow: "Échange de découverte",
-    h1: "30 minutes avec l’équipe fondatrice de Taskey.",
+    h1: "Une démo live Taskey de 30 minutes.",
     lead:
       "Démo live adaptée à vos sites, votre équipe et vos processus. Vous pouvez aussi créer un compte gratuit et travailler immédiatement.",
     bookH2: "Choisissez un créneau dans le calendrier",
@@ -238,9 +238,9 @@ const BODY: Record<Locale, Block> = {
     faqH2: "Questions fréquentes sur l’échange",
     faq: [
       {
-        q: "Avec qui est-ce que j’échange ?",
+        q: "Que montrez-vous pendant l’échange ?",
         a:
-          "Directement avec l’équipe fondatrice de Taskey. Pas de commerciaux, pas d’agence. Les questions techniques sur NFC, SSO, DATEV, API ou hébergement sont traitées.",
+          "Une démo live sur des sites d’exemple à votre structure : créer une intervention, affecter du personnel, scan NFC sur site, preuve et facture. Les questions techniques sur NFC, SSO, DATEV, API ou hébergement sont traitées directement.",
       },
       {
         q: "Suis-je engagé si je réserve ?",

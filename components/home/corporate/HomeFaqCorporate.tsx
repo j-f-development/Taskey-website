@@ -82,9 +82,14 @@ export default function HomeFaqCorporate() {
             <Link href="/enterprise" className="tkc-btn tkc-btn-ghost">
               Enterprise ansehen
             </Link>
-            <Link href="#termin" className="tkc-btn tkc-btn-ghost">
+            <a
+              href="https://calendly.com/fynn-taskeyapp/new-meeting"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tkc-btn tkc-btn-ghost"
+            >
               Termin buchen
-            </Link>
+            </a>
           </div>
         </div>
       </div>

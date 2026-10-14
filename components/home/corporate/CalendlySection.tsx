@@ -93,8 +93,8 @@ export default function CalendlySection() {
               </span>
             </div>
             <ul className="mt-7 space-y-2 tkc-mono" style={{ fontSize: "0.82rem", color: "var(--tkc-ink-muted)" }}>
-              <li>· Direkt mit Fynn (Gründer)</li>
               <li>· Individuelle Live-Demo</li>
+              <li>· Technische Fragen zu NFC, SSO, DATEV und API</li>
               <li>· Antwort werktags innerhalb 24h</li>
             </ul>
             <div className="mt-6 pt-5" style={{ borderTop: "1px solid var(--tkc-line)" }}>

@@ -413,9 +413,14 @@ export default async function KostenlosStartenPage({
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <SignupButton size="lg" label={c.ctaLabel} utm="kostenlos_starten_hero" />
-            <Link href="#erstgespraech" className="tk-cta-secondary tk-cta-secondary--onink">
+            <a
+              href="https://calendly.com/fynn-taskeyapp/new-meeting"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tk-cta-secondary tk-cta-secondary--onink"
+            >
               {c.ctaSecondary}
-            </Link>
+            </a>
           </div>
           <p className="mt-5 tkc-mono" style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.78rem" }}>
             {c.ctaNote}
@@ -456,9 +461,14 @@ export default async function KostenlosStartenPage({
           </div>
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <SignupButton label={c.ctaLabel} utm="kostenlos_starten_value" />
-            <Link href="#erstgespraech" className="tk-cta-secondary">
+            <a
+              href="https://calendly.com/fynn-taskeyapp/new-meeting"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tk-cta-secondary"
+            >
               {c.ctaSecondary}
-            </Link>
+            </a>
           </div>
         </div>
       </section>

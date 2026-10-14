@@ -19,9 +19,9 @@ const COPY = {
     titleHighlight: "15 Minuten, unverbindlich.",
     subtitle:
       "Zeig uns euren Betrieb, wir zeigen dir, wie Taskey deine Einsatzplanung, Zeiterfassung und Dokumentation in einem System bündelt. Kein Vertriebsdruck. Nur ein ehrlicher Blick auf euren Alltag.",
-    highlight1: "Direkt mit Fynn (Gründer)",
-    highlight2: "Individuelle Live-Demo",
-    highlight3: "Keine Verkaufspräsentation",
+    highlight1: "Individuelle Live-Demo",
+    highlight2: "Technische Fragen zu NFC, SSO, DATEV",
+    highlight3: "Antwort werktags innerhalb 24h",
     fallbackCta: "Termin bei Calendly öffnen",
   },
   en: {
@@ -29,10 +29,10 @@ const COPY = {
     title: "Talk to us directly.",
     titleHighlight: "15 minutes, no strings attached.",
     subtitle:
-      "Show us your business, we'll show you how Taskey brings scheduling, time tracking and documentation into one system. No sales pressure. Just an honest look at your day-to-day.",
-    highlight1: "Direct with Fynn (founder)",
-    highlight2: "Personal live demo",
-    highlight3: "No sales pitch",
+      "Show us your business, we'll show you how Taskey brings scheduling, time tracking and documentation into one system. Just an honest look at your day-to-day.",
+    highlight1: "Live demo for your setup",
+    highlight2: "Technical questions on NFC, SSO, DATEV",
+    highlight3: "Reply within 24h on business days",
     fallbackCta: "Open scheduling on Calendly",
   },
   fr: {
@@ -40,10 +40,10 @@ const COPY = {
     title: "Parlez-nous directement.",
     titleHighlight: "15 minutes, sans engagement.",
     subtitle:
-      "Montrez-nous votre activité, nous vous montrons comment Taskey réunit planification, pointage et documentation dans un seul système. Aucune pression commerciale. Juste un regard honnête sur votre quotidien.",
-    highlight1: "Directement avec Fynn (fondateur)",
-    highlight2: "Démo live personnalisée",
-    highlight3: "Pas de discours commercial",
+      "Montrez-nous votre activité, nous vous montrons comment Taskey réunit planification, pointage et documentation dans un seul système. Juste un regard honnête sur votre quotidien.",
+    highlight1: "Démo live pour votre cas",
+    highlight2: "Questions techniques NFC, SSO, DATEV",
+    highlight3: "Réponse sous 24h les jours ouvrés",
     fallbackCta: "Ouvrir la prise de rendez-vous",
   },
 } as const;
