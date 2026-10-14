@@ -15,7 +15,7 @@ export default function HeroCorporate() {
     >
       <Image
         src="/hero-2.webp"
-        alt="Corporate Headquarter mit gläserner Fassade als Symbolbild für die Facility-Service-Kunden von Taskey."
+        alt="Taskey Software für Gebäudereinigung · operative Plattform für Facility-Service-Betriebe im DACH-Raum"
         fill
         priority
         sizes="100vw"

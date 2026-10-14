@@ -79,7 +79,7 @@ export default function Footer() {
           <div className="flex items-center gap-4 mb-8">
             <Image
               src="/843B6B8E-CED8-4FF8-8C63-B354140A7BC5e5e1f940b1a8d4df34c43ec444a293f3116e09c2a98dcecd8e8882d3099b7c2d.png"
-              alt="Taskey – Gebäudereinigungssoftware Made in Germany"
+              alt="Taskey Logo · Software für Gebäudereinigung Made in Germany"
               width={120}
               height={40}
               sizes="120px"
@@ -98,6 +98,16 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-widest text-slate-400 mb-6">{t("footer.col.product")}</h4>
             <ul className="space-y-4 text-sm">
+              <li>
+                <Link href="/kostenlos-starten" className="text-slate-300 hover:text-white transition break-words font-medium">
+                  Kostenlos starten
+                </Link>
+              </li>
+              <li>
+                <Link href="/erstgespraech" className="text-slate-300 hover:text-white transition break-words">
+                  Erstgespräch buchen
+                </Link>
+              </li>
               <li>
                 <Link href="/features" className="text-slate-300 hover:text-white transition break-words">
                   {t("footer.link.features")}

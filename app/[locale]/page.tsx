@@ -5,19 +5,19 @@ import { buildMetadata, pickLocale, type PageCopy } from "@/lib/i18n-metadata";
 
 const HOME_COPY: PageCopy = {
   de: {
-    title: "Taskey · Facility Operations Platform für professionelle Dienstleister",
+    title: "Taskey · Software für Gebäudereinigung (NFC, DATEV)",
     description:
-      "Taskey ist die operative Plattform für Facility-Service-Organisationen. Workforce, Einsätze, Objekte und Nachweise in einer kontrollierbaren Daten- und Prozessschicht. Integriert in ERP, HR, Payroll und BI. API, Webhooks, SSO, RBAC und Audit Log.",
+      "Software für Gebäudereinigung: NFC-Zeiterfassung, Einsatzplanung, Live-Margen, Rechnungen und DATEV-Export in einer Plattform. DSGVO, Made in Germany.",
   },
   en: {
-    title: "Cleaning management software · NFC time tracking & live margins | Taskey",
+    title: "Taskey · Cleaning operations software (NFC, DATEV)",
     description:
-      "Cleaning management software made in Germany. NFC time tracking, scheduling, live margins, DATEV export and a client portal. GDPR compliant. Create your free account.",
+      "Cleaning operations software: NFC time tracking, scheduling, live margins, invoicing and DATEV export in one platform. GDPR compliant, made in Germany.",
   },
   fr: {
-    title: "Logiciel de gestion de nettoyage · Pointage NFC & marges en direct | Taskey",
+    title: "Taskey · Logiciel de propreté (NFC, DATEV)",
     description:
-      "Logiciel de nettoyage made in Germany. Pointage NFC, planification, marges en direct, export DATEV et portail client. Conforme RGPD. Créez votre compte gratuit.",
+      "Logiciel de propreté : pointage NFC, planification, marges en direct, facturation et export DATEV dans une seule plateforme. Conforme RGPD, Made in Germany.",
   },
 };
 
