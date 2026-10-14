@@ -92,10 +92,10 @@ export default function HeroCorporate() {
               textShadow: "0 1px 12px rgba(0,0,0,0.25)",
             }}
           >
-            Taskey ist die operative Software für Gebäudereiniger und
+            Taskey ist die operative Plattform für Gebäudereiniger und
             Facility-Service-Organisationen. Zeiterfassung, Einsätze, Objekte,
-            Nachweise und Lohn in einer kontrollierbaren Plattform.
-            Login, Workspace und App statt Excel und Zettelwirtschaft.
+            Nachweise und Lohn in einer kontrollierbaren Daten- und Prozessschicht.
+            Gebaut für Betriebe mit mehreren hundert Mitarbeitenden.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">

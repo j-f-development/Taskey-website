@@ -61,7 +61,7 @@ const BODY: Record<Locale, Block> = {
     eyebrow: "Erstgespräch",
     h1: "30 Minuten mit dem Taskey-Gründerteam.",
     lead:
-      "Live-Demo der Software, zugeschnitten auf Ihre Objekte, Ihr Team und Ihre Prozesse. Kein Verkaufsscript, kein Projektvertrag. Alternativ erstellen Sie direkt einen kostenlosen Account und arbeiten sofort im Workspace.",
+      "Live-Demo der Software, zugeschnitten auf Ihre Objekte, Ihr Team und Ihre Prozesse. Alternativ erstellen Sie direkt einen kostenlosen Account und arbeiten sofort im Workspace.",
     bookH2: "Termin direkt im Kalender buchen",
     bookBody:
       "Wählen Sie einen Slot im Kalender. Antwort werktags innerhalb von 24 Stunden, in der Regel noch am selben Tag.",
@@ -80,7 +80,7 @@ const BODY: Record<Locale, Block> = {
       {
         title: "Rollout und Integration",
         body:
-          "Wir klären, ob und wie SSO, DATEV, HR und ERP eingebunden werden. Rollout als Software-Rollout, nicht als Beratungsprojekt.",
+          "Wir klären, ob und wie SSO, DATEV, HR und ERP eingebunden werden. Konkreter Rollout-Plan am Ende des Calls.",
       },
       {
         title: "Nächster Schritt",
@@ -88,9 +88,9 @@ const BODY: Record<Locale, Block> = {
           "Account erstellen und loslegen oder Pilot auf zwei bis drei Objekten. Keine Entscheidung im Call nötig.",
       },
     ],
-    signupH2: "Direkt starten statt reden",
+    signupH2: "Direkt im Workspace starten",
     signupBody:
-      "Taskey ist Software, kein Dienstleister. Der schnellste Weg ins System: Account anlegen und direkt im Workspace arbeiten. Objekte, Teams, erste Einsätze und Nachweise sind in unter zehn Minuten live.",
+      "Der schnellste Weg ins System: Account anlegen und direkt im Workspace arbeiten. Objekte, Teams, erste Einsätze und Nachweise sind in unter zehn Minuten live.",
     signupCta: "Kostenlosen Account erstellen",
     bookCta: "Erstgespräch buchen",
     faqH2: "Häufige Fragen zum Erstgespräch",
@@ -103,7 +103,7 @@ const BODY: Record<Locale, Block> = {
       {
         q: "Muss ich mich für Taskey entscheiden, wenn ich einen Termin buche?",
         a:
-          "Nein. Kein Projektvertrag, kein Vorab-Commitment. Der Call endet entweder mit einem kostenlosen Account oder mit nichts.",
+          "Nein. Unverbindlich. Nach dem Call entscheiden Sie in Ruhe und können jederzeit einen kostenlosen Account anlegen.",
       },
       {
         q: "Wie läuft die Demo konkret ab?",
@@ -132,7 +132,7 @@ const BODY: Record<Locale, Block> = {
     eyebrow: "Discovery call",
     h1: "30 minutes with the Taskey founding team.",
     lead:
-      "Live demo tailored to your sites, your team and your processes. No sales script, no project contract. Alternatively create a free account and work in the workspace right away.",
+      "Live demo tailored to your sites, your team and your processes. Alternatively create a free account and work in the workspace right away.",
     bookH2: "Pick a slot in the calendar",
     bookBody:
       "Choose a slot in the calendar. Reply within 24 hours on business days, usually the same day.",
@@ -151,7 +151,7 @@ const BODY: Record<Locale, Block> = {
       {
         title: "Rollout and integration",
         body:
-          "SSO, DATEV, HR and ERP integration options. Rollout as a software rollout, not a consulting project.",
+          "SSO, DATEV, HR and ERP integration options. Concrete rollout plan by the end of the call.",
       },
       {
         title: "Next step",
@@ -159,9 +159,9 @@ const BODY: Record<Locale, Block> = {
           "Create an account and start, or run a pilot on two or three sites. No decision required in the call.",
       },
     ],
-    signupH2: "Start directly instead of talking",
+    signupH2: "Straight into the workspace",
     signupBody:
-      "Taskey is software, not a service engagement. Fastest path: create an account and work in the workspace. Sites, teams, first assignments and proof of service are live in under ten minutes.",
+      "Fastest path into the system: create an account and work in the workspace. Sites, teams, first assignments and proof of service are live in under ten minutes.",
     signupCta: "Create free account",
     bookCta: "Book a discovery call",
     faqH2: "Frequently asked about the discovery call",
@@ -174,7 +174,7 @@ const BODY: Record<Locale, Block> = {
       {
         q: "Do I have to commit if I book a call?",
         a:
-          "No. No project contract, no upfront commitment. The call ends with a free account or with nothing.",
+          "No. The call is non-binding. You decide afterwards and can create a free account whenever you like.",
       },
       {
         q: "How does the demo work?",
@@ -203,7 +203,7 @@ const BODY: Record<Locale, Block> = {
     eyebrow: "Échange de découverte",
     h1: "30 minutes avec l’équipe fondatrice de Taskey.",
     lead:
-      "Démo live adaptée à vos sites, votre équipe et vos processus. Pas de script commercial, pas de contrat projet. Vous pouvez aussi créer un compte gratuit et travailler immédiatement.",
+      "Démo live adaptée à vos sites, votre équipe et vos processus. Vous pouvez aussi créer un compte gratuit et travailler immédiatement.",
     bookH2: "Choisissez un créneau dans le calendrier",
     bookBody:
       "Sélectionnez un créneau. Réponse en 24 heures les jours ouvrés, souvent le jour même.",
@@ -222,7 +222,7 @@ const BODY: Record<Locale, Block> = {
       {
         title: "Déploiement et intégration",
         body:
-          "SSO, DATEV, RH et ERP. Déploiement comme un rollout logiciel, pas comme un projet conseil.",
+          "SSO, DATEV, RH et ERP. Plan de déploiement concret à la fin de l’échange.",
       },
       {
         title: "Prochaine étape",
@@ -230,9 +230,9 @@ const BODY: Record<Locale, Block> = {
           "Créer un compte et démarrer, ou lancer un pilote sur deux ou trois sites. Aucune décision requise pendant l’échange.",
       },
     ],
-    signupH2: "Démarrer directement plutôt que parler",
+    signupH2: "Directement dans le workspace",
     signupBody:
-      "Taskey est un logiciel, pas une prestation. Le plus rapide : créer un compte et travailler dans le workspace. Sites, équipes, premières interventions et preuves sont en ligne en moins de dix minutes.",
+      "Le plus rapide pour entrer dans le système : créer un compte et travailler dans le workspace. Sites, équipes, premières interventions et preuves sont en ligne en moins de dix minutes.",
     signupCta: "Créer un compte gratuit",
     bookCta: "Réserver un échange",
     faqH2: "Questions fréquentes sur l’échange",
@@ -245,7 +245,7 @@ const BODY: Record<Locale, Block> = {
       {
         q: "Suis-je engagé si je réserve ?",
         a:
-          "Non. Pas de contrat projet, pas d’engagement amont. L’échange se termine par un compte gratuit ou par rien.",
+          "Non. L’échange est sans engagement. Vous décidez ensuite et pouvez créer un compte gratuit quand vous le souhaitez.",
       },
       {
         q: "Comment se déroule la démo ?",

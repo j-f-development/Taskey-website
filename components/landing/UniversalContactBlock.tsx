@@ -26,7 +26,7 @@ const COPY: Record<
     eyebrow: "Direkter Einstieg",
     headline: "Account anlegen oder Erstgespräch buchen.",
     lead:
-      "Taskey ist Software, kein Dienstleister-Deal. Der schnellste Weg: Account erstellen und direkt im Workspace arbeiten. Lieber vorher sprechen? Erstgespräch im Kalender buchen.",
+      "Der schnellste Weg: Account erstellen und direkt im Workspace arbeiten. Lieber vorher sprechen? Erstgespräch im Kalender buchen.",
     signupLabel: "Kostenlosen Account erstellen",
     signupHelp: "Login, Workspace, Mobile App. Unverbindlich, keine Kreditkarte.",
     calendlyLabel: "Erstgespräch buchen",
@@ -40,7 +40,7 @@ const COPY: Record<
     eyebrow: "Direct entry",
     headline: "Create your account or book a discovery call.",
     lead:
-      "Taskey is software, not a service engagement. Fastest path: create an account and start working in the workspace. Prefer to talk first? Book a slot in the calendar.",
+      "Fastest path: create an account and start working in the workspace. Prefer to talk first? Book a slot in the calendar.",
     signupLabel: "Create free account",
     signupHelp: "Login, workspace, mobile app. No commitment, no credit card.",
     calendlyLabel: "Book a discovery call",
@@ -54,7 +54,7 @@ const COPY: Record<
     eyebrow: "Entrée directe",
     headline: "Créer votre compte ou réserver un échange.",
     lead:
-      "Taskey est un logiciel, pas une prestation. Le plus rapide : créer un compte et travailler dans le workspace. Vous préférez d’abord discuter ? Réservez un créneau au calendrier.",
+      "Le plus rapide : créer un compte et travailler dans le workspace. Vous préférez d’abord discuter ? Réservez un créneau au calendrier.",
     signupLabel: "Créer un compte gratuit",
     signupHelp: "Login, workspace, app mobile. Sans engagement, sans carte bancaire.",
     calendlyLabel: "Réserver un échange",

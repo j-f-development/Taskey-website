@@ -15,17 +15,17 @@ const COPY: PageCopy = {
   de: {
     title: "Taskey kostenlos starten · Gebäudereinigungs-Software direkt im Browser | Taskey",
     description:
-      "Taskey ist Software, kein Dienstleister. Kostenlosen Account erstellen, Workspace öffnen und sofort mit NFC-Zeiterfassung, Einsatzplanung, Angeboten, Rechnungen und Kundenportal arbeiten. Keine Kreditkarte, keine Installation, DSGVO-konform, Made in Germany.",
+      "Kostenlosen Account erstellen, Workspace öffnen und sofort mit NFC-Zeiterfassung, Einsatzplanung, Angeboten, Rechnungen und Kundenportal arbeiten. Keine Kreditkarte, keine Installation, DSGVO-konform, Made in Germany.",
   },
   en: {
     title: "Start Taskey for free · Cleaning operations software in your browser | Taskey",
     description:
-      "Taskey is software, not a service deal. Create a free account, open the workspace and start with NFC time tracking, scheduling, quotes, invoicing and the client portal. No credit card, no installation, GDPR compliant.",
+      "Create a free account, open the workspace and start with NFC time tracking, scheduling, quotes, invoicing and the client portal. No credit card, no installation, GDPR compliant.",
   },
   fr: {
     title: "Démarrer Taskey gratuitement · Logiciel de propreté dans votre navigateur | Taskey",
     description:
-      "Taskey est un logiciel, pas une prestation. Créez un compte gratuit, ouvrez le workspace et travaillez avec pointage NFC, planning, devis, facturation et portail client. Sans carte bancaire, sans installation, conforme RGPD.",
+      "Créez un compte gratuit, ouvrez le workspace et travaillez avec pointage NFC, planning, devis, facturation et portail client. Sans carte bancaire, sans installation, conforme RGPD.",
   },
 };
 
@@ -65,7 +65,7 @@ const BODY: Record<Locale, PageCopyBlock> = {
     eyebrow: "Kostenlos starten",
     h1: "Account erstellen und direkt im Workspace arbeiten.",
     lead:
-      "Taskey ist Software. Kein Dienstleister, keine Beraterrunde, kein Projektplan. Sie erstellen einen Account, öffnen den Workspace und arbeiten los. Zeiterfassung, Einsatzplanung, Objekte, Nachweise, Angebote und Rechnungen sind ab Minute eins da.",
+      "Account erstellen, Workspace öffnen, loslegen. Zeiterfassung, Einsatzplanung, Objekte, Nachweise, Angebote und Rechnungen sind ab Minute eins da.",
     ctaLabel: "Kostenlosen Account erstellen",
     ctaSecondary: "Erstgespräch buchen",
     ctaNote: "Keine Kreditkarte. Keine Installation. Setup unter 10 Minuten.",
@@ -110,9 +110,9 @@ const BODY: Record<Locale, PageCopyBlock> = {
           "Auftraggeber sehen Status, Protokolle und Fotos live. Reklamationen werden strukturiert erfasst, nicht per Anruf.",
       },
     ],
-    softwareH2: "Software statt Dienstleister",
+    softwareH2: "Was in Ihrem Workspace steht",
     softwareBody:
-      "Taskey ist kein Beratungsprojekt. Es gibt keinen Workshop, keinen Kick-off und keinen Berater, der Ihre Prozesse neu malt. Sie erstellen einen Account und arbeiten im System. Alles was auf dieser Seite steht, steht Ihnen in Ihrem Workspace zur Verfügung.",
+      "Alles auf dieser Seite ist Bestandteil des Produkts. Nach dem Login finden Sie dieselben Module in Ihrem Workspace. Kein Projektplan, kein Workshop vorab.",
     softwareBullets: [
       "Login, Workspace, Mobile App ab Minute eins",
       "Admin-Konsole mit Rollen, Rechten und Audit-Log",
@@ -156,18 +156,18 @@ const BODY: Record<Locale, PageCopyBlock> = {
       {
         q: "Lohnt sich dann noch ein Erstgespräch?",
         a:
-          "Nur wenn Sie es möchten. Taskey funktioniert aus dem Account heraus. Ein 30-Minuten-Erstgespräch ist für Betriebe sinnvoll, die Rollout, SSO-Setup, Integrationen oder einen Umzug aus einer Alt-Software planen.",
+          "Nur wenn Sie es möchten. Taskey funktioniert aus dem Account heraus. Ein 30-Minuten-Erstgespräch ist für Betriebe sinnvoll, die Rollout, SSO-Setup, Integrationen oder einen Umzug aus einer bestehenden Lösung planen.",
       },
     ],
-    ctaFinalH2: "Direkt im Workspace statt im Vertrieb.",
+    ctaFinalH2: "Direkt im Workspace.",
     ctaFinalBody:
-      "Account erstellen und in zehn Minuten sehen, wie Ihr Betrieb in Taskey aussieht. Ohne Call, ohne Verkaufsrunde, ohne Projektplan.",
+      "Account erstellen und in zehn Minuten sehen, wie Ihr Betrieb in Taskey aussieht.",
   },
   en: {
     eyebrow: "Start for free",
     h1: "Create an account and work in the workspace right away.",
     lead:
-      "Taskey is software. No service engagement, no consulting round, no project plan. You create an account, open the workspace and start working. Time tracking, scheduling, sites, proof of service, quotes and invoicing are there from minute one.",
+      "Create an account, open the workspace, start. Time tracking, scheduling, sites, proof of service, quotes and invoicing are there from minute one.",
     ctaLabel: "Create free account",
     ctaSecondary: "Book a discovery call",
     ctaNote: "No credit card. No installation. Setup under 10 minutes.",
@@ -212,9 +212,9 @@ const BODY: Record<Locale, PageCopyBlock> = {
           "Clients see status, records and photos live. Complaints are captured in a structured way, not by phone.",
       },
     ],
-    softwareH2: "Software, not a service engagement",
+    softwareH2: "What is in your workspace",
     softwareBody:
-      "Taskey is not a consulting project. There is no workshop, no kickoff, no consultant redrawing your processes. You create an account and work in the system. Everything on this page is available in your workspace.",
+      "Everything on this page is part of the product. After login you find the same modules in your workspace. No project plan, no upfront workshop.",
     softwareBullets: [
       "Login, workspace, mobile app from minute one",
       "Admin console with roles, permissions and audit log",
@@ -261,15 +261,15 @@ const BODY: Record<Locale, PageCopyBlock> = {
           "Only if you want to. Taskey works straight out of the account. A 30-minute discovery call is useful for operators planning rollout, SSO, integrations or a migration from a legacy system.",
       },
     ],
-    ctaFinalH2: "Workspace first, not sales first.",
+    ctaFinalH2: "Straight into the workspace.",
     ctaFinalBody:
-      "Create an account and see what your operation looks like in Taskey within ten minutes. No call, no sales round, no project plan.",
+      "Create an account and see what your operation looks like in Taskey within ten minutes.",
   },
   fr: {
     eyebrow: "Démarrer gratuitement",
     h1: "Créer un compte et travailler dans le workspace immédiatement.",
     lead:
-      "Taskey est un logiciel. Ni prestation, ni tour de conseil, ni plan projet. Vous créez un compte, ouvrez le workspace et commencez. Pointage, planification, sites, preuves, devis et factures sont là dès la première minute.",
+      "Créez un compte, ouvrez le workspace, commencez. Pointage, planification, sites, preuves, devis et factures sont là dès la première minute.",
     ctaLabel: "Créer un compte gratuit",
     ctaSecondary: "Réserver un échange",
     ctaNote: "Sans carte bancaire. Sans installation. Mise en route en moins de 10 minutes.",
@@ -314,9 +314,9 @@ const BODY: Record<Locale, PageCopyBlock> = {
           "Les donneurs d’ordre voient statut, rapports et photos en direct. Les réclamations sont structurées, non téléphoniques.",
       },
     ],
-    softwareH2: "Un logiciel, pas une prestation",
+    softwareH2: "Ce qu’il y a dans votre workspace",
     softwareBody:
-      "Taskey n’est pas un projet de conseil. Pas d’atelier, pas de kickoff, pas de consultant qui redessine vos processus. Vous créez un compte et vous travaillez dans le système. Tout ce qui figure sur cette page est disponible dans votre workspace.",
+      "Tout ce qui figure sur cette page fait partie du produit. Après connexion, vous retrouvez les mêmes modules dans votre workspace. Pas de plan projet, pas d’atelier préalable.",
     softwareBullets: [
       "Login, workspace, app mobile dès la première minute",
       "Console d’administration avec rôles, droits et journal d’audit",
@@ -363,9 +363,9 @@ const BODY: Record<Locale, PageCopyBlock> = {
           "Seulement si vous le souhaitez. Taskey fonctionne directement depuis le compte. Un échange de 30 minutes est utile pour un déploiement SSO, des intégrations ou une migration depuis un système ancien.",
       },
     ],
-    ctaFinalH2: "D’abord le workspace, pas la vente.",
+    ctaFinalH2: "Directement dans le workspace.",
     ctaFinalBody:
-      "Créez un compte et voyez à quoi ressemble votre exploitation dans Taskey en dix minutes. Pas d’appel, pas de pitch, pas de plan projet.",
+      "Créez un compte et voyez à quoi ressemble votre exploitation dans Taskey en dix minutes.",
   },
 };
 

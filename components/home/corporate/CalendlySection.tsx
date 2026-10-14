@@ -85,7 +85,6 @@ export default function CalendlySection() {
             <p className="tkc-body mt-4">
               Der schnellste Weg: Account erstellen und direkt im System arbeiten.
               Lieber vorab sprechen? Buchen Sie ein Erstgespräch im Kalender rechts.
-              Kein Verkaufsdruck.
             </p>
             <div className="mt-6 flex flex-col gap-3">
               <SignupButton utm="home_erstgespraech" />

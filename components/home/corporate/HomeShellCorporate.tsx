@@ -13,9 +13,9 @@ export default function HomeShellCorporate() {
       <FeaturesOverview />
       <CtaBand
         tone="ink"
-        eyebrow="Direkt in der Software"
-        headline="Taskey ist Software. Account anlegen und loslegen."
-        body="Kein Projektvertrag, kein Workshop, kein Berater, der Ihre Prozesse neu malt. Workspace in Sekunden, Mobile App und Login ab Minute eins."
+        eyebrow="Direkt starten"
+        headline="Account anlegen und loslegen."
+        body="Workspace in Sekunden. Mobile App und Login ab Minute eins. Alles, was Sie auf dieser Seite sehen, finden Sie nach dem Login im Produkt."
         utm="home_de_cta_mid"
       />
       <EnterpriseTrustStrip />
@@ -26,7 +26,7 @@ export default function HomeShellCorporate() {
         tone="tinted"
         eyebrow="Nächster Schritt"
         headline="Jetzt starten oder 30 Minuten mit dem Gründerteam."
-        body="Account erstellen ist der schnellste Weg ins System. Erstgespräch ist für Betriebe sinnvoll, die Rollout, SSO oder eine Migration planen."
+        body="Account erstellen ist der schnellste Weg ins System. Für Rollout, SSO oder eine Migration lohnt sich ein Erstgespräch."
         utm="home_de_cta_before_calendly"
       />
       <CalendlySection />
