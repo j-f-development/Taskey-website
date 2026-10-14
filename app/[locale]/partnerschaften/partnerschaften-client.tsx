@@ -120,7 +120,7 @@ export default function PartnerschaftenClient() {
       <section className="relative py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-blue-50 border border-slate-200 backdrop-blur-md mb-8">
-            <Image src="/logoblue.png" alt="Taskey Logo" width={56} height={56} sizes="56px" />
+            <Image src="/logoblue.png" alt="Taskey Logo · Software für Gebäudereinigung" width={56} height={56} sizes="56px" />
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-6 tracking-tight">
             {t('partner.trust.title')}
@@ -257,7 +257,7 @@ export default function PartnerschaftenClient() {
                 <div className="relative lg:col-span-3 aspect-[4/3] lg:aspect-auto">
                   <Image
                     src="/095818D7-E56D-4784-AB51-A0EC8E9E85D5.webp"
-                    alt="Taskey Partner – MG Gebäudeservice"
+                    alt="Taskey-Partner MG Gebäudeservice · Gebäudereinigung in Köln als Referenzkunde"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 60vw"
@@ -279,7 +279,7 @@ export default function PartnerschaftenClient() {
                   <div className="mb-6 inline-flex items-center h-14 rounded-xl bg-slate-50 border border-slate-200 px-4 self-start">
                     <Image
                       src="https://cdn.vars-development.com/logos/enterprise/mg-geba%CC%88udeservice.png.avif"
-                      alt="MG Gebäudeservice"
+                      alt="Logo MG Gebäudeservice · Taskey-Referenzkunde in der Gebäudereinigung"
                       width={140}
                       height={50}
                       className="object-contain h-8 w-auto"
@@ -351,7 +351,7 @@ export default function PartnerschaftenClient() {
               <div className="h-16 flex items-center mb-6">
                 <Image
                   src="/logos/pavan-logo.png"
-                  alt="PAVAN GmbH"
+                  alt="Logo PAVAN GmbH · Partner und Referenzkunde von Taskey in der Gebäudereinigung"
                   width={160}
                   height={60}
                   className="object-contain h-10 w-auto grayscale group-hover:grayscale-0 transition-all"
@@ -377,7 +377,7 @@ export default function PartnerschaftenClient() {
               <div className="h-16 flex items-center mb-6">
                 <Image
                   src="/logos/flix-clean-logo.jpg"
-                  alt="Flix-Clean Gebäudereinigung"
+                  alt="Logo Flix-Clean Gebäudereinigung · Partner und Referenzkunde von Taskey"
                   width={160}
                   height={60}
                   className="object-contain h-12 w-auto grayscale group-hover:grayscale-0 transition-all"
@@ -403,7 +403,7 @@ export default function PartnerschaftenClient() {
               <div className="h-16 flex items-center mb-6">
                 <Image
                   src="/logos/acrotec-logo.jpg"
-                  alt="Acrotec GmbH"
+                  alt="Logo Acrotec GmbH · Partner und Referenzkunde von Taskey in der Gebäudereinigung"
                   width={160}
                   height={60}
                   className="object-contain h-10 w-auto grayscale group-hover:grayscale-0 transition-all"

@@ -7,6 +7,7 @@ type Feature = {
   title: string;
   desc: string;
   image?: string;
+  imageAlt?: string;
 };
 
 const FEATURES: Feature[] = [
@@ -15,48 +16,56 @@ const FEATURES: Feature[] = [
     title: "NFC-Zeiterfassung",
     desc: "Scan am Objekt startet die Zeit. Standort, Aufgabe und Nachweis entstehen automatisch.",
     image: "/feature-zeiterfassung.png",
+    imageAlt: "NFC-Zeiterfassung für Gebäudereinigung · Scan am Objekt startet die Arbeitszeit automatisch",
   },
   {
     slug: "einsatzplanung",
     title: "Einsatzplanung",
     desc: "Kolonnen, Touren und Vertretungen in einem Kalender. Konflikte werden vor der Freigabe sichtbar.",
     image: "/feature-einsatzplanung.png",
+    imageAlt: "Einsatzplanung Gebäudereinigung · Kalender mit Kolonnen, Touren und Vertretungen in Taskey",
   },
   {
     slug: "kalkulation",
     title: "Kalkulation",
     desc: "Fläche, Frequenz, Lohn und Marge in einer Kalkulation. Angebot lässt sich direkt daraus versenden.",
     image: "/feature-kalkulation.png",
+    imageAlt: "Kalkulation Reinigungsauftrag · Fläche, Frequenz, Lohn und Marge in der Taskey-Software",
   },
   {
     slug: "live-margen",
     title: "Live-Margen",
     desc: "Objekt für Objekt sichtbar, ob die Rechnung aufgeht. Ohne Excel und ohne Wochen Verzug.",
     image: "/feature-live-margen.png",
+    imageAlt: "Live-Margen pro Objekt · Rentabilität der Gebäudereinigung in Echtzeit im Taskey-Dashboard",
   },
   {
     slug: "subunternehmer-management",
     title: "Subunternehmer-Management",
     desc: "Nachunternehmer digital anbinden, Einsätze steuern und Nachweise sauber im System zusammenführen.",
     image: "/feature-subunternehmer-management.png",
+    imageAlt: "Subunternehmer-Management in der Gebäudereinigung · Nachunternehmer digital in Taskey anbinden",
   },
   {
     slug: "rechnungsprogramm",
     title: "Rechnungsprogramm",
     desc: "Rechnungen direkt aus den erbrachten Leistungen. Konform, wiederholbar, DATEV-fähig.",
     image: "/feature-rechnungsprogramm.png",
+    imageAlt: "Rechnungsprogramm für Gebäudereiniger · DATEV-fähige Rechnungen aus erbrachten Leistungen",
   },
   {
     slug: "datev-export",
     title: "DATEV-Export",
     desc: "Zeitdaten und Lohnbewegungen an die Steuerkanzlei. Ohne Zwischenexport in Excel.",
     image: "/feature-datev.png",
+    imageAlt: "DATEV-Export aus Taskey · Zeitdaten und Lohnbewegungen für die Steuerkanzlei",
   },
   {
     slug: "ausschreibungen",
     title: "Ausschreibungen",
     desc: "Passende öffentliche und private Ausschreibungen gefiltert, verfolgt und dokumentiert.",
     image: "/feature-ausschreibungen.png",
+    imageAlt: "Ausschreibungen für Reinigungsbetriebe · gefilterte öffentliche und private Vergaben in Taskey",
   },
 ];
 
@@ -141,7 +150,7 @@ export default function FeaturesOverview() {
                 {f.image ? (
                   <Image
                     src={f.image}
-                    alt={f.title}
+                    alt={f.imageAlt ?? f.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     style={{ objectFit: "cover" }}

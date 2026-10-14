@@ -48,7 +48,7 @@ export default function IOSAppSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/sections/phone-screen-1.jpg"
-                alt="Taskey App – Übersicht des Reinigungs-Teams"
+                alt="Taskey iOS-App für Gebäudereinigung · Übersicht des Reinigungs-Teams auf dem Smartphone"
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -63,7 +63,7 @@ export default function IOSAppSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/sections/phone-screen-3.jpg"
-                alt="Taskey App – Aufgaben und Nachweise"
+                alt="Taskey Mobile-App · Aufgaben und digitale Nachweise für Reinigungseinsätze"
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -84,7 +84,7 @@ export default function IOSAppSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/sections/phone-screen-2.jpg"
-                alt="Taskey App in Aktion"
+                alt="Taskey Mobile-App im Einsatz · NFC-Scan, Zeiterfassung und Objektübersicht in der Gebäudereinigung"
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover"
               />

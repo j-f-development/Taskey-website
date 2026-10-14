@@ -75,7 +75,7 @@ export default function VideosPage() {
             {}
             <img
               src={YOUTUBE_THUMB}
-              alt="Taskey Erklärungsvideo Vorschau"
+              alt="Taskey Erklärungsvideo · Software für Gebäudereinigung im Überblick"
               className="absolute inset-0 w-full h-full object-cover"
               loading="lazy"
               decoding="async"

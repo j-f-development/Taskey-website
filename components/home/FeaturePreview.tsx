@@ -21,6 +21,7 @@ export default function FeaturePreview() {
       title: t("features.1.title"),
       description: t("features.1.desc"),
       image: "/BA2B10E7-7DE2-41AD-B48D-EE39BC2E52E6.webp",
+      imageAlt: t("features.1.imageAlt"),
       tag: t("features.1.tag"),
     },
     {
@@ -28,6 +29,7 @@ export default function FeaturePreview() {
       title: t("features.2.title"),
       description: t("features.2.desc"),
       image: "/B899021B-1AAA-40FD-9668-5DBB4E23D5D2.webp",
+      imageAlt: t("features.2.imageAlt"),
       tag: t("features.2.tag"),
     },
     {
@@ -35,6 +37,7 @@ export default function FeaturePreview() {
       title: t("features.3.title"),
       description: t("features.3.desc"),
       image: "/feature-zeiterfassung.webp",
+      imageAlt: t("features.3.imageAlt"),
       tag: t("features.3.tag"),
     },
   ];
@@ -64,7 +67,7 @@ export default function FeaturePreview() {
           >
             <Image
               src={f.image}
-              alt={f.title}
+              alt={f.imageAlt || f.title}
               fill
               sizes="62vw"
               className="object-cover object-center"

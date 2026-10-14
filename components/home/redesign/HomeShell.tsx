@@ -766,7 +766,7 @@ const FEATURE_TRIO_CONTENT: Record<Lang, FeatureTrioCard[]> = {
       body:
         "Ihr Team hält das Handy an den NFC-Aufkleber am Objekt. Zeitstempel, Standort und Mitarbeiter werden automatisch dokumentiert. Keine handgeschriebenen Zettel, keine nachträglichen Korrekturen, keine Diskussion am Monatsende. Sie wissen, wer wann wo gearbeitet hat, bevor Sie danach fragen.",
       image: "/sections/zeiterfassung.png",
-      alt: "NFC-Zeiterfassung am Objekt per Smartphone",
+      alt: "NFC-Zeiterfassung in der Gebäudereinigung · Reinigungskraft stempelt am Objekt mit dem Smartphone in Taskey",
       href: "/features/nfc-zeiterfassung",
       detailsLabel: "Details ansehen",
     },
@@ -776,7 +776,7 @@ const FEATURE_TRIO_CONTENT: Record<Lang, FeatureTrioCard[]> = {
       body:
         "Aus dem Auftrag entsteht das Angebot, aus dem Angebot die Rechnung. Marge pro Objekt in Echtzeit, DATEV-Export für den Steuerberater, Belege und Spesen im selben System. Kein doppeltes Eintippen, keine Excel-Runde, keine vergessene Position. Am Monatsende ist bereits fertig, was früher zwei Tage gekostet hat.",
       image: "/sections/datev-export.webp",
-      alt: "DATEV-Export und Rechnungsübersicht am Bildschirm",
+      alt: "DATEV-Export und Rechnungsübersicht für Gebäudereiniger in Taskey am Bildschirm",
       href: "/features/datev-export",
       detailsLabel: "Details ansehen",
     },
@@ -786,7 +786,7 @@ const FEATURE_TRIO_CONTENT: Record<Lang, FeatureTrioCard[]> = {
       body:
         "Ihr Kunde öffnet einen Leselink im Browser und sieht Live-Status pro Raum, dokumentierte Leistungsnachweise, Fotos, offene Tickets. Kein App-Zwang, keine E-Mail-Kette, keine Diskussion darüber, ob gereinigt wurde. Ein Argument, mit dem Sie in Ausschreibungen den Unterschied machen.",
       image: "/sections/feature-taskey-share.png",
-      alt: "Auftraggeber-Portal mit Live-Grundriss und Raumstatus",
+      alt: "Taskey Share Kundenportal · Live-Grundriss und Raumstatus für den Auftraggeber in der Gebäudereinigung",
       href: "https://demo.kunden.taskeyapp.com",
       detailsLabel: "Live ansehen",
     },
@@ -798,7 +798,7 @@ const FEATURE_TRIO_CONTENT: Record<Lang, FeatureTrioCard[]> = {
       body:
         "Your team taps their phone against the NFC sticker on site. Timestamp, location and employee are logged automatically. No handwritten notes, no late corrections, no month-end debate. You know who worked where and when, before you even have to ask.",
       image: "/sections/zeiterfassung.png",
-      alt: "NFC time tracking on site via smartphone",
+      alt: "NFC time tracking in cleaning operations · cleaner clocks in on site with their smartphone in Taskey",
       href: "/features/nfc-zeiterfassung",
       detailsLabel: "See details",
     },
@@ -808,7 +808,7 @@ const FEATURE_TRIO_CONTENT: Record<Lang, FeatureTrioCard[]> = {
       body:
         "The job becomes a quote, the quote becomes an invoice. Real-time margin per site, DATEV export to your accountant, receipts and expenses in the same system. No re-typing, no Excel round-trip, no forgotten line item. What used to take two days at month-end is already done.",
       image: "/sections/datev-export.webp",
-      alt: "DATEV export and invoice overview on screen",
+      alt: "DATEV export and invoice overview for cleaning operators on a Taskey screen",
       href: "/features/datev-export",
       detailsLabel: "See details",
     },
@@ -818,7 +818,7 @@ const FEATURE_TRIO_CONTENT: Record<Lang, FeatureTrioCard[]> = {
       body:
         "Your client opens a read-only link in the browser and sees live status per room, documented proof of service, photos, open tickets. No app required, no email chain, no debate over whether the work happened. A differentiator you can put on the table in every tender.",
       image: "/sections/feature-taskey-share.png",
-      alt: "Client portal with live floor plan and room status",
+      alt: "Taskey Share client portal · live floor plan and room status for the cleaning client",
       href: "https://demo.kunden.taskeyapp.com",
       detailsLabel: "See live",
     },
@@ -830,7 +830,7 @@ const FEATURE_TRIO_CONTENT: Record<Lang, FeatureTrioCard[]> = {
       body:
         "Votre équipe approche le téléphone de l’autocollant NFC sur le site. Horodatage, position et salarié sont enregistrés automatiquement. Pas de notes manuscrites, pas de corrections tardives, pas de débat en fin de mois. Vous savez qui a travaillé où et quand, avant même de le demander.",
       image: "/sections/zeiterfassung.png",
-      alt: "Pointage NFC sur site via smartphone",
+      alt: "Pointage NFC en propreté · un agent pointe sur site avec son smartphone dans Taskey",
       href: "/features/nfc-zeiterfassung",
       detailsLabel: "Voir les détails",
     },
@@ -840,7 +840,7 @@ const FEATURE_TRIO_CONTENT: Record<Lang, FeatureTrioCard[]> = {
       body:
         "La mission devient devis, le devis devient facture. Marge par site en temps réel, export DATEV vers le comptable, justificatifs et notes de frais dans le même système. Pas de double saisie, pas de détour Excel, pas de ligne oubliée. Ce qui prenait deux jours en fin de mois est déjà fait.",
       image: "/sections/datev-export.webp",
-      alt: "Export DATEV et vue des factures à l’écran",
+      alt: "Export DATEV et vue des factures pour une entreprise de propreté dans Taskey",
       href: "/features/datev-export",
       detailsLabel: "Voir les détails",
     },
@@ -850,7 +850,7 @@ const FEATURE_TRIO_CONTENT: Record<Lang, FeatureTrioCard[]> = {
       body:
         "Votre client ouvre un lien en lecture seule dans le navigateur et voit le statut en direct par salle, les preuves de service documentées, les photos, les tickets ouverts. Pas d’app, pas de chaîne d’e-mails, pas de débat. Un argument que vous posez sur la table dans chaque appel d’offres.",
       image: "/sections/feature-taskey-share.png",
-      alt: "Portail donneur d’ordre avec plan en direct et statut par salle",
+      alt: "Portail client Taskey Share · plan en direct et statut par salle pour le donneur d’ordre en propreté",
       href: "https://demo.kunden.taskeyapp.com",
       detailsLabel: "Voir en direct",
     },
@@ -1178,25 +1178,25 @@ const COMM_SECTION_CONTENT: Record<Lang, {
         title: "Sie sehen es, während es passiert.",
         sub: "Live-Standort, Scan und Statuswechsel. Der Chat-Ping, den Sie früher gemacht hätten, entfällt.",
         image: "/sections/echtzeit-feld-buero.png",
-        alt: "Reinigungskraft im Einsatz, sichtbar dokumentiert per App",
+        alt: "Reinigungskraft im Einsatz · live dokumentiert in der Taskey-App für Gebäudereinigung",
       },
       {
         title: "Der Kunde muss nicht fragen.",
         sub: "Auftraggeber sieht Leistungen und Protokolle live. Die Reklamation, die Sie fürchten, kommt seltener bei Ihnen an.",
         image: "/sections/transparenz-kunde.png",
-        alt: "Auftraggeberin prüft Berichte am Laptop",
+        alt: "Auftraggeberin prüft Reinigungsberichte und Protokolle am Laptop im Taskey-Kundenportal",
       },
       {
         title: "Nachweisbar, ohne beweisen zu müssen.",
         sub: "NFC-Scan, Zeit, Ort, Foto. Jede Leistung ist dokumentiert, bevor jemand nachhakt.",
         image: "/sections/nachweisbarkeit.png",
-        alt: "Hand mit Smartphone scannt NFC-Tag",
+        alt: "Hand mit Smartphone scannt NFC-Tag am Objekt für den Reinigungsnachweis in Taskey",
       },
       {
         title: "Das Team versteht es sofort.",
         sub: "Wenige Taps, große Symbole, Offline-Sync. Sie schulen niemanden mehr, es funktioniert einfach.",
         image: "/sections/team-versteht-es-sofort.png",
-        alt: "Reinigungskraft öffnet lächelnd die Taskey-App im Büro-Einsatz",
+        alt: "Reinigungskraft öffnet die Taskey-App im Büro-Einsatz · intuitive Oberfläche ohne Schulungsaufwand",
       },
     ],
   },
@@ -1369,12 +1369,12 @@ const ALLINONE_CONTENT: Record<Lang, {
     ctaPrimary: "Kostenlosen Account erstellen",
     ctaSecondary: "Alle Funktionen",
     slides: [
-      { label: "Zeit erfasst sich selbst", title: "Zeit erfasst sich selbst", subtitle: "Ein Tap am Objekt. Zeit, Ort, Person, Sie erfahren es später, ohne nachzufragen.", tag: "Zeiterfassung", image: "/sections/zeiterfassung.png", alt: "Hand mit Smartphone scannt NFC-Tag am Objekt" },
-      { label: "Der Plan schreibt sich", title: "Der Plan schreibt sich", subtitle: "Teams, Touren, Objekte im selben Kalender. Änderungen laufen automatisch durch, ohne dass Sie sie durchgeben.", tag: "Planung", image: "/sections/einsatzplanung.png", alt: "Disponentin plant Einsätze am Laptop" },
-      { label: "Rechnung raus in Minuten", title: "Rechnung raus in Minuten", subtitle: "Aus Auftrag wird Angebot, wird Rechnung. Kein Copy-Paste, keine Excel-Runde.", tag: "Abrechnung", image: "/sections/angebote.png", alt: "Person erstellt Rechnung am Laptop" },
-      { label: "DATEV geht von allein", title: "DATEV geht von allein", subtitle: "Zeiten, Rechnungen, Stammdaten beim Steuerberater, ohne dass Sie sie hinschicken.", tag: "Buchhaltung", image: "/sections/datev-export.webp", alt: "Buchhalter prüft Zahlen am Bildschirm" },
-      { label: "Ihr Kunde sieht selbst nach", title: "Ihr Kunde sieht selbst nach", subtitle: "Live-Status, Fotos, Protokolle, Budget. Der Anruf, den er früher gemacht hätte, entfällt.", tag: "Kundendashboard", image: "/sections/kundendashboard.png", alt: "Auftraggeber-Dashboard mit Live-Status pro Objekt" },
-      { label: "Subunternehmer laufen mit", title: "Subunternehmer laufen mit", subtitle: "Nachunternehmer werden direkt aus dem System angebunden, mit Einsätzen, Nachweisen und Abrechnung. Kein zweites Tool, kein zweites Login.", tag: "Subunternehmer", image: "/sections/allinone-subunternehmer.png", alt: "Team stimmt sich im Büro ab, entspannt bei der Zusammenarbeit" },
+      { label: "Zeit erfasst sich selbst", title: "Zeit erfasst sich selbst", subtitle: "Ein Tap am Objekt. Zeit, Ort, Person, Sie erfahren es später, ohne nachzufragen.", tag: "Zeiterfassung", image: "/sections/zeiterfassung.png", alt: "NFC-Zeiterfassung in der Gebäudereinigung · Mitarbeiter scannt den NFC-Tag am Objekt" },
+      { label: "Der Plan schreibt sich", title: "Der Plan schreibt sich", subtitle: "Teams, Touren, Objekte im selben Kalender. Änderungen laufen automatisch durch, ohne dass Sie sie durchgeben.", tag: "Planung", image: "/sections/einsatzplanung.png", alt: "Einsatzplanung Gebäudereinigung · Disposition von Teams, Touren und Objekten in Taskey" },
+      { label: "Rechnung raus in Minuten", title: "Rechnung raus in Minuten", subtitle: "Aus Auftrag wird Angebot, wird Rechnung. Kein Copy-Paste, keine Excel-Runde.", tag: "Abrechnung", image: "/sections/angebote.png", alt: "Rechnungsprogramm für Reinigungsbetriebe · Angebot und Rechnung in einem Flow in Taskey" },
+      { label: "DATEV geht von allein", title: "DATEV geht von allein", subtitle: "Zeiten, Rechnungen, Stammdaten beim Steuerberater, ohne dass Sie sie hinschicken.", tag: "Buchhaltung", image: "/sections/datev-export.webp", alt: "DATEV-Export aus Taskey · Zeiten und Rechnungen für den Steuerberater der Gebäudereinigung" },
+      { label: "Ihr Kunde sieht selbst nach", title: "Ihr Kunde sieht selbst nach", subtitle: "Live-Status, Fotos, Protokolle, Budget. Der Anruf, den er früher gemacht hätte, entfällt.", tag: "Kundendashboard", image: "/sections/kundendashboard.png", alt: "Taskey Share Kundendashboard · Auftraggeber sieht Live-Status pro Objekt in der Gebäudereinigung" },
+      { label: "Subunternehmer laufen mit", title: "Subunternehmer laufen mit", subtitle: "Nachunternehmer werden direkt aus dem System angebunden, mit Einsätzen, Nachweisen und Abrechnung. Kein zweites Tool, kein zweites Login.", tag: "Subunternehmer", image: "/sections/allinone-subunternehmer.png", alt: "Subunternehmer-Management in Taskey · Nachunternehmer digital in Einsatzplanung und Nachweise anbinden" },
     ],
   },
   en: {
@@ -1512,12 +1512,12 @@ type Audience = { title: string; subtitle: string; pains: string[]; image: strin
 
 const AUDIENCES_CONTENT: Record<Lang, Audience[]> = {
   de: [
-    { title: "Unterhaltsreinigung", subtitle: "Für Büro-, Praxis- und Verwaltungsobjekte mit täglichen Reinigungstouren.", pains: ["Unvollständige Stundenzettel", "Leistungsnachweise im Chat-Chaos"], image: "https://i.ibb.co/wFhjnSYW/Chat-GPT-Image-3-Juli-2026-15-37-33.png", alt: "Reinigungskraft bei der Büroreinigung" },
-    { title: "Glas- & Fassadenreinigung", subtitle: "Für Glas-, Fenster- und Fassadenreiniger mit Höhen- und Spezialeinsätzen.", pains: ["Aufmaß und Abrechnung händisch", "Sicherheits- und Einsatznachweise unvollständig"], image: "/sections/glasreinigung.jpg", alt: "Glasreiniger an einer Fensterfront" },
-    { title: "Industrie- & Produktionsreinigung", subtitle: "Für Produktionsreinigung, Maschinenreinigung und Werksreinigung.", pains: ["Dokumentationspflicht gegenüber Auftraggebern", "Revisionssichere Nachweise für Audits"], image: "/sections/industriereinigung.png", alt: "Industriereinigung in einer Produktionshalle" },
-    { title: "Klinik- & Hygienereinigung", subtitle: "Für Krankenhäuser, Praxen, Pflegeheime und Reinräume mit höchstem Hygienelevel.", pains: ["Hygienenachweise auf Papier", "Audit-Vorbereitung kostet Tage"], image: "/sections/klinikreinigung.png", alt: "Hygiene- und Klinikreinigung" },
-    { title: "Hotel-Housekeeping", subtitle: "Für Reinigungsfirmen mit Hotel-, Ferienanlagen- und Apartment-Aufträgen.", pains: ["Zimmerstatus telefonisch durchgesagt", "Reklamationen ohne Foto-Nachweis"], image: "/sections/hotel-housekeeping.png", alt: "Housekeeping im Hotelzimmer" },
-    { title: "Sonder- & Baureinigung", subtitle: "Für Bau-, Grund-, Brand- und Wasserschadensanierung sowie Spezialreinigung.", pains: ["Aufträge schlecht kalkuliert, Marge weg", "Doku für Versicherungen fehlt"], image: "/sections/baureinigung.jpg", alt: "Sonderreinigung auf einer Baustelle" },
+    { title: "Unterhaltsreinigung", subtitle: "Für Büro-, Praxis- und Verwaltungsobjekte mit täglichen Reinigungstouren.", pains: ["Unvollständige Stundenzettel", "Leistungsnachweise im Chat-Chaos"], image: "https://i.ibb.co/wFhjnSYW/Chat-GPT-Image-3-Juli-2026-15-37-33.png", alt: "Unterhaltsreinigung im Büro · Reinigungskraft bei der täglichen Objektreinigung" },
+    { title: "Glas- & Fassadenreinigung", subtitle: "Für Glas-, Fenster- und Fassadenreiniger mit Höhen- und Spezialeinsätzen.", pains: ["Aufmaß und Abrechnung händisch", "Sicherheits- und Einsatznachweise unvollständig"], image: "/sections/glasreinigung.jpg", alt: "Glas- und Fassadenreinigung · Glasreiniger an einer Fensterfront im Höheneinsatz" },
+    { title: "Industrie- & Produktionsreinigung", subtitle: "Für Produktionsreinigung, Maschinenreinigung und Werksreinigung.", pains: ["Dokumentationspflicht gegenüber Auftraggebern", "Revisionssichere Nachweise für Audits"], image: "/sections/industriereinigung.png", alt: "Industriereinigung in einer Produktionshalle mit revisionssicherer Dokumentation" },
+    { title: "Klinik- & Hygienereinigung", subtitle: "Für Krankenhäuser, Praxen, Pflegeheime und Reinräume mit höchstem Hygienelevel.", pains: ["Hygienenachweise auf Papier", "Audit-Vorbereitung kostet Tage"], image: "/sections/klinikreinigung.png", alt: "Klinikreinigung und Hygienereinigung im Krankenhaus mit digitalem Hygienenachweis" },
+    { title: "Hotel-Housekeeping", subtitle: "Für Reinigungsfirmen mit Hotel-, Ferienanlagen- und Apartment-Aufträgen.", pains: ["Zimmerstatus telefonisch durchgesagt", "Reklamationen ohne Foto-Nachweis"], image: "/sections/hotel-housekeeping.png", alt: "Hotel-Housekeeping · Zimmerreinigung mit digitalem Zimmerstatus in Taskey" },
+    { title: "Sonder- & Baureinigung", subtitle: "Für Bau-, Grund-, Brand- und Wasserschadensanierung sowie Spezialreinigung.", pains: ["Aufträge schlecht kalkuliert, Marge weg", "Doku für Versicherungen fehlt"], image: "/sections/baureinigung.jpg", alt: "Bauendreinigung und Sonderreinigung auf einer Baustelle mit Dokumentation für Versicherungen" },
   ],
   en: [
     { title: "Maintenance cleaning", subtitle: "For office, practice and admin sites with daily cleaning rounds.", pains: ["Incomplete timesheets", "Proof of service lost in chat chaos"], image: "https://i.ibb.co/wFhjnSYW/Chat-GPT-Image-3-Juli-2026-15-37-33.png", alt: "Cleaner during office cleaning" },
@@ -2227,9 +2227,9 @@ const IOS_SECTION_CONTENT: Record<Lang, {
     ctaAppStore: "Im App Store laden",
     ctaFeatures: "Alle Funktionen entdecken",
     phones: [
-      { src: "/sections/phone-screen-1.jpg", alt: "Taskey App – Übersicht des Reinigungs-Teams", offset: 0 },
-      { src: "/sections/phone-screen-3.jpg", alt: "Taskey App – Aufgaben und Nachweise", offset: 40 },
-      { src: "/sections/phone-screen-2.jpg", alt: "Taskey App in Aktion", offset: 0 },
+      { src: "/sections/phone-screen-1.jpg", alt: "Taskey iOS-App für Gebäudereinigung · Übersicht des Reinigungs-Teams auf dem Smartphone", offset: 0 },
+      { src: "/sections/phone-screen-3.jpg", alt: "Taskey Mobile-App · Aufgaben und digitale Nachweise für Reinigungseinsätze", offset: 40 },
+      { src: "/sections/phone-screen-2.jpg", alt: "Taskey Mobile-App im Einsatz · NFC-Scan, Zeiterfassung und Objektübersicht", offset: 0 },
     ],
   },
   en: {
@@ -2798,7 +2798,7 @@ function LocalizedBridgeParallax() {
   return (
     <BridgeParallax
       src="/sections/motor-unter-ruhe.png"
-      alt="Team in Bürobesprechung, entspannte Stimmung"
+      alt="Operations-Team eines Gebäudereinigers in ruhiger Bürobesprechung mit Taskey"
       quote={c.quote}
       attribution={c.attribution}
     />
