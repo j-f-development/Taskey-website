@@ -8,6 +8,18 @@ export default function Footer() {
   const { t } = useLanguage();
   return (
     <footer className="relative z-20 bg-slate-900 text-white overflow-visible">
+      <div className="tk-service-bar">
+        <div className="tk-service-bar__inner">
+          <span className="tk-service-bar__label">Fragen?</span>
+          <span>
+            Melden Sie sich bei
+            {" "}
+            <a href="mailto:info@taskeyapp.com">info@taskeyapp.com</a>
+            {" "}oder rufen Sie an unter{" "}
+            <a href="tel:+4915168488999">0151 68488999</a>.
+          </span>
+        </div>
+      </div>
       <div className="relative overflow-hidden">
       {/* Background PNG */}
       <div className="absolute inset-0 pointer-events-none">

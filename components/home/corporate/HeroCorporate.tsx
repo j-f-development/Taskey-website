@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SignupButton from "@/components/landing/SignupButton";
 
 export default function HeroCorporate() {
   return (
@@ -91,32 +92,31 @@ export default function HeroCorporate() {
               textShadow: "0 1px 12px rgba(0,0,0,0.25)",
             }}
           >
-            Taskey ist die operative Plattform für Gebäudereiniger und
+            Taskey ist die operative Software für Gebäudereiniger und
             Facility-Service-Organisationen. Zeiterfassung, Einsätze, Objekte,
-            Nachweise und Lohn in einer kontrollierbaren Daten- und Prozessschicht.
-            Gebaut für Betriebe mit mehreren hundert Mitarbeitenden.
+            Nachweise und Lohn in einer kontrollierbaren Plattform.
+            Login, Workspace und App statt Excel und Zettelwirtschaft.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link
-              href="https://signup.taskeyapp.com"
-              className="tkc-btn tkc-btn-primary"
-            >
-              Kostenlos starten
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <SignupButton size="lg" utm="hero_de" />
+            <Link href="#termin" className="tk-cta-secondary tk-cta-secondary--onink">
+              Erstgespräch buchen
             </Link>
-            <Link
-              href="#features"
-              className="tkc-btn tkc-btn-onink-ghost"
-            >
-              Features ansehen
-            </Link>
-            <Link
-              href="#termin"
-              className="tkc-btn tkc-btn-onink-ghost"
-            >
-              Termin buchen
+            <Link href="#features" className="tk-cta-secondary tk-cta-secondary--onink">
+              Funktionen ansehen
             </Link>
           </div>
+          <p
+            className="mt-5 tkc-mono"
+            style={{
+              color: "rgba(255,255,255,0.6)",
+              fontSize: "0.78rem",
+              letterSpacing: "0.04em",
+            }}
+          >
+            Unverbindlich. Keine Kreditkarte. Sofort einsatzbereit.
+          </p>
 
           <div
             className="mt-12 pt-6 flex flex-wrap gap-x-5 gap-y-2 items-center tkc-mono"

@@ -54,6 +54,8 @@ type Entry = {
 const STATIC_ENTRIES: Entry[] = [
   // Kernseiten
   { path: "/", changeFrequency: "weekly", priority: 1.0 },
+  { path: "/kostenlos-starten", changeFrequency: "weekly", priority: 0.95 },
+  { path: "/erstgespraech", changeFrequency: "weekly", priority: 0.9 },
   { path: "/features", changeFrequency: "monthly", priority: 0.9 },
   { path: "/features/taskey-share", changeFrequency: "monthly", priority: 0.85 },
   { path: "/pricing", changeFrequency: "monthly", priority: 0.9 },

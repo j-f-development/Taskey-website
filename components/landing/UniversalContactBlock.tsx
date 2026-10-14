@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { CONTACT, calendlyWithUtm, mailtoWithSubject, waWithMessage } from "@/lib/landing/contact";
+import SignupButton from "@/components/landing/SignupButton";
+import { calendlyWithUtm, mailtoWithSubject } from "@/lib/landing/contact";
 
 type Lang = "de" | "en" | "fr";
 
@@ -11,63 +12,55 @@ const COPY: Record<
     eyebrow: string;
     headline: string;
     lead: string;
+    signupLabel: string;
+    signupHelp: string;
     calendlyLabel: string;
     calendlyHelp: string;
     emailLabel: string;
     emailHelp: string;
-    phoneLabel: string;
-    phoneHelp: string;
-    whatsappLabel: string;
-    whatsappHelp: string;
     channelsHead: string;
     loading: string;
   }
 > = {
   de: {
-    eyebrow: "Kontakt zum Fachteam",
-    headline: "Sprechen Sie mit uns über Ihren konkreten Anwendungsfall.",
+    eyebrow: "Direkter Einstieg",
+    headline: "Account anlegen oder Erstgespräch buchen.",
     lead:
-      "Wählen Sie den Kanal, der zu Ihrer Situation passt. Wir kommen ohne Sales-Skript ins Gespräch und richten es auf Ihre bestehende Systemlandschaft aus.",
-    calendlyLabel: "Termin direkt buchen",
-    calendlyHelp: "15 bis 30 Minuten, unverbindlich, mit dem Gründerteam.",
+      "Taskey ist Software, kein Dienstleister-Deal. Der schnellste Weg: Account erstellen und direkt im Workspace arbeiten. Lieber vorher sprechen? Erstgespräch im Kalender buchen.",
+    signupLabel: "Kostenlosen Account erstellen",
+    signupHelp: "Login, Workspace, Mobile App. Unverbindlich, keine Kreditkarte.",
+    calendlyLabel: "Erstgespräch buchen",
+    calendlyHelp: "15 bis 30 Minuten, direkt mit dem Gründerteam.",
     emailLabel: "Fachliche Nachricht senden",
     emailHelp: "Für Anforderungen, Architekturfragen oder Integrations-Scoping.",
-    phoneLabel: "Direkt anrufen",
-    phoneHelp: CONTACT.hours.de,
-    whatsappLabel: "Auf WhatsApp schreiben",
-    whatsappHelp: "Kurzer Kontext genügt, wir antworten strukturiert zurück.",
-    channelsHead: "Alle Kanäle im Überblick",
+    channelsHead: "Alle Wege im Überblick",
     loading: "Calendly wird geladen …",
   },
   en: {
-    eyebrow: "Contact the specialist team",
-    headline: "Talk to us about your specific use case.",
+    eyebrow: "Direct entry",
+    headline: "Create your account or book a discovery call.",
     lead:
-      "Pick the channel that fits your situation. We skip the sales script and align on your existing systems.",
-    calendlyLabel: "Book a slot directly",
-    calendlyHelp: "15 to 30 minutes, no strings, with the founding team.",
+      "Taskey is software, not a service engagement. Fastest path: create an account and start working in the workspace. Prefer to talk first? Book a slot in the calendar.",
+    signupLabel: "Create free account",
+    signupHelp: "Login, workspace, mobile app. No commitment, no credit card.",
+    calendlyLabel: "Book a discovery call",
+    calendlyHelp: "15 to 30 minutes, directly with the founding team.",
     emailLabel: "Send a detailed message",
     emailHelp: "For requirements, architecture questions or integration scoping.",
-    phoneLabel: "Call directly",
-    phoneHelp: CONTACT.hours.en,
-    whatsappLabel: "Message on WhatsApp",
-    whatsappHelp: "Short context is enough. We reply in a structured way.",
     channelsHead: "All channels at a glance",
     loading: "Loading Calendly …",
   },
   fr: {
-    eyebrow: "Contactez l’équipe spécialiste",
-    headline: "Parlez-nous de votre cas concret.",
+    eyebrow: "Entrée directe",
+    headline: "Créer votre compte ou réserver un échange.",
     lead:
-      "Choisissez le canal qui correspond à votre situation. Sans script commercial, aligné sur votre paysage système.",
-    calendlyLabel: "Réserver un créneau",
-    calendlyHelp: "15 à 30 minutes, sans engagement, avec l’équipe fondatrice.",
+      "Taskey est un logiciel, pas une prestation. Le plus rapide : créer un compte et travailler dans le workspace. Vous préférez d’abord discuter ? Réservez un créneau au calendrier.",
+    signupLabel: "Créer un compte gratuit",
+    signupHelp: "Login, workspace, app mobile. Sans engagement, sans carte bancaire.",
+    calendlyLabel: "Réserver un échange",
+    calendlyHelp: "15 à 30 minutes, avec l’équipe fondatrice.",
     emailLabel: "Envoyer un message détaillé",
     emailHelp: "Pour les besoins, l’architecture ou le cadrage d’intégration.",
-    phoneLabel: "Appeler directement",
-    phoneHelp: CONTACT.hours.fr,
-    whatsappLabel: "Écrire sur WhatsApp",
-    whatsappHelp: "Un court contexte suffit. Réponse structurée en retour.",
     channelsHead: "Tous les canaux",
     loading: "Chargement de Calendly …",
   },
@@ -120,7 +113,8 @@ type Props = {
   variant?: "full" | "compact";
   utmCampaign: string;
   emailSubject: string;
-  waMessage: string;
+  /** @deprecated kept for call-site compatibility; no longer rendered */
+  waMessage?: string;
   headline?: string;
   eyebrow?: string;
   lead?: string;
@@ -132,7 +126,6 @@ export default function UniversalContactBlock({
   variant = "full",
   utmCampaign,
   emailSubject,
-  waMessage,
   headline,
   eyebrow,
   lead,
@@ -176,21 +169,6 @@ export default function UniversalContactBlock({
       help: c.emailHelp,
       href: mailtoWithSubject(emailSubject),
       icon: "mail",
-    },
-    {
-      key: "phone",
-      label: c.phoneLabel,
-      help: c.phoneHelp,
-      href: `tel:${CONTACT.phoneTel}`,
-      icon: "phone",
-    },
-    {
-      key: "whatsapp",
-      label: c.whatsappLabel,
-      help: c.whatsappHelp,
-      href: waWithMessage(waMessage),
-      icon: "whatsapp",
-      target: "_blank" as const,
     },
   ];
 
@@ -242,6 +220,23 @@ export default function UniversalContactBlock({
           >
             {lead ?? c.lead}
           </p>
+
+          <div className="mt-7 flex flex-col gap-2.5" style={{ maxWidth: "420px" }}>
+            <SignupButton
+              size="lg"
+              label={c.signupLabel}
+              utm={utmCampaign}
+            />
+            <span
+              style={{
+                color: "rgba(148,163,184,0.85)",
+                fontSize: "12px",
+                lineHeight: 1.5,
+              }}
+            >
+              {c.signupHelp}
+            </span>
+          </div>
 
           <div
             className="mt-8 pt-6"
@@ -375,19 +370,6 @@ function ChannelIcon({ type }: { type: string }) {
         <svg {...shared} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <rect x="3" y="5" width="18" height="14" rx="2" />
           <path d="M3 7l9 6 9-6" />
-        </svg>
-      );
-    case "phone":
-      return (
-        <svg {...shared} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <path d="M4 5c0-1 1-2 2-2h2l2 4-2 1a12 12 0 006 6l1-2 4 2v2c0 1-1 2-2 2A16 16 0 014 5z" />
-        </svg>
-      );
-    case "whatsapp":
-      return (
-        <svg {...shared} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <path d="M20.5 12a8.5 8.5 0 01-12.75 7.35L3 21l1.7-4.7A8.5 8.5 0 1120.5 12z" />
-          <path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.7 0 1-.4 1-.9v-.6c0-.3-.2-.6-.5-.7l-1.4-.5a.7.7 0 00-.8.2l-.3.5a4.7 4.7 0 01-2-2l.5-.3a.7.7 0 00.2-.8l-.5-1.4A.8.8 0 0010 8h-.6c-.5 0-.9.3-.9 1z" />
         </svg>
       );
     default:

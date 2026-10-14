@@ -24,6 +24,7 @@ const HERO_CONTENT: Record<Lang, {
   ctaPrimary: string;
   ctaSecondary: string;
   ctaDemo: string;
+  ctaBookCall: string;
   ctaNote: string;
   trustLabel: string;
   trustSignals: string[];
@@ -37,6 +38,7 @@ const HERO_CONTENT: Record<Lang, {
     ctaPrimary: "Kostenlosen Account erstellen",
     ctaSecondary: "Alle Funktionen",
     ctaDemo: "Kundendashboard-Demo anschauen",
+    ctaBookCall: "Erstgespräch buchen",
     ctaNote: "Unverbindlich. Keine Kreditkarte. Sofort loslegen.",
     trustLabel: "Enterprise Ready",
     trustSignals: [
@@ -56,6 +58,7 @@ const HERO_CONTENT: Record<Lang, {
     ctaPrimary: "Create free account",
     ctaSecondary: "All features",
     ctaDemo: "See the client dashboard demo",
+    ctaBookCall: "Book a discovery call",
     ctaNote: "No commitment. No credit card. Start right away.",
     trustLabel: "Enterprise Ready",
     trustSignals: [
@@ -75,6 +78,7 @@ const HERO_CONTENT: Record<Lang, {
     ctaPrimary: "Créer un compte gratuit",
     ctaSecondary: "Toutes les fonctionnalités",
     ctaDemo: "Voir la démo du tableau client",
+    ctaBookCall: "Réserver un échange",
     ctaNote: "Sans engagement. Sans carte bancaire. Démarrez tout de suite.",
     trustLabel: "Enterprise Ready",
     trustSignals: [
@@ -109,15 +113,22 @@ function CtaButton({
         href={href}
         whileTap={{ scale: 0.97 }}
         transition={springs.snappy}
-        className={base}
-        style={{
-          background: "var(--tk-ink)",
-          color: "#fff",
-          boxShadow: "0 12px 30px -12px rgba(15,23,42,0.35)",
-        }}
+        className="tk-cta-signup"
       >
-        {children}
-        <span aria-hidden>→</span>
+        <span>{children}</span>
+        <svg
+          className="tk-cta-signup__arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14" />
+          <path d="M13 5l7 7-7 7" />
+        </svg>
       </motion.a>
     );
   }
@@ -343,49 +354,41 @@ function HeroScene() {
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <motion.a
-                  href="https://signup.taskeyapp.com"
+                  href="https://signup.taskeyapp.com?utm_source=web&utm_medium=cta&utm_campaign=hero"
                   whileTap={{ scale: 0.97 }}
                   transition={springs.snappy}
-                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-medium"
-                  style={{
-                    background: "#fff",
-                    color: "var(--tk-ink)",
-                    fontSize: "16px",
-                    boxShadow: "0 20px 50px -20px rgba(15,23,42,0.5)",
-                  }}
+                  className="tk-cta-signup tk-cta-signup--lg"
                 >
-                  {c.ctaPrimary}
-                  <span aria-hidden>→</span>
+                  <span>{c.ctaPrimary}</span>
+                  <svg
+                    className="tk-cta-signup__arrow"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M13 5l7 7-7 7" />
+                  </svg>
+                </motion.a>
+                <motion.a
+                  href="#erstgespraech"
+                  whileTap={{ scale: 0.97 }}
+                  transition={springs.snappy}
+                  className="tk-cta-secondary tk-cta-secondary--onink"
+                >
+                  {c.ctaBookCall}
                 </motion.a>
                 <motion.a
                   href="/features"
                   whileTap={{ scale: 0.97 }}
                   transition={springs.snappy}
-                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-medium tk-glass-dark"
-                  style={{ fontSize: "16px" }}
+                  className="tk-cta-secondary tk-cta-secondary--onink"
                 >
                   {c.ctaSecondary}
-                </motion.a>
-                <motion.a
-                  href="https://demo.kunden.taskeyapp.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileTap={{ scale: 0.97 }}
-                  transition={springs.snappy}
-                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-medium"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, #f6f7f8 0%, #e2e4e8 48%, #c6cad0 100%)",
-                    color: "#0b0d10",
-                    fontSize: "16px",
-                    border: "1px solid rgba(11,13,16,0.14)",
-                    boxShadow:
-                      "inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -1px 0 rgba(11,13,16,0.06), 0 8px 24px rgba(11,13,16,0.35)",
-                    textShadow: "0 1px 0 rgba(255,255,255,0.55)",
-                  }}
-                >
-                  {c.ctaDemo}
-                  <span aria-hidden>→</span>
                 </motion.a>
               </div>
 
@@ -967,7 +970,7 @@ function BookMeetingSection() {
   const { language } = useLanguage();
   const c = BOOK_MEETING_CONTENT[language];
   return (
-    <SectionShell size="md" tone="transparent" style={{ background: "var(--tk-ink)" }}>
+    <SectionShell id="erstgespraech" size="md" tone="transparent" style={{ background: "var(--tk-ink)" }}>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-7">
           <Eyebrow tone="light">{c.eyebrow}</Eyebrow>
