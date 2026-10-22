@@ -99,7 +99,7 @@ type SectionContent = {
 const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
   de: {
     pageTitle: "App-Datenschutzerklärung",
-    subtitle: "Für die mobile Anwendung Taskey (Android)",
+    subtitle: "Für die mobile Anwendung Taskey (Android und iOS)",
     translationNote: "",
 
     scopeBadge: "Google Play Data Safety",
@@ -120,7 +120,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
     sec2Title: "2. Geltungsbereich",
     sec2Body:
-      "Diese Datenschutzerklärung gilt für die Android-Version der mobilen Anwendung Taskey (nachfolgend die App), die im Google Play Store und über weitere Vertriebskanäle bereitgestellt wird. Für die iOS-Version gelten die Angaben zu Datenkategorien und Empfängern sinngemäß mit einer Ausnahme: In der iOS-Version sind zusätzlich Firebase Analytics for Apps (Google Analytics for Firebase, SDK GoogleAppMeasurement) und Google Ads On-Device Conversion Measurement enthalten (siehe Abschnitt 4). Diese SDKs erheben Nutzungsereignisse und Werbe-Attributionsdaten und werden gesondert kenntlich gemacht. Für die Verarbeitung personenbezogener Daten beim Besuch der Website taskeyapp.com gilt die separate Website-Datenschutzerklärung unter taskeyapp.com/datenschutz.",
+      "Diese Datenschutzerklärung gilt für die Android- und die iOS-Version der mobilen Anwendung Taskey (nachfolgend die App), die im Google Play Store, im Apple App Store und über weitere Vertriebskanäle bereitgestellt wird. Abweichungen zwischen den Versionen sind jeweils gekennzeichnet. In der iOS-Version sind zusätzlich Firebase Analytics for Apps (Google Analytics for Firebase, SDK GoogleAppMeasurement) und Google Ads On-Device Conversion Measurement enthalten (siehe Abschnitt 5). Für die Verarbeitung personenbezogener Daten beim Besuch der Website taskeyapp.com gilt die separate Website-Datenschutzerklärung unter taskeyapp.com/datenschutz.",
 
     sec3Title: "3. Welche Daten die App erhebt",
     sec3Intro:
@@ -144,7 +144,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
       {
         title: "3.4 NFC",
         body:
-          "Die App nutzt die NFC-Schnittstelle (Berechtigung NFC) zum Auslesen der NFC-Tags, die an Einsatzorten angebracht sind. Die Tags werden für das Ein- und Ausstempeln bei der digitalen Zeiterfassung eingesetzt. Die aus dem Tag ausgelesene Kennung wird zusammen mit dem Zeitstempel an das Taskey-Backend übertragen und dem Zeiteintrag zugeordnet.",
+          "Die App nutzt die NFC-Schnittstelle zum Auslesen der NFC-Tags, die an Einsatzorten angebracht sind. Die Tags werden für das Ein- und Ausstempeln bei der digitalen Zeiterfassung eingesetzt. Die aus dem Tag ausgelesene Kennung wird zusammen mit dem Zeitstempel an das Taskey-Backend übertragen und dem Zeiteintrag zugeordnet. In technischen Diagnoseprotokollen (Abschnitt 3.7) wird die Tag-Kennung nicht im Klartext, sondern nur als gekürzter Hashwert gespeichert.",
       },
       {
         title: "3.5 Push-Benachrichtigungen",
@@ -157,9 +157,9 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
           "Bei der Nutzung der App werden die folgenden funktionalen Daten verarbeitet und auf dem Taskey-Backend gespeichert: Zeiteinträge (Beginn, Ende, Pause, Einsatzort, Kennung des NFC-Tags, sofern verwendet), Auftrags- und Aufgabendaten (Titel, Beschreibung, Status, Zuweisung, Dateianhänge), Kunden-, Objekt- und Fahrzeugdaten aus dem Bestand des jeweiligen Unternehmens, Chatnachrichten zwischen Mitgliedern derselben Organisation sowie vom Anwender hochgeladene Dateien wie Dokumentationsfotos, Nachweise und Unterschriften.",
       },
       {
-        title: "3.7 Geräte- und Diagnoseinformationen",
+        title: "3.7 Geräte-, Diagnose- und Fehlerinformationen",
         body:
-          "Bei der Kommunikation zwischen App und Backend werden zur Betriebssicherheit die folgenden technischen Daten übertragen und in Serverlogs temporär gespeichert: IP-Adresse, Zeitstempel der Anfrage, aufgerufener API-Endpunkt, HTTP-Statuscode, App-Version, Android-Version, verwendetes Gerätemodell. Die Serverlogs dienen der Fehleranalyse und werden nach 30 Tagen gelöscht.",
+          "Zur Betriebssicherheit, zur Fehlerbehebung und für den technischen Support verarbeitet die App die folgenden technischen Daten:\n\n(a) Serverlogs: Bei jeder Anfrage an das Taskey-Backend werden IP-Adresse, Zeitstempel, aufgerufener API-Endpunkt, HTTP-Statuscode, App-Version, Betriebssystemversion und Gerätemodell temporär gespeichert und nach 30 Tagen gelöscht.\n\n(b) Gerätebericht: Nach der Anmeldung meldet die App dem Taskey-Backend Informationen über das verwendete Gerät, damit der Taskey-Support Probleme nachvollziehen kann (etwa wenn ein NFC-Scan nicht funktioniert). Übermittelt werden: eine von der App zufällig erzeugte Installationskennung, Plattform, Hersteller, Gerätemodell, Gerätename, Betriebssystemversion, App-Version, App-Sprache, Zeitzone, Push-Token, Netzwerkart (WLAN, Mobilfunk oder keine Verbindung), freier Speicherplatz sowie der Status von App-Berechtigungen und Geräteeinstellungen (NFC verfügbar bzw. eingeschaltet, Standortfreigabe genau, ungefähr und im Hintergrund, Ortungsdienste, Kamera, Benachrichtigungen, Energiesparmodus, Datensparmodus; unter Android zusätzlich die Akku-Optimierung, unter iOS zusätzlich Hintergrundaktualisierung und Live-Aktivitäten). Änderungen dieser Einstellungen werden mit Zeitpunkt protokolliert. Der Bericht wird beim Start, bei Rückkehr in die App und bei Änderungen gesendet, sonst höchstens alle 30 Minuten. Standortkoordinaten sind nicht Teil des Geräteberichts.\n\n(c) Diagnoseprotokolle und Absturzberichte über PostHog: Die App sendet technische Ereignisprotokolle an PostHog (EU-Cloud), zum Beispiel: NFC-Lesevorgang gestartet, Tag erkannt oder unbekannt, Zeitüberschreitung oder Lesefehler; Ergebnis von Check-in- und Check-out-Anfragen mit HTTP-Status und Dauer; Status der Offline-Synchronisierung und von Foto-Uploads; erfolgreiche oder fehlgeschlagene Anmeldung (ohne Benutzernamen); Netzwerkfehler mit dem aufgerufenen Pfad ohne Kennungen; Bildschirmwechsel innerhalb der App; Änderungen von Berechtigungen sowie Absturzberichte mit Stack-Trace. Die Ereignisse sind mit der internen Taskey-Benutzerkennung, der Rolle, der Kennung des Unternehmens und der App-Sprache verknüpft. Nicht erhoben werden Namen, E-Mail-Adressen, Passwörter, Inhalte von Notizen, Nachrichten oder Fotos sowie Standortkoordinaten; IP-Adressen werden von PostHog anonymisiert. Eine Bildschirmaufzeichnung (Session Replay) findet nicht statt.\n\n(d) Absturz- und Fehlerberichte über Sentry: Zusätzlich werden App-Abstürze mit Stack-Trace und technischen Metadaten an eine von uns selbst betriebene Sentry-Instanz auf Servern in Deutschland übermittelt.\n\nDie Daten aus (b) bis (d) dienen ausschließlich der Fehleranalyse und dem technischen Support. Sie sind nur für den Support der Schulz & Stosse GbR einsehbar und werden nicht zur Leistungs- oder Verhaltenskontrolle von Mitarbeitenden ausgewertet oder an das beauftragende Unternehmen zu diesem Zweck weitergegeben.",
       },
       {
         title: "3.8 Zahlungsdaten",
@@ -194,6 +194,11 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
       {
         label: "Serverlogs zur Betriebssicherheit und Fehleranalyse",
         value: "Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren Betrieb)",
+      },
+      {
+        label: "Gerätebericht, Diagnoseprotokolle und Absturzberichte für Fehleranalyse und technischen Support (PostHog, Sentry)",
+        value:
+          "Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer funktionsfähigen, fehlerfreien App und an wirksamem Support)",
       },
       {
         label: "Speicherung des Anmelde-Tokens im verschlüsselten Gerätespeicher",
@@ -236,10 +241,15 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
         policy: "https://www.apple.com/legal/privacy/",
       },
       {
-        name: 'Functional Software, Inc. („Sentry") — Fehler-Tracking',
+        name: "PostHog Inc. — Diagnoseprotokolle und Fehler-Tracking (EU-Cloud)",
         body:
-          "Erfasst App-Abstürze und Fehler mit Stack-Trace und technischen Metadaten. Personenbezogene Bezüge werden vor der Übertragung minimiert.",
-        policy: "https://sentry.io/privacy/",
+          "Verarbeitet im Auftrag der Schulz & Stosse GbR die in Abschnitt 3.7 (c) beschriebenen Diagnoseprotokolle und Absturzberichte. Die Daten werden in der PostHog EU Cloud mit Serverstandort Frankfurt am Main gespeichert. IP-Adressen werden anonymisiert, Bildschirmaufzeichnungen sind deaktiviert. Ein Zugriff des US-Mutterunternehmens ist nicht ausgeschlossen; hierfür bestehen Standardvertragsklauseln der Europäischen Kommission.",
+        policy: "https://posthog.com/privacy",
+      },
+      {
+        name: "Sentry (selbst betrieben) — Absturzberichte",
+        body:
+          "Erfasst App-Abstürze und Fehler mit Stack-Trace und technischen Metadaten. Die Sentry-Instanz wird von uns selbst auf Servern der IONOS SE in Deutschland betrieben; eine Übermittlung an die Sentry-Herstellerfirma findet nicht statt.",
       },
       {
         name: "Google Ireland Limited — Firebase Analytics for Apps (nur iOS)",
@@ -256,11 +266,11 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
       {
         name: "Taskey-Backend (Schulz & Stosse GbR)",
         body:
-          "Speichert die Konto-, Zeiterfassungs-, Auftrags-, Objekt- und Chatdaten. Der Serverbetrieb erfolgt in der Europäischen Union. Eine Datenverarbeitung außerhalb des EWR findet nicht statt.",
+          "Speichert die Konto-, Zeiterfassungs-, Auftrags-, Objekt- und Chatdaten sowie den Gerätebericht nach Abschnitt 3.7 (b). Der Serverbetrieb erfolgt in Deutschland (IONOS SE). Eine Datenverarbeitung außerhalb des EWR findet hierbei nicht statt.",
       },
     ],
     sec5NoAds:
-      "Personenbezogene Daten werden nicht zu Werbezwecken verkauft. In der Android-Version enthält die App weder Werbe-SDKs noch Analytics- oder Attribution-Tracking-Bibliotheken. Die iOS-Version enthält abweichend zwei zusätzliche Google-SDKs (in der obigen Empfänger-Liste gesondert ausgewiesen): Firebase Analytics for Apps (GoogleAppMeasurement) sowie Google Ads On-Device Conversion Measurement. Diese SDKs werden derzeit im Hinblick auf ihre Notwendigkeit im Beschäftigtenkontext geprüft; bis dahin gilt: Wo eine belastbare Rechtsgrundlage im Verhältnis zum Arbeitgeber fehlt, sollen die Funktionen deaktiviert oder ausgebaut werden.",
+      "Personenbezogene Daten werden weder verkauft noch zu Werbezwecken genutzt, und es findet keine app-übergreifende Nachverfolgung (Tracking im Sinne der App Tracking Transparency) statt. Beide App-Versionen setzen PostHog ausschließlich für Diagnoseprotokolle und Fehler-Tracking ein. Die iOS-Version enthält zusätzlich zwei Google-SDKs (in der obigen Empfänger-Liste gesondert ausgewiesen): Firebase Analytics for Apps (GoogleAppMeasurement) sowie Google Ads On-Device Conversion Measurement. Diese SDKs werden derzeit im Hinblick auf ihre Notwendigkeit im Beschäftigtenkontext geprüft; wo eine belastbare Rechtsgrundlage im Verhältnis zum Arbeitgeber fehlt, sollen die Funktionen deaktiviert oder ausgebaut werden. Die vollständige Liste der Auftragsverarbeiter steht unter taskeyapp.com/legal/avv.html.",
 
     sec6Title: "6. Datensicherheit",
     sec6Body:
@@ -268,7 +278,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
     sec7Title: "7. Speicherdauer",
     sec7Body:
-      "Kontodaten sowie Auftrags-, Objekt- und Zeitdaten werden gespeichert, solange das Nutzerkonto und der zugehörige Vertrag des beauftragenden Unternehmens aktiv sind. Serverlogs werden nach 30 Tagen automatisch gelöscht. Nach der Löschung des Kontos werden personenbezogene Daten innerhalb von 30 Tagen aus den produktiven Systemen entfernt. Ausgenommen sind Daten, für die gesetzliche Aufbewahrungspflichten bestehen (etwa nach Handelsgesetzbuch und Abgabenordnung); diese Daten werden gesperrt und nach Ablauf der Frist gelöscht.",
+      "Kontodaten sowie Auftrags-, Objekt- und Zeitdaten werden gespeichert, solange das Nutzerkonto und der zugehörige Vertrag des beauftragenden Unternehmens aktiv sind. Serverlogs werden nach 30 Tagen automatisch gelöscht. Geräteberichte werden 90 Tage nach der letzten Meldung des Geräts gelöscht, protokollierte Änderungen von Berechtigungen nach 90 Tagen. Diagnoseprotokolle und Absturzberichte werden gelöscht, sobald sie für die Fehleranalyse nicht mehr erforderlich sind, sowie auf Anfrage. Nach der Löschung des Kontos werden personenbezogene Daten innerhalb von 30 Tagen aus den produktiven Systemen entfernt. Ausgenommen sind Daten, für die gesetzliche Aufbewahrungspflichten bestehen (etwa nach Handelsgesetzbuch und Abgabenordnung); diese Daten werden gesperrt und nach Ablauf der Frist gelöscht.",
 
     sec8Title: "8. Kontolöschung und Datenlöschung",
     sec8Body:
@@ -302,7 +312,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
     sec11Title: "11. Internationale Datenübermittlung",
     sec11Body:
-      "Die Speicherung der Nutzerdaten im Taskey-Backend erfolgt innerhalb der Europäischen Union. Firebase Cloud Messaging und die Google Play Services werden über die Google Ireland Limited bereitgestellt. Google verarbeitet Betriebsdaten weltweit; für Datentransfers in Drittländer stützt sich Google auf die Standardvertragsklauseln der Europäischen Kommission.",
+      "Die Speicherung der Nutzerdaten im Taskey-Backend erfolgt in Deutschland. Diagnoseprotokolle werden in der PostHog EU Cloud (Frankfurt am Main) gespeichert; da PostHog Inc. ein US-Unternehmen ist, kann ein Zugriff aus den USA nicht ausgeschlossen werden. Firebase Cloud Messaging und die Google Play Services werden über die Google Ireland Limited bereitgestellt; Google verarbeitet Betriebsdaten weltweit. Für Datenübermittlungen in Drittländer stützen sich PostHog und Google auf die Standardvertragsklauseln der Europäischen Kommission bzw. das EU-US Data Privacy Framework.",
 
     sec12Title: "12. Automatisierte Entscheidungen",
     sec12Body:
@@ -312,9 +322,9 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
     sec13Intro:
       "Die folgende Übersicht spiegelt die Angaben wider, die im Google-Play-Data-Safety-Formular deklariert werden.",
     sec13List: [
-      "Erhobene Datentypen: persönliche Daten (Name, E-Mail), Standort (ungefähr und genau), App-Aktivität (Nutzeraktionen in der App), Geräte- und andere IDs (FCM-Registrierungs-Token), Dateien und Dokumente (vom Nutzer hochgeladene Nachweise).",
-      "Datenverwendung: App-Funktionalität, Kontoverwaltung, digitale Zeiterfassung, Nachrichtenversand. Keine Werbung, kein Verkauf, kein Analytics-Tracking.",
-      "Datenweitergabe an Dritte: Google (Firebase Cloud Messaging, Play Services Location) und OpenStreetMap Foundation (Kartenkacheln). Kein Verkauf, keine Werbung.",
+      "Erhobene Datentypen: persönliche Daten (Name, E-Mail), Standort (ungefähr und genau), App-Aktivität (Nutzeraktionen in der App), App-Informationen und Leistung (Absturzprotokolle, Diagnosedaten), Geräte- und andere IDs (Installationskennung, FCM-Registrierungs-Token), Dateien und Dokumente (vom Nutzer hochgeladene Nachweise).",
+      "Datenverwendung: App-Funktionalität, Kontoverwaltung, digitale Zeiterfassung, Nachrichtenversand, Fehleranalyse und technischer Support. Keine Werbung, kein Verkauf, keine app-übergreifende Nachverfolgung.",
+      "Datenweitergabe an Dritte: Google (Firebase Cloud Messaging, Play Services Location) und OpenStreetMap Foundation (Kartenkacheln). PostHog verarbeitet Diagnosedaten als Auftragsverarbeiter. Kein Verkauf, keine Werbung.",
       "Datensicherheit: Übertragung ausschließlich über TLS, Passwörter als Hash gespeichert, Anmelde-Token auf dem Gerät verschlüsselt abgelegt.",
       "Datenlöschung: Konto- und Datenlöschung auf Anfrage per E-Mail an info@taskeyapp.com innerhalb von 30 Tagen.",
     ],
@@ -329,7 +339,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
   en: {
     pageTitle: "App Privacy Policy",
-    subtitle: "For the Taskey mobile application (Android)",
+    subtitle: "For the Taskey mobile application (Android and iOS)",
     translationNote:
       "This document is a translation for convenience. The legally binding version is the German original.",
 
@@ -351,7 +361,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
     sec2Title: "2. Scope",
     sec2Body:
-      "This privacy policy applies to the Android version of the Taskey mobile application (hereinafter the app), which is distributed via the Google Play Store and additional channels. It also applies to the iOS version with the following exception: the iOS version additionally embeds Firebase Analytics for Apps (Google Analytics for Firebase, SDK GoogleAppMeasurement) and Google Ads On-Device Conversion Measurement (see section 4). These SDKs collect usage events and ad-attribution data and are called out separately. The processing of personal data during a visit to the taskeyapp.com website is governed by the separate website privacy policy available at taskeyapp.com/datenschutz.",
+      "This privacy policy applies to the Android and iOS versions of the Taskey mobile application (hereinafter the app), distributed via the Google Play Store, the Apple App Store and additional channels. Differences between the versions are marked. The iOS version additionally embeds Firebase Analytics for Apps (Google Analytics for Firebase, SDK GoogleAppMeasurement) and Google Ads On-Device Conversion Measurement (see section 5). The processing of personal data during a visit to the taskeyapp.com website is governed by the separate website privacy policy available at taskeyapp.com/datenschutz.",
 
     sec3Title: "3. What data the app collects",
     sec3Intro:
@@ -375,7 +385,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
       {
         title: "3.4 NFC",
         body:
-          "The app uses the NFC interface (NFC permission) to read NFC tags attached at job sites. Tags are used for clocking in and out in the digital time-tracking feature. The identifier read from the tag is transmitted to the Taskey backend together with the timestamp and associated with the time entry.",
+          "The app uses the NFC interface to read the NFC tags installed at work sites. The tags are used for clocking in and out as part of digital time tracking. The identifier read from the tag is transmitted to the Taskey backend together with the timestamp and associated with the time entry. In technical diagnostic logs (section 3.7) the tag identifier is not stored in plain text, only as a shortened hash value.",
       },
       {
         title: "3.5 Push notifications",
@@ -388,9 +398,9 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
           "During use of the app, the following functional data is processed and stored on the Taskey backend: time entries (start, end, break, job site, NFC tag identifier if used), work-order and task data (title, description, status, assignment, attachments), customer, object and vehicle data from the respective company's records, chat messages between members of the same organisation, and files uploaded by the user such as documentation photos, evidence of completion and signatures.",
       },
       {
-        title: "3.7 Device and diagnostic information",
+        title: "3.7 Device, diagnostic and error information",
         body:
-          "For operational security, the following technical data is transmitted between the app and the backend and stored temporarily in server logs: IP address, request timestamp, requested API endpoint, HTTP status code, app version, Android version, device model. Server logs are used for error analysis and are deleted after 30 days.",
+          "For operational security, troubleshooting and technical support, the app processes the following technical data:\n\n(a) Server logs: for every request to the Taskey backend, the IP address, timestamp, API endpoint called, HTTP status code, app version, operating system version and device model are stored temporarily and deleted after 30 days.\n\n(b) Device report: after sign-in, the app reports information about the device in use to the Taskey backend so that Taskey support can trace problems (for example when an NFC scan does not work). Transmitted are: an installation identifier randomly generated by the app, platform, manufacturer, device model, device name, operating system version, app version, app language, time zone, push token, network type (Wi-Fi, mobile or no connection), free storage space and the status of app permissions and device settings (NFC available or switched on, precise, approximate and background location, location services, camera, notifications, battery saver, data saver; on Android additionally battery optimisation, on iOS additionally background app refresh and Live Activities). Changes to these settings are logged with a timestamp. The report is sent on launch, when returning to the app and on changes, otherwise at most every 30 minutes. Location coordinates are not part of the device report.\n\n(c) Diagnostic logs and crash reports via PostHog: the app sends technical event logs to PostHog (EU Cloud), for example: NFC read started, tag recognised or unknown, timeout or read error; result of check-in and check-out requests with HTTP status and duration; status of offline synchronisation and photo uploads; successful or failed sign-in (without user name); network errors with the path called, without identifiers; screen changes within the app; permission changes and crash reports with stack trace. The events are linked to the internal Taskey user ID, the role, the company identifier and the app language. Names, e-mail addresses, passwords, contents of notes, messages or photos and location coordinates are not collected; IP addresses are anonymised by PostHog. No screen recording (session replay) takes place.\n\n(d) Crash and error reports via Sentry: in addition, app crashes with stack trace and technical metadata are sent to a Sentry instance that we operate ourselves on servers in Germany.\n\nThe data under (b) to (d) is used exclusively for error analysis and technical support. It is only accessible to the support team of Schulz & Stosse GbR and is not evaluated to monitor the performance or behaviour of employees, nor passed on to the commissioning company for that purpose.",
       },
       {
         title: "3.8 Payment data",
@@ -427,6 +437,11 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
         value: "Art. 6(1)(f) GDPR (legitimate interest in secure operation)",
       },
       {
+        label: "Device report, diagnostic logs and crash reports for error analysis and technical support (PostHog, Sentry)",
+        value:
+          "Art. 6(1)(f) GDPR (legitimate interest in a functional, error-free app and effective support)",
+      },
+      {
         label: "Storage of the sign-in token in encrypted device storage",
         value: "Art. 6(1)(b) GDPR in conjunction with Art. 32 GDPR",
       },
@@ -461,13 +476,42 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
         policy: "https://osmfoundation.org/wiki/Privacy_Policy",
       },
       {
+        name: "Apple Inc. — Apple Push Notification service (iOS only)",
+        body:
+          "Receives the APNs device token of the iOS device and delivers push messages to the device. The token is passed on to Firebase Cloud Messaging.",
+        policy: "https://www.apple.com/legal/privacy/",
+      },
+      {
+        name: "PostHog Inc. — diagnostic logs and error tracking (EU Cloud)",
+        body:
+          "Processes the diagnostic logs and crash reports described in section 3.7 (c) on behalf of Schulz & Stosse GbR. The data is stored in the PostHog EU Cloud with servers in Frankfurt am Main. IP addresses are anonymised and screen recordings are disabled. Access by the US parent company cannot be ruled out; Standard Contractual Clauses of the European Commission are in place for this.",
+        policy: "https://posthog.com/privacy",
+      },
+      {
+        name: "Sentry (self-hosted) — crash reports",
+        body:
+          "Captures app crashes and errors with stack trace and technical metadata. The Sentry instance is operated by us on servers of IONOS SE in Germany; no data is transferred to the company that makes Sentry.",
+      },
+      {
+        name: "Google Ireland Limited — Firebase Analytics for Apps (iOS only)",
+        body:
+          "Collects usage events (screen views, app opens, interactions) with a pseudonymous instance ID. This SDK is under review with regard to its necessity in an employment context.",
+        policy: "https://firebase.google.com/support/privacy",
+      },
+      {
+        name: "Google Ireland Limited — Google Ads On-Device Conversion Measurement (iOS only)",
+        body:
+          "Attribution of app installs to marketing campaigns (conversion attribution). This SDK is under review with regard to its necessity in an employment context.",
+        policy: "https://policies.google.com/privacy",
+      },
+      {
         name: "Taskey backend (Schulz & Stosse GbR)",
         body:
-          "Stores account, time-tracking, work-order, object and chat data. Server operation takes place within the European Union. No data processing outside the EEA takes place.",
+          "Stores account, time tracking, work order, site and chat data as well as the device report under section 3.7 (b). The servers are operated in Germany (IONOS SE). No processing outside the EEA takes place here.",
       },
     ],
     sec5NoAds:
-      "Personal data is not sold for advertising purposes. The Android version contains neither advertising SDKs nor analytics/attribution tracking libraries. The iOS version additionally embeds two Google SDKs, called out separately in the recipient list above: Firebase Analytics for Apps (GoogleAppMeasurement) for usage-event collection and Google Ads On-Device Conversion Measurement for attributing app installs to marketing campaigns. These SDKs are currently under review with regard to their necessity in an employment context; where no solid legal basis exists in the employer/employee relationship, the features are to be deactivated or removed. The full processor list is available at taskeyapp.com/legal/avv.html.",
+      "Personal data is neither sold nor used for advertising, and there is no cross-app tracking (tracking within the meaning of App Tracking Transparency). Both app versions use PostHog exclusively for diagnostic logs and error tracking. The iOS version additionally embeds two Google SDKs, called out separately in the recipient list above: Firebase Analytics for Apps (GoogleAppMeasurement) and Google Ads On-Device Conversion Measurement. These SDKs are currently under review with regard to their necessity in an employment context; where no solid legal basis exists in the employer/employee relationship, the features are to be deactivated or removed. The full processor list is available at taskeyapp.com/legal/avv.html.",
 
     sec6Title: "6. Data security",
     sec6Body:
@@ -475,7 +519,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
     sec7Title: "7. Storage period",
     sec7Body:
-      "Account, work-order, object and time data is stored for as long as the user account and the corresponding contract with the contracting company remain active. Server logs are deleted automatically after 30 days. Following account deletion, personal data is removed from productive systems within 30 days. Data subject to statutory retention obligations (for example under the German Commercial Code and the Fiscal Code) is exempt; such data is blocked and deleted after the retention period has expired.",
+      "Account data as well as work order, site and time data are stored as long as the user account and the related contract of the commissioning company are active. Server logs are deleted automatically after 30 days. Device reports are deleted 90 days after the device last reported, logged permission changes after 90 days. Diagnostic logs and crash reports are deleted as soon as they are no longer required for error analysis, and on request. After an account is deleted, personal data is removed from production systems within 30 days. Data subject to statutory retention obligations (for example under the German Commercial Code and Fiscal Code) is excepted; such data is blocked and deleted once the retention period has expired.",
 
     sec8Title: "8. Account deletion and data deletion",
     sec8Body:
@@ -509,7 +553,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
     sec11Title: "11. International data transfers",
     sec11Body:
-      "User data stored on the Taskey backend is hosted within the European Union. Firebase Cloud Messaging and Google Play Services are provided by Google Ireland Limited. Google processes operational data globally; for transfers to third countries Google relies on the Standard Contractual Clauses of the European Commission.",
+      "User data in the Taskey backend is stored in Germany. Diagnostic logs are stored in the PostHog EU Cloud (Frankfurt am Main); as PostHog Inc. is a US company, access from the USA cannot be ruled out. Firebase Cloud Messaging and Google Play Services are provided by Google Ireland Limited; Google processes operational data globally. For transfers to third countries, PostHog and Google rely on the Standard Contractual Clauses of the European Commission or the EU-US Data Privacy Framework.",
 
     sec12Title: "12. Automated decisions",
     sec12Body:
@@ -519,11 +563,11 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
     sec13Intro:
       "The following overview mirrors the declaration made in the Google Play Data Safety form.",
     sec13List: [
-      "Data types collected: personal information (name, email), location (approximate and precise), app activity (in-app user actions), device or other IDs (FCM registration token), files and documents (uploaded proof and evidence).",
-      "Data use: app functionality, account management, digital time tracking, messaging. No advertising, no sale, no analytics tracking.",
-      "Data sharing with third parties: Google (Firebase Cloud Messaging, Play Services Location) and OpenStreetMap Foundation (map tiles). No sale, no advertising.",
-      "Data security: transmission exclusively via TLS, passwords stored as a hash, sign-in token stored encrypted on the device.",
-      "Data deletion: account and data deletion upon request by email to info@taskeyapp.com within 30 days.",
+      "Data types collected: personal info (name, e-mail), location (approximate and precise), app activity (user interactions in the app), app info and performance (crash logs, diagnostics), device or other IDs (installation ID, FCM registration token), files and docs (proof documents uploaded by the user).",
+      "Data usage: app functionality, account management, digital time tracking, messaging, error analysis and technical support. No advertising, no sale, no cross-app tracking.",
+      "Data sharing with third parties: Google (Firebase Cloud Messaging, Play Services Location) and the OpenStreetMap Foundation (map tiles). PostHog processes diagnostic data as a processor. No sale, no advertising.",
+      "Security practices: transmission exclusively via TLS, passwords stored as hashes, sign-in token stored encrypted on the device.",
+      "Data deletion: account and data deletion on request by e-mail to info@taskeyapp.com within 30 days.",
     ],
 
     sec14Title: "14. Changes to this app privacy policy",
@@ -536,7 +580,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
   fr: {
     pageTitle: "Politique de confidentialité de l'application",
-    subtitle: "Pour l'application mobile Taskey (Android)",
+    subtitle: "Pour l'application mobile Taskey (Android et iOS)",
     translationNote:
       "Ce document est une traduction de courtoisie. Seule la version originale allemande fait foi.",
 
@@ -559,7 +603,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
     sec2Title: "2. Champ d'application",
     sec2Body:
-      "La présente politique s'applique à la version Android de l'application mobile Taskey (ci-après l'application), distribuée via le Google Play Store et d'autres canaux. Elle s'applique également à la version iOS avec l'exception suivante : la version iOS intègre en plus Firebase Analytics for Apps (Google Analytics for Firebase, SDK GoogleAppMeasurement) et Google Ads On-Device Conversion Measurement (voir section 4). Ces SDK collectent des événements d'utilisation et des données d'attribution publicitaire et sont signalés séparément. Le traitement des données lors de la visite du site taskeyapp.com est régi par la politique de confidentialité distincte disponible sur taskeyapp.com/datenschutz.",
+      "La présente politique de confidentialité s'applique aux versions Android et iOS de l'application mobile Taskey (ci-après l'application), distribuées via le Google Play Store, l'Apple App Store et d'autres canaux. Les différences entre les versions sont signalées. La version iOS intègre en outre Firebase Analytics for Apps (Google Analytics for Firebase, SDK GoogleAppMeasurement) et Google Ads On-Device Conversion Measurement (voir section 5). Le traitement des données personnelles lors de la visite du site taskeyapp.com est régi par la politique de confidentialité distincte du site, disponible sur taskeyapp.com/datenschutz.",
 
     sec3Title: "3. Données collectées par l'application",
     sec3Intro:
@@ -583,7 +627,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
       {
         title: "3.4 NFC",
         body:
-          "L'application utilise l'interface NFC (autorisation NFC) pour lire les balises NFC apposées sur les chantiers. Les balises servent au pointage numérique. L'identifiant lu sur la balise est transmis au backend Taskey avec l'horodatage et associé à l'entrée de temps.",
+          "L'application utilise l'interface NFC pour lire les puces NFC installées sur les lieux d'intervention. Les puces servent au pointage d'entrée et de sortie dans le cadre de la saisie numérique du temps. L'identifiant lu sur la puce est transmis au backend Taskey avec l'horodatage et rattaché à l'entrée de temps. Dans les journaux de diagnostic techniques (section 3.7), l'identifiant de la puce n'est pas enregistré en clair, mais uniquement sous forme de valeur de hachage abrégée.",
       },
       {
         title: "3.5 Notifications push",
@@ -596,9 +640,9 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
           "Lors de l'utilisation de l'application, les données fonctionnelles suivantes sont traitées et stockées sur le backend Taskey : entrées de temps (début, fin, pause, chantier, identifiant de la balise NFC le cas échéant), données d'ordres et de tâches (titre, description, statut, attribution, pièces jointes), données de clients, d'objets et de véhicules issues des registres de l'entreprise concernée, messages de chat entre membres d'une même organisation, fichiers téléversés par l'utilisateur tels que photos de documentation, justificatifs et signatures.",
       },
       {
-        title: "3.7 Informations sur l'appareil et diagnostic",
+        title: "3.7 Informations sur l'appareil, diagnostic et erreurs",
         body:
-          "Pour la sécurité opérationnelle, les données techniques suivantes sont transmises entre l'application et le backend et stockées temporairement dans les journaux serveur : adresse IP, horodatage de la requête, point de terminaison API appelé, code HTTP, version de l'application, version d'Android, modèle d'appareil. Les journaux servent à l'analyse des erreurs et sont supprimés après 30 jours.",
+          "Pour la sécurité opérationnelle, la résolution des problèmes et le support technique, l'application traite les données techniques suivantes :\n\n(a) Journaux serveur : pour chaque requête vers le backend Taskey, l'adresse IP, l'horodatage, le point de terminaison API appelé, le code de statut HTTP, la version de l'application, la version du système d'exploitation et le modèle d'appareil sont enregistrés temporairement et supprimés après 30 jours.\n\n(b) Rapport d'appareil : après la connexion, l'application transmet au backend Taskey des informations sur l'appareil utilisé afin que le support Taskey puisse comprendre les problèmes (par exemple lorsqu'un scan NFC ne fonctionne pas). Sont transmis : un identifiant d'installation généré aléatoirement par l'application, la plateforme, le fabricant, le modèle et le nom de l'appareil, la version du système d'exploitation, la version et la langue de l'application, le fuseau horaire, le jeton push, le type de réseau (Wi-Fi, mobile ou aucune connexion), l'espace de stockage libre ainsi que l'état des autorisations et des réglages de l'appareil (NFC disponible ou activé, localisation précise, approximative et en arrière-plan, services de localisation, appareil photo, notifications, mode économie d'énergie, économiseur de données ; sous Android en outre l'optimisation de la batterie, sous iOS en outre l'actualisation en arrière-plan et les activités en direct). Les modifications de ces réglages sont consignées avec leur horodatage. Le rapport est envoyé au démarrage, au retour dans l'application et en cas de modification, sinon au plus toutes les 30 minutes. Les coordonnées de localisation ne font pas partie du rapport d'appareil.\n\n(c) Journaux de diagnostic et rapports de plantage via PostHog : l'application envoie des journaux d'événements techniques à PostHog (cloud UE), par exemple : lecture NFC démarrée, puce reconnue ou inconnue, délai dépassé ou erreur de lecture ; résultat des demandes de pointage d'entrée et de sortie avec statut HTTP et durée ; état de la synchronisation hors ligne et des téléversements de photos ; connexion réussie ou échouée (sans nom d'utilisateur) ; erreurs réseau avec le chemin appelé, sans identifiants ; changements d'écran dans l'application ; modifications d'autorisations ainsi que rapports de plantage avec trace de pile. Les événements sont liés à l'identifiant interne de l'utilisateur Taskey, au rôle, à l'identifiant de l'entreprise et à la langue de l'application. Les noms, adresses e-mail, mots de passe, contenus de notes, de messages ou de photos ainsi que les coordonnées de localisation ne sont pas collectés ; les adresses IP sont anonymisées par PostHog. Aucun enregistrement d'écran (session replay) n'a lieu.\n\n(d) Rapports de plantage et d'erreurs via Sentry : en outre, les plantages de l'application avec trace de pile et métadonnées techniques sont transmis à une instance Sentry que nous exploitons nous-mêmes sur des serveurs en Allemagne.\n\nLes données visées aux points (b) à (d) servent exclusivement à l'analyse des erreurs et au support technique. Elles ne sont accessibles qu'au support de Schulz & Stosse GbR et ne sont ni exploitées pour contrôler les performances ou le comportement des salariés, ni transmises à l'entreprise mandante à cette fin.",
       },
       {
         title: "3.8 Données de paiement",
@@ -635,6 +679,11 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
         value: "Art. 6, § 1, point f) du RGPD (intérêt légitime à une exploitation sécurisée)",
       },
       {
+        label: "Rapport d'appareil, journaux de diagnostic et rapports de plantage pour l'analyse des erreurs et le support technique (PostHog, Sentry)",
+        value:
+          "Art. 6, par. 1, point f) du RGPD (intérêt légitime à une application fonctionnelle et sans erreur et à un support efficace)",
+      },
+      {
         label: "Conservation du jeton d'authentification dans un stockage chiffré sur l'appareil",
         value: "Art. 6, § 1, point b) en lien avec l'art. 32 du RGPD",
       },
@@ -669,13 +718,42 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
         policy: "https://osmfoundation.org/wiki/Privacy_Policy",
       },
       {
+        name: "Apple Inc. — Apple Push Notification service (iOS uniquement)",
+        body:
+          "Reçoit le jeton APNs de l'appareil iOS et transmet les notifications push à l'appareil. Le jeton est transmis à Firebase Cloud Messaging.",
+        policy: "https://www.apple.com/legal/privacy/",
+      },
+      {
+        name: "PostHog Inc. — journaux de diagnostic et suivi des erreurs (cloud UE)",
+        body:
+          "Traite pour le compte de Schulz & Stosse GbR les journaux de diagnostic et rapports de plantage décrits à la section 3.7 (c). Les données sont stockées dans le cloud UE de PostHog, avec des serveurs situés à Francfort-sur-le-Main. Les adresses IP sont anonymisées et l'enregistrement d'écran est désactivé. Un accès par la société mère américaine ne peut être exclu ; des clauses contractuelles types de la Commission européenne sont en place à cet effet.",
+        policy: "https://posthog.com/privacy",
+      },
+      {
+        name: "Sentry (auto-hébergé) — rapports de plantage",
+        body:
+          "Enregistre les plantages et erreurs de l'application avec trace de pile et métadonnées techniques. L'instance Sentry est exploitée par nos soins sur des serveurs d'IONOS SE en Allemagne ; aucune donnée n'est transmise à l'éditeur de Sentry.",
+      },
+      {
+        name: "Google Ireland Limited — Firebase Analytics for Apps (iOS uniquement)",
+        body:
+          "Collecte des événements d'utilisation (affichages d'écran, ouvertures de l'application, interactions) avec un identifiant d'instance pseudonyme. Ce SDK fait l'objet d'un examen quant à sa nécessité dans le contexte de l'emploi.",
+        policy: "https://firebase.google.com/support/privacy",
+      },
+      {
+        name: "Google Ireland Limited — Google Ads On-Device Conversion Measurement (iOS uniquement)",
+        body:
+          "Attribution des installations de l'application à des campagnes marketing (attribution des conversions). Ce SDK fait l'objet d'un examen quant à sa nécessité dans le contexte de l'emploi.",
+        policy: "https://policies.google.com/privacy",
+      },
+      {
         name: "Backend Taskey (Schulz & Stosse GbR)",
         body:
-          "Stocke les données de compte, de pointage, d'ordres, d'objets et de chat. Les serveurs sont exploités au sein de l'Union européenne. Aucun traitement n'a lieu en dehors de l'EEE.",
+          "Stocke les données de compte, de saisie du temps, de commandes, de sites et de discussion ainsi que le rapport d'appareil visé à la section 3.7 (b). Les serveurs sont exploités en Allemagne (IONOS SE). Aucun traitement n'a lieu ici en dehors de l'EEE.",
       },
     ],
     sec5NoAds:
-      "Les données à caractère personnel ne sont pas vendues à des fins publicitaires. La version Android ne contient ni SDK publicitaire ni bibliothèque de suivi analytique ou d'attribution. La version iOS intègre en outre deux SDK Google, signalés séparément dans la liste des destinataires ci-dessus : Firebase Analytics for Apps (GoogleAppMeasurement) pour la collecte d'événements d'utilisation et Google Ads On-Device Conversion Measurement pour l'attribution des installations à des campagnes marketing. Ces SDK sont actuellement examinés quant à leur nécessité dans un contexte professionnel ; en l'absence de base juridique solide dans la relation employeur/salarié, les fonctionnalités seront désactivées ou retirées. La liste complète des sous-traitants est disponible sur taskeyapp.com/legal/avv.html.",
+      "Les données personnelles ne sont ni vendues ni utilisées à des fins publicitaires, et aucun suivi inter-applications (tracking au sens de l'App Tracking Transparency) n'a lieu. Les deux versions de l'application utilisent PostHog exclusivement pour les journaux de diagnostic et le suivi des erreurs. La version iOS intègre en outre deux SDK Google, signalés séparément dans la liste des destinataires ci-dessus : Firebase Analytics for Apps (GoogleAppMeasurement) et Google Ads On-Device Conversion Measurement. Ces SDK font actuellement l'objet d'un examen quant à leur nécessité dans le contexte de l'emploi ; en l'absence de base juridique solide dans la relation employeur/salarié, les fonctions doivent être désactivées ou supprimées. La liste complète des sous-traitants est disponible sur taskeyapp.com/legal/avv.html.",
 
     sec6Title: "6. Sécurité des données",
     sec6Body:
@@ -683,7 +761,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
     sec7Title: "7. Durée de conservation",
     sec7Body:
-      "Les données de compte, d'ordres, d'objets et de temps sont conservées tant que le compte utilisateur et le contrat correspondant de l'entreprise cliente sont actifs. Les journaux serveur sont supprimés automatiquement après 30 jours. Après suppression du compte, les données à caractère personnel sont supprimées des systèmes de production dans un délai de 30 jours. Les données soumises à des obligations légales de conservation (par ex. selon le code de commerce ou le code des impôts allemands) sont exclues ; elles sont bloquées puis supprimées à l'expiration du délai.",
+      "Les données de compte ainsi que les données de commandes, de sites et de temps sont conservées tant que le compte utilisateur et le contrat correspondant de l'entreprise mandante sont actifs. Les journaux serveur sont supprimés automatiquement après 30 jours. Les rapports d'appareil sont supprimés 90 jours après la dernière transmission de l'appareil, les modifications d'autorisations consignées après 90 jours. Les journaux de diagnostic et rapports de plantage sont supprimés dès qu'ils ne sont plus nécessaires à l'analyse des erreurs, ainsi que sur demande. Après la suppression du compte, les données personnelles sont retirées des systèmes de production dans un délai de 30 jours. Sont exceptées les données soumises à des obligations légales de conservation (par exemple en vertu du Code de commerce et du Code fiscal allemands) ; ces données sont bloquées et supprimées à l'expiration du délai.",
 
     sec8Title: "8. Suppression du compte et des données",
     sec8Body:
@@ -717,7 +795,7 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
 
     sec11Title: "11. Transferts internationaux de données",
     sec11Body:
-      "Les données utilisateurs stockées sur le backend Taskey sont hébergées au sein de l'Union européenne. Firebase Cloud Messaging et Google Play Services sont fournis par Google Ireland Limited. Google traite les données opérationnelles à l'échelle mondiale ; pour les transferts vers des pays tiers, Google s'appuie sur les clauses contractuelles types de la Commission européenne.",
+      "Les données des utilisateurs dans le backend Taskey sont stockées en Allemagne. Les journaux de diagnostic sont stockés dans le cloud UE de PostHog (Francfort-sur-le-Main) ; PostHog Inc. étant une société américaine, un accès depuis les États-Unis ne peut être exclu. Firebase Cloud Messaging et les Google Play Services sont fournis par Google Ireland Limited ; Google traite des données opérationnelles dans le monde entier. Pour les transferts vers des pays tiers, PostHog et Google s'appuient sur les clauses contractuelles types de la Commission européenne ou sur le cadre de protection des données UE-États-Unis.",
 
     sec12Title: "12. Décisions automatisées",
     sec12Body:
@@ -727,10 +805,10 @@ const CONTENT: Record<"de" | "en" | "fr", SectionContent> = {
     sec13Intro:
       "Le tableau suivant reflète la déclaration effectuée dans le formulaire Google Play Data Safety.",
     sec13List: [
-      "Types de données collectées : informations personnelles (nom, e-mail), localisation (approximative et précise), activité dans l'application (actions de l'utilisateur), identifiants d'appareil et autres (jeton d'inscription FCM), fichiers et documents (justificatifs téléversés).",
-      "Utilisation des données : fonctionnalités de l'application, gestion du compte, pointage numérique, messagerie. Pas de publicité, pas de vente, pas de suivi analytique.",
-      "Partage avec des tiers : Google (Firebase Cloud Messaging, Play Services Location) et OpenStreetMap Foundation (tuiles cartographiques). Pas de vente, pas de publicité.",
-      "Sécurité des données : transmission exclusivement en TLS, mots de passe stockés sous forme de hachage, jeton d'authentification chiffré sur l'appareil.",
+      "Types de données collectées : informations personnelles (nom, e-mail), localisation (approximative et précise), activité dans l'application (interactions de l'utilisateur), informations et performances de l'application (journaux de plantage, diagnostic), identifiants de l'appareil ou autres (identifiant d'installation, jeton d'enregistrement FCM), fichiers et documents (justificatifs téléversés par l'utilisateur).",
+      "Utilisation des données : fonctionnement de l'application, gestion du compte, saisie numérique du temps, messagerie, analyse des erreurs et support technique. Pas de publicité, pas de vente, pas de suivi inter-applications.",
+      "Partage de données avec des tiers : Google (Firebase Cloud Messaging, Play Services Location) et OpenStreetMap Foundation (tuiles de carte). PostHog traite les données de diagnostic en tant que sous-traitant. Pas de vente, pas de publicité.",
+      "Pratiques de sécurité : transmission exclusivement via TLS, mots de passe stockés sous forme de hachage, jeton de connexion stocké de manière chiffrée sur l'appareil.",
       "Suppression des données : suppression du compte et des données sur demande par e-mail à info@taskeyapp.com dans un délai de 30 jours.",
     ],
 
@@ -819,7 +897,7 @@ export default async function DatenschutzAppPage({
               {c.sec3Subs.map((s) => (
                 <div key={s.title}>
                   <h3 className="text-lg font-semibold text-slate-900 mb-1">{s.title}</h3>
-                  <p>{s.body}</p>
+                  <p className="whitespace-pre-line">{s.body}</p>
                 </div>
               ))}
             </div>
