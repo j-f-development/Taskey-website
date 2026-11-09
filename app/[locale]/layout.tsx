@@ -27,7 +27,7 @@ export default async function LocaleLayout({
   return (
     <LanguageProvider initialLanguage={locale as SupportedLocale}>
       <Header />
-      {children}
+      <main style={{ paddingTop: 44 }}>{children}</main>
       <Footer />
       <CookieConsent />
     </LanguageProvider>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import EnterpriseClient from "./enterprise-client";
+import EnterpriseClient from "./enterprise-client-apple";
 import { buildMetadata, pickLocale, type PageCopy } from "@/lib/i18n-metadata";
 
 const path = "/enterprise";

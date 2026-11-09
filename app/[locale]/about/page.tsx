@@ -1,4 +1,4 @@
-import AboutClient from "./about-client";
+import AboutClient from "./about-client-apple";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { pickLocale, canonical } from "@/lib/i18n-metadata";
 

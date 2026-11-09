@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   buildMetadata,
   pickLocale,
   type Locale,
   type PageCopy,
 } from "@/lib/i18n-metadata";
-import {
-  LandingHero,
-  LandingSection,
-  RelatedSolutions,
-} from "@/components/landing/primitives";
-import UniversalContactBlock from "@/components/landing/UniversalContactBlock";
 import LandingSchema from "@/components/landing/LandingSchema";
 import {
   breadcrumbSchema,
@@ -22,9 +17,9 @@ import {
   STATUS_LABEL_DE,
   DIRECTION_LABEL_DE,
 } from "@/lib/landing/integrationStatus";
+import { AppleSection, AppleTile, AppleButton } from "@/components/apple";
 
 const PATH = "/integrationen";
-const CAMPAIGN = "integrationen-index";
 
 const COPY: PageCopy = {
   de: {
@@ -32,8 +27,7 @@ const COPY: PageCopy = {
     description:
       "Anbindungen an ERP, HR, Payroll, Identity und BI. Statusübersicht, führende Systeme und Datenrichtungen aller aktuellen Taskey-Integrationen.",
     ogTitle: "Integrationen | Taskey",
-    ogDescription:
-      "Anbindungen an bestehende Enterprise-Systeme, mit klarem Statusausweis.",
+    ogDescription: "Anbindungen an bestehende Enterprise-Systeme, mit klarem Statusausweis.",
     twitterTitle: "Taskey Integrationen",
     twitterDescription: "Klarer Status je System, kein Wunschdenken.",
   },
@@ -71,6 +65,16 @@ export async function generateMetadata({
   });
 }
 
+const CATEGORY_DE: Record<string, string> = {
+  erp: "ERP",
+  hcm: "HR / HCM",
+  payroll: "Payroll",
+  identity: "Identity",
+  bi: "BI",
+  communication: "Kommunikation",
+  storage: "Datenhaltung",
+};
+
 export default async function IntegrationenIndex({
   params,
 }: {
@@ -98,123 +102,154 @@ export default async function IntegrationenIndex({
         ]}
       />
 
-      <LandingHero
-        eyebrow="Integrationen"
-        title="Taskey in Ihrer bestehenden Systemlandschaft."
-        subtitle="Klarer Statusausweis je System, keine impliziten Versprechen."
-        lead="Jede Integration wird mit ihrem tatsächlichen Stand geführt. Native, standardisierter Export, API-Integration, individuelle Anbindung oder auf der Roadmap. Diese Seite ist die zentrale Referenz. Detailseiten je Zielsystem beschreiben Architektur, Datenobjekte und Ausnahmen."
-        primaryCta={{ label: "Anbindung besprechen", href: "#kontakt" }}
-        secondaryCta={{ label: "Zur DATEV-Integration", href: "/integrationen/datev" }}
-        meta={[
-          { label: "Systeme", value: `${INTEGRATIONS.length} aktive Einträge` },
-          { label: "Kategorien", value: "ERP, HR, Payroll, Identity, BI" },
-          { label: "Datenmodell", value: "Führendes System je Objekt" },
-          { label: "Statusquelle", value: "Zentrales Register" },
-        ]}
-      />
-
-      <LandingSection
-        tone="canvas"
-        number="01"
-        eyebrow="Registry"
-        title="Aktuelle Integrationen und ihr Stand."
-        lead="Jede Zeile liest aus einem zentralen Register. Änderungen erfolgen dort, damit widersprüchliche Aussagen an keiner Stelle entstehen."
-      >
-        <div
-          style={{
-            borderRadius: "18px",
-            border: "1px solid rgba(15,23,42,0.09)",
-            overflow: "hidden",
-          }}
-        >
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
-            <thead>
-              <tr style={{ background: "#F8FAFC" }}>
-                <Th>System</Th>
-                <Th>Kategorie</Th>
-                <Th>Status</Th>
-                <Th>Richtung</Th>
-                <Th>Zuletzt geprüft</Th>
-              </tr>
-            </thead>
-            <tbody>
-              {INTEGRATIONS.map((r) => (
-                <tr
-                  key={r.slug}
-                  style={{ borderTop: "1px solid rgba(15,23,42,0.06)" }}
-                >
-                  <Td strong>
-                    {r.slug === "datev" ? (
-                      <a
-                        href="/integrationen/datev"
-                        style={{ color: "#0F172A", textDecoration: "none", borderBottom: "1px solid rgba(15,23,42,0.25)" }}
-                      >
-                        {r.name}
-                      </a>
-                    ) : (
-                      r.name
-                    )}
-                  </Td>
-                  <Td>{CATEGORY_DE[r.category]}</Td>
-                  <Td>{STATUS_LABEL_DE[r.status]}</Td>
-                  <Td>{DIRECTION_LABEL_DE[r.direction]}</Td>
-                  <Td mono>{r.lastReviewed}</Td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {/* Hero */}
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container text-center">
+          <p className="apl-eyebrow mb-2">Integrationen</p>
+          <h1 className="apl-display apl-display-xl mx-auto" style={{ maxWidth: "20ch" }}>
+            Taskey in Ihrer bestehenden Systemlandschaft.
+          </h1>
+          <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "56ch" }}>
+            Klarer Statusausweis je System, keine impliziten Versprechen. Native, API, Export oder
+            auf der Roadmap. Diese Seite ist die zentrale Referenz.
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-5">
+            <AppleButton href="#kontakt" variant="primary" size="lg">
+              Anbindung besprechen
+            </AppleButton>
+            <AppleButton href="/integrationen/datev" variant="secondary" size="lg">
+              DATEV-Integration ansehen
+            </AppleButton>
+          </div>
         </div>
-      </LandingSection>
+      </section>
 
-      <LandingSection tone="elev" container="wide">
-        <RelatedSolutions
-          items={[
-            { kind: "Integration", title: "DATEV Anbindung", href: "/integrationen/datev" },
-            { kind: "Prozess", title: "Lohnvorbereitung Gebäudereinigung", href: "/loesungen/lohnvorbereitung-gebaeudereinigung" },
-            { kind: "Enterprise", title: "Mehrere Niederlassungen steuern", href: "/loesungen/gebaeudereinigung-mehrere-niederlassungen" },
-            { kind: "Übersicht", title: "Alle Lösungen", href: "/loesungen" },
-          ]}
-        />
-      </LandingSection>
+      {/* Registry table */}
+      <AppleSection surface="soft" width="wide" rhythm="md">
+        <div className="text-center mb-10">
+          <p className="apl-eyebrow mb-2">Registry</p>
+          <h2 className="apl-display apl-display-lg mx-auto" style={{ maxWidth: "26ch" }}>
+            Aktuelle Integrationen und ihr Stand.
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch" }}>
+            Jede Zeile liest aus einem zentralen Register. Widersprüchliche Aussagen entstehen so an
+            keiner Stelle.
+          </p>
+        </div>
 
-      <LandingSection tone="canvas" id="kontakt" container="wide">
-        <UniversalContactBlock
-          lang={lang}
-          utmCampaign={CAMPAIGN}
-          emailSubject="Integrationen: Anfrage"
-          waMessage="Guten Tag, wir möchten Taskey mit unseren bestehenden Systemen anbinden."
-          headline="Integrationen konkret besprechen."
-          eyebrow="Kontakt · Integrationen"
-          lead="Für ein präzises Gespräch reichen: Zielsystem, Datenrichtung, Freigabeanforderung."
-        />
-      </LandingSection>
+        <div className="apl-tile apl-tile-canvas overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-[color:var(--apl-canvas-soft)]">
+                  <Th>System</Th>
+                  <Th>Kategorie</Th>
+                  <Th>Status</Th>
+                  <Th>Richtung</Th>
+                  <Th>Zuletzt geprüft</Th>
+                </tr>
+              </thead>
+              <tbody>
+                {INTEGRATIONS.map((r) => (
+                  <tr
+                    key={r.slug}
+                    className="border-t border-[color:var(--apl-hairline-soft)]"
+                  >
+                    <Td strong>
+                      {r.slug === "datev" ? (
+                        <Link
+                          href="/integrationen/datev"
+                          className="text-[color:var(--apl-ink)] hover:text-[color:var(--apl-accent)] transition"
+                        >
+                          {r.name}
+                        </Link>
+                      ) : (
+                        r.name
+                      )}
+                    </Td>
+                    <Td>{CATEGORY_DE[r.category]}</Td>
+                    <Td>{STATUS_LABEL_DE[r.status]}</Td>
+                    <Td>{DIRECTION_LABEL_DE[r.direction]}</Td>
+                    <Td mono>{r.lastReviewed}</Td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </AppleSection>
+
+      {/* Related solutions */}
+      <AppleSection surface="canvas" width="wide" rhythm="md">
+        <div className="apl-quad">
+          <AppleTile
+            tone="canvas"
+            eyebrow="Integration"
+            title="DATEV-Anbindung"
+            copy="Standardisierter Lohn- und Buchungsexport."
+            cta={{ label: "Zur DATEV-Integration", href: "/integrationen/datev" }}
+            size="md"
+            align="start"
+          />
+          <AppleTile
+            tone="canvas"
+            eyebrow="Prozess"
+            title="Lohnvorbereitung"
+            copy="Vom Einsatz bis zur Lohnabrechnung in einer Spur."
+            cta={{ label: "Zur Lösung", href: "/loesungen/lohnvorbereitung-gebaeudereinigung" }}
+            size="md"
+            align="start"
+          />
+          <AppleTile
+            tone="canvas"
+            eyebrow="Enterprise"
+            title="Mehrere Niederlassungen"
+            copy="Mandantenstruktur, Rollen und Reports pro Standort."
+            cta={{ label: "Zur Lösung", href: "/loesungen/gebaeudereinigung-mehrere-niederlassungen" }}
+            size="md"
+            align="start"
+          />
+          <AppleTile
+            tone="canvas"
+            eyebrow="Übersicht"
+            title="Alle Lösungen"
+            copy="Branchen-Lösungen von Unterhaltsreinigung bis FM."
+            cta={{ label: "Alle Lösungen", href: "/loesungen" }}
+            size="md"
+            align="start"
+          />
+        </div>
+      </AppleSection>
+
+      {/* Contact / CTA */}
+      <AppleSection surface="noir" width="narrow" rhythm="md" id="kontakt">
+        <div className="text-center">
+          <p className="apl-eyebrow mb-2" style={{ color: "#2997ff" }}>
+            Kontakt · Integrationen
+          </p>
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
+            Integrationen konkret besprechen.
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "50ch", color: "#d2d2d7" }}>
+            Für ein präzises Gespräch reichen Zielsystem, Datenrichtung und Freigabeanforderung.
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-5">
+            <AppleButton href="/erstgespraech" variant="primary" size="lg">
+              Beratung anfragen
+            </AppleButton>
+            <AppleButton href="mailto:info@taskeyapp.com" variant="secondary" size="lg">
+              info@taskeyapp.com
+            </AppleButton>
+          </div>
+        </div>
+      </AppleSection>
     </>
   );
 }
 
-const CATEGORY_DE: Record<string, string> = {
-  erp: "ERP",
-  hcm: "HR / HCM",
-  payroll: "Payroll",
-  identity: "Identity",
-  bi: "BI",
-  communication: "Kommunikation",
-  storage: "Datenhaltung",
-};
-
 function Th({ children }: { children: React.ReactNode }) {
   return (
-    <th
-      style={{
-        textAlign: "left",
-        padding: "14px 20px",
-        fontSize: "11px",
-        letterSpacing: "0.16em",
-        textTransform: "uppercase",
-        color: "#475569",
-        fontWeight: 700,
-      }}
-    >
+    <th className="text-left px-5 py-3.5 apl-caption text-[color:var(--apl-ink-muted)] font-medium uppercase tracking-wide">
       {children}
     </th>
   );
@@ -231,15 +266,7 @@ function Td({
 }) {
   return (
     <td
-      style={{
-        padding: "14px 20px",
-        fontSize: "14px",
-        color: "#0F172A",
-        fontWeight: strong ? 600 : 400,
-        fontFamily: mono ? "ui-monospace, SFMono-Regular, Menlo, monospace" : undefined,
-        verticalAlign: "top",
-        lineHeight: 1.55,
-      }}
+      className={`px-5 py-3.5 align-top apl-small ${strong ? "font-medium text-[color:var(--apl-ink)]" : "text-[color:var(--apl-ink-soft)]"} ${mono ? "font-mono text-[12px]" : ""}`}
     >
       {children}
     </td>

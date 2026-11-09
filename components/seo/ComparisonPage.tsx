@@ -1,9 +1,6 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n-metadata";
-import {
-  BreadcrumbJsonLd,
-  FaqJsonLd,
-} from "@/components/StructuredData";
+import { BreadcrumbJsonLd, FaqJsonLd } from "@/components/StructuredData";
 
 export type MatrixRow = {
   feature: string;
@@ -62,8 +59,9 @@ export default function ComparisonPage({
   ldPrefix: string;
 }) {
   const c = content;
+  const matrixLabel = locale === "de" ? "Merkmal" : locale === "en" ? "Feature" : "Fonction";
   return (
-    <main className="bg-white text-slate-900">
+    <>
       <BreadcrumbJsonLd
         id={`ld-breadcrumb-${ldPrefix}`}
         crumbs={c.breadcrumbs.map((b) => ({
@@ -75,176 +73,222 @@ export default function ComparisonPage({
       />
       <FaqJsonLd id={`ld-faq-${ldPrefix}`} items={c.faqs} />
 
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 pb-14">
-        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-slate-500">
-          <ol className="flex flex-wrap items-center gap-2">
-            {c.breadcrumbs.map((b, i) => (
-              <li key={b.href} className="flex items-center gap-2">
-                {i > 0 && <span aria-hidden>›</span>}
-                {i < c.breadcrumbs.length - 1 ? (
-                  <Link href={localeHref(locale, b.href)} className="hover:text-slate-900">
-                    {b.name}
-                  </Link>
-                ) : (
-                  <span className="text-slate-700">{b.name}</span>
-                )}
-              </li>
+      {/* Hero */}
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container">
+          <nav aria-label="Breadcrumb" className="mb-6 apl-caption text-[color:var(--apl-ink-muted)]">
+            <ol className="flex flex-wrap items-center gap-2">
+              {c.breadcrumbs.map((b, i) => (
+                <li key={`${b.href}-${i}`} className="flex items-center gap-2">
+                  {i > 0 && <span aria-hidden>›</span>}
+                  {i < c.breadcrumbs.length - 1 ? (
+                    <Link href={localeHref(locale, b.href)} className="hover:text-[color:var(--apl-ink)]">
+                      {b.name}
+                    </Link>
+                  ) : (
+                    <span className="text-[color:var(--apl-ink-soft)]">{b.name}</span>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </nav>
+
+          <p className="apl-eyebrow mb-2">{c.eyebrow}</p>
+          <h1 className="apl-display apl-display-xl" style={{ maxWidth: "22ch" }}>
+            {c.h1}
+          </h1>
+          <p className="apl-lede mt-5 max-w-[48ch] font-medium" style={{ color: "var(--apl-ink)" }}>
+            {c.h1Accent}
+          </p>
+          <p className="apl-body mt-4 max-w-[64ch]">{c.lead}</p>
+          <p className="apl-caption mt-6 max-w-[64ch]">{c.disclaimer}</p>
+        </div>
+      </section>
+
+      {/* Overview */}
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <h2 className="apl-display apl-display-md mb-8" style={{ maxWidth: "26ch" }}>
+            {c.overviewH2}
+          </h2>
+          <div className="apl-duo">
+            <div className="apl-tile apl-tile-canvas">
+              <div className="apl-tile-inner items-start text-left">
+                <h3 className="apl-headline" style={{ fontSize: "1.25rem" }}>
+                  {c.overviewLeftTitle}
+                </h3>
+                <p className="apl-body mt-2">{c.overviewLeftBody}</p>
+              </div>
+            </div>
+            <div className="apl-tile apl-tile-canvas">
+              <div className="apl-tile-inner items-start text-left">
+                <h3 className="apl-headline" style={{ fontSize: "1.25rem" }}>
+                  {c.overviewRightTitle}
+                </h3>
+                <p className="apl-body mt-2">{c.overviewRightBody}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Matrix */}
+      <section className="apl-surface-canvas apl-section-sm">
+        <div className="apl-container-wide">
+          <h2 className="apl-display apl-display-md mb-3" style={{ maxWidth: "26ch" }}>
+            {c.matrixH2}
+          </h2>
+          <p className="apl-caption max-w-[64ch] mb-6">{c.matrixNote}</p>
+          <div className="apl-tile apl-tile-canvas overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-[color:var(--apl-canvas-soft)]">
+                    <th className="text-left px-5 py-3.5 apl-caption text-[color:var(--apl-ink-muted)] font-medium uppercase tracking-wide">
+                      {matrixLabel}
+                    </th>
+                    <th className="text-left px-5 py-3.5 apl-caption text-[color:var(--apl-ink-muted)] font-medium uppercase tracking-wide">
+                      Taskey
+                    </th>
+                    <th className="text-left px-5 py-3.5 apl-caption text-[color:var(--apl-ink-muted)] font-medium uppercase tracking-wide">
+                      {c.overviewRightTitle}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {c.matrixRows.map((r) => (
+                    <tr key={r.feature} className="border-t border-[color:var(--apl-hairline-soft)]">
+                      <td className="px-5 py-3.5 apl-small font-medium text-[color:var(--apl-ink)] align-top">
+                        {r.feature}
+                      </td>
+                      <td className="px-5 py-3.5 apl-small text-[color:var(--apl-ink-soft)] align-top">
+                        {r.taskey}
+                      </td>
+                      <td className="px-5 py-3.5 apl-small text-[color:var(--apl-ink-soft)] align-top">
+                        {r.competitor}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* When which */}
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <div className="apl-duo">
+            <div className="apl-tile apl-tile-canvas">
+              <div className="apl-tile-inner items-start text-left">
+                <h2 className="apl-display apl-display-md" style={{ maxWidth: "22ch" }}>
+                  {c.whenTheirsH2}
+                </h2>
+                <ul className="mt-5 flex flex-col gap-2.5">
+                  {c.whenTheirs.map((t) => (
+                    <li key={t} className="apl-body flex items-start gap-2">
+                      <span aria-hidden className="text-[color:var(--apl-ink-faint)] mt-1">·</span>
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="apl-tile apl-tile-noir apl-on-noir">
+              <div className="apl-tile-inner items-start text-left">
+                <h2 className="apl-display apl-display-md text-white" style={{ maxWidth: "22ch" }}>
+                  {c.whenOursH2}
+                </h2>
+                <ul className="mt-5 flex flex-col gap-2.5">
+                  {c.whenOurs.map((t) => (
+                    <li key={t} className="apl-body flex items-start gap-2" style={{ color: "#d2d2d7" }}>
+                      <span aria-hidden className="mt-1" style={{ color: "#2997ff" }}>
+                        ·
+                      </span>
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="apl-surface-canvas apl-section-sm">
+        <div className="apl-container">
+          <h2 className="apl-display apl-display-lg mb-6" style={{ maxWidth: "22ch" }}>
+            {c.faqH2}
+          </h2>
+          <div className="flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
+            {c.faqs.map((f) => (
+              <details key={f.q} className="group py-5">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
+                  <span className="faq-question">{f.q}</span>
+                  <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p className="faq-answer apl-body mt-3 max-w-[70ch]">{f.a}</p>
+              </details>
             ))}
-          </ol>
-        </nav>
-
-        <span className="inline-block text-[11px] font-black tracking-[0.28em] uppercase text-cyan-700 mb-4">
-          {c.eyebrow}
-        </span>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.02] tracking-tight text-slate-900 mb-6">
-          {c.h1}
-        </h1>
-        <p className="text-xl md:text-2xl text-slate-700 font-medium leading-snug mb-6 max-w-3xl">
-          {c.h1Accent}
-        </p>
-        <p className="text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl">
-          {c.lead}
-        </p>
-        <p className="mt-6 text-xs text-slate-400 max-w-3xl">{c.disclaimer}</p>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-14 border-t border-slate-100">
-        <h2 className="text-3xl md:text-4xl font-black leading-tight text-slate-900 mb-8">
-          {c.overviewH2}
-        </h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-slate-200 p-6">
-            <h3 className="text-lg font-black text-slate-900 mb-3">{c.overviewLeftTitle}</h3>
-            <p className="text-sm md:text-base text-slate-600 leading-relaxed">
-              {c.overviewLeftBody}
-            </p>
-          </div>
-          <div className="rounded-2xl border border-slate-200 p-6">
-            <h3 className="text-lg font-black text-slate-900 mb-3">{c.overviewRightTitle}</h3>
-            <p className="text-sm md:text-base text-slate-600 leading-relaxed">
-              {c.overviewRightBody}
-            </p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-14 border-t border-slate-100">
-        <h2 className="text-3xl md:text-4xl font-black leading-tight text-slate-900 mb-4">
-          {c.matrixH2}
-        </h2>
-        <p className="text-xs text-slate-400 mb-6 max-w-3xl">{c.matrixNote}</p>
-        <div className="overflow-x-auto rounded-2xl border border-slate-200">
-          <table className="w-full text-sm md:text-base">
-            <thead className="bg-slate-50 text-slate-700">
-              <tr>
-                <th className="text-left font-black px-4 py-3">
-                  {locale === "de" ? "Merkmal" : locale === "en" ? "Feature" : "Fonction"}
-                </th>
-                <th className="text-left font-black px-4 py-3">Taskey</th>
-                <th className="text-left font-black px-4 py-3">{c.overviewRightTitle}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {c.matrixRows.map((r, i) => (
-                <tr key={r.feature} className={i % 2 === 0 ? "bg-white" : "bg-slate-50/40"}>
-                  <td className="px-4 py-3 font-bold text-slate-900">{r.feature}</td>
-                  <td className="px-4 py-3 text-slate-700">{r.taskey}</td>
-                  <td className="px-4 py-3 text-slate-700">{r.competitor}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-14 border-t border-slate-100">
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl bg-slate-50 p-6">
-            <h2 className="text-2xl md:text-3xl font-black leading-tight text-slate-900 mb-4">
-              {c.whenTheirsH2}
-            </h2>
-            <ul className="space-y-2 text-slate-700">
-              {c.whenTheirs.map((t) => (
-                <li key={t} className="flex gap-2">
-                  <span aria-hidden className="text-slate-400">·</span>
-                  <span>{t}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-2xl bg-slate-900 text-white p-6">
-            <h2 className="text-2xl md:text-3xl font-black leading-tight mb-4">{c.whenOursH2}</h2>
-            <ul className="space-y-2 text-white/85">
-              {c.whenOurs.map((t) => (
-                <li key={t} className="flex gap-2">
-                  <span aria-hidden className="text-cyan-300">·</span>
-                  <span>{t}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-14 border-t border-slate-100">
-        <h2 className="text-3xl md:text-4xl font-black leading-tight text-slate-900 mb-8">
-          {c.faqH2}
-        </h2>
-        <div className="space-y-4">
-          {c.faqs.map((f) => (
-            <details key={f.q} className="group rounded-2xl border border-slate-200 p-5">
-              <summary className="cursor-pointer text-base md:text-lg font-bold text-slate-900 flex items-center justify-between gap-4">
-                <span className="faq-question">{f.q}</span>
-                <span className="text-slate-400 group-open:rotate-45 transition-transform">+</span>
-              </summary>
-              <p className="faq-answer mt-3 text-sm md:text-base text-slate-600 leading-relaxed">
-                {f.a}
-              </p>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-14 border-t border-slate-100">
-        <div className="rounded-3xl bg-slate-900 text-white p-8 md:p-12">
-          <h2 className="text-3xl md:text-4xl font-black leading-tight mb-4">{c.ctaH2}</h2>
-          <p className="text-base md:text-lg text-white/80 mb-8 max-w-2xl">{c.ctaBody}</p>
-          <div className="flex flex-wrap gap-3">
+      {/* CTA */}
+      <section className="apl-surface-noir apl-on-noir apl-section">
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
+            {c.ctaH2}
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch", color: "#d2d2d7" }}>
+            {c.ctaBody}
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-5">
             <a
               href="https://signup.taskeyapp.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-slate-900 font-bold hover:bg-cyan-50 transition-colors"
+              className="apl-btn apl-btn-primary apl-btn-lg"
             >
               {c.ctaPrimary}
             </a>
-            <Link
-              href={localeHref(locale, "/pricing")}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 text-white font-bold hover:bg-white/10 transition-colors"
-            >
+            <Link href={localeHref(locale, "/pricing")} className="apl-btn apl-btn-ghost apl-btn-lg">
               {c.pricingLabel}
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-14 border-t border-slate-100">
-        <h2 className="text-2xl md:text-3xl font-black leading-tight text-slate-900 mb-6">
-          {c.relatedH2}
-        </h2>
-        <div className="grid gap-4 md:grid-cols-3">
-          {c.related.map((r) => (
-            <Link
-              key={r.href}
-              href={localeHref(locale, r.href)}
-              className="rounded-2xl border border-slate-200 p-5 hover:border-slate-400 transition-colors"
-            >
-              <div className="text-base font-black text-slate-900 mb-1">{r.label}</div>
-              <div className="text-sm text-slate-600 leading-relaxed">{r.desc}</div>
-            </Link>
-          ))}
+      {/* Related */}
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <h2 className="apl-display apl-display-md text-center mx-auto mb-8" style={{ maxWidth: "22ch" }}>
+            {c.relatedH2}
+          </h2>
+          <div className="apl-triple">
+            {c.related.map((r) => (
+              <Link
+                key={r.href}
+                href={localeHref(locale, r.href)}
+                className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
+                style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+              >
+                <div className="apl-tile-inner items-start text-left">
+                  <h3 className="apl-headline" style={{ fontSize: "1.0625rem" }}>
+                    {r.label}
+                  </h3>
+                  <p className="apl-small mt-2">{r.desc}</p>
+                  <span className="apl-link mt-3">Vergleich öffnen</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

@@ -83,47 +83,65 @@ export default async function ReinigungssoftwareIndex({
   ];
 
   return (
-    <main className="bg-white text-slate-900">
+    <>
       <BreadcrumbJsonLd id="ld-breadcrumb-reinigungssoftware" crumbs={crumbs} />
 
-      <section className="mx-auto max-w-5xl px-6 pt-24 pb-16">
-        <p className="text-sm uppercase tracking-widest text-slate-500">{c.eyebrow}</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{c.h1}</h1>
-        <p className="mt-6 max-w-3xl text-lg text-slate-700" data-speakable>{c.lead}</p>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-6 pb-16">
-        <h2 className="text-2xl font-semibold tracking-tight">{c.topH2}</h2>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {topCities.map((r) => (
-            <Link
-              key={r.slug}
-              href={lhref(locale, `${path}/${r.slug}`)}
-              className="rounded-2xl border border-slate-200 p-6 transition hover:border-slate-400"
-            >
-              <p className="text-xs uppercase tracking-widest text-slate-500">{r.country}</p>
-              <p className="mt-2 text-lg font-semibold text-slate-900">{r.city}</p>
-              <p className="mt-1 text-sm text-slate-600">{r.region}</p>
-            </Link>
-          ))}
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container text-center">
+          <p className="apl-eyebrow mb-2">{c.eyebrow}</p>
+          <h1 className="apl-display apl-display-xl mx-auto" style={{ maxWidth: "20ch" }}>
+            {c.h1}
+          </h1>
+          <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "58ch" }} data-speakable>
+            {c.lead}
+          </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-24">
-        <h2 className="text-2xl font-semibold tracking-tight">{c.extendedH2}</h2>
-        <ul className="mt-8 flex flex-wrap gap-3 text-sm">
-          {extendedCities.map((r) => (
-            <li key={r.slug}>
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <h2 className="apl-display apl-display-md text-center mx-auto mb-8" style={{ maxWidth: "22ch" }}>
+            {c.topH2}
+          </h2>
+          <div className="apl-triple">
+            {topCities.map((r) => (
               <Link
+                key={r.slug}
                 href={lhref(locale, `${path}/${r.slug}`)}
-                className="rounded-full border border-slate-200 px-4 py-2 text-slate-700 hover:border-slate-400 hover:text-slate-900"
+                className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
+                style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
               >
-                {r.city}
+                <div className="apl-tile-inner items-start text-left">
+                  <p className="apl-eyebrow">{r.country}</p>
+                  <h3 className="apl-display apl-display-md mt-1">{r.city}</h3>
+                  <p className="apl-small mt-1 text-[color:var(--apl-ink-muted)]">{r.region}</p>
+                  <span className="apl-link mt-3">Stadtsicht öffnen</span>
+                </div>
               </Link>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        </div>
       </section>
-    </main>
+
+      <section className="apl-surface-canvas apl-section-sm">
+        <div className="apl-container-wide">
+          <h2 className="apl-display apl-display-md text-center mx-auto mb-6" style={{ maxWidth: "22ch" }}>
+            {c.extendedH2}
+          </h2>
+          <ul className="flex flex-wrap gap-2.5 justify-center">
+            {extendedCities.map((r) => (
+              <li key={r.slug}>
+                <Link
+                  href={lhref(locale, `${path}/${r.slug}`)}
+                  className="inline-flex items-center rounded-full bg-[color:var(--apl-canvas-soft)] px-4 h-9 apl-small text-[color:var(--apl-ink-soft)] hover:bg-[color:var(--apl-canvas-mid)] hover:text-[color:var(--apl-ink)] transition"
+                >
+                  {r.city}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </>
   );
 }

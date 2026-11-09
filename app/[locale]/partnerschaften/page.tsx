@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PartnerschaftenClient from "./partnerschaften-client";
+import PartnerschaftenClient from "./partnerschaften-client-apple";
 import { buildMetadata, pickLocale, type PageCopy } from "@/lib/i18n-metadata";
 
 const COPY: PageCopy = {

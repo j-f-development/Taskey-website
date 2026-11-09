@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "@/components/LocaleLink";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -20,201 +19,140 @@ const branchenItems: { href: string; labelKey: string }[] = [
 export default function Header() {
   const { t } = useLanguage();
   const pathname = usePathname();
-  const isHomepage = pathname === "/";
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [solid, setSolid] = useState(!isHomepage);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 4);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const navLinks = [
-    { href: "/features",        label: t("nav.features") },
-    { href: "/pricing",         label: t("nav.pricing") },
-    { href: "/news",            label: t("nav.news") },
+    { href: "/features", label: t("nav.features") },
+    { href: "/pricing", label: t("nav.pricing") },
+    { href: "/integrationen", label: t("nav.integrations") ?? "Integrationen" },
+    { href: "/enterprise", label: t("nav.enterprise") ?? "Enterprise" },
+    { href: "/news", label: t("nav.news") },
     { href: "/partnerschaften", label: t("nav.partner") },
-    { href: "/about",           label: t("nav.about") },
+    { href: "/about", label: t("nav.about") },
   ];
 
   const isActive = (href: string) => pathname === href;
 
-  // Revolut-Business-Verhalten:
-  // 1) Navbar bleibt ganz oben fixed sichtbar während des gesamten Hero
-  // 2) Sobald man weit in den Hero scrollt (≈ "Feld & Büro" – Bereich), gleitet sie smooth nach oben weg
-  // 3) Scrollt man zurück in den Hero, kommt sie wieder.
-  useEffect(() => {
-    if (!isHomepage) {
-      setHidden(false);
-      setSolid(true);
-      return;
-    }
-    const onScroll = () => {
-      const y = window.scrollY;
-      const vh = window.innerHeight || 800;
-      // leicht eingedunkelter Hintergrund nach kurzem Scrollen für Lesbarkeit
-      setSolid(y > 40);
-      // einklappen sobald ~85% der Viewporthöhe gescrollt wurde (≈ Ende Hero)
-      setHidden(y > vh * 0.85);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname, isHomepage]);
-
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-[transform,background-color,backdrop-filter,border-color,color] duration-500 ease-out ${
-        hidden ? "-translate-y-full" : "translate-y-0"
-      } ${
-        solid
-          ? "bg-white/85 backdrop-blur-xl border-b border-slate-200 text-slate-900"
-          : "bg-transparent border-b border-transparent text-white"
-      }`}
-      aria-hidden={isHomepage ? hidden : false}
+      className={[
+        "fixed top-0 left-0 right-0 z-50 w-full",
+        "backdrop-saturate-[180%] backdrop-blur-[20px]",
+        "transition-colors duration-300",
+        scrolled ? "bg-[rgba(22,22,23,0.85)]" : "bg-[rgba(22,22,23,0.72)]",
+        "border-b border-white/[0.08]",
+        "text-[#f5f5f7]",
+      ].join(" ")}
+      aria-label={t("header.aria.mainNav")}
     >
-      <NavInner
-        navLinks={navLinks}
-        isActive={isActive}
-        t={t}
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
-        solid={solid}
-      />
-    </header>
-  );
-}
-
-/* ─── Inner Nav (wird in beiden Header-Layern wiederverwendet) ─── */
-function NavInner({
-  navLinks,
-  isActive,
-  t,
-  mobileMenuOpen,
-  setMobileMenuOpen,
-  solid,
-}: {
-  navLinks: { href: string; label: string }[];
-  isActive: (href: string) => boolean;
-  t: (key: string) => string;
-  mobileMenuOpen: boolean;
-  setMobileMenuOpen: (v: boolean) => void;
-  solid: boolean;
-}) {
-  // Colour palette that flips when the header sits over the dark hero video.
-  const wordmark = solid ? "text-slate-900" : "text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)]";
-  const navIdle = solid
-    ? "text-slate-600 hover:text-slate-900"
-    : "text-white/80 hover:text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.3)]";
-  const navActive = solid ? "text-blue-700 font-bold" : "text-white font-bold";
-  const loginBtn = solid
-    ? "px-5 py-2.5 border border-slate-300 hover:border-slate-400 text-slate-900 rounded-lg transition font-semibold hover:bg-blue-50"
-    : "px-5 py-2.5 border border-white/30 hover:border-white/60 text-white rounded-lg transition font-semibold hover:bg-white/10 backdrop-blur-sm";
-  const mobileToggle = solid ? "text-slate-900" : "text-white";
-
-  return (
-    <nav className="relative w-full px-4 sm:px-6 lg:px-10" aria-label={t("header.aria.mainNav")}>
-      <div className="flex justify-between items-center h-16 sm:h-20">
-        <Link href="/" className="flex items-center gap-2.5" aria-label={t("header.aria.home")}>
-          <Image
-            src="/logo_transparent.png"
-            alt={t("header.logo.alt")}
-            width={64}
-            height={64}
-            className="h-12 w-12 sm:h-14 sm:w-14 object-contain"
-            priority
-            sizes="64px"
-          />
-          <span className={`text-xl font-bold transition-colors ${wordmark}`}>TASKEY</span>
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center space-x-10">
-          <BranchenDropdown
-            t={t}
-            isActive={isActive}
-            solid={solid}
-            navIdle={navIdle}
-            navActive={navActive}
-          />
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`transition font-medium ${
-                isActive(link.href) ? navActive : navIdle
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-
-        <div className="hidden lg:flex items-center space-x-3">
-          <LanguageSwitcher tone={solid ? "light" : "dark"} />
+      <nav className="relative mx-auto h-11 max-w-[1024px] px-4">
+        <div className="flex h-full items-center justify-between">
+          {/* Logo wordmark (apple.com-style, text only, tiny) */}
           <Link
-            href="https://dashboard.taskeyapp.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={loginBtn}
+            href="/"
+            className="flex items-center text-[17px] font-medium tracking-tight hover:opacity-80 transition"
+            aria-label={t("header.aria.home")}
           >
-            {t("header.login")}
+            <span>Taskey</span>
           </Link>
-          <Link
-            href="https://signup.taskeyapp.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-900 rounded-lg transition font-semibold shadow-lg shadow-cyan-500/20"
-          >
-            {t("nav.tryFree")}
-          </Link>
-        </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className={`lg:hidden p-2 -m-2 ${mobileToggle}`}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={t("header.aria.menu")}
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {mobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 py-4 bg-white/95 backdrop-blur-xl">
-          <div className="flex flex-col space-y-1">
-            <BranchenMobileSection
-              t={t}
-              isActive={isActive}
-              onNavigate={() => setMobileMenuOpen(false)}
-            />
+          {/* Desktop nav */}
+          <div className="hidden lg:flex items-center gap-2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-3 rounded-lg transition ${
+                className={[
+                  "px-2 py-1 text-[12px] leading-[1.4] rounded-md transition",
                   isActive(link.href)
-                    ? "text-blue-700 bg-blue-50 font-bold"
-                    : "text-slate-700 hover:bg-blue-50 hover:text-slate-900"
-                }`}
+                    ? "text-white"
+                    : "text-[#f5f5f7]/80 hover:text-white",
+                ].join(" ")}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="pt-4 px-4 space-y-2">
-              <div className="flex justify-start pb-1">
-                <LanguageSwitcher tone={solid ? "light" : "dark"} />
+            <BranchenDropdown t={t} isActive={isActive} />
+          </div>
+
+          {/* Right cluster */}
+          <div className="hidden lg:flex items-center gap-3">
+            <LanguageSwitcher tone="dark" />
+            <Link
+              href="https://dashboard.taskeyapp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[12px] text-[#f5f5f7]/80 hover:text-white transition"
+            >
+              {t("header.login")}
+            </Link>
+            <Link
+              href="https://signup.taskeyapp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="apl-btn apl-btn-primary apl-btn-sm"
+              style={{ minHeight: 28, fontSize: 12, padding: "0 12px" }}
+            >
+              {t("nav.tryFree")}
+            </Link>
+          </div>
+
+          {/* Mobile toggle */}
+          <button
+            className="lg:hidden p-2 -m-2 text-[#f5f5f7]"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={t("header.aria.menu")}
+            aria-expanded={mobileMenuOpen}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M4 7h16M4 12h16M4 17h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Sheet */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-[rgba(22,22,23,0.98)] border-t border-white/[0.08]">
+          <div className="max-w-[1024px] mx-auto px-5 py-4">
+            <nav className="flex flex-col divide-y divide-white/[0.08]">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={[
+                    "py-3 text-[17px] transition",
+                    isActive(link.href) ? "text-white" : "text-[#f5f5f7]/90 hover:text-white",
+                  ].join(" ")}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <BranchenMobile t={t} isActive={isActive} onNavigate={() => setMobileMenuOpen(false)} />
+            </nav>
+            <div className="pt-5 flex flex-col gap-3">
+              <div className="flex justify-start">
+                <LanguageSwitcher tone="dark" />
               </div>
               <Link
                 href="https://dashboard.taskeyapp.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full px-4 py-3 text-center text-slate-700 hover:bg-blue-50 hover:text-slate-900 rounded-lg transition font-medium border border-slate-200"
+                className="apl-btn apl-btn-ghost w-full"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("header.login")}
@@ -223,7 +161,7 @@ function NavInner({
                 href="https://signup.taskeyapp.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full px-4 py-3 text-center bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-900 rounded-lg transition font-semibold shadow-lg shadow-cyan-500/20"
+                className="apl-btn apl-btn-primary w-full"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("nav.tryFree")}
@@ -232,28 +170,20 @@ function NavInner({
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }
 
-/* ─── Branchen dropdown (Desktop) ─── */
+/* ─── Branchen dropdown (desktop) ─── */
 function BranchenDropdown({
   t,
   isActive,
-  solid,
-  navIdle,
-  navActive,
 }: {
   t: (key: string) => string;
   isActive: (href: string) => boolean;
-  solid: boolean;
-  navIdle: string;
-  navActive: string;
 }) {
   const [open, setOpen] = useState(false);
   const anyActive = branchenItems.some((i) => isActive(i.href));
-  const triggerStyle = anyActive ? navActive : navIdle;
-  const chevronColor = solid ? "currentColor" : "currentColor";
 
   return (
     <div
@@ -266,38 +196,29 @@ function BranchenDropdown({
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="true"
         aria-expanded={open}
-        className={`inline-flex items-center gap-1 transition font-medium ${triggerStyle}`}
+        className={[
+          "inline-flex items-center gap-1 px-2 py-1 text-[12px] rounded-md transition",
+          anyActive ? "text-white" : "text-[#f5f5f7]/80 hover:text-white",
+        ].join(" ")}
       >
         {t("nav.branchen")}
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 20 20"
-          fill="none"
-          stroke={chevronColor}
-          className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-          aria-hidden
-        >
-          <path
-            d="M5 8l5 5 5-5"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+        <svg width="8" height="8" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden>
+          <path d="M5 8l5 5 5-5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
       {open && (
-        <div className="absolute left-0 top-full pt-3 z-50">
-          <div className="min-w-[220px] rounded-xl bg-white border border-slate-200 shadow-xl shadow-slate-900/10 py-2">
+        <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50">
+          <div className="min-w-[200px] rounded-xl bg-[rgba(22,22,23,0.98)] border border-white/[0.08] py-1 shadow-xl">
             {branchenItems.map((item) => (
               <Link
-                key={item.href}
+                key={item.href + item.labelKey}
                 href={item.href}
-                className={`block px-4 py-2.5 text-sm transition ${
+                className={[
+                  "block px-3 py-2 text-[13px] transition",
                   isActive(item.href)
-                    ? "text-blue-700 font-semibold bg-blue-50"
-                    : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
-                }`}
+                    ? "text-white bg-white/[0.06]"
+                    : "text-[#f5f5f7]/85 hover:text-white hover:bg-white/[0.05]",
+                ].join(" ")}
               >
                 {t(item.labelKey)}
               </Link>
@@ -309,8 +230,8 @@ function BranchenDropdown({
   );
 }
 
-/* ─── Branchen section (Mobile menu) ─── */
-function BranchenMobileSection({
+/* ─── Branchen (mobile collapsible) ─── */
+function BranchenMobile({
   t,
   isActive,
   onNavigate,
@@ -319,25 +240,19 @@ function BranchenMobileSection({
   isActive: (href: string) => boolean;
   onNavigate: () => void;
 }) {
-  const anyActive = branchenItems.some((i) => isActive(i.href));
-  const [open, setOpen] = useState(anyActive);
-
+  const [open, setOpen] = useState(branchenItems.some((i) => isActive(i.href)));
   return (
     <div>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition ${
-          anyActive
-            ? "text-blue-700 bg-blue-50 font-bold"
-            : "text-slate-700 hover:bg-blue-50 hover:text-slate-900"
-        }`}
+        className="w-full flex items-center justify-between py-3 text-[17px] text-[#f5f5f7]/90 hover:text-white transition"
       >
         <span>{t("nav.branchen")}</span>
         <svg
-          width="14"
-          height="14"
+          width="12"
+          height="12"
           viewBox="0 0 20 20"
           fill="none"
           stroke="currentColor"
@@ -348,17 +263,13 @@ function BranchenMobileSection({
         </svg>
       </button>
       {open && (
-        <div className="pl-2 mt-1 mb-1 border-l border-slate-200 space-y-1">
+        <div className="pl-3 pb-3 flex flex-col">
           {branchenItems.map((item) => (
             <Link
-              key={item.href}
+              key={item.href + item.labelKey}
               href={item.href}
               onClick={onNavigate}
-              className={`block px-4 py-2.5 rounded-lg text-sm transition ${
-                isActive(item.href)
-                  ? "text-blue-700 bg-blue-50 font-semibold"
-                  : "text-slate-600 hover:bg-blue-50 hover:text-slate-900"
-              }`}
+              className="py-2 text-[15px] text-[#f5f5f7]/80 hover:text-white transition"
             >
               {t(item.labelKey)}
             </Link>

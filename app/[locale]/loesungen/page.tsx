@@ -89,50 +89,72 @@ export default async function LoesungenIndexPage({
   ];
 
   return (
-    <main className="bg-white text-slate-900">
+    <>
       <BreadcrumbJsonLd id="ld-breadcrumb-loesungen-index" crumbs={crumbs} />
 
-      <section className="mx-auto max-w-5xl px-6 pt-24 pb-16">
-        <p className="text-sm uppercase tracking-widest text-slate-500">{c.eyebrow}</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{c.h1}</h1>
-        <p className="mt-6 max-w-3xl text-lg text-slate-700" data-speakable>{c.lead}</p>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-6 pb-24">
-        <h2 className="text-2xl font-semibold tracking-tight">{c.sectionH2}</h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          {visibleBranches.map((b) => {
-            const copy = b.copy[locale];
-            return (
-              <Link
-                key={b.slug}
-                href={lhref(locale, `${path}/${b.slug}`)}
-                className="group rounded-2xl border border-slate-200 p-6 transition hover:border-slate-400"
-              >
-                <p className="text-xs uppercase tracking-widest text-slate-500">{copy.eyebrow}</p>
-                <h3 className="mt-3 text-xl font-semibold text-slate-900">{copy.h1}</h3>
-                <p className="mt-3 text-sm text-slate-600">{copy.lead.split(". ").slice(0, 2).join(". ") + "."}</p>
-                <p className="mt-4 text-sm font-medium text-slate-900 group-hover:text-slate-600">
-                  {locale === "de" ? "Zur Branche" : locale === "en" ? "Open segment" : "Voir le segment"} →
-                </p>
-              </Link>
-            );
-          })}
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container text-center">
+          <p className="apl-eyebrow mb-2">{c.eyebrow}</p>
+          <h1 className="apl-display apl-display-xl mx-auto" style={{ maxWidth: "20ch" }}>
+            {c.h1}
+          </h1>
+          <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "58ch" }} data-speakable>
+            {c.lead}
+          </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-32">
-        <div className="rounded-3xl bg-slate-900 p-10 text-white sm:p-14">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{c.ctaH2}</h2>
-          <p className="mt-4 max-w-2xl text-slate-200">{c.ctaBody}</p>
-          <Link
-            href={lhref(locale, "/enterprise")}
-            className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-100"
-          >
-            {c.ctaPrimary}
-          </Link>
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <div className="text-center mb-10">
+            <h2 className="apl-display apl-display-lg mx-auto" style={{ maxWidth: "22ch" }}>
+              {c.sectionH2}
+            </h2>
+          </div>
+          <div className="apl-triple">
+            {visibleBranches.map((b) => {
+              const copy = b.copy[locale];
+              return (
+                <Link
+                  key={b.slug}
+                  href={lhref(locale, `${path}/${b.slug}`)}
+                  className="apl-tile apl-tile-canvas group transition hover:-translate-y-[2px]"
+                  style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+                >
+                  <div className="apl-tile-inner items-start text-left">
+                    <p className="apl-eyebrow">{copy.eyebrow}</p>
+                    <h3 className="apl-display apl-display-md mt-1" style={{ maxWidth: "22ch" }}>
+                      {copy.h1}
+                    </h3>
+                    <p className="apl-body mt-2 max-w-[42ch]">
+                      {copy.lead.split(". ").slice(0, 2).join(". ") + "."}
+                    </p>
+                    <span className="apl-link mt-4">
+                      {locale === "de" ? "Zur Branche" : locale === "en" ? "Open segment" : "Voir le segment"}
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
-    </main>
+
+      <section className="apl-surface-noir apl-on-noir apl-section">
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "22ch" }}>
+            {c.ctaH2}
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "50ch", color: "#d2d2d7" }}>
+            {c.ctaBody}
+          </p>
+          <div className="mt-7 flex justify-center">
+            <Link href={lhref(locale, "/enterprise")} className="apl-btn apl-btn-primary apl-btn-lg">
+              {c.ctaPrimary}
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

@@ -351,7 +351,7 @@ export default async function ErstgespraechPage({
   ];
 
   return (
-    <main className="tkc-canvas">
+    <>
       <BreadcrumbJsonLd crumbs={crumbs} id="ld-crumbs-erstgespraech" />
       <FaqJsonLd items={c.faq} id="ld-faq-erstgespraech" />
       <script
@@ -401,81 +401,69 @@ export default async function ErstgespraechPage({
         }}
       />
 
-      <section className="tkc-section relative" style={{ background: "var(--tkc-canvas-dark)", color: "#fff", overflow: "hidden" }}>
-        <Image
-          src="/hero-2.webp"
-          alt={c.heroAlt}
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: "cover", opacity: 0.22 }}
-        />
-        <div
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(115deg, rgba(11,13,16,0.88) 0%, rgba(11,13,16,0.68) 55%, rgba(11,13,16,0.3) 100%)",
-          }}
-        />
-        <div className="tkc-container relative">
-          <div className="tkc-mono" style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.72rem", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+      {/* Hero */}
+      <section className="apl-surface-noir apl-on-noir pt-14 pb-10">
+        <div className="apl-container-wide text-center">
+          <p className="apl-eyebrow mb-2" style={{ color: "#2997ff" }}>
             {c.eyebrow}
-          </div>
-          <h1
-            className="tkc-display mt-5"
-            style={{ fontSize: "clamp(2.4rem, 5.6vw, 4.2rem)", color: "#fff", lineHeight: 1.07, letterSpacing: "-0.015em", maxWidth: "22ch" }}
-          >
+          </p>
+          <h1 className="apl-display apl-display-xl mx-auto text-white" style={{ maxWidth: "20ch" }}>
             {c.h1}
           </h1>
-          <p className="tkc-lead mt-6" style={{ color: "rgba(238,241,245,0.86)", maxWidth: "60ch" }}>
+          <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "58ch", color: "#d2d2d7" }}>
             {c.lead}
           </p>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-5">
             <SignupButton size="lg" label={c.signupCta} utm="erstgespraech_hero" />
-            <Link href="#kalender" className="tk-cta-secondary tk-cta-secondary--onink">
+            <Link href="#kalender" className="apl-btn apl-btn-ghost apl-btn-lg">
               {c.bookCta}
             </Link>
           </div>
-          <p className="mt-5 tkc-mono" style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.78rem" }}>
+          <p className="mt-5 apl-caption" style={{ color: "#8d8d92" }}>
             {c.ctaNote}
           </p>
         </div>
       </section>
 
-      <section id="kalender" className="tkc-section" style={{ background: "var(--tkc-canvas)" }}>
-        <div className="tkc-container">
-          <h2 className="tkc-headline" style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)" }}>
-            {c.bookH2}
-          </h2>
-          <p className="tkc-body mt-4" style={{ maxWidth: "60ch" }}>{c.bookBody}</p>
+      {/* Calendly */}
+      <section id="kalender" className="apl-surface-canvas apl-section-sm">
+        <div className="apl-container-wide">
+          <div className="text-center mb-8">
+            <h2 className="apl-display apl-display-lg mx-auto" style={{ maxWidth: "22ch" }}>
+              {c.bookH2}
+            </h2>
+            <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "58ch" }}>
+              {c.bookBody}
+            </p>
+          </div>
           <div
-            className="mt-8 rounded-[12px] overflow-hidden"
-            style={{ border: "1px solid var(--tkc-line-strong)", background: "#fff", minHeight: "700px" }}
+            className="rounded-[18px] overflow-hidden ring-1 ring-black/5 bg-white"
+            style={{ minHeight: 720 }}
           >
-            <CalendlyInline
-              url="https://calendly.com/fynn-taskeyapp/new-meeting"
-              height={720}
-            />
+            <CalendlyInline url="https://calendly.com/fynn-taskeyapp/new-meeting" height={720} />
           </div>
         </div>
       </section>
 
-      <section className="tkc-section" style={{ background: "var(--tkc-canvas-tinted)" }}>
-        <div className="tkc-container">
-          <h2 className="tkc-headline" style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)" }}>
-            {c.agendaH2}
-          </h2>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Agenda */}
+      <section className="apl-surface-soft apl-section">
+        <div className="apl-container-wide">
+          <div className="text-center mb-10">
+            <h2 className="apl-display apl-display-lg mx-auto" style={{ maxWidth: "22ch" }}>
+              {c.agendaH2}
+            </h2>
+          </div>
+          <div className="apl-duo">
             {c.agenda.map((a) => (
-              <article key={a.title} className="tkc-card-strong" style={{ padding: 0, overflow: "hidden" }}>
-                <div style={{ position: "relative", aspectRatio: "16 / 9", background: "var(--tkc-canvas)" }}>
+              <article key={a.title} className="apl-tile apl-tile-canvas overflow-hidden p-0">
+                <div style={{ position: "relative", aspectRatio: "16 / 9", background: "var(--apl-canvas-soft)" }}>
                   <Image src={a.image} alt={a.alt} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
                 </div>
-                <div style={{ padding: "1.5rem" }}>
-                  <h3 className="tkc-headline" style={{ fontSize: "1.15rem" }}>{a.title}</h3>
-                  <p className="tkc-body mt-2">{a.body}</p>
+                <div className="apl-tile-inner items-start text-left">
+                  <h3 className="apl-headline" style={{ fontSize: "1.25rem" }}>
+                    {a.title}
+                  </h3>
+                  <p className="apl-body mt-2">{a.body}</p>
                 </div>
               </article>
             ))}
@@ -483,56 +471,70 @@ export default async function ErstgespraechPage({
         </div>
       </section>
 
-      <section className="tkc-section" style={{ background: "var(--tkc-canvas)" }}>
-        <div className="tkc-container">
-          <h2 className="tkc-headline" style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)" }}>
+      {/* Signup block */}
+      <section className="apl-surface-canvas apl-section-sm">
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto" style={{ maxWidth: "22ch" }}>
             {c.signupH2}
           </h2>
-          <p className="tkc-body mt-5" style={{ maxWidth: "60ch" }}>{c.signupBody}</p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "58ch" }}>
+            {c.signupBody}
+          </p>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-5">
             <SignupButton size="lg" label={c.signupCta} utm="erstgespraech_signup_block" />
-            <Link href="#kalender" className="tk-cta-secondary">
+            <Link href="#kalender" className="apl-btn apl-btn-secondary apl-btn-lg">
               {c.bookCta}
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="tkc-section" style={{ background: "var(--tkc-canvas-tinted)" }}>
-        <div className="tkc-container">
-          <h2 className="tkc-headline" style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)" }}>
+      {/* Related */}
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <h2 className="apl-display apl-display-md text-center mx-auto mb-8" style={{ maxWidth: "22ch" }}>
             {c.relatedH2}
           </h2>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="apl-quad">
             {c.relatedLinks.map((l) => (
-              <Link key={l.href} href={l.href} className="tkc-card-strong block hover:-translate-y-0.5 transition-transform">
-                <h3 className="tkc-headline" style={{ fontSize: "1rem" }}>
-                  {l.label} <span style={{ color: "var(--tkc-accent)" }}>→</span>
-                </h3>
-                <p className="tkc-body mt-2" style={{ fontSize: "0.9rem" }}>{l.body}</p>
+              <Link
+                key={l.href}
+                href={l.href}
+                className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
+                style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+              >
+                <div className="apl-tile-inner items-start text-left">
+                  <h3 className="apl-headline" style={{ fontSize: "1.0625rem" }}>
+                    {l.label}
+                  </h3>
+                  <p className="apl-small mt-2">{l.body}</p>
+                  <span className="apl-link mt-3">Mehr</span>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="faq" className="tkc-section" style={{ background: "var(--tkc-canvas-tinted)" }}>
-        <div className="tkc-container">
-          <h2 className="tkc-headline" style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)" }}>
+      {/* FAQ */}
+      <section id="faq" className="apl-surface-canvas apl-section-sm apl-hairline-top">
+        <div className="apl-container">
+          <h2 className="apl-display apl-display-lg" style={{ maxWidth: "22ch" }}>
             {c.faqH2}
           </h2>
-          <div className="mt-8 space-y-4">
+          <div className="mt-8 flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
             {c.faq.map((f) => (
-              <details key={f.q} className="tkc-card-strong">
-                <summary className="faq-question" style={{ fontWeight: 600, cursor: "pointer" }}>
-                  {f.q}
+              <details key={f.q} className="group py-5">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
+                  <span className="faq-question">{f.q}</span>
+                  <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">+</span>
                 </summary>
-                <p className="faq-answer tkc-body mt-3">{f.a}</p>
+                <p className="faq-answer apl-body mt-3 max-w-[70ch]">{f.a}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

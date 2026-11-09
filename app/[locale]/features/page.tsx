@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import FeaturesClient from "./features-client";
+import FeaturesClient from "./features-client-apple";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { buildMetadata, pickLocale, canonical, type PageCopy } from "@/lib/i18n-metadata";
 

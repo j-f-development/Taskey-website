@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PricingClient from "./pricing-client";
+import PricingClient from "./pricing-client-apple";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { buildMetadata, pickLocale, canonical, type PageCopy } from "@/lib/i18n-metadata";
 
@@ -177,23 +177,20 @@ function PricingFaqSection({
   title: string;
 }) {
   return (
-    <section className="relative bg-gradient-to-b from-white via-blue-50 to-white text-slate-900 py-20 md:py-28">
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-cyan-50 rounded-full blur-[72px] pointer-events-none" />
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase text-blue-700 mb-4">
-          {kicker}
-        </p>
-        <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tight mb-10">
-          {title}
-        </h2>
-        <div className="space-y-4">
+    <section className="apl-surface-soft apl-section-sm apl-hairline-top">
+      <div className="apl-container">
+        <p className="apl-eyebrow mb-2">{kicker}</p>
+        <h2 className="apl-display apl-display-lg max-w-[22ch]">{title}</h2>
+        <div className="mt-8 flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
           {items.map((faq) => (
-            <details key={faq.q} className="group rounded-2xl bg-blue-50/70 border border-slate-200 p-6">
-              <summary className="cursor-pointer list-none flex items-center justify-between gap-4 text-base md:text-lg font-bold">
-                <span>{faq.q}</span>
-                <span className="text-blue-700 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+            <details key={faq.q} className="group py-5">
+              <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
+                <span className="faq-question">{faq.q}</span>
+                <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">
+                  +
+                </span>
               </summary>
-              <p className="mt-4 text-slate-600 leading-relaxed text-sm md:text-base">{faq.a}</p>
+              <p className="faq-answer apl-body mt-3 max-w-[70ch]">{faq.a}</p>
             </details>
           ))}
         </div>

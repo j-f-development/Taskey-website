@@ -77,34 +77,53 @@ export default async function ProblemeIndex({
   ];
 
   return (
-    <main className="bg-white text-slate-900">
+    <>
       <BreadcrumbJsonLd id="ld-breadcrumb-probleme-index" crumbs={crumbs} />
 
-      <section className="mx-auto max-w-4xl px-6 pt-24 pb-16">
-        <p className="text-sm uppercase tracking-widest text-slate-500">{c.eyebrow}</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{c.h1}</h1>
-        <p className="mt-6 max-w-3xl text-lg text-slate-700" data-speakable>{c.lead}</p>
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container text-center">
+          <p className="apl-eyebrow mb-2">{c.eyebrow}</p>
+          <h1 className="apl-display apl-display-xl mx-auto" style={{ maxWidth: "20ch" }}>
+            {c.h1}
+          </h1>
+          <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "58ch" }} data-speakable>
+            {c.lead}
+          </p>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 pb-24">
-        <ul className="space-y-6">
-          {visible.map((p) => {
-            const cp = p.copy[locale];
-            return (
-              <li key={p.slug}>
-                <Link href={lhref(locale, `${path}/${p.slug}`)} className="block rounded-2xl border border-slate-200 p-6 hover:border-slate-400">
-                  <p className="text-xs uppercase tracking-widest text-slate-500">{cp.eyebrow}</p>
-                  <h2 className="mt-3 text-xl font-semibold text-slate-900">{cp.h1}</h2>
-                  <p className="mt-3 text-slate-700">{cp.keyFinding}</p>
-                  <p className="mt-4 text-sm font-medium text-slate-900">
-                    {locale === "de" ? "Ursachen und Ausweg" : locale === "en" ? "Causes and fix" : "Causes et solution"} →
-                  </p>
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <div className="apl-duo">
+            {visible.map((p) => {
+              const cp = p.copy[locale];
+              return (
+                <Link
+                  key={p.slug}
+                  href={lhref(locale, `${path}/${p.slug}`)}
+                  className="apl-tile apl-tile-canvas group hover:-translate-y-[2px]"
+                  style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+                >
+                  <div className="apl-tile-inner items-start text-left">
+                    <p className="apl-eyebrow">{cp.eyebrow}</p>
+                    <h3 className="apl-display apl-display-md mt-1" style={{ maxWidth: "22ch" }}>
+                      {cp.h1}
+                    </h3>
+                    <p className="apl-body mt-2 max-w-[48ch]">{cp.keyFinding}</p>
+                    <span className="apl-link mt-4">
+                      {locale === "de"
+                        ? "Ursachen und Ausweg"
+                        : locale === "en"
+                        ? "Causes and fix"
+                        : "Causes et solution"}
+                    </span>
+                  </div>
                 </Link>
-              </li>
-            );
-          })}
-        </ul>
+              );
+            })}
+          </div>
+        </div>
       </section>
-    </main>
+    </>
   );
 }
