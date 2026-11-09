@@ -9,7 +9,6 @@ import {
   type Locale,
 } from "@/lib/i18n-metadata";
 import { BreadcrumbJsonLd, FaqJsonLd } from "@/components/StructuredData";
-import CalendlyInline from "@/components/home/redesign/CalendlyInline";
 
 const path = "/erstgespraech";
 
@@ -377,26 +376,6 @@ export default async function ErstgespraechPage({
             isPartOf: { "@id": "https://www.taskeyapp.com#website" },
             about: { "@id": "https://www.taskeyapp.com#software" },
             publisher: { "@id": "https://www.taskeyapp.com#organization" },
-            potentialAction: {
-              "@type": "ReserveAction",
-              target: {
-                "@type": "EntryPoint",
-                urlTemplate: "https://calendly.com/fynn-taskeyapp/new-meeting",
-                actionPlatform: [
-                  "http://schema.org/DesktopWebPlatform",
-                  "http://schema.org/MobileWebPlatform",
-                ],
-              },
-              result: {
-                "@type": "Reservation",
-                name:
-                  locale === "de"
-                    ? "Erstgespräch mit Taskey"
-                    : locale === "en"
-                    ? "Taskey discovery call"
-                    : "Échange découverte Taskey",
-              },
-            },
           }),
         }}
       />
@@ -425,22 +404,22 @@ export default async function ErstgespraechPage({
         </div>
       </section>
 
-      {/* Calendly */}
+      {/* Kontakt */}
       <section id="kalender" className="apl-surface-canvas apl-section-sm">
-        <div className="apl-container-wide">
-          <div className="text-center mb-8">
-            <h2 className="apl-display apl-display-lg mx-auto" style={{ maxWidth: "22ch" }}>
-              {c.bookH2}
-            </h2>
-            <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "58ch" }}>
-              {c.bookBody}
-            </p>
-          </div>
-          <div
-            className="rounded-[18px] overflow-hidden ring-1 ring-black/5 bg-white"
-            style={{ minHeight: 720 }}
-          >
-            <CalendlyInline url="https://calendly.com/fynn-taskeyapp/new-meeting" height={720} />
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto" style={{ maxWidth: "22ch" }}>
+            {c.bookH2}
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "58ch" }}>
+            {c.bookBody}
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-5">
+            <Link href="mailto:info@taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
+              info@taskeyapp.com
+            </Link>
+            <Link href="tel:+4915168488999" className="apl-btn apl-btn-secondary apl-btn-lg">
+              +49 151 68488999
+            </Link>
           </div>
         </div>
       </section>

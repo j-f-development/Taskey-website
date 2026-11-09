@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "@/components/LocaleLink";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -9,10 +10,24 @@ export default function Footer() {
   return (
     <footer className="apl-surface-soft" style={{ color: "var(--apl-ink)" }}>
       <div className="apl-container-wide pt-12 pb-10">
-        {/* Thin notice bar */}
-        <p className="apl-caption text-[color:var(--apl-ink-muted)] max-w-[70ch]">
-          {t("footer.aiNotice")}
-        </p>
+        {/* Logo + notice */}
+        <div className="flex items-start justify-between gap-6 flex-wrap">
+          <Link href="/" className="flex items-center gap-2.5 opacity-90 hover:opacity-100 transition">
+            <Image
+              src="/brand/taskey-logo-navy.svg"
+              alt="Taskey"
+              width={40}
+              height={40}
+              className="h-8 w-8 object-contain"
+            />
+            <span className="apl-headline" style={{ fontSize: "1.25rem", color: "var(--apl-ink)" }}>
+              Taskey
+            </span>
+          </Link>
+          <p className="apl-caption text-[color:var(--apl-ink-muted)] max-w-[52ch]">
+            {t("footer.aiNotice")}
+          </p>
+        </div>
 
         <div
           className="mt-8 border-t border-[color:var(--apl-hairline-soft)] pt-10 grid gap-10

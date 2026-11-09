@@ -13,6 +13,7 @@ import {
   AppleStatRow,
 } from "@/components/apple";
 import AppScreenshotShowcase from "./AppScreenshotShowcase";
+import BuildingDemoSection from "./BuildingDemoSection";
 
 export default function HomeShellApple() {
   const { t: _t } = useLanguage();
@@ -54,6 +55,9 @@ export default function HomeShellApple() {
 
       {/* ── Product screenshot showcase (9 real screens) ──────────── */}
       <AppScreenshotShowcase />
+
+      {/* ── 3D building demo (interactive, click-through) ─────────── */}
+      <BuildingDemoSection />
 
       {/* ── Big product tile pair ─────────────────────────────────── */}
       <AppleSection surface="soft" width="wide" rhythm="sm">

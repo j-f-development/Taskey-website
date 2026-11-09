@@ -45,8 +45,8 @@ export default function CtaBand({
   headline,
   body,
   signupLabel = "Kostenlosen Account erstellen",
-  callLabel = "Erstgespräch buchen",
-  callHref = CONTACT.calendlyUrl,
+  callLabel = "Direkt schreiben",
+  callHref = "mailto:info@taskeyapp.com",
   utm = "cta_band",
   tone = "ink",
 }: Props) {

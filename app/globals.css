@@ -1345,3 +1345,14 @@ textarea.tkc-field-input {
   .apl-link::after,
   .apl-btn-secondary::after { animation: none !important; transition: none !important; }
 }
+
+/* Embed existing FloorPlan 3D section into Apple homepage rhythm.
+   Strip its own top/bottom padding, it already sits inside an Apple heading. */
+.apl-floorplan-wrap > section {
+  padding-top: 0 !important;
+  padding-bottom: clamp(3.5rem, 6vw, 5rem) !important;
+  background: var(--apl-canvas) !important;
+}
+.apl-floorplan-wrap > section > .ts-container-wide > div.max-w-3xl {
+  display: none; /* hide duplicate heading inside FloorPlanSection */
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "@/components/LocaleLink";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -46,13 +47,21 @@ export default function Header() {
     >
       <nav className="relative mx-auto h-11 max-w-[1024px] px-4">
         <div className="flex h-full items-center justify-between">
-          {/* Logo wordmark (apple.com-style, text only, tiny) */}
+          {/* Logo */}
           <Link
             href="/"
-            className="flex items-center text-[17px] font-medium tracking-tight hover:opacity-80 transition"
+            className="flex items-center gap-2 hover:opacity-80 transition"
             aria-label={t("header.aria.home")}
           >
-            <span>Taskey</span>
+            <Image
+              src="/brand/taskey-logo-white.svg"
+              alt="Taskey"
+              width={28}
+              height={28}
+              priority
+              className="h-6 w-6 object-contain"
+            />
+            <span className="text-[15px] font-medium tracking-tight">Taskey</span>
           </Link>
 
           {/* Desktop nav */}

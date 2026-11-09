@@ -513,7 +513,7 @@ export default async function KostenlosStartenPage({
           <div className="mt-7 flex flex-wrap items-center justify-center gap-5">
             <SignupButton size="lg" label={c.ctaLabel} utm="kostenlos_starten_hero" />
             <a
-              href="https://calendly.com/fynn-taskeyapp/new-meeting"
+              href="mailto:info@taskeyapp.com"
               target="_blank"
               rel="noopener noreferrer"
               className="apl-btn apl-btn-secondary apl-btn-lg"
@@ -578,7 +578,7 @@ export default async function KostenlosStartenPage({
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
             <SignupButton label={c.ctaLabel} utm="kostenlos_starten_value" />
             <a
-              href="https://calendly.com/fynn-taskeyapp/new-meeting"
+              href="mailto:info@taskeyapp.com"
               target="_blank"
               rel="noopener noreferrer"
               className="apl-btn apl-btn-secondary"
@@ -693,7 +693,7 @@ export default async function KostenlosStartenPage({
           <div className="mt-7 flex flex-wrap items-center justify-center gap-5">
             <SignupButton size="lg" label={c.ctaLabel} utm="kostenlos_starten_final" />
             <Link
-              href="https://calendly.com/fynn-taskeyapp/new-meeting"
+              href="mailto:info@taskeyapp.com"
               target="_blank"
               rel="noopener noreferrer"
               className="apl-btn apl-btn-ghost apl-btn-lg"
