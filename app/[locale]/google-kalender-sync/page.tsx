@@ -297,30 +297,20 @@ export default async function GoogleCalendarSyncPage({
   const supportHref = `${prefix}/support`;
 
   return (
-    <main className="bg-white">
+    <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500 text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-100 mb-4">
-            {c.eyebrow}
-          </p>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 max-w-3xl">
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container">
+          <p className="apl-eyebrow mb-2">{c.eyebrow}</p>
+          <h1 className="apl-display apl-display-xl" style={{ maxWidth: "22ch" }}>
             {c.h1}
           </h1>
-          <p className="text-lg sm:text-xl text-blue-50 max-w-2xl leading-relaxed">
-            {c.lead}
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <a
-              href="https://app.taskeyapp.com"
-              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-base font-semibold text-blue-700 shadow-sm hover:bg-blue-50 transition-colors"
-            >
+          <p className="apl-lede mt-5 max-w-[58ch]">{c.lead}</p>
+          <div className="mt-7 flex flex-wrap gap-4">
+            <a href="https://app.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
               {c.ctaConnect}
             </a>
-            <Link
-              href={supportHref}
-              className="inline-flex items-center justify-center rounded-xl border border-white/40 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors"
-            >
+            <Link href={supportHref} className="apl-btn apl-btn-secondary apl-btn-lg">
               {c.ctaSupport}
             </Link>
           </div>
@@ -441,6 +431,6 @@ export default async function GoogleCalendarSyncPage({
           .
         </p>
       </section>
-    </main>
+    </>
   );
 }

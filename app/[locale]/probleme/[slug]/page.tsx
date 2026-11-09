@@ -82,7 +82,7 @@ export default async function ProblemPage({
   };
 
   return (
-    <main className="bg-white text-slate-900">
+    <>
       <BreadcrumbJsonLd id={`ld-breadcrumb-problem-${p.slug}`} crumbs={crumbs} />
       <script
         type="application/ld+json"
@@ -99,7 +99,7 @@ export default async function ProblemPage({
       />
       <FaqJsonLd id={`ld-faq-problem-${p.slug}`} items={c.faqs} />
 
-      <article className="mx-auto max-w-3xl px-6 pt-20 pb-24">
+      <article className="mx-auto max-w-3xl px-6 pt-10 pb-16">
         <nav className="text-sm text-slate-500">
           <Link href={lhref(locale, "/")} className="hover:text-slate-900">Home</Link>
           <span className="mx-2">/</span>
@@ -217,14 +217,23 @@ export default async function ProblemPage({
           </section>
         )}
 
-        <section className="mt-16 rounded-3xl bg-slate-900 p-10 text-white">
-          <h2 className="text-2xl font-semibold tracking-tight">{c.ctaH2}</h2>
-          <p className="mt-4 text-slate-200">{c.ctaBody}</p>
-          <a href="https://signup.taskeyapp.com" className="mt-6 inline-flex rounded-full bg-white px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-100">
-            {c.ctaPrimary}
-          </a>
-        </section>
       </article>
-    </main>
+
+      <section className="apl-surface-noir apl-on-noir apl-section">
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
+            {c.ctaH2}
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch", color: "#d2d2d7" }}>
+            {c.ctaBody}
+          </p>
+          <div className="mt-7 flex justify-center">
+            <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
+              {c.ctaPrimary}
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

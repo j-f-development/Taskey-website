@@ -190,7 +190,7 @@ export default async function SupportPage({
     loc === "de" ? "https://www.taskeyapp.com" : `https://www.taskeyapp.com/${loc}`;
 
   return (
-    <main className="relative min-h-screen bg-gradient-to-b from-white via-blue-50 to-white text-slate-900 overflow-hidden">
+    <>
       <BreadcrumbSchema
         crumbs={[
           { name: ui.homeCrumb, url: baseUrl },
@@ -202,30 +202,14 @@ export default async function SupportPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(supportFaqSchema) }}
       />
 
-      <div className="absolute top-0 left-1/4 w-[700px] h-[500px] bg-cyan-50 rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[80px] pointer-events-none" />
-
-      <section className="relative pt-32 md:pt-40 pb-12 md:pb-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-slate-200 backdrop-blur-md mb-8">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
-            </span>
-            <span className="text-[10px] sm:text-xs font-black tracking-[0.25em] text-blue-700 uppercase">
-              {ui.supportBadge}
-            </span>
-          </div>
-
-          <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-black leading-[0.95] tracking-tight mb-6">
-            {ui.headlineLine1}
-            <br />
-            <span className="bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
-              {ui.headlineLine2}
-            </span>
+      {/* Hero */}
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container text-center">
+          <p className="apl-eyebrow mb-2">{ui.supportBadge}</p>
+          <h1 className="apl-display apl-display-xl mx-auto" style={{ maxWidth: "18ch" }}>
+            {ui.headlineLine1} {ui.headlineLine2}
           </h1>
-
-          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "48ch" }}>
             {ui.intro}
           </p>
         </div>
@@ -233,94 +217,73 @@ export default async function SupportPage({
 
       {loc === "de" && <HandbookSearch />}
 
-      <section className="relative pb-20 md:pb-28">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
-          <a
-            href="mailto:info@taskeyapp.com"
-            className="group rounded-3xl bg-blue-50/70 border border-slate-200 hover:border-cyan-400 p-8 md:p-10 transition-colors"
-          >
-            <p className="text-[10px] font-black tracking-[0.25em] uppercase text-blue-700 mb-4">
-              {ui.emailLabel}
-            </p>
-            <h2 className="text-2xl md:text-3xl font-black mb-3 group-hover:text-blue-700 transition-colors">
-              info@taskeyapp.com
-            </h2>
-            <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-              {ui.emailBody}
-            </p>
-          </a>
-
-          <a
-            href="tel:+4915168488999"
-            className="group rounded-3xl bg-blue-50/70 border border-slate-200 hover:border-cyan-400 p-8 md:p-10 transition-colors"
-          >
-            <p className="text-[10px] font-black tracking-[0.25em] uppercase text-blue-700 mb-4">
-              {ui.phoneLabel}
-            </p>
-            <h2 className="text-2xl md:text-3xl font-black mb-3 group-hover:text-blue-700 transition-colors">
-              +49 151 68488999
-            </h2>
-            <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-              {ui.phoneBody}
-            </p>
-          </a>
+      {/* Contact tiles */}
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <div className="apl-duo">
+            <a href="mailto:info@taskeyapp.com" className="apl-tile apl-tile-canvas group">
+              <div className="apl-tile-inner items-start text-left">
+                <p className="apl-eyebrow">{ui.emailLabel}</p>
+                <h2 className="apl-display apl-display-md mt-1" style={{ maxWidth: "20ch" }}>
+                  info@taskeyapp.com
+                </h2>
+                <p className="apl-body mt-3">{ui.emailBody}</p>
+              </div>
+            </a>
+            <a href="tel:+4915168488999" className="apl-tile apl-tile-canvas group">
+              <div className="apl-tile-inner items-start text-left">
+                <p className="apl-eyebrow">{ui.phoneLabel}</p>
+                <h2 className="apl-display apl-display-md mt-1" style={{ maxWidth: "20ch" }}>
+                  +49 151 68488999
+                </h2>
+                <p className="apl-body mt-3">{ui.phoneBody}</p>
+              </div>
+            </a>
+          </div>
         </div>
       </section>
 
-      <section className="relative pb-24 md:pb-32">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-black mb-10 text-center">
+      {/* FAQ */}
+      <section className="apl-surface-canvas apl-section-sm">
+        <div className="apl-container">
+          <h2 className="apl-display apl-display-lg mb-8" style={{ maxWidth: "22ch" }}>
             {ui.faqHeading}
           </h2>
-          <div className="space-y-4">
+          <div className="flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
             {supportFaqSchema.mainEntity.map((faq) => (
-              <details
-                key={faq.name}
-                className="group rounded-2xl bg-blue-50/70 border border-slate-200 p-6"
-              >
-                <summary className="cursor-pointer list-none flex items-center justify-between gap-4 text-base md:text-lg font-bold">
+              <details key={faq.name} className="group py-5">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
                   <span>{faq.name}</span>
-                  <span className="text-blue-700 transition-transform group-open:rotate-45 text-2xl leading-none">
-                    +
-                  </span>
+                  <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">+</span>
                 </summary>
-                <p className="mt-4 text-slate-600 leading-relaxed text-sm md:text-base">
-                  {faq.acceptedAnswer.text}
-                </p>
+                <p className="apl-body mt-3 max-w-[70ch]">{faq.acceptedAnswer.text}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative pb-24 md:pb-32">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-3xl bg-gradient-to-br from-white via-blue-50 to-white border border-slate-200 p-8 md:p-12 overflow-hidden">
-            <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-cyan-100 rounded-full blur-[56px] pointer-events-none" />
-            <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-8">
-              <div className="max-w-xl">
-                <h2 className="text-3xl md:text-4xl font-black leading-tight mb-3">
-                  {ui.ctaHeadline}
-                </h2>
-                <p className="text-slate-600 text-base md:text-lg">
-                  {ui.ctaBody}
-                </p>
-              </div>
-              <Link
-                href="https://signup.taskeyapp.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-bold rounded-full hover:bg-blue-500 transition-colors whitespace-nowrap"
-              >
-                {ui.ctaButton}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
+      {/* CTA */}
+      <section className="apl-surface-noir apl-on-noir apl-section">
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
+            {ui.ctaHeadline}
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch", color: "#d2d2d7" }}>
+            {ui.ctaBody}
+          </p>
+          <div className="mt-7 flex justify-center">
+            <Link
+              href="https://signup.taskeyapp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="apl-btn apl-btn-primary apl-btn-lg"
+            >
+              {ui.ctaButton}
+            </Link>
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

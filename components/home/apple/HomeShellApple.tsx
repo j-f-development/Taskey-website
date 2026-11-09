@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "@/components/LocaleLink";
 import { useLanguage } from "@/context/LanguageContext";
 import {
@@ -11,6 +12,7 @@ import {
   AppleQuote,
   AppleStatRow,
 } from "@/components/apple";
+import AppScreenshotShowcase from "./AppScreenshotShowcase";
 
 export default function HomeShellApple() {
   const { t: _t } = useLanguage();
@@ -49,6 +51,9 @@ export default function HomeShellApple() {
           </AppleStage>
         </div>
       </section>
+
+      {/* ── Product screenshot showcase (9 real screens) ──────────── */}
+      <AppScreenshotShowcase />
 
       {/* ── Big product tile pair ─────────────────────────────────── */}
       <AppleSection surface="soft" width="wide" rhythm="sm">
@@ -216,53 +221,25 @@ export default function HomeShellApple() {
   );
 }
 
-/* ─── Hero stage visual ────────────────────────────────────────── */
+/* ─── Hero stage visual: real app screenshot ─────────────────── */
 function HeroStageVisual() {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center p-8 sm:p-16">
-      {/* Floating faux dashboard card */}
-      <div className="relative w-full max-w-[720px] aspect-[16/10] rounded-2xl bg-white shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)] ring-1 ring-black/5 overflow-hidden">
-        <div className="h-9 flex items-center gap-1.5 px-4 border-b border-black/5">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-          <span className="ml-3 text-[11px] text-[color:var(--apl-ink-muted)]">taskey.app · Einsatzplanung</span>
-        </div>
-        <div className="p-5 grid grid-cols-5 gap-3 h-[calc(100%-36px)]">
-          <div className="col-span-1 flex flex-col gap-2">
-            {["Objekte", "Teams", "Einsätze", "Nachweise", "Rechnungen"].map((l) => (
-              <div
-                key={l}
-                className="h-7 rounded-md bg-[color:var(--apl-canvas-soft)] px-2 flex items-center text-[11px] text-[color:var(--apl-ink-soft)]"
-              >
-                {l}
-              </div>
-            ))}
-          </div>
-          <div className="col-span-4 grid grid-rows-3 gap-3">
-            <div className="row-span-1 rounded-lg bg-gradient-to-br from-[#eef4ff] to-[#e3edff] p-3 flex items-center justify-between">
-              <div>
-                <div className="text-[10px] text-[color:var(--apl-ink-muted)] uppercase tracking-wide">
-                  Heute
-                </div>
-                <div className="apl-headline" style={{ fontSize: "1.1rem" }}>
-                  18 Einsätze aktiv
-                </div>
-              </div>
-              <div className="h-10 w-28 rounded-md bg-white/70 ring-1 ring-black/5" />
-            </div>
-            <div className="row-span-2 rounded-lg bg-[color:var(--apl-canvas-soft)] p-3 grid grid-cols-3 gap-2">
-              {Array.from({ length: 9 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="rounded-md bg-white ring-1 ring-black/5 h-full flex items-center justify-center text-[10px] text-[color:var(--apl-ink-muted)]"
-                >
-                  Objekt {i + 1}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+    <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-10">
+      <div
+        className="relative w-full max-w-[1040px] aspect-[16/9] rounded-[18px] overflow-hidden bg-white ring-1 ring-black/10"
+        style={{
+          boxShadow:
+            "0 1px 0 rgba(255,255,255,0.8) inset, 0 40px 90px -40px rgba(15,23,42,0.4)",
+        }}
+      >
+        <Image
+          src="/screenshots/objekte.png"
+          alt="Taskey · Objekte-Übersicht mit Umsatz und Marge pro Standort"
+          fill
+          sizes="(max-width: 1040px) 100vw, 1040px"
+          priority
+          className="object-cover object-top"
+        />
       </div>
     </div>
   );

@@ -257,183 +257,148 @@ export default function LandingPageTemplate({
     : null;
 
   return (
-    <main className="relative min-h-screen bg-gradient-to-b from-white via-blue-50 to-white text-slate-900 overflow-hidden">
+    <>
       <BreadcrumbSchema crumbs={breadcrumbs} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {serviceSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       )}
 
-      {/* Ambient glows – konsistent mit Home/News/Support */}
-      <div className="absolute top-0 left-1/4 w-[800px] h-[600px] bg-cyan-500/12 rounded-full blur-[90px] pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-blue-50 rounded-full blur-[80px] pointer-events-none" />
-
-      {/* ─── Hero ─────────────────────────────────────────── */}
-      <section className="relative pt-32 md:pt-40 pb-14 md:pb-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Sichtbare Breadcrumbs */}
-          <nav aria-label={c.breadcrumbAriaLabel} className="mb-8 text-xs sm:text-sm text-slate-500">
+      {/* Hero */}
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container">
+          <nav aria-label={c.breadcrumbAriaLabel} className="mb-6 apl-caption text-[color:var(--apl-ink-muted)]">
             <ol className="flex flex-wrap items-center gap-2">
               {breadcrumbs.map((b, i) => {
                 const isLast = i === breadcrumbs.length - 1;
                 return (
                   <li key={b.url} className="flex items-center gap-2">
                     {isLast ? (
-                      <span className="text-slate-600">{b.name}</span>
+                      <span className="text-[color:var(--apl-ink-soft)]">{b.name}</span>
                     ) : (
                       <Link
                         href={b.url.replace("https://www.taskeyapp.com", "") || "/"}
-                        className="hover:text-blue-700 transition-colors"
+                        className="hover:text-[color:var(--apl-ink)] transition"
                       >
                         {b.name}
                       </Link>
                     )}
-                    {!isLast && <span className="text-slate-400">/</span>}
+                    {!isLast && <span className="text-[color:var(--apl-ink-faint)]">/</span>}
                   </li>
                 );
               })}
             </ol>
           </nav>
 
-          <div className="flex flex-wrap items-center gap-3 mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-slate-200 backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
-              </span>
-              <span className="text-[10px] sm:text-xs font-black tracking-[0.25em] text-blue-700 uppercase">
-                {eyebrow}
-              </span>
-            </div>
-            <time
-              dateTime={buildDate}
-              className="text-[11px] sm:text-xs text-slate-500 font-medium"
-            >
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <p className="apl-eyebrow">{eyebrow}</p>
+            <time dateTime={buildDate} className="apl-caption text-[color:var(--apl-ink-muted)]">
               {c.updatedPrefix}: {formatUpdatedDate(buildDate, language)}
             </time>
           </div>
 
-          <h1 className="text-[clamp(2.5rem,6vw,5.5rem)] font-black leading-[0.95] tracking-tight mb-6">
+          <h1 className="apl-display apl-display-xl" style={{ maxWidth: "22ch" }}>
             {h1Accent ? (
               <>
-                {h1}{" "}
-                <span className="bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
-                  {h1Accent}
-                </span>
+                {h1} <span style={{ color: "var(--apl-accent)" }}>{h1Accent}</span>
               </>
             ) : (
               h1
             )}
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-600 max-w-3xl leading-relaxed mb-6">
-            {lead}
-          </p>
+          <p className="apl-lede mt-5 max-w-[62ch]">{lead}</p>
 
           {answerBlock && (
             <div
               id="answer-block"
-              className="max-w-3xl mb-10 rounded-2xl border-l-4 border-cyan-400 bg-blue-50/60 px-5 py-4 text-slate-800 text-base md:text-lg leading-relaxed"
+              className="mt-8 max-w-[64ch] rounded-[14px] px-5 py-4 apl-body border-l-[3px]"
+              style={{
+                background: "var(--apl-canvas-soft)",
+                borderColor: "var(--apl-accent)",
+                color: "var(--apl-ink)",
+              }}
             >
               {answerBlock}
             </div>
           )}
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="mt-7 flex flex-wrap gap-4">
             <Link
               href="https://signup.taskeyapp.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-bold rounded-full hover:bg-blue-500 transition-colors whitespace-nowrap"
+              className="apl-btn apl-btn-primary apl-btn-lg"
             >
               {c.heroPrimaryCta}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
             </Link>
-            <Link
-              href="/features"
-              className="inline-flex items-center justify-center px-8 py-4 text-slate-900 border border-slate-300 hover:border-slate-400 text-base font-bold rounded-full transition-colors whitespace-nowrap"
-            >
+            <Link href="/features" className="apl-btn apl-btn-secondary apl-btn-lg">
               {c.heroSecondaryCta}
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ─── Sections ─────────────────────────────────────── */}
+      {/* Sections */}
       {sections.map((section, idx) => (
         <section
           key={`${section.heading}-${idx}`}
-          className={`relative py-16 md:py-24 ${idx % 2 === 1 ? "bg-white/[0.015]" : ""}`}
+          className={`apl-section-sm ${idx % 2 === 1 ? "apl-surface-soft" : "apl-surface-canvas"}`}
         >
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            {section.eyebrow && (
-              <p className="text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase text-blue-700 mb-4">
-                {section.eyebrow}
-              </p>
-            )}
-            <h2 className="text-3xl md:text-5xl font-black leading-[1.05] tracking-tight mb-6 max-w-3xl">
+          <div className="apl-container">
+            {section.eyebrow && <p className="apl-eyebrow mb-2">{section.eyebrow}</p>}
+            <h2 className="apl-display apl-display-lg" style={{ maxWidth: "26ch" }}>
               {section.heading}
             </h2>
-            {section.intro && (
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl mb-8">
-                {section.intro}
-              </p>
-            )}
+            {section.intro && <p className="apl-lede mt-4 max-w-[64ch]">{section.intro}</p>}
             {section.body?.map((p, pi) => (
-              <p
-                key={pi}
-                className="text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl mb-5"
-              >
+              <p key={pi} className="apl-body mt-4 max-w-[64ch]">
                 {p}
               </p>
             ))}
             {section.bullets && section.bullets.length > 0 && (
-              <ul className="grid sm:grid-cols-2 gap-3 mt-6 max-w-3xl">
+              <ul className="grid sm:grid-cols-2 gap-3 mt-6 max-w-[64ch]">
                 {section.bullets.map((b, bi) => (
                   <li
                     key={bi}
-                    className="flex items-start gap-3 rounded-2xl bg-blue-50/70 border border-slate-200 p-4"
+                    className="flex items-start gap-2 apl-body"
                   >
-                    <span className="inline-flex shrink-0 mt-0.5 w-5 h-5 rounded-full bg-cyan-400/20 text-blue-700 items-center justify-center text-xs font-black">
-                      ✓
-                    </span>
-                    <span className="text-slate-700 text-sm md:text-base leading-snug">{b}</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="mt-1.5 shrink-0">
+                      <path
+                        d="M3.5 8.2l3 3L12.5 5"
+                        stroke="var(--apl-accent)"
+                        strokeWidth="1.75"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="text-[color:var(--apl-ink-soft)]">{b}</span>
                   </li>
                 ))}
               </ul>
             )}
             {section.subsections && section.subsections.length > 0 && (
-              <div className="grid md:grid-cols-2 gap-5 mt-8">
+              <div className="grid md:grid-cols-2 gap-4 mt-8">
                 {section.subsections.map((s) => (
-                  <div
-                    key={s.heading}
-                    className="rounded-2xl bg-blue-50/70 border border-slate-200 p-6"
-                  >
-                    {s.image && (
-                      <div className="relative aspect-[4/3] mb-5 overflow-hidden rounded-xl border border-slate-200 bg-white">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={s.image}
-                          alt={s.imageAlt ?? s.heading}
-                          loading="lazy"
-                          className="absolute inset-0 w-full h-full object-contain"
-                        />
-                      </div>
-                    )}
-                    <h3 className="text-lg md:text-xl font-bold mb-3 text-slate-900">{s.heading}</h3>
-                    <p className="text-slate-600 text-sm md:text-base leading-relaxed">{s.body}</p>
+                  <div key={s.heading} className="apl-tile apl-tile-canvas">
+                    <div className="apl-tile-inner items-start text-left">
+                      {s.image && (
+                        <div className="relative aspect-[4/3] mb-4 overflow-hidden rounded-[14px] ring-1 ring-black/5 bg-[color:var(--apl-canvas-soft)] w-full">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={s.image}
+                            alt={s.imageAlt ?? s.heading}
+                            loading="lazy"
+                            className="absolute inset-0 w-full h-full object-contain"
+                          />
+                        </div>
+                      )}
+                      <h3 className="apl-headline" style={{ fontSize: "1.25rem" }}>
+                        {s.heading}
+                      </h3>
+                      <p className="apl-body mt-2">{s.body}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -442,66 +407,54 @@ export default function LandingPageTemplate({
         </section>
       ))}
 
-      {/* ─── FAQ ──────────────────────────────────────────── */}
-      <section className="relative py-20 md:py-28">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase text-blue-700 mb-4">
-            {c.faqEyebrow}
-          </p>
-          <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tight mb-10">
+      {/* FAQ */}
+      <section className="apl-surface-canvas apl-section-sm apl-hairline-top">
+        <div className="apl-container">
+          <p className="apl-eyebrow mb-2">{c.faqEyebrow}</p>
+          <h2 className="apl-display apl-display-lg" style={{ maxWidth: "22ch" }}>
             {c.faqHeading}
           </h2>
-          <div className="space-y-4">
+          <div className="mt-8 flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
             {faqs.map((faq) => (
               <details
                 key={faq.question}
                 id={slugifyQuestion(faq.question)}
-                className="group rounded-2xl bg-blue-50/70 border border-slate-200 p-6 scroll-mt-24"
+                className="group py-5 scroll-mt-20"
               >
-                <summary className="cursor-pointer list-none flex items-center justify-between gap-4 text-base md:text-lg font-bold">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
                   <span>{faq.question}</span>
-                  <span className="text-blue-700 transition-transform group-open:rotate-45 text-2xl leading-none">
-                    +
-                  </span>
+                  <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">+</span>
                 </summary>
-                <p className="mt-4 text-slate-600 leading-relaxed text-sm md:text-base">
-                  {faq.answer}
-                </p>
+                <p className="apl-body mt-3 max-w-[70ch]">{faq.answer}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── Related / interne Verlinkung ─────────────────── */}
+      {/* Related */}
       {related.length > 0 && (
-        <section className="relative py-20 md:py-24 bg-blue-50/60">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase text-blue-700 mb-4">
-              {c.relatedEyebrow}
-            </p>
-            <h2 className="text-3xl md:text-4xl font-black leading-tight mb-10">
+        <section className="apl-surface-soft apl-section-sm">
+          <div className="apl-container-wide">
+            <p className="apl-eyebrow mb-2">{c.relatedEyebrow}</p>
+            <h2 className="apl-display apl-display-md mb-8" style={{ maxWidth: "22ch" }}>
               {c.relatedHeading}
             </h2>
-            <div className="grid md:grid-cols-3 gap-5">
+            <div className="apl-triple">
               {related.map((r) => (
                 <Link
                   key={r.href}
                   href={r.href}
-                  className="group rounded-2xl bg-blue-50/70 border border-slate-200 hover:border-cyan-400 p-6 transition-colors"
+                  className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
+                  style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
                 >
-                  <h3 className="text-lg font-bold mb-2 group-hover:text-blue-700 transition-colors">
-                    {r.label}
-                  </h3>
-                  {r.description && (
-                    <p className="text-slate-600 text-sm leading-relaxed">{r.description}</p>
-                  )}
-                  <span className="inline-flex items-center gap-1 mt-4 text-xs font-bold text-blue-700">
-                    {c.relatedMore}
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </span>
+                  <div className="apl-tile-inner items-start text-left">
+                    <h3 className="apl-headline" style={{ fontSize: "1.0625rem" }}>
+                      {r.label}
+                    </h3>
+                    {r.description && <p className="apl-small mt-2">{r.description}</p>}
+                    <span className="apl-link mt-3">{c.relatedMore}</span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -509,10 +462,10 @@ export default function LandingPageTemplate({
         </section>
       )}
 
-      {/* ─── Newsletter (optional) ────────────────────────── */}
+      {/* Newsletter (optional) */}
       {newsletter ? (
-        <section className="relative pt-16 md:pt-20">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="apl-surface-canvas apl-section-sm">
+          <div className="apl-container">
             <NewsletterForm
               source={newsletter.source}
               sourceLabel={newsletter.sourceLabel}
@@ -522,33 +475,27 @@ export default function LandingPageTemplate({
         </section>
       ) : null}
 
-      {/* ─── Bottom CTA ───────────────────────────────────── */}
-      <section className="relative pb-24 md:pb-32 pt-20 md:pt-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-3xl bg-gradient-to-br from-white via-blue-50 to-white border border-slate-200 p-8 md:p-12 overflow-hidden">
-            <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-cyan-100 rounded-full blur-[56px] pointer-events-none" />
-            <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-8">
-              <div className="max-w-xl">
-                <h2 className="text-3xl md:text-4xl font-black leading-tight mb-3">
-                  {resolvedCtaTitle}
-                </h2>
-                <p className="text-slate-600 text-base md:text-lg">{resolvedCtaSubtitle}</p>
-              </div>
-              <Link
-                href="https://signup.taskeyapp.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-bold rounded-full hover:bg-blue-500 transition-colors whitespace-nowrap"
-              >
-                {c.bottomCta}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
+      {/* Bottom CTA */}
+      <section className="apl-surface-noir apl-on-noir apl-section">
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
+            {resolvedCtaTitle}
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch", color: "#d2d2d7" }}>
+            {resolvedCtaSubtitle}
+          </p>
+          <div className="mt-7 flex justify-center">
+            <Link
+              href="https://signup.taskeyapp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="apl-btn apl-btn-primary apl-btn-lg"
+            >
+              {c.bottomCta}
+            </Link>
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

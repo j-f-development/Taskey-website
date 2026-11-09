@@ -37,12 +37,12 @@ export async function generateMetadata(
 }
 
 const categoryToneByName: Record<PostCategory, string> = {
-  Update:      "bg-cyan-50 border-cyan-300 text-blue-700",
-  Feature:     "bg-violet-500/10 border-violet-400/30 text-violet-300",
-  Release:     "bg-emerald-50 border-emerald-300 text-emerald-700",
-  Unternehmen: "bg-blue-50 border-slate-200 text-slate-600",
-  Geplant:     "bg-amber-500/10 border-amber-400/30 text-amber-300",
-  Blog:        "bg-emerald-50 border-emerald-300 text-emerald-700",
+  Update:      "bg-[#eef4ff] text-[#0071e3]",
+  Feature:     "bg-[#f3eeff] text-[#6b3fd6]",
+  Release:     "bg-[#e7f6ee] text-[#167a45]",
+  Unternehmen: "bg-[color:var(--apl-canvas-soft)] text-[color:var(--apl-ink-soft)]",
+  Geplant:     "bg-[#fff4df] text-[#a96a00]",
+  Blog:        "bg-[#e7f6ee] text-[#167a45]",
 };
 
 const UI: Record<Locale, {
@@ -481,44 +481,37 @@ export default async function NewsPostPage(
   };
 
   return (
-    <main className="relative bg-gradient-to-b from-white via-blue-50 to-white text-slate-900 min-h-screen overflow-hidden">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Ambient Glows */}
-      <div className="absolute top-0 left-1/4 w-[900px] h-[700px] bg-cyan-100 rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-blue-50 rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(29,78,216,0.06),transparent_60%)] pointer-events-none" />
-
-      {/* ─── HEADER ────────────────────────────────────── */}
-      <article className="relative pt-28 md:pt-36 pb-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Article */}
+      <article className="apl-surface-canvas pt-12 pb-10">
+        <div className="apl-container">
           <Link
             href="/news"
-            className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-700 transition-colors mb-10"
+            className="inline-flex items-center gap-1 apl-small text-[color:var(--apl-ink-muted)] hover:text-[color:var(--apl-ink)] transition mb-8"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             {ui.allNews}
           </Link>
 
-          <div className="flex items-center gap-3 mb-6">
-            <span
-              className={`inline-flex text-[10px] font-black uppercase tracking-[0.25em] px-3 py-1.5 rounded-full border ${categoryTone}`}
-            >
+          <div className="flex items-center gap-3 mb-5">
+            <span className={`inline-flex text-[11px] font-medium uppercase tracking-wide px-2.5 py-1 rounded-full ${categoryTone}`}>
               {categoryLabel}
             </span>
-            <span className="text-slate-500 text-xs sm:text-sm">{l.date}</span>
+            <span className="apl-caption text-[color:var(--apl-ink-muted)]">{l.date}</span>
           </div>
 
-          <h1 className="text-[clamp(2rem,5vw,3.75rem)] font-black text-slate-900 leading-[1.05] tracking-tight mb-6">
+          <h1 className="apl-display apl-display-lg" style={{ maxWidth: "24ch" }}>
             {l.title}
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-600 leading-relaxed pb-10 border-b border-slate-200">
+          <p className="apl-lede mt-5 pb-8 border-b border-[color:var(--apl-hairline-soft)] max-w-[60ch]">
             {l.summary}
           </p>
         </div>
@@ -526,8 +519,8 @@ export default async function NewsPostPage(
         {/* Hero Image */}
         {post.heroImage ? (
           post.heroImagePortrait ? (
-            <div className="max-w-md sm:max-w-lg mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-              <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-white">
+            <div className="max-w-md sm:max-w-lg mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+              <div className="relative rounded-[22px] overflow-hidden ring-1 ring-black/5 bg-white">
                 <Image
                   src={post.heroImage}
                   alt={l.title}
@@ -540,8 +533,8 @@ export default async function NewsPostPage(
               </div>
             </div>
           ) : (
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-              <div className="relative rounded-3xl overflow-hidden border border-slate-200 aspect-[16/9]">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+              <div className="relative rounded-[22px] overflow-hidden ring-1 ring-black/5 aspect-[16/9]">
                 <Image
                   src={post.heroImage}
                   alt={l.title}
@@ -554,23 +547,20 @@ export default async function NewsPostPage(
             </div>
           )
         ) : post.category === "Blog" && tocItems.length > 0 ? (
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-            <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-gradient-to-br from-white via-blue-50 to-white p-8 md:p-10">
-              <div className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-cyan-100 rounded-full blur-[64px] pointer-events-none" />
-              <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] bg-blue-600/15 rounded-full blur-[64px] pointer-events-none" />
-              <div className="relative">
-                <p className="text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase text-blue-700 mb-6">
-                  {ui.inThisArticle}
-                </p>
-                <ol className="space-y-3 list-none">
+          <div className="apl-container mt-10">
+            <div className="apl-tile" style={{ background: "var(--apl-canvas-soft)" }}>
+              <div className="apl-tile-inner items-start text-left">
+                <p className="apl-eyebrow">{ui.inThisArticle}</p>
+                <ol className="mt-4 space-y-3 list-none w-full">
                   {tocItems.map((tocLine, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-[11px] font-bold flex items-center justify-center mt-0.5">
+                      <span
+                        className="shrink-0 w-7 h-7 rounded-full apl-caption flex items-center justify-center mt-0.5"
+                        style={{ background: "var(--apl-accent-soft)", color: "var(--apl-accent)" }}
+                      >
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-slate-700 text-base md:text-lg leading-snug">
-                        {tocLine}
-                      </span>
+                      <span className="apl-body">{tocLine}</span>
                     </li>
                   ))}
                 </ol>
@@ -579,52 +569,46 @@ export default async function NewsPostPage(
           </div>
         ) : null}
 
-        {/* Translation-in-progress banner if body is German fallback */}
         {bodyIsFallback && (
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-            <div className="rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
+          <div className="apl-container mt-8">
+            <div
+              className="rounded-[14px] px-5 py-4 apl-small"
+              style={{ background: "#fff4df", color: "#8a5a00" }}
+            >
               {ui.translationNote}
             </div>
           </div>
         )}
 
         {/* Body */}
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-16">
-          {renderBody(l.body)}
-        </div>
+        <div className="apl-container mt-12">{renderBody(l.body)}</div>
       </article>
 
-      {/* ─── PREV / NEXT ───────────────────────────────── */}
+      {/* Prev / Next */}
       {(prev || next) && (
-        <section className="relative pb-20">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="apl-surface-soft apl-section-sm">
+          <div className="apl-container-wide">
             <div className="grid sm:grid-cols-2 gap-4">
               {prev ? (
-                <Link
-                  href={`/news/${prev.slug}`}
-                  className="group rounded-2xl bg-blue-50/60 hover:bg-blue-50 border border-slate-200 hover:border-slate-300 backdrop-blur-sm p-6 transition-all"
-                >
-                  <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 mb-2 block">
-                    {ui.previous}
-                  </span>
-                  <span className="text-slate-900 font-bold group-hover:text-blue-700 transition-colors leading-snug block">
-                    {getLocalizedPost(prev, loc).title}
-                  </span>
+                <Link href={`/news/${prev.slug}`} className="apl-tile apl-tile-canvas group">
+                  <div className="apl-tile-inner items-start text-left">
+                    <span className="apl-eyebrow">{ui.previous}</span>
+                    <span className="apl-headline mt-1" style={{ fontSize: "1.0625rem" }}>
+                      {getLocalizedPost(prev, loc).title}
+                    </span>
+                  </div>
                 </Link>
               ) : (
                 <div />
               )}
               {next ? (
-                <Link
-                  href={`/news/${next.slug}`}
-                  className="group rounded-2xl bg-blue-50/60 hover:bg-blue-50 border border-slate-200 hover:border-slate-300 backdrop-blur-sm p-6 transition-all sm:text-right"
-                >
-                  <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 mb-2 block">
-                    {ui.next}
-                  </span>
-                  <span className="text-slate-900 font-bold group-hover:text-blue-700 transition-colors leading-snug block">
-                    {getLocalizedPost(next, loc).title}
-                  </span>
+                <Link href={`/news/${next.slug}`} className="apl-tile apl-tile-canvas group">
+                  <div className="apl-tile-inner items-end text-right">
+                    <span className="apl-eyebrow">{ui.next}</span>
+                    <span className="apl-headline mt-1" style={{ fontSize: "1.0625rem" }}>
+                      {getLocalizedPost(next, loc).title}
+                    </span>
+                  </div>
                 </Link>
               ) : (
                 <div />
@@ -634,35 +618,27 @@ export default async function NewsPostPage(
         </section>
       )}
 
-      {/* ─── BOTTOM CTA ────────────────────────────────── */}
-      <section className="relative pb-24 md:pb-32">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-3xl bg-gradient-to-br from-white via-blue-50 to-white border border-slate-200 p-8 md:p-12 overflow-hidden">
-            <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-cyan-100 rounded-full blur-[56px] pointer-events-none" />
-            <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-8">
-              <div className="max-w-xl">
-                <h2 className="text-3xl md:text-4xl font-black leading-tight mb-3 text-slate-900">
-                  {ui.ctaHeadline}
-                </h2>
-                <p className="text-slate-600 text-base md:text-lg">
-                  {ui.ctaBody}
-                </p>
-              </div>
-              <Link
-                href="https://signup.taskeyapp.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-bold rounded-full hover:bg-blue-500 transition-colors whitespace-nowrap shrink-0"
-              >
-                {ui.ctaButton}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
+      {/* Bottom CTA */}
+      <section className="apl-surface-noir apl-on-noir apl-section">
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "22ch" }}>
+            {ui.ctaHeadline}
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "46ch", color: "#d2d2d7" }}>
+            {ui.ctaBody}
+          </p>
+          <div className="mt-7 flex justify-center">
+            <Link
+              href="https://signup.taskeyapp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="apl-btn apl-btn-primary apl-btn-lg"
+            >
+              {ui.ctaButton}
+            </Link>
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

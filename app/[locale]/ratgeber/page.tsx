@@ -77,34 +77,49 @@ export default async function RatgeberIndex({
   ];
 
   return (
-    <main className="bg-white text-slate-900">
+    <>
       <BreadcrumbJsonLd id="ld-breadcrumb-ratgeber-index" crumbs={crumbs} />
 
-      <section className="mx-auto max-w-4xl px-6 pt-24 pb-16">
-        <p className="text-sm uppercase tracking-widest text-slate-500">{c.eyebrow}</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{c.h1}</h1>
-        <p className="mt-6 max-w-3xl text-lg text-slate-700" data-speakable>{c.lead}</p>
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container text-center">
+          <p className="apl-eyebrow mb-2">{c.eyebrow}</p>
+          <h1 className="apl-display apl-display-xl mx-auto" style={{ maxWidth: "20ch" }}>
+            {c.h1}
+          </h1>
+          <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "58ch" }} data-speakable>
+            {c.lead}
+          </p>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 pb-24">
-        <ul className="space-y-6">
-          {visible.map((g) => {
-            const cp = g.copy[locale];
-            return (
-              <li key={g.slug}>
-                <Link href={lhref(locale, `${path}/${g.slug}`)} className="block rounded-2xl border border-slate-200 p-6 hover:border-slate-400">
-                  <p className="text-xs uppercase tracking-widest text-slate-500">{cp.eyebrow}</p>
-                  <h2 className="mt-3 text-xl font-semibold text-slate-900">{cp.h1}</h2>
-                  <p className="mt-3 text-slate-700">{cp.shortAnswer}</p>
-                  <p className="mt-4 text-sm font-medium text-slate-900">
-                    {locale === "de" ? "Weiterlesen" : locale === "en" ? "Read" : "Lire"} →
-                  </p>
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <div className="apl-duo">
+            {visible.map((g) => {
+              const cp = g.copy[locale];
+              return (
+                <Link
+                  key={g.slug}
+                  href={lhref(locale, `${path}/${g.slug}`)}
+                  className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
+                  style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+                >
+                  <div className="apl-tile-inner items-start text-left">
+                    <p className="apl-eyebrow">{cp.eyebrow}</p>
+                    <h2 className="apl-display apl-display-md mt-1" style={{ maxWidth: "24ch" }}>
+                      {cp.h1}
+                    </h2>
+                    <p className="apl-body mt-2 max-w-[48ch]">{cp.shortAnswer}</p>
+                    <span className="apl-link mt-3">
+                      {locale === "de" ? "Weiterlesen" : locale === "en" ? "Read" : "Lire"}
+                    </span>
+                  </div>
                 </Link>
-              </li>
-            );
-          })}
-        </ul>
+              );
+            })}
+          </div>
+        </div>
       </section>
-    </main>
+    </>
   );
 }

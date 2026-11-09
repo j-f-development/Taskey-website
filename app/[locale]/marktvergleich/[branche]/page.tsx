@@ -68,11 +68,11 @@ export default async function MarktvergleichPage({
   ];
 
   return (
-    <main className="bg-white text-slate-900">
+    <>
       <BreadcrumbJsonLd id={`ld-breadcrumb-marktvergleich-${cmp.slug}`} crumbs={crumbs} />
       <FaqJsonLd id={`ld-faq-marktvergleich-${cmp.slug}`} items={c.faqs} />
 
-      <section className="mx-auto max-w-5xl px-6 pt-20 pb-12">
+      <section className="mx-auto max-w-5xl px-6 pt-10 pb-8">
         <p className="text-sm uppercase tracking-widest text-slate-500">{c.eyebrow}</p>
         <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{c.h1}</h1>
         <p className="mt-6 max-w-3xl text-lg text-slate-700" data-speakable>{c.lead}</p>
@@ -166,20 +166,24 @@ export default async function MarktvergleichPage({
         </dl>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-24">
-        <div className="rounded-3xl bg-slate-900 p-10 text-white sm:p-14">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{c.ctaH2}</h2>
-          <p className="mt-4 max-w-2xl text-slate-200">{c.ctaBody}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href="https://signup.taskeyapp.com" className="rounded-full bg-white px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-100">
+      <section className="apl-surface-noir apl-on-noir apl-section">
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
+            {c.ctaH2}
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch", color: "#d2d2d7" }}>
+            {c.ctaBody}
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-5">
+            <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
               {c.ctaPrimary}
             </a>
-            <Link href={lhref(locale, "/geo")} className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium text-white hover:bg-white/10">
-              {locale === "de" ? "GEO-Ansatz ansehen" : locale === "en" ? "See GEO approach" : "Voir l’approche GEO"}
+            <Link href={lhref(locale, "/geo")} className="apl-btn apl-btn-ghost apl-btn-lg">
+              {locale === "de" ? "GEO-Ansatz ansehen" : locale === "en" ? "See GEO approach" : "Voir l'approche GEO"}
             </Link>
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

@@ -6,16 +6,6 @@ import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useLanguage } from "@/context/LanguageContext";
 
-const branchenItems: { href: string; labelKey: string }[] = [
-  { href: "/enterprise", labelKey: "nav.branche.enterprise" },
-  { href: "/enterprise", labelKey: "nav.branche.oepnv" },
-  { href: "/enterprise#grosskonzerne", labelKey: "nav.branche.grosskonzerne" },
-  { href: "/enterprise#kliniken", labelKey: "nav.branche.kliniken" },
-  { href: "/enterprise#logistik", labelKey: "nav.branche.logistik" },
-  { href: "/enterprise#handel", labelKey: "nav.branche.handel" },
-  { href: "/enterprise#bildung", labelKey: "nav.branche.bildung" },
-];
-
 export default function Header() {
   const { t } = useLanguage();
   const pathname = usePathname();
@@ -33,8 +23,8 @@ export default function Header() {
   const navLinks = [
     { href: "/features", label: t("nav.features") },
     { href: "/pricing", label: t("nav.pricing") },
-    { href: "/integrationen", label: t("nav.integrations") ?? "Integrationen" },
-    { href: "/enterprise", label: t("nav.enterprise") ?? "Enterprise" },
+    { href: "/integrationen", label: "Integrationen" },
+    { href: "/enterprise", label: "Enterprise" },
     { href: "/news", label: t("nav.news") },
     { href: "/partnerschaften", label: t("nav.partner") },
     { href: "/about", label: t("nav.about") },
@@ -81,7 +71,6 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <BranchenDropdown t={t} isActive={isActive} />
           </div>
 
           {/* Right cluster */}
@@ -142,7 +131,6 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <BranchenMobile t={t} isActive={isActive} onNavigate={() => setMobileMenuOpen(false)} />
             </nav>
             <div className="pt-5 flex flex-col gap-3">
               <div className="flex justify-start">
@@ -174,108 +162,3 @@ export default function Header() {
   );
 }
 
-/* ─── Branchen dropdown (desktop) ─── */
-function BranchenDropdown({
-  t,
-  isActive,
-}: {
-  t: (key: string) => string;
-  isActive: (href: string) => boolean;
-}) {
-  const [open, setOpen] = useState(false);
-  const anyActive = branchenItems.some((i) => isActive(i.href));
-
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-haspopup="true"
-        aria-expanded={open}
-        className={[
-          "inline-flex items-center gap-1 px-2 py-1 text-[12px] rounded-md transition",
-          anyActive ? "text-white" : "text-[#f5f5f7]/80 hover:text-white",
-        ].join(" ")}
-      >
-        {t("nav.branchen")}
-        <svg width="8" height="8" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden>
-          <path d="M5 8l5 5 5-5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-      {open && (
-        <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50">
-          <div className="min-w-[200px] rounded-xl bg-[rgba(22,22,23,0.98)] border border-white/[0.08] py-1 shadow-xl">
-            {branchenItems.map((item) => (
-              <Link
-                key={item.href + item.labelKey}
-                href={item.href}
-                className={[
-                  "block px-3 py-2 text-[13px] transition",
-                  isActive(item.href)
-                    ? "text-white bg-white/[0.06]"
-                    : "text-[#f5f5f7]/85 hover:text-white hover:bg-white/[0.05]",
-                ].join(" ")}
-              >
-                {t(item.labelKey)}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ─── Branchen (mobile collapsible) ─── */
-function BranchenMobile({
-  t,
-  isActive,
-  onNavigate,
-}: {
-  t: (key: string) => string;
-  isActive: (href: string) => boolean;
-  onNavigate: () => void;
-}) {
-  const [open, setOpen] = useState(branchenItems.some((i) => isActive(i.href)));
-  return (
-    <div>
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        className="w-full flex items-center justify-between py-3 text-[17px] text-[#f5f5f7]/90 hover:text-white transition"
-      >
-        <span>{t("nav.branchen")}</span>
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 20 20"
-          fill="none"
-          stroke="currentColor"
-          className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-          aria-hidden
-        >
-          <path d="M5 8l5 5 5-5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-      {open && (
-        <div className="pl-3 pb-3 flex flex-col">
-          {branchenItems.map((item) => (
-            <Link
-              key={item.href + item.labelKey}
-              href={item.href}
-              onClick={onNavigate}
-              className="py-2 text-[15px] text-[#f5f5f7]/80 hover:text-white transition"
-            >
-              {t(item.labelKey)}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}

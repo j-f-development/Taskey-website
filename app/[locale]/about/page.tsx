@@ -29,6 +29,7 @@ const organizationSchema = {
   "founder": [
     { "@type": "Person", "name": "Fynn-Luca Schulz", "jobTitle": "CEO" },
     { "@type": "Person", "name": "Julian Stosse", "jobTitle": "CTO" },
+    { "@type": "Person", "name": "Yukio Sato", "jobTitle": "Finanzen & Akquise" },
   ],
   "areaServed": ["DE", "AT", "CH"],
   "sameAs": [
@@ -60,6 +61,16 @@ const founderJulian = {
   "nationality": "DE",
 };
 
+const founderYukio = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Yukio Sato",
+  "jobTitle": "Finanzen & Akquise · Mitgründer",
+  "worksFor": { "@type": "Organization", "name": "Taskey", "url": "https://www.taskeyapp.com" },
+  "knowsAbout": ["Unternehmensfinanzen", "Vertrieb und Akquise", "B2B-Pipelines", "Verhandlungsführung"],
+  "url": "https://www.taskeyapp.com/about",
+};
+
 const CRUMB_LABELS: Record<"de" | "en" | "fr", { home: string; about: string }> = {
   de: { home: "Home", about: "Über uns" },
   en: { home: "Home", about: "About" },
@@ -84,6 +95,7 @@ export default async function AboutPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(founderFynn) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(founderJulian) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(founderYukio) }} />
       <AboutClient />
     </>
   );

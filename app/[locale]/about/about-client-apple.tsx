@@ -5,8 +5,6 @@ import {
   AppleTile,
   AppleButton,
   AppleFeatureRow,
-  AppleQuote,
-  AppleStatRow,
 } from "@/components/apple";
 
 export default function AboutClientApple() {
@@ -19,10 +17,6 @@ export default function AboutClientApple() {
           <h1 className="apl-display apl-display-xl mx-auto" style={{ maxWidth: "18ch" }}>
             Gebaut von Leuten, die in den Objekten standen.
           </h1>
-          <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "52ch" }}>
-            Taskey entsteht in Völklingen. Zwei Gründer, ein kleines Team, ein klarer Anspruch:
-            Reinigung so digital führen, wie ein Konzern seine Produktion führt.
-          </p>
         </div>
       </section>
 
@@ -34,11 +28,6 @@ export default function AboutClientApple() {
             <h2 className="apl-display apl-display-md mt-1" style={{ maxWidth: "24ch" }}>
               Reinigung soll messbar sein. Ohne Diskussion, ohne Papier.
             </h2>
-            <p className="apl-body mt-3 max-w-[64ch]">
-              Wir glauben, dass jede Reinigung in Deutschland eine saubere Spur verdient hat.
-              Vom NFC-Tap am Objekt bis zur Buchung beim Steuerberater. Nicht sieben Tools, nicht
-              drei Excel-Tabellen. Eine Plattform, die den Arbeitstag abbildet.
-            </p>
           </div>
         </div>
       </AppleSection>
@@ -76,11 +65,11 @@ export default function AboutClientApple() {
           <p className="apl-eyebrow mb-2" style={{ color: "#2997ff" }}>
             Gründer
           </p>
-          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "22ch" }}>
-            Zwei Namen hinter jeder Entscheidung.
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
+            Drei Namen hinter jeder Entscheidung.
           </h2>
         </div>
-        <div className="apl-duo">
+        <div className="apl-triple">
           <AppleTile
             tone="noir"
             size="lg"
@@ -97,27 +86,15 @@ export default function AboutClientApple() {
             copy="Technik und Infrastruktur. Architektur, iOS, Android und DSGVO-konforme Cloud."
             align="start"
           />
+          <AppleTile
+            tone="noir"
+            size="lg"
+            eyebrow="Finanzen & Akquise · Mitgründer"
+            title="Yukio Sato"
+            copy="Zahlen, Verträge und neue Kunden. Hält den kaufmännischen Rahmen und baut die Pipeline."
+            align="start"
+          />
         </div>
-      </AppleSection>
-
-      {/* Stats */}
-      <AppleSection surface="soft" width="wide" rhythm="sm">
-        <AppleStatRow
-          stats={[
-            { value: "2024", label: "Gegründet", foot: "in Völklingen" },
-            { value: "DACH", label: "Zielmarkt", foot: "DE · AT · CH" },
-            { value: "DE", label: "Server-Standort", foot: "zertifiziert" },
-          ]}
-        />
-      </AppleSection>
-
-      {/* Quote */}
-      <AppleSection surface="canvas" width="narrow" rhythm="md">
-        <AppleQuote
-          quote="Wir bauen Taskey so, dass wir selbst damit arbeiten würden, wenn wir heute noch im Objekt stünden."
-          cite="Fynn-Luca Schulz"
-          role="CEO · Taskey"
-        />
       </AppleSection>
 
       {/* CTA */}

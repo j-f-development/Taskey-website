@@ -12,17 +12,17 @@ import {
  * ────────────────────────────────────────────────────────────────────── */
 
 export const LP = {
-  ink: "#0F172A",
-  inkSoft: "#1E293B",
-  accent: "#0369A1",
-  accentSoft: "#38BDF8",
-  border: "rgba(15,23,42,0.09)",
-  borderDark: "rgba(148,163,184,0.18)",
-  muted: "#475569",
-  mutedDark: "rgba(226,232,240,0.72)",
-  canvas: "#FFFFFF",
-  canvasElev: "#F8FAFC",
-  hairline: "rgba(15,23,42,0.06)",
+  ink: "#1d1d1f",
+  inkSoft: "#424245",
+  accent: "#0071e3",
+  accentSoft: "#2997ff",
+  border: "rgba(0,0,0,0.1)",
+  borderDark: "rgba(255,255,255,0.12)",
+  muted: "#6e6e73",
+  mutedDark: "rgba(210,210,215,0.9)",
+  canvas: "#ffffff",
+  canvasElev: "#f5f5f7",
+  hairline: "rgba(0,0,0,0.06)",
 };
 
 /* ─── Frame / Section ─────────────────────────────────────────────────── */
@@ -63,7 +63,7 @@ export function LandingSection({
       style={{
         background,
         color: foreground,
-        padding: "clamp(56px, 8vw, 128px) 24px",
+        padding: "clamp(48px, 7vw, 96px) 24px",
         borderTop: tone === "elev" ? `1px solid ${LP.border}` : undefined,
         ...style,
       }}
@@ -172,23 +172,12 @@ export function LandingHero({
   return (
     <section
       style={{
-        background: LP.ink,
-        color: "#F8FAFC",
-        padding: "clamp(120px, 16vh, 200px) 24px clamp(64px, 10vw, 112px)",
+        background: LP.canvas,
+        color: LP.ink,
+        padding: "clamp(40px, 6vw, 72px) 24px clamp(40px, 7vw, 80px)",
         position: "relative",
-        overflow: "hidden",
-        borderBottom: `1px solid ${LP.borderDark}`,
       }}
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(1200px 500px at 80% -20%, rgba(3,105,161,0.30), transparent 55%), radial-gradient(900px 400px at 10% 110%, rgba(15,23,42,0.85), transparent 45%)",
-        }}
-      />
       <div
         style={{
           maxWidth: "1200px",
@@ -200,23 +189,22 @@ export function LandingHero({
           <div className="lg:col-span-7">
             <div
               style={{
-                fontSize: "11px",
-                letterSpacing: "0.26em",
-                textTransform: "uppercase",
-                color: "rgba(148,163,184,0.9)",
-                fontWeight: 700,
+                fontSize: "13px",
+                letterSpacing: "0.01em",
+                color: LP.accent,
+                fontWeight: 500,
               }}
             >
               {eyebrow}
             </div>
             <h1
               style={{
-                marginTop: "18px",
+                marginTop: "12px",
                 fontSize: "clamp(2.25rem, 4.8vw, 4rem)",
                 fontWeight: 600,
-                lineHeight: 1.06,
-                letterSpacing: "-0.02em",
-                color: "#fff",
+                lineHeight: 1.04,
+                letterSpacing: "-0.018em",
+                color: LP.ink,
                 maxWidth: "22ch",
               }}
             >
@@ -224,64 +212,34 @@ export function LandingHero({
             </h1>
             <p
               style={{
-                marginTop: "22px",
-                fontSize: "clamp(1.05rem, 1.4vw, 1.35rem)",
+                marginTop: "20px",
+                fontSize: "clamp(1.05rem, 1.4vw, 1.3rem)",
                 lineHeight: 1.4,
-                color: "rgba(226,232,240,0.85)",
-                maxWidth: "34ch",
-                fontWeight: 500,
+                color: LP.inkSoft,
+                maxWidth: "48ch",
+                fontWeight: 400,
               }}
             >
               {subtitle}
             </p>
             <p
               style={{
-                marginTop: "24px",
+                marginTop: "16px",
                 fontSize: "1rem",
-                lineHeight: 1.7,
-                color: "rgba(203,213,225,0.82)",
-                maxWidth: "58ch",
+                lineHeight: 1.6,
+                color: LP.muted,
+                maxWidth: "62ch",
               }}
             >
               {lead}
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a
-                href={primaryCta.href}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  background: "#fff",
-                  color: LP.ink,
-                  padding: "14px 26px",
-                  borderRadius: "999px",
-                  fontWeight: 600,
-                  fontSize: "15px",
-                  textDecoration: "none",
-                  boxShadow: "0 20px 50px -20px rgba(255,255,255,0.35)",
-                }}
-              >
-                {primaryCta.label} <span aria-hidden>→</span>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a href={primaryCta.href} className="apl-btn apl-btn-primary apl-btn-lg">
+                {primaryCta.label}
               </a>
               {secondaryCta && (
-                <a
-                  href={secondaryCta.href}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    background: "rgba(255,255,255,0.06)",
-                    color: "#F8FAFC",
-                    padding: "14px 24px",
-                    borderRadius: "999px",
-                    fontWeight: 500,
-                    fontSize: "15px",
-                    textDecoration: "none",
-                    border: "1px solid rgba(148,163,184,0.28)",
-                  }}
-                >
+                <a href={secondaryCta.href} className="apl-btn apl-btn-secondary apl-btn-lg">
                   {secondaryCta.label}
                 </a>
               )}
@@ -290,17 +248,15 @@ export function LandingHero({
             {meta && meta.length > 0 && (
               <dl
                 className="mt-10 pt-6 grid grid-cols-2 sm:grid-cols-4 gap-6"
-                style={{ borderTop: "1px solid rgba(148,163,184,0.18)" }}
+                style={{ borderTop: `1px solid ${LP.hairline}` }}
               >
                 {meta.map((m) => (
                   <div key={m.label}>
                     <dt
                       style={{
-                        fontSize: "10px",
-                        letterSpacing: "0.22em",
-                        textTransform: "uppercase",
-                        color: "rgba(148,163,184,0.85)",
-                        fontWeight: 700,
+                        fontSize: "12px",
+                        color: LP.muted,
+                        fontWeight: 500,
                       }}
                     >
                       {m.label}
@@ -308,8 +264,8 @@ export function LandingHero({
                     <dd
                       style={{
                         marginTop: "6px",
-                        fontSize: "14px",
-                        color: "#F1F5F9",
+                        fontSize: "15px",
+                        color: LP.ink,
                         fontWeight: 500,
                       }}
                     >

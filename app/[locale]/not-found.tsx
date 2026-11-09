@@ -97,49 +97,45 @@ export default async function NotFound({
   const copy = COPY[pickLocale(resolved?.locale)];
 
   return (
-    <main className="relative min-h-screen bg-gradient-to-b from-white via-blue-50 to-white text-slate-900 overflow-hidden">
-      <div className="absolute top-0 left-1/4 w-[700px] h-[500px] bg-cyan-50 rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[80px] pointer-events-none" />
-
-      <section className="relative pt-32 md:pt-40 pb-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase text-blue-700 mb-5">
-            {copy.errorLabel}
-          </p>
-          <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-black leading-[0.95] tracking-tight mb-6">
+    <>
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container text-center">
+          <p className="apl-eyebrow mb-2">{copy.errorLabel}</p>
+          <h1 className="apl-display apl-display-xl mx-auto" style={{ maxWidth: "18ch" }}>
             {copy.headline}
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 max-w-xl mx-auto mb-10">
+          <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "46ch" }}>
             {copy.subline}
           </p>
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-bold rounded-full hover:bg-blue-500 transition-colors"
-          >
-            {copy.cta}
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
+          <div className="mt-7 flex justify-center">
+            <Link href="/" className="apl-btn apl-btn-primary apl-btn-lg">
+              {copy.cta}
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="relative pb-24 md:pb-32">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {copy.quickLinks.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="group rounded-2xl bg-blue-50/70 border border-slate-200 hover:border-cyan-400 p-6 transition-colors"
-            >
-              <h2 className="text-lg font-bold mb-1.5 group-hover:text-blue-700 transition-colors">
-                {l.label}
-              </h2>
-              <p className="text-slate-600 text-sm leading-relaxed">{l.desc}</p>
-            </Link>
-          ))}
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <div className="apl-triple">
+            {copy.quickLinks.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
+                style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+              >
+                <div className="apl-tile-inner items-start text-left">
+                  <h2 className="apl-headline" style={{ fontSize: "1.0625rem" }}>
+                    {l.label}
+                  </h2>
+                  <p className="apl-small mt-2">{l.desc}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

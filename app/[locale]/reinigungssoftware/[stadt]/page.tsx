@@ -146,7 +146,7 @@ export default async function ReinigungssoftwareCityPage({
     : [];
 
   return (
-    <main className="bg-white text-slate-900">
+    <>
       <BreadcrumbJsonLd id={`ld-breadcrumb-city-${r.slug}`} crumbs={crumbs} />
       <ServiceJsonLd
         id={`ld-service-city-${r.slug}`}
@@ -165,7 +165,7 @@ export default async function ReinigungssoftwareCityPage({
       )}
       {faqs.length > 0 && <FaqJsonLd id={`ld-faq-city-${r.slug}`} items={faqs} />}
 
-      <section className="mx-auto max-w-4xl px-6 pt-20 pb-12">
+      <section className="mx-auto max-w-4xl px-6 pt-10 pb-8">
         <nav className="text-sm text-slate-500">
           <Link href={lhref(locale, "/")} className="hover:text-slate-900">Home</Link>
           <span className="mx-2">/</span>
@@ -246,27 +246,26 @@ export default async function ReinigungssoftwareCityPage({
       )}
 
       {isTop && (
-        <section className="mx-auto max-w-4xl px-6 pb-24">
-          <div className="rounded-3xl bg-slate-900 p-10 text-white sm:p-14">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+        <section className="apl-surface-noir apl-on-noir apl-section">
+          <div className="apl-container text-center">
+            <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
               {locale === "de" ? `Taskey testen in ${r.city}` : locale === "en" ? `Try Taskey in ${r.city}` : `Essayer Taskey à ${r.city}`}
             </h2>
-            <p className="mt-4 max-w-2xl text-slate-200">
+            <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch", color: "#d2d2d7" }}>
               {locale === "de"
                 ? "14 Tage kostenlos, ohne Kreditkarte. Alle Funktionen im Beginner-Umfang."
                 : locale === "en"
                 ? "14 days free, no credit card. Full Beginner scope."
                 : "14 jours gratuits, sans carte. Périmètre Beginner complet."}
             </p>
-            <a
-              href="https://signup.taskeyapp.com"
-              className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-100"
-            >
-              {locale === "de" ? "Kostenlos testen" : locale === "en" ? "Start free trial" : "Essai gratuit"}
-            </a>
+            <div className="mt-7 flex justify-center">
+              <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
+                {locale === "de" ? "Kostenlos testen" : locale === "en" ? "Start free trial" : "Essai gratuit"}
+              </a>
+            </div>
           </div>
         </section>
       )}
-    </main>
+    </>
   );
 }

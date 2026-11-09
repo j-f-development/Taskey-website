@@ -42,13 +42,9 @@ export type TaskeyShareContent = {
 
 export default function TaskeyShareClient({ content }: { content: TaskeyShareContent }) {
   return (
-    <main className="relative min-h-screen bg-gradient-to-b from-white via-blue-50 to-white text-slate-900 overflow-hidden">
-      {/* Ambient glows */}
-      <div className="absolute top-0 left-1/4 w-[800px] h-[600px] bg-cyan-500/12 rounded-full blur-[90px] pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-blue-50 rounded-full blur-[80px] pointer-events-none" />
-
+    <>
       {/* Hero */}
-      <section className="relative pt-32 md:pt-40 pb-14 md:pb-20">
+      <section className="apl-surface-canvas pt-10 md:pt-14 pb-10 md:pb-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="mb-8 text-xs sm:text-sm text-slate-500">
             <ol className="flex flex-wrap items-center gap-2">
@@ -354,6 +350,6 @@ export default function TaskeyShareClient({ content }: { content: TaskeyShareCon
           </div>
         </section>
       )}
-    </main>
+    </>
   );
 }

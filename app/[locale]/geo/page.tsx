@@ -119,55 +119,72 @@ export default async function GeoPage({
   ];
 
   return (
-    <main className="bg-white text-slate-900">
+    <>
       <BreadcrumbJsonLd id="ld-breadcrumb-geo" crumbs={crumbs} />
       <FaqJsonLd id="ld-faq-geo" items={c.faqs} />
 
-      <section className="mx-auto max-w-4xl px-6 pt-24 pb-16">
-        <p className="text-sm uppercase tracking-widest text-slate-500">{c.eyebrow}</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{c.h1}</h1>
-        <p className="mt-6 max-w-3xl text-lg text-slate-700" data-speakable>{c.lead}</p>
-      </section>
-
-      <section className="mx-auto max-w-4xl px-6 py-12">
-        <div className="grid gap-6 sm:grid-cols-2">
-          {c.sections.map((s, i) => (
-            <div key={i} className="rounded-2xl border border-slate-200 p-6">
-              <h2 className="text-lg font-semibold">{s.title}</h2>
-              <p className="mt-3 text-slate-700">{s.body}</p>
-            </div>
-          ))}
+      <section className="apl-surface-canvas pt-14 pb-10">
+        <div className="apl-container">
+          <p className="apl-eyebrow mb-2">{c.eyebrow}</p>
+          <h1 className="apl-display apl-display-xl" style={{ maxWidth: "22ch" }}>
+            {c.h1}
+          </h1>
+          <p className="apl-lede mt-5 max-w-[58ch]" data-speakable>{c.lead}</p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-6 py-12">
-        <h2 className="text-2xl font-semibold tracking-tight">
-          {locale === "de" ? "Häufige Fragen" : locale === "en" ? "Common questions" : "Questions fréquentes"}
-        </h2>
-        <dl className="mt-8 space-y-6">
-          {c.faqs.map((f, i) => (
-            <div key={i} className="rounded-xl border border-slate-200 p-5">
-              <dt className="faq-question font-semibold">{f.q}</dt>
-              <dd className="faq-answer mt-2 text-slate-700">{f.a}</dd>
-            </div>
-          ))}
-        </dl>
+      <section className="apl-surface-soft apl-section-sm">
+        <div className="apl-container-wide">
+          <div className="apl-duo">
+            {c.sections.map((s, i) => (
+              <div key={i} className="apl-tile apl-tile-canvas">
+                <div className="apl-tile-inner items-start text-left">
+                  <h2 className="apl-headline" style={{ fontSize: "1.25rem" }}>{s.title}</h2>
+                  <p className="apl-body mt-2">{s.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 pb-24">
-        <div className="rounded-3xl bg-slate-900 p-10 text-white sm:p-14">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{c.ctaH2}</h2>
-          <p className="mt-4 max-w-2xl text-slate-200">{c.ctaBody}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href="https://signup.taskeyapp.com" className="rounded-full bg-white px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-100">
+      <section className="apl-surface-canvas apl-section-sm">
+        <div className="apl-container">
+          <h2 className="apl-display apl-display-lg" style={{ maxWidth: "22ch" }}>
+            {locale === "de" ? "Häufige Fragen" : locale === "en" ? "Common questions" : "Questions fréquentes"}
+          </h2>
+          <div className="mt-6 flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
+            {c.faqs.map((f, i) => (
+              <details key={i} className="group py-5">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
+                  <span className="faq-question">{f.q}</span>
+                  <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">+</span>
+                </summary>
+                <p className="faq-answer apl-body mt-3 max-w-[70ch]">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="apl-surface-noir apl-on-noir apl-section">
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
+            {c.ctaH2}
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch", color: "#d2d2d7" }}>
+            {c.ctaBody}
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-5">
+            <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
               {c.ctaPrimary}
             </a>
-            <Link href={lhref(locale, "/marktvergleich/gebaeudereinigung-software")} className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium text-white hover:bg-white/10">
+            <Link href={lhref(locale, "/marktvergleich/gebaeudereinigung-software")} className="apl-btn apl-btn-ghost apl-btn-lg">
               {locale === "de" ? "Marktvergleich ansehen" : locale === "en" ? "See market comparison" : "Voir le comparatif"}
             </Link>
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

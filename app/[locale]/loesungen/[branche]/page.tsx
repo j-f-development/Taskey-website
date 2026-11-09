@@ -69,7 +69,7 @@ export default async function BranchPage({
   ];
 
   return (
-    <main className="bg-white text-slate-900">
+    <>
       <BreadcrumbJsonLd id={`ld-breadcrumb-branch-${b.slug}`} crumbs={crumbs} />
       <ServiceJsonLd
         id={`ld-service-branch-${b.slug}`}
@@ -80,7 +80,7 @@ export default async function BranchPage({
       />
       <FaqJsonLd id={`ld-faq-branch-${b.slug}`} items={c.faqs} />
 
-      <section className="mx-auto max-w-4xl px-6 pt-20 pb-12">
+      <section className="mx-auto max-w-4xl px-6 pt-10 pb-8">
         <nav className="text-sm text-slate-500">
           <Link href={lhref(locale, "/")} className="hover:text-slate-900">Home</Link>
           <span className="mx-2">/</span>
@@ -94,16 +94,10 @@ export default async function BranchPage({
         <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{c.h1}</h1>
         <p className="mt-6 text-lg text-slate-700" data-speakable>{c.lead}</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href="https://signup.taskeyapp.com"
-            className="rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-700"
-          >
+          <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary">
             {c.ctaPrimary}
           </a>
-          <Link
-            href={lhref(locale, "/features")}
-            className="rounded-full border border-slate-300 px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-50"
-          >
+          <Link href={lhref(locale, "/features")} className="apl-btn apl-btn-secondary">
             {c.ctaSecondary}
           </Link>
         </div>
@@ -199,20 +193,24 @@ export default async function BranchPage({
         </section>
       )}
 
-      <section className="mx-auto max-w-4xl px-6 pb-24">
-        <div className="rounded-3xl bg-slate-900 p-10 text-white sm:p-14">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{c.ctaH2}</h2>
-          <p className="mt-4 max-w-2xl text-slate-200">{c.ctaBody}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href="https://signup.taskeyapp.com" className="rounded-full bg-white px-6 py-3 text-sm font-medium text-slate-900 hover:bg-slate-100">
+      <section className="apl-surface-noir apl-on-noir apl-section">
+        <div className="apl-container text-center">
+          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
+            {c.ctaH2}
+          </h2>
+          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch", color: "#d2d2d7" }}>
+            {c.ctaBody}
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-5">
+            <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
               {c.ctaPrimary}
             </a>
-            <Link href={lhref(locale, "/features")} className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium text-white hover:bg-white/10">
+            <Link href={lhref(locale, "/features")} className="apl-btn apl-btn-ghost apl-btn-lg">
               {c.ctaSecondary}
             </Link>
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }
