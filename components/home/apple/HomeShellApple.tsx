@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import Link from "@/components/LocaleLink";
 import { useLanguage } from "@/context/LanguageContext";
 import {
@@ -8,12 +8,30 @@ import {
   AppleTile,
   AppleButton,
   AppleFeatureRow,
-  AppleStage,
   AppleQuote,
   AppleStatRow,
 } from "@/components/apple";
 import AppScreenshotShowcase from "./AppScreenshotShowcase";
-import BuildingDemoSection from "./BuildingDemoSection";
+
+const FloorPlanSection = dynamic(
+  () =>
+    import("@/components/FloorPlan/FloorPlanSection").then((m) => ({
+      default: m.FloorPlanSection,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        className="rounded-[22px] bg-[color:var(--apl-canvas-soft)] ring-1 ring-black/5 grid place-items-center"
+        style={{ minHeight: 560 }}
+      >
+        <span className="apl-small text-[color:var(--apl-ink-muted)]">
+          3D-Modell wird geladen …
+        </span>
+      </div>
+    ),
+  }
+);
 
 export default function HomeShellApple() {
   const { t: _t } = useLanguage();
@@ -21,7 +39,7 @@ export default function HomeShellApple() {
   return (
     <>
       {/* ── Hero marquee ─────────────────────────────────────────── */}
-      <section className="apl-surface-canvas pt-16 pb-6">
+      <section className="apl-surface-canvas pt-16 pb-10">
         <div className="apl-container-wide text-center">
           <p className="apl-eyebrow mb-2">Taskey. Made in Germany.</p>
           <h1
@@ -40,24 +58,14 @@ export default function HomeShellApple() {
             <AppleButton href="https://signup.taskeyapp.com" variant="primary" size="lg">
               Kostenlos starten
             </AppleButton>
-            <AppleButton href="/erstgespraech" variant="secondary" size="lg">
-              Erstgespräch buchen
-            </AppleButton>
           </div>
         </div>
 
-        <div className="apl-container-wide mt-12">
-          <AppleStage tone="light" aspect="video" glow>
-            <HeroStageVisual />
-          </AppleStage>
+        {/* 3D-Demo direkt im Hero */}
+        <div className="apl-floorplan-wrap mt-10">
+          <FloorPlanSection />
         </div>
       </section>
-
-      {/* ── Product screenshot showcase (9 real screens) ──────────── */}
-      <AppScreenshotShowcase />
-
-      {/* ── 3D building demo (interactive, click-through) ─────────── */}
-      <BuildingDemoSection />
 
       {/* ── Big product tile pair ─────────────────────────────────── */}
       <AppleSection surface="soft" width="wide" rhythm="sm">
@@ -174,6 +182,9 @@ export default function HomeShellApple() {
         />
       </AppleSection>
 
+      {/* ── Product screenshot gallery (alle 9 Screens) ──────────── */}
+      <AppScreenshotShowcase />
+
       {/* ── Integrations strip ────────────────────────────────────── */}
       <AppleSection surface="soft" width="wide" rhythm="sm" hairlineTop>
         <div className="text-center mb-8">
@@ -209,43 +220,19 @@ export default function HomeShellApple() {
             Bereit, Ihre Reinigung zu digitalisieren?
           </h2>
           <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "46ch" }}>
-            In 30 Minuten zeigen wir Ihnen Taskey an Ihren echten Objekten. Ohne Verpflichtung.
+            Konto anlegen, Objekte importieren, loslegen. Ohne Verpflichtung.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-5">
             <AppleButton href="https://signup.taskeyapp.com" variant="primary" size="lg">
               Kostenlos starten
             </AppleButton>
-            <AppleButton href="/erstgespraech" variant="secondary" size="lg">
-              Erstgespräch buchen
+            <AppleButton href="/pricing" variant="secondary" size="lg">
+              Preise ansehen
             </AppleButton>
           </div>
         </div>
       </AppleSection>
     </>
-  );
-}
-
-/* ─── Hero stage visual: real app screenshot ─────────────────── */
-function HeroStageVisual() {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-10">
-      <div
-        className="relative w-full max-w-[1040px] aspect-[16/9] rounded-[18px] overflow-hidden bg-white ring-1 ring-black/10"
-        style={{
-          boxShadow:
-            "0 1px 0 rgba(255,255,255,0.8) inset, 0 40px 90px -40px rgba(15,23,42,0.4)",
-        }}
-      >
-        <Image
-          src="/screenshots/objekte.png"
-          alt="Taskey · Objekte-Übersicht mit Umsatz und Marge pro Standort"
-          fill
-          sizes="(max-width: 1040px) 100vw, 1040px"
-          priority
-          className="object-cover object-top"
-        />
-      </div>
-    </div>
   );
 }
 

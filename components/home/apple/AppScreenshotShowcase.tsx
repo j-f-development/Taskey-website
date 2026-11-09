@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 
 type Shot = {
   id: string;
@@ -9,6 +8,7 @@ type Shot = {
   title: string;
   copy: string;
   src: string;
+  span?: "wide";
 };
 
 const SHOTS: Shot[] = [
@@ -16,8 +16,9 @@ const SHOTS: Shot[] = [
     id: "objekte",
     label: "Objekte",
     title: "Jeder Standort, ein gemeinsamer Überblick.",
-    copy: "Aktive Objekte, betreute Fläche, Monatsumsatz und Marge in einer Kachel. Netto und brutto, mit Hinweis auf jedes Objekt, das Aufmerksamkeit braucht.",
+    copy: "Aktive Objekte, betreute Fläche, Monatsumsatz und Marge auf einer Fläche. Netto und brutto, mit Hinweis auf jedes Objekt, das Aufmerksamkeit braucht.",
     src: "/screenshots/objekte.png",
+    span: "wide",
   },
   {
     id: "mitarbeitende",
@@ -44,7 +45,7 @@ const SHOTS: Shot[] = [
     id: "abwesenheiten",
     label: "Abwesenheiten",
     title: "Urlaub und Vertretungen gemeinsam planen.",
-    copy: "Krankmeldungen, Urlaubsanträge, Attest-Status. Sichtbar nach Mitarbeitenden, nach Zeitraum, nach Standort.",
+    copy: "Krankmeldungen, Urlaubsanträge, Attest-Status. Sichtbar nach Mitarbeitenden, Zeitraum und Standort.",
     src: "/screenshots/abwesenheiten.png",
   },
   {
@@ -60,6 +61,7 @@ const SHOTS: Shot[] = [
     title: "Zahlen, die zeigen, wo das Unternehmen steht.",
     copy: "Einnahmen, Ausgaben, EBITDA und Rechnungsstatus für den aktuellen Monat. Umsatzkurve über sechs Monate, GuV als PDF oder CSV.",
     src: "/screenshots/finanzen.png",
+    span: "wide",
   },
   {
     id: "kalkulationen",
@@ -78,97 +80,92 @@ const SHOTS: Shot[] = [
 ];
 
 export default function AppScreenshotShowcase() {
-  const [activeId, setActiveId] = useState<string>(SHOTS[0].id);
-  const active = SHOTS.find((s) => s.id === activeId) ?? SHOTS[0];
-
   return (
-    <section className="apl-surface-canvas apl-section">
+    <section className="apl-surface-soft apl-section">
       <div className="apl-container-wide">
-        <div className="text-center mb-10">
-          <p className="apl-eyebrow mb-2">Ein Blick in Taskey</p>
+        {/* Section intro */}
+        <div className="text-center mb-12">
+          <p className="apl-eyebrow mb-2">Alles auf einen Blick</p>
           <h2
             className="apl-display apl-display-lg mx-auto"
             style={{ maxWidth: "22ch" }}
           >
-            Die echten Screens. Nicht die polierte Fassung.
+            Neun Bereiche, die den Alltag abbilden.
           </h2>
           <p
             className="apl-lede mt-4 mx-auto"
             style={{ maxWidth: "54ch" }}
           >
-            Neun Bereiche, die den Alltag abbilden. Wählen Sie einen aus, der Rest kommt gleich mit.
+            Echte Screens aus Taskey. Keine Mockups, keine inszenierten Beispiele.
           </p>
         </div>
 
-        {/* Tab switcher */}
-        <div className="flex justify-center mb-8">
-          <div
-            className="flex gap-1.5 flex-wrap justify-center rounded-full bg-[color:var(--apl-canvas-soft)] p-1.5 ring-1 ring-black/5"
-            role="tablist"
-            aria-label="Software-Bereiche"
-          >
-            {SHOTS.map((s) => (
-              <button
+        {/* Bento grid: 2 wide tiles bracket a 3-column row */}
+        <div className="grid gap-4 md:gap-5 grid-cols-1 md:grid-cols-6">
+          {SHOTS.map((s, i) => {
+            const isWide = s.span === "wide";
+            const colClass = isWide ? "md:col-span-6" : "md:col-span-3";
+            // Tighten: after the first wide, make next two half-width, then wide again
+            // layout emerges from the SHOTS order (indices 0 wide, 1-5 half, 6 wide, 7-8 half)
+            const _ = i;
+            return (
+              <article
                 key={s.id}
-                type="button"
-                role="tab"
-                aria-selected={s.id === activeId}
-                onClick={() => setActiveId(s.id)}
                 className={[
-                  "px-3.5 h-9 rounded-full text-[13px] font-medium transition",
-                  s.id === activeId
-                    ? "bg-white text-[color:var(--apl-ink)] shadow-sm ring-1 ring-black/5"
-                    : "text-[color:var(--apl-ink-muted)] hover:text-[color:var(--apl-ink)]",
+                  "relative overflow-hidden bg-white ring-1 ring-black/5",
+                  "rounded-[22px] flex flex-col",
+                  colClass,
                 ].join(" ")}
+                style={{
+                  boxShadow:
+                    "0 1px 0 rgba(255,255,255,0.9) inset, 0 20px 50px -28px rgba(15,23,42,0.22)",
+                }}
               >
-                {s.label}
-              </button>
-            ))}
-          </div>
-        </div>
+                {/* Caption */}
+                <header className="p-6 md:p-8 pb-4 md:pb-5">
+                  <p className="apl-eyebrow">{s.label}</p>
+                  <h3
+                    className="apl-display mt-1"
+                    style={{
+                      fontSize: isWide
+                        ? "clamp(1.5rem, 2.4vw, 2rem)"
+                        : "clamp(1.25rem, 1.8vw, 1.5rem)",
+                      lineHeight: 1.1,
+                      letterSpacing: "-0.012em",
+                      maxWidth: "24ch",
+                    }}
+                  >
+                    {s.title}
+                  </h3>
+                  <p
+                    className="apl-body mt-2"
+                    style={{ maxWidth: isWide ? "60ch" : "42ch" }}
+                  >
+                    {s.copy}
+                  </p>
+                </header>
 
-        {/* Active caption */}
-        <div className="text-center max-w-[52ch] mx-auto mb-8 min-h-[7rem]">
-          <h3 className="apl-display apl-display-md" style={{ maxWidth: "26ch", marginInline: "auto" }}>
-            {active.title}
-          </h3>
-          <p className="apl-body mt-3">{active.copy}</p>
-        </div>
-
-        {/* Big screenshot stage */}
-        <div className="relative mx-auto" style={{ maxWidth: 1120 }}>
-          {/* Glow */}
-          <div
-            aria-hidden
-            className="absolute inset-x-12 top-12 bottom-0 blur-3xl opacity-60 pointer-events-none rounded-[28px]"
-            style={{
-              background:
-                "radial-gradient(60% 60% at 50% 40%, rgba(0,113,227,0.12), transparent 70%)",
-            }}
-          />
-          <div
-            className="relative rounded-[22px] overflow-hidden bg-white ring-1 ring-black/10"
-            style={{
-              boxShadow:
-                "0 1px 0 rgba(255,255,255,0.8) inset, 0 40px 90px -40px rgba(15,23,42,0.35)",
-              aspectRatio: "16 / 9",
-            }}
-          >
-            {SHOTS.map((s) => (
-              <Image
-                key={s.id}
-                src={s.src}
-                alt={`Taskey · ${s.label}`}
-                fill
-                sizes="(max-width: 1120px) 100vw, 1120px"
-                priority={s.id === SHOTS[0].id}
-                className={[
-                  "object-cover object-top transition-opacity duration-500",
-                  s.id === activeId ? "opacity-100" : "opacity-0 pointer-events-none",
-                ].join(" ")}
-              />
-            ))}
-          </div>
+                {/* Screenshot */}
+                <div
+                  className="relative mx-6 md:mx-8 mb-6 md:mb-8 mt-2 rounded-[16px] overflow-hidden ring-1 ring-black/5 bg-[color:var(--apl-canvas-soft)]"
+                  style={{
+                    aspectRatio: isWide ? "16 / 7.5" : "16 / 10",
+                    boxShadow:
+                      "0 1px 0 rgba(255,255,255,0.8) inset, 0 20px 40px -28px rgba(15,23,42,0.25)",
+                  }}
+                >
+                  <Image
+                    src={s.src}
+                    alt={`Taskey · ${s.label}`}
+                    fill
+                    sizes={isWide ? "(min-width: 1024px) 1120px, 100vw" : "(min-width: 1024px) 560px, 100vw"}
+                    className="object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
