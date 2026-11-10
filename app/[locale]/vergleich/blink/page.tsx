@@ -134,7 +134,7 @@ const CONTENT: ComparisonContent = {
       desc: "Handwerker-Wurzeln vs Reinigungs-Spezialist.",
     },
     {
-      href: "/features/nfc-zeiterfassung",
+      href: "/features#zeiterfassung",
       label: "NFC Zeiterfassung",
       desc: "Der harte Kern der Reinigungssoftware.",
     },

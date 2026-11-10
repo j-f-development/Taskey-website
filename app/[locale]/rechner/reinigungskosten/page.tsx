@@ -169,12 +169,12 @@ const CONTENT: Record<Locale, Content> = {
         description: "Objekte, Personal, Einsatzplanung und Kalkulation in einem System.",
       },
       {
-        href: "/features/kalkulation",
+        href: "/features#live-margen",
         label: "Objektkalkulation in Taskey",
         description: "Live-Marge, Personalbedarf und Nachunternehmer-Empfehlung je Objekt.",
       },
       {
-        href: "/features/kalkulation",
+        href: "/features#live-margen",
         label: "Angebotskalkulation",
         description: "Vom Aufmaß zur belastbaren Angebotszahl.",
       },
@@ -342,12 +342,12 @@ const CONTENT: Record<Locale, Content> = {
         description: "Sites, staff, dispatch and quoting in one system.",
       },
       {
-        href: "/features/kalkulation",
+        href: "/features#live-margen",
         label: "Site calculation in Taskey",
         description: "Live margin, headcount and subcontractor recommendation per site.",
       },
       {
-        href: "/features/kalkulation",
+        href: "/features#live-margen",
         label: "Quote calculation",
         description: "From take-off to a defensible number.",
       },
@@ -515,12 +515,12 @@ const CONTENT: Record<Locale, Content> = {
         description: "Sites, personnel, planification et devis dans un seul système.",
       },
       {
-        href: "/features/kalkulation",
+        href: "/features#live-margen",
         label: "Calcul par site dans Taskey",
         description: "Marge en direct, effectif et recommandation de sous-traitant par site.",
       },
       {
-        href: "/features/kalkulation",
+        href: "/features#live-margen",
         label: "Chiffrage de devis",
         description: "Du métré au chiffre défendable.",
       },

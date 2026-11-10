@@ -1,88 +1,20 @@
 "use client";
 
-import Link from "next/link";
 import {
   ShareSection,
   ShareHeadline,
   ShareEyebrow,
   ShareLede,
-  ShareBody,
   ShareButton,
   ShareStatementBand,
 } from "@/components/share/kit";
-import { BrandDot } from "@/components/BrandDot";
-
-const FEATURE_DEEP = [
-  {
-    id: "nfc-zeiterfassung",
-    eyebrow: "01 · NFC-Zeiterfassung",
-    title: "Minutengenau. Fälschungssicher.",
-    copy: "Ein wetterfester Tag am Objekt, ein Tap am Telefon. Zeit, Ort und Mitarbeiter sind dokumentiert, bevor jemand die Reinigung beginnt.",
-    href: "/features/nfc-zeiterfassung",
-  },
-  {
-    id: "einsatzplanung",
-    eyebrow: "02 · Einsatzplanung",
-    title: "Sichtbar auf einer Fläche.",
-    copy: "Alle Objekte, alle Teams, alle Schichten. Ändern Sie etwas, landet es in Sekunden beim Objekt.",
-    href: "/features/einsatzplanung",
-  },
-  {
-    id: "live-margen",
-    eyebrow: "03 · Live-Margen",
-    title: "Objekt-Deckungsbeitrag in Echtzeit.",
-    copy: "Stunden, Fahrten, Material gegen Objektpreis. Sie sehen pro Objekt, pro Monat, pro Team, was wirklich verdient wird.",
-    href: "/features/live-margen",
-  },
-  {
-    id: "leistungsnachweis",
-    eyebrow: "04 · Leistungsnachweis",
-    title: "Nachweise, die eine Prüfung überleben.",
-    copy: "Foto, Zeit, Mitarbeiter. Pro Zone, pro Schicht. In Sekunden als PDF für den Kunden oder den Auditor.",
-    href: "/features/leistungsnachweis",
-  },
-  {
-    id: "datev-export",
-    eyebrow: "05 · DATEV-Export",
-    title: "Vom Einsatz direkt zum Steuerberater.",
-    copy: "Lohnlauf, Buchung, Belege. In einer Spur, ein Export. Ihr Steuerberater importiert direkt, ohne Nachbearbeitung.",
-    href: "/features/datev-export",
-  },
-  {
-    id: "taskey-share",
-    eyebrow: "06 · Taskey Share",
-    title: "Auftraggeber sehen, was läuft.",
-    copy: "Jeder Kunde bekommt eine eigene Sicht auf seine Objekte. Reduziert Rückfragen, schafft Vertrauen.",
-    href: "/features/taskey-share",
-  },
-  {
-    id: "kalkulation",
-    eyebrow: "07 · Kalkulation",
-    title: "Objektpreise, die später nicht überraschen.",
-    copy: "Durchrechnen, bevor Sie anbieten. Varianten, Szenarien, Deckungsbeitrag auf Knopfdruck.",
-    href: "/features/kalkulation",
-  },
-  {
-    id: "ausschreibungen",
-    eyebrow: "08 · Ausschreibungen",
-    title: "Vom Leistungsverzeichnis zur Angebotsdatei.",
-    copy: "LV einlesen, Preise setzen, Angebot generieren. Keine Excel-Kette mehr.",
-    href: "/features/ausschreibungen",
-  },
-  {
-    id: "rechnungsprogramm",
-    eyebrow: "09 · Rechnungsprogramm",
-    title: "Rechnungen aus dem Einsatz heraus.",
-    copy: "Aus dem Objekt direkt in die Rechnung. GoBD-konform, mit Ablage und Mahnung.",
-    href: "/features/rechnungsprogramm",
-  },
-];
+import FeaturesInteractive from "@/components/features/FeaturesInteractive";
 
 export default function FeaturesClientApple() {
   return (
     <>
       {/* Hero */}
-      <section className="ts-scope relative overflow-hidden pt-8 md:pt-16 pb-12 md:pb-20">
+      <section className="ts-scope relative overflow-hidden pt-8 md:pt-16 pb-10 md:pb-14">
         <div
           aria-hidden
           className="absolute inset-0 -z-10 pointer-events-none"
@@ -98,15 +30,15 @@ export default function FeaturesClientApple() {
         <div className="ts-container">
           <div className="flex flex-col gap-5 max-w-3xl">
             <ShareEyebrow>Funktionen</ShareEyebrow>
-            <ShareHeadline level={1} size="xl" maxWidth="20ch">
-              Alles, was Reinigung braucht
+            <ShareHeadline level={1} size="xl" maxWidth="22ch">
+              Taskey durchklicken
             </ShareHeadline>
-            <ShareLede>
-              Keine Add-ons, keine Zusatzmodule. Eine Plattform von der Erfassung bis zur Buchung.
+            <ShareLede maxWidth="54ch">
+              Jedes Modul mit einem Blick in die echte Oberfläche. Keine Prospekte, keine Screenshots. Wählen Sie oben eine Funktion, rechts läuft eine Demo.
             </ShareLede>
             <div className="pt-2 flex flex-col sm:flex-row gap-3">
               <ShareButton href="https://signup.taskeyapp.com" variant="primary" external>
-                Kostenlos testen
+                Kostenlos starten
               </ShareButton>
               <ShareButton href="/erstgespraech" variant="ghost">
                 Demo buchen
@@ -116,40 +48,11 @@ export default function FeaturesClientApple() {
         </div>
       </section>
 
-      {/* Feature tile grid */}
-      <ShareSection tone="tinted" size="md" container="wide">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {FEATURE_DEEP.map((f) => (
-            <Link
-              key={f.id}
-              href={f.href}
-              className="ts-card ts-card-hover p-6 flex flex-col gap-3 h-full group"
-              style={{ textDecoration: "none" }}
-            >
-              <ShareEyebrow>{f.eyebrow}</ShareEyebrow>
-              <h3 className="ts-headline" style={{ fontSize: "1.2rem", color: "var(--ts-ink)" }}>
-                {f.title}
-                <BrandDot />
-              </h3>
-              <p className="text-[0.95rem] leading-[1.6]" style={{ color: "var(--ts-ink-muted)" }}>
-                {f.copy}
-              </p>
-              <span
-                className="mt-auto pt-2 text-[0.85rem] font-medium inline-flex items-center gap-1"
-                style={{ color: "var(--brand-signal-blue)" }}
-              >
-                Mehr erfahren
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="transition-transform group-hover:translate-x-0.5">
-                  <path d="M3 6h6M6 3l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-            </Link>
-          ))}
-        </div>
-      </ShareSection>
+      {/* Interactive tabs + demos */}
+      <FeaturesInteractive />
 
-      {/* What's in every plan */}
-      <ShareSection tone="canvas" size="md" container="wide">
+      {/* Immer dabei strip */}
+      <ShareSection tone="tinted" size="md" container="wide">
         <div className="text-center mb-10">
           <ShareEyebrow>Immer dabei</ShareEyebrow>
           <div className="mt-3 flex justify-center">
@@ -177,11 +80,11 @@ export default function FeaturesClientApple() {
         </div>
       </ShareSection>
 
-      {/* Numbers band (navy) */}
+      {/* Navy statement */}
       <ShareStatementBand
         eyebrow="Taskey in Zahlen"
-        title="Eine Spur, neun Module, kein Papier"
-        body="Unter zwei Minuten pro Erfassung, neun Module in einer Plattform, eine Spur vom Einsatz bis in DATEV. Kein Umweg, keine Insellösung."
+        title="Eine Spur, acht Module, kein Papier"
+        body="Unter zwei Minuten pro Erfassung, acht Module in einer Plattform, eine Spur vom Einsatz bis in DATEV. Kein Umweg, keine Insellösung."
         primaryHref="https://signup.taskeyapp.com"
         primaryLabel="Kostenlos starten"
         primaryExternal
@@ -190,7 +93,7 @@ export default function FeaturesClientApple() {
       />
 
       {/* Final CTA */}
-      <ShareSection tone="tinted" size="md">
+      <ShareSection tone="canvas" size="md">
         <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-5">
           <ShareHeadline level={2} size="lg" maxWidth="22ch">
             Taskey an Ihren Objekten zeigen

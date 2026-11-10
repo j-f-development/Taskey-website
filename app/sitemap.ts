@@ -57,9 +57,7 @@ const STATIC_ENTRIES: Entry[] = [
   { path: "/kostenlos-starten", changeFrequency: "weekly", priority: 0.95 },
   { path: "/erstgespraech", changeFrequency: "weekly", priority: 0.9 },
   { path: "/features", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/features/taskey-share", changeFrequency: "monthly", priority: 0.85 },
   { path: "/pricing", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/enterprise", changeFrequency: "monthly", priority: 0.8 },
   { path: "/about", changeFrequency: "monthly", priority: 0.8 },
   { path: "/partnerschaften", changeFrequency: "monthly", priority: 0.7 },
   { path: "/support", changeFrequency: "monthly", priority: 0.6 },
@@ -67,14 +65,6 @@ const STATIC_ENTRIES: Entry[] = [
   { path: "/videos", changeFrequency: "monthly", priority: 0.6 },
 
   // Feature-Landingpages (SEO-Cluster)
-  { path: "/features/nfc-zeiterfassung", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/features/einsatzplanung", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/features/live-margen", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/features/datev-export", changeFrequency: "monthly", priority: 0.85 },
-  { path: "/features/leistungsnachweis", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/features/rechnungsprogramm", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/features/kalkulation", changeFrequency: "monthly", priority: 0.85 },
-  { path: "/features/ausschreibungen", changeFrequency: "monthly", priority: 0.85 },
 
   // Rechner (Tools)
   { path: "/rechner", changeFrequency: "monthly", priority: 0.85 },

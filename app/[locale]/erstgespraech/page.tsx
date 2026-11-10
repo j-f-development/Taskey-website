@@ -111,7 +111,7 @@ const BODY: Record<Locale, Block> = {
       { label: "Kostenlos starten", href: "/kostenlos-starten", body: "Account anlegen und direkt im Workspace arbeiten, ohne Call." },
       { label: "Alle Funktionen", href: "/features", body: "Einsatzplanung, Zeiterfassung, Angebote, Rechnungen und Kundenportal." },
       { label: "Preise", href: "/pricing", body: "Alle Pläne, inklusive der kostenlosen Variante und Enterprise-Konditionen." },
-      { label: "Enterprise", href: "/enterprise", body: "SSO, RBAC, Audit Log, REST API, Webhooks und native ERP-Integration." },
+      { label: "Enterprise", href: "/erstgespraech", body: "SSO, RBAC, Audit Log, REST API, Webhooks und native ERP-Integration." },
     ],
     faqH2: "Häufige Fragen zum Erstgespräch",
     faq: [
@@ -199,7 +199,7 @@ const BODY: Record<Locale, Block> = {
       { label: "Start for free", href: "/kostenlos-starten", body: "Create an account and work in the workspace right away, without a call." },
       { label: "All features", href: "/features", body: "Scheduling, time tracking, quotes, invoicing and the client portal." },
       { label: "Pricing", href: "/pricing", body: "All plans including the free tier and enterprise terms." },
-      { label: "Enterprise", href: "/enterprise", body: "SSO, RBAC, audit log, REST API, webhooks and native ERP integration." },
+      { label: "Enterprise", href: "/erstgespraech", body: "SSO, RBAC, audit log, REST API, webhooks and native ERP integration." },
     ],
     faqH2: "Frequently asked about the discovery call",
     faq: [
@@ -287,7 +287,7 @@ const BODY: Record<Locale, Block> = {
       { label: "Démarrer gratuitement", href: "/kostenlos-starten", body: "Créer un compte et travailler dans le workspace, sans échange préalable." },
       { label: "Toutes les fonctionnalités", href: "/features", body: "Planning, pointage, devis, facturation et portail client." },
       { label: "Tarifs", href: "/pricing", body: "Tous les plans dont la version gratuite et les conditions entreprise." },
-      { label: "Entreprise", href: "/enterprise", body: "SSO, RBAC, journal d’audit, REST API, webhooks et intégration ERP native." },
+      { label: "Entreprise", href: "/erstgespraech", body: "SSO, RBAC, journal d’audit, REST API, webhooks et intégration ERP native." },
     ],
     faqH2: "Questions fréquentes sur l’échange",
     faq: [

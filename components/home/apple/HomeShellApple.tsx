@@ -76,7 +76,7 @@ export default function HomeShellApple() {
             eyebrow="NFC-Zeiterfassung"
             title={<>Minutengenau. Fälschungssicher. Vor Ort.</>}
             copy="Mitarbeitende halten das Telefon an einen Tag. Fertig. Keine Papierzettel, keine Diskussion."
-            cta={{ label: "Mehr über Zeiterfassung", href: "/features/nfc-zeiterfassung" }}
+            cta={{ label: "Mehr über Zeiterfassung", href: "/features#zeiterfassung" }}
             visual={<TilePill label="NFC · tap" />}
           />
           <AppleTile
@@ -85,7 +85,7 @@ export default function HomeShellApple() {
             eyebrow="Live-Margen"
             title={<>Sehen, was jedes Objekt wirklich kostet.</>}
             copy="Stundensätze, Fahrzeiten, Material in Echtzeit auf der Kalkulation. Keine Nachkalkulation mehr."
-            cta={{ label: "Live-Margen verstehen", href: "/features/live-margen" }}
+            cta={{ label: "Live-Margen verstehen", href: "/features#live-margen" }}
             visual={<TilePill label="Live" dark />}
           />
         </div>

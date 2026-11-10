@@ -425,12 +425,12 @@ export default async function MultiSitePage({
             {
               kind: "Feature",
               title: "Einsatzplanung",
-              href: "/features/einsatzplanung",
+              href: "/features#einsatzplanung",
             },
             {
               kind: "Feature",
               title: "Live Margen",
-              href: "/features/live-margen",
+              href: "/features#live-margen",
             },
           ]}
         />

@@ -178,7 +178,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Objekte, Personal, Einsatzplanung und Kalkulation in einem System.",
       },
       {
-        href: "/features/kalkulation",
+        href: "/features#live-margen",
         label: "Objektkalkulation in Taskey",
         description: "Live-Marge, Personalbedarf und Nachunternehmer-Empfehlung je Objekt.",
       },
@@ -337,7 +337,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Sites, staff, dispatching and quoting in one system.",
       },
       {
-        href: "/features/kalkulation",
+        href: "/features#live-margen",
         label: "Site calculation in Taskey",
         description: "Live margin, headcount and subcontractor recommendation per site.",
       },
@@ -496,7 +496,7 @@ const CONTENT: Record<Locale, Content> = {
         description: "Sites, personnel, planification et devis dans un seul système.",
       },
       {
-        href: "/features/kalkulation",
+        href: "/features#live-margen",
         label: "Calcul par site dans Taskey",
         description: "Marge en direct, effectif et recommandation de sous-traitant par site.",
       },

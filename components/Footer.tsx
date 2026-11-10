@@ -57,7 +57,6 @@ export default function Footer() {
             </p>
             <FooterLink href="/features">{t("footer.link.features")}</FooterLink>
             <FooterLink href="/pricing">{t("footer.link.pricing")}</FooterLink>
-            <FooterLink href="/enterprise">{t("footer.link.enterprise")}</FooterLink>
             <FooterLink href="/integrationen">Integrationen</FooterLink>
           </div>
 

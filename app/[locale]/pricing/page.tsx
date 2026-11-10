@@ -85,7 +85,7 @@ const enterpriseProduct = {
   "brand": BRAND,
   "category": "Cleaning Management Software",
   "audience": { "@type": "Audience", "audienceType": "Enterprise (100+ employees, multi-site operators)" },
-  "offers": { "@type": "Offer", "url": "https://www.taskeyapp.com/enterprise", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "seller": SELLER, "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "EUR", "description": "Individuelles Angebot" } },
+  "offers": { "@type": "Offer", "url": "https://www.taskeyapp.com/erstgespraech", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "seller": SELLER, "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "EUR", "description": "Individuelles Angebot" } },
 };
 
 const FAQ_BY_LOCALE: Record<Locale, { q: string; a: string }[]> = {

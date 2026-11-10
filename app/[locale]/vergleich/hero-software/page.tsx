@@ -121,7 +121,7 @@ const CONTENT: ComparisonContent = {
   related: [
     { href: "/vergleich/blink", label: "Taskey vs Blink", desc: "Enterprise-Ansatz vs modernes All-in-One." },
     { href: "/vergleich/fortytools", label: "Taskey vs fortytools", desc: "Kleinbetriebs-Fokus vs Reinigung Vollausstattung." },
-    { href: "/features/live-margen", label: "Live-Margen", desc: "Warum Reinigungsbetriebe die Zahlen brauchen." },
+    { href: "/features#live-margen", label: "Live-Margen", desc: "Warum Reinigungsbetriebe die Zahlen brauchen." },
   ],
   breadcrumbs: [
     { name: "Start", href: "/" },

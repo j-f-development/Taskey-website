@@ -163,7 +163,7 @@ export default async function LoesungenIndexPage({
       <ShareStatementBand
         title={c.ctaH2}
         body={c.ctaBody}
-        primaryHref={lhref(locale, "/enterprise")}
+        primaryHref={lhref(locale, "/erstgespraech")}
         primaryLabel={c.ctaPrimary}
         secondaryHref={lhref(locale, "/erstgespraech")}
         secondaryLabel={locale === "de" ? "Erstgespräch buchen" : locale === "en" ? "Book intro call" : "Premier échange"}

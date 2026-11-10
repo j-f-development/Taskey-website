@@ -121,7 +121,7 @@ const CONTENT: ComparisonContent = {
   related: [
     { href: "/vergleich/blink", label: "Taskey vs Blink", desc: "Enterprise-Ansatz vs modernes All-in-One." },
     { href: "/vergleich/hero-software", label: "Taskey vs Hero Software", desc: "Handwerker-Wurzeln vs Reinigungs-Spezialist." },
-    { href: "/features/live-margen", label: "Live-Margen", desc: "Warum das Feature den Unterschied macht." },
+    { href: "/features#live-margen", label: "Live-Margen", desc: "Warum das Feature den Unterschied macht." },
   ],
   breadcrumbs: [
     { name: "Start", href: "/" },

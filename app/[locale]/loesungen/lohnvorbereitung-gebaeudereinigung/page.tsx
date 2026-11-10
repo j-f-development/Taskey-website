@@ -460,12 +460,12 @@ export default async function LohnvorbereitungPage({
             {
               kind: "Feature",
               title: "NFC Zeiterfassung am Objekt",
-              href: "/features/nfc-zeiterfassung",
+              href: "/features#zeiterfassung",
             },
             {
               kind: "Feature",
               title: "Einsatzplanung",
-              href: "/features/einsatzplanung",
+              href: "/features#einsatzplanung",
             },
           ]}
         />

@@ -39,7 +39,6 @@ export default function Header() {
     { href: "/features", label: t("nav.features") },
     { href: "/pricing", label: t("nav.pricing") },
     { href: "/integrationen", label: "Integrationen" },
-    { href: "/enterprise", label: "Enterprise" },
     { href: "/about", label: t("nav.about") },
   ];
 

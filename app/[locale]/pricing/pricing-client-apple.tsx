@@ -92,7 +92,7 @@ const ENTERPRISE_PLAN: Plan = {
     "Dedicated Customer Success",
   ],
   ctaLabel: "Enterprise anfragen",
-  ctaHref: "/enterprise",
+  ctaHref: "/erstgespraech",
 };
 
 export default function PricingClientApple() {

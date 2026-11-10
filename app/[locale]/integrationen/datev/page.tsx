@@ -495,12 +495,12 @@ export default async function DatevIntegrationPage({
             {
               kind: "Feature",
               title: "DATEV Export im Produkt",
-              href: "/features/datev-export",
+              href: "/features#rechnungen",
             },
             {
               kind: "Feature",
               title: "NFC Zeiterfassung am Objekt",
-              href: "/features/nfc-zeiterfassung",
+              href: "/features#zeiterfassung",
             },
           ]}
         />
