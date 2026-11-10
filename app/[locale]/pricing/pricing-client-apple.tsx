@@ -8,13 +8,15 @@ import {
   AppleFeatureRow,
 } from "@/components/apple";
 
+type Feature = { label: string; strike?: boolean };
+
 type Plan = {
   id: "beginner" | "professional" | "business" | "enterprise";
   name: string;
   price: string;
   priceSuffix?: string;
   tagline: string;
-  features: string[];
+  features: (string | Feature)[];
   ctaLabel: string;
   ctaHref: string;
   featured?: boolean;
@@ -34,6 +36,8 @@ const BASE_PLANS: Plan[] = [
       "Nachweise mit Foto",
       "Finanztools",
       "Server in Deutschland",
+      { label: "Personalplanung", strike: true },
+      { label: "Einsatzplanung", strike: true },
     ],
     ctaLabel: "Abo auswählen",
     ctaHref: "https://signup.taskeyapp.com",
@@ -255,31 +259,56 @@ function PlanCard({ plan }: { plan: Plan }) {
         </p>
 
         <ul className="mt-6 flex flex-col gap-2.5 w-full">
-          {plan.features.map((f) => (
-            <li
-              key={f}
-              className="apl-small flex items-start gap-2"
-              style={{ color: featured ? "#d2d2d7" : "var(--apl-ink-soft)" }}
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                aria-hidden
-                className="mt-0.5 shrink-0"
+          {plan.features.map((raw) => {
+            const f: Feature = typeof raw === "string" ? { label: raw } : raw;
+            const mutedColor = featured ? "#6e6e73" : "var(--apl-ink-faint)";
+            const normalColor = featured ? "#d2d2d7" : "var(--apl-ink-soft)";
+            return (
+              <li
+                key={f.label}
+                className="apl-small flex items-start gap-2"
+                style={{ color: f.strike ? mutedColor : normalColor }}
               >
-                <path
-                  d="M3.5 8.2l3 3L12.5 5"
-                  stroke={featured ? "#2997ff" : "var(--apl-accent)"}
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              {f}
-            </li>
-          ))}
+                {f.strike ? (
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden
+                    className="mt-0.5 shrink-0"
+                  >
+                    <path
+                      d="M4 4l8 8M12 4l-8 8"
+                      stroke={mutedColor}
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden
+                    className="mt-0.5 shrink-0"
+                  >
+                    <path
+                      d="M3.5 8.2l3 3L12.5 5"
+                      stroke={featured ? "#2997ff" : "var(--apl-accent)"}
+                      strokeWidth="1.75"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+                <span style={{ textDecoration: f.strike ? "line-through" : undefined }}>
+                  {f.label}
+                </span>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="mt-auto pt-6 w-full">
