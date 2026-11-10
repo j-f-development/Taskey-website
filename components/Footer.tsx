@@ -3,115 +3,114 @@
 import Image from "next/image";
 import Link from "@/components/LocaleLink";
 import { useLanguage } from "@/context/LanguageContext";
+import { TaskeyWord } from "./BrandDot";
 
 export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="apl-surface-soft" style={{ color: "var(--apl-ink)" }}>
-      <div className="apl-container-wide pt-12 pb-10">
-        {/* Logo + notice */}
-        <div className="flex items-start justify-between gap-6 flex-wrap">
-          <Link href="/" className="flex items-center gap-2.5 opacity-90 hover:opacity-100 transition">
-            <Image
-              src="/brand/taskey-logo-navy.svg"
-              alt="Taskey"
-              width={40}
-              height={40}
-              className="h-8 w-8 object-contain"
-            />
-            <span className="apl-headline" style={{ fontSize: "1.25rem", color: "var(--apl-ink)" }}>
-              Taskey
-            </span>
+    <footer className="ts-ink-surface ts-scope pt-20 pb-10">
+      <div className="ts-container-wide">
+        <div className="mb-14 pb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-5" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+          <div className="max-w-xl">
+            <p className="ts-eyebrow" style={{ color: "rgba(255,255,255,0.5)" }}>
+              {t("footer.col.product")}
+            </p>
+            <h3 className="ts-headline mt-2" style={{ fontSize: "clamp(1.2rem, 2vw, 1.6rem)", color: "var(--brand-white)" }}>
+              Reinigung digitalisieren.
+              <span style={{ color: "var(--brand-signal-blue)" }}>.</span>
+            </h3>
+          </div>
+          <Link
+            href="https://signup.taskeyapp.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ts-btn ts-btn-onink"
+          >
+            {t("nav.tryFree")}
           </Link>
-          <p className="apl-caption text-[color:var(--apl-ink-muted)] max-w-[52ch]">
-            {t("footer.aiNotice")}
-          </p>
         </div>
 
-        <div
-          className="mt-8 border-t border-[color:var(--apl-hairline-soft)] pt-10 grid gap-10
-          grid-cols-2 md:grid-cols-5"
-        >
-          <FooterCol title={t("footer.col.product")}>
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4 flex flex-col gap-5">
+            <Link href="/" className="flex items-center gap-2.5">
+              <Image
+                src="/brand/logo/logo-white.svg"
+                alt=""
+                width={30}
+                height={22}
+                className="h-6 w-auto"
+              />
+              <TaskeyWord size="1.3rem" tone="white" />
+            </Link>
+            <p className="text-[0.95rem] leading-[1.6] max-w-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+              Software für Gebäudereinigung. NFC-Zeiterfassung, Einsatzplanung, Finanzen und DATEV in einer Spur.
+            </p>
+            <p className="text-[0.8rem]" style={{ color: "rgba(255,255,255,0.5)" }}>
+              Made in Germany · DSGVO
+            </p>
+          </div>
+
+          <div className="lg:col-span-2 flex flex-col gap-3">
+            <p className="ts-eyebrow" style={{ color: "rgba(255,255,255,0.5)" }}>
+              {t("footer.col.product")}
+            </p>
             <FooterLink href="/features">{t("footer.link.features")}</FooterLink>
             <FooterLink href="/pricing">{t("footer.link.pricing")}</FooterLink>
             <FooterLink href="/enterprise">{t("footer.link.enterprise")}</FooterLink>
             <FooterLink href="/integrationen">Integrationen</FooterLink>
-            <FooterLink href="/features/nfc-zeiterfassung">{t("footer.link.nfcZeiterfassung")}</FooterLink>
-            <FooterLink href="/features/einsatzplanung">{t("footer.link.einsatzplanung")}</FooterLink>
-            <FooterLink href="/features/live-margen">{t("footer.link.liveMargen")}</FooterLink>
-            <FooterLink href="/features/datev-export">{t("footer.link.datevExport")}</FooterLink>
-            <FooterLink href="/features/leistungsnachweis">{t("footer.link.leistungsnachweis")}</FooterLink>
-            <FooterLink href="/features/taskey-share">{t("footer.link.taskeyShare")}</FooterLink>
-          </FooterCol>
+          </div>
 
-          <FooterCol title="Loslegen">
-            <FooterLink href="/kostenlos-starten">Kostenlos starten</FooterLink>
-            <FooterLink href="/erstgespraech">Erstgespräch</FooterLink>
-            <FooterLink href="/vergleich">Vergleich</FooterLink>
-            <FooterLink href="/marktvergleich">Marktvergleich</FooterLink>
-            <FooterLink href="/probleme">Probleme & Lösungen</FooterLink>
-          </FooterCol>
-
-          <FooterCol title={t("footer.col.company")}>
+          <div className="lg:col-span-3 flex flex-col gap-3">
+            <p className="ts-eyebrow" style={{ color: "rgba(255,255,255,0.5)" }}>
+              {t("footer.col.company")}
+            </p>
             <FooterLink href="/about">{t("footer.link.about")}</FooterLink>
             <FooterLink href="/news">{t("footer.link.news")}</FooterLink>
             <FooterLink href="/partnerschaften">{t("footer.link.partnerships")}</FooterLink>
             <FooterLink href="/kunden">Kunden</FooterLink>
             <FooterLink href="/ratgeber">Ratgeber</FooterLink>
-          </FooterCol>
+          </div>
 
-          <FooterCol title={t("footer.col.contact")}>
-            <FooterLink href="/support">{t("footer.link.support")}</FooterLink>
-            <li>
-              <a href="mailto:info@taskeyapp.com" className="apl-small text-[color:var(--apl-ink-soft)] hover:text-[color:var(--apl-ink)] transition">
-                info@taskeyapp.com
-              </a>
-            </li>
-            <li>
-              <a href="tel:+4915168488999" className="apl-small text-[color:var(--apl-ink-soft)] hover:text-[color:var(--apl-ink)] transition">
-                +49 151 68488999
-              </a>
-            </li>
-            <li className="apl-small text-[color:var(--apl-ink-muted)]">In der Acht 44</li>
-            <li className="apl-small text-[color:var(--apl-ink-muted)]">66333 Völklingen</li>
-          </FooterCol>
-
-          <FooterCol title={t("footer.col.legal")}>
+          <div className="lg:col-span-3 flex flex-col gap-3">
+            <p className="ts-eyebrow" style={{ color: "rgba(255,255,255,0.5)" }}>
+              {t("footer.col.legal")}
+            </p>
             <FooterLink href="/impressum">{t("footer.link.imprint")}</FooterLink>
             <FooterLink href="/datenschutz">{t("footer.link.privacy")}</FooterLink>
             <FooterLink href="/agb">{t("footer.link.agb")}</FooterLink>
             <FooterLink href="/datenschutz-app">App-Datenschutz</FooterLink>
-            <FooterLink href="/sitemap.xml">{t("footer.link.sitemap")}</FooterLink>
-          </FooterCol>
+            <div className="mt-2 flex flex-col gap-1.5">
+              <a href="mailto:info@taskeyapp.com" className="text-[0.9rem]" style={{ color: "rgba(255,255,255,0.75)" }}>
+                info@taskeyapp.com
+              </a>
+              <a href="tel:+4915168488999" className="text-[0.9rem]" style={{ color: "rgba(255,255,255,0.75)" }}>
+                +49 151 68488999
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-[color:var(--apl-hairline-soft)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <p className="apl-caption text-[color:var(--apl-ink-muted)]">
-            Copyright © {new Date().getFullYear()} Taskey. {t("footer.rights")}
+        <div className="mt-16 pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+          <p className="text-[0.78rem]" style={{ color: "rgba(255,255,255,0.4)" }}>
+            © {new Date().getFullYear()} Taskey. {t("footer.rights")}
           </p>
           <div className="flex items-center gap-5 flex-wrap">
             <button
               onClick={() => {
-                localStorage.removeItem("taskey-cookie-consent");
-                window.location.reload();
+                if (typeof window !== "undefined") {
+                  localStorage.removeItem("taskey-cookie-consent");
+                  window.location.reload();
+                }
               }}
-              className="apl-caption text-[color:var(--apl-ink-muted)] hover:text-[color:var(--apl-ink)] transition cursor-pointer"
+              className="text-[0.78rem] cursor-pointer"
+              style={{ color: "rgba(255,255,255,0.4)" }}
             >
               {t("footer.cookie")}
             </button>
-            <span className="apl-caption text-[color:var(--apl-ink-muted)]">
+            <span className="text-[0.78rem]" style={{ color: "rgba(255,255,255,0.4)" }}>
               {t("footer.madeIn")}
             </span>
-            <a
-              href="/TaskeyNutzerhandbuch.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="apl-caption text-[color:var(--apl-ink-muted)] hover:text-[color:var(--apl-ink)] transition"
-            >
-              {t("footer.link.handbook")}
-            </a>
           </div>
         </div>
       </div>
@@ -119,29 +118,14 @@ export default function Footer() {
   );
 }
 
-function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div>
-      <h4
-        className="apl-caption mb-4"
-        style={{ color: "var(--apl-ink)", fontWeight: 600, letterSpacing: 0 }}
-      >
-        {title}
-      </h4>
-      <ul className="flex flex-col gap-2.5">{children}</ul>
-    </div>
-  );
-}
-
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <li>
-      <Link
-        href={href}
-        className="apl-small text-[color:var(--apl-ink-soft)] hover:text-[color:var(--apl-ink)] transition"
-      >
-        {children}
-      </Link>
-    </li>
+    <Link
+      href={href}
+      className="text-[0.9rem] transition-colors"
+      style={{ color: "rgba(255,255,255,0.75)" }}
+    >
+      {children}
+    </Link>
   );
 }

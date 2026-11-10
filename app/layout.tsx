@@ -19,10 +19,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    // Diese Direktiven werden im generischen <meta name="robots"> ausgegeben,
-    // damit Bingbot / msnbot die gleichen Snippet- und Preview-Rechte erhalten
-    // wie Googlebot. Ohne Top-Level-Direktiven landet Bing bei Default-Snippet-
-    // Laengen und blockiert grosse Image-Previews in den SERPs.
     "max-video-preview": -1,
     "max-image-preview": "large",
     "max-snippet": -1,
@@ -71,9 +67,6 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
     other: {
-      // Bing WMT Token, gespiegelt aus public/BingSiteAuth.xml.
-      // Env-Var kann bei Bedarf uebersteuern; leerer Fallback wuerde sonst
-      // ein <meta content=""> emittieren und Bing verwirren.
       "msvalidate.01":
         process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ||
         "19D02976D22C242365B929606C191E0A",
@@ -83,8 +76,6 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    // IndexNow Key an public/k9f2m7q4p8j3n6t1r5w2y8b4c7e0a3s6.txt gebunden.
-    // Bing + Yandex nutzen den gleichen Key, um Real-Time-Indexing zu triggern.
     "indexnow": "k9f2m7q4p8j3n6t1r5w2y8b4c7e0a3s6",
     "content-language": "de-DE, en-US, fr-FR",
   },
@@ -95,14 +86,18 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Locale set by middleware (x-locale header). Default to "de" for safety.
   const h = await headers();
   const locale = h.get("x-locale") ?? "de";
 
   return (
     <html lang={locale}>
       <head>
-        <link rel="preload" href="/hero-background.webp" as="image" type="image/webp" fetchPriority="high" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
         <link rel="preconnect" href="https://mission-control.vars-development.com" />
         <link rel="preconnect" href="https://signup.taskeyapp.com" />
         <link rel="preconnect" href="https://taskey.vars-development.com" />
@@ -111,7 +106,7 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://taskey.vars-development.com" />
         <GlobalStructuredData />
       </head>
-      <body className="antialiased">
+      <body className="antialiased" style={{ background: "var(--ts-canvas)", color: "var(--ts-ink)", fontFamily: "var(--ts-font-sans)" }}>
         <WebVitals />
         <AnalyticsScript />
         {children}

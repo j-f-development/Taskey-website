@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import HomeShellApple from "@/components/home/apple/HomeShellApple";
+import HomeShellShare from "@/components/home/share/HomeShellShare";
 import { buildMetadata, pickLocale, type PageCopy } from "@/lib/i18n-metadata";
 
 const HOME_COPY: PageCopy = {
@@ -34,5 +34,5 @@ export async function generateMetadata({
 }
 
 export default async function HomePage() {
-  return <HomeShellApple />;
+  return <HomeShellShare />;
 }

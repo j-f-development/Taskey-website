@@ -9,17 +9,17 @@ const COPY: PageCopy = {
   de: {
     title: "Preise Gebäudereinigungssoftware | Ab 69€/Monat | Taskey",
     description:
-      "Transparente Preise für Reinigungssoftware: Beginner ab 69€, Professional ab 179€, Business ab 249€/Monat. Unbegrenzte Mitarbeiter. Jahresvertrag oder monatlich kündbar.",
+      "Transparente Preise für Reinigungssoftware: Beginner ab 69€, Pro ab 179€, Business ab 249€/Monat. Unbegrenzte Mitarbeiter. Jahresvertrag oder monatlich kündbar.",
   },
   en: {
     title: "Cleaning software pricing | From €69/month | Taskey",
     description:
-      "Transparent pricing for cleaning software: Beginner from €69, Professional from €179, Business from €249/month. Unlimited employees. Annual contract or monthly rolling.",
+      "Transparent pricing for cleaning software: Beginner from €69, Pro from €179, Business from €249/month. Unlimited employees. Annual contract or monthly rolling.",
   },
   fr: {
     title: "Tarifs logiciel de nettoyage | À partir de 69 €/mois | Taskey",
     description:
-      "Tarifs transparents pour logiciel de nettoyage : Beginner dès 69 €, Professional dès 179 €, Business dès 249 €/mois. Employés illimités. Contrat annuel ou résiliation mensuelle.",
+      "Tarifs transparents pour logiciel de nettoyage : Beginner dès 69 €, Pro dès 179 €, Business dès 249 €/mois. Employés illimités. Contrat annuel ou résiliation mensuelle.",
   },
 };
 
@@ -45,7 +45,7 @@ const beginnerProduct = {
   "@type": "Product",
   "@id": "https://www.taskeyapp.com/pricing#beginner",
   "name": "Taskey Beginner",
-  "description": "Reinigungssoftware für kleine Betriebe: NFC-Zeiterfassung, Einsatzplanung, Nachweise. Ab 69 € pro Monat.",
+  "description": "Reinigungssoftware für kleine Betriebe: NFC-Zeiterfassung, Foto-Nachweise, Finanztools, Server in Deutschland. Ab 69 € pro Monat.",
   "brand": BRAND,
   "category": "Cleaning Management Software",
   "audience": { "@type": "Audience", "audienceType": "Small cleaning businesses (1–5 employees)" },
@@ -56,8 +56,8 @@ const professionalProduct = {
   "@context": "https://schema.org",
   "@type": "Product",
   "@id": "https://www.taskeyapp.com/pricing#professional",
-  "name": "Taskey Professional",
-  "description": "Reinigungssoftware für wachsende Betriebe: zusätzlich Auftraggeber-Portal, Live-Margen und Reports. Ab 179 € pro Monat.",
+  "name": "Taskey Pro",
+  "description": "Reinigungssoftware mit Personalplanung, Einsatzplanung, Lohnabrechnung und Auftraggeber-Portal, bis zu 100 Objekte. Ab 179 € pro Monat.",
   "brand": BRAND,
   "category": "Cleaning Management Software",
   "audience": { "@type": "Audience", "audienceType": "Growing cleaning businesses (5–20 employees)" },
@@ -69,7 +69,7 @@ const businessProduct = {
   "@type": "Product",
   "@id": "https://www.taskeyapp.com/pricing#business",
   "name": "Taskey Business",
-  "description": "Reinigungssoftware für mittelgroße Betriebe: zusätzlich DATEV-Export, erweiterte Rollen und priorisierten Support. Ab 249 € pro Monat.",
+  "description": "Reinigungssoftware ohne Limits: unbegrenzt Objekte und Standorte, DATEV-Export, erweiterte Rollen und priorisierter Support. Ab 249 € pro Monat.",
   "brand": BRAND,
   "category": "Cleaning Management Software",
   "audience": { "@type": "Audience", "audienceType": "Mid-market cleaning businesses (20+ employees)" },
@@ -90,23 +90,23 @@ const enterpriseProduct = {
 
 const FAQ_BY_LOCALE: Record<Locale, { q: string; a: string }[]> = {
   de: [
-    { q: "Kann ich das Paket wechseln?", a: "Ja, Sie können jederzeit zwischen Beginner, Professional und Business upgraden oder downgraden – wirksam zum nächsten Monat." },
+    { q: "Kann ich das Paket wechseln?", a: "Ja, Sie können jederzeit zwischen Beginner, Pro und Business upgraden oder downgraden – wirksam zum nächsten Monat." },
     { q: "Gibt es etwas Größeres als Business?", a: "Ja. Für größere Reinigungsunternehmen und Verkehrsbetriebe bieten wir Enterprise mit SSO, API- und PMS-Anbindungen, individueller SLA und priorisiertem Support. Sprechen Sie uns an, wir konfigurieren Enterprise passend zu Ihrer Objektstruktur." },
-    { q: "Gibt es bei euch Lohnabrechnung?", a: "Ja. Lohnabrechnung ist ab Professional in allen Paketen enthalten (nicht in Beginner). Zeiterfassung, Einsatzdaten und Lohnlauf laufen damit in einem System, ohne Umweg über eine externe Lohnsoftware." },
+    { q: "Gibt es bei euch Lohnabrechnung?", a: "Ja. Lohnabrechnung ist ab Pro in allen Paketen enthalten (nicht in Beginner). Zeiterfassung, Einsatzdaten und Lohnlauf laufen damit in einem System, ohne Umweg über eine externe Lohnsoftware." },
     { q: "Sind Updates und neue Funktionen inklusive?", a: "Ja. Alle Updates, Sicherheitsfixes und neuen Funktionen sind in jedem Tarif kostenlos enthalten und werden automatisch eingespielt." },
     { q: "Ist die Anzahl der Mitarbeitenden begrenzt?", a: "Nein. In jedem Tarif sind unbegrenzt viele Mitarbeitende enthalten." },
   ],
   en: [
-    { q: "Can I switch plans?", a: "Yes, you can upgrade or downgrade between Beginner, Professional and Business at any time – effective the next month." },
+    { q: "Can I switch plans?", a: "Yes, you can upgrade or downgrade between Beginner, Pro and Business at any time – effective the next month." },
     { q: "Is there anything bigger than Business?", a: "Yes. For larger cleaning companies and transit operators we offer Enterprise with SSO, API and PMS integrations, an individual SLA and priority support. Get in touch and we will configure Enterprise to fit your site structure." },
-    { q: "Do you handle payroll?", a: "Yes. Payroll is included from Professional upwards in every plan (not in Beginner). Time tracking, scheduling and payroll run in one system, with no detour via an external payroll tool." },
+    { q: "Do you handle payroll?", a: "Yes. Payroll is included from Pro upwards in every plan (not in Beginner). Time tracking, scheduling and payroll run in one system, with no detour via an external payroll tool." },
     { q: "Are updates and new features included?", a: "Yes. All updates, security fixes and new features are included in every plan at no extra cost and are rolled out automatically." },
     { q: "Is the number of employees limited?", a: "No. Every plan includes unlimited employees." },
   ],
   fr: [
-    { q: "Puis-je changer de forfait ?", a: "Oui, vous pouvez passer entre Beginner, Professional et Business à tout moment – avec effet le mois suivant." },
+    { q: "Puis-je changer de forfait ?", a: "Oui, vous pouvez passer entre Beginner, Pro et Business à tout moment – avec effet le mois suivant." },
     { q: "Existe-t-il une offre supérieure à Business ?", a: "Oui. Pour les grandes entreprises de nettoyage et les exploitants de transport, nous proposons Enterprise avec SSO, intégrations API et PMS, un SLA individuel et un support prioritaire. Contactez-nous, nous configurons Enterprise selon votre structure de sites." },
-    { q: "Gérez-vous la paie ?", a: "Oui. La gestion de la paie est incluse à partir de Professional dans toutes les offres (pas dans Beginner). Pointage, planification et paie sont ainsi gérés dans un seul système, sans détour par un logiciel de paie externe." },
+    { q: "Gérez-vous la paie ?", a: "Oui. La gestion de la paie est incluse à partir de Pro dans toutes les offres (pas dans Beginner). Pointage, planification et paie sont ainsi gérés dans un seul système, sans détour par un logiciel de paie externe." },
     { q: "Les mises à jour et nouvelles fonctionnalités sont-elles incluses ?", a: "Oui. Toutes les mises à jour, correctifs de sécurité et nouvelles fonctionnalités sont inclus gratuitement dans chaque forfait et déployés automatiquement." },
     { q: "Le nombre d'employés est-il limité ?", a: "Non. Chaque forfait inclut un nombre illimité d'employés." },
   ],

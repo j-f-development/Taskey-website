@@ -73,25 +73,22 @@ export default function AboutClientApple() {
           <AppleTile
             tone="noir"
             size="lg"
-            eyebrow="CEO · Mitgründer"
+            eyebrow="Mitgründer"
             title="Fynn-Luca Schulz"
-            copy="Produkt und Markt. Bindet Betrieb, Reinigungsleitung und Kunden in eine gemeinsame Sprache."
             align="start"
           />
           <AppleTile
             tone="noir"
             size="lg"
-            eyebrow="CTO · Mitgründer"
+            eyebrow="Mitgründer"
             title="Julian Stosse"
-            copy="Technik und Infrastruktur. Architektur, iOS, Android und DSGVO-konforme Cloud."
             align="start"
           />
           <AppleTile
             tone="noir"
             size="lg"
-            eyebrow="Finanzen & Akquise · Mitgründer"
+            eyebrow="Mitgründer"
             title="Yukio Sato"
-            copy="Zahlen, Verträge und neue Kunden. Hält den kaufmännischen Rahmen und baut die Pipeline."
             align="start"
           />
         </div>

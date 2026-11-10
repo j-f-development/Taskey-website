@@ -1356,3 +1356,263 @@ textarea.tkc-field-input {
 .apl-floorplan-wrap > section > .ts-container-wide > div.max-w-3xl {
   display: none; /* hide duplicate heading inside FloorPlanSection */
 }
+
+/* ==========================================================================
+   TASKEY SHARE · Design Tokens — Brand Kit v1
+   Palette: White · Mist · Sky · Signal Blue · Navy
+   APPENDED — ersetzt apl-* nicht, läuft parallel. Fonts via next/font.
+   ========================================================================== */
+:root {
+  --brand-white:        #F7F9FC;
+  --brand-mist:         #D9E1EA;
+  --brand-sky:          #9FC5E8;
+  --brand-signal-blue:  #2F5B94;
+  --brand-navy:         #10233C;
+
+  --ts-ink:        #10233C;
+  --ts-ink-soft:   #1C3357;
+  --ts-ink-muted:  #5B6D82;
+  --ts-ink-faint:  #94A4B6;
+
+  --ts-canvas:         #F7F9FC;
+  --ts-canvas-elev:    #FFFFFF;
+  --ts-canvas-tinted:  #ECF0F5;
+
+  --ts-accent:         #2F5B94;
+  --ts-accent-strong:  #1F3F6B;
+  --ts-accent-soft:    rgba(47, 91, 148, 0.08);
+  --ts-accent-ring:    rgba(47, 91, 148, 0.24);
+
+  --ts-good: #1f7a3a;
+  --ts-warn: #a25b09;
+  --ts-bad:  #b42323;
+
+  --ts-line:        rgba(16, 35, 60, 0.08);
+  --ts-line-strong: rgba(16, 35, 60, 0.16);
+
+  --ts-r-chip:   4px;
+  --ts-r-card:   6px;
+  --ts-r-panel:  8px;
+  --ts-r-shell:  10px;
+  --ts-r-btn:    4px;
+  --ts-r-pill:   999px;
+
+  --ts-shadow-sm: 0 1px 2px rgba(16, 35, 60, 0.05);
+  --ts-shadow-md: 0 4px 12px rgba(16, 35, 60, 0.08), 0 1px 3px rgba(16, 35, 60, 0.06);
+  --ts-shadow-lg: 0 20px 40px -12px rgba(16, 35, 60, 0.14), 0 4px 12px rgba(16, 35, 60, 0.06);
+
+  --ts-section-py-sm: clamp(2.5rem, 6vw, 4.5rem);
+  --ts-section-py:    clamp(3.5rem, 8vw, 7rem);
+  --ts-section-py-lg: clamp(4.5rem, 10vw, 9rem);
+  --ts-container-max:  1200px;
+  --ts-container-wide: 1360px;
+  --ts-container-x:    clamp(1.15rem, 4vw, 2.25rem);
+
+  --ts-glass-blur: 24px;
+  --ts-glass-sat:  180%;
+
+  --ts-ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ts-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ts-ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --ts-font-sans:    "Manrope", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  --ts-font-display: "Archivo", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+}
+
+.ts-display {
+  font-family: var(--ts-font-display);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.ts-headline {
+  font-family: var(--ts-font-display);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.ts-eyebrow {
+  font-family: var(--ts-font-sans);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--brand-signal-blue);
+}
+
+.ts-body {
+  font-family: var(--ts-font-sans);
+  color: var(--ts-ink-soft);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.ts-section     { padding-block: var(--ts-section-py); }
+.ts-section-sm  { padding-block: var(--ts-section-py-sm); }
+.ts-section-lg  { padding-block: var(--ts-section-py-lg); }
+
+.ts-container {
+  width: 100%;
+  max-width: var(--ts-container-max);
+  margin-inline: auto;
+  padding-inline: var(--ts-container-x);
+}
+.ts-container-wide {
+  width: 100%;
+  max-width: var(--ts-container-wide);
+  margin-inline: auto;
+  padding-inline: var(--ts-container-x);
+}
+
+.ts-glass-nav {
+  background: rgba(247, 249, 252, 0.92);
+  -webkit-backdrop-filter: blur(var(--ts-glass-blur)) saturate(var(--ts-glass-sat));
+          backdrop-filter: blur(var(--ts-glass-blur)) saturate(var(--ts-glass-sat));
+  border: 1px solid var(--ts-line-strong);
+  box-shadow: 0 1px 0 0 var(--ts-line), var(--ts-shadow-sm);
+}
+
+.ts-card {
+  background: var(--ts-canvas-elev);
+  border: 1px solid var(--ts-line);
+  border-radius: var(--ts-r-card);
+  box-shadow: var(--ts-shadow-sm);
+  transition: box-shadow 0.28s var(--ts-ease-out),
+              transform 0.28s var(--ts-ease-out),
+              border-color 0.28s var(--ts-ease-out);
+}
+.ts-card-hover:hover {
+  box-shadow: var(--ts-shadow-md);
+  transform: translateY(-1px);
+  border-color: var(--ts-line-strong);
+}
+
+.ts-panel {
+  background: var(--ts-canvas-elev);
+  border: 1px solid var(--ts-line);
+  border-radius: var(--ts-r-panel);
+  box-shadow: var(--ts-shadow-sm);
+}
+
+.ts-ink-surface {
+  background: var(--brand-navy);
+  color: var(--brand-white);
+  border: 1px solid var(--brand-navy);
+  position: relative;
+}
+.ts-ink-surface::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brand-sky) 30%, var(--brand-sky) 70%, transparent);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ts-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--ts-r-btn);
+  padding: 0.7rem 1.15rem;
+  min-height: 42px;
+  font-family: var(--ts-font-sans);
+  font-weight: 500;
+  font-size: 0.94rem;
+  line-height: 1;
+  transition: transform 160ms var(--ts-ease-out),
+              background-color 180ms var(--ts-ease-out),
+              border-color 180ms var(--ts-ease-out),
+              color 180ms var(--ts-ease-out),
+              box-shadow 180ms var(--ts-ease-out);
+  white-space: nowrap;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.ts-btn:focus-visible { outline: 2px solid var(--ts-accent); outline-offset: 2px; }
+.ts-btn:active { transform: scale(0.97); }
+.ts-btn-primary {
+  background: var(--brand-signal-blue);
+  color: var(--brand-white);
+  border-color: var(--brand-signal-blue);
+  box-shadow: 0 1px 2px rgba(47, 91, 148, 0.28);
+  font-weight: 600;
+}
+.ts-btn-primary:hover {
+  background: var(--ts-accent-strong);
+  border-color: var(--ts-accent-strong);
+  box-shadow: 0 6px 18px rgba(47, 91, 148, 0.32);
+}
+.ts-btn-ghost {
+  background: transparent;
+  color: var(--brand-navy);
+  border-color: var(--brand-navy);
+  border-width: 1.5px;
+  font-weight: 600;
+}
+.ts-btn-ghost:hover {
+  background: var(--brand-navy);
+  color: var(--brand-white);
+}
+.ts-btn-onink {
+  background: #fff;
+  color: var(--ts-ink);
+  border-color: #fff;
+}
+.ts-btn-onink:hover { background: #ececee; border-color: #ececee; }
+.ts-btn-onink-ghost {
+  background: transparent;
+  color: #f5f5f7;
+  border-color: rgba(245, 245, 247, 0.32);
+}
+.ts-btn-onink-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 245, 247, 0.6);
+}
+.ts-btn-sm { padding: 0.5rem 0.9rem; min-height: 36px; font-size: 0.85rem; }
+
+.ts-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--ts-r-chip);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-navy);
+  background: var(--brand-sky);
+  border: 1px solid transparent;
+  font-family: var(--ts-font-sans);
+}
+.ts-chip-neutral { color: var(--brand-navy); background: var(--brand-mist); }
+.ts-chip-inv {
+  background: rgba(159, 197, 232, 0.14);
+  color: var(--brand-sky);
+  border-color: rgba(159, 197, 232, 0.32);
+}
+
+.ts-hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ts-line-strong), transparent);
+}
+
+.ts-dot-grid {
+  background-image: radial-gradient(rgba(16, 35, 60, 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Scope: nur Elemente mit [data-ts-scope] oder .ts-scope kriegen die neue Typo,
+   damit andere Seiten (apl-*) unberührt bleiben. */
+.ts-scope h1, .ts-scope h2, .ts-scope h3, .ts-scope h4, .ts-scope h5, .ts-scope h6 {
+  font-family: var(--ts-font-display);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+.ts-scope { font-family: var(--ts-font-sans); color: var(--ts-ink); }
