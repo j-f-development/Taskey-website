@@ -341,23 +341,28 @@ function EnterpriseTile({ plan }: { plan: Plan }) {
             Konfiguriert für Ihre Standorte, Rollen und Prüfungen. Preis entsteht aus Scope, nicht aus Paketlogik.
           </p>
           <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            {plan.features.map((f) => (
-              <li
-                key={f}
-                className="apl-small flex items-start gap-2 text-[color:var(--apl-ink-soft)]"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="mt-0.5 shrink-0">
-                  <path
-                    d="M3.5 8.2l3 3L12.5 5"
-                    stroke="var(--apl-accent)"
-                    strokeWidth="1.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                {f}
-              </li>
-            ))}
+            {plan.features.map((raw) => {
+              const f: Feature = typeof raw === "string" ? { label: raw } : raw;
+              return (
+                <li
+                  key={f.label}
+                  className="apl-small flex items-start gap-2 text-[color:var(--apl-ink-soft)]"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="mt-0.5 shrink-0">
+                    <path
+                      d="M3.5 8.2l3 3L12.5 5"
+                      stroke="var(--apl-accent)"
+                      strokeWidth="1.75"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span style={{ textDecoration: f.strike ? "line-through" : undefined }}>
+                    {f.label}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="flex md:flex-col md:items-end gap-3">
