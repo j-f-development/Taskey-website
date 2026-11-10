@@ -1,25 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "@/components/LocaleLink";
 import { BrandDot, TaskeyWord } from "@/components/BrandDot";
-
-const BuildingAutoDemo = dynamic(
-  () => import("./BuildingAutoDemo"),
-  {
-    ssr: false,
-    loading: () => (
-      <div
-        className="grid place-items-center text-[0.85rem]"
-        style={{ height: "100%", color: "var(--ts-ink-muted)" }}
-      >
-        3D-Modell wird geladen …
-      </div>
-    ),
-  }
-);
 
 type Feature = {
   key: string;
@@ -285,15 +269,15 @@ function FeaturesDashboard() {
         <header className="flex flex-col gap-4 max-w-3xl">
           <span className="ts-eyebrow">Funktionen</span>
           <h2 className="ts-headline" style={{ fontSize: "clamp(1.9rem, 4.2vw, 3.2rem)", color: "var(--ts-ink)" }}>
-            Ein Blick in Taskey<BrandDot />
+            NFC statt Papier<BrandDot />
           </h2>
           <p className="text-[1rem] md:text-[1.08rem] leading-[1.6] max-w-2xl" style={{ color: "var(--ts-ink-muted)" }}>
-            Taskey denkt das Objekt dreidimensional. Etagen, Räume, Aufgaben in einem Modell. Rechts öffnen Sie die Module, die darin arbeiten.
+            Ein Tap am Objekt, die Zeit steht. Rechts öffnen Sie die weiteren Module, die in Taskey arbeiten.
           </p>
         </header>
 
         <div className="mt-12 grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          {/* 3D auto demo */}
+          {/* NFC-Zeiterfassung Video */}
           <div className="lg:col-span-7">
             <div
               className="relative overflow-hidden"
@@ -301,8 +285,8 @@ function FeaturesDashboard() {
                 borderRadius: "var(--ts-r-panel)",
                 border: "1px solid var(--ts-line-strong)",
                 boxShadow: "var(--ts-shadow-lg)",
-                background: "#F2F6FA",
-                height: "clamp(480px, 62vh, 640px)",
+                background: "#0b0b0f",
+                aspectRatio: "16 / 10",
               }}
             >
               <div
@@ -311,15 +295,15 @@ function FeaturesDashboard() {
                 <div>
                   <span
                     className="ts-eyebrow block"
-                    style={{ color: "var(--brand-signal-blue)", fontSize: "0.62rem" }}
+                    style={{ color: "var(--brand-sky)", fontSize: "0.62rem" }}
                   >
-                    Taskey · 3D-Modell
+                    Taskey · NFC
                   </span>
                   <span
                     className="ts-headline"
-                    style={{ fontSize: "1.1rem", color: "var(--ts-ink)" }}
+                    style={{ fontSize: "1.1rem", color: "var(--brand-white)" }}
                   >
-                    Ein Gebäude, alle Etagen
+                    Zeiterfassung per Tap
                   </span>
                 </div>
                 <span className="ts-chip" style={{ fontSize: "0.58rem", padding: "0.2rem 0.55rem" }}>
@@ -327,11 +311,26 @@ function FeaturesDashboard() {
                 </span>
               </div>
 
-              <BuildingAutoDemo />
+              <video
+                src="/videos/taskey-nfc-animation.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Taskey NFC-Zeiterfassung Animation"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
             </div>
 
             <p className="mt-4 text-[0.82rem]" style={{ color: "var(--ts-ink-muted)" }}>
-              Beispielgebäude mit fünf Etagen. Im echten Betrieb arbeitet Taskey mit Ihrem eigenen Objektbestand.
+              Mitarbeitende halten das Telefon an einen NFC-Tag am Objekt, Taskey schreibt Start, Ende und Pause minutengenau.
             </p>
           </div>
 
