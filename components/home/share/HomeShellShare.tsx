@@ -1,9 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "@/components/LocaleLink";
 import { BrandDot, TaskeyWord } from "@/components/BrandDot";
+
+const BuildingAutoDemo = dynamic(
+  () => import("./BuildingAutoDemo"),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        className="grid place-items-center text-[0.85rem]"
+        style={{ height: "100%", color: "var(--ts-ink-muted)" }}
+      >
+        3D-Modell wird geladen …
+      </div>
+    ),
+  }
+);
 
 type Feature = {
   key: string;
@@ -254,13 +270,6 @@ function HeroShare() {
 
 function FeaturesDashboard() {
   const [open, setOpen] = useState<number | null>(0);
-  const [loaded, setLoaded] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  useEffect(() => {
-    const t = setTimeout(() => setLoaded(true), 60);
-    return () => clearTimeout(t);
-  }, []);
 
   return (
     <section
@@ -276,15 +285,15 @@ function FeaturesDashboard() {
         <header className="flex flex-col gap-4 max-w-3xl">
           <span className="ts-eyebrow">Funktionen</span>
           <h2 className="ts-headline" style={{ fontSize: "clamp(1.9rem, 4.2vw, 3.2rem)", color: "var(--ts-ink)" }}>
-            Taskey live im Betrieb<BrandDot />
+            Ein Blick in Taskey<BrandDot />
           </h2>
           <p className="text-[1rem] md:text-[1.08rem] leading-[1.6] max-w-2xl" style={{ color: "var(--ts-ink-muted)" }}>
-            Links klicken Sie durch das echte Taskey-Dashboard. Rechts öffnen Sie die Module, die darin arbeiten. Keine Screenshots, keine Demo-Attrappe.
+            Taskey denkt das Objekt dreidimensional. Etagen, Räume, Aufgaben in einem Modell. Rechts öffnen Sie die Module, die darin arbeiten.
           </p>
         </header>
 
         <div className="mt-12 grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          {/* Dashboard embed */}
+          {/* 3D auto demo */}
           <div className="lg:col-span-7">
             <div
               className="relative overflow-hidden"
@@ -292,65 +301,37 @@ function FeaturesDashboard() {
                 borderRadius: "var(--ts-r-panel)",
                 border: "1px solid var(--ts-line-strong)",
                 boxShadow: "var(--ts-shadow-lg)",
-                background: "var(--ts-canvas-elev)",
-                height: "clamp(520px, 72vh, 760px)",
+                background: "#F2F6FA",
+                height: "clamp(480px, 62vh, 640px)",
               }}
             >
               <div
-                className="flex items-center gap-2 px-3"
-                style={{
-                  height: 36,
-                  borderBottom: "1px solid var(--ts-line)",
-                  background: "rgba(255,255,255,0.75)",
-                  backdropFilter: "blur(10px)",
-                }}
+                className="absolute top-4 left-4 right-4 z-10 flex items-start justify-between gap-3 pointer-events-none"
               >
-                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#E94B6A" }} />
-                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#F59E0B" }} />
-                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#22C55E" }} />
-                <span
-                  className="ml-3 text-[0.72rem] font-mono"
-                  style={{ color: "var(--ts-ink-muted)" }}
-                >
-                  dashboard.taskeyapp.com
-                </span>
-                <span className="ml-auto ts-chip" style={{ fontSize: "0.6rem", padding: "0.2rem 0.5rem" }}>
-                  Live
+                <div>
+                  <span
+                    className="ts-eyebrow block"
+                    style={{ color: "var(--brand-signal-blue)", fontSize: "0.62rem" }}
+                  >
+                    Taskey · 3D-Modell
+                  </span>
+                  <span
+                    className="ts-headline"
+                    style={{ fontSize: "1.1rem", color: "var(--ts-ink)" }}
+                  >
+                    Ein Gebäude, alle Etagen
+                  </span>
+                </div>
+                <span className="ts-chip" style={{ fontSize: "0.58rem", padding: "0.2rem 0.55rem" }}>
+                  Demo
                 </span>
               </div>
 
-              <iframe
-                ref={iframeRef}
-                src="https://dashboard.taskeyapp.com"
-                title="Taskey Dashboard, live und interaktiv"
-                loading="lazy"
-                onLoad={() => setLoaded(true)}
-                className="block"
-                style={{
-                  width: "100%",
-                  height: "calc(100% - 36px)",
-                  border: 0,
-                  background: "#fff",
-                }}
-                referrerPolicy="no-referrer"
-              />
-
-              {!loaded && (
-                <div
-                  className="absolute inset-0 grid place-items-center text-[0.9rem]"
-                  style={{
-                    pointerEvents: "none",
-                    color: "var(--ts-ink-muted)",
-                    background: "rgba(247,249,252,0.6)",
-                  }}
-                >
-                  Dashboard wird geladen …
-                </div>
-              )}
+              <BuildingAutoDemo />
             </div>
 
-            <p className="mt-4 text-[0.85rem]" style={{ color: "var(--ts-ink-muted)" }}>
-              Hinweis: Login öffnet das Live-Dashboard. Für einen Testzugang buchen Sie ein Erstgespräch.
+            <p className="mt-4 text-[0.82rem]" style={{ color: "var(--ts-ink-muted)" }}>
+              Beispielgebäude mit fünf Etagen. Im echten Betrieb arbeitet Taskey mit Ihrem eigenen Objektbestand.
             </p>
           </div>
 
