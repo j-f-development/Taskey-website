@@ -138,7 +138,7 @@ const CONTENT: Record<Locale, FeatureContent> = {
       "Legen Sie einen Testmandanten an, erzeugen Sie einen Beispiel-Export. Ihr Steuerberater sieht das Ergebnis, bevor Sie unterschreiben.",
     ctaPrimary: "Kostenlosen Account erstellen",
     ctaSecondary: "Alle Funktionen ansehen",
-    pricingLabel: "Preise ansehen",
+    pricingLabel: "Abonnements ansehen",
     relatedH2: "Weiter im Cluster Gebäudereinigungssoftware",
     related: [
       {

@@ -185,7 +185,7 @@ const content: Record<"de" | "en" | "fr", Content> = {
       badge: "Kostenloser Account",
       title: "Selbst ausprobieren — ohne Risiko.",
       subtitle: "Keine Kreditkarte. Jahresvertrag oder monatlich kündbar. Setup in einem Tag.",
-      pricing: "Preise ansehen",
+      pricing: "Abonnements ansehen",
       start: "Jetzt starten",
     },
   },

@@ -115,7 +115,7 @@ const CONTENT: ComparisonContent = {
     "Legen Sie ein Objekt an, ordnen Sie einen NFC-Tag zu, sehen Sie die Live-Marge pro Objekt. Sie brauchen keine Präsentation, das Produkt zeigt es selbst.",
   ctaPrimary: "Kostenlosen Account erstellen",
   ctaSecondary: "Alle Funktionen",
-  pricingLabel: "Preise ansehen",
+  pricingLabel: "Abonnements ansehen",
 
   relatedH2: "Weiter im Vergleich",
   related: [

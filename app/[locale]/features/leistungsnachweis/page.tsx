@@ -138,7 +138,7 @@ const CONTENT: Record<Locale, FeatureContent> = {
       "Erstellen Sie einen kostenlosen Account, kleben Sie einen NFC-Tag an ein Objekt, schalten Sie den Live-Link für Ihren Kunden frei.",
     ctaPrimary: "Kostenlosen Account erstellen",
     ctaSecondary: "Alle Funktionen ansehen",
-    pricingLabel: "Preise ansehen",
+    pricingLabel: "Abonnements ansehen",
     relatedH2: "Weiter im Cluster Gebäudereinigungssoftware",
     related: [
       {

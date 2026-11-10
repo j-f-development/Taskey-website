@@ -242,7 +242,7 @@ export default async function SupportPage({
         primaryLabel={ui.ctaButton}
         primaryExternal
         secondaryHref="/pricing"
-        secondaryLabel={loc === "de" ? "Preise ansehen" : loc === "en" ? "See pricing" : "Voir les tarifs"}
+        secondaryLabel={loc === "de" ? "Abonnements ansehen" : loc === "en" ? "See pricing" : "Voir les tarifs"}
       />
     </>
   );

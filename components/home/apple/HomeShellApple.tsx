@@ -227,7 +227,7 @@ export default function HomeShellApple() {
               Kostenlos starten
             </AppleButton>
             <AppleButton href="/pricing" variant="secondary" size="lg">
-              Preise ansehen
+              Abonnements ansehen
             </AppleButton>
           </div>
         </div>

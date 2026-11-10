@@ -142,7 +142,7 @@ const CONTENT: Record<Locale, FeatureContent> = {
       "Testen Sie Taskey 14 Tage kostenlos. Legen Sie einen Wartungsvertrag an, dokumentieren Sie eine Reinigung, erzeugen Sie die Rechnung mit einem Klick.",
     ctaPrimary: "Kostenlosen Account erstellen",
     ctaSecondary: "Alle Funktionen ansehen",
-    pricingLabel: "Preise ansehen",
+    pricingLabel: "Abonnements ansehen",
     relatedH2: "Weiter im Cluster Reinigungssoftware",
     related: [
       {

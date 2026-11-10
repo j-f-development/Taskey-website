@@ -206,7 +206,7 @@ function HeroShare() {
                 Kostenlos starten
               </a>
               <Link href="/pricing" className="ts-btn ts-btn-ghost">
-                Preise ansehen
+                Abonnements ansehen
               </Link>
               <Link href="/features" className="ts-btn ts-btn-ghost">
                 Funktionen entdecken
@@ -436,7 +436,7 @@ function StatementBand() {
               Alle Funktionen
             </Link>
             <Link href="/pricing" className="ts-btn ts-btn-onink-ghost">
-              Preise ansehen
+              Abonnements ansehen
             </Link>
           </div>
         </div>

@@ -186,7 +186,7 @@ export default function FeaturesClientApple() {
         primaryLabel="Kostenlos starten"
         primaryExternal
         secondaryHref="/pricing"
-        secondaryLabel="Preise ansehen"
+        secondaryLabel="Abonnements ansehen"
       />
 
       {/* Final CTA */}
@@ -203,7 +203,7 @@ export default function FeaturesClientApple() {
               Erstgespräch buchen
             </ShareButton>
             <ShareButton href="/pricing" variant="ghost">
-              Preise ansehen
+              Abonnements ansehen
             </ShareButton>
           </div>
         </div>

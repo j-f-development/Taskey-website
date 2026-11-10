@@ -119,7 +119,7 @@ const CONTENT: ComparisonContent = {
     "Kostenlosen Account erstellen, ein Objekt anlegen, in weniger als zehn Minuten läuft die erste Zeitbuchung mit NFC-Nachweis.",
   ctaPrimary: "Kostenlosen Account erstellen",
   ctaSecondary: "Alle Funktionen",
-  pricingLabel: "Preise ansehen",
+  pricingLabel: "Abonnements ansehen",
 
   relatedH2: "Weiter im Vergleich",
   related: [

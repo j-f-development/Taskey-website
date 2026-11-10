@@ -113,13 +113,13 @@ const FAQ_BY_LOCALE: Record<Locale, { q: string; a: string }[]> = {
 };
 
 const FAQ_SECTION_LABELS: Record<Locale, { kicker: string; title: string }> = {
-  de: { kicker: "Häufige Fragen zu den Preisen", title: "Was Sie zu den Tarifen wissen sollten." },
+  de: { kicker: "Häufige Fragen zu den Abonnements", title: "Was Sie zu den Abonnements wissen sollten" },
   en: { kicker: "Frequently asked questions about pricing", title: "What you should know about the plans." },
   fr: { kicker: "Questions fréquentes sur les tarifs", title: "Ce qu'il faut savoir sur les forfaits." },
 };
 
 const CRUMB_LABELS: Record<Locale, { home: string; pricing: string }> = {
-  de: { home: "Home", pricing: "Preise" },
+  de: { home: "Home", pricing: "Abonnements" },
   en: { home: "Home", pricing: "Pricing" },
   fr: { home: "Accueil", pricing: "Tarifs" },
 };

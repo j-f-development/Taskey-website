@@ -35,7 +35,7 @@ const BASE_PLANS: Plan[] = [
       "Finanztools",
       "Server in Deutschland",
     ],
-    ctaLabel: "Kostenlos testen",
+    ctaLabel: "Abo auswählen",
     ctaHref: "https://signup.taskeyapp.com",
   },
   {
@@ -52,7 +52,7 @@ const BASE_PLANS: Plan[] = [
       "Live-Margen und Reports",
       "Bis zu 100 angelegte Objekte",
     ],
-    ctaLabel: "Kostenlos testen",
+    ctaLabel: "Abo auswählen",
     ctaHref: "https://signup.taskeyapp.com",
     featured: true,
   },
@@ -70,7 +70,7 @@ const BASE_PLANS: Plan[] = [
       "Erweiterte Rollen und Rechte",
       "Priorisierter Support",
     ],
-    ctaLabel: "Kostenlos testen",
+    ctaLabel: "Abo auswählen",
     ctaHref: "https://signup.taskeyapp.com",
   },
 ];
@@ -109,7 +109,7 @@ export default function PricingClientApple() {
       {/* Hero */}
       <section className="apl-surface-canvas pt-14 pb-10">
         <div className="apl-container text-center">
-          <p className="apl-eyebrow mb-2">Preise</p>
+          <p className="apl-eyebrow mb-2">Abonnements</p>
           <h1
             className="apl-display apl-display-xl mx-auto"
             style={{ maxWidth: "16ch" }}

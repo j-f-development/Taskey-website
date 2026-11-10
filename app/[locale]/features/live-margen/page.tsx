@@ -135,7 +135,7 @@ const CONTENT: Record<Locale, FeatureContent> = {
       "Hinterlegen Sie einen Vertrag, buchen Sie eine Reinigung. Fünf Minuten später zeigt das Dashboard die Marge Ihres Objekts.",
     ctaPrimary: "Kostenlosen Account erstellen",
     ctaSecondary: "Alle Funktionen ansehen",
-    pricingLabel: "Preise ansehen",
+    pricingLabel: "Abonnements ansehen",
     relatedH2: "Weiter im Cluster Gebäudereinigungssoftware",
     related: [
       {

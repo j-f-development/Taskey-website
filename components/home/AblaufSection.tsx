@@ -63,7 +63,7 @@ const COPY: Record<Language, Copy> = {
         title: "Tarif-Beratung",
         body:
           "Wir kommen aktiv auf Sie zu und besprechen gemeinsam, welcher Tarif von der Preise-Seite am besten zu Ihrem Betrieb passt. Keine automatische Verlängerung ohne Absprache.",
-        ctaLabel: "Preise ansehen",
+        ctaLabel: "Abonnements ansehen",
         ctaHref: "/pricing",
       },
     ],

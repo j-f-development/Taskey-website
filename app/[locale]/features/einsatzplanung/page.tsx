@@ -139,7 +139,7 @@ const CONTENT: Record<Locale, FeatureContent> = {
       "Legen Sie ein Objekt an, ziehen Sie einen Mitarbeiter auf einen Slot. In fünf Minuten sehen Sie, wie Ihr nächster Krankenausfall abgefangen wird.",
     ctaPrimary: "Kostenlosen Account erstellen",
     ctaSecondary: "Alle Funktionen ansehen",
-    pricingLabel: "Preise ansehen",
+    pricingLabel: "Abonnements ansehen",
     relatedH2: "Weiter im Cluster Gebäudereinigungssoftware",
     related: [
       {

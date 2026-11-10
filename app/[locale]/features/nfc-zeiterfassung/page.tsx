@@ -603,7 +603,7 @@ export default async function Page({
               {c.ctaPrimary}
             </a>
             <Link href={localeHref(locale, "/pricing")} className="apl-btn apl-btn-ghost apl-btn-lg">
-              {locale === "de" ? "Preise ansehen" : locale === "en" ? "See pricing" : "Voir les tarifs"}
+              {locale === "de" ? "Abonnements ansehen" : locale === "en" ? "See pricing" : "Voir les tarifs"}
             </Link>
           </div>
         </div>

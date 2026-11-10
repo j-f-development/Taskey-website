@@ -115,7 +115,7 @@ const CONTENT: ComparisonContent = {
     "Ein Objekt anlegen, ein NFC-Tag kleben, eine Rechnung erzeugen. Sie sehen in einer Sitzung, ob es passt.",
   ctaPrimary: "Kostenlosen Account erstellen",
   ctaSecondary: "Alle Funktionen",
-  pricingLabel: "Preise ansehen",
+  pricingLabel: "Abonnements ansehen",
 
   relatedH2: "Weiter im Vergleich",
   related: [
