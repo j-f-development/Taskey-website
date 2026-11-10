@@ -6,6 +6,19 @@ import {
   HowToJsonLd,
   ServiceJsonLd,
 } from "@/components/StructuredData";
+import {
+  ShareSection,
+  ShareHeadline,
+  ShareEyebrow,
+  ShareLede,
+  ShareBody,
+  ShareCard,
+  ShareBreadcrumbs,
+  ShareAccordion,
+  ShareButton,
+  ShareStatementBand,
+} from "@/components/share/kit";
+import { BrandDot } from "@/components/BrandDot";
 
 export type FeatureContent = {
   eyebrow: string;
@@ -63,6 +76,11 @@ export default function FeatureLandingPage({
       BASE,
   }));
 
+  const crumbsForUi = c.breadcrumbs.map((b) => ({
+    label: b.name,
+    href: localeHref(locale, b.href),
+  }));
+
   return (
     <>
       <BreadcrumbJsonLd id={`ld-breadcrumb-${ldPrefix}`} crumbs={crumbsForLd} />
@@ -84,186 +102,170 @@ export default function FeatureLandingPage({
       />
 
       {/* Hero */}
-      <section className="apl-surface-canvas pt-14 pb-10">
-        <div className="apl-container">
-          <nav aria-label="Breadcrumb" className="mb-6 apl-caption text-[color:var(--apl-ink-muted)]">
-            <ol className="flex flex-wrap items-center gap-2">
-              {c.breadcrumbs.map((b, i) => (
-                <li key={`${b.href}-${i}`} className="flex items-center gap-2">
-                  {i > 0 && <span aria-hidden>›</span>}
-                  {i < c.breadcrumbs.length - 1 ? (
-                    <Link href={localeHref(locale, b.href)} className="hover:text-[color:var(--apl-ink)]">
-                      {b.name}
-                    </Link>
-                  ) : (
-                    <span className="text-[color:var(--apl-ink-soft)]">{b.name}</span>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </nav>
-
-          <p className="apl-eyebrow mb-2">{c.eyebrow}</p>
-          <h1 className="apl-display apl-display-xl" style={{ maxWidth: "22ch" }}>
-            {c.h1}
-          </h1>
-          <p className="apl-lede mt-5 max-w-[48ch] font-medium" style={{ color: "var(--apl-ink)" }}>
-            {c.h1Accent}
-          </p>
-          <p className="apl-body mt-4 max-w-[64ch]">{c.lead}</p>
-
-          <div className="mt-7 flex flex-wrap gap-4">
-            <a
-              href="https://signup.taskeyapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="apl-btn apl-btn-primary apl-btn-lg"
+      <section className="ts-scope relative overflow-hidden pt-8 md:pt-16 pb-12 md:pb-20">
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(85% 60% at 85% 0%, rgba(47, 91, 148, 0.08) 0%, transparent 55%), linear-gradient(180deg, #F7F9FC 0%, #ECF0F5 100%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-[50vh] -z-10 opacity-30 ts-dot-grid pointer-events-none"
+        />
+        <div className="ts-container">
+          <ShareBreadcrumbs items={crumbsForUi} />
+          <div className="flex flex-col gap-5 max-w-3xl">
+            <ShareEyebrow>{c.eyebrow}</ShareEyebrow>
+            <ShareHeadline level={1} size="xl" maxWidth="22ch">
+              {c.h1}
+            </ShareHeadline>
+            <p
+              className="text-[1.1rem] md:text-[1.35rem] leading-[1.45] font-medium max-w-[48ch]"
+              style={{ color: "var(--ts-ink)" }}
             >
-              {c.ctaPrimary}
-            </a>
-            <Link href={localeHref(locale, "/features")} className="apl-btn apl-btn-secondary apl-btn-lg">
-              {c.ctaSecondary}
-            </Link>
+              {c.h1Accent}
+            </p>
+            <ShareBody maxWidth="64ch">{c.lead}</ShareBody>
+            <div className="pt-2 flex flex-col sm:flex-row gap-3">
+              <ShareButton href="https://signup.taskeyapp.com" variant="primary" external>
+                {c.ctaPrimary}
+              </ShareButton>
+              <ShareButton href={localeHref(locale, "/features")} variant="ghost">
+                {c.ctaSecondary}
+              </ShareButton>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Problem */}
-      <section className="apl-surface-soft apl-section-sm">
-        <div className="apl-container">
-          <h2 className="apl-display apl-display-lg" style={{ maxWidth: "24ch" }}>
-            {c.problemH2}
-          </h2>
-          <p className="apl-body mt-5 max-w-[64ch]">{c.problemBody}</p>
+      <ShareSection tone="tinted" size="sm">
+        <ShareHeadline level={2} size="lg" maxWidth="24ch">
+          {c.problemH2}
+        </ShareHeadline>
+        <div className="mt-5">
+          <ShareBody>{c.problemBody}</ShareBody>
         </div>
-      </section>
+      </ShareSection>
 
       {/* How */}
-      <section className="apl-surface-canvas apl-section-sm">
-        <div className="apl-container-wide">
-          <h2 className="apl-display apl-display-lg" style={{ maxWidth: "24ch" }}>
-            {c.howH2}
-          </h2>
-          <p className="apl-lede mt-4 max-w-[64ch]">{c.howIntro}</p>
-          <ol className="apl-duo mt-8">
-            {c.steps.map((s) => (
-              <li key={s.title} className="apl-tile apl-tile-canvas">
-                <div className="apl-tile-inner items-start text-left">
-                  <h3 className="apl-headline" style={{ fontSize: "1.25rem" }}>
-                    {s.title}
-                  </h3>
-                  <p className="apl-body mt-2">{s.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+      <ShareSection tone="canvas" size="md" container="wide">
+        <ShareHeadline level={2} size="lg" maxWidth="24ch">
+          {c.howH2}
+        </ShareHeadline>
+        <div className="mt-4">
+          <ShareLede>{c.howIntro}</ShareLede>
         </div>
-      </section>
+        <ol className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+          {c.steps.map((s, i) => (
+            <li key={s.title}>
+              <div className="ts-card ts-card-hover p-6 flex flex-col gap-3 h-full">
+                <span
+                  className="font-mono text-[0.7rem]"
+                  style={{ color: "var(--ts-ink-faint)", letterSpacing: "0.08em" }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="ts-headline" style={{ fontSize: "1.2rem", color: "var(--ts-ink)" }}>
+                  {s.title}
+                  <BrandDot />
+                </h3>
+                <p className="text-[0.95rem] leading-[1.6]" style={{ color: "var(--ts-ink-muted)" }}>
+                  {s.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </ShareSection>
 
       {/* Benefits */}
-      <section className="apl-surface-soft apl-section-sm">
-        <div className="apl-container-wide">
-          <h2 className="apl-display apl-display-lg mb-8" style={{ maxWidth: "24ch" }}>
+      <ShareSection tone="tinted" size="md" container="wide">
+        <div className="mb-8">
+          <ShareHeadline level={2} size="lg" maxWidth="24ch">
             {c.benefitsH2}
-          </h2>
-          <div className="apl-duo">
-            {c.benefits.map((b) => (
-              <div key={b.title} className="apl-tile apl-tile-canvas">
-                <div className="apl-tile-inner items-start text-left">
-                  <h3 className="apl-headline" style={{ fontSize: "1.25rem" }}>
-                    {b.title}
-                  </h3>
-                  <p className="apl-body mt-2">{b.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          </ShareHeadline>
         </div>
-      </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {c.benefits.map((b) => (
+            <ShareCard key={b.title} title={<>{b.title}<BrandDot /></>} body={b.body} />
+          ))}
+        </div>
+      </ShareSection>
 
       {/* Compliance (optional) */}
       {c.complianceH2 && c.complianceBody ? (
-        <section className="apl-surface-canvas apl-section-sm">
-          <div className="apl-container">
-            <h2 className="apl-display apl-display-md" style={{ maxWidth: "26ch" }}>
-              {c.complianceH2}
-            </h2>
-            <p className="apl-body mt-4 max-w-[64ch]">{c.complianceBody}</p>
+        <ShareSection tone="canvas" size="sm">
+          <ShareHeadline level={2} size="md" maxWidth="26ch">
+            {c.complianceH2}
+          </ShareHeadline>
+          <div className="mt-4">
+            <ShareBody>{c.complianceBody}</ShareBody>
           </div>
-        </section>
+        </ShareSection>
       ) : null}
 
       {/* FAQ */}
-      <section className="apl-surface-canvas apl-section-sm apl-hairline-top">
-        <div className="apl-container">
-          <h2 className="apl-display apl-display-lg mb-6" style={{ maxWidth: "22ch" }}>
+      <ShareSection tone="canvas" size="sm">
+        <div className="mb-6">
+          <ShareHeadline level={2} size="lg" maxWidth="22ch">
             {c.faqH2}
-          </h2>
-          <div className="flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
-            {c.faqs.map((f) => (
-              <details key={f.q} className="group py-5">
-                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
-                  <span className="faq-question">{f.q}</span>
-                  <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">+</span>
-                </summary>
-                <p className="faq-answer apl-body mt-3 max-w-[70ch]">{f.a}</p>
-              </details>
-            ))}
-          </div>
+          </ShareHeadline>
         </div>
-      </section>
+        <ShareAccordion
+          items={c.faqs.map((f) => ({ q: f.q, a: f.a }))}
+          idPrefix={`faq-${ldPrefix}`}
+        />
+      </ShareSection>
 
-      {/* CTA */}
-      <section className="apl-surface-noir apl-on-noir apl-section">
-        <div className="apl-container text-center">
-          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
-            {c.ctaH2}
-          </h2>
-          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch", color: "#d2d2d7" }}>
-            {c.ctaBody}
-          </p>
-          <div className="mt-7 flex flex-wrap justify-center gap-5">
-            <a
-              href="https://signup.taskeyapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="apl-btn apl-btn-primary apl-btn-lg"
-            >
-              {c.ctaPrimary}
-            </a>
-            <Link href={localeHref(locale, "/pricing")} className="apl-btn apl-btn-ghost apl-btn-lg">
-              {c.pricingLabel}
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* CTA — navy band */}
+      <ShareStatementBand
+        title={c.ctaH2}
+        body={c.ctaBody}
+        primaryHref="https://signup.taskeyapp.com"
+        primaryLabel={c.ctaPrimary}
+        primaryExternal
+        secondaryHref={localeHref(locale, "/pricing")}
+        secondaryLabel={c.pricingLabel}
+      />
 
       {/* Related */}
-      <section className="apl-surface-soft apl-section-sm">
-        <div className="apl-container-wide">
-          <h2 className="apl-display apl-display-md text-center mx-auto mb-8" style={{ maxWidth: "22ch" }}>
+      <ShareSection tone="tinted" size="sm" container="wide">
+        <div className="text-center mb-8">
+          <ShareHeadline level={2} size="md" maxWidth="22ch">
             {c.relatedH2}
-          </h2>
-          <div className="apl-triple">
-            {c.related.map((r) => (
-              <Link
-                key={r.href}
-                href={localeHref(locale, r.href)}
-                className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
-                style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
-              >
-                <div className="apl-tile-inner items-start text-left">
-                  <h3 className="apl-headline" style={{ fontSize: "1.0625rem" }}>
-                    {r.label}
-                  </h3>
-                  <p className="apl-small mt-2">{r.desc}</p>
-                  <span className="apl-link mt-3">Mehr</span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          </ShareHeadline>
         </div>
-      </section>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {c.related.map((r) => (
+            <Link
+              key={r.href}
+              href={localeHref(locale, r.href)}
+              className="ts-card ts-card-hover p-6 flex flex-col gap-3 h-full group"
+              style={{ textDecoration: "none" }}
+            >
+              <h3 className="ts-headline" style={{ fontSize: "1.05rem", color: "var(--ts-ink)" }}>
+                {r.label}
+              </h3>
+              <p className="text-[0.92rem] leading-[1.55]" style={{ color: "var(--ts-ink-muted)" }}>
+                {r.desc}
+              </p>
+              <span
+                className="mt-auto pt-2 text-[0.85rem] font-medium inline-flex items-center gap-1"
+                style={{ color: "var(--brand-signal-blue)" }}
+              >
+                Mehr
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="transition-transform group-hover:translate-x-0.5">
+                  <path d="M3 6h6M6 3l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </Link>
+          ))}
+        </div>
+      </ShareSection>
     </>
   );
 }

@@ -17,7 +17,15 @@ import {
   STATUS_LABEL_DE,
   DIRECTION_LABEL_DE,
 } from "@/lib/landing/integrationStatus";
-import { AppleSection, AppleTile, AppleButton } from "@/components/apple";
+import {
+  ShareSection,
+  ShareHeadline,
+  ShareEyebrow,
+  ShareLede,
+  ShareButton,
+  ShareStatementBand,
+} from "@/components/share/kit";
+import { BrandDot } from "@/components/BrandDot";
 
 const PATH = "/integrationen";
 
@@ -43,7 +51,7 @@ const COPY: PageCopy = {
   fr: {
     title: "Intégrations | Taskey",
     description:
-      "Connexions à l’ERP, RH, paie, identité et BI. Statut clair par système.",
+      "Connexions à l'ERP, RH, paie, identité et BI. Statut clair par système.",
     ogTitle: "Intégrations | Taskey",
     ogDescription: "Connexions dans les systèmes existants.",
     twitterTitle: "Intégrations Taskey",
@@ -103,45 +111,68 @@ export default async function IntegrationenIndex({
       />
 
       {/* Hero */}
-      <section className="apl-surface-canvas pt-14 pb-10">
-        <div className="apl-container text-center">
-          <p className="apl-eyebrow mb-2">Integrationen</p>
-          <h1 className="apl-display apl-display-xl mx-auto" style={{ maxWidth: "20ch" }}>
-            Taskey in Ihrer bestehenden Systemlandschaft.
-          </h1>
-          <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "56ch" }}>
-            Klarer Statusausweis je System, keine impliziten Versprechen. Native, API, Export oder
-            auf der Roadmap. Diese Seite ist die zentrale Referenz.
-          </p>
-          <div className="mt-7 flex flex-wrap justify-center gap-5">
-            <AppleButton href="#kontakt" variant="primary" size="lg">
-              Anbindung besprechen
-            </AppleButton>
-            <AppleButton href="/integrationen/datev" variant="secondary" size="lg">
-              DATEV-Integration ansehen
-            </AppleButton>
+      <section className="ts-scope relative overflow-hidden pt-8 md:pt-16 pb-12 md:pb-20">
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(85% 60% at 85% 0%, rgba(47, 91, 148, 0.08) 0%, transparent 55%), linear-gradient(180deg, #F7F9FC 0%, #ECF0F5 100%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-[50vh] -z-10 opacity-30 ts-dot-grid pointer-events-none"
+        />
+        <div className="ts-container">
+          <div className="flex flex-col gap-5 max-w-3xl">
+            <ShareEyebrow>Integrationen</ShareEyebrow>
+            <ShareHeadline level={1} size="xl" maxWidth="20ch">
+              Taskey in Ihrer Systemlandschaft
+            </ShareHeadline>
+            <ShareLede maxWidth="56ch">
+              Klarer Statusausweis je System, keine impliziten Versprechen. Native, API, Export oder auf der Roadmap. Diese Seite ist die zentrale Referenz.
+            </ShareLede>
+            <div className="pt-2 flex flex-col sm:flex-row gap-3">
+              <ShareButton href="#kontakt" variant="primary">
+                Anbindung besprechen
+              </ShareButton>
+              <ShareButton href="/integrationen/datev" variant="ghost">
+                DATEV-Integration ansehen
+              </ShareButton>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Registry table */}
-      <AppleSection surface="soft" width="wide" rhythm="md">
+      {/* Registry */}
+      <ShareSection tone="tinted" size="md" container="wide">
         <div className="text-center mb-10">
-          <p className="apl-eyebrow mb-2">Registry</p>
-          <h2 className="apl-display apl-display-lg mx-auto" style={{ maxWidth: "26ch" }}>
-            Aktuelle Integrationen und ihr Stand.
-          </h2>
-          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "52ch" }}>
-            Jede Zeile liest aus einem zentralen Register. Widersprüchliche Aussagen entstehen so an
-            keiner Stelle.
-          </p>
+          <ShareEyebrow>Registry</ShareEyebrow>
+          <div className="mt-3 flex justify-center">
+            <ShareHeadline level={2} size="lg" maxWidth="26ch">
+              Aktuelle Integrationen und ihr Stand
+            </ShareHeadline>
+          </div>
+          <div className="mt-4 mx-auto" style={{ maxWidth: "52ch" }}>
+            <ShareLede>
+              Jede Zeile liest aus einem zentralen Register. Widersprüchliche Aussagen entstehen so an keiner Stelle.
+            </ShareLede>
+          </div>
         </div>
 
-        <div className="apl-tile apl-tile-canvas overflow-hidden">
+        <div
+          className="overflow-hidden"
+          style={{
+            border: "1px solid var(--ts-line)",
+            borderRadius: "var(--ts-r-panel)",
+            background: "var(--ts-canvas-elev)",
+          }}
+        >
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-[color:var(--apl-canvas-soft)]">
+                <tr style={{ background: "var(--ts-canvas-tinted)" }}>
                   <Th>System</Th>
                   <Th>Kategorie</Th>
                   <Th>Status</Th>
@@ -151,15 +182,13 @@ export default async function IntegrationenIndex({
               </thead>
               <tbody>
                 {INTEGRATIONS.map((r) => (
-                  <tr
-                    key={r.slug}
-                    className="border-t border-[color:var(--apl-hairline-soft)]"
-                  >
+                  <tr key={r.slug} style={{ borderTop: "1px solid var(--ts-line)" }}>
                     <Td strong>
                       {r.slug === "datev" ? (
                         <Link
                           href="/integrationen/datev"
-                          className="text-[color:var(--apl-ink)] hover:text-[color:var(--apl-accent)] transition"
+                          style={{ color: "var(--ts-ink)" }}
+                          className="hover:text-[color:var(--brand-signal-blue)] transition-colors"
                         >
                           {r.name}
                         </Link>
@@ -177,79 +206,59 @@ export default async function IntegrationenIndex({
             </table>
           </div>
         </div>
-      </AppleSection>
+      </ShareSection>
 
       {/* Related solutions */}
-      <AppleSection surface="canvas" width="wide" rhythm="md">
-        <div className="apl-quad">
-          <AppleTile
-            tone="canvas"
-            eyebrow="Integration"
-            title="DATEV-Anbindung"
-            copy="Standardisierter Lohn- und Buchungsexport."
-            cta={{ label: "Zur DATEV-Integration", href: "/integrationen/datev" }}
-            size="md"
-            align="start"
-          />
-          <AppleTile
-            tone="canvas"
-            eyebrow="Prozess"
-            title="Lohnvorbereitung"
-            copy="Vom Einsatz bis zur Lohnabrechnung in einer Spur."
-            cta={{ label: "Zur Lösung", href: "/loesungen/lohnvorbereitung-gebaeudereinigung" }}
-            size="md"
-            align="start"
-          />
-          <AppleTile
-            tone="canvas"
-            eyebrow="Enterprise"
-            title="Mehrere Niederlassungen"
-            copy="Mandantenstruktur, Rollen und Reports pro Standort."
-            cta={{ label: "Zur Lösung", href: "/loesungen/gebaeudereinigung-mehrere-niederlassungen" }}
-            size="md"
-            align="start"
-          />
-          <AppleTile
-            tone="canvas"
-            eyebrow="Übersicht"
-            title="Alle Lösungen"
-            copy="Branchen-Lösungen von Unterhaltsreinigung bis FM."
-            cta={{ label: "Alle Lösungen", href: "/loesungen" }}
-            size="md"
-            align="start"
-          />
+      <ShareSection tone="canvas" size="md" container="wide">
+        <div className="mb-8">
+          <ShareHeadline level={2} size="md" maxWidth="26ch">
+            Lösungen rund um Integrationen
+          </ShareHeadline>
         </div>
-      </AppleSection>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { eyebrow: "Integration", title: "DATEV-Anbindung", copy: "Standardisierter Lohn- und Buchungsexport.", href: "/integrationen/datev" },
+            { eyebrow: "Prozess", title: "Lohnvorbereitung", copy: "Vom Einsatz bis zur Lohnabrechnung in einer Spur.", href: "/loesungen/lohnvorbereitung-gebaeudereinigung" },
+            { eyebrow: "Enterprise", title: "Mehrere Niederlassungen", copy: "Mandantenstruktur, Rollen und Reports pro Standort.", href: "/loesungen/gebaeudereinigung-mehrere-niederlassungen" },
+            { eyebrow: "Übersicht", title: "Alle Lösungen", copy: "Branchen-Lösungen von Unterhaltsreinigung bis FM.", href: "/loesungen" },
+          ].map((it) => (
+            <Link key={it.href} href={it.href} className="ts-card ts-card-hover p-6 flex flex-col gap-3 h-full group" style={{ textDecoration: "none" }}>
+              <ShareEyebrow>{it.eyebrow}</ShareEyebrow>
+              <h3 className="ts-headline" style={{ fontSize: "1.1rem", color: "var(--ts-ink)" }}>
+                {it.title}
+                <BrandDot />
+              </h3>
+              <p className="text-[0.92rem] leading-[1.55]" style={{ color: "var(--ts-ink-muted)" }}>
+                {it.copy}
+              </p>
+              <span className="mt-auto pt-2 text-[0.82rem] font-medium" style={{ color: "var(--brand-signal-blue)" }}>
+                Mehr →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </ShareSection>
 
-      {/* Contact / CTA */}
-      <AppleSection surface="noir" width="narrow" rhythm="md" id="kontakt">
-        <div className="text-center">
-          <p className="apl-eyebrow mb-2" style={{ color: "#2997ff" }}>
-            Kontakt · Integrationen
-          </p>
-          <h2 className="apl-display apl-display-lg mx-auto text-white" style={{ maxWidth: "24ch" }}>
-            Integrationen konkret besprechen.
-          </h2>
-          <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "50ch", color: "#d2d2d7" }}>
-            Für ein präzises Gespräch reichen Zielsystem, Datenrichtung und Freigabeanforderung.
-          </p>
-          <div className="mt-7 flex flex-wrap justify-center gap-5">
-            <AppleButton href="/erstgespraech" variant="primary" size="lg">
-              Beratung anfragen
-            </AppleButton>
-            <AppleButton href="mailto:info@taskeyapp.com" variant="secondary" size="lg">
-              info@taskeyapp.com
-            </AppleButton>
-          </div>
-        </div>
-      </AppleSection>
+      {/* Contact CTA */}
+      <ShareStatementBand
+        eyebrow="Kontakt · Integrationen"
+        title="Integrationen konkret besprechen"
+        body="Für ein präzises Gespräch reichen Zielsystem, Datenrichtung und Freigabeanforderung."
+        primaryHref="/erstgespraech"
+        primaryLabel="Beratung anfragen"
+        secondaryHref="mailto:info@taskeyapp.com"
+        secondaryLabel="info@taskeyapp.com"
+      />
     </>
   );
 }
 
 function Th({ children }: { children: React.ReactNode }) {
   return (
-    <th className="text-left px-5 py-3.5 apl-caption text-[color:var(--apl-ink-muted)] font-medium uppercase tracking-wide">
+    <th
+      className="text-left px-5 py-3.5 text-[0.7rem] font-semibold uppercase"
+      style={{ color: "var(--ts-ink-muted)", letterSpacing: "0.14em" }}
+    >
       {children}
     </th>
   );
@@ -266,7 +275,8 @@ function Td({
 }) {
   return (
     <td
-      className={`px-5 py-3.5 align-top apl-small ${strong ? "font-medium text-[color:var(--apl-ink)]" : "text-[color:var(--apl-ink-soft)]"} ${mono ? "font-mono text-[12px]" : ""}`}
+      className={`px-5 py-3.5 align-top text-[0.9rem] ${strong ? "font-medium" : ""} ${mono ? "font-mono text-[0.78rem]" : ""}`}
+      style={{ color: strong ? "var(--ts-ink)" : "var(--ts-ink-soft)" }}
     >
       {children}
     </td>
