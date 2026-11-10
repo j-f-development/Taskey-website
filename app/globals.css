@@ -963,32 +963,32 @@ textarea.tkc-field-input {
    ========================================================================== */
 
 :root {
-  /* Surfaces */
-  --apl-canvas:        #ffffff;
-  --apl-canvas-soft:   #f5f5f7;   /* apple.com grey section */
-  --apl-canvas-mid:    #e8e8ed;
-  --apl-ink:           #1d1d1f;   /* apple.com ink */
-  --apl-ink-soft:      #424245;
-  --apl-ink-muted:     #6e6e73;
-  --apl-ink-faint:     #86868b;
-  --apl-hairline:      rgba(0, 0, 0, 0.1);
-  --apl-hairline-soft: rgba(0, 0, 0, 0.06);
+  /* Surfaces — rebranded auf Share: Navy-Ink, Mist/White Canvas */
+  --apl-canvas:        #FFFFFF;
+  --apl-canvas-soft:   #F7F9FC;   /* Share --brand-white als sanfte Fläche */
+  --apl-canvas-mid:    #ECF0F5;   /* Share --ts-canvas-tinted */
+  --apl-ink:           #10233C;   /* Share --brand-navy */
+  --apl-ink-soft:      #1C3357;
+  --apl-ink-muted:     #5B6D82;
+  --apl-ink-faint:     #94A4B6;
+  --apl-hairline:      rgba(16, 35, 60, 0.16);
+  --apl-hairline-soft: rgba(16, 35, 60, 0.08);
 
-  /* Dark surfaces (for cinematic contrast sections) */
-  --apl-noir:          #000000;
-  --apl-noir-elev:     #0b0b0f;
-  --apl-noir-ink:      #f5f5f7;
-  --apl-noir-muted:    #a1a1a6;
+  /* Dark surfaces — jetzt Navy statt Pure Black */
+  --apl-noir:          #10233C;
+  --apl-noir-elev:     #152D4A;
+  --apl-noir-ink:      #F7F9FC;
+  --apl-noir-muted:    #9FC5E8;
 
-  /* Brand accent — keep Taskey blue, re-balanced closer to Apple link blue */
-  --apl-accent:        #0071e3;
-  --apl-accent-hover:  #0077ed;
-  --apl-accent-active: #006edb;
-  --apl-accent-soft:   rgba(0, 113, 227, 0.08);
+  /* Brand accent — Signal Blue */
+  --apl-accent:        #2F5B94;
+  --apl-accent-hover:  #345F99;
+  --apl-accent-active: #1F3F6B;
+  --apl-accent-soft:   rgba(47, 91, 148, 0.08);
 
-  /* Type stack (San Francisco first, Inter fallback) */
-  --apl-font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
-  --apl-font-text:    "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
+  /* Type stack — Share: Archivo display, Manrope body */
+  --apl-font-display: "Archivo", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  --apl-font-text:    "Manrope", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
 
   /* Section rhythm */
   --apl-section-py-sm: clamp(3.5rem, 6vw, 5rem);
@@ -999,11 +999,12 @@ textarea.tkc-field-input {
   --apl-container-x:   clamp(1.25rem, 4vw, 2.5rem);
 
   /* Radii */
-  --apl-r-chip:  980px;
-  --apl-r-btn:   980px;
-  --apl-r-card:  18px;
-  --apl-r-tile:  28px;
-  --apl-r-shell: 32px;
+  /* Radien — Share-kantiger statt Apple-pill */
+  --apl-r-chip:  4px;
+  --apl-r-btn:   4px;
+  --apl-r-card:  6px;
+  --apl-r-tile:  8px;
+  --apl-r-shell: 10px;
 
   /* Motion */
   --apl-ease: cubic-bezier(0.28, 0.11, 0.32, 1);
@@ -1013,19 +1014,20 @@ textarea.tkc-field-input {
 /* Typography ------------------------------------------------------------ */
 .apl-display {
   font-family: var(--apl-font-display);
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
   color: var(--apl-ink);
+  text-wrap: balance;
 }
-.apl-display-xl { font-size: clamp(2.75rem, 6.2vw, 5.25rem); line-height: 1.02; letter-spacing: -0.022em; }
-.apl-display-lg { font-size: clamp(2.25rem, 4.6vw, 3.75rem); line-height: 1.04; letter-spacing: -0.018em; }
-.apl-display-md { font-size: clamp(1.75rem, 3.2vw, 2.75rem); line-height: 1.08; letter-spacing: -0.012em; }
+.apl-display-xl { font-size: clamp(2.75rem, 6.2vw, 5.25rem); line-height: 0.98; letter-spacing: -0.055em; }
+.apl-display-lg { font-size: clamp(2.25rem, 4.6vw, 3.75rem); line-height: 1.02; letter-spacing: -0.048em; }
+.apl-display-md { font-size: clamp(1.75rem, 3.2vw, 2.75rem); line-height: 1.06; letter-spacing: -0.038em; }
 
 .apl-headline {
   font-family: var(--apl-font-display);
-  font-weight: 600;
-  letter-spacing: -0.012em;
+  font-weight: 700;
+  letter-spacing: -0.035em;
   line-height: 1.1;
   font-size: clamp(1.5rem, 2.4vw, 2rem);
   color: var(--apl-ink);
@@ -1033,9 +1035,10 @@ textarea.tkc-field-input {
 
 .apl-eyebrow {
   font-family: var(--apl-font-text);
-  font-weight: 500;
-  font-size: 0.8125rem;
-  letter-spacing: 0.01em;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--apl-accent);
   display: inline-block;
 }
