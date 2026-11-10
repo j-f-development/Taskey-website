@@ -17,7 +17,7 @@ export default function Footer() {
               {t("footer.col.product")}
             </p>
             <h3 className="ts-headline mt-2" style={{ fontSize: "clamp(1.2rem, 2vw, 1.6rem)", color: "var(--brand-white)" }}>
-              Reinigung digitalisieren.
+              Reinigung digitalisieren
               <span style={{ color: "var(--brand-signal-blue)" }}>.</span>
             </h3>
           </div>
