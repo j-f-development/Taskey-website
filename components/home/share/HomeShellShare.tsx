@@ -109,6 +109,7 @@ export default function HomeShellShare() {
     <div className="ts-scope">
       <HeroShare />
       <FeaturesDashboard />
+      <NachweisGallery />
       <StatementBand />
       <PillarsBand />
       <ReassuranceBand />
@@ -214,10 +215,13 @@ function HeroShare() {
                 style={{ width: 4, background: "var(--brand-sky)" }}
               />
               <div className="pl-2">
-                <div className="ts-eyebrow" style={{ color: "var(--brand-sky)" }}>
-                  <TaskeyWord size="0.95rem" tone="white" />
+                <div style={{ marginBottom: "0.35rem" }}>
+                  <TaskeyWord size="2.1rem" tone="white" />
                 </div>
-                <div className="font-semibold mt-2" style={{ color: "var(--brand-white)" }}>
+                <div
+                  className="ts-eyebrow"
+                  style={{ color: "var(--brand-sky)", marginTop: "0.1rem" }}
+                >
                   Die Plattform für Gebäudereinigung
                 </div>
                 <div className="h-px w-full my-4" aria-hidden style={{ background: "rgba(159, 197, 232, 0.22)" }} />
@@ -380,30 +384,262 @@ function FeaturesDashboard() {
                         </svg>
                       </span>
                     </button>
-                    {isOpen && (
-                      <div className="px-5 md:px-6 pb-6 -mt-1">
-                        <p className="text-[0.98rem] leading-[1.65] mb-3" style={{ color: "var(--ts-ink-soft)" }}>
-                          {f.copy}
-                        </p>
-                        <ul className="flex flex-col gap-1.5">
-                          {f.bullets.map((b) => (
-                            <li key={b} className="flex items-start gap-2 text-[0.92rem]" style={{ color: "var(--ts-ink-muted)" }}>
-                              <span
-                                className="mt-2 h-1 w-1 shrink-0 rounded-full"
-                                style={{ background: "var(--brand-signal-blue)" }}
-                              />
-                              {b}
-                            </li>
-                          ))}
-                        </ul>
+                    <div
+                      className="ts-accordion-panel"
+                      aria-hidden={!isOpen}
+                      style={{
+                        display: "grid",
+                        gridTemplateRows: isOpen ? "1fr" : "0fr",
+                        opacity: isOpen ? 1 : 0,
+                        transition:
+                          "grid-template-rows 0.42s var(--ts-ease-out), opacity 0.32s var(--ts-ease-out)",
+                      }}
+                    >
+                      <div style={{ overflow: "hidden" }}>
+                        <div
+                          className="px-5 md:px-6 pb-6 -mt-1"
+                          style={{
+                            transform: isOpen ? "translateY(0)" : "translateY(-6px)",
+                            transition: "transform 0.42s var(--ts-ease-out)",
+                          }}
+                        >
+                          <p className="text-[0.98rem] leading-[1.65] mb-3" style={{ color: "var(--ts-ink-soft)" }}>
+                            {f.copy}
+                          </p>
+                          <ul className="flex flex-col gap-1.5">
+                            {f.bullets.map((b, bi) => (
+                              <li
+                                key={b}
+                                className="flex items-start gap-2 text-[0.92rem]"
+                                style={{
+                                  color: "var(--ts-ink-muted)",
+                                  opacity: isOpen ? 1 : 0,
+                                  transform: isOpen ? "translateY(0)" : "translateY(4px)",
+                                  transition: `opacity 0.4s var(--ts-ease-out) ${0.08 + bi * 0.05}s, transform 0.4s var(--ts-ease-out) ${0.08 + bi * 0.05}s`,
+                                }}
+                              >
+                                <span
+                                  className="mt-2 h-1 w-1 shrink-0 rounded-full"
+                                  style={{ background: "var(--brand-signal-blue)" }}
+                                />
+                                {b}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 );
               })}
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------
+   NACHWEIS-GALERIE · realistische Foto-Beweise (KI-generierte Bilder)
+   Die Platzhalter-Pfade zeigen auf /public/images/nachweise/*.jpg.
+   Solange keine Datei vorliegt, trägt die CSS-Gradient-Fläche die Fläche.
+   ------------------------------------------------------------------ */
+
+function NachweisGallery() {
+  const samples = [
+    {
+      src: "/images/nachweise/sanitaer-check.jpg",
+      object: "Bürogebäude · 3. OG",
+      detail: "Sanitär · Waschbecken geprüft",
+      time: "06:42 · 11.11.2026",
+      initials: "L. K.",
+      fallback:
+        "linear-gradient(135deg, #cfd8e2 0%, #e4ebf3 45%, #f1f4f8 100%)",
+    },
+    {
+      src: "/images/nachweise/kueche-sauber.jpg",
+      object: "Praxis Dr. Meier · Teeküche",
+      detail: "Oberflächen · Fettfrei",
+      time: "19:08 · 10.11.2026",
+      initials: "M. A.",
+      fallback:
+        "linear-gradient(135deg, #e6dfd2 0%, #f1ead9 50%, #f7f2e4 100%)",
+    },
+    {
+      src: "/images/nachweise/flur-boden.jpg",
+      object: "Verwaltung · Treppenhaus Süd",
+      detail: "Bodenpflege · Nassreinigung",
+      time: "21:35 · 10.11.2026",
+      initials: "S. R.",
+      fallback:
+        "linear-gradient(135deg, #d4dbdf 0%, #e7edef 45%, #f3f7f8 100%)",
+    },
+  ];
+
+  return (
+    <section
+      style={{
+        paddingBlock: "var(--ts-section-py-sm)",
+        background: "var(--ts-canvas)",
+        borderTop: "1px solid var(--ts-line)",
+      }}
+    >
+      <div className="ts-container-wide">
+        <header className="flex flex-col gap-4 max-w-3xl mb-10">
+          <span className="ts-eyebrow">Nachweise</span>
+          <h2
+            className="ts-headline"
+            style={{ fontSize: "clamp(1.8rem, 3.6vw, 2.8rem)", color: "var(--ts-ink)" }}
+          >
+            So sehen Foto-Beweise in Taskey aus<BrandDot />
+          </h2>
+          <p
+            className="text-[1rem] md:text-[1.05rem] leading-[1.6] max-w-2xl"
+            style={{ color: "var(--ts-ink-muted)" }}
+          >
+            Jeder Beleg trägt Raum, Leistung, Uhrzeit und Kürzel. Für Audit, Auftraggeber und
+            interne Kontrolle revisionsfest exportierbar.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {samples.map((s) => (
+            <article
+              key={s.src}
+              className="ts-card ts-card-hover overflow-hidden flex flex-col"
+              style={{ padding: 0 }}
+            >
+              <div
+                style={{
+                  aspectRatio: "4 / 5",
+                  position: "relative",
+                  background: `${s.fallback}, #e9edf2`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  overflow: "hidden",
+                }}
+              >
+                <img
+                  src={s.src}
+                  alt=""
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.display = "none";
+                  }}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+                <div
+                  aria-hidden
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(180deg, rgba(16,35,60,0) 45%, rgba(16,35,60,0.55) 100%)",
+                    pointerEvents: "none",
+                  }}
+                />
+                <span
+                  className="ts-chip"
+                  style={{
+                    position: "absolute",
+                    top: "0.75rem",
+                    left: "0.75rem",
+                    background: "rgba(255,255,255,0.92)",
+                    color: "var(--brand-navy)",
+                    fontSize: "0.58rem",
+                    padding: "0.3rem 0.6rem",
+                  }}
+                >
+                  Beweis · Taskey
+                </span>
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "0.9rem",
+                    left: "0.9rem",
+                    right: "0.9rem",
+                    display: "flex",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    gap: "0.75rem",
+                  }}
+                >
+                  <div style={{ color: "var(--brand-white)" }}>
+                    <div
+                      style={{
+                        fontSize: "0.78rem",
+                        fontWeight: 600,
+                        letterSpacing: "0.02em",
+                        opacity: 0.95,
+                      }}
+                    >
+                      {s.object}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "0.72rem",
+                        opacity: 0.8,
+                        marginTop: "0.15rem",
+                      }}
+                    >
+                      {s.time}
+                    </div>
+                  </div>
+                  <span
+                    aria-hidden
+                    style={{
+                      display: "inline-grid",
+                      placeItems: "center",
+                      height: 32,
+                      width: 32,
+                      borderRadius: 999,
+                      background: "rgba(255,255,255,0.92)",
+                      color: "var(--brand-navy)",
+                      fontFamily: "var(--ts-font-sans)",
+                      fontSize: "0.72rem",
+                      fontWeight: 700,
+                    }}
+                  >
+                    {s.initials}
+                  </span>
+                </div>
+              </div>
+              <div
+                style={{
+                  padding: "0.9rem 1rem 1rem",
+                  borderTop: "1px solid var(--ts-line)",
+                }}
+              >
+                <div
+                  className="ts-eyebrow"
+                  style={{ fontSize: "0.62rem", color: "var(--ts-ink-muted)" }}
+                >
+                  Leistung
+                </div>
+                <div
+                  className="ts-headline"
+                  style={{ fontSize: "0.98rem", color: "var(--ts-ink)", marginTop: "0.2rem" }}
+                >
+                  {s.detail}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p
+          className="text-[0.82rem] mt-6"
+          style={{ color: "var(--ts-ink-faint)" }}
+        >
+          Beispielhafte Darstellung. Die Fotos sind rein illustrativ.
+        </p>
       </div>
     </section>
   );
@@ -450,9 +686,9 @@ function StatementBand() {
 
 function PillarsBand() {
   const pillars = [
-    { title: "Style", copy: "Eine Oberfläche, die man ernst nehmen kann. Klar, ruhig, in der eigenen Brand." },
     { title: "Effizienz", copy: "Weniger Klicks, weniger Papier, weniger Abstimmung. Jeder Schritt zahlt in den Datenstamm." },
     { title: "Intuitivität", copy: "Reinigungskräfte lernen Taskey in Minuten. Objektleitung in einer Schicht." },
+    { title: "Integration", copy: "DATEV, LexOffice und Ihr Lohnbüro sind eingebaut. Zeiten, Belege und Zahlen laufen ohne Umweg weiter." },
     { title: "KI", copy: "Taskey liest Pläne, Nachweise und Zahlen und meldet, wo ein Objekt gerade Marge verliert." },
   ];
 

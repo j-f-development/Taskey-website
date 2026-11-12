@@ -100,13 +100,21 @@ export default function PricingClientApple() {
   const [cadence, setCadence] = useState<Cadence>("monthly");
 
   const discount = 0.15;
-  const plans = BASE_PLANS.map((p) => ({
-    ...p,
-    price:
+  const plans = BASE_PLANS.map((p) => {
+    const monthlyBase = parseInt(p.price, 10);
+    const effectiveMonthly =
       cadence === "annual"
-        ? Math.round(parseInt(p.price, 10) * (1 - discount)).toString()
-        : p.price,
-  }));
+        ? Math.round(monthlyBase * (1 - discount))
+        : monthlyBase;
+    const yearlyTotal = effectiveMonthly * 12;
+    const yearlySavings = monthlyBase * 12 - yearlyTotal;
+    return {
+      ...p,
+      price: effectiveMonthly.toString(),
+      yearlyTotal,
+      yearlySavings,
+    };
+  });
 
   return (
     <>
@@ -140,7 +148,7 @@ export default function PricingClientApple() {
       <AppleSection surface="canvas" width="wide" rhythm="sm">
         <div className="apl-triple">
           {plans.map((p) => (
-            <PlanCard key={p.id} plan={p} />
+            <PlanCard key={p.id} plan={p} cadence={cadence} />
           ))}
         </div>
       </AppleSection>
@@ -219,9 +227,20 @@ function CadenceButton({
   );
 }
 
-function PlanCard({ plan }: { plan: Plan }) {
+function PlanCard({
+  plan,
+  cadence,
+}: {
+  plan: Plan & { yearlyTotal?: number; yearlySavings?: number };
+  cadence: Cadence;
+}) {
   const featured = plan.featured;
   const tone = featured ? "apl-tile apl-tile-noir apl-on-noir" : "apl-tile apl-tile-canvas";
+  const subtleColor = featured ? "#a1a1a6" : "var(--apl-ink-muted)";
+  const showAnnualBreakdown =
+    cadence === "annual" &&
+    typeof plan.yearlyTotal === "number" &&
+    typeof plan.yearlySavings === "number";
   return (
     <div className={`${tone} min-h-[460px] flex flex-col`}>
       <div className="apl-tile-inner flex-1 flex flex-col items-start text-left">
@@ -243,18 +262,25 @@ function PlanCard({ plan }: { plan: Plan }) {
             €{plan.price}
           </span>
           {plan.priceSuffix && (
-            <span
-              className="apl-body"
-              style={{ color: featured ? "#a1a1a6" : "var(--apl-ink-muted)" }}
-            >
+            <span className="apl-body" style={{ color: subtleColor }}>
               {plan.priceSuffix}
             </span>
           )}
         </div>
-        <p
-          className="apl-small mt-2 max-w-[32ch]"
-          style={{ color: featured ? "#a1a1a6" : "var(--apl-ink-muted)" }}
-        >
+        {showAnnualBreakdown && (
+          <div className="mt-1 flex flex-col gap-0.5">
+            <span className="text-[0.78rem]" style={{ color: subtleColor }}>
+              Jahresabo · gesamt €{plan.yearlyTotal!.toLocaleString("de-DE")} pro Jahr
+            </span>
+            <span
+              className="text-[0.72rem] font-medium"
+              style={{ color: featured ? "#2997ff" : "var(--apl-accent)" }}
+            >
+              Sie sparen €{plan.yearlySavings!.toLocaleString("de-DE")} gegenüber monatlich
+            </span>
+          </div>
+        )}
+        <p className="apl-small mt-2 max-w-[32ch]" style={{ color: subtleColor }}>
           {plan.tagline}
         </p>
 
