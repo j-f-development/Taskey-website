@@ -1,7 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { LayoutGroup, motion, useReducedMotion } from "motion/react";
+import { EASE_OUT, durations } from "@/lib/motion";
+import PhotoZoom from "@/components/share/PhotoZoom";
 import { BrandDot } from "@/components/BrandDot";
+import { FEATURE_SCREENSHOTS, type FeatureScreenshot } from "./screenshots";
+import fd from "./FeaturesDemo.module.css";
+
+/** Auto-Wechsel der Tabs: so lange bleibt jeder Tab offen, in Sekunden. Ein eigener Klick beendet den Auto-Wechsel. */
+const TAB_SECONDS = 8;
 
 type ModuleKey =
   | "zeiterfassung"
@@ -90,11 +98,87 @@ const MODULES: Module[] = [
 ];
 
 export default function FeaturesInteractive() {
-  const [active, setActive] = useState<ModuleKey>("zeiterfassung");
+  /** dir: aus welcher Richtung der neue Inhalt kommt (1 = Tab liegt rechts, -1 = links). */
+  const [{ active, dir }, setTab] = useState<{ active: ModuleKey; dir: number }>({ active: "zeiterfassung", dir: 0 });
   const m = MODULES.find((x) => x.key === active)!;
+  const reduced = useReducedMotion();
+  const d = durations(reduced);
+  const select = useCallback(
+    (key: ModuleKey, forceDir?: number) =>
+      setTab((t) => {
+        if (t.active === key) return t;
+        const from = MODULES.findIndex((x) => x.key === t.active);
+        const to = MODULES.findIndex((x) => x.key === key);
+        return { active: key, dir: forceDir ?? Math.sign(to - from) };
+      }),
+    [],
+  );
+
+  /* ---------- Auto-Wechsel (wie das Funktionen-Fenster auf der Startseite) ---------- */
+  const rootRef = useRef<HTMLElement>(null);
+  const barRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const autoRef = useRef(true); // false, sobald der Besucher selbst klickt (endgültig)
+  const stepRef = useRef(0); // Index des aktiven Tabs
+  const stepStart = useRef(0);
+  const pauseAt = useRef(0);
+  const inView = useRef(false);
+
+  /** Lade-Strich unter dem AKTIVEN Tab: zeigt, wie lange er noch bleibt. */
+  const setBars = useCallback((k: number) => {
+    const active = autoRef.current ? stepRef.current : -1;
+    barRefs.current.forEach((b, i) => {
+      if (b) b.style.transform = `scaleX(${i === active ? Math.min(Math.max(k, 0), 1) : 0})`;
+    });
+  }, []);
+
+  useEffect(() => {
+    let raf = 0;
+    stepStart.current = performance.now();
+    pauseAt.current = performance.now();
+    const tick = (now: number) => {
+      const running = autoRef.current && inView.current && !document.hidden;
+      if (running) {
+        if (pauseAt.current) {
+          stepStart.current += now - pauseAt.current; // dort weiter, wo pausiert wurde
+          pauseAt.current = 0;
+        }
+        const k = (now - stepStart.current) / 1000 / TAB_SECONDS;
+        if (k >= 1) {
+          stepRef.current = (stepRef.current + 1) % MODULES.length;
+          stepStart.current = now;
+          select(MODULES[stepRef.current].key, 1); // Auto-Wechsel geht immer „weiter“
+          setBars(0);
+        } else setBars(k);
+      } else if (!pauseAt.current) pauseAt.current = now;
+      if (autoRef.current) raf = requestAnimationFrame(tick); // nach eigenem Klick: vorbei
+    };
+    raf = requestAnimationFrame(tick);
+
+    // Läuft nur, solange der Bereich gut sichtbar ist (60 % des Bereichs oder des Bildschirms)
+    const io = new IntersectionObserver(
+      ([e]) => {
+        const need = Math.min(e.boundingClientRect.height, window.innerHeight) * 0.6;
+        inView.current = e.isIntersecting && e.intersectionRect.height >= need;
+      },
+      { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] },
+    );
+    if (rootRef.current) io.observe(rootRef.current);
+    return () => {
+      cancelAnimationFrame(raf);
+      io.disconnect();
+    };
+  }, [select, setBars]);
+
+  /** Eigener Klick: Auto-Wechsel endet endgültig, alle Striche bleiben leer. */
+  const pick = (key: ModuleKey) => {
+    autoRef.current = false;
+    setBars(0);
+    select(key);
+  };
 
   return (
     <section
+      ref={rootRef}
       className="relative overflow-hidden"
       style={{
         background: "var(--ts-canvas-elev)",
@@ -114,25 +198,40 @@ export default function FeaturesInteractive() {
           role="tablist"
           aria-label="Taskey Module"
         >
-          {MODULES.map((mod) => {
+          <LayoutGroup id="features-tabs">
+          {MODULES.map((mod, i) => {
             const isActive = mod.key === active;
             return (
               <button
                 key={mod.key}
                 role="tab"
                 aria-selected={isActive}
-                onClick={() => setActive(mod.key)}
-                className="px-3 py-2 text-[0.85rem] font-medium flex items-center gap-2 whitespace-nowrap transition-all"
+                onClick={() => pick(mod.key)}
+                className="relative px-3 py-2 text-[0.85rem] font-medium flex items-center gap-2 whitespace-nowrap transition-[color,transform] active:scale-[.97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-signal-blue)]"
                 style={{
-                  background: isActive ? "var(--brand-signal-blue)" : "transparent",
                   color: isActive ? "var(--brand-white)" : "var(--ts-ink-soft)",
                   border: "1px solid transparent",
                   borderRadius: "var(--ts-r-chip)",
-                  boxShadow: isActive ? "0 1px 2px rgba(47, 91, 148, 0.28)" : undefined,
                 }}
               >
+                {/* Blauer Hintergrund gleitet zum gewählten Tab */}
+                {isActive && (
+                  <motion.span
+                    layoutId="features-tab-bg"
+                    aria-hidden
+                    transition={{ layout: { duration: d.REVEAL, ease: EASE_OUT } }}
+                    style={{
+                      position: "absolute",
+                      inset: -1,
+                      zIndex: 0,
+                      background: "var(--brand-signal-blue)",
+                      borderRadius: "var(--ts-r-chip)",
+                      boxShadow: "0 1px 2px rgba(47, 91, 148, 0.28)",
+                    }}
+                  />
+                )}
                 <span
-                  className="font-mono text-[0.68rem]"
+                  className="relative z-[1] font-mono text-[0.68rem] transition-colors"
                   style={{
                     color: isActive ? "rgba(247,249,252,0.7)" : "var(--ts-ink-faint)",
                     letterSpacing: "0.08em",
@@ -140,16 +239,33 @@ export default function FeaturesInteractive() {
                 >
                   {mod.index}
                 </span>
-                {mod.tab}
+                <span className="relative z-[1]">{mod.tab}</span>
+                <span className={fd.tabTrack} aria-hidden>
+                  <span
+                    className={fd.tabBar}
+                    ref={(el) => {
+                      barRefs.current[i] = el;
+                    }}
+                  />
+                </span>
               </button>
             );
           })}
+          </LayoutGroup>
         </div>
 
-        {/* Content */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        {/* Content: gleitet leicht aus der Richtung des gewählten Tabs herein */}
+        <motion.div
+          key={active}
+          role="tabpanel"
+          aria-label={m.tab}
+          initial={dir === 0 ? false : { opacity: 0, x: reduced ? 0 : dir * 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: d.REVEAL, ease: EASE_OUT }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start"
+        >
           {/* Copy */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="lg:col-span-5 min-w-0 flex flex-col gap-4">
             <span className="ts-eyebrow">{m.eyebrow}</span>
             <h2
               className="ts-headline"
@@ -167,24 +283,51 @@ export default function FeaturesInteractive() {
           </div>
 
           {/* Demo */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 min-w-0">
             <DemoFrame moduleKey={active} />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
+/* ──────────────────────────────────────────────────────────────
+   Dashboard-Fenster
+   Alle acht Fenster sind exakt gleich groß (Höhe fest in
+   FeaturesDemo.module.css), damit beim Tab-Wechsel nichts springt.
+   Begriffe, Spalten, Karten und Farben stammen aus den Aufnahmen
+   des echten Dashboards (2-animationen-html, 5-taskey-share.mp4).
+   ────────────────────────────────────────────────────────────── */
+
+/** Farben wie im echten Dashboard. */
+const C = {
+  ink: "#18181b",
+  mut: "#71717a",
+  faint: "#a1a1aa",
+  line: "#e4e4e7",
+  soft: "#fafafa",
+  blue: "#197caf",
+  blueBg: "#e8f3f9",
+  green: "#2f9e5f",
+  greenBg: "#eaf6ef",
+  red: "#d33f55",
+  redBg: "#fdeef0",
+  orange: "#e38b0b",
+} as const;
+
 function DemoFrame({ moduleKey }: { moduleKey: ModuleKey }) {
+  // Echter Screenshot, sobald einer in components/features/screenshots.ts eingetragen ist
+  const shot: FeatureScreenshot = FEATURE_SCREENSHOTS[moduleKey];
   return (
     <div
+      data-demo-frame
       className="relative overflow-hidden"
       style={{
         borderRadius: "var(--ts-r-panel)",
         border: "1px solid var(--ts-line-strong)",
         boxShadow: "var(--ts-shadow-lg)",
-        background: "var(--ts-canvas-elev)",
+        background: "#fff",
       }}
     >
       {/* Window chrome */}
@@ -200,138 +343,305 @@ function DemoFrame({ moduleKey }: { moduleKey: ModuleKey }) {
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#F59E0B" }} />
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#22C55E" }} />
         <span
-          className="ml-3 text-[0.72rem]"
+          className="ml-3 text-[0.72rem] truncate"
           style={{ color: "var(--ts-ink-muted)", fontFamily: "ui-monospace, SFMono-Regular, monospace" }}
         >
-          dashboard.taskeyapp.com/{moduleKey}
+          dashboard.taskeyapp.com{shot.path ?? `/${moduleKey}`}
         </span>
-        <span className="ml-auto ts-chip" style={{ fontSize: "0.58rem", padding: "0.18rem 0.5rem" }}>
-          Demo
-        </span>
+        {!shot.src && (
+          <span className="ml-auto ts-chip shrink-0" style={{ fontSize: "0.58rem", padding: "0.18rem 0.5rem" }}>
+            Demo
+          </span>
+        )}
       </div>
 
-      <div style={{ minHeight: 460 }}>
-        {moduleKey === "zeiterfassung" && <DemoZeiterfassung />}
-        {moduleKey === "einsatzplanung" && <DemoEinsatzplanung />}
-        {moduleKey === "nachweise" && <DemoNachweise />}
-        {moduleKey === "live-margen" && <DemoLiveMargen />}
-        {moduleKey === "rechnungen" && <DemoRechnungen />}
-        {moduleKey === "auftraggeber" && <DemoAuftraggeber />}
-        {moduleKey === "mobile" && <DemoMobile />}
-        {moduleKey === "sicherheit" && <DemoSicherheit />}
+      <div className={fd.body}>
+        {shot.src ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={shot.src}
+            alt={shot.alt}
+            loading="lazy"
+            decoding="async"
+            style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left" }}
+          />
+        ) : (
+          <>
+            {moduleKey === "zeiterfassung" && <DemoZeiterfassung />}
+            {moduleKey === "einsatzplanung" && <DemoEinsatzplanung />}
+            {moduleKey === "nachweise" && <DemoNachweise />}
+            {moduleKey === "live-margen" && <DemoLiveMargen />}
+            {moduleKey === "rechnungen" && <DemoRechnungen />}
+            {moduleKey === "auftraggeber" && <DemoAuftraggeber />}
+            {moduleKey === "mobile" && <DemoMobile />}
+            {moduleKey === "sicherheit" && <DemoSicherheit />}
+          </>
+        )}
       </div>
     </div>
   );
 }
 
-/* ── Demo 1 · Zeiterfassung ─────────────────────────────────── */
+/* ── Bausteine im Stil des Dashboards ───────────────────────── */
+
+const FINANZ_TABS = ["Übersicht", "Rechnungen", "Auto-Rechnungen", "Angebote", "Ausgaben", "Gehaltsübersicht", "Nach Objekt", "Dokumente"];
+
+function Crumb({ page }: { page: string }) {
+  return (
+    <div className={fd.crumb}>
+      <span style={{ color: C.mut }}>Workspace</span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={C.mut} strokeWidth="2" aria-hidden>
+        <path d="m9 18 6-6-6-6" />
+      </svg>
+      <b>{page}</b>
+    </div>
+  );
+}
+
+function SubTabs({ items, active }: { items: string[]; active: string }) {
+  return (
+    <div className={fd.subtabs}>
+      {items.map((t) => (
+        <span key={t} className={t === active ? fd.subtabOn : undefined}>
+          {t}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+type Action = { label: string; kind?: "primary" | "outline" | "text"; plus?: boolean };
+function PageHead({ title, sub, meta, actions }: { title: string; sub: string; meta?: string; actions?: Action[] }) {
+  return (
+    <div className={fd.head}>
+      <div className="min-w-0">
+        <h3 className={fd.title}>{title}</h3>
+        <p className={fd.sub}>{sub}</p>
+        {meta && <p className={fd.meta}>{meta}</p>}
+      </div>
+      {actions && (
+        <div className={fd.actions}>
+          {actions.map((a) => (
+            <span key={a.label} className={`${fd.btn} ${a.kind === "primary" ? fd.btnPr : a.kind === "text" ? fd.btnTx : ""}`}>
+              {a.plus && <span aria-hidden>+</span>}
+              {a.label}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+type Kpi = { label: string; value: string; foot?: string; tone?: "green" | "red" };
+/** Kennzahl-Kästen: alle Kästen einer Reihe exakt gleich groß. */
+function Kpis({ items }: { items: Kpi[] }) {
+  return (
+    <div className={`${fd.kpis} ${items.length === 4 ? fd.kpis4 : ""}`} style={{ ["--n" as string]: items.length }}>
+      {items.map((k) => (
+        <div key={k.label} data-kpi className={fd.kpi}>
+          <div className={fd.kpiLabel}>{k.label}</div>
+          <div className={fd.kpiValue} style={{ color: k.tone ? C[k.tone] : C.ink }}>
+            {k.value}
+          </div>
+          <div className={fd.kpiFoot}>{k.foot ?? " "}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Pill({ label, tone }: { label: string; tone: "green" | "blue" | "grey" }) {
+  const t = {
+    green: { bg: C.greenBg, fg: C.green, bd: "#bfe3cd" },
+    blue: { bg: C.blue, fg: "#fff", bd: C.blue },
+    grey: { bg: "#f4f4f5", fg: "#3f3f46", bd: C.line },
+  }[tone];
+  return (
+    <span className={fd.pill} style={{ background: t.bg, color: t.fg, borderColor: t.bd }}>
+      {tone === "green" && <i style={{ background: C.green }} />}
+      {label}
+    </span>
+  );
+}
+
+/* ── Demo 1 · Zeiterfassung (Referenz: 4-taskey-zeiterfassung) ── */
 
 function DemoZeiterfassung() {
   const rows = [
-    { name: "Marina Köhler", obj: "Bürohaus Rheinallee", nfc: "08:02", dur: "02:14 h", status: "ok" as const, label: "Aktiv" },
-    { name: "Yusuf Demir", obj: "Logistikhalle Süd", nfc: "05:58", dur: "04:18 h", status: "ok" as const, label: "Aktiv" },
-    { name: "Anja Winter", obj: "Praxis Behrens", nfc: "06:30", dur: "01:45 h", status: "ok" as const, label: "Beendet" },
-    { name: "Tobias Reuß", obj: "Supermarkt Lindenthal", nfc: "22:12", dur: "03:02 h", status: "ok" as const, label: "Beendet" },
-    { name: "Elena Popescu", obj: "Kita Sonnenblume", nfc: "–", dur: "–", status: "bad" as const, label: "Scan fehlt" },
+    { who: "Ramona Biewer", obj: "Treppenhaus Moselstraße 49, Trier", room: "Treppenhaus", start: "07:42", dur: "0h 0m 08s" },
+    { who: "Mehmet Arslan", obj: "Geschäftshaus Brotstraße 17", room: "Foyer", start: "07:38", dur: "0h 4m 14s" },
+    { who: "Ahmad Haidari", obj: "EDEKA Erfurt Goethestraße", room: "Kassenzone", start: "07:31", dur: "0h 11m 14s" },
+    { who: "Angela Fischer", obj: "dm Bielefeld Mühlenweg", room: "Lager", start: "07:24", dur: "0h 18m 14s" },
+    { who: "Stefan Becker", obj: "REWE Regensburg Poststraße", room: "Verkaufsfläche", start: "07:12", dur: "0h 30m 14s" },
+    { who: "Anna Katharina Berger", obj: "E WERK Saarbrücken", room: "WC Herren", start: "06:58", dur: "0h 44m 14s" },
+    { who: "Svenja Hansen", obj: "Wohnanlage Mühlbach", room: "Treppenhaus", start: "06:45", dur: "0h 57m 14s" },
   ];
-
   return (
-    <div className="p-5 md:p-6 flex flex-col gap-4">
-      <StatRow stats={[
-        { label: "Aktive Sitzungen", value: "2", foot: "Live" },
-        { label: "Heute abgeschlossen", value: "28", foot: "±0 ggü. Vortag" },
-        { label: "Durchschnittliche Dauer", value: "02:48 h", foot: "pro Einsatz" },
-      ]} />
-      <SectionHeadline eyebrow="Heute · 34 Einsätze" title="Zeiterfassung live" />
-      <div className="flex flex-col gap-2">
+    <div className={fd.page}>
+      <Crumb page="Zeiterfassung" />
+      <PageHead
+        title="Zeiterfassung"
+        sub="Arbeitszeiten transparent erfassen und prüfen."
+        actions={[{ label: "Nachgetragene Einsätze", kind: "text" }, { label: "Stunden erfassen", plus: true }]}
+      />
+      <Kpis
+        items={[
+          { label: "Aktive Sitzungen", value: "8" },
+          { label: "Heute abgeschlossen", value: "3" },
+          { label: "Gesamt Sessions", value: "129" },
+        ]}
+      />
+      <SubTabs items={["Einsätze", "Stempelprotokoll"]} active="Einsätze" />
+      <div className={`${fd.table} ${fd.tZeit}`}>
+        <div className={fd.th}>
+          <span>Mitarbeiter</span>
+          <span>Objekt / Auftrag</span>
+          <span className={fd.hideSm}>Startzeit</span>
+          <span className={fd.r}>Dauer</span>
+          <span>Status</span>
+        </div>
         {rows.map((r) => (
-          <DemoRow
-            key={r.name}
-            status={r.status}
-            title={r.name}
-            sub={`${r.obj} · NFC ${r.nfc}`}
-            statusLabel={r.label}
-            trailing={r.dur}
-          />
+          <div key={r.who} className={fd.tr}>
+            <b className="truncate">{r.who}</b>
+            <span className="truncate" style={{ color: C.mut }}>
+              {r.obj} <small>· {r.room}</small>
+            </span>
+            <span className={fd.hideSm} style={{ color: C.mut }}>
+              14.11.2026 · {r.start}–
+            </span>
+            <b className={fd.r}>{r.dur}</b>
+            <span>
+              <Pill label="Aktiv" tone="green" />
+            </span>
+          </div>
         ))}
       </div>
     </div>
   );
 }
 
-/* ── Demo 2 · Einsatzplanung ────────────────────────────────── */
+/* ── Demo 2 · Personalplanung (Referenz: 2-taskey-personalplanung) ── */
 
+type Shift = { day: number; time: string; obj: string; tone: "green" | "blue" | "orange" } | { day: number; sick: true };
 function DemoEinsatzplanung() {
-  const days = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
-  const grid: { who: string; shifts: { day: number; obj: string; start: string; dur: number }[] }[] = [
-    { who: "Marina K.", shifts: [{ day: 0, obj: "Rheinallee", start: "08", dur: 3 }, { day: 2, obj: "Rheinallee", start: "08", dur: 3 }, { day: 4, obj: "Lindenthal", start: "22", dur: 2 }] },
-    { who: "Yusuf D.", shifts: [{ day: 0, obj: "Süd", start: "06", dur: 4 }, { day: 1, obj: "Süd", start: "06", dur: 4 }, { day: 2, obj: "Süd", start: "06", dur: 4 }, { day: 4, obj: "Süd", start: "06", dur: 4 }] },
-    { who: "Anja W.", shifts: [{ day: 1, obj: "Behrens", start: "06", dur: 2 }, { day: 3, obj: "Behrens", start: "06", dur: 2 }, { day: 5, obj: "Behrens", start: "06", dur: 2 }] },
-    { who: "Tobias R.", shifts: [{ day: 4, obj: "Lindenthal", start: "22", dur: 3 }] },
-    { who: "Elena P.", shifts: [{ day: 0, obj: "Sonnenblume", start: "14", dur: 2 }, { day: 2, obj: "Sonnenblume", start: "14", dur: 2 }] },
+  const days = [
+    ["Montag", "16.11."],
+    ["Dienstag", "17.11."],
+    ["Mittwoch", "18.11."],
+    ["Donnerstag", "19.11."],
+    ["Freitag", "20.11."],
+    ["Samstag", "21.11."],
+    ["Sonntag", "22.11."],
   ];
-
+  const team: { who: string; hours: string; pct: number; shifts: Shift[] }[] = [
+    {
+      who: "Agnieszka Nowicka",
+      hours: "7,5 h / 9,3 h",
+      pct: 81,
+      shifts: [
+        { day: 0, time: "08:00 → 09:30", obj: "Treppenhaus Eschenweg", tone: "green" },
+        { day: 1, time: "08:00 → 11:00", obj: "Wohnanlage Mühlbach", tone: "green" },
+        { day: 4, time: "08:00 → 11:00", obj: "Wohnanlage Mühlbach", tone: "green" },
+      ],
+    },
+    {
+      who: "Ahmad Haidari",
+      hours: "6 h / 9,3 h",
+      pct: 65,
+      shifts: [
+        { day: 1, time: "05:00 → 07:00", obj: "EDEKA Erfurt Goethestraße", tone: "blue" },
+        { day: 3, time: "05:00 → 07:00", obj: "EDEKA Erfurt Goethestraße", tone: "blue" },
+        { day: 5, time: "05:00 → 07:00", obj: "EDEKA Erfurt Goethestraße", tone: "blue" },
+      ],
+    },
+    {
+      who: "Andrea Huber",
+      hours: "6 h / 6,5 h",
+      pct: 92,
+      shifts: [
+        { day: 0, time: "05:00 → 07:00", obj: "REWE Regensburg", tone: "blue" },
+        { day: 2, sick: true },
+        { day: 4, time: "05:00 → 07:00", obj: "REWE Regensburg", tone: "blue" },
+      ],
+    },
+    {
+      who: "Angela Fischer",
+      hours: "10 h / 10,6 h",
+      pct: 94,
+      shifts: [0, 1, 2, 3, 4].map((day) => ({ day, time: "08:00 → 10:00", obj: "dm Bielefeld Mitte", tone: "orange" as const })),
+    },
+  ];
+  const toneColor = { green: C.green, blue: C.blue, orange: C.orange };
   return (
-    <div className="p-5 md:p-6 flex flex-col gap-4">
-      <SectionHeadline eyebrow="KW 46 · 5 Mitarbeitende · 15 Schichten" title="Wochenplan" />
-      <div
-        className="grid"
-        style={{
-          gridTemplateColumns: "140px repeat(7, minmax(0, 1fr))",
-          border: "1px solid var(--ts-line)",
-          borderRadius: 8,
-          overflow: "hidden",
-          background: "#fff",
-        }}
-      >
-        <div style={{ background: "var(--ts-canvas-tinted)", padding: "0.5rem 0.75rem", fontSize: "0.72rem", fontWeight: 600, color: "var(--ts-ink-muted)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-          Team
+    <div className={fd.page}>
+      <Crumb page="Personalplanung" />
+      <PageHead
+        title="Personalplanung"
+        sub="Die richtige Besetzung für jeden Standort und jede Schicht."
+        actions={[{ label: "Schicht planen", plus: true }, { label: "Plan exportieren", kind: "primary" }]}
+      />
+      <div className={fd.toolbar}>
+        <span className={fd.btn}>Heute</span>
+        <span className={fd.btn}>16.11.2026 → 22.11.2026</span>
+        <span className={fd.seg}>
+          <span>Tag</span>
+          <span className={fd.segOn}>Woche</span>
+          <span>Monat</span>
+        </span>
+      </div>
+      <div className={fd.legend}>
+        <span style={{ color: C.red }}>Fehlt</span>
+        <span style={{ color: C.red }}>Nicht erschienen</span>
+        <span style={{ color: C.blue }}>Läuft</span>
+        <span style={{ color: C.green }}>Erledigt</span>
+        <span style={{ color: C.mut }}>Abwesend</span>
+      </div>
+      <div className={fd.plan}>
+        <div className={fd.planHd} style={{ color: C.blue }}>
+          Mitarbeiter
         </div>
-        {days.map((d) => (
-          <div key={d} style={{ background: "var(--ts-canvas-tinted)", padding: "0.5rem 0.5rem", fontSize: "0.72rem", fontWeight: 600, color: "var(--ts-ink-muted)", textAlign: "center", borderLeft: "1px solid var(--ts-line)" }}>
-            {d}
+        {days.map(([d, dt]) => (
+          <div key={d} className={fd.planHd}>
+            <b>{d}</b>
+            <span style={{ color: C.mut }}>{dt}</span>
           </div>
         ))}
-        {grid.map((row) => (
-          <>
-            <div key={row.who} style={{ padding: "0.6rem 0.75rem", fontSize: "0.82rem", fontWeight: 500, color: "var(--ts-ink)", borderTop: "1px solid var(--ts-line)" }}>
-              {row.who}
+        {team.map((p) => (
+          <Fragment key={p.who}>
+            <div className={fd.planWho}>
+              <b className="truncate">{p.who}</b>
+              <span style={{ color: C.mut }}>Reinigungskraft</span>
+              <span className={fd.planHours}>
+                <span style={{ color: C.mut }}>{p.hours}</span>
+                <b style={{ color: p.pct > 92 ? C.orange : C.green }}>{p.pct}%</b>
+              </span>
+              <i className={fd.planBar}>
+                <i style={{ transform: `scaleX(${p.pct / 100})`, background: p.pct > 92 ? C.orange : C.green }} />
+              </i>
             </div>
-            {days.map((_, di) => {
-              const shift = row.shifts.find((s) => s.day === di);
+            {days.map(([d], di) => {
+              const sh = p.shifts.find((x) => x.day === di);
               return (
-                <div
-                  key={`${row.who}-${di}`}
-                  style={{
-                    padding: "0.4rem",
-                    borderTop: "1px solid var(--ts-line)",
-                    borderLeft: "1px solid var(--ts-line)",
-                    minHeight: 54,
-                  }}
-                >
-                  {shift && (
-                    <div
-                      style={{
-                        background: "rgba(47, 91, 148, 0.1)",
-                        border: "1px solid rgba(47, 91, 148, 0.25)",
-                        borderRadius: 4,
-                        padding: "0.3rem 0.4rem",
-                        fontSize: "0.7rem",
-                        color: "var(--brand-signal-blue)",
-                        fontWeight: 500,
-                        lineHeight: 1.3,
-                      }}
-                    >
-                      <div>{shift.obj}</div>
-                      <div style={{ fontFamily: "ui-monospace, monospace", opacity: 0.85 }}>
-                        {shift.start}–{String(parseInt(shift.start) + shift.dur).padStart(2, "0")}
-                      </div>
+                <div key={`${p.who}-${d}`} className={fd.planCell}>
+                  {sh && "sick" in sh ? (
+                    <div className={fd.sick}>
+                      <b>Krank</b>
+                      <span className="truncate">{p.who.split(" ")[0]} {p.who.split(" ")[1]} fehlt</span>
                     </div>
-                  )}
+                  ) : sh ? (
+                    <div className={fd.shift} style={{ borderLeftColor: toneColor[sh.tone] }}>
+                      <span style={{ color: C.mut }}>{sh.time}</span>
+                      <b className="truncate">{sh.obj}</b>
+                      <span className="truncate" style={{ color: C.mut }}>
+                        Reinigungskraft
+                      </span>
+                    </div>
+                  ) : null}
                 </div>
               );
             })}
-          </>
+          </Fragment>
         ))}
       </div>
     </div>
@@ -339,20 +649,28 @@ function DemoEinsatzplanung() {
 }
 
 /* ── Demo 3 · Nachweise ─────────────────────────────────────── */
+/* In den Dashboard-Aufnahmen nicht enthalten: Inhalt unverändert. */
 
 function DemoNachweise() {
   const items = [
-    { obj: "Rheinallee · 3. OG", task: "Grundreinigung", time: "08:42", who: "MK", status: "ok" as const },
-    { obj: "Süd · Halle B", task: "Unterhaltsreinigung", time: "10:14", who: "YD", status: "ok" as const },
-    { obj: "Behrens · Behandlung 2", task: "Desinfektion", time: "06:55", who: "AW", status: "ok" as const },
-    { obj: "Lindenthal · Kasse", task: "Fensterreinigung", time: "22:48", who: "TR", status: "warn" as const },
-    { obj: "Sonnenblume · Flur", task: "Grundreinigung", time: "–", who: "EP", status: "bad" as const },
-    { obj: "Rheinallee · 2. OG", task: "Unterhaltsreinigung", time: "09:03", who: "MK", status: "ok" as const },
+    { obj: "Rheinallee · 3. OG", task: "Grundreinigung", time: "08:42", who: "MK", status: "ok" as const,
+      img: "nachweis-1-rheinallee-3og-flur", alt: "Gereinigter Büroflur mit Glastüren, Rheinallee 3. OG" },
+    { obj: "Süd · Halle B", task: "Unterhaltsreinigung", time: "10:14", who: "YD", status: "ok" as const,
+      img: "nachweis-2-sued-halle-b", alt: "Gereinigte Lagerhalle mit Betonboden, Halle B" },
+    { obj: "Behrens · Behandlung 2", task: "Desinfektion", time: "06:55", who: "AW", status: "ok" as const,
+      img: "nachweis-3-behrens-behandlung-2", alt: "Desinfizierter Behandlungsraum einer Praxis" },
+    { obj: "Lindenthal · Kasse", task: "Fensterreinigung", time: "22:48", who: "TR", status: "warn" as const,
+      img: "nachweis-4-lindenthal-kasse", alt: "Gereinigte Glasfront im Kassenbereich am Abend" },
+    // Beleg fehlt noch: kein Foto, Streifenmuster bleibt
+    { obj: "Sonnenblume · Flur", task: "Grundreinigung", time: "Offen", who: "EP", status: "bad" as const,
+      img: null, alt: "" },
+    { obj: "Rheinallee · 2. OG", task: "Unterhaltsreinigung", time: "09:03", who: "MK", status: "ok" as const,
+      img: "nachweis-6-rheinallee-2og-buero", alt: "Gereinigtes Großraumbüro, Rheinallee 2. OG" },
   ];
-  const statusTint: Record<"ok" | "warn" | "bad", { bg: string; fg: string; label: string }> = {
-    ok: { bg: "rgba(31, 122, 58, 0.08)", fg: "var(--ts-good)", label: "Freigegeben" },
-    warn: { bg: "rgba(162, 91, 9, 0.08)", fg: "var(--ts-warn)", label: "Prüfen" },
-    bad: { bg: "rgba(180, 35, 35, 0.08)", fg: "var(--ts-bad)", label: "Ausstehend" },
+  const statusTint: Record<"ok" | "warn" | "bad", { fg: string; label: string }> = {
+    ok: { fg: "var(--ts-good)", label: "Freigegeben" },
+    warn: { fg: "var(--ts-warn)", label: "Prüfen" },
+    bad: { fg: "var(--ts-bad)", label: "Ausstehend" },
   };
 
   return (
@@ -364,20 +682,26 @@ function DemoNachweise() {
           return (
             <div
               key={it.obj + it.task}
-              style={{
-                border: "1px solid var(--ts-line)",
-                borderRadius: 8,
-                overflow: "hidden",
-                background: "#fff",
-              }}
+              style={{ border: "1px solid var(--ts-line)", borderRadius: 8, overflow: "hidden", background: "#fff" }}
             >
               <div
                 style={{
                   aspectRatio: "4 / 3",
-                  background: it.status === "bad" ? "repeating-linear-gradient(45deg, #ECF0F5, #ECF0F5 8px, #DDE4EC 8px, #DDE4EC 16px)" : "linear-gradient(135deg, #D9E1EA, #9FC5E8)",
+                  background: it.img ? "#e9edf2" : "repeating-linear-gradient(45deg, #ECF0F5, #ECF0F5 8px, #DDE4EC 8px, #DDE4EC 16px)",
                   position: "relative",
+                  overflow: "hidden",
                 }}
               >
+                {it.img && (
+                  <PhotoZoom
+                    img={`/images/nachweise/${it.img}`}
+                    alt={it.alt}
+                    width={1000}
+                    height={750}
+                    radius={8}
+                    caption={`${it.obj} · ${it.task} · ${it.time} · ${it.who}`}
+                  />
+                )}
                 <div
                   style={{
                     position: "absolute",
@@ -386,7 +710,10 @@ function DemoNachweise() {
                     fontSize: "0.65rem",
                     padding: "0.18rem 0.45rem",
                     borderRadius: 999,
-                    background: s.bg,
+                    // Heller, leicht deckender Grund mit Blur: auf jedem Foto lesbar
+                    background: "rgba(255,255,255,.85)",
+                    backdropFilter: "blur(6px)",
+                    WebkitBackdropFilter: "blur(6px)",
                     color: s.fg,
                     fontWeight: 500,
                   }}
@@ -410,12 +737,8 @@ function DemoNachweise() {
                 </div>
               </div>
               <div style={{ padding: "0.6rem 0.7rem" }}>
-                <div style={{ fontSize: "0.82rem", fontWeight: 500, color: "var(--ts-ink)" }}>
-                  {it.obj}
-                </div>
-                <div style={{ fontSize: "0.72rem", color: "var(--ts-ink-muted)", marginTop: 2 }}>
-                  {it.task}
-                </div>
+                <div style={{ fontSize: "0.82rem", fontWeight: 500, color: "var(--ts-ink)" }}>{it.obj}</div>
+                <div style={{ fontSize: "0.72rem", color: "var(--ts-ink-muted)", marginTop: 2 }}>{it.task}</div>
               </div>
             </div>
           );
@@ -425,205 +748,150 @@ function DemoNachweise() {
   );
 }
 
-/* ── Demo 4 · Live-Margen ───────────────────────────────────── */
+/* ── Demo 4 · Live-Margen → Finanzübersicht (Referenz: 3-taskey-finanzen) ── */
 
 function DemoLiveMargen() {
-  const rows = [
-    { obj: "Bürohaus Rheinallee", soll: "2.800 €", ist: "2.640 €", margin: 88, status: "ok" as const, label: "+22 % DB" },
-    { obj: "Logistikhalle Süd", soll: "6.200 €", ist: "5.980 €", margin: 78, status: "ok" as const, label: "+18 % DB" },
-    { obj: "Praxis Behrens", soll: "540 €", ist: "612 €", margin: 62, status: "warn" as const, label: "Mehrstunden" },
-    { obj: "Supermarkt Lindenthal", soll: "1.300 €", ist: "1.280 €", margin: 70, status: "ok" as const, label: "+14 % DB" },
-    { obj: "Kita Sonnenblume", soll: "820 €", ist: "1.040 €", margin: 34, status: "bad" as const, label: "–6 % DB" },
+  const gv: { label: string; value: string; kind?: "head-in" | "head-out" | "sum-in" | "sum-out"; note?: string }[] = [
+    { label: "I. Einnahmen", value: "", kind: "head-in" },
+    { label: "Rechnungen", value: "26.230,00 €" },
+    { label: "Objekt-Einnahmen", value: "33.830,00 €" },
+    { label: "Gesamt Einnahmen", value: "60.060,00 €", kind: "sum-in" },
+    { label: "II. Ausgaben", value: "", kind: "head-out" },
+    { label: "Personalkosten Netto", value: "-618,75 €", note: "Tatsächlicher Lohn aus Objekt-Vergütungen" },
+    { label: "Betriebsausgaben", value: "-22.901,00 €" },
+    { label: "Gesamt Ausgaben", value: "-23.736,31 €", kind: "sum-out" },
   ];
-
   return (
-    <div className="p-5 md:p-6 flex flex-col gap-4">
-      <StatRow stats={[
-        { label: "Monatsumsatz", value: "11.660 €", foot: "November" },
-        { label: "Deckungsbeitrag", value: "18 %", foot: "Durchschnitt" },
-        { label: "Verlust-Objekte", value: "1", foot: "benötigt Nachverhandlung" },
-      ]} />
-      <SectionHeadline eyebrow="Monat · November · 5 Objekte" title="Live-Margen pro Objekt" />
-      <div className="flex flex-col gap-2">
-        {rows.map((r) => (
-          <DemoRow
-            key={r.obj}
-            status={r.status}
-            title={r.obj}
-            sub={`Soll ${r.soll} · Ist ${r.ist}`}
-            statusLabel={r.label}
-            progress={r.margin}
-          />
+    <div className={fd.page}>
+      <Crumb page="Finanzübersicht" />
+      <SubTabs items={FINANZ_TABS} active="Übersicht" />
+      <PageHead
+        title="Finanzen mit Überblick."
+        sub="Zahlen, die dir zeigen, wo dein Unternehmen steht."
+        meta="21 Arbeitstage · 0 Feiertage · Saarland"
+        actions={[{ label: "November 2026" }]}
+      />
+      <Kpis
+        items={[
+          { label: "Einnahmen", value: "60.060,00 €", foot: "Objekte: 33.830,00 €", tone: "green" },
+          { label: "Ausgaben", value: "23.736,31 €", foot: "Ausgaben: 22.901,00 €", tone: "red" },
+          { label: "Ergebnis (EBITDA)", value: "36.323,69 €", foot: "Marge: 60.5%", tone: "green" },
+          { label: "Rechnungen", value: "35", foot: "7 Angebote (11.412,10 €)" },
+        ]}
+      />
+      <div className={fd.gvHead}>
+        <b>Gewinn- & Verlustrechnung</b>
+        <span className={fd.actions}>
+          <span className={fd.btn}>PDF</span>
+          <span className={fd.btn}>CSV</span>
+        </span>
+      </div>
+      <div className={fd.gv}>
+        {gv.map((r) => (
+          <div
+            key={r.label}
+            className={fd.gvRow}
+            style={{
+              background: r.kind === "head-in" ? C.greenBg : r.kind === "head-out" ? C.redBg : undefined,
+              fontWeight: r.kind ? 600 : 400,
+            }}
+          >
+            <span className="min-w-0">
+              {r.label}
+              {r.note && <small className="block truncate" style={{ color: C.mut, fontWeight: 400 }}>{r.note}</small>}
+            </span>
+            <span style={{ color: r.kind === "sum-in" ? C.green : r.kind === "sum-out" ? C.red : C.ink }}>{r.value}</span>
+          </div>
         ))}
       </div>
     </div>
   );
 }
 
-/* ── Demo 5 · Rechnungen / DATEV ────────────────────────────── */
+/* ── Demo 5 · Rechnungen (Referenz: 3-taskey-finanzen, Tab „Rechnungen“) ── */
 
 function DemoRechnungen() {
   const rows = [
-    { num: "RE-2026-1142", client: "Immobilien Weber GmbH", date: "02.11.2026", amount: "2.800,00 €", status: "paid" as const },
-    { num: "RE-2026-1141", client: "Logistik Nord KG", date: "02.11.2026", amount: "6.200,00 €", status: "paid" as const },
-    { num: "RE-2026-1140", client: "Praxis Dr. Behrens", date: "01.11.2026", amount: "612,00 €", status: "open" as const },
-    { num: "RE-2026-1139", client: "Rewe Lindenthal", date: "01.11.2026", amount: "1.280,00 €", status: "open" as const },
-    { num: "RE-2026-1138", client: "Kita Sonnenblume e.V.", date: "28.10.2026", amount: "820,00 €", status: "overdue" as const },
+    { client: "Lagerlogistik Ruhr GmbH", nr: "RE0046", amount: "1.523,20 €" },
+    { client: "EDEKA Zentrale Stiftung & Co. KG", nr: "RE0045", amount: "2.677,50 €" },
+    { client: "REWE Markt GmbH", nr: "RE0044", amount: "2.737,00 €" },
+    { client: "dm-drogerie markt GmbH + Co. KG", nr: "RE0043", amount: "1.630,30 €" },
+    { client: "IT-Haus Kessler GmbH", nr: "RE0042", amount: "2.034,90 €" },
   ];
-  const statusTint: Record<"paid" | "open" | "overdue", { bg: string; fg: string; label: string }> = {
-    paid: { bg: "rgba(31, 122, 58, 0.08)", fg: "var(--ts-good)", label: "Bezahlt" },
-    open: { bg: "rgba(47, 91, 148, 0.1)", fg: "var(--brand-signal-blue)", label: "Offen" },
-    overdue: { bg: "rgba(180, 35, 35, 0.08)", fg: "var(--ts-bad)", label: "Überfällig" },
-  };
-
   return (
-    <div className="p-5 md:p-6 flex flex-col gap-4">
-      <div className="flex items-center justify-between gap-3 flex-wrap">
-        <SectionHeadline eyebrow="November 2026" title="Ausgangsrechnungen" />
-        <div className="flex gap-2">
-          <span className="ts-chip ts-chip-neutral" style={{ fontSize: "0.65rem" }}>
-            ZUGFeRD
-          </span>
-          <span className="ts-chip" style={{ fontSize: "0.65rem" }}>
-            DATEV-Export
-          </span>
-        </div>
+    <div className={fd.page}>
+      <Crumb page="Rechnungen" />
+      <SubTabs items={FINANZ_TABS} active="Rechnungen" />
+      <PageHead
+        title="Rechnungen"
+        sub="Leistungen abrechnen und Zahlungseingänge verfolgen."
+        actions={[{ label: "DATEV Export" }, { label: "Angebote" }, { label: "Neue Rechnung", kind: "primary", plus: true }]}
+      />
+      <Kpis
+        items={[
+          { label: "Entwürfe", value: "6", foot: "10.400,60 € Wert" },
+          { label: "Finalisiert", value: "18" },
+          { label: "Umsatz (bezahlt)", value: "0,00 €", foot: "46.656,33 € offen", tone: "green" },
+          { label: "Gesamt", value: "52" },
+        ]}
+      />
+      <div className={fd.chips}>
+        <span className={fd.chipOn}>Alle</span>
+        <span>Entwurf</span>
+        <span>Zur Prüfung</span>
+        <span>Finalisiert</span>
+        <span>Storniert</span>
       </div>
-      <div style={{ border: "1px solid var(--ts-line)", borderRadius: 8, overflow: "hidden", background: "#fff" }}>
-        <div
-          className="grid"
-          style={{
-            gridTemplateColumns: "140px minmax(0,1fr) 100px 110px 100px",
-            background: "var(--ts-canvas-tinted)",
-            padding: "0.5rem 0.9rem",
-            fontSize: "0.68rem",
-            fontWeight: 600,
-            color: "var(--ts-ink-muted)",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-          }}
-        >
-          <div>Nummer</div>
-          <div>Kunde</div>
-          <div>Datum</div>
-          <div style={{ textAlign: "right" }}>Betrag</div>
-          <div style={{ textAlign: "right" }}>Status</div>
+      <div className={fd.list}>
+        <div className={fd.listHd}>
+          <span>Alle</span>
+          <span style={{ color: C.mut }}>24 Rechnungen</span>
         </div>
-        {rows.map((r) => {
-          const s = statusTint[r.status];
-          return (
-            <div
-              key={r.num}
-              className="grid"
-              style={{
-                gridTemplateColumns: "140px minmax(0,1fr) 100px 110px 100px",
-                padding: "0.65rem 0.9rem",
-                fontSize: "0.85rem",
-                borderTop: "1px solid var(--ts-line)",
-                alignItems: "center",
-              }}
-            >
-              <span style={{ fontFamily: "ui-monospace, monospace", fontSize: "0.78rem", color: "var(--ts-ink)" }}>
-                {r.num}
-              </span>
-              <span style={{ color: "var(--ts-ink)", fontWeight: 500 }}>{r.client}</span>
-              <span style={{ color: "var(--ts-ink-muted)", fontSize: "0.8rem" }}>{r.date}</span>
-              <span style={{ color: "var(--ts-ink)", fontWeight: 600, textAlign: "right", fontFamily: "ui-monospace, monospace", fontSize: "0.82rem" }}>
-                {r.amount}
-              </span>
-              <span style={{ textAlign: "right" }}>
-                <span
-                  style={{
-                    display: "inline-block",
-                    background: s.bg,
-                    color: s.fg,
-                    fontSize: "0.68rem",
-                    padding: "0.18rem 0.5rem",
-                    borderRadius: 999,
-                    fontWeight: 500,
-                  }}
-                >
-                  {s.label}
-                </span>
-              </span>
-            </div>
-          );
-        })}
+        {rows.map((r) => (
+          <div key={r.nr} className={fd.listRow}>
+            <i className={fd.check} aria-hidden />
+            <span className="min-w-0 flex-1">
+              <b className="block truncate">{r.client}</b>
+              <small className="block truncate" style={{ color: C.mut }}>
+                Rechnung · {r.nr} · vom 11.11.2026 · Leistung 30.11.2026
+              </small>
+            </span>
+            <span className="flex flex-col items-end gap-1 shrink-0">
+              <b>{r.amount}</b>
+              <Pill label="Finalisiert" tone="grey" />
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-/* ── Demo 6 · Auftraggeber-Portal ───────────────────────────── */
+/* ── Demo 6 · Taskey Share (Referenz: 5-taskey-share.mp4) ── */
 
 function DemoAuftraggeber() {
-  const rooms = [
-    { name: "Empfang", status: "clean" as const, time: "08:12" },
-    { name: "Büro 101", status: "clean" as const, time: "08:24" },
-    { name: "Büro 102", status: "clean" as const, time: "08:31" },
-    { name: "Meetingraum 1", status: "progress" as const, time: "jetzt" },
-    { name: "Meetingraum 2", status: "pending" as const, time: "–" },
-    { name: "Küche", status: "clean" as const, time: "07:58" },
-    { name: "WC Herren", status: "clean" as const, time: "08:05" },
-    { name: "WC Damen", status: "progress" as const, time: "jetzt" },
-    { name: "Serverraum", status: "problem" as const, time: "offen" },
-  ];
-  const tint: Record<"clean" | "progress" | "pending" | "problem", { bg: string; border: string; dot: string; label: string }> = {
-    clean: { bg: "#DDF4E5", border: "#38B56A", dot: "#22C55E", label: "Gereinigt" },
-    progress: { bg: "#FDF1DC", border: "#F59E0B", dot: "#F59E0B", label: "Läuft" },
-    pending: { bg: "#F7F9FC", border: "#D6D9DE", dot: "#B0B4BA", label: "Geplant" },
-    problem: { bg: "#FFE6EB", border: "#E94B6A", dot: "#E94B6A", label: "Offen" },
-  };
-
+  const reduced = useReducedMotion();
   return (
-    <div className="p-5 md:p-6 flex flex-col gap-4">
-      <SectionHeadline eyebrow="Bürohaus Rheinallee · EG · 2.400 qm" title="Live-Grundriss" />
-      <div className="grid grid-cols-3 gap-2">
-        {rooms.map((r) => {
-          const t = tint[r.status];
-          return (
-            <div
-              key={r.name}
-              style={{
-                background: t.bg,
-                border: `1px solid ${t.border}`,
-                borderRadius: 6,
-                padding: "0.7rem 0.75rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.3rem",
-              }}
-            >
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full" style={{ background: t.dot }} />
-                <span style={{ fontSize: "0.82rem", fontWeight: 500, color: "var(--ts-ink)" }}>
-                  {r.name}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span style={{ fontSize: "0.68rem", color: "var(--ts-ink-muted)" }}>{t.label}</span>
-                <span style={{ fontSize: "0.7rem", color: "var(--ts-ink-muted)", fontFamily: "ui-monospace, monospace" }}>
-                  {r.time}
-                </span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <div className="flex items-center justify-between text-[0.78rem] pt-2" style={{ color: "var(--ts-ink-muted)" }}>
-        <span>7 von 9 Räumen gereinigt</span>
-        <span>Letzte Aktualisierung vor 2 Min.</span>
-      </div>
-    </div>
+    <video
+      className={fd.video}
+      src="/videos/funktionen/5-taskey-share.mp4"
+      autoPlay={!reduced}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label="Taskey Share: Grundriss, in dem gereinigte Räume grün aufleuchten"
+    />
   );
 }
 
-/* ── Demo 7 · Mobile App ────────────────────────────────────── */
+/* ── Demo 7 · Mobile App (Referenz: App-Ansicht in 4-taskey-zeiterfassung) ── */
 
 function DemoMobile() {
+  const nav = ["Tagesplan", "Einsatz", "Monatsplan", "Objekte", "Profil"];
   return (
-    <div className="p-5 md:p-6 grid md:grid-cols-[1fr_280px] gap-6 items-start">
-      <div className="flex flex-col gap-3">
+    <div className="p-5 md:p-6 grid md:grid-cols-[1fr_260px] gap-6 items-start">
+      <div className="hidden md:flex flex-col gap-3">
         <SectionHeadline eyebrow="iOS · 1-Hand-Bedienung" title="Reinigungskraft-Ansicht" />
         <ul className="flex flex-col gap-2.5">
           {[
@@ -633,11 +901,7 @@ function DemoMobile() {
             "Krankmeldung direkt an Objektleitung",
             "Rollen für Mitarbeiter und Subunternehmer",
           ].map((t) => (
-            <li
-              key={t}
-              className="flex items-start gap-2 text-[0.92rem] leading-[1.55]"
-              style={{ color: "var(--ts-ink-soft)" }}
-            >
+            <li key={t} className="flex items-start gap-2 text-[0.92rem] leading-[1.55]" style={{ color: "var(--ts-ink-soft)" }}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="mt-0.5 shrink-0">
                 <path d="M3.5 8.2l3 3L12.5 5" stroke="var(--brand-signal-blue)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -646,87 +910,38 @@ function DemoMobile() {
           ))}
         </ul>
       </div>
-      <div
-        style={{
-          borderRadius: 32,
-          border: "10px solid var(--brand-navy)",
-          background: "var(--brand-navy)",
-          padding: 4,
-          boxShadow: "0 20px 50px -12px rgba(16, 35, 60, 0.3)",
-          margin: "0 auto",
-          width: "100%",
-          maxWidth: 260,
-        }}
-      >
-        <div
-          style={{
-            borderRadius: 22,
-            background: "#F7F9FC",
-            overflow: "hidden",
-            minHeight: 420,
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <div style={{ padding: "0.9rem 1rem 0.5rem", display: "flex", justifyContent: "space-between", fontSize: "0.7rem", color: "var(--ts-ink)" }}>
-            <span style={{ fontWeight: 600 }}>9:41</span>
-            <span>●●● ● ●</span>
+      <div className={fd.phone}>
+        <div className={fd.screen}>
+          <div className={fd.status}>
+            <b>07:42</b>
+            <i aria-hidden />
           </div>
-          <div style={{ padding: "0.3rem 1rem 0.8rem" }}>
-            <div className="ts-eyebrow" style={{ fontSize: "0.58rem" }}>Taskey</div>
-            <div className="ts-headline" style={{ fontSize: "1.05rem", color: "var(--ts-ink)", marginTop: 2 }}>
-              Objekt tippen
-            </div>
+          <div style={{ textAlign: "center", padding: "1.1rem 0.8rem 0" }}>
+            <div style={{ fontSize: "0.56rem", letterSpacing: "0.12em", color: C.mut, fontWeight: 600 }}>EINSATZ STARTEN</div>
+            <div style={{ fontSize: "1.15rem", fontWeight: 700, color: C.ink, marginTop: 4 }}>Check-in</div>
+            <div style={{ fontSize: "0.68rem", color: C.mut, marginTop: 2 }}>Moselstraße 49, Trier · Treppenhaus</div>
           </div>
-          <div style={{ flex: 1, display: "grid", placeItems: "center", padding: "1rem" }}>
-            <div
-              style={{
-                width: 120,
-                height: 120,
-                borderRadius: 999,
-                background: "rgba(47, 91, 148, 0.1)",
-                border: "2px solid var(--brand-signal-blue)",
-                display: "grid",
-                placeItems: "center",
-                position: "relative",
-              }}
-            >
-              <span
-                style={{
-                  position: "absolute",
-                  inset: -8,
-                  borderRadius: 999,
-                  border: "2px solid var(--brand-sky)",
-                  opacity: 0.5,
-                }}
-              />
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden>
-                <circle cx="24" cy="24" r="4" fill="var(--brand-signal-blue)" />
-                <path d="M16 24a8 8 0 0116 0" stroke="var(--brand-signal-blue)" strokeWidth="2" fill="none" strokeLinecap="round" />
-                <path d="M10 24a14 14 0 0128 0" stroke="var(--brand-signal-blue)" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.55" />
+          <div style={{ flex: 1, display: "grid", placeItems: "center" }}>
+            <div className={fd.nfc}>
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden>
+                <circle cx="24" cy="24" r="4" fill={C.blue} />
+                <path d="M16 24a8 8 0 0116 0" stroke={C.blue} strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M10 24a14 14 0 0128 0" stroke={C.blue} strokeWidth="2.5" strokeLinecap="round" opacity="0.55" />
               </svg>
             </div>
           </div>
-          <div style={{ padding: "0.4rem 1rem 1rem", textAlign: "center" }}>
-            <div style={{ fontSize: "0.78rem", color: "var(--ts-ink)", fontWeight: 500 }}>
-              Bürohaus Rheinallee
-            </div>
-            <div style={{ fontSize: "0.66rem", color: "var(--ts-ink-muted)", marginTop: 2 }}>
-              Schicht 08:00–11:00 · Grundreinigung
-            </div>
-            <div
-              style={{
-                marginTop: "0.7rem",
-                padding: "0.55rem 1rem",
-                borderRadius: 999,
-                background: "var(--brand-signal-blue)",
-                color: "#fff",
-                fontSize: "0.78rem",
-                fontWeight: 600,
-              }}
-            >
-              Check-in per NFC
-            </div>
+          <div style={{ textAlign: "center", fontSize: "0.72rem", color: C.mut, padding: "0 1rem 1rem", lineHeight: 1.4 }}>
+            Halte dein Handy
+            <br />
+            an den NFC-Tag
+          </div>
+          <div className={fd.tabbar}>
+            {nav.map((n) => (
+              <span key={n} style={{ color: n === "Einsatz" ? C.blue : C.mut }}>
+                <i style={{ background: n === "Einsatz" ? C.blue : "#c4c4c9" }} />
+                {n}
+              </span>
+            ))}
           </div>
         </div>
       </div>
@@ -735,77 +950,50 @@ function DemoMobile() {
 }
 
 /* ── Demo 8 · Sicherheit / Audit-Trail ──────────────────────── */
+/* In den Dashboard-Aufnahmen nicht enthalten: Aufbau bleibt, Namen,
+   Rollen, Objekte und Rechnungsnummern wie im Dashboard. */
 
 function DemoSicherheit() {
   const entries = [
-    { time: "11:42:03", actor: "Chef-Admin", what: "Rolle 'Objektleitung' an marina.koehler zugewiesen", kind: "perm" as const },
+    { time: "11:42:03", actor: "Geschäftsführer", what: "Rolle 'Reinigungskraft' an Selin Aydın zugewiesen", kind: "perm" as const },
     { time: "11:39:17", actor: "System", what: "Backup erstellt · EU-DE-1 · 1,8 GB", kind: "sys" as const },
-    { time: "11:35:42", actor: "Objektleitung", what: "Angebot RE-2026-1142 freigegeben", kind: "data" as const },
-    { time: "11:21:08", actor: "System", what: "DATEV-Export 10/2026 erzeugt", kind: "sys" as const },
-    { time: "11:05:52", actor: "Mitarbeiter · yusuf.demir", what: "Check-in NFC · Logistikhalle Süd", kind: "track" as const },
-    { time: "10:58:14", actor: "Admin", what: "IP-Allowlist aktualisiert · +1 Eintrag", kind: "sec" as const },
+    { time: "11:35:42", actor: "Geschäftsführer", what: "Rechnung RE0046 finalisiert", kind: "data" as const },
+    { time: "11:21:08", actor: "System", what: "DATEV Export 10/2026 erzeugt", kind: "sys" as const },
+    { time: "11:05:52", actor: "Reinigungskraft · Ramona Biewer", what: "Check-in NFC · Treppenhaus Moselstraße 49, Trier", kind: "track" as const },
+    { time: "10:58:14", actor: "Geschäftsführer", what: "IP-Allowlist aktualisiert · +1 Eintrag", kind: "sec" as const },
     { time: "10:44:30", actor: "System", what: "Session-Token rotiert", kind: "sys" as const },
   ];
   const kindTint: Record<"perm" | "sys" | "data" | "track" | "sec", { bg: string; fg: string; label: string }> = {
-    perm: { bg: "rgba(47, 91, 148, 0.08)", fg: "var(--brand-signal-blue)", label: "Berechtigung" },
-    sys: { bg: "rgba(16, 35, 60, 0.05)", fg: "var(--ts-ink-muted)", label: "System" },
-    data: { bg: "rgba(31, 122, 58, 0.08)", fg: "var(--ts-good)", label: "Daten" },
-    track: { bg: "rgba(159, 197, 232, 0.2)", fg: "var(--brand-signal-blue)", label: "Tracking" },
-    sec: { bg: "rgba(180, 35, 35, 0.08)", fg: "var(--ts-bad)", label: "Sicherheit" },
+    perm: { bg: C.blueBg, fg: C.blue, label: "Berechtigung" },
+    sys: { bg: "#f4f4f5", fg: C.mut, label: "System" },
+    data: { bg: C.greenBg, fg: C.green, label: "Daten" },
+    track: { bg: C.blueBg, fg: C.blue, label: "Tracking" },
+    sec: { bg: C.redBg, fg: C.red, label: "Sicherheit" },
   };
 
   return (
     <div className="p-5 md:p-6 flex flex-col gap-4">
-      <StatRow stats={[
-        { label: "Server", value: "DE", foot: "zertifizierte RZ" },
-        { label: "Rollen", value: "6", foot: "granular konfigurierbar" },
-        { label: "Audit-Einträge heute", value: "248", foot: "unveränderlich" },
-      ]} />
+      <Kpis
+        items={[
+          { label: "Server", value: "DE", foot: "zertifizierte RZ" },
+          { label: "Rollen", value: "6", foot: "granular konfigurierbar" },
+          { label: "Audit-Einträge heute", value: "248", foot: "unveränderlich" },
+        ]}
+      />
       <SectionHeadline eyebrow="Letzte 24 Stunden · 248 Ereignisse" title="Audit-Trail" />
-      <div
-        style={{
-          border: "1px solid var(--ts-line)",
-          borderRadius: 8,
-          overflow: "hidden",
-          background: "#fff",
-          fontFamily: "ui-monospace, SFMono-Regular, monospace",
-        }}
-      >
+      <div style={{ border: `1px solid ${C.line}`, borderRadius: 8, overflow: "hidden", background: "#fff" }}>
         {entries.map((e, i) => {
           const t = kindTint[e.kind];
           return (
-            <div
-              key={i}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "88px 110px 1fr auto",
-                padding: "0.6rem 0.9rem",
-                fontSize: "0.78rem",
-                borderTop: i === 0 ? "none" : "1px solid var(--ts-line)",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ color: "var(--ts-ink-faint)" }}>{e.time}</span>
-              <span
-                style={{
-                  background: t.bg,
-                  color: t.fg,
-                  padding: "0.1rem 0.45rem",
-                  borderRadius: 4,
-                  fontSize: "0.65rem",
-                  fontFamily: "var(--ts-font-sans)",
-                  fontWeight: 500,
-                  justifySelf: "start",
-                }}
-              >
+            <div key={e.time} className={fd.audit} style={{ borderTop: i === 0 ? "none" : `1px solid ${C.line}` }}>
+              <span style={{ color: C.faint, fontFamily: "ui-monospace, SFMono-Regular, monospace" }}>{e.time}</span>
+              <span className={fd.auditKind} style={{ background: t.bg, color: t.fg }}>
                 {t.label}
               </span>
-              <span style={{ color: "var(--ts-ink)", fontFamily: "var(--ts-font-sans)" }}>
-                <span style={{ color: "var(--ts-ink-muted)" }}>{e.actor} · </span>
+              <span className="min-w-0 truncate" style={{ color: C.ink }}>
+                <span style={{ color: C.mut }}>{e.actor} · </span>
                 {e.what}
               </span>
-              <span style={{ color: "var(--ts-ink-faint)" }}>✓</span>
             </div>
           );
         })}
@@ -830,115 +1018,6 @@ function SectionHeadline({ eyebrow, title }: { eyebrow: string; title: string })
       <span className="text-[0.72rem]" style={{ color: "var(--ts-ink-faint)" }}>
         Aktualisiert vor 2 Min.
       </span>
-    </div>
-  );
-}
-
-function StatRow({ stats }: { stats: { label: string; value: string; foot?: string }[] }) {
-  return (
-    <div
-      className="grid gap-3"
-      style={{
-        gridTemplateColumns: `repeat(${stats.length}, minmax(0, 1fr))`,
-      }}
-    >
-      {stats.map((s) => (
-        <div
-          key={s.label}
-          style={{
-            background: "var(--ts-canvas-tinted)",
-            border: "1px solid var(--ts-line)",
-            borderRadius: 6,
-            padding: "0.65rem 0.8rem",
-          }}
-        >
-          <div className="text-[0.68rem] font-semibold uppercase" style={{ color: "var(--ts-ink-muted)", letterSpacing: "0.12em" }}>
-            {s.label}
-          </div>
-          <div className="ts-headline mt-1" style={{ fontSize: "1.1rem", color: "var(--ts-ink)" }}>
-            {s.value}
-          </div>
-          {s.foot && (
-            <div className="text-[0.68rem] mt-0.5" style={{ color: "var(--ts-ink-muted)" }}>
-              {s.foot}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-type Status = "ok" | "warn" | "bad";
-
-function DemoRow({
-  status,
-  title,
-  sub,
-  statusLabel,
-  trailing,
-  progress,
-}: {
-  status: Status;
-  title: string;
-  sub: string;
-  statusLabel: string;
-  trailing?: string;
-  progress?: number;
-}) {
-  const tone: Record<Status, { bg: string; fg: string; border: string; dot: string }> = {
-    ok: { bg: "rgba(31, 122, 58, 0.08)", fg: "var(--ts-good)", border: "rgba(31, 122, 58, 0.22)", dot: "#22C55E" },
-    warn: { bg: "rgba(162, 91, 9, 0.08)", fg: "var(--ts-warn)", border: "rgba(162, 91, 9, 0.22)", dot: "#F59E0B" },
-    bad: { bg: "rgba(180, 35, 35, 0.08)", fg: "var(--ts-bad)", border: "rgba(180, 35, 35, 0.22)", dot: "#E94B6A" },
-  };
-  const s = tone[status];
-  return (
-    <div
-      className="grid gap-3 items-center px-3 py-3"
-      style={{
-        gridTemplateColumns: "minmax(0, 1fr) auto",
-        borderRadius: 8,
-        border: "1px solid var(--ts-line)",
-        background: "#fff",
-      }}
-    >
-      <div className="min-w-0">
-        <div className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full shrink-0" style={{ background: s.dot }} />
-          <span className="text-[0.95rem] font-medium truncate" style={{ color: "var(--ts-ink)" }}>
-            {title}
-          </span>
-        </div>
-        <div className="mt-0.5 text-[0.78rem] truncate" style={{ color: "var(--ts-ink-muted)" }}>
-          {sub}
-        </div>
-        {typeof progress === "number" && (
-          <div className="mt-2 relative overflow-hidden" style={{ height: 5, borderRadius: 999, background: "rgba(16, 35, 60, 0.08)" }}>
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: `${progress}%`,
-                background: "linear-gradient(90deg, var(--brand-signal-blue), var(--brand-sky))",
-                borderRadius: "inherit",
-              }}
-            />
-          </div>
-        )}
-      </div>
-      <div className="flex flex-col items-end gap-1 shrink-0">
-        <span
-          className="text-[0.68rem] px-2 py-0.5 rounded-full border whitespace-nowrap"
-          style={{ background: s.bg, color: s.fg, borderColor: s.border, fontWeight: 500 }}
-        >
-          {statusLabel}
-        </span>
-        {trailing && (
-          <span className="text-[0.72rem]" style={{ color: "var(--ts-ink-muted)", fontFamily: "ui-monospace, SFMono-Regular, monospace" }}>
-            {trailing}
-          </span>
-        )}
-      </div>
     </div>
   );
 }

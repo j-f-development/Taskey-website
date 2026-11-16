@@ -141,7 +141,7 @@ export default function CommunicationUSP({ variant = "full" }: { variant?: Varia
           {cards.map((c, i) => (
             <div
               key={i}
-              className="group relative rounded-3xl bg-white border border-slate-200/70 overflow-hidden flex flex-col shadow-[0_8px_30px_-12px_rgba(15,23,42,0.15)] transition-transform duration-500 hover:-translate-y-1"
+              className="group relative rounded-3xl bg-white border border-slate-200/70 overflow-hidden flex flex-col shadow-[0_8px_30px_-12px_rgba(15,23,42,0.15)] transition-transform duration-[var(--motion-press)] hover:-translate-y-1"
             >
               {/* Image-Block */}
               <div className="relative aspect-[4/3] overflow-hidden">
@@ -150,7 +150,7 @@ export default function CommunicationUSP({ variant = "full" }: { variant?: Varia
                   src={c.image}
                   alt={c.alt}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[var(--motion-reveal)] group-hover:scale-105"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white via-white/40 to-transparent" />
               </div>

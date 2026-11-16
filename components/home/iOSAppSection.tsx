@@ -79,7 +79,7 @@ export default function IOSAppSection() {
             <div className="absolute -inset-12 rounded-[4rem] border border-slate-200/60 hidden md:block" />
             <div className="absolute -inset-20 rounded-[5rem] border border-slate-100/70 hidden md:block" />
 
-            <RevealBlur offset={140} blur={26} duration={1400}>
+            <RevealBlur>
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/25 border-[6px] border-slate-900 bg-black aspect-[9/19]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

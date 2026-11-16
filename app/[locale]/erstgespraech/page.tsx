@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { FaqAccordion } from "@/components/FaqAccordion";
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 import Link from "next/link";
 import SignupButton from "@/components/landing/SignupButton";
 import {
@@ -76,29 +78,29 @@ const BODY: Record<Locale, Block> = {
         title: "Ihr Betrieb",
         body:
           "Kurze Standortaufnahme. Objekte, Teamgröße, Auftraggeberstruktur und bestehende Systeme.",
-        image: "/sections/transparenz-kunde.png",
-        alt: "Standortaufnahme eines Gebäudereinigungs-Betriebs im Erstgespräch mit Taskey",
+        image: "/images/erstgespraech/agenda-betrieb.webp",
+        alt: "Live-Übersicht im Taskey-Dashboard: Mitarbeitende und ihre laufenden Einsätze pro Objekt",
       },
       {
         title: "Live-Demo mit Ihren Daten",
         body:
           "Wir öffnen einen Testworkspace mit Beispielobjekten in Ihrer Struktur. NFC-Zeiterfassung, Einsatzplanung, Angebote, Rechnungen und Kundenportal im realen Flow.",
-        image: "/sections/einsatzplanung.png",
-        alt: "Live-Demo der Taskey-Einsatzplanung mit Beispielobjekten eines Gebäudereinigers",
+        image: "/images/erstgespraech/agenda-live-demo.webp",
+        alt: "Personalplanung im Taskey-Dashboard: Wochenansicht mit Schichten pro Mitarbeiter",
       },
       {
         title: "Rollout und Integration",
         body:
           "Wir klären, ob und wie SSO, DATEV, HR und ERP eingebunden werden. Konkreter Rollout-Plan am Ende des Calls.",
-        image: "/sections/datev-export.webp",
-        alt: "Integration von DATEV, SSO, HR und ERP in Taskey besprechen",
+        image: "/images/erstgespraech/agenda-integration.webp",
+        alt: "DATEV-Export vor den Auto-Rechnungen im Taskey-Dashboard",
       },
       {
         title: "Nächster Schritt",
         body:
           "Account erstellen und loslegen oder Pilot auf zwei bis drei Objekten. Keine Entscheidung im Call nötig.",
-        image: "/sections/nachweisbarkeit.png",
-        alt: "Nächster Schritt nach dem Taskey-Erstgespräch · Account anlegen oder Pilot starten",
+        image: "/images/erstgespraech/agenda-naechster-schritt.webp",
+        alt: "Finanzübersicht im Taskey-Workspace mit Einnahmen, Ausgaben und Ergebnis",
       },
     ],
     signupH2: "Direkt im Workspace starten",
@@ -164,29 +166,29 @@ const BODY: Record<Locale, Block> = {
         title: "Your operation",
         body:
           "Short snapshot. Sites, team size, client structure and existing systems.",
-        image: "/sections/transparenz-kunde.png",
-        alt: "Snapshot of a cleaning operation on a Taskey discovery call",
+        image: "/images/erstgespraech/agenda-betrieb.webp",
+        alt: "Taskey live overview: employees and their running jobs per site",
       },
       {
         title: "Live demo with your data",
         body:
           "We open a test workspace with example sites in your structure. NFC time tracking, scheduling, quotes, invoicing and client portal in the real flow.",
-        image: "/sections/einsatzplanung.png",
-        alt: "Live demo of Taskey scheduling with example sites of a cleaning operator",
+        image: "/images/erstgespraech/agenda-live-demo.webp",
+        alt: "Taskey staff planning: week view with shifts per employee",
       },
       {
         title: "Rollout and integration",
         body:
           "SSO, DATEV, HR and ERP integration options. Concrete rollout plan by the end of the call.",
-        image: "/sections/datev-export.webp",
-        alt: "Discussing DATEV, SSO, HR and ERP integration with Taskey",
+        image: "/images/erstgespraech/agenda-integration.webp",
+        alt: "DATEV export in front of the Taskey auto invoices",
       },
       {
         title: "Next step",
         body:
           "Create an account and start, or run a pilot on two or three sites. No decision required in the call.",
-        image: "/sections/nachweisbarkeit.png",
-        alt: "Next step after a Taskey discovery call · create an account or run a pilot",
+        image: "/images/erstgespraech/agenda-naechster-schritt.webp",
+        alt: "Taskey workspace finance overview with income, expenses and result",
       },
     ],
     signupH2: "Straight into the workspace",
@@ -252,29 +254,29 @@ const BODY: Record<Locale, Block> = {
         title: "Votre exploitation",
         body:
           "Point court. Sites, taille d’équipe, structure clients et systèmes existants.",
-        image: "/sections/transparenz-kunde.png",
-        alt: "Point sur une exploitation de propreté lors d’un échange Taskey",
+        image: "/images/erstgespraech/agenda-betrieb.webp",
+        alt: "Vue en direct Taskey : employés et interventions en cours par site",
       },
       {
         title: "Démo live avec vos données",
         body:
           "Nous ouvrons un workspace de test avec des sites d’exemple à votre structure. Pointage NFC, planning, devis, facturation et portail client dans le flux réel.",
-        image: "/sections/einsatzplanung.png",
-        alt: "Démo live du planning Taskey avec sites d’exemple d’une entreprise de propreté",
+        image: "/images/erstgespraech/agenda-live-demo.webp",
+        alt: "Planification du personnel Taskey : vue semaine avec les créneaux par employé",
       },
       {
         title: "Déploiement et intégration",
         body:
           "SSO, DATEV, RH et ERP. Plan de déploiement concret à la fin de l’échange.",
-        image: "/sections/datev-export.webp",
-        alt: "Discussion des intégrations DATEV, SSO, RH et ERP avec Taskey",
+        image: "/images/erstgespraech/agenda-integration.webp",
+        alt: "Export DATEV devant les factures automatiques Taskey",
       },
       {
         title: "Prochaine étape",
         body:
           "Créer un compte et démarrer, ou lancer un pilote sur deux ou trois sites. Aucune décision requise pendant l’échange.",
-        image: "/sections/nachweisbarkeit.png",
-        alt: "Prochaine étape après l’échange Taskey · créer un compte ou lancer un pilote",
+        image: "/images/erstgespraech/agenda-naechster-schritt.webp",
+        alt: "Vue financière du workspace Taskey : recettes, dépenses et résultat",
       },
     ],
     signupH2: "Directement dans le workspace",
@@ -392,11 +394,11 @@ export default async function ErstgespraechPage({
           <p className="apl-lede mt-5 mx-auto" style={{ maxWidth: "58ch", color: "#d2d2d7" }}>
             {c.lead}
           </p>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-5">
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <SignupButton size="lg" label={c.signupCta} utm="erstgespraech_hero" />
-            <Link href="#kalender" className="apl-btn apl-btn-ghost apl-btn-lg">
+            <Button href="#kalender" variant="secondary" tone="dark">
               {c.bookCta}
-            </Link>
+            </Button>
           </div>
           <p className="mt-5 apl-caption" style={{ color: "#8d8d92" }}>
             {c.ctaNote}
@@ -413,13 +415,13 @@ export default async function ErstgespraechPage({
           <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "58ch" }}>
             {c.bookBody}
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-5">
-            <Link href="mailto:info@taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Button href="mailto:info@taskeyapp.com" variant="primary">
               info@taskeyapp.com
-            </Link>
-            <Link href="tel:+4915168488999" className="apl-btn apl-btn-secondary apl-btn-lg">
+            </Button>
+            <Button href="tel:+4915168488999" variant="secondary">
               +49 151 68488999
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -435,8 +437,15 @@ export default async function ErstgespraechPage({
           <div className="apl-duo">
             {c.agenda.map((a) => (
               <article key={a.title} className="apl-tile apl-tile-canvas overflow-hidden p-0">
-                <div style={{ position: "relative", aspectRatio: "16 / 9", background: "var(--apl-canvas-soft)" }}>
-                  <Image src={a.image} alt={a.alt} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                <div style={{ position: "relative", aspectRatio: "16 / 10", background: "var(--apl-canvas-soft)" }}>
+                  <Image
+                    src={a.image}
+                    alt={a.alt}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    style={{ objectFit: "cover" }}
+                  />
                 </div>
                 <div className="apl-tile-inner items-start text-left">
                   <h3 className="apl-headline" style={{ fontSize: "1.25rem" }}>
@@ -459,11 +468,11 @@ export default async function ErstgespraechPage({
           <p className="apl-lede mt-4 mx-auto" style={{ maxWidth: "58ch" }}>
             {c.signupBody}
           </p>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-5">
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <SignupButton size="lg" label={c.signupCta} utm="erstgespraech_signup_block" />
-            <Link href="#kalender" className="apl-btn apl-btn-secondary apl-btn-lg">
+            <Button href="#kalender" variant="secondary">
               {c.bookCta}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -480,7 +489,7 @@ export default async function ErstgespraechPage({
                 key={l.href}
                 href={l.href}
                 className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
-                style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+                style={{ transitionProperty: "transform", transitionDuration: "var(--motion-press)", transitionTimingFunction: "var(--ease-out)" }}
               >
                 <div className="apl-tile-inner items-start text-left">
                   <h3 className="apl-headline" style={{ fontSize: "1.0625rem" }}>
@@ -502,15 +511,9 @@ export default async function ErstgespraechPage({
             {c.faqH2}
           </h2>
           <div className="mt-8 flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
-            {c.faq.map((f) => (
-              <details key={f.q} className="group py-5">
-                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
-                  <span className="faq-question">{f.q}</span>
-                  <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">+</span>
-                </summary>
-                <p className="faq-answer apl-body mt-3 max-w-[70ch]">{f.a}</p>
-              </details>
-            ))}
+            <FaqAccordion
+              items={c.faq.map((f) => ({ q: f.q, a: f.a }))}
+            />
           </div>
         </div>
       </section>

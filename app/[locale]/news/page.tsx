@@ -3,6 +3,7 @@ import Link from "@/components/LocaleLink";
 import { posts, getCategoryLabel, type PostCategory, type Locale } from "./posts";
 import { getLocalizedPost } from "./i18n";
 import { buildMetadata, pickLocale, type PageCopy } from "@/lib/i18n-metadata";
+import Button from "@/components/ui/Button";
 
 const COPY: PageCopy = {
   de: {
@@ -154,7 +155,7 @@ export default async function NewsPage({
                   key={post.slug}
                   href={`/news/${post.slug}`}
                   className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
-                  style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+                  style={{ transitionProperty: "transform", transitionDuration: "var(--motion-press)", transitionTimingFunction: "var(--ease-out)" }}
                 >
                   <div className="apl-tile-inner items-start text-left">
                     <div className="flex items-center gap-3">
@@ -221,14 +222,9 @@ export default async function NewsPage({
             {ui.ctaBody}
           </p>
           <div className="mt-7 flex justify-center">
-            <Link
-              href="https://signup.taskeyapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="apl-btn apl-btn-primary apl-btn-lg"
-            >
+            <Button href="https://signup.taskeyapp.com" target="_blank" rel="noopener noreferrer" variant="primary">
               {ui.ctaButton}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

@@ -307,7 +307,7 @@ export default function AllInOneUSP({ variant = "full" }: { variant?: Variant })
                 <div
                   key={`img-${active}`}
                   className="relative w-full h-full flex items-center justify-center"
-                  style={{ animation: "allinone-fade 0.7s ease-out" }}
+                  style={{ animation: "allinone-fade var(--motion-reveal) var(--ease-out)" }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

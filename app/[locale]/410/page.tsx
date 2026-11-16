@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pickLocale, type Locale } from "@/lib/i18n-metadata";
+import Button from "@/components/ui/Button";
 
 const COPY: Record<Locale, {
   metaTitle: string;
@@ -62,7 +63,7 @@ export default async function Page({
       <p className="text-lg text-slate-600 mb-8 max-w-xl text-center">
         {copy.body}
       </p>
-      <a href={homeHref} className="px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white rounded-lg font-semibold transition">{copy.cta}</a>
+      <Button href={homeHref} variant="primary">{copy.cta}</Button>
     </main>
   );
 }

@@ -102,7 +102,7 @@ export default async function MarktvergleichIndex({
                   key={cmp.slug}
                   href={lhref(locale, `${path}/${cmp.slug}`)}
                   className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
-                  style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+                  style={{ transitionProperty: "transform", transitionDuration: "var(--motion-press)", transitionTimingFunction: "var(--ease-out)" }}
                 >
                   <div className="apl-tile-inner items-start text-left">
                     <p className="apl-eyebrow">{cmp.branch}</p>

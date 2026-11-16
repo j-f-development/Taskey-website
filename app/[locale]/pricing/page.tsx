@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FaqAccordion } from "@/components/FaqAccordion";
 import PricingClient from "./pricing-client-apple";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { buildMetadata, pickLocale, canonical, type PageCopy } from "@/lib/i18n-metadata";
@@ -45,7 +46,7 @@ const beginnerProduct = {
   "@type": "Product",
   "@id": "https://www.taskeyapp.com/pricing#beginner",
   "name": "Taskey Beginner",
-  "description": "Reinigungssoftware für kleine Betriebe: NFC-Zeiterfassung, Foto-Nachweise, Finanztools, Server in Deutschland. Ab 69 € pro Monat.",
+  "description": "Reinigungssoftware für kleine Betriebe: NFC-Zeiterfassung, Foto-Nachweise, Finanztools, Server in Deutschland, bis 50 Objekte. Ab 69 € pro Monat.",
   "brand": BRAND,
   "category": "Cleaning Management Software",
   "audience": { "@type": "Audience", "audienceType": "Small cleaning businesses (1–5 employees)" },
@@ -182,17 +183,9 @@ function PricingFaqSection({
         <p className="apl-eyebrow mb-2">{kicker}</p>
         <h2 className="apl-display apl-display-lg max-w-[22ch]">{title}</h2>
         <div className="mt-8 flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
-          {items.map((faq) => (
-            <details key={faq.q} className="group py-5">
-              <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
-                <span className="faq-question">{faq.q}</span>
-                <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">
-                  +
-                </span>
-              </summary>
-              <p className="faq-answer apl-body mt-3 max-w-[70ch]">{faq.a}</p>
-            </details>
-          ))}
+          <FaqAccordion
+            items={items.map((faq) => ({ q: faq.q, a: faq.a }))}
+          />
         </div>
       </div>
     </section>

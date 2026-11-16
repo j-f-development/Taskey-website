@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   buildMetadata,
@@ -13,6 +12,7 @@ import {
 import { comparisons, getComparisonBySlug } from "@/lib/seo/marktvergleich";
 import { isIndexableComparison } from "@/lib/seo/helpers";
 import { lhref, absoluteUrl } from "@/lib/seo/href";
+import Button from "@/components/ui/Button";
 
 const SUPPORTED: Locale[] = ["de", "en", "fr"];
 
@@ -175,12 +175,12 @@ export default async function MarktvergleichPage({
             {c.ctaBody}
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-5">
-            <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
+            <Button href="https://signup.taskeyapp.com" variant="primary">
               {c.ctaPrimary}
-            </a>
-            <Link href={lhref(locale, "/geo")} className="apl-btn apl-btn-ghost apl-btn-lg">
+            </Button>
+            <Button href={lhref(locale, "/geo")} variant="secondary" tone="dark">
               {locale === "de" ? "GEO-Ansatz ansehen" : locale === "en" ? "See GEO approach" : "Voir l'approche GEO"}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

@@ -1,11 +1,13 @@
 "use client";
 
+import { FaqAccordion } from "@/components/FaqAccordion";
 import Link from "@/components/LocaleLink";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { useLanguage } from "@/context/LanguageContext";
 import NewsletterForm, {
   type NewsletterLabels,
 } from "@/components/newsletter/NewsletterForm";
+import Button from "@/components/ui/Button";
 
 const CONTENT = {
   de: {
@@ -325,17 +327,12 @@ export default function LandingPageTemplate({
           )}
 
           <div className="mt-7 flex flex-wrap gap-4">
-            <Link
-              href="https://signup.taskeyapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="apl-btn apl-btn-primary apl-btn-lg"
-            >
+            <Button href="https://signup.taskeyapp.com" target="_blank" rel="noopener noreferrer" variant="primary">
               {c.heroPrimaryCta}
-            </Link>
-            <Link href="/features" className="apl-btn apl-btn-secondary apl-btn-lg">
+            </Button>
+            <Button href="/features" variant="secondary">
               {c.heroSecondaryCta}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -415,19 +412,9 @@ export default function LandingPageTemplate({
             {c.faqHeading}
           </h2>
           <div className="mt-8 flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
-            {faqs.map((faq) => (
-              <details
-                key={faq.question}
-                id={slugifyQuestion(faq.question)}
-                className="group py-5 scroll-mt-20"
-              >
-                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
-                  <span>{faq.question}</span>
-                  <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">+</span>
-                </summary>
-                <p className="apl-body mt-3 max-w-[70ch]">{faq.answer}</p>
-              </details>
-            ))}
+            <FaqAccordion
+              items={faqs.map((faq) => ({ q: faq.question, a: faq.answer, id: slugifyQuestion(faq.question) }))}
+            />
           </div>
         </div>
       </section>
@@ -446,7 +433,7 @@ export default function LandingPageTemplate({
                   key={r.href}
                   href={r.href}
                   className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
-                  style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+                  style={{ transitionProperty: "transform", transitionDuration: "var(--motion-press)", transitionTimingFunction: "var(--ease-out)" }}
                 >
                   <div className="apl-tile-inner items-start text-left">
                     <h3 className="apl-headline" style={{ fontSize: "1.0625rem" }}>
@@ -485,14 +472,9 @@ export default function LandingPageTemplate({
             {resolvedCtaSubtitle}
           </p>
           <div className="mt-7 flex justify-center">
-            <Link
-              href="https://signup.taskeyapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="apl-btn apl-btn-primary apl-btn-lg"
-            >
+            <Button href="https://signup.taskeyapp.com" target="_blank" rel="noopener noreferrer" variant="primary">
               {c.bottomCta}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import Link from "next/link";
-import { BrandDot } from "@/components/BrandDot";
+import { FaqAccordion } from "@/components/FaqAccordion";
+import { BrandDot, WithBrandDot } from "@/components/BrandDot";
+import Button from "@/components/ui/Button";
 
 type Tone = "canvas" | "elev" | "tinted" | "ink";
 type Size = "sm" | "md" | "lg";
@@ -110,8 +112,14 @@ export function ShareHeadline({
         maxWidth,
       }}
     >
-      {children}
-      {dot ? <BrandDot /> : null}
+      {dot && typeof children === "string" ? (
+        <WithBrandDot>{children}</WithBrandDot>
+      ) : (
+        <>
+          {children}
+          {dot ? <BrandDot /> : null}
+        </>
+      )}
     </Tag>
   );
 }
@@ -189,31 +197,18 @@ export function ShareButton({
   external?: boolean;
   children: ReactNode;
 }) {
-  const cls = [
-    "ts-btn",
-    variant === "primary"
-      ? "ts-btn-primary"
-      : variant === "ghost"
-      ? "ts-btn-ghost"
-      : variant === "onink"
-      ? "ts-btn-onink"
-      : "ts-btn-onink-ghost",
-    size === "sm" ? "ts-btn-sm" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  if (external) {
-    return (
-      <a href={href} className={cls} target="_blank" rel="noopener noreferrer">
-        {children}
-      </a>
-    );
-  }
+  // Einheitliches Button-System: primary/onink → Primär, ghost → Sekundär, onink-ghost → Sekundär auf Dunkel.
+  void size;
+  const primary = variant === "primary" || variant === "onink";
   return (
-    <Link href={href} className={cls}>
+    <Button
+      href={href}
+      variant={primary ? "primary" : "secondary"}
+      tone={variant === "onink-ghost" ? "dark" : "light"}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
       {children}
-    </Link>
+    </Button>
   );
 }
 
@@ -292,78 +287,60 @@ export function ShareCard({
   );
 }
 
+const SHARE_FAQ_LOOK = {
+  list: "flex flex-col divide-y overflow-hidden",
+  listStyle: {
+    border: "1px solid var(--ts-line)",
+    borderRadius: "var(--ts-r-panel)",
+    background: "var(--ts-canvas-elev)",
+  },
+  item: "relative",
+  button:
+    "faq-row w-full flex items-center justify-between gap-6 text-left px-6 md:px-8 py-5 md:py-6 cursor-pointer transition-colors hover:bg-[var(--ts-canvas-tinted)] aria-expanded:bg-[var(--ts-canvas-tinted)]",
+  question: "ts-headline faq-question",
+  questionStyle: { fontSize: "1.02rem", color: "var(--ts-ink)" },
+  answer: "faq-answer px-6 md:px-8 pt-4 pb-6 md:pb-7 text-[0.98rem] leading-[1.65]",
+  answerStyle: { color: "var(--ts-ink-muted)", maxWidth: "calc(70ch + 4rem)" },
+  icon: "",
+};
+
+function ShareFaqIcon({ open }: { open: boolean }) {
+  return (
+    <span
+      aria-hidden
+      className="shrink-0 grid place-items-center h-8 w-8"
+      style={{
+        borderRadius: 999,
+        border: open ? "1px solid var(--ts-ink)" : "1px solid var(--ts-line-strong)",
+        background: open ? "var(--ts-ink)" : "#fff",
+        color: open ? "#fff" : "var(--ts-ink-muted)",
+        transform: open ? "rotate(45deg)" : "none",
+        transition:
+          "transform var(--motion-reveal) var(--ease-out), background-color var(--motion-press) var(--ease-out), border-color var(--motion-press) var(--ease-out), color var(--motion-press) var(--ease-out)",
+      }}
+    >
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
+        <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      </svg>
+    </span>
+  );
+}
+
+/** FAQ im Share-Stil: ganze Zeile klickbar, Bewegung nach MOTION.md (siehe FaqAccordion). */
 export function ShareAccordion({
   items,
-  idPrefix = "acc",
 }: {
   items: { q: ReactNode; a: ReactNode }[];
   idPrefix?: string;
 }) {
-  const [openIdx, setOpenIdx] = useState<number | null>(0);
   return (
-    <div
-      className="flex flex-col divide-y overflow-hidden"
-      style={{
-        border: "1px solid var(--ts-line)",
-        borderRadius: "var(--ts-r-panel)",
-        background: "var(--ts-canvas-elev)",
-      }}
-    >
-      {items.map((it, idx) => {
-        const isOpen = openIdx === idx;
-        return (
-          <div key={`${idPrefix}-${idx}`}>
-            <button
-              type="button"
-              aria-expanded={isOpen}
-              onClick={() => setOpenIdx(isOpen ? null : idx)}
-              className="w-full flex items-center justify-between gap-6 text-left px-6 md:px-8 py-5 md:py-6"
-              style={{ background: isOpen ? "var(--ts-canvas-tinted)" : "transparent" }}
-            >
-              <span
-                className="ts-headline faq-question"
-                style={{ fontSize: "1.02rem", color: "var(--ts-ink)" }}
-              >
-                {it.q}
-              </span>
-              <span
-                aria-hidden
-                className="shrink-0 grid place-items-center h-8 w-8"
-                style={{
-                  borderRadius: 999,
-                  border: isOpen
-                    ? "1px solid var(--ts-ink)"
-                    : "1px solid var(--ts-line-strong)",
-                  background: isOpen ? "var(--ts-ink)" : "#fff",
-                  color: isOpen ? "#fff" : "var(--ts-ink-muted)",
-                  transform: isOpen ? "rotate(45deg)" : "none",
-                  transition: "all 0.28s var(--ts-ease-out)",
-                }}
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-                  <path
-                    d="M7 1v12M1 7h12"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>
-            </button>
-            {isOpen ? (
-              <div className="px-6 md:px-8 pb-6 md:pb-7">
-                <p
-                  className="faq-answer text-[0.98rem] leading-[1.65]"
-                  style={{ color: "var(--ts-ink-muted)", maxWidth: "70ch" }}
-                >
-                  {it.a}
-                </p>
-              </div>
-            ) : null}
-          </div>
-        );
-      })}
-    </div>
+    <FaqAccordion
+      items={items}
+      look={SHARE_FAQ_LOOK}
+      single
+      defaultOpen={[0]}
+      renderIcon={(open) => <ShareFaqIcon open={open} />}
+    />
   );
 }
 

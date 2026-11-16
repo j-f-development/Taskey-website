@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { CLOSE_FACTOR, EASE_OUT, durations } from "@/lib/motion";
 import type { Room } from "@/lib/data/floorplan";
 import { DEMO_STATUS } from "./status";
 
@@ -11,14 +12,14 @@ export function RoomDetail({
   room: Room | null;
   onClose: () => void;
 }) {
+  const d = durations(useReducedMotion());
   return (
     <AnimatePresence>
       {room ? (
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 6 }}
-          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0, transition: { duration: d.REVEAL, ease: EASE_OUT } }}
+          exit={{ opacity: 0, y: 16, transition: { duration: d.REVEAL * CLOSE_FACTOR, ease: EASE_OUT } }}
           className="absolute right-4 bottom-4 z-30 w-[320px] max-w-[calc(100%-2rem)]"
         >
           <RoomDetailCard room={room} onClose={onClose} />

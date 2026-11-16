@@ -720,7 +720,7 @@ function EmployeeDetail({
         </div>
         <div className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
           <div
-            className="h-full rounded-full transition-[width] duration-500"
+            className="h-full rounded-full transition-[width] duration-[var(--motion-reveal)]"
             style={{
               width: `${employee.utilization}%`,
               background:

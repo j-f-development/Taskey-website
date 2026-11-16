@@ -511,7 +511,7 @@ export default function TargetAudiences({
           <div className="relative order-2 lg:order-1">
             <div className="relative aspect-[4/5] sm:aspect-[5/6] rounded-[2rem] overflow-hidden bg-slate-900 shadow-2xl shadow-slate-900/15 border border-slate-200/60">
               {/* Foto-Hintergrund */}
-              <div key={`img-${active}`} className="absolute inset-0" style={{ animation: "audience-fade 0.7s ease-out" }}>
+              <div key={`img-${active}`} className="absolute inset-0" style={{ animation: "audience-fade var(--motion-reveal) var(--ease-out)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={current.image}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FaqAccordion } from "@/components/FaqAccordion";
 import Image from "next/image";
 import Link from "next/link";
 import SignupButton from "@/components/landing/SignupButton";
@@ -9,6 +10,7 @@ import {
   type Locale,
 } from "@/lib/i18n-metadata";
 import { BreadcrumbJsonLd, FaqJsonLd, HowToJsonLd } from "@/components/StructuredData";
+import Button from "@/components/ui/Button";
 
 const path = "/kostenlos-starten";
 
@@ -512,14 +514,9 @@ export default async function KostenlosStartenPage({
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-5">
             <SignupButton size="lg" label={c.ctaLabel} utm="kostenlos_starten_hero" />
-            <a
-              href="mailto:info@taskeyapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="apl-btn apl-btn-secondary apl-btn-lg"
-            >
+            <Button href="mailto:info@taskeyapp.com" target="_blank" rel="noopener noreferrer" variant="secondary">
               {c.ctaSecondary}
-            </a>
+            </Button>
           </div>
           <p className="mt-5 apl-caption">{c.ctaNote}</p>
         </div>
@@ -577,14 +574,9 @@ export default async function KostenlosStartenPage({
           </div>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
             <SignupButton label={c.ctaLabel} utm="kostenlos_starten_value" />
-            <a
-              href="mailto:info@taskeyapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="apl-btn apl-btn-secondary"
-            >
+            <Button href="mailto:info@taskeyapp.com" target="_blank" rel="noopener noreferrer" variant="secondary">
               {c.ctaSecondary}
-            </a>
+            </Button>
           </div>
         </div>
       </section>
@@ -646,7 +638,7 @@ export default async function KostenlosStartenPage({
                 key={l.href}
                 href={l.href}
                 className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
-                style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+                style={{ transitionProperty: "transform", transitionDuration: "var(--motion-press)", transitionTimingFunction: "var(--ease-out)" }}
               >
                 <div className="apl-tile-inner items-start text-left">
                   <h3 className="apl-headline" style={{ fontSize: "1.0625rem" }}>
@@ -668,15 +660,9 @@ export default async function KostenlosStartenPage({
             {c.faqH2}
           </h2>
           <div className="mt-8 flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
-            {c.faq.map((f) => (
-              <details key={f.q} className="group py-5">
-                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
-                  <span className="faq-question">{f.q}</span>
-                  <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">+</span>
-                </summary>
-                <p className="faq-answer apl-body mt-3 max-w-[70ch]">{f.a}</p>
-              </details>
-            ))}
+            <FaqAccordion
+              items={c.faq.map((f) => ({ q: f.q, a: f.a }))}
+            />
           </div>
         </div>
       </section>
@@ -692,14 +678,9 @@ export default async function KostenlosStartenPage({
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-5">
             <SignupButton size="lg" label={c.ctaLabel} utm="kostenlos_starten_final" />
-            <Link
-              href="mailto:info@taskeyapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="apl-btn apl-btn-ghost apl-btn-lg"
-            >
+            <Button href="mailto:info@taskeyapp.com" target="_blank" rel="noopener noreferrer" variant="secondary" tone="dark">
               {c.ctaSecondary}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

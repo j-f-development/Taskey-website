@@ -243,7 +243,7 @@ export default function TaskeyShare() {
 
           {/* Rechte Spalte: Grundriss-Demo */}
           <div className="relative">
-            <RevealBlur offset={120} blur={24} duration={1300}>
+            <RevealBlur>
               <div className="relative rounded-[2rem] bg-white border border-slate-200 shadow-[0_30px_60px_-15px_rgba(15,23,42,0.18)] ring-1 ring-blue-500/10 overflow-hidden">
                 {/* Header mit Ticket-Button + DEMO-Badge */}
                 <div className="flex items-center justify-between gap-3 px-5 sm:px-6 py-4 border-b border-slate-100 bg-slate-50/70">

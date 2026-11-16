@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { CLOSE_FACTOR, EASE_IN_OUT, EASE_OUT, durations } from "@/lib/motion";
 import { useLanguage, Language } from "@/context/LanguageContext";
 
 const languages: { code: Language; label: string; flag: string }[] = [
@@ -13,6 +15,8 @@ export default function LanguageSwitcher({ tone = "light" }: { tone?: "light" | 
   const { language, setLanguage } = useLanguage();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const { REVEAL } = durations(reduced);
 
   const current = languages.find((l) => l.code === language) ?? languages[0];
 
@@ -22,8 +26,15 @@ export default function LanguageSwitcher({ tone = "light" }: { tone?: "light" | 
         setOpen(false);
       }
     }
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKey);
+    };
   }, []);
 
   const buttonTone =
@@ -37,11 +48,12 @@ export default function LanguageSwitcher({ tone = "light" }: { tone?: "light" | 
         onClick={() => setOpen(!open)}
         className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-all text-sm font-medium ${buttonTone}`}
         aria-label="Sprache wechseln"
+        aria-expanded={open}
       >
         <span className="text-base leading-none">{current.flag}</span>
         <span>{current.code.toUpperCase()}</span>
         <svg
-          className={`w-3 h-3 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`w-3 h-3 transition-transform duration-[var(--motion-reveal)] ${open ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -50,8 +62,20 @@ export default function LanguageSwitcher({ tone = "light" }: { tone?: "light" | 
         </svg>
       </button>
 
+      <AnimatePresence>
       {open && (
-        <div className="absolute left-0 lg:right-0 lg:left-auto mt-2 w-40 bg-white/95 backdrop-blur-xl border border-slate-200/60 rounded-xl shadow-lg overflow-hidden z-50">
+        <motion.div
+          key="lang-menu"
+          className="absolute left-0 lg:right-0 lg:left-auto mt-2 w-40 bg-white/95 backdrop-blur-xl border border-slate-200/60 rounded-xl shadow-lg overflow-hidden z-50 origin-top-left lg:origin-top-right"
+          initial={{ opacity: 0, scale: reduced ? 1 : 0.9 }}
+          animate={{ opacity: 1, scale: 1, transition: { duration: REVEAL, ease: EASE_OUT } }}
+          exit={{
+            opacity: 0,
+            scale: reduced ? 1 : 0.9,
+            pointerEvents: "none",
+            transition: { duration: REVEAL * CLOSE_FACTOR, ease: EASE_IN_OUT },
+          }}
+        >
           {languages.map((lang) => (
             <button
               key={lang.code}
@@ -74,8 +98,9 @@ export default function LanguageSwitcher({ tone = "light" }: { tone?: "light" | 
               )}
             </button>
           ))}
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </div>
   );
 }

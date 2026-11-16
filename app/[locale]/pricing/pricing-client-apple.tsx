@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, animate, motion, useReducedMotion } from "motion/react";
+import { EASE_OUT, durations } from "@/lib/motion";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   AppleSection,
@@ -32,6 +34,7 @@ const BASE_PLANS: Plan[] = [
     priceSuffix: "/Monat",
     tagline: "Der saubere Einstieg. Zeiterfassung, Nachweise, Finanzen.",
     features: [
+      "Bis 50 Objekte",
       "NFC-Zeiterfassung",
       "Nachweise mit Foto",
       "Finanztools",
@@ -141,6 +144,18 @@ export default function PricingClientApple() {
               Jährlich · −15%
             </CadenceButton>
           </div>
+          <AnimatePresence initial={false}>
+            {cadence === "annual" && (
+              <FadeIn key="annual-hint">
+                <p
+                  className="mt-3 mx-auto text-[0.88rem] leading-[1.5]"
+                  style={{ color: "var(--apl-ink-muted)", maxWidth: "46ch" }}
+                >
+                  Du zahlst bequem monatlich, die Laufzeit beträgt 12 Monate und ist jährlich kündbar.
+                </p>
+              </FadeIn>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
@@ -202,6 +217,45 @@ export default function PricingClientApple() {
   );
 }
 
+/** Blendet in --motion-reveal ein und aus (nur Opacity + kleiner Versatz). */
+function FadeIn({ children }: { children: React.ReactNode }) {
+  const reduced = useReducedMotion();
+  const { REVEAL } = durations(reduced);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: reduced ? 0 : -6 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, transition: { duration: REVEAL * 0.5, ease: EASE_OUT } }}
+      transition={{ duration: REVEAL, ease: EASE_OUT }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/** Preis zählt beim Umschalten in --motion-reveal zum neuen Wert. */
+function CountUp({ value }: { value: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const shown = useRef(value);
+  // React rendert nur den Startwert, danach schreibt die Animation die Zahl direkt.
+  const [initial] = useState(value);
+  const reduced = useReducedMotion();
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || shown.current === value) return;
+    const controls = animate(shown.current, value, {
+      duration: durations(reduced).REVEAL,
+      ease: EASE_OUT,
+      onUpdate: (v) => {
+        shown.current = v;
+        el.textContent = Math.round(v).toString();
+      },
+    });
+    return () => controls.stop();
+  }, [value, reduced]);
+  return <span ref={ref}>{initial}</span>;
+}
+
 function CadenceButton({
   active,
   children,
@@ -211,18 +265,29 @@ function CadenceButton({
   children: React.ReactNode;
   onClick: () => void;
 }) {
+  const reduced = useReducedMotion();
   return (
     <button
       type="button"
       onClick={onClick}
+      aria-pressed={active}
       className={[
-        "px-4 h-9 rounded-full text-[13px] font-medium transition",
+        "relative px-4 h-9 rounded-full text-[13px] font-medium transition active:scale-[.97]",
         active
-          ? "bg-white text-[color:var(--apl-ink)] shadow-sm ring-1 ring-black/5"
+          ? "text-[color:var(--apl-ink)]"
           : "text-[color:var(--apl-ink-muted)] hover:text-[color:var(--apl-ink)]",
       ].join(" ")}
     >
-      {children}
+      {/* Der weiße Schieber gleitet zwischen den beiden Optionen. */}
+      {active && (
+        <motion.span
+          layoutId="cadence-pill"
+          className="absolute inset-0 rounded-full bg-white shadow-sm ring-1 ring-black/5"
+          transition={{ duration: durations(reduced).PRESS, ease: EASE_OUT }}
+          aria-hidden
+        />
+      )}
+      <span className="relative">{children}</span>
     </button>
   );
 }
@@ -259,7 +324,7 @@ function PlanCard({
         </div>
         <div className="mt-1 flex items-baseline gap-1.5">
           <span className="apl-display" style={{ fontSize: "clamp(2.25rem, 4vw, 3.25rem)", letterSpacing: "-0.015em" }}>
-            €{plan.price}
+            €{/^\d+$/.test(plan.price) ? <CountUp value={Number(plan.price)} /> : plan.price}
           </span>
           {plan.priceSuffix && (
             <span className="apl-body" style={{ color: subtleColor }}>
@@ -267,7 +332,9 @@ function PlanCard({
             </span>
           )}
         </div>
+        <AnimatePresence initial={false}>
         {showAnnualBreakdown && (
+          <FadeIn key="annual-breakdown">
           <div className="mt-1 flex flex-col gap-0.5">
             <span className="text-[0.78rem]" style={{ color: subtleColor }}>
               Jahresabo · gesamt €{plan.yearlyTotal!.toLocaleString("de-DE")} pro Jahr
@@ -279,7 +346,9 @@ function PlanCard({
               Sie sparen €{plan.yearlySavings!.toLocaleString("de-DE")} gegenüber monatlich
             </span>
           </div>
+          </FadeIn>
         )}
+        </AnimatePresence>
         <p className="apl-small mt-2 max-w-[32ch]" style={{ color: subtleColor }}>
           {plan.tagline}
         </p>

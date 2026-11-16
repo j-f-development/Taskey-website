@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { buildMetadata, pickLocale, type PageCopy } from "@/lib/i18n-metadata";
+import Button from "@/components/ui/Button";
 
 const PATH = "/google-kalender-sync";
 
@@ -307,12 +308,12 @@ export default async function GoogleCalendarSyncPage({
           </h1>
           <p className="apl-lede mt-5 max-w-[58ch]">{c.lead}</p>
           <div className="mt-7 flex flex-wrap gap-4">
-            <a href="https://app.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
+            <Button href="https://app.taskeyapp.com" variant="primary">
               {c.ctaConnect}
-            </a>
-            <Link href={supportHref} className="apl-btn apl-btn-secondary apl-btn-lg">
+            </Button>
+            <Button href={supportHref} variant="secondary">
               {c.ctaSupport}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

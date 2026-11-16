@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Button from "@/components/ui/Button";
 
 export type EmailCaptureLabels = {
   heading: string;
@@ -117,13 +118,13 @@ export default function EmailCapture({
           disabled={status === "submitting"}
           aria-label={labels.emailPlaceholder}
         />
-        <button
+        <Button
           type="submit"
           disabled={status === "submitting"}
-          className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-60"
+          variant="primary"
         >
           {status === "submitting" ? labels.submitting : labels.submit}
-        </button>
+        </Button>
       </div>
 
       <label className="mt-4 flex items-center gap-2 text-xs text-slate-600">

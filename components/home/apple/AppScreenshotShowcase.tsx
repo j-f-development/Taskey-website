@@ -163,7 +163,7 @@ export default function AppScreenshotShowcase() {
                 sizes="(max-width: 1120px) 100vw, 1120px"
                 priority={s.id === SHOTS[0].id}
                 className={[
-                  "object-cover object-top transition-opacity duration-500",
+                  "object-cover object-top transition-opacity duration-[var(--motion-reveal)]",
                   s.id === activeId ? "opacity-100" : "opacity-0 pointer-events-none",
                 ].join(" ")}
               />

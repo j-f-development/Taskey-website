@@ -343,7 +343,7 @@ export default function TimeAccountingDemo() {
           <div className="relative h-16 mb-4">
             <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1.5 rounded-full bg-slate-100 overflow-hidden">
               <div
-                className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-[width] duration-300"
+                className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-[width] duration-[var(--motion-reveal)]"
                 style={{ width: `${cursorPercent}%` }}
               />
             </div>
@@ -385,7 +385,7 @@ export default function TimeAccountingDemo() {
             })}
             {/* Cursor */}
             <div
-              className="absolute -top-2 bottom-0 w-[3px] bg-slate-900 rounded-full transition-[left] duration-300 shadow-md"
+              className="absolute -top-2 bottom-0 w-[3px] bg-slate-900 rounded-full transition-[left] duration-[var(--motion-reveal)] shadow-md"
               style={{ left: `calc(${cursorPercent}% - 1.5px)` }}
             >
               <div className="absolute -top-2 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-slate-900 shadow-md" />

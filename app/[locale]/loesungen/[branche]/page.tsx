@@ -14,6 +14,7 @@ import {
 import { branches, getBranchBySlug } from "@/lib/seo/branches";
 import { isIndexableBranch } from "@/lib/seo/helpers";
 import { lhref, absoluteUrl } from "@/lib/seo/href";
+import Button from "@/components/ui/Button";
 
 const SUPPORTED: Locale[] = ["de", "en", "fr"];
 
@@ -94,12 +95,12 @@ export default async function BranchPage({
         <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{c.h1}</h1>
         <p className="mt-6 text-lg text-slate-700" data-speakable>{c.lead}</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary">
+          <Button href="https://signup.taskeyapp.com" variant="primary">
             {c.ctaPrimary}
-          </a>
-          <Link href={lhref(locale, "/features")} className="apl-btn apl-btn-secondary">
+          </Button>
+          <Button href={lhref(locale, "/features")} variant="secondary">
             {c.ctaSecondary}
-          </Link>
+          </Button>
         </div>
       </section>
 
@@ -202,12 +203,12 @@ export default async function BranchPage({
             {c.ctaBody}
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-5">
-            <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
+            <Button href="https://signup.taskeyapp.com" variant="primary">
               {c.ctaPrimary}
-            </a>
-            <Link href={lhref(locale, "/features")} className="apl-btn apl-btn-ghost apl-btn-lg">
+            </Button>
+            <Button href={lhref(locale, "/features")} variant="secondary" tone="dark">
               {c.ctaSecondary}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

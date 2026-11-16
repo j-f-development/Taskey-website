@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "@/components/LocaleLink";
 import { useLanguage } from "@/context/LanguageContext";
 import { TaskeyWord } from "./BrandDot";
+import { ButtonArrow, buttonClass } from "@/components/ui/Button";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -25,9 +26,10 @@ export default function Footer() {
             href="https://signup.taskeyapp.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="ts-btn ts-btn-onink"
+            className={buttonClass({ variant: "primary" })}
           >
-            {t("nav.tryFree")}
+            <span>{t("nav.tryFree")}</span>
+            <ButtonArrow />
           </Link>
         </div>
 

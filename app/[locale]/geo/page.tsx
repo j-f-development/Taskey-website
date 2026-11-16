@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { FaqAccordion } from "@/components/FaqAccordion";
 import {
   buildMetadata,
   pickLocale,
@@ -8,6 +8,7 @@ import {
 } from "@/lib/i18n-metadata";
 import { BreadcrumbJsonLd, FaqJsonLd } from "@/components/StructuredData";
 import { lhref, absoluteUrl } from "@/lib/seo/href";
+import Button from "@/components/ui/Button";
 
 const path = "/geo";
 
@@ -154,15 +155,9 @@ export default async function GeoPage({
             {locale === "de" ? "Häufige Fragen" : locale === "en" ? "Common questions" : "Questions fréquentes"}
           </h2>
           <div className="mt-6 flex flex-col divide-y divide-[color:var(--apl-hairline-soft)]">
-            {c.faqs.map((f, i) => (
-              <details key={i} className="group py-5">
-                <summary className="cursor-pointer list-none flex items-center justify-between gap-6 apl-headline" style={{ fontSize: "1.0625rem" }}>
-                  <span className="faq-question">{f.q}</span>
-                  <span className="apl-small text-[color:var(--apl-accent)] transition-transform duration-300 group-open:rotate-45">+</span>
-                </summary>
-                <p className="faq-answer apl-body mt-3 max-w-[70ch]">{f.a}</p>
-              </details>
-            ))}
+            <FaqAccordion
+              items={c.faqs.map((f) => ({ q: f.q, a: f.a }))}
+            />
           </div>
         </div>
       </section>
@@ -176,12 +171,12 @@ export default async function GeoPage({
             {c.ctaBody}
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-5">
-            <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
+            <Button href="https://signup.taskeyapp.com" variant="primary">
               {c.ctaPrimary}
-            </a>
-            <Link href={lhref(locale, "/marktvergleich/gebaeudereinigung-software")} className="apl-btn apl-btn-ghost apl-btn-lg">
+            </Button>
+            <Button href={lhref(locale, "/marktvergleich/gebaeudereinigung-software")} variant="secondary" tone="dark">
               {locale === "de" ? "Marktvergleich ansehen" : locale === "en" ? "See market comparison" : "Voir le comparatif"}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

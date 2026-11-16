@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FaqAccordion } from "@/components/FaqAccordion";
 import Link from "next/link";
 import { buildMetadata, pickLocale, type PageCopy, type Locale } from "@/lib/i18n-metadata";
 import { BreadcrumbJsonLd, FaqJsonLd, HowToJsonLd } from "@/components/StructuredData";
@@ -714,27 +715,10 @@ export default async function Page({
           {c.faqHeading}
         </h2>
         <div className="mt-6 space-y-3">
-          {c.faqs.map((faq) => (
-            <details
-              key={faq.q}
-              className="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
-            >
-              <summary className="cursor-pointer list-none text-base font-semibold text-slate-900">
-                <span className="flex items-center justify-between gap-4">
-                  <span>{faq.q}</span>
-                  <span
-                    aria-hidden
-                    className="text-blue-700 transition group-open:rotate-45"
-                  >
-                    +
-                  </span>
-                </span>
-              </summary>
-              <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                {faq.a}
-              </p>
-            </details>
-          ))}
+          <FaqAccordion
+            variant="card"
+            items={c.faqs.map((faq) => ({ q: faq.q, a: faq.a }))}
+          />
         </div>
       </section>
 

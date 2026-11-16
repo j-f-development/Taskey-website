@@ -102,7 +102,7 @@ export default async function ProblemeIndex({
                   key={p.slug}
                   href={lhref(locale, `${path}/${p.slug}`)}
                   className="apl-tile apl-tile-canvas group hover:-translate-y-[2px]"
-                  style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+                  style={{ transitionProperty: "transform", transitionDuration: "var(--motion-press)", transitionTimingFunction: "var(--ease-out)" }}
                 >
                   <div className="apl-tile-inner items-start text-left">
                     <p className="apl-eyebrow">{cp.eyebrow}</p>

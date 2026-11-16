@@ -140,7 +140,7 @@ export default function LiveMargen() {
           </div>
 
           {/* Dashboard Card */}
-          <RevealBlur offset={120} blur={24} duration={1300}>
+          <RevealBlur>
           <div className="relative rounded-3xl bg-gradient-to-br from-white to-slate-50 border border-slate-200 shadow-2xl shadow-blue-900/15 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
             {/* Dashboard Header */}
             <div className="flex items-center justify-between gap-3 mb-6 md:mb-8 pb-5 border-b border-slate-200/60">

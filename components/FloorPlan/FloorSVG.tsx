@@ -79,7 +79,7 @@ export function FloorSVG({
       style={{
         transform: `scale(${zoom / 100})`,
         transformOrigin: "center center",
-        transition: "transform 250ms cubic-bezier(0.22, 1, 0.36, 1)",
+        transition: "transform var(--motion-reveal) var(--ease-out)",
         maxWidth: "100%",
       }}
       role="img"
@@ -284,7 +284,7 @@ function RoomShape({
         height={rect.h}
         fill={isPending ? "#FFFFFF" : meta.fill}
         opacity={active ? 1 : 0.9}
-        style={{ transition: "opacity 180ms ease, filter 180ms ease" }}
+        style={{ transition: "opacity var(--motion-press) var(--ease-out), filter var(--motion-press) var(--ease-out)" }}
       />
       {/* Hover-Overlay */}
       <rect
@@ -294,7 +294,7 @@ function RoomShape({
         height={rect.h}
         fill="#111827"
         opacity={active ? 0.05 : 0}
-        style={{ transition: "opacity 180ms ease" }}
+        style={{ transition: "opacity var(--motion-press) var(--ease-out)" }}
       />
       {/* Optionaler gestrichelter Rahmen für Fehler / Progress */}
       {strokeCol !== "transparent" ? (
@@ -328,7 +328,7 @@ function RoomLabel({ id, rect, room, active }: { id: RoomKey; rect: RoomRect; ro
   const pillWidth = Math.max(72, pillText.length * 7 + 26);
 
   return (
-    <g pointerEvents="none" style={{ transition: "opacity 200ms ease" }}>
+    <g pointerEvents="none" style={{ transition: "opacity var(--motion-press) var(--ease-out)" }}>
       {/* Zentraler Raumname (leicht ausgegraut) */}
       <text
         x={centerX}

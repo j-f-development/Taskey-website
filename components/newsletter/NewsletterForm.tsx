@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Button from "@/components/ui/Button";
 
 const ENDPOINT = "https://internal.taskeyapp.com/newsletter/subscribe";
 
@@ -226,17 +227,17 @@ export default function NewsletterForm({
             disabled={phase === "sending" || phase === "done"}
             className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 disabled:opacity-60"
           />
-          <button
+          <Button
             type="submit"
             disabled={phase === "sending" || phase === "done"}
-            className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-60"
+            variant="primary"
           >
             {phase === "sending"
               ? labels.submitting
               : phase === "done"
               ? "✓"
               : labels.submitButton}
-          </button>
+          </Button>
         </div>
 
         <div

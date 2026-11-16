@@ -176,7 +176,7 @@ export default async function AGBPage({
             href="/legal/agb-share.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-blue-400 p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            className="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-blue-400 p-8 transition-all duration-[var(--motion-press)] hover:shadow-xl hover:-translate-y-1"
           >
             <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
               <svg className="w-7 h-7 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -215,7 +215,7 @@ export default async function AGBPage({
                 href="/legal/agb-b2b.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/link flex items-center justify-between bg-slate-50 hover:bg-white rounded-xl px-4 py-3 transition-all duration-300 border border-slate-200 hover:border-slate-400"
+                className="group/link flex items-center justify-between bg-slate-50 hover:bg-white rounded-xl px-4 py-3 transition-all duration-[var(--motion-press)] border border-slate-200 hover:border-slate-400"
               >
                 <div>
                   <span className="text-sm font-bold text-slate-900 group-hover/link:text-slate-900 transition-colors">{c.card2AgbLabel}</span>
@@ -227,7 +227,7 @@ export default async function AGBPage({
                 href="/legal/sla.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/link flex items-center justify-between bg-slate-50 hover:bg-white rounded-xl px-4 py-3 transition-all duration-300 border border-slate-200 hover:border-slate-400"
+                className="group/link flex items-center justify-between bg-slate-50 hover:bg-white rounded-xl px-4 py-3 transition-all duration-[var(--motion-press)] border border-slate-200 hover:border-slate-400"
               >
                 <div>
                   <span className="text-sm font-bold text-slate-900 group-hover/link:text-slate-900 transition-colors">{c.card2SlaLabel}</span>
@@ -239,7 +239,7 @@ export default async function AGBPage({
                 href="/legal/avv.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/link flex items-center justify-between bg-slate-50 hover:bg-white rounded-xl px-4 py-3 transition-all duration-300 border border-slate-200 hover:border-slate-400"
+                className="group/link flex items-center justify-between bg-slate-50 hover:bg-white rounded-xl px-4 py-3 transition-all duration-[var(--motion-press)] border border-slate-200 hover:border-slate-400"
               >
                 <div>
                   <span className="text-sm font-bold text-slate-900 group-hover/link:text-slate-900 transition-colors">{c.card2AvvLabel}</span>
@@ -255,7 +255,7 @@ export default async function AGBPage({
             href="/legal/agb-mitarbeiter.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-purple-400 p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            className="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-purple-400 p-8 transition-all duration-[var(--motion-press)] hover:shadow-xl hover:-translate-y-1"
           >
             <div className="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-6 group-hover:bg-purple-100 transition-colors">
               <svg className="w-7 h-7 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">

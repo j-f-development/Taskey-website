@@ -89,7 +89,7 @@ export default function IntroVideo() {
             className="absolute inset-0 flex items-center justify-center"
             aria-hidden="true"
           >
-            <span className="relative flex items-center justify-center w-20 h-20 md:w-28 md:h-28 rounded-full bg-white/95 shadow-2xl shadow-black/50 transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
+            <span className="relative flex items-center justify-center w-20 h-20 md:w-28 md:h-28 rounded-full bg-white/95 shadow-2xl shadow-black/50 transition-transform duration-[var(--motion-press)] group-hover:scale-110 group-active:scale-95">
               <span className="absolute inset-0 rounded-full bg-white/40 blur-xl -z-10" />
               <svg
                 viewBox="0 0 24 24"

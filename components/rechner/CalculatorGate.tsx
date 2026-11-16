@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { EmailCaptureRow } from "./EmailCapture";
+import Button from "@/components/ui/Button";
 
 const ENDPOINT = "https://internal.taskeyapp.com/newsletter/subscribe";
 
@@ -199,7 +200,7 @@ export default function CalculatorGate({
     <>
       <div className="relative">
         {isResultVisible ? (
-          <div className="animate-in fade-in duration-500">{children}</div>
+          <div className="animate-in fade-in duration-[var(--motion-reveal)]">{children}</div>
         ) : (
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm sm:p-8 min-h-[420px] flex flex-col items-center justify-center text-center">
             {phase === "idle" ? (
@@ -247,7 +248,7 @@ export default function CalculatorGate({
                   aria-label={labels.loadingText}
                 >
                   <div
-                    className="h-full bg-blue-600 transition-[width] duration-75 ease-linear"
+                    className="h-full bg-blue-600 transition-[width] duration-[var(--motion-press)] ease-linear"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
@@ -273,7 +274,7 @@ export default function CalculatorGate({
           aria-modal="true"
           aria-labelledby="rechner-gate-heading"
         >
-          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-8 animate-in fade-in zoom-in-95 duration-300">
+          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-8 animate-in fade-in zoom-in-95 duration-[var(--motion-reveal)]">
             <div className="mb-5 flex items-center gap-3">
               <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
                 <svg
@@ -346,13 +347,13 @@ export default function CalculatorGate({
                 </label>
               </div>
 
-              <button
+              <Button
                 type="submit"
                 disabled={phase === "submitting"}
-                className="w-full inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-60"
+                variant="primary" block
               >
                 {phase === "submitting" ? labels.submitting : labels.submitButton}
-              </button>
+              </Button>
 
               {phase === "error" && errorMessage ? (
                 <p className="mt-3 text-sm text-red-700" role="alert">

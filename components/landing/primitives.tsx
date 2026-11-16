@@ -1,10 +1,12 @@
 import type { CSSProperties, ReactNode } from "react";
+import { FaqAccordion } from "@/components/FaqAccordion";
 import {
   DIRECTION_LABEL_DE,
   FREQUENCY_LABEL_DE,
   STATUS_LABEL_DE,
   type IntegrationRecord,
 } from "@/lib/landing/integrationStatus";
+import Button from "@/components/ui/Button";
 
 /* ─────────────────────────────────────────────────────────────────────────
  * Shared design tokens for landing pages (kept local to this file so pages
@@ -235,13 +237,13 @@ export function LandingHero({
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a href={primaryCta.href} className="apl-btn apl-btn-primary apl-btn-lg">
+              <Button href={primaryCta.href} variant="primary">
                 {primaryCta.label}
-              </a>
+              </Button>
               {secondaryCta && (
-                <a href={secondaryCta.href} className="apl-btn apl-btn-secondary apl-btn-lg">
+                <Button href={secondaryCta.href} variant="secondary">
                   {secondaryCta.label}
-                </a>
+                </Button>
               )}
             </div>
 
@@ -708,47 +710,7 @@ export function ExceptionTable({ rows }: { rows: ExceptionRow[] }) {
 export type FaqItem = { q: string; a: string };
 
 export function LandingFAQ({ items }: { items: FaqItem[] }) {
-  return (
-    <div>
-      {items.map((item, i) => (
-        <details
-          key={item.q}
-          style={{
-            borderTop: i === 0 ? `1px solid ${LP.border}` : undefined,
-            borderBottom: `1px solid ${LP.border}`,
-            padding: "20px 0",
-          }}
-        >
-          <summary
-            style={{
-              cursor: "pointer",
-              fontSize: "17px",
-              fontWeight: 600,
-              color: LP.ink,
-              listStyle: "none",
-              display: "flex",
-              justifyContent: "space-between",
-              gap: "16px",
-            }}
-          >
-            <span>{item.q}</span>
-            <span aria-hidden style={{ color: LP.accent, fontWeight: 500 }}>+</span>
-          </summary>
-          <p
-            style={{
-              marginTop: "12px",
-              fontSize: "15px",
-              lineHeight: 1.7,
-              color: LP.muted,
-              maxWidth: "70ch",
-            }}
-          >
-            {item.a}
-          </p>
-        </details>
-      ))}
-    </div>
-  );
+  return <FaqAccordion variant="landing" items={items} />;
 }
 
 /* ─── Related Content ─────────────────────────────────────────────────── */
@@ -798,7 +760,7 @@ export function RelatedSolutions({
                 background: LP.canvasElev,
                 color: LP.ink,
                 textDecoration: "none",
-                transition: "border-color 0.2s ease, background 0.2s ease",
+                transition: "border-color var(--motion-press) var(--ease-out), background var(--motion-press) var(--ease-out)",
               }}
             >
               <div

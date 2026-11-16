@@ -98,7 +98,7 @@ export default function FAQ() {
                       </span>
                     </button>
                     <div
-                      className={`grid transition-all duration-300 ease-out ${
+                      className={`grid transition-all duration-[var(--motion-reveal)] ease-[var(--ease-out)] ${
                         isOpen ? 'grid-rows-[1fr] opacity-100 pb-6 md:pb-7' : 'grid-rows-[0fr] opacity-0'
                       }`}
                     >

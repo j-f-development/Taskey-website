@@ -1,4 +1,5 @@
 import type { AnchorHTMLAttributes, ReactNode } from "react";
+import { ButtonArrow, buttonClass } from "@/components/ui/Button";
 
 export const SIGNUP_URL = "https://signup.taskeyapp.com";
 
@@ -11,11 +12,6 @@ type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "children"> 
   utm?: string;
 };
 
-function sizeClass(size: Size): string {
-  if (size === "sm") return "tk-cta-signup tk-cta-signup--sm";
-  if (size === "lg") return "tk-cta-signup tk-cta-signup--lg";
-  return "tk-cta-signup";
-}
 
 function withUtm(url: string, utm?: string): string {
   if (!utm) return url;
@@ -30,8 +26,11 @@ function withUtm(url: string, utm?: string): string {
   }
 }
 
+/** Primär-Button des Button-Systems (components/ui/Button.tsx). `size` bleibt nur aus Kompatibilität:
+    alle Primär-Buttons haben dieselbe Größe wie der Button oben rechts in der Navigation. */
 export default function SignupButton({
   href = SIGNUP_URL,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   size = "md",
   label = "Kostenlosen Account erstellen",
   utm,
@@ -39,23 +38,11 @@ export default function SignupButton({
   ...rest
 }: Props) {
   const final = withUtm(href, utm);
-  const classes = [sizeClass(size), className].filter(Boolean).join(" ");
+  const classes = buttonClass({ variant: "primary", className });
   return (
     <a href={final} className={classes} {...rest}>
       <span>{label}</span>
-      <svg
-        className="tk-cta-signup__arrow"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M5 12h14" />
-        <path d="M13 5l7 7-7 7" />
-      </svg>
+      <ButtonArrow />
     </a>
   );
 }

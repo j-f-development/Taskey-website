@@ -14,6 +14,7 @@ import {
 import { problems, getProblemBySlug } from "@/lib/seo/problems";
 import { isIndexableProblem } from "@/lib/seo/helpers";
 import { lhref, absoluteUrl } from "@/lib/seo/href";
+import Button from "@/components/ui/Button";
 
 const SUPPORTED: Locale[] = ["de", "en", "fr"];
 const BASE = "https://www.taskeyapp.com";
@@ -228,9 +229,9 @@ export default async function ProblemPage({
             {c.ctaBody}
           </p>
           <div className="mt-7 flex justify-center">
-            <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
+            <Button href="https://signup.taskeyapp.com" variant="primary">
               {c.ctaPrimary}
-            </a>
+            </Button>
           </div>
         </div>
       </section>

@@ -1,108 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import Link from "@/components/LocaleLink";
-import { BrandDot, TaskeyWord } from "@/components/BrandDot";
-
-type Feature = {
-  key: string;
-  eyebrow: string;
-  title: string;
-  copy: string;
-  bullets: string[];
-};
-
-const FEATURES: Feature[] = [
-  {
-    key: "zeiterfassung",
-    eyebrow: "01 · Zeiterfassung",
-    title: "NFC-Zeiterfassung ohne Papier.",
-    copy: "Mitarbeitende scannen am Objekt den Tag. Taskey schreibt Start, Ende und Pause minutengenau und am echten Standort.",
-    bullets: [
-      "NFC-Check-in direkt vor Ort",
-      "Minutengenau, nicht aufgerundet",
-      "Standort und Gerät sind protokolliert",
-    ],
-  },
-  {
-    key: "einsatzplanung",
-    eyebrow: "02 · Personal und Einsatz",
-    title: "Einsatzplanung in einer Fläche.",
-    copy: "Objekte, Teams und Schichten auf einer Ebene. Änderungen landen sofort auf dem Gerät der Reinigungskraft.",
-    bullets: [
-      "Pläne pro Objekt und Team",
-      "Vertretungen und Krank gleich sichtbar",
-      "Push auf das Mitarbeiterhandy",
-    ],
-  },
-  {
-    key: "nachweise",
-    eyebrow: "03 · Nachweise",
-    title: "Nachweise mit Foto und Zeit.",
-    copy: "Jeder Raum, jede Leistung, dokumentiert mit Foto, Uhrzeit und Mitarbeiterkürzel. Als PDF exportierbar, revisionsfest.",
-    bullets: [
-      "Fotos je Raum und Leistung",
-      "Zeit und Ort an jedem Beleg",
-      "Export für Audit und Kunde",
-    ],
-  },
-  {
-    key: "live-margen",
-    eyebrow: "04 · Finanzen",
-    title: "Live-Margen pro Objekt.",
-    copy: "Stundensatz, Fahrzeit und Material fließen in die Objektkalkulation. Sie sehen täglich, welches Objekt verdient und welches nicht.",
-    bullets: [
-      "Soll-Ist pro Objekt und Monat",
-      "Deckungsbeitrag und Stundensatz live",
-      "Kein Nachkalkulieren in Excel",
-    ],
-  },
-  {
-    key: "rechnungen",
-    eyebrow: "05 · Rechnung und DATEV",
-    title: "Rechnungen und DATEV-Export.",
-    copy: "Angebote, Rechnungen, Mahnungen und Lohnlisten in einem System. Als ZUGFeRD oder im DATEV-Format exportiert.",
-    bullets: [
-      "GoBD-konforme Rechnungen",
-      "ZUGFeRD E-Rechnung inklusive",
-      "DATEV-Export für das Lohnbüro",
-    ],
-  },
-  {
-    key: "auftraggeber",
-    eyebrow: "06 · Auftraggeber",
-    title: "Portal für Auftraggeber.",
-    copy: "Ihre Kunden sehen Pläne, Nachweise und Beanstandungen in einem eigenen Zugang. Kein E-Mail-Pingpong mehr.",
-    bullets: [
-      "Live-Status pro Objekt",
-      "Foto-Belege und Reports",
-      "Beanstandungen sauber dokumentiert",
-    ],
-  },
-  {
-    key: "mobil",
-    eyebrow: "07 · Mobile App",
-    title: "Mobile App für den Einsatz.",
-    copy: "Für Reinigungskräfte, Objektleitung und Subunternehmer. Offlinefest, klar, auf das Nötige reduziert.",
-    bullets: [
-      "iOS Applikation",
-      "Offline Erfassen und synchronisieren",
-      "Rollen für Mitarbeiter und Subunternehmer",
-    ],
-  },
-  {
-    key: "sicherheit",
-    eyebrow: "08 · Sicherheit",
-    title: "Server in Deutschland.",
-    copy: "Hosting ausschließlich in Deutschland. Rollen, Audit-Trail und dokumentierte Prozesse für die Ausschreibung und das interne Audit.",
-    bullets: [
-      "Server und Backups in Deutschland",
-      "Rollen und Berechtigungen granular",
-      "DSGVO und Audit-Trail",
-    ],
-  },
-];
+import { BrandDot, TaskeyWord, WithBrandDot } from "@/components/BrandDot";
+import FeatureWindow from "@/components/home/feature-window/FeatureWindow";
+import PhotoZoom from "@/components/share/PhotoZoom";
+import Button from "@/components/ui/Button";
 
 export default function HomeShellShare() {
   return (
@@ -182,20 +84,15 @@ function HeroShare() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <a
-                href="https://signup.taskeyapp.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ts-btn ts-btn-primary"
-              >
+              <Button href="https://signup.taskeyapp.com" target="_blank" rel="noopener noreferrer" variant="primary">
                 Kostenlos starten
-              </a>
-              <Link href="/pricing" className="ts-btn ts-btn-ghost">
+              </Button>
+              <Button href="/pricing" variant="secondary">
                 Abonnements ansehen
-              </Link>
-              <Link href="/features" className="ts-btn ts-btn-ghost">
+              </Button>
+              <Button href="/features" variant="secondary">
                 Funktionen entdecken
-              </Link>
+              </Button>
             </div>
           </div>
 
@@ -216,7 +113,7 @@ function HeroShare() {
               />
               <div className="pl-2">
                 <div style={{ marginBottom: "0.35rem" }}>
-                  <TaskeyWord size="2.1rem" tone="white" />
+                  <TaskeyWord size="1.75rem" tone="white" />
                 </div>
                 <div
                   className="ts-eyebrow"
@@ -252,13 +149,11 @@ function HeroShare() {
 }
 
 /* ------------------------------------------------------------------
-   FEATURES · erste Section unter Hero
-   Interaktives Dashboard-Embed + Accordion mit Modulen
+   FUNKTIONEN · erste Section unter Hero
+   Interaktives Funktionen-Fenster im Stil des Taskey-Dashboards
    ------------------------------------------------------------------ */
 
 function FeaturesDashboard() {
-  const [open, setOpen] = useState<number | null>(0);
-
   return (
     <section
       id="features"
@@ -270,170 +165,22 @@ function FeaturesDashboard() {
       }}
     >
       <div className="ts-container-wide">
-        <header className="flex flex-col gap-4 max-w-3xl">
+        <header id="funktionen" className="flex flex-col gap-4 max-w-3xl" style={{ scrollMarginTop: "6rem" }}>
           <span className="ts-eyebrow">Funktionen</span>
           <h2 className="ts-headline" style={{ fontSize: "clamp(1.9rem, 4.2vw, 3.2rem)", color: "var(--ts-ink)" }}>
-            NFC statt Papier<BrandDot />
+            Ein Dashboard für deinen ganzen Betrieb<BrandDot />
           </h2>
           <p className="text-[1rem] md:text-[1.08rem] leading-[1.6] max-w-2xl" style={{ color: "var(--ts-ink-muted)" }}>
-            Ein Tap am Objekt, die Zeit steht. Rechts öffnen Sie die weiteren Module, die in Taskey arbeiten.
+            Klick dich durch die vier zentralen Funktionen von Taskey, genau so, wie du sie später selbst benutzt.
           </p>
+          <div>
+            <Button href="/features" variant="secondary">
+              Alle Funktionen ansehen</Button>
+          </div>
         </header>
 
-        <div className="mt-12 grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          {/* NFC-Zeiterfassung Video */}
-          <div className="lg:col-span-7">
-            <div
-              className="relative overflow-hidden"
-              style={{
-                borderRadius: "var(--ts-r-panel)",
-                border: "1px solid var(--ts-line-strong)",
-                boxShadow: "var(--ts-shadow-lg)",
-                background: "#0b0b0f",
-                aspectRatio: "16 / 10",
-              }}
-            >
-              <div
-                className="absolute top-4 left-4 right-4 z-10 flex items-start justify-between gap-3 pointer-events-none"
-              >
-                <div>
-                  <span
-                    className="ts-eyebrow block"
-                    style={{ color: "var(--brand-sky)", fontSize: "0.62rem" }}
-                  >
-                    Taskey · NFC
-                  </span>
-                  <span
-                    className="ts-headline"
-                    style={{ fontSize: "1.1rem", color: "var(--brand-white)" }}
-                  >
-                    Zeiterfassung per Tap
-                  </span>
-                </div>
-                <span className="ts-chip" style={{ fontSize: "0.58rem", padding: "0.2rem 0.55rem" }}>
-                  Demo
-                </span>
-              </div>
-
-              <video
-                src="/videos/taskey-nfc-animation.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Taskey NFC-Zeiterfassung Animation"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
-
-            <p className="mt-4 text-[0.82rem]" style={{ color: "var(--ts-ink-muted)" }}>
-              Mitarbeitende halten das Telefon an einen NFC-Tag am Objekt, Taskey schreibt Start, Ende und Pause minutengenau.
-            </p>
-          </div>
-
-          {/* Accordion */}
-          <div className="lg:col-span-5">
-            <div
-              className="flex flex-col divide-y overflow-hidden"
-              style={{
-                border: "1px solid var(--ts-line)",
-                borderRadius: "var(--ts-r-panel)",
-                background: "var(--ts-canvas-elev)",
-              }}
-            >
-              {FEATURES.map((f, idx) => {
-                const isOpen = open === idx;
-                return (
-                  <div key={f.key} style={{ borderColor: "var(--ts-line)" }}>
-                    <button
-                      type="button"
-                      aria-expanded={isOpen}
-                      onClick={() => setOpen(isOpen ? null : idx)}
-                      className="w-full flex items-start justify-between gap-6 text-left px-5 md:px-6 py-5"
-                      style={{ background: isOpen ? "var(--ts-canvas-tinted)" : "transparent" }}
-                    >
-                      <div>
-                        <span className="ts-eyebrow block mb-1" style={{ fontSize: "0.65rem" }}>
-                          {f.eyebrow}
-                        </span>
-                        <span className="ts-headline" style={{ fontSize: "1.02rem", color: "var(--ts-ink)" }}>
-                          {f.title}
-                        </span>
-                      </div>
-                      <span
-                        aria-hidden
-                        className="shrink-0 grid place-items-center h-8 w-8"
-                        style={{
-                          borderRadius: 999,
-                          border: isOpen ? "1px solid var(--ts-ink)" : "1px solid var(--ts-line-strong)",
-                          background: isOpen ? "var(--ts-ink)" : "#fff",
-                          color: isOpen ? "#fff" : "var(--ts-ink-muted)",
-                          transform: isOpen ? "rotate(45deg)" : "none",
-                          transition: "all 0.28s var(--ts-ease-out)",
-                        }}
-                      >
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-                          <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                        </svg>
-                      </span>
-                    </button>
-                    <div
-                      className="ts-accordion-panel"
-                      aria-hidden={!isOpen}
-                      style={{
-                        display: "grid",
-                        gridTemplateRows: isOpen ? "1fr" : "0fr",
-                        opacity: isOpen ? 1 : 0,
-                        transition:
-                          "grid-template-rows 0.42s var(--ts-ease-out), opacity 0.32s var(--ts-ease-out)",
-                      }}
-                    >
-                      <div style={{ overflow: "hidden" }}>
-                        <div
-                          className="px-5 md:px-6 pb-6 -mt-1"
-                          style={{
-                            transform: isOpen ? "translateY(0)" : "translateY(-6px)",
-                            transition: "transform 0.42s var(--ts-ease-out)",
-                          }}
-                        >
-                          <p className="text-[0.98rem] leading-[1.65] mb-3" style={{ color: "var(--ts-ink-soft)" }}>
-                            {f.copy}
-                          </p>
-                          <ul className="flex flex-col gap-1.5">
-                            {f.bullets.map((b, bi) => (
-                              <li
-                                key={b}
-                                className="flex items-start gap-2 text-[0.92rem]"
-                                style={{
-                                  color: "var(--ts-ink-muted)",
-                                  opacity: isOpen ? 1 : 0,
-                                  transform: isOpen ? "translateY(0)" : "translateY(4px)",
-                                  transition: `opacity 0.4s var(--ts-ease-out) ${0.08 + bi * 0.05}s, transform 0.4s var(--ts-ease-out) ${0.08 + bi * 0.05}s`,
-                                }}
-                              >
-                                <span
-                                  className="mt-2 h-1 w-1 shrink-0 rounded-full"
-                                  style={{ background: "var(--brand-signal-blue)" }}
-                                />
-                                {b}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+        <div className="mt-12">
+          <FeatureWindow />
         </div>
       </div>
     </section>
@@ -449,31 +196,28 @@ function FeaturesDashboard() {
 function NachweisGallery() {
   const samples = [
     {
-      src: "/images/nachweise/sanitaer-check.jpg",
+      img: "/images/beweise/beweis-1-waschbecken",
+      alt: "Frisch gereinigtes Waschbecken im Waschraum eines Bürogebäudes",
       object: "Bürogebäude · 3. OG",
       detail: "Sanitär · Waschbecken geprüft",
       time: "06:42 · 11.11.2026",
       initials: "L. K.",
-      fallback:
-        "linear-gradient(135deg, #cfd8e2 0%, #e4ebf3 45%, #f1f4f8 100%)",
     },
     {
-      src: "/images/nachweise/kueche-sauber.jpg",
+      img: "/images/beweise/beweis-2-teekueche",
+      alt: "Fettfrei gereinigte Arbeitsfläche mit Spüle in der Teeküche einer Praxis",
       object: "Praxis Dr. Meier · Teeküche",
       detail: "Oberflächen · Fettfrei",
       time: "19:08 · 10.11.2026",
       initials: "M. A.",
-      fallback:
-        "linear-gradient(135deg, #e6dfd2 0%, #f1ead9 50%, #f7f2e4 100%)",
     },
     {
-      src: "/images/nachweise/flur-boden.jpg",
+      img: "/images/beweise/beweis-3-treppenhaus",
+      alt: "Nass gereinigtes Treppenhaus aus Granit in einem Verwaltungsgebäude",
       object: "Verwaltung · Treppenhaus Süd",
       detail: "Bodenpflege · Nassreinigung",
       time: "21:35 · 10.11.2026",
       initials: "S. R.",
-      fallback:
-        "linear-gradient(135deg, #d4dbdf 0%, #e7edef 45%, #f3f7f8 100%)",
     },
   ];
 
@@ -492,7 +236,7 @@ function NachweisGallery() {
             className="ts-headline"
             style={{ fontSize: "clamp(1.8rem, 3.6vw, 2.8rem)", color: "var(--ts-ink)" }}
           >
-            So sehen Foto-Beweise in Taskey aus<BrandDot />
+            <WithBrandDot>So sehen Foto-Beweise in Taskey aus</WithBrandDot>
           </h2>
           <p
             className="text-[1rem] md:text-[1.05rem] leading-[1.6] max-w-2xl"
@@ -506,7 +250,7 @@ function NachweisGallery() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {samples.map((s) => (
             <article
-              key={s.src}
+              key={s.img}
               className="ts-card ts-card-hover overflow-hidden flex flex-col"
               style={{ padding: 0 }}
             >
@@ -514,34 +258,25 @@ function NachweisGallery() {
                 style={{
                   aspectRatio: "4 / 5",
                   position: "relative",
-                  background: `${s.fallback}, #e9edf2`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  background: "#e9edf2",
                   overflow: "hidden",
                 }}
               >
-                <img
-                  src={s.src}
-                  alt=""
-                  loading="lazy"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = "none";
-                  }}
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
+                <PhotoZoom
+                  img={s.img}
+                  alt={s.alt}
+                  width={1122}
+                  height={1402}
+                  caption={`${s.object} · ${s.detail} · ${s.time}`}
                 />
+                {/* Verlauf für gut lesbaren weißen Text */}
                 <div
                   aria-hidden
                   style={{
                     position: "absolute",
                     inset: 0,
                     background:
-                      "linear-gradient(180deg, rgba(16,35,60,0) 45%, rgba(16,35,60,0.55) 100%)",
+                      "linear-gradient(to bottom, rgba(16,35,60,0) 45%, rgba(16,35,60,.35) 70%, rgba(16,35,60,.75) 100%)",
                     pointerEvents: "none",
                   }}
                 />
@@ -667,12 +402,12 @@ function StatementBand() {
             Taskey verbindet Einsatzplanung, Zeiterfassung, Nachweise und Finanzen in einem Datenstamm. Keine Insellösungen mehr, keine doppelte Pflege, keine Datenlücken zwischen Objekt und Lohnlauf.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Link href="/features" className="ts-btn ts-btn-onink">
+            <Button href="/features" variant="primary">
               Alle Funktionen
-            </Link>
-            <Link href="/pricing" className="ts-btn ts-btn-onink-ghost">
+            </Button>
+            <Button href="/pricing" variant="secondary" tone="dark">
               Abonnements ansehen
-            </Link>
+            </Button>
           </div>
         </div>
       </div>
@@ -785,17 +520,12 @@ function FinalCta() {
             Ein direktes Erstgespräch. Keine Vertriebsschleife. Wir öffnen das Dashboard mit Ihren Objekten und zeigen, was Taskey im Betrieb bedeutet.
           </p>
           <div className="mt-2 flex flex-col sm:flex-row gap-3">
-            <a
-              href="https://signup.taskeyapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ts-btn ts-btn-primary"
-            >
+            <Button href="https://signup.taskeyapp.com" target="_blank" rel="noopener noreferrer" variant="primary">
               Kostenlos starten
-            </a>
-            <Link href="/erstgespraech" className="ts-btn ts-btn-ghost">
+            </Button>
+            <Button href="/erstgespraech" variant="secondary">
               Erstgespräch buchen
-            </Link>
+            </Button>
           </div>
         </div>
       </div>

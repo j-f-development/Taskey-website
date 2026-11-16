@@ -69,7 +69,7 @@
   font-weight: 600;
   color: #374b44;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background var(--motion-press) var(--ease-out);
 }
 .statusIcon { display:grid; place-items:center; width:18px; height:18px; border:1px solid currentColor; border-radius:50%; font-size:13px; font-weight:800; }
 .pinText { display:flex; flex-direction:column; text-align:left; gap:1px; }

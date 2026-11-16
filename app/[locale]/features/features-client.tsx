@@ -615,7 +615,7 @@ export default function FeaturesClient() {
 
       <section className="relative pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div key={cat.id} className="animate-[features-fade_0.6s_ease-out]">
+          <div key={cat.id} className="animate-[features-fade_var(--motion-reveal)_var(--ease-out)]">
             <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
               <span className="inline-block px-3 py-1 text-[10px] font-black tracking-[0.3em] uppercase text-blue-700 bg-cyan-50 border border-cyan-300 rounded-full mb-5">
                 {cat.badge}

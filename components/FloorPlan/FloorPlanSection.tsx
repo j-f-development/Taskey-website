@@ -2,7 +2,8 @@
 
 import { useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { EASE_OUT, durations } from "@/lib/motion";
 import { FLOORS, type FloorKey, type RoomKey } from "@/lib/data/floorplan";
 import { FloorSidebar } from "./FloorSidebar";
 import { FloorSVG, ROOM_RECTS } from "./FloorSVG";
@@ -25,6 +26,8 @@ const Floor3D = dynamic(() => import("./Floor3D"), {
 const ZOOM_STOPS = [75, 100, 125, 150];
 
 export function FloorPlanSection() {
+  const md = durations(useReducedMotion());
+  const fade = { duration: md.REVEAL, ease: EASE_OUT };
   const [buildingView, setBuildingView] = useState<BuildingView>("building");
   const [activeFloor, setActiveFloor] = useState<FloorKey>("eg");
   const [hoveredRoom, setHoveredRoom] = useState<RoomKey | null>(null);
@@ -140,8 +143,8 @@ export function FloorPlanSection() {
                     <motion.div
                       key="building-model"
                       initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
+                      animate={{ opacity: 1, transition: fade }}
+                      exit={{ opacity: 0, transition: { duration: md.PRESS } }}
                       className="absolute inset-0"
                     >
                       <Floor3D
@@ -178,9 +181,8 @@ export function FloorPlanSection() {
                     <motion.div
                       key={`plan-${activeFloor}`}
                       initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.25 }}
+                      animate={{ opacity: 1, transition: fade }}
+                      exit={{ opacity: 0, transition: { duration: md.PRESS } }}
                       className="absolute inset-0"
                     >
                       <FloorSVG

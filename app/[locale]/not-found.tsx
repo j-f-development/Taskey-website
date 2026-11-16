@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/components/LocaleLink";
+import Button from "@/components/ui/Button";
 
 type Locale = "de" | "en" | "fr";
 
@@ -108,9 +109,9 @@ export default async function NotFound({
             {copy.subline}
           </p>
           <div className="mt-7 flex justify-center">
-            <Link href="/" className="apl-btn apl-btn-primary apl-btn-lg">
+            <Button href="/" variant="primary">
               {copy.cta}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -123,7 +124,7 @@ export default async function NotFound({
                 key={l.href}
                 href={l.href}
                 className="apl-tile apl-tile-canvas hover:-translate-y-[2px]"
-                style={{ transitionProperty: "transform", transitionDuration: "250ms" }}
+                style={{ transitionProperty: "transform", transitionDuration: "var(--motion-press)", transitionTimingFunction: "var(--ease-out)" }}
               >
                 <div className="apl-tile-inner items-start text-left">
                   <h2 className="apl-headline" style={{ fontSize: "1.0625rem" }}>

@@ -62,7 +62,7 @@ export default function FeaturePreview() {
         {features.map((f, i) => (
           <div
             key={f.image}
-            className="absolute inset-0 transition-opacity duration-[1200ms] ease-out"
+            className="absolute inset-0 transition-opacity duration-[var(--motion-reveal)] ease-[var(--ease-out)]"
             style={{ opacity: i === active ? 1 : 0 }}
           >
             <Image
@@ -172,14 +172,14 @@ export default function FeaturePreview() {
                 {features.map((f, i) => (
                   <div
                     key={f.image}
-                    className="absolute inset-0 transition-opacity duration-[1000ms]"
+                    className="absolute inset-0 transition-opacity duration-[var(--motion-reveal)]"
                     style={{ opacity: i === active ? 1 : 0 }}
                   >
                     <Image src={f.image} alt={f.title} fill sizes="100vw" className="object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
                   </div>
                 ))}
-                <div key={`m-txt-${active}`} className="absolute bottom-0 left-0 right-0 p-6" style={{ animation: "featurepreview-fade 0.7s ease-out" }}>
+                <div key={`m-txt-${active}`} className="absolute bottom-0 left-0 right-0 p-6" style={{ animation: "featurepreview-fade var(--motion-reveal) var(--ease-out)" }}>
                   <span className="inline-flex self-start text-[10px] font-black tracking-[0.25em] uppercase text-blue-700 bg-cyan-50 border border-cyan-300 px-3 py-1 rounded-full mb-3">
                     {current.tag} · {String(active + 1).padStart(2, "0")}/{String(features.length).padStart(2, "0")}
                   </span>
@@ -203,7 +203,7 @@ export default function FeaturePreview() {
             </div>
 
             {/* Desktop: Text schwebt unten rechts frei über dem Hintergrund-Bild */}
-            <div key={`d-txt-${active}`} className="hidden lg:block ml-auto max-w-md relative z-10" style={{ animation: "featurepreview-fade 0.7s ease-out" }}>
+            <div key={`d-txt-${active}`} className="hidden lg:block ml-auto max-w-md relative z-10" style={{ animation: "featurepreview-fade var(--motion-reveal) var(--ease-out)" }}>
               <span className="inline-flex text-[10px] font-black tracking-[0.25em] uppercase text-blue-700 bg-cyan-50 border border-cyan-300 backdrop-blur-md px-3 py-1 rounded-full mb-5">
                 {current.tag} · {String(active + 1).padStart(2, "0")}/{String(features.length).padStart(2, "0")}
               </span>

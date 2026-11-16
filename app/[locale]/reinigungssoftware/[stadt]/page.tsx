@@ -14,6 +14,7 @@ import {
 import { regions, getRegionBySlug } from "@/lib/seo/regions";
 import { isIndexableCity } from "@/lib/seo/helpers";
 import { lhref, absoluteUrl } from "@/lib/seo/href";
+import Button from "@/components/ui/Button";
 
 const SUPPORTED: Locale[] = ["de", "en", "fr"];
 
@@ -259,9 +260,9 @@ export default async function ReinigungssoftwareCityPage({
                 : "14 jours gratuits, sans carte. Périmètre Beginner complet."}
             </p>
             <div className="mt-7 flex justify-center">
-              <a href="https://signup.taskeyapp.com" className="apl-btn apl-btn-primary apl-btn-lg">
+              <Button href="https://signup.taskeyapp.com" variant="primary">
                 {locale === "de" ? "Kostenlos testen" : locale === "en" ? "Start free trial" : "Essai gratuit"}
-              </a>
+              </Button>
             </div>
           </div>
         </section>

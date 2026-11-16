@@ -438,7 +438,7 @@ export default function NfcDemo() {
               <span className="text-[11px] font-mono text-slate-400">#{current.id.toUpperCase()}</span>
             </div>
 
-            <div className={`transition-opacity duration-300 ${phase === "scanning" ? "opacity-40" : "opacity-100"}`}>
+            <div className={`transition-opacity duration-[var(--motion-reveal)] ${phase === "scanning" ? "opacity-40" : "opacity-100"}`}>
               <div className="flex flex-col gap-3">
                 <ProofRow icon="location" label={t.fields.location} value={current.location} sub={current.address} />
                 <ProofRow icon="clock" label={t.fields.time} value={`${current.time} · ${current.date}`} />

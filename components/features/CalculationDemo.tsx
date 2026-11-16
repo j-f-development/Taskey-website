@@ -372,7 +372,7 @@ function SliderField({
           border: 2px solid ${accentTo};
           box-shadow: 0 4px 10px -2px rgba(15, 23, 42, 0.18);
           cursor: pointer;
-          transition: transform 0.15s ease;
+          transition: transform var(--motion-press) var(--ease-out);
         }
         .calc-slider::-webkit-slider-thumb:hover {
           transform: scale(1.12);
@@ -475,7 +475,7 @@ function MarginBar({
       </div>
       <div className="relative h-2 rounded-full bg-white/70 overflow-hidden">
         <div
-          className="absolute inset-y-0 left-0 rounded-full transition-[width] duration-300 ease-out"
+          className="absolute inset-y-0 left-0 rounded-full transition-[width] duration-[var(--motion-reveal)] ease-[var(--ease-out)]"
           style={{
             width: `${fillPct}%`,
             background: "linear-gradient(90deg, #22c55e, #10b981)",

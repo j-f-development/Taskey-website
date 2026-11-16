@@ -5,6 +5,7 @@ import Image from "next/image";
 import { posts, getCategoryLabel, type PostCategory, type Locale } from "../posts";
 import { getLocalizedPost, isBodyFallback } from "../i18n";
 import { pickLocale, alternates } from "@/lib/i18n-metadata";
+import Button from "@/components/ui/Button";
 
 export const dynamicParams = false;
 
@@ -628,14 +629,9 @@ export default async function NewsPostPage(
             {ui.ctaBody}
           </p>
           <div className="mt-7 flex justify-center">
-            <Link
-              href="https://signup.taskeyapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="apl-btn apl-btn-primary apl-btn-lg"
-            >
+            <Button href="https://signup.taskeyapp.com" target="_blank" rel="noopener noreferrer" variant="primary">
               {ui.ctaButton}
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

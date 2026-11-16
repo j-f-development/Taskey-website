@@ -1,4 +1,5 @@
 import SignupButton from "@/components/landing/SignupButton";
+import { buttonClass } from "@/components/ui/Button";
 import { CONTACT } from "@/lib/contact";
 
 type Props = {
@@ -19,7 +20,7 @@ function toneStyles(tone: Props["tone"]) {
       color: "#fff",
       eyebrow: "rgba(255,255,255,0.6)",
       body: "rgba(238,241,245,0.85)",
-      secondary: "tk-cta-secondary tk-cta-secondary--onink",
+      secondary: buttonClass({ variant: "secondary", tone: "dark" }),
     };
   }
   if (tone === "tinted") {
@@ -28,7 +29,7 @@ function toneStyles(tone: Props["tone"]) {
       color: "var(--tkc-ink)",
       eyebrow: "var(--tkc-ink-muted)",
       body: "var(--tkc-ink-soft)",
-      secondary: "tk-cta-secondary",
+      secondary: buttonClass({ variant: "secondary" }),
     };
   }
   return {
@@ -36,7 +37,7 @@ function toneStyles(tone: Props["tone"]) {
     color: "var(--tkc-ink)",
     eyebrow: "var(--tkc-ink-muted)",
     body: "var(--tkc-ink-soft)",
-    secondary: "tk-cta-secondary",
+    secondary: buttonClass({ variant: "secondary" }),
   };
 }
 
@@ -99,7 +100,7 @@ export default function CtaBand({
               </p>
             ) : null}
           </div>
-          <div className="flex flex-col items-start lg:items-end gap-3">
+          <div className="flex flex-wrap items-center lg:justify-end gap-3">
             <SignupButton size="lg" label={signupLabel} utm={utm} />
             <a
               href={callHref}

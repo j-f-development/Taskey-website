@@ -1,6 +1,8 @@
 "use client";
 
+import { motion, useReducedMotion } from "motion/react";
 import type { Room } from "@/lib/data/floorplan";
+import { EASE_OUT, durations } from "@/lib/motion";
 import { STATUS_META } from "@/lib/data/floorplan";
 
 export function RoomTooltip({
@@ -13,6 +15,7 @@ export function RoomTooltip({
   y: number;
 }) {
   const meta = STATUS_META[room.status];
+  const reduced = useReducedMotion();
 
   return (
     <div
@@ -23,6 +26,14 @@ export function RoomTooltip({
         transform: "translate(-50%, calc(-100% - 14px))",
       }}
     >
+      {/* Wächst aus seinem Auslöser: dem Raum unter dem Pfeil. */}
+      <motion.div
+        key={room.id}
+        style={{ transformOrigin: "50% 100%" }}
+        initial={{ opacity: 0, scale: reduced ? 1 : 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: durations(reduced).REVEAL, ease: EASE_OUT }}
+      >
       <div
         className="rounded-xl bg-white border border-[color:var(--fp-border)] px-3.5 py-3 min-w-[220px] max-w-[300px]"
         style={{ boxShadow: "0 8px 30px -10px rgba(15,23,42,0.28)" }}
@@ -77,6 +88,7 @@ export function RoomTooltip({
         className="mx-auto -mt-px h-2 w-2 rotate-45 bg-white border-r border-b border-[color:var(--fp-border)]"
         style={{ marginTop: -5 }}
       />
+      </motion.div>
     </div>
   );
 }
