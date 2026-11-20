@@ -26,17 +26,11 @@ type Plan = {
 
 type Cadence = "monthly" | "annual";
 
-type BasePlan = Omit<Plan, "price"> & {
-  monthlyPrice: number;
-  annualPrice: number;
-};
-
-const BASE_PLANS: BasePlan[] = [
+const BASE_PLANS: Plan[] = [
   {
     id: "beginner",
     name: "Beginner",
-    monthlyPrice: 74.52,
-    annualPrice: 69,
+    price: "69",
     priceSuffix: "/Monat",
     tagline: "Der saubere Einstieg. Zeiterfassung, Nachweise, Finanzen.",
     features: [
@@ -54,8 +48,7 @@ const BASE_PLANS: BasePlan[] = [
   {
     id: "professional",
     name: "Pro",
-    monthlyPrice: 193.32,
-    annualPrice: 179,
+    price: "179",
     priceSuffix: "/Monat",
     tagline: "Mit Personalplanung. Bis zu 100 Objekte.",
     features: [
@@ -73,8 +66,7 @@ const BASE_PLANS: BasePlan[] = [
   {
     id: "business",
     name: "Business",
-    monthlyPrice: 268.92,
-    annualPrice: 249,
+    price: "249",
     priceSuffix: "/Monat",
     tagline: "Ohne Grenzen. Unbegrenzt Objekte und Standorte.",
     features: [
@@ -89,12 +81,6 @@ const BASE_PLANS: BasePlan[] = [
     ctaHref: "https://signup.taskeyapp.com",
   },
 ];
-
-function formatEuro(value: number): string {
-  return Number.isInteger(value)
-    ? value.toString()
-    : value.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
 const ENTERPRISE_PLAN: Plan = {
   id: "enterprise",
@@ -116,14 +102,18 @@ export default function PricingClientApple() {
   const { t: _t } = useLanguage();
   const [cadence, setCadence] = useState<Cadence>("monthly");
 
+  const discount = 0.15;
   const plans = BASE_PLANS.map((p) => {
+    const monthlyBase = parseInt(p.price, 10);
     const effectiveMonthly =
-      cadence === "annual" ? p.annualPrice : p.monthlyPrice;
-    const yearlyTotal = p.annualPrice * 12;
-    const yearlySavings = (p.monthlyPrice - p.annualPrice) * 12;
+      cadence === "annual"
+        ? Math.round(monthlyBase * (1 - discount))
+        : monthlyBase;
+    const yearlyTotal = effectiveMonthly * 12;
+    const yearlySavings = monthlyBase * 12 - yearlyTotal;
     return {
       ...p,
-      price: formatEuro(effectiveMonthly),
+      price: effectiveMonthly.toString(),
       yearlyTotal,
       yearlySavings,
     };
@@ -151,7 +141,7 @@ export default function PricingClientApple() {
               Monatlich
             </CadenceButton>
             <CadenceButton active={cadence === "annual"} onClick={() => setCadence("annual")}>
-              Jährlich · −7 %
+              Jährlich · −15%
             </CadenceButton>
           </div>
           <AnimatePresence initial={false}>

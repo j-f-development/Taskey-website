@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 
 type CookiePreferences = {
@@ -14,7 +14,7 @@ type CookiePreferences = {
 const CONTENT = {
   de: {
     bannerTitle: 'Cookie-Einstellungen',
-    bannerP1: 'Wir verwenden auf unserer Website Cookies und ähnliche Technologien, um den technischen Betrieb der Website sicherzustellen, grundlegende Funktionen bereitzustellen und – sofern Sie ausdrücklich einwilligen – das Nutzungsverhalten auszuwerten sowie Inhalte zu optimieren.',
+    bannerP1: 'Wir verwenden auf unserer Website Cookies und ähnliche Technologien, um den technischen Betrieb der Website sicherzustellen, grundlegende Funktionen bereitzustellen und, sofern Sie ausdrücklich einwilligen, das Nutzungsverhalten auszuwerten sowie Inhalte zu optimieren.',
     bannerP2Strong: 'Technisch notwendige Cookies',
     bannerP2Rest: ' sind für den Betrieb der Website erforderlich und können nicht deaktiviert werden. Alle anderen Cookies werden nur mit Ihrer freiwilligen Einwilligung gesetzt.',
     bannerP3Prefix: 'Weitere Informationen finden Sie in unseren',
@@ -58,7 +58,7 @@ const CONTENT = {
   },
   en: {
     bannerTitle: 'Cookie settings',
-    bannerP1: 'We use cookies and similar technologies on our website to ensure the technical operation of the site, provide basic functionality and – if you explicitly consent – analyse usage behaviour and optimise content.',
+    bannerP1: 'We use cookies and similar technologies on our website to ensure the technical operation of the site, provide basic functionality and, if you explicitly consent, analyse usage behaviour and optimise content.',
     bannerP2Strong: 'Strictly necessary cookies',
     bannerP2Rest: ' are required for the operation of the website and cannot be disabled. All other cookies are only set with your voluntary consent.',
     bannerP3Prefix: 'You can find more information in our',
@@ -102,7 +102,7 @@ const CONTENT = {
   },
   fr: {
     bannerTitle: 'Paramètres des cookies',
-    bannerP1: 'Nous utilisons sur notre site des cookies et des technologies similaires afin d’assurer le fonctionnement technique du site, de fournir des fonctionnalités de base et – sous réserve de votre consentement explicite – d’analyser l’utilisation et d’optimiser les contenus.',
+    bannerP1: 'Nous utilisons sur notre site des cookies et des technologies similaires afin d’assurer le fonctionnement technique du site, de fournir des fonctionnalités de base et, sous réserve de votre consentement explicite, d’analyser l’utilisation et d’optimiser les contenus.',
     bannerP2Strong: 'Les cookies techniquement nécessaires',
     bannerP2Rest: ' sont indispensables au fonctionnement du site et ne peuvent pas être désactivés. Tous les autres cookies ne sont déposés qu’avec votre consentement volontaire.',
     bannerP3Prefix: 'Vous trouverez plus d’informations dans notre',
@@ -149,10 +149,16 @@ const CONTENT = {
 export default function CookieBanner() {
   const { language } = useLanguage();
   const c = CONTENT[language];
-  const [showBanner, setShowBanner] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return !localStorage.getItem('taskey-cookie-consent');
-  });
+  // Server und erster Client-Render liefern immer null; die gespeicherte
+  // Einwilligung wird erst nach dem Mount geprüft (sonst Hydration-Fehler).
+  const [mounted, setMounted] = useState(false);
+  const [showBanner, setShowBanner] = useState(false);
+  useEffect(() => {
+    // Bewusst nach dem Mount: localStorage gibt es erst im Browser.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+    setShowBanner(!localStorage.getItem('taskey-cookie-consent'));
+  }, []);
   const [showSettings, setShowSettings] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>({
     necessary: true,
@@ -197,7 +203,7 @@ export default function CookieBanner() {
     savePreferences(preferences);
   };
 
-  if (!showBanner) return null;
+  if (!mounted || !showBanner) return null;
 
   return (
     <>
@@ -231,22 +237,27 @@ export default function CookieBanner() {
               </div>
 
               {/* Buttons */}
+              {/* Gleich hoch, gleicher Radius und gleiche Schrift wie der Navigations-Button (.tk-btn).
+                  „Alle akzeptieren“ und „Nur notwendige“ gleich groß (DSGVO). */}
               <div className="flex flex-col sm:flex-row gap-3 mt-4">
                 <button
+                  type="button"
                   onClick={acceptAll}
-                  className="flex-1 bg-blue-600 text-white px-5 py-2.5 rounded-md font-semibold hover:bg-blue-700 transition text-sm"
+                  className="tk-btn tk-btn--primary w-full sm:w-auto sm:flex-1"
                 >
                   {c.btnAcceptAll}
                 </button>
                 <button
+                  type="button"
                   onClick={acceptNecessary}
-                  className="flex-1 bg-gray-600 text-slate-900 px-5 py-2.5 rounded-md font-semibold hover:bg-slate-700 transition text-sm"
+                  className="tk-btn tk-btn--cookie-necessary w-full sm:w-auto sm:flex-1"
                 >
                   {c.btnNecessaryOnly}
                 </button>
                 <button
+                  type="button"
                   onClick={() => setShowSettings(true)}
-                  className="flex-1 bg-white text-slate-800 px-5 py-2.5 rounded-md font-semibold border-2 border-slate-300 hover:bg-slate-50 transition text-sm"
+                  className="tk-btn tk-btn--cookie-settings w-full sm:w-auto sm:flex-1"
                 >
                   {c.btnSettings}
                 </button>

@@ -5,9 +5,16 @@
 /** Ziel des Buttons „Demo buchen“. */
 export const DEMO_URL = "/erstgespraech";
 
+/** Von außen eine Funktion öffnen (z. B. „Gelöst mit: …“ im Problem-Abschnitt):
+    window.dispatchEvent(new CustomEvent(OPEN_FEATURE_EVENT, { detail: "zeiterfassung" })) */
+export const OPEN_FEATURE_EVENT = "tk-open-feature";
+
 /** Auto-Tour: so lange bleibt der Überblick, in Sekunden.
     Sobald der Besucher selbst klickt, endet die Auto-Tour endgültig. */
 export const OVERVIEW_SECONDS = 6;
+
+/** Ruhiger Start: So lange steht das erste Bild still, nachdem der Öffnungs-Übergang fertig ist (ms). */
+export const START_HOLD_MS = 250;
 
 /** Auto-Tour: so lange bleibt jede Funktion offen, in Sekunden (gilt für alle vier). */
 export const FEATURE_SECONDS = 7.5;
@@ -98,3 +105,35 @@ export const FEATURES: Feature[] = [
     ],
   },
 ];
+
+/* ------------------------------------------------------------------
+   Live-Benachrichtigungen unten mittig am Fenster (nur Icons und Text).
+   Immer nur eine sichtbar; sie wechseln nacheinander, solange die Funktion
+   offen ist. Im Überblick keine Karte.
+   check = Erfolg (grüner Haken), warn = Warnung (roter Punkt), stat = Kennzahl.
+   ------------------------------------------------------------------ */
+export type LiveCard =
+  | { kind: "check" | "warn"; title: string; sub: string }
+  | { kind: "stat"; title: string; value: string };
+
+/** So lange bleibt eine Benachrichtigung stehen, in Sekunden. */
+export const LIVE_HOLD_SECONDS = 3;
+
+export const LIVE_FEED: Record<string, LiveCard[]> = {
+  zeiterfassung: [
+    { kind: "check", title: "Andrea Huber hat eingecheckt", sub: "Bürohaus Rheinallee · 05:58" },
+    { kind: "check", title: "Check-out per NFC erfasst", sub: "Praxis Behrens · 3 h 12 min" },
+  ],
+  personalplanung: [
+    { kind: "warn", title: "Krankmeldung eingegangen", sub: "Lindenthal · Fr 06:00" },
+    { kind: "check", title: "Krankmeldung: Ersatz gefunden", sub: "Tom Weber übernimmt" },
+  ],
+  finanzplanung: [
+    { kind: "stat", title: "Marge diese Woche", value: "+ 18,4 %" },
+    { kind: "check", title: "Rechnungen automatisch erstellt", sub: "Oktober · E-Rechnung" },
+  ],
+  "taskey-share": [
+    { kind: "check", title: "Kunde hat Bericht geöffnet", sub: "Praxis Behrens · 08:14" },
+    { kind: "check", title: "Ticket erledigt", sub: "Teeküche 2. OG · Foto-Nachweis" },
+  ],
+};

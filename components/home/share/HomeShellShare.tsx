@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { BrandDot, TaskeyWord, WithBrandDot } from "@/components/BrandDot";
 import FeatureWindow from "@/components/home/feature-window/FeatureWindow";
+import ProblemSection from "@/components/home/problem/ProblemSection";
 import PhotoZoom from "@/components/share/PhotoZoom";
 import Button from "@/components/ui/Button";
 
@@ -10,6 +11,7 @@ export default function HomeShellShare() {
   return (
     <div className="ts-scope">
       <HeroShare />
+      <ProblemSection />
       <FeaturesDashboard />
       <NachweisGallery />
       <StatementBand />
@@ -159,16 +161,30 @@ function FeaturesDashboard() {
       id="features"
       className="relative overflow-hidden"
       style={{
-        background: "var(--ts-canvas-elev)",
+        background: "#F6F8FB",
         paddingBlock: "var(--ts-section-py)",
         borderTop: "1px solid var(--ts-line)",
       }}
     >
-      <div className="ts-container-wide">
+      {/* feines Punktraster, das zu den Rändern ausblendet */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "radial-gradient(rgba(16,35,60,.08) 0.75px, transparent 0.75px)",
+          backgroundSize: "22px 22px",
+          WebkitMaskImage: "radial-gradient(ellipse 75% 65% at 50% 50%, #000 35%, transparent 100%)",
+          maskImage: "radial-gradient(ellipse 75% 65% at 50% 50%, #000 35%, transparent 100%)",
+        }}
+      />
+      <div className="ts-container-wide relative">
         <header id="funktionen" className="flex flex-col gap-4 max-w-3xl" style={{ scrollMarginTop: "6rem" }}>
           <span className="ts-eyebrow">Funktionen</span>
-          <h2 className="ts-headline" style={{ fontSize: "clamp(1.9rem, 4.2vw, 3.2rem)", color: "var(--ts-ink)" }}>
-            Ein Dashboard für deinen ganzen Betrieb<BrandDot />
+          <h2 className="ts-headline" style={{ fontSize: "clamp(1.9rem, 4.2vw, 3.2rem)", color: "#10233C", fontWeight: 800 }}>
+            Ein Dashboard für deinen{" "}
+            <span style={{ color: "#2F5B94" }}>
+              ganzen <span className="whitespace-nowrap">Betrieb<BrandDot /></span>
+            </span>
           </h2>
           <p className="text-[1rem] md:text-[1.08rem] leading-[1.6] max-w-2xl" style={{ color: "var(--ts-ink-muted)" }}>
             Klick dich durch die vier zentralen Funktionen von Taskey, genau so, wie du sie später selbst benutzt.
@@ -247,11 +263,11 @@ function NachweisGallery() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {samples.map((s) => (
             <article
               key={s.img}
-              className="ts-card ts-card-hover overflow-hidden flex flex-col"
+              className="ts-card tk-proof-card overflow-hidden flex flex-col"
               style={{ padding: 0 }}
             >
               <div
@@ -290,6 +306,7 @@ function NachweisGallery() {
                     color: "var(--brand-navy)",
                     fontSize: "0.58rem",
                     padding: "0.3rem 0.6rem",
+                    borderRadius: 8,
                   }}
                 >
                   Beweis · Taskey
@@ -370,7 +387,7 @@ function NachweisGallery() {
         </div>
 
         <p
-          className="text-[0.82rem] mt-6"
+          className="text-[0.82rem] mt-10"
           style={{ color: "var(--ts-ink-faint)" }}
         >
           Beispielhafte Darstellung. Die Fotos sind rein illustrativ.

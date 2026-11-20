@@ -9,10 +9,17 @@ import { TaskeyMark } from "./TaskeyMark";
 import {
   DEMO_URL,
   FEATURES,
+  LIVE_FEED,
+  LIVE_HOLD_SECONDS,
+  OPEN_FEATURE_EVENT,
   OVERVIEW_SECONDS,
   FEATURE_SECONDS,
+  START_HOLD_MS,
   type FeatureIcon,
+  type FeatureVideo,
+  type LiveCard,
 } from "./features";
+
 import s from "./FeatureWindow.module.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--tk-geist", display: "swap" });
@@ -74,6 +81,53 @@ const Arrow = () => (
   </Ic>
 );
 const Dot = () => <span className={s.dot} aria-hidden="true" />;
+/** layout-grid (Lucide) für „Überblick“ */
+const GridIc = () => (
+  <Ic>
+    <rect width="7" height="7" x="3" y="3" rx="1" />
+    <rect width="7" height="7" x="14" y="3" rx="1" />
+    <rect width="7" height="7" x="14" y="14" rx="1" />
+    <rect width="7" height="7" x="3" y="14" rx="1" />
+  </Ic>
+);
+
+/* ---------- Live-Benachrichtigung ---------- */
+function Spark() {
+  return (
+    <svg className={s.spark} viewBox="0 0 64 22" aria-hidden="true" focusable="false">
+      <path d="M2 18 L12 15 L20 16 L29 11 L37 12 L46 7 L54 8 L62 3" />
+    </svg>
+  );
+}
+function LiveCardBody({ c }: { c: LiveCard }) {
+  if (c.kind === "stat")
+    return (
+      <div className={s.lcStat}>
+        <div>
+          <span className={s.lcSub}>{c.title}</span>
+          <b className={s.lcValue}>{c.value}</b>
+        </div>
+        <Spark />
+      </div>
+    );
+  return (
+    <div className={s.lcRow}>
+      {c.kind === "warn" ? (
+        <span className={s.lcWarn} aria-hidden="true" />
+      ) : (
+        <span className={s.lcCheck} aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M6 12.5l4 4L18 8.5" />
+          </svg>
+        </span>
+      )}
+      <div>
+        <b className={s.lcTitle}>{c.title}</b>
+        <span className={s.lcSub}>{c.sub}</span>
+      </div>
+    </div>
+  );
+}
 /** Letztes Wort und Punkt bleiben zusammen, der Punkt landet nie allein in einer neuen Zeile. */
 function DotTitle({ text }: { text: string }) {
   const i = text.lastIndexOf(" ");
@@ -85,6 +139,73 @@ function DotTitle({ text }: { text: string }) {
         <Dot />
       </span>
     </>
+  );
+}
+
+/* ---------- Video mit ruhigem Start ----------
+   Lädt das Video, zeigt aber nur das erste Bild. Erst wenn `ready` (Öffnungs-Übergang fertig)
+   UND das Video geladen ist, beginnt die Pause von START_HOLD_MS; danach läuft es von Anfang an
+   und `onStart` meldet das an das Fenster (Auto-Tour-Uhr, Lade-Strich, Live-Pop-up). */
+function SceneVideo({
+  video,
+  name,
+  ready,
+  onStart,
+}: {
+  video: FeatureVideo;
+  name: string;
+  ready: boolean;
+  onStart: () => void;
+}) {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [loaded, setLoaded] = useState(false);
+  const posted = useRef(false);
+  const started = useRef(false);
+  const onStartRef = useRef(onStart);
+  useEffect(() => {
+    onStartRef.current = onStart;
+  });
+  useEffect(() => {
+    if (!ready || !loaded || started.current) return;
+    if (!posted.current) {
+      posted.current = true;
+      if (video.kind === "iframe") {
+        // Die Video-Seite beginnt jetzt ihre eigene Pause (delay) und startet dann bei 0.
+        iframeRef.current?.contentWindow?.postMessage({ type: "tk-play" }, window.location.origin);
+      } else if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+    const t = window.setTimeout(() => {
+      started.current = true;
+      if (video.kind === "mp4") void videoRef.current?.play().catch(() => {});
+      onStartRef.current();
+    }, START_HOLD_MS);
+    return () => window.clearTimeout(t);
+  }, [ready, loaded, video.kind]);
+
+  return video.kind === "mp4" ? (
+    <video
+      ref={videoRef}
+      src={video.src}
+      muted
+      loop
+      playsInline
+      preload="auto"
+      aria-label={`Animation: ${name}`}
+      onLoadedData={() => setLoaded(true)}
+    />
+  ) : (
+    <iframe
+      ref={iframeRef}
+      src={`${video.src}${video.src.includes("?") ? "&" : "?"}delay=${START_HOLD_MS}`}
+      title={`Animation: ${name}`}
+      allow="autoplay"
+      tabIndex={-1}
+      onLoad={() => setLoaded(true)}
+    />
   );
 }
 
@@ -101,6 +222,27 @@ type ExitKind = "fade" | "instant";
 
 export default function FeatureWindow() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  /** Live-Karten erscheinen erst, wenn der Abschnitt ins Bild kommt (einmalig, nacheinander). */
+  const [stageSeen, setStageSeen] = useState(false);
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setStageSeen(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  /** Welche Benachrichtigung gerade dran ist (setzt sich bei jedem Funktionswechsel zurück). */
+  const [liveState, setLiveState] = useState<{ feat: string | null; idx: number }>({ feat: null, idx: 0 });
   const mainRef = useRef<HTMLDivElement>(null);
   const barRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const cardRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -121,6 +263,13 @@ export default function FeatureWindow() {
   const [full, setFull] = useState<Box | null>(null);
   /** Wie eine Ansicht verschwindet: ausblenden (beim Wechsel) oder sofort (nach dem Zurückschrumpfen). */
   const [exitKind, setExitKind] = useState<ExitKind>("fade");
+
+  /** Szene, deren Öffnungs-Übergang fertig ist, und Szene, deren Video läuft. */
+  const [readyKey, setReadyKey] = useState<number | null>(null);
+  const [startedKey, setStartedKey] = useState<number | null>(null);
+  /** Auto-Tour wartet, bis das Video der gerade geöffneten Funktion läuft. */
+  const awaitStart = useRef(false);
+  const awaitSince = useRef(0);
 
   const currentRef = useRef<string | null>(null);
   const sceneKey = useRef(0);
@@ -161,6 +310,11 @@ export default function FeatureWindow() {
       const fullBox = boxOf(mainRef.current, 0);
       const src = boxOf(originEl(id, origin));
       if (!fullBox) return;
+      // Wechsel: Das alte Video bleibt sofort stehen, während seine Ansicht ausblendet.
+      rootRef.current?.querySelectorAll<HTMLIFrameElement>("[data-scene] iframe").forEach((f) =>
+        f.contentWindow?.postMessage({ type: "tk-pause" }, window.location.origin),
+      );
+      rootRef.current?.querySelectorAll<HTMLVideoElement>("[data-scene] video").forEach((v) => v.pause());
       currentRef.current = id;
       setCurrent(id);
       setFull(fullBox);
@@ -224,6 +378,19 @@ export default function FeatureWindow() {
       return sc;
     });
 
+  // Übergang fertig: normalerweise meldet das onLayoutAnimationComplete. Fallback (z. B. reduzierte
+  // Bewegung ohne Layout-Animation): nach der Scene-Dauer.
+  const openKey = scene && scene.phase === "open" ? scene.key : null;
+  useEffect(() => {
+    if (openKey === null) return;
+    const t = window.setTimeout(() => setReadyKey(openKey), d.SCENE * 1000 + 100);
+    return () => window.clearTimeout(t);
+  }, [openKey, d.SCENE]);
+  const onVideoStart = (key: number) => {
+    setStartedKey(key);
+    if (sceneKey.current === key) awaitStart.current = false;
+  };
+
   // Fenstergröße ändert sich: Endgröße nachführen
   useEffect(() => {
     const root = rootRef.current;
@@ -237,13 +404,16 @@ export default function FeatureWindow() {
 
   /* ---------- Auto-Tour ---------- */
   const stepLen = (i: number) => (i < 0 ? OVERVIEW_SECONDS : FEATURE_SECONDS);
+  /** Auto-Tour im Kreis: Überblick (-1) → Funktion 0 … 3 → Überblick … */
+  const nextStep = (i: number) => (i + 1 < FEATURES.length ? i + 1 : -1);
 
-  /** Lade-Strich: füllt sich beim GEÖFFNETEN Ordner und zeigt, wie lange er noch bleibt.
-      Im Überblick ist kein Ordner offen, dann bleiben alle Striche leer. */
+  /** Lade-Strich: lädt immer unter dem Punkt, der GERADE angezeigt wird (auch „Überblick“).
+      Ist er voll, wechselt die Tour zum nächsten Punkt, dort beginnt er von vorn.
+      Strich 0 = Überblick, 1 bis 4 = Funktionen. Nach eigenem Klick bleiben alle leer. */
   const setBars = useCallback((k: number) => {
-    const active = autoRef.current ? stepRef.current : -1;
+    const target = autoRef.current ? stepRef.current + 1 : -1;
     barRefs.current.forEach((b, i) => {
-      if (b) b.style.transform = `scaleX(${i === active ? Math.min(Math.max(k, 0), 1) : 0})`;
+      if (b) b.style.transform = `scaleX(${i === target ? Math.min(Math.max(k, 0), 1) : 0})`;
     });
   }, []);
 
@@ -263,11 +433,20 @@ export default function FeatureWindow() {
           stepStart.current += now - pauseAt.current; // dort weiter, wo pausiert wurde
           pauseAt.current = 0;
         }
+        // Funktion offen, Video läuft noch nicht (Übergang + Standbild): Uhr und Strich warten.
+        // Sicherheitsnetz: nach 6 s ohne Start geht die Tour trotzdem weiter.
+        if (awaitStart.current && now - awaitSince.current > 6000) awaitStart.current = false;
+        if (awaitStart.current) stepStart.current = now;
         const k = (now - stepStart.current) / 1000 / stepLen(stepRef.current);
         if (k >= 1) {
-          stepRef.current = (stepRef.current + 1) % FEATURES.length;
+          stepRef.current = nextStep(stepRef.current);
           stepStart.current = now;
-          openFeature(FEATURES[stepRef.current].id, "folder", true);
+          if (stepRef.current < 0) closeFeature();
+          else {
+            awaitStart.current = true;
+            awaitSince.current = now;
+            openFeature(FEATURES[stepRef.current].id, "folder", true);
+          }
           setBars(0);
         } else setBars(k);
       } else if (!pauseAt.current) pauseAt.current = now;
@@ -297,10 +476,36 @@ export default function FeatureWindow() {
     };
     document.addEventListener("keydown", onKey);
 
+    // Öffnen von außen: weich zum Fenster scrollen, dann wächst die Karte zur Detailansicht.
+    let openTimer = 0;
+    const onOpen = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail;
+      if (!FEATURES.some((f) => f.id === id)) return;
+      manual(); // wie jeder eigene Klick: Auto-Tour endet
+      window.clearTimeout(openTimer);
+      const root = rootRef.current;
+      if (!root) return;
+      const go = () => {
+        window.removeEventListener("scrollend", go);
+        window.clearTimeout(openTimer);
+        if (currentRef.current !== null && currentRef.current !== id) closeFeature();
+        openFeature(id, "card", false);
+      };
+      const r = root.getBoundingClientRect();
+      const target = window.scrollY + r.top - Math.max((window.innerHeight - r.height) / 2, 130);
+      if (Math.abs(window.scrollY - target) < 4) return go();
+      window.addEventListener("scrollend", go);
+      openTimer = window.setTimeout(go, reducedRef.current ? 50 : 1400); // Fallback ohne scrollend
+      window.scrollTo({ top: target, behavior: reducedRef.current ? "instant" : "smooth" });
+    };
+    window.addEventListener(OPEN_FEATURE_EVENT, onOpen);
+
     return () => {
       cancelAnimationFrame(raf);
       io.disconnect();
       document.removeEventListener("keydown", onKey);
+      window.removeEventListener(OPEN_FEATURE_EVENT, onOpen);
+      window.clearTimeout(openTimer);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -310,6 +515,10 @@ export default function FeatureWindow() {
     openFeature(id, origin, false);
   };
   const back = () => {
+    manual();
+    closeFeature();
+  };
+  const pickOverview = () => {
     manual();
     closeFeature();
   };
@@ -358,7 +567,10 @@ export default function FeatureWindow() {
           }),
         }}
         transition={{ layout: move, borderRadius: move, opacity: { duration: d.SCENE, ease: EASE_OUT } }}
-        onLayoutAnimationComplete={() => onLayoutDone(sc.key)}
+        onLayoutAnimationComplete={() => {
+          if (sc.phase === "open") setReadyKey(sc.key);
+          onLayoutDone(sc.key);
+        }}
       >
         <motion.div
           className={s.ovInner}
@@ -387,23 +599,46 @@ export default function FeatureWindow() {
           </div>
 
           <div className={s.ovbody}>
+            <div className={s.videoWrap}>
             <div className={s.video} style={{ aspectRatio: f.aspect }}>
               <div className={s.ph}>
                 <i className={s.spin} />
               </div>
-              {f.video.kind === "mp4" ? (
-                <video
-                  src={f.video.src}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  aria-label={`Animation: ${f.name}`}
-                />
-              ) : (
-                <iframe src={f.video.src} title={`Animation: ${f.name}`} allow="autoplay" tabIndex={-1} />
-              )}
+              <SceneVideo
+                video={f.video}
+                name={f.name}
+                ready={readyKey === sc.key}
+                onStart={() => onVideoStart(sc.key)}
+              />
+            </div>
+
+              {/* Live-Benachrichtigung: unten rechts am Video, ragt etwas darüber hinaus (dekorativ) */}
+              <div className={s.live} aria-hidden="true">
+                <AnimatePresence mode="wait" initial={false}>
+                  {liveCard && sc.id === current && sc.phase === "open" && startedKey === sc.key && (
+                    <motion.div
+                      key={`${current}-${liveIdx}`}
+                      className={s.lcWrap}
+                      initial={{ opacity: 0, x: reduced ? 0 : 12, y: reduced ? 0 : 12 }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
+                        transition: { duration: d.REVEAL, ease: EASE_OUT },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        y: reduced ? 0 : -16,
+                        transition: { duration: d.REVEAL * CLOSE_FACTOR, ease: EASE_IN_OUT },
+                      }}
+                    >
+                      <div className={s.lc}>
+                        <LiveCardBody c={liveCard} />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
 
             <div className={s.info}>
@@ -449,8 +684,23 @@ export default function FeatureWindow() {
     );
   };
 
+  const feed = current ? LIVE_FEED[current] ?? [] : [];
+  const liveIdx = liveState.feat === current ? liveState.idx : 0;
+  const liveCard = stageSeen && feed.length ? feed[liveIdx % feed.length] : null;
+  // Pop-up erst, wenn das Video der offenen Funktion läuft (nicht schon während der Pause).
+  const liveHasCard = liveCard !== null && scene !== null && scene.phase === "open" && startedKey === scene.key;
+  const liveDwellMs = ((liveIdx === 0 ? 0 : d.REVEAL * CLOSE_FACTOR) + d.REVEAL + LIVE_HOLD_SECONDS) * 1000;
+  // Nach ca. 3 s macht die Karte Platz für die nächste (gleitet nach oben weg).
+  useEffect(() => {
+    if (!liveHasCard || feed.length < 1) return;
+    const t = window.setTimeout(() => setLiveState({ feat: current, idx: liveIdx + 1 }), liveDwellMs);
+    return () => window.clearTimeout(t);
+  }, [current, liveIdx, liveHasCard, liveDwellMs, feed.length]);
+
   return (
-    <div ref={rootRef} className={`${s.fx} ${geist.variable}`}>
+    <div ref={stageRef} className={`${s.stage} ${geist.variable}`}>
+      <div className={s.glow} aria-hidden="true" />
+    <div ref={rootRef} className={s.fx}>
       {/* ---------- Seitenleiste ---------- */}
       <aside className={s.side}>
         <div className={s.brand}>
@@ -459,6 +709,26 @@ export default function FeatureWindow() {
         </div>
         <div className={s.sh}>Funktionen</div>
         <nav className={s.nav} aria-label="Funktionen">
+          <button
+            type="button"
+            className={s.ni}
+            aria-current={current === null ? "page" : undefined}
+            onClick={pickOverview}
+          >
+            <GridIc />
+            Überblick
+            <Ic className={s.chev}>
+              <path d="m9 18 6-6-6-6" />
+            </Ic>
+            <span className={s.trk} aria-hidden="true">
+              <span
+                className={s.bar}
+                ref={(el) => {
+                  barRefs.current[0] = el;
+                }}
+              />
+            </span>
+          </button>
           {FEATURES.map((ft, i) => (
             <button
               key={ft.id}
@@ -479,7 +749,7 @@ export default function FeatureWindow() {
                 <span
                   className={s.bar}
                   ref={(el) => {
-                    barRefs.current[i] = el;
+                    barRefs.current[i + 1] = el;
                   }}
                 />
               </span>
@@ -545,6 +815,8 @@ export default function FeatureWindow() {
 
       {/* ---------- Detailansicht: wächst aus Karte oder Ordner, schrumpft dorthin zurück ---------- */}
       <AnimatePresence custom={exitKind}>{scene && full && renderScene(scene, full)}</AnimatePresence>
+    </div>
+
     </div>
   );
 }

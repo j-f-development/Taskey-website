@@ -325,6 +325,19 @@ html {
 }
 .tk-btn--on-dark.tk-btn--primary:focus-visible,
 .tk-btn--on-dark.tk-btn--secondary:focus-visible { outline-color: #ffffff; }
+/* Cookie-Banner: „Nur notwendige“ und „Einstellungen anpassen“ */
+.tk-btn--cookie-necessary {
+  background: #ffffff;
+  border-color: #10233c;
+  color: #10233c;
+}
+.tk-btn--cookie-necessary:hover { background: #f5f8fc; color: #10233c; }
+.tk-btn--cookie-settings {
+  background: #ffffff;
+  border-color: #d4d4d8;
+  color: #10233c;
+}
+.tk-btn--cookie-settings:hover { border-color: #2f5b94; color: #10233c; }
 .tk-btn--block { width: 100%; }
 .tk-btn:disabled { opacity: 0.6; cursor: default; transform: none; }
 .tk-btn__arrow {
@@ -1582,6 +1595,22 @@ textarea.tkc-field-input {
   box-shadow: var(--ts-shadow-md);
   transform: translateY(-1px);
   border-color: var(--ts-line-strong);
+}
+
+/* Foto-Beweis-Karten (Startseite, „So sehen Foto-Beweise in Taskey aus“):
+   Radius wie die Problem-Karten, Rahmen und Schatten wie das Dashboard-Fenster. */
+.ts-card.tk-proof-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #d9dee5;
+  box-shadow: 0 1px 2px rgba(16, 35, 60, 0.06), 0 24px 60px -12px rgba(16, 35, 60, 0.22);
+}
+.ts-card.tk-proof-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 4px rgba(16, 35, 60, 0.08), 0 32px 70px -12px rgba(16, 35, 60, 0.3);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ts-card.tk-proof-card:hover { transform: none; }
 }
 
 .ts-panel {

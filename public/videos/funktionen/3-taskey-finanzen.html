@@ -496,10 +496,20 @@ function resize() {
 }
 addEventListener('resize', resize); resize();
 let T = 0, playing = true, last = performance.now(), onScreen = true;
+/* Ruhiger Start (nur mit ?delay=ms): Das Startbild steht still, bis die Elternseite
+   {type:'tk-play'} schickt; danach noch `delay` ms Standbild, dann läuft die Zeit ab 0.
+   Ohne delay-Parameter läuft alles wie bisher. */
+const DELAY = Math.max(0, Number(params.get('delay')) || 0);
+let holdUntil = DELAY > 0 ? Infinity : 0;
+addEventListener('message', e => {
+  if (e.origin !== location.origin || !e.data) return;
+  if (e.data.type === 'tk-play') { T = 0; holdUntil = performance.now() + DELAY; }
+  if (e.data.type === 'tk-pause') holdUntil = Infinity; // beim Wechsel: altes Video bleibt stehen
+});
 if ('IntersectionObserver' in window) new IntersectionObserver(es => { onScreen = es[0].isIntersecting; }).observe(document.body);
 function loop(now) {
   const dt = Math.min((now - last) / 1000, .05); last = now;
-  if (onScreen && !document.hidden) { if (playing) { T += dt * SPEED; if (T >= LOOP) T -= LOOP; } update(T); }
+  if (onScreen && !document.hidden) { if (playing && now >= holdUntil) { T += dt * SPEED; if (T >= LOOP) T -= LOOP; } update(T); }
   requestAnimationFrame(loop);
 }
 document.fonts.ready.then(() => {

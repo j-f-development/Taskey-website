@@ -18,7 +18,7 @@
   max-width: 1200px;
   margin-inline: auto;
   height: 720px;
-  border: 1px solid var(--line);
+  border: 1px solid #d9dee5;
   border-radius: 18px;
   overflow: hidden;
   background: #fff;
@@ -27,8 +27,9 @@
   font-family: var(--tk-geist), system-ui, sans-serif;
   color: var(--ink);
   text-align: left;
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 24px 60px rgba(16, 24, 40, 0.1);
+  box-shadow: 0 1px 2px rgba(16, 35, 60, 0.06), 0 24px 60px -12px rgba(16, 35, 60, 0.22);
   -webkit-font-smoothing: antialiased;
+  z-index: 1;
 }
 .fx * {
   box-sizing: border-box;
@@ -425,6 +426,7 @@
   overflow: hidden;
   background: #eceef1;
   border: 1px solid var(--line);
+  box-shadow: 0 1px 2px rgba(16, 35, 60, 0.06), 0 6px 16px -8px rgba(16, 35, 60, 0.14);
 }
 .video iframe,
 .video video {
@@ -555,6 +557,142 @@
   background: #fafafa;
 }
 
+/* ---------- Bühne: Lichtschein und schwebende Live-Karten ---------- */
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+.glow {
+  position: absolute;
+  z-index: 0;
+  left: 22%;
+  right: -6%;
+  top: -14%;
+  bottom: 18%;
+  border-radius: 50%;
+  background: #2f5b94;
+  opacity: 0.18;
+  filter: blur(80px);
+  pointer-events: none;
+}
+/* Live-Benachrichtigung: unten rechts am Video, ragt 32 px rechts und 24 px unten darüber hinaus */
+.videoWrap {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.live {
+  position: absolute;
+  right: -32px;
+  bottom: -24px;
+  z-index: 3;
+  pointer-events: none;
+  font-family: var(--tk-geist), system-ui, sans-serif;
+}
+.lcWrap {
+  width: 360px;
+  max-width: 100%;
+}
+.lc {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e4e4e7;
+  box-shadow: 0 1px 2px rgba(16, 35, 60, 0.06), 0 24px 60px -12px rgba(16, 35, 60, 0.22);
+  padding: 12px 14px;
+  font-size: 13.5px;
+  line-height: 1.35;
+  color: #18181b;
+}
+.lcRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.lcTitle {
+  display: block;
+  font-weight: 600;
+  font-size: 13.5px;
+  color: #10233c;
+}
+.lcSub {
+  display: block;
+  font-size: 13px;
+  color: #71717a;
+}
+.lcWarn {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  margin: 5px 5px 0;
+  border-radius: 50%;
+  background: #e5484d;
+  box-shadow: 0 0 0 4px rgba(229, 72, 77, 0.14);
+}
+.lcCheck {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(61, 190, 139, 0.14);
+  display: grid;
+  place-items: center;
+}
+.lcCheck svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: #2f9e5f;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.lcStat {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+.lcValue {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #2f9e5f;
+}
+.spark {
+  width: 64px;
+  height: 22px;
+  flex: none;
+  fill: none;
+  stroke: #3dbe8b;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Desktop: Karte ragt 24 px unter das Video, darunter bleiben mindestens 16 px Luft zum Text */
+@media (min-width: 901px) {
+  .info {
+    margin-top: 40px;
+  }
+  /* Pop-up schmaler (360 → 264 px, ca. 27 %); rechte Kante bleibt bei right: -32px.
+     264 px ist die kleinste Breite, bei der alle Titel einzeilig passen. */
+  .lcWrap {
+    width: 264px;
+  }
+  .lc {
+    padding: 12px;
+  }
+  .lcTitle {
+    white-space: nowrap;
+    font-size: 13px;
+  }
+}
+
 /* ---------- Responsiv ---------- */
 @media (max-width: 900px) {
   .fx {
@@ -629,6 +767,17 @@
   }
   .ovbar .crumb {
     display: none;
+  }
+  /* Handy: Karte unten rechts IM Video, 12 px Abstand, höchstens 85 % breit */
+  .live {
+    right: 12px;
+    bottom: 12px;
+    left: auto;
+    max-width: 85%;
+  }
+  .lcWrap {
+    width: 360px;
+    max-width: 100%;
   }
   .fx .h4 {
     font-size: 25px;
