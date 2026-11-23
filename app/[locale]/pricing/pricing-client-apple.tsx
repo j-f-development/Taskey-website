@@ -12,11 +12,12 @@ import {
 
 type Feature = { label: string; strike?: boolean };
 
-type Plan = {
-  id: "beginner" | "professional" | "business" | "enterprise";
+type PricingPlan = {
+  id: "beginner" | "professional" | "business";
   name: string;
-  price: string;
-  priceSuffix?: string;
+  monthlyPrice: number;
+  annualPrice: number;
+  priceSuffix: string;
   tagline: string;
   features: (string | Feature)[];
   ctaLabel: string;
@@ -24,13 +25,24 @@ type Plan = {
   featured?: boolean;
 };
 
+type EnterprisePlan = {
+  id: "enterprise";
+  name: string;
+  priceLabel: string;
+  tagline: string;
+  features: (string | Feature)[];
+  ctaLabel: string;
+  ctaHref: string;
+};
+
 type Cadence = "monthly" | "annual";
 
-const BASE_PLANS: Plan[] = [
+const BASE_PLANS: PricingPlan[] = [
   {
     id: "beginner",
     name: "Beginner",
-    price: "69",
+    monthlyPrice: 74.52,
+    annualPrice: 69.00,
     priceSuffix: "/Monat",
     tagline: "Der saubere Einstieg. Zeiterfassung, Nachweise, Finanzen.",
     features: [
@@ -48,7 +60,8 @@ const BASE_PLANS: Plan[] = [
   {
     id: "professional",
     name: "Pro",
-    price: "179",
+    monthlyPrice: 193.32,
+    annualPrice: 179.00,
     priceSuffix: "/Monat",
     tagline: "Mit Personalplanung. Bis zu 100 Objekte.",
     features: [
@@ -66,7 +79,8 @@ const BASE_PLANS: Plan[] = [
   {
     id: "business",
     name: "Business",
-    price: "249",
+    monthlyPrice: 268.92,
+    annualPrice: 249.00,
     priceSuffix: "/Monat",
     tagline: "Ohne Grenzen. Unbegrenzt Objekte und Standorte.",
     features: [
@@ -82,10 +96,10 @@ const BASE_PLANS: Plan[] = [
   },
 ];
 
-const ENTERPRISE_PLAN: Plan = {
+const ENTERPRISE_PLAN: EnterprisePlan = {
   id: "enterprise",
   name: "Enterprise",
-  price: "Individuell",
+  priceLabel: "Individuell",
   tagline: "Für Konzerne, Kliniken und Verkehrsbetriebe.",
   features: [
     "SSO & SAML",
@@ -98,22 +112,28 @@ const ENTERPRISE_PLAN: Plan = {
   ctaHref: "/erstgespraech",
 };
 
+function formatEuro(value: number) {
+  return value.toLocaleString("de-DE", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
+
 export default function PricingClientApple() {
   const { t: _t } = useLanguage();
   const [cadence, setCadence] = useState<Cadence>("monthly");
 
-  const discount = 0.15;
+  const discountPercent = Math.round(
+    (1 - BASE_PLANS[0].annualPrice / BASE_PLANS[0].monthlyPrice) * 100,
+  );
   const plans = BASE_PLANS.map((p) => {
-    const monthlyBase = parseInt(p.price, 10);
     const effectiveMonthly =
-      cadence === "annual"
-        ? Math.round(monthlyBase * (1 - discount))
-        : monthlyBase;
+      cadence === "annual" ? p.annualPrice : p.monthlyPrice;
     const yearlyTotal = effectiveMonthly * 12;
-    const yearlySavings = monthlyBase * 12 - yearlyTotal;
+    const yearlySavings = (p.monthlyPrice - p.annualPrice) * 12;
     return {
       ...p,
-      price: effectiveMonthly.toString(),
+      displayPrice: effectiveMonthly,
       yearlyTotal,
       yearlySavings,
     };
@@ -141,7 +161,7 @@ export default function PricingClientApple() {
               Monatlich
             </CadenceButton>
             <CadenceButton active={cadence === "annual"} onClick={() => setCadence("annual")}>
-              Jährlich · −15%
+              {`Jährlich · −${discountPercent}%`}
             </CadenceButton>
           </div>
           <AnimatePresence initial={false}>
@@ -248,12 +268,12 @@ function CountUp({ value }: { value: number }) {
       ease: EASE_OUT,
       onUpdate: (v) => {
         shown.current = v;
-        el.textContent = Math.round(v).toString();
+        el.textContent = formatEuro(v);
       },
     });
     return () => controls.stop();
   }, [value, reduced]);
-  return <span ref={ref}>{initial}</span>;
+  return <span ref={ref}>{formatEuro(initial)}</span>;
 }
 
 function CadenceButton({
@@ -296,16 +316,17 @@ function PlanCard({
   plan,
   cadence,
 }: {
-  plan: Plan & { yearlyTotal?: number; yearlySavings?: number };
+  plan: PricingPlan & {
+    displayPrice: number;
+    yearlyTotal: number;
+    yearlySavings: number;
+  };
   cadence: Cadence;
 }) {
   const featured = plan.featured;
   const tone = featured ? "apl-tile apl-tile-noir apl-on-noir" : "apl-tile apl-tile-canvas";
   const subtleColor = featured ? "#a1a1a6" : "var(--apl-ink-muted)";
-  const showAnnualBreakdown =
-    cadence === "annual" &&
-    typeof plan.yearlyTotal === "number" &&
-    typeof plan.yearlySavings === "number";
+  const showAnnualBreakdown = cadence === "annual";
   return (
     <div className={`${tone} min-h-[460px] flex flex-col`}>
       <div className="apl-tile-inner flex-1 flex flex-col items-start text-left">
@@ -324,7 +345,7 @@ function PlanCard({
         </div>
         <div className="mt-1 flex items-baseline gap-1.5">
           <span className="apl-display" style={{ fontSize: "clamp(2.25rem, 4vw, 3.25rem)", letterSpacing: "-0.015em" }}>
-            €{/^\d+$/.test(plan.price) ? <CountUp value={Number(plan.price)} /> : plan.price}
+            €<CountUp value={plan.displayPrice} />
           </span>
           {plan.priceSuffix && (
             <span className="apl-body" style={{ color: subtleColor }}>
@@ -337,13 +358,13 @@ function PlanCard({
           <FadeIn key="annual-breakdown">
           <div className="mt-1 flex flex-col gap-0.5">
             <span className="text-[0.78rem]" style={{ color: subtleColor }}>
-              Jahresabo · gesamt €{plan.yearlyTotal!.toLocaleString("de-DE")} pro Jahr
+              Jahresabo · gesamt €{formatEuro(plan.yearlyTotal)} pro Jahr
             </span>
             <span
               className="text-[0.72rem] font-medium"
               style={{ color: featured ? "#2997ff" : "var(--apl-accent)" }}
             >
-              Sie sparen €{plan.yearlySavings!.toLocaleString("de-DE")} gegenüber monatlich
+              Sie sparen €{formatEuro(plan.yearlySavings)} gegenüber monatlich
             </span>
           </div>
           </FadeIn>
@@ -420,7 +441,7 @@ function PlanCard({
   );
 }
 
-function EnterpriseTile({ plan }: { plan: Plan }) {
+function EnterpriseTile({ plan }: { plan: EnterprisePlan }) {
   return (
     <div className="apl-tile apl-tile-canvas min-h-[260px]">
       <div className="apl-tile-inner grid md:grid-cols-[1fr_auto] gap-6 items-start">
