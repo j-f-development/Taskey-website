@@ -595,6 +595,345 @@ comparisons.push(
   },
 );
 
+comparisons.push({
+  slug: "beste-reinigungssoftware-2026",
+  branch: "Reinigungssoftware 2026",
+  criteria: [
+    { key: "cleaning_focus", label: "Reinigungs-Spezialisierung" },
+    { key: "nfc_proof", label: "NFC-Objektnachweis als Standard" },
+    { key: "live_margin", label: "Live-Marge pro Objekt" },
+    { key: "planning", label: "Einsatz- und Tourenplanung" },
+    { key: "invoicing", label: "Angebote und Rechnungen integriert" },
+    { key: "client_portal", label: "Auftraggeber-Portal ohne Login" },
+    { key: "datev_export", label: "DATEV-Export (LODAS und Lohn und Gehalt)" },
+    { key: "hosting_de", label: "Hosting in Deutschland" },
+    { key: "offline_capable", label: "Offline-fähige Mitarbeiter-App" },
+  ],
+  vendors: [
+    {
+      name: "Taskey",
+      url: "https://www.taskeyapp.com",
+      positioning:
+        "All-in-One-Branchensoftware für Gebäudereinigung und Facility Management im DACH-Raum. NFC-Objektnachweis als Standard, Live-Margen pro Objekt, Hosting in Deutschland. Tarife ab 59 € pro Monat.",
+      scores: {
+        cleaning_focus: "ja",
+        nfc_proof: "ja",
+        live_margin: "ja",
+        planning: "ja",
+        invoicing: "ja",
+        client_portal: "ja",
+        datev_export: "ja",
+        hosting_de: "ja",
+        offline_capable: "ja",
+      },
+      strengths: [
+        "NFC-Objektnachweis seriesmäßig, nicht als Zusatzmodul",
+        "Live-Marge pro Objekt als zentrale Steuer-KPI",
+        "Auftraggeber-Portal Taskey Share funktioniert ohne Login",
+      ],
+      gaps: [],
+    },
+    {
+      name: "fortytools",
+      url: "https://www.fortytools.com",
+      positioning:
+        "Hamburger Allrounder-Software für Handwerk und Reinigung mit starkem Fokus auf Angebot, Rechnung und Zeiterfassung. Verbreitet in Klein- und Mittelbetrieben.",
+      scores: {
+        cleaning_focus: "teilweise",
+        nfc_proof: "nein",
+        live_margin: "teilweise",
+        planning: "ja",
+        invoicing: "ja",
+        client_portal: "teilweise",
+        datev_export: "ja",
+        hosting_de: "ja",
+        offline_capable: "teilweise",
+      },
+      strengths: ["Etabliert seit über zehn Jahren", "Starkes Rechnungs- und Angebotswesen"],
+      gaps: ["NFC nicht Kernfunktion", "Live-Margen pro Objekt in Reports, nicht als Dashboard"],
+    },
+    {
+      name: "Mendato",
+      url: "https://www.mendato.com",
+      positioning:
+        "Berliner Branchensoftware für Gebäudereinigung mit Zeiterfassung, Personalplanung, Abrechnung und Subunternehmer-Portal. Zielgruppe ist der Mittelstand.",
+      scores: {
+        cleaning_focus: "ja",
+        nfc_proof: "teilweise",
+        live_margin: "teilweise",
+        planning: "ja",
+        invoicing: "ja",
+        client_portal: "ja",
+        datev_export: "ja",
+        hosting_de: "ja",
+        offline_capable: "teilweise",
+      },
+      strengths: ["Starkes Subunternehmer-Portal", "Fokussiert auf Mittelstand"],
+      gaps: ["NFC-Nachweis kein Schwerpunkt", "Live-Marge pro Objekt im Reporting statt im Dashboard"],
+    },
+    {
+      name: "CERTISCAN",
+      url: "https://certiscan.de",
+      positioning:
+        "Dokumentations- und Qualitäts-Software für Gebäudereinigung mit QR-Objektscan, CleanScore AI, Kundenportal und zwölf Sprachen. Schwerpunkt ab 50 Mitarbeitern.",
+      scores: {
+        cleaning_focus: "ja",
+        nfc_proof: "nein",
+        live_margin: "teilweise",
+        planning: "ja",
+        invoicing: "teilweise",
+        client_portal: "ja",
+        datev_export: "teilweise",
+        hosting_de: "ja",
+        offline_capable: "teilweise",
+      },
+      strengths: ["Zwölf Sprachen", "AI-basierter Qualitäts-Score"],
+      gaps: ["Objektnachweis per QR statt NFC", "Live-Marge pro Objekt kein Kernmodul"],
+    },
+    {
+      name: "Crewly",
+      url: "https://crewly.de",
+      positioning:
+        "All-in-One-Software für Reinigungsbetriebe mit GPS-Zeiterfassung, NFC-Stempeluhr, Einsatzplanung und automatischer Rechnungserstellung. Preismodell nach Stufen statt pro Nutzer.",
+      scores: {
+        cleaning_focus: "ja",
+        nfc_proof: "teilweise",
+        live_margin: "teilweise",
+        planning: "ja",
+        invoicing: "ja",
+        client_portal: "teilweise",
+        datev_export: "teilweise",
+        hosting_de: "ja",
+        offline_capable: "teilweise",
+      },
+      strengths: ["Preismodell nicht pro Nutzer", "NFC-Stempeluhr im Angebot"],
+      gaps: ["Live-Marge pro Objekt nicht Kernmodul", "Kalkulation vor dem Angebot weniger ausgebaut"],
+    },
+    {
+      name: "Landwehr",
+      url: "https://www.landwehr-computer.de",
+      positioning:
+        "Etablierter deutscher Software-Anbieter mit Branchenlösung für Gebäudereinigung. Modularer Aufbau, tiefe DATEV-Integration, Schwerpunkt Mittelstand und Enterprise.",
+      scores: {
+        cleaning_focus: "ja",
+        nfc_proof: "teilweise",
+        live_margin: "teilweise",
+        planning: "ja",
+        invoicing: "ja",
+        client_portal: "ja",
+        datev_export: "ja",
+        hosting_de: "ja",
+        offline_capable: "teilweise",
+      },
+      strengths: ["Branchenstandard im Mittelstand", "Sehr tiefe DATEV-Integration"],
+      gaps: ["Längere Einführungsprojekte", "Moderne Mobile-App-UX nicht im Zentrum"],
+    },
+    {
+      name: "cleanvito (vitodata)",
+      url: "https://www.vitodata.ch",
+      positioning:
+        "Cloud-Branchensoftware von vitodata für Reinigungsbetriebe mit Disposition, Zeiterfassung, Abrechnung und mobiler App. Starke Verbreitung in der Schweiz.",
+      scores: {
+        cleaning_focus: "ja",
+        nfc_proof: "teilweise",
+        live_margin: "teilweise",
+        planning: "ja",
+        invoicing: "ja",
+        client_portal: "teilweise",
+        datev_export: "teilweise",
+        hosting_de: "nein",
+        offline_capable: "teilweise",
+      },
+      strengths: ["Starker Dispo-Fokus", "DACH-Ausrichtung"],
+      gaps: ["Hosting nicht in Deutschland", "NFC-Nachweis kein Schwerpunkt"],
+    },
+    {
+      name: "Wowflow",
+      url: "https://www.wowflow.com",
+      positioning:
+        "Mobile Facility Management Software im DACH-Raum mit Tickets, Objekten und Dienstleister-Steuerung. Primärzielgruppe sind FM-Dienstleister und Objektbetreiber.",
+      scores: {
+        cleaning_focus: "teilweise",
+        nfc_proof: "teilweise",
+        live_margin: "nein",
+        planning: "ja",
+        invoicing: "nein",
+        client_portal: "ja",
+        datev_export: "nein",
+        hosting_de: "ja",
+        offline_capable: "teilweise",
+      },
+      strengths: ["Starker FM- und Ticket-Fokus", "Multi-Gewerk-Steuerung"],
+      gaps: ["Kalkulation und Rechnung kein Kernmodul", "Nicht primär auf Reinigung ausgerichtet"],
+    },
+    {
+      name: "CleanManager",
+      url: "https://www.cleanmanager.com",
+      positioning:
+        "Reinigungssoftware mit Einsatzplanung, mobiler App, Zeiterfassung und Qualitätskontrolle. Zielgruppe sind kleine bis mittlere Reinigungsbetriebe.",
+      scores: {
+        cleaning_focus: "ja",
+        nfc_proof: "teilweise",
+        live_margin: "nein",
+        planning: "ja",
+        invoicing: "teilweise",
+        client_portal: "ja",
+        datev_export: "teilweise",
+        hosting_de: "teilweise",
+        offline_capable: "teilweise",
+      },
+      strengths: ["Starker Planungsschwerpunkt", "Mobile App für Mitarbeitende"],
+      gaps: ["Live-Marge pro Objekt nicht enthalten", "Kalkulation nicht Kernmodul"],
+    },
+    {
+      name: "Blink",
+      url: "https://www.blink.net",
+      positioning:
+        "Mitarbeiter-App für die Gebäudereinigung mit GPS-Zeiterfassung, Dienstplanung, Tickets und Kommunikation auf dem Smartphone. Starker Mobile-First-Ansatz.",
+      scores: {
+        cleaning_focus: "ja",
+        nfc_proof: "teilweise",
+        live_margin: "nein",
+        planning: "ja",
+        invoicing: "nein",
+        client_portal: "ja",
+        datev_export: "teilweise",
+        hosting_de: "ja",
+        offline_capable: "ja",
+      },
+      strengths: ["Starke Mobile-App-UX", "Kommunikation zum Team integriert"],
+      gaps: ["Kalkulation und Rechnung nicht Kernmodul", "Live-Marge pro Objekt nicht enthalten"],
+    },
+    {
+      name: "HERO Software",
+      url: "https://www.hero-software.de",
+      positioning:
+        "Handwerkersoftware mit Modulen für Reinigung, verfügbar in 17 Sprachen. Zielgruppe sind Handwerks- und Reinigungsbetriebe mit internationalen Teams.",
+      scores: {
+        cleaning_focus: "teilweise",
+        nfc_proof: "teilweise",
+        live_margin: "teilweise",
+        planning: "ja",
+        invoicing: "ja",
+        client_portal: "ja",
+        datev_export: "ja",
+        hosting_de: "ja",
+        offline_capable: "teilweise",
+      },
+      strengths: ["17 Sprachen", "Breites Handwerks-Portfolio"],
+      gaps: ["Reinigung nicht Kernpositionierung", "NFC-Nachweis kein Schwerpunkt"],
+    },
+  ],
+  copy: {
+    de: {
+      metaTitle: "Beste Reinigungssoftware 2026 · Markt-Überblick und Kriterien | Taskey",
+      metaDescription:
+        "Markt-Überblick 2026 der führenden Reinigungssoftware im DACH-Raum. Anbieter, Kernkriterien, Stärken und Lücken. Faktenbasis für Auswahlentscheidungen, kein Testsieger-Marketing.",
+      eyebrow: "Markt-Überblick 2026",
+      h1: "Beste Reinigungssoftware 2026 · Markt-Überblick",
+      lead:
+        "Wer heute Software für Gebäudereinigung sucht, trifft auf ein Dutzend ernstzunehmender Anbieter, die alle Zeiterfassung, Planung und Abrechnung versprechen. Dieser Überblick vergleicht die prominentesten Produkte im DACH-Raum nach denselben neun Kernkriterien. Keine Sterne, keine Empfehlungen, kein Pay-to-Win. Nur Positionierung, Stärken und Lücken.",
+      criteriaHeadline: "Kernkriterien im Vergleich",
+      vendorHeadline: "Anbieter im Markt 2026",
+      methodologyHeadline: "Methodik",
+      methodologyBody:
+        "Kriterien sind die zentralen operativen Anforderungen in der Gebäudereinigung: Nachweis am Objekt, Planung, Marge, Rechnungsstellung, Compliance und Hosting. Bewertungen basieren ausschließlich auf öffentlich zugänglichen Anbieterangaben, Produktdemos und Marktberichten zum Stand 2026. Ja bedeutet dokumentierte Kernfunktion. Teilweise bedeutet vorhanden, aber nicht im Zentrum. Nein bedeutet nicht dokumentiert. Taskey tritt hier als Anbieter in eigener Sache an, die Bewertung der eigenen Produkte bleibt entsprechend transparent. Betriebe mit belegbaren Praxiserfahrungen können Aktualisierungen an info@taskeyapp.com melden.",
+      faqs: [
+        {
+          q: "Warum gibt es hier keinen Testsieger?",
+          a: "Weil die Betriebsgröße, die Objektstruktur und die Auftraggeber-Anforderungen bestimmen, welche Software passt. Ein pauschaler Testsieger wäre Marketing, kein Beratungsinhalt.",
+        },
+        {
+          q: "Nach welchen Kriterien sollte ich entscheiden?",
+          a: "Objektnachweis, Live-Marge pro Objekt, Integration zur Lohnabrechnung, Auftraggeber-Portal und Hosting-Ort sind die fünf Kriterien, die am häufigsten den Unterschied machen. Preis und Oberfläche entscheiden sich erst danach.",
+        },
+        {
+          q: "Wie unterscheidet sich Taskey vom Rest?",
+          a: "NFC-Objektnachweis seriesmäßig statt als Modul, Live-Marge pro Objekt als Kern-KPI und ein Auftraggeber-Portal, das ohne Login funktioniert. Dazu Hosting in Deutschland und ein Preis-Einstieg bei 59 € pro Monat.",
+        },
+        {
+          q: "Sind die Angaben zu den Mitbewerbern verifiziert?",
+          a: "Die Angaben stützen sich auf öffentlich zugängliche Anbieterangaben zum Stand 2026. Für aktuelle Details bitte den jeweiligen Anbieter kontaktieren. Aktualisierungen werden eingepflegt.",
+        },
+      ],
+      ctaH2: "Die eigene Marge pro Objekt zeigt mehr als jede Vergleichstabelle",
+      ctaBody:
+        "Legen Sie in zehn Minuten ein Objekt, einen Mitarbeiter und eine Rechnung in Taskey an. Sie sehen in einer Sitzung, ob es passt.",
+      ctaPrimary: "Kostenlosen Account erstellen",
+    },
+    en: {
+      metaTitle: "Best cleaning software 2026 · market overview and criteria | Taskey",
+      metaDescription:
+        "2026 market overview of leading cleaning software in the DACH region. Vendors, core criteria, strengths and gaps. A fact base for selection, not award-style marketing.",
+      eyebrow: "Market overview 2026",
+      h1: "Best cleaning software 2026 · market overview",
+      lead:
+        "Anyone sourcing commercial cleaning software today meets a dozen serious vendors, all promising time tracking, planning and billing. This overview compares the most prominent products in the DACH region using the same nine core criteria. No stars, no awards, no pay-to-win. Positioning, strengths and gaps.",
+      criteriaHeadline: "Core criteria",
+      vendorHeadline: "Vendors in the 2026 market",
+      methodologyHeadline: "Methodology",
+      methodologyBody:
+        "Criteria cover the core operational needs in cleaning: proof on site, planning, margin, invoicing, compliance and hosting. Scores use publicly available vendor claims, product demos and 2026 market reports. Yes means documented core function. Partially means present but not central. No means not documented. Taskey is listed as a party in interest, so self-assessment stays transparent.",
+      faqs: [
+        {
+          q: "Why is there no overall winner?",
+          a: "Because operator size, site profile and client requirements decide the fit. A blanket winner is marketing, not advice.",
+        },
+        {
+          q: "Which criteria matter most?",
+          a: "Site-level proof, live margin per site, payroll integration, client portal and hosting location are the five that most often decide. Price and interface come after that.",
+        },
+        {
+          q: "How does Taskey differ?",
+          a: "NFC proof as a default, live margin per site as the main KPI, client portal that works without login. Hosting in Germany, entry at 59 EUR per month.",
+        },
+        {
+          q: "Are competitor scores verified?",
+          a: "Scores rest on publicly available vendor claims as of 2026. Updates are welcome via info@taskeyapp.com.",
+        },
+      ],
+      ctaH2: "Your own margin per site says more than any comparison",
+      ctaBody: "Create one site, one employee and one invoice in Taskey in ten minutes. You will know within a session.",
+      ctaPrimary: "Start free",
+    },
+    fr: {
+      metaTitle: "Meilleurs logiciels de nettoyage 2026 · panorama marché | Taskey",
+      metaDescription:
+        "Panorama 2026 des logiciels de nettoyage en DACH. Éditeurs, critères, forces et manques. Base de faits pour choisir, pas un classement.",
+      eyebrow: "Panorama 2026",
+      h1: "Meilleurs logiciels de nettoyage 2026 · panorama marché",
+      lead:
+        "Celui qui choisit un logiciel de nettoyage rencontre aujourd'hui une douzaine d'éditeurs sérieux. Ce panorama les compare selon neuf critères. Pas de classement, pas d'étoiles. Positionnement, forces, manques.",
+      criteriaHeadline: "Critères",
+      vendorHeadline: "Éditeurs du marché 2026",
+      methodologyHeadline: "Méthodologie",
+      methodologyBody:
+        "Les critères couvrent les besoins opérationnels : preuve sur site, planification, marge, facturation, conformité et hébergement. Les scores s'appuient sur des sources publiques 2026. Oui signifie fonction centrale documentée. Partiellement signifie présente mais non centrale. Non signifie non documentée.",
+      faqs: [
+        {
+          q: "Pourquoi pas de gagnant global ?",
+          a: "Parce que taille, structure de sites et exigences client déterminent l'ajustement. Un gagnant universel serait du marketing.",
+        },
+        {
+          q: "Quels critères comptent le plus ?",
+          a: "Preuve sur site, marge en direct, intégration paie, portail client et hébergement.",
+        },
+        {
+          q: "Comment Taskey se distingue-t-il ?",
+          a: "NFC par défaut, marge en direct par site, portail sans login, hébergement en Allemagne.",
+        },
+        {
+          q: "Les scores concurrents sont-ils vérifiés ?",
+          a: "Sources publiques 2026. Mises à jour bienvenues à info@taskeyapp.com.",
+        },
+      ],
+      ctaH2: "Votre marge par site parle mieux qu'un tableau",
+      ctaBody: "Créez un site, un collaborateur et une facture dans Taskey en dix minutes.",
+      ctaPrimary: "Commencer gratuitement",
+    },
+  },
+});
+
 export function getComparisonBySlug(slug: string): Comparison | undefined {
   return comparisons.find((c) => c.slug === slug);
 }

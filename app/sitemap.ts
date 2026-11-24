@@ -105,6 +105,10 @@ const STATIC_ENTRIES: Entry[] = [
     changeFrequency: "monthly",
     priority: 0.85,
   },
+
+  // Pillar-Landingpages
+  { path: "/leistungsnachweis-reinigung", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/gefma-software", changeFrequency: "monthly", priority: 0.85 },
 ];
 
 // Vergleichsseiten sind DE-only (kein hreflang-Split)
@@ -112,6 +116,14 @@ const DE_ONLY_ENTRIES: Entry[] = [
   { path: "/vergleich/blink", changeFrequency: "monthly", priority: 0.75 },
   { path: "/vergleich/fortytools", changeFrequency: "monthly", priority: 0.75 },
   { path: "/vergleich/hero-software", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/vergleich/mendato", changeFrequency: "monthly", priority: 0.78 },
+  { path: "/vergleich/certiscan", changeFrequency: "monthly", priority: 0.78 },
+  { path: "/vergleich/crewly", changeFrequency: "monthly", priority: 0.78 },
+  { path: "/vergleich/landwehr", changeFrequency: "monthly", priority: 0.78 },
+  { path: "/vergleich/cleanvito", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/vergleich/wowflow", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/vergleich/cleanmanager", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/vergleich/shiftbase", changeFrequency: "monthly", priority: 0.72 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
